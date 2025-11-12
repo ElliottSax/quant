@@ -2,6 +2,7 @@
 
 import logging
 from celery import Celery
+from celery.schedules import crontab
 from celery.signals import task_prerun, task_postrun, task_failure
 
 from app.core.config import settings
@@ -45,19 +46,19 @@ celery_app.conf.update(
         # Daily scraping at 2 AM UTC
         "scrape-daily": {
             "task": "app.tasks.scraper_tasks.scrape_all_chambers",
-            "schedule": 3600 * 24,  # Every 24 hours
+            "schedule": crontab(hour=2, minute=0),  # Every day at 2:00 AM UTC
             "kwargs": {"days_back": 1},
         },
         # Weekly full sync on Sundays at 3 AM UTC
         "scrape-weekly": {
             "task": "app.tasks.scraper_tasks.scrape_all_chambers",
-            "schedule": 3600 * 24 * 7,  # Every 7 days
+            "schedule": crontab(hour=3, minute=0, day_of_week=0),  # Sunday at 3:00 AM UTC
             "kwargs": {"days_back": 7},
         },
         # Health check every 5 minutes
         "health-check": {
             "task": "app.tasks.scraper_tasks.health_check",
-            "schedule": 300,  # Every 5 minutes
+            "schedule": 300,  # Every 5 minutes (interval is fine for frequent checks)
         },
     },
 )

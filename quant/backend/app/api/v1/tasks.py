@@ -8,6 +8,8 @@ from celery.result import AsyncResult
 
 from app.celery_app import celery_app
 from app.tasks.scraper_tasks import scrape_senate, scrape_house, scrape_all_chambers
+from app.core.deps import get_current_active_user
+from app.models.user import User
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
 logger = logging.getLogger(__name__)
@@ -39,12 +41,17 @@ class ScraperRequest(BaseModel):
 
 
 @router.post("/scrape/senate", response_model=TaskResponse)
-async def trigger_senate_scraper(request: ScraperRequest) -> TaskResponse:
+async def trigger_senate_scraper(
+    request: ScraperRequest,
+    current_user: User = Depends(get_current_active_user),
+) -> TaskResponse:
     """
     Trigger Senate scraper task.
 
     This endpoint queues a background task to scrape Senate financial disclosures.
     Use the returned task_id to check status.
+
+    Requires authentication.
     """
     try:
         task = scrape_senate.delay(
@@ -53,7 +60,7 @@ async def trigger_senate_scraper(request: ScraperRequest) -> TaskResponse:
             days_back=request.days_back,
         )
 
-        logger.info(f"Senate scraper task queued: {task.id}")
+        logger.info(f"Senate scraper task queued by {current_user.username}: {task.id}")
 
         return TaskResponse(
             task_id=task.id,
@@ -67,12 +74,17 @@ async def trigger_senate_scraper(request: ScraperRequest) -> TaskResponse:
 
 
 @router.post("/scrape/house", response_model=TaskResponse)
-async def trigger_house_scraper(request: ScraperRequest) -> TaskResponse:
+async def trigger_house_scraper(
+    request: ScraperRequest,
+    current_user: User = Depends(get_current_active_user),
+) -> TaskResponse:
     """
     Trigger House scraper task.
 
     This endpoint queues a background task to scrape House financial disclosures.
     Use the returned task_id to check status.
+
+    Requires authentication.
     """
     try:
         task = scrape_house.delay(
@@ -81,7 +93,7 @@ async def trigger_house_scraper(request: ScraperRequest) -> TaskResponse:
             days_back=request.days_back,
         )
 
-        logger.info(f"House scraper task queued: {task.id}")
+        logger.info(f"House scraper task queued by {current_user.username}: {task.id}")
 
         return TaskResponse(
             task_id=task.id,
@@ -95,12 +107,17 @@ async def trigger_house_scraper(request: ScraperRequest) -> TaskResponse:
 
 
 @router.post("/scrape/all", response_model=TaskResponse)
-async def trigger_all_scrapers(request: ScraperRequest) -> TaskResponse:
+async def trigger_all_scrapers(
+    request: ScraperRequest,
+    current_user: User = Depends(get_current_active_user),
+) -> TaskResponse:
     """
     Trigger both Senate and House scraper tasks.
 
     This endpoint queues a background task to scrape both chambers.
     Use the returned task_id to check status.
+
+    Requires authentication.
     """
     try:
         task = scrape_all_chambers.delay(
@@ -109,7 +126,7 @@ async def trigger_all_scrapers(request: ScraperRequest) -> TaskResponse:
             days_back=request.days_back,
         )
 
-        logger.info(f"Combined scraper task queued: {task.id}")
+        logger.info(f"Combined scraper task queued by {current_user.username}: {task.id}")
 
         return TaskResponse(
             task_id=task.id,
@@ -123,11 +140,16 @@ async def trigger_all_scrapers(request: ScraperRequest) -> TaskResponse:
 
 
 @router.get("/status/{task_id}", response_model=TaskStatusResponse)
-async def get_task_status(task_id: str) -> TaskStatusResponse:
+async def get_task_status(
+    task_id: str,
+    current_user: User = Depends(get_current_active_user),
+) -> TaskStatusResponse:
     """
     Get status of a task by ID.
 
     Returns the current status and result (if completed) of the task.
+
+    Requires authentication.
     """
     try:
         task_result = AsyncResult(task_id, app=celery_app)
@@ -151,11 +173,15 @@ async def get_task_status(task_id: str) -> TaskStatusResponse:
 
 
 @router.get("/active")
-async def get_active_tasks() -> Dict[str, Any]:
+async def get_active_tasks(
+    current_user: User = Depends(get_current_active_user),
+) -> Dict[str, Any]:
     """
     Get list of active tasks.
 
     Returns information about currently running tasks.
+
+    Requires authentication.
     """
     try:
         # Get active tasks from all workers
@@ -188,11 +214,15 @@ async def get_active_tasks() -> Dict[str, Any]:
 
 
 @router.get("/scheduled")
-async def get_scheduled_tasks() -> Dict[str, Any]:
+async def get_scheduled_tasks(
+    current_user: User = Depends(get_current_active_user),
+) -> Dict[str, Any]:
     """
     Get list of scheduled (reserved) tasks.
 
     Returns information about tasks waiting to be executed.
+
+    Requires authentication.
     """
     try:
         inspect = celery_app.control.inspect()
@@ -223,12 +253,16 @@ async def get_scheduled_tasks() -> Dict[str, Any]:
 
 
 @router.get("/stats")
-async def get_worker_stats() -> Dict[str, Any]:
+async def get_worker_stats(
+    current_user: User = Depends(get_current_active_user),
+) -> Dict[str, Any]:
     """
     Get worker statistics.
 
     Returns statistics about Celery workers including pool size,
     active tasks, and processed tasks.
+
+    Requires authentication.
     """
     try:
         inspect = celery_app.control.inspect()
@@ -262,17 +296,22 @@ async def get_worker_stats() -> Dict[str, Any]:
 
 
 @router.post("/cancel/{task_id}")
-async def cancel_task(task_id: str) -> Dict[str, Any]:
+async def cancel_task(
+    task_id: str,
+    current_user: User = Depends(get_current_active_user),
+) -> Dict[str, Any]:
     """
     Cancel a running or queued task.
 
     Attempts to terminate the task if it's currently running.
+
+    Requires authentication.
     """
     try:
         task_result = AsyncResult(task_id, app=celery_app)
         task_result.revoke(terminate=True)
 
-        logger.info(f"Task {task_id} cancelled")
+        logger.info(f"Task {task_id} cancelled by {current_user.username}")
 
         return {
             "status": "cancelled",

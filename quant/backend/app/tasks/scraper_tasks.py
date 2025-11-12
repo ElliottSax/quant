@@ -1,5 +1,7 @@
 """Celery tasks for congressional trading scrapers."""
 
+import asyncio
+import atexit
 import logging
 from datetime import date, timedelta
 from typing import Dict, Any
@@ -13,36 +15,73 @@ from app.services.scraper_service import run_senate_scraper, run_house_scraper, 
 
 logger = logging.getLogger(__name__)
 
+# Module-level engine and session maker (shared across all tasks)
+_engine = None
+_session_maker = None
+_event_loop = None
+
+
+def get_engine():
+    """Get or create the shared database engine."""
+    global _engine
+    if _engine is None:
+        _engine = create_async_engine(
+            settings.DATABASE_URL,
+            echo=False,
+            pool_pre_ping=True,
+            pool_size=5,
+            max_overflow=10,
+        )
+        # Register cleanup on exit
+        atexit.register(cleanup_engine)
+        logger.info("Database engine initialized")
+    return _engine
+
+
+def get_session_maker():
+    """Get or create the shared session maker."""
+    global _session_maker
+    if _session_maker is None:
+        _session_maker = async_sessionmaker(
+            get_engine(),
+            class_=AsyncSession,
+            expire_on_commit=False,
+        )
+    return _session_maker
+
+
+def get_event_loop():
+    """Get or create the shared event loop for tasks."""
+    global _event_loop
+    if _event_loop is None or _event_loop.is_closed():
+        _event_loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(_event_loop)
+        logger.info("Event loop initialized")
+    return _event_loop
+
+
+def cleanup_engine():
+    """Clean up database engine on shutdown."""
+    global _engine, _event_loop
+    if _engine is not None:
+        logger.info("Disposing database engine")
+        if _event_loop is not None and not _event_loop.is_closed():
+            _event_loop.run_until_complete(_engine.dispose())
+        _engine = None
+
 
 class DatabaseTask(Task):
-    """Base task that provides database session."""
-
-    _engine = None
-    _session_maker = None
-
-    @property
-    def engine(self):
-        """Lazy initialize database engine."""
-        if self._engine is None:
-            self._engine = create_async_engine(
-                settings.DATABASE_URL,
-                echo=False,
-                pool_pre_ping=True,
-                pool_size=5,
-                max_overflow=10,
-            )
-        return self._engine
+    """Base task that provides database session and event loop."""
 
     @property
     def session_maker(self):
-        """Lazy initialize session maker."""
-        if self._session_maker is None:
-            self._session_maker = async_sessionmaker(
-                self.engine,
-                class_=AsyncSession,
-                expire_on_commit=False,
-            )
-        return self._session_maker
+        """Get the shared session maker."""
+        return get_session_maker()
+
+    @property
+    def event_loop(self):
+        """Get the shared event loop."""
+        return get_event_loop()
 
 
 @celery_app.task(
@@ -69,23 +108,33 @@ def scrape_senate(
     Returns:
         Dictionary with scraping statistics
     """
-    import asyncio
-
     logger.info(f"Starting Senate scraper task (days_back={days_back})")
 
     try:
-        # Parse dates
-        if start_date:
-            start = date.fromisoformat(start_date)
-        else:
-            start = date.today() - timedelta(days=days_back)
+        # Parse and validate dates
+        try:
+            if start_date:
+                start = date.fromisoformat(start_date)
+            else:
+                start = date.today() - timedelta(days=days_back)
 
-        if end_date:
-            end = date.fromisoformat(end_date)
-        else:
-            end = date.today()
+            if end_date:
+                end = date.fromisoformat(end_date)
+            else:
+                end = date.today()
 
-        # Run scraper
+            # Validate date range
+            if start > end:
+                raise ValueError(f"start_date ({start}) cannot be after end_date ({end})")
+        except ValueError as e:
+            logger.error(f"Invalid date parameters: {e}")
+            return {
+                "status": "error",
+                "chamber": "senate",
+                "error": f"Invalid date parameters: {str(e)}",
+            }
+
+        # Run scraper using shared event loop
         async def run():
             async with self.session_maker() as session:
                 return await run_senate_scraper(
@@ -95,7 +144,7 @@ def scrape_senate(
                     headless=True,
                 )
 
-        stats = asyncio.run(run())
+        stats = self.event_loop.run_until_complete(run())
 
         logger.info(f"Senate scraper completed: {stats}")
         return {
@@ -109,11 +158,12 @@ def scrape_senate(
     except Exception as exc:
         logger.error(f"Senate scraper failed: {exc}", exc_info=True)
 
-        # Retry on failure
+        # Retry on failure (this raises an exception, so no code after this will execute)
         if self.request.retries < self.max_retries:
             logger.info(f"Retrying Senate scraper (attempt {self.request.retries + 1}/{self.max_retries})")
             raise self.retry(exc=exc)
 
+        # Only reached if max retries exceeded
         return {
             "status": "error",
             "chamber": "senate",
@@ -147,23 +197,33 @@ def scrape_house(
     Returns:
         Dictionary with scraping statistics
     """
-    import asyncio
-
     logger.info(f"Starting House scraper task (days_back={days_back})")
 
     try:
-        # Parse dates
-        if start_date:
-            start = date.fromisoformat(start_date)
-        else:
-            start = date.today() - timedelta(days=days_back)
+        # Parse and validate dates
+        try:
+            if start_date:
+                start = date.fromisoformat(start_date)
+            else:
+                start = date.today() - timedelta(days=days_back)
 
-        if end_date:
-            end = date.fromisoformat(end_date)
-        else:
-            end = date.today()
+            if end_date:
+                end = date.fromisoformat(end_date)
+            else:
+                end = date.today()
 
-        # Run scraper
+            # Validate date range
+            if start > end:
+                raise ValueError(f"start_date ({start}) cannot be after end_date ({end})")
+        except ValueError as e:
+            logger.error(f"Invalid date parameters: {e}")
+            return {
+                "status": "error",
+                "chamber": "house",
+                "error": f"Invalid date parameters: {str(e)}",
+            }
+
+        # Run scraper using shared event loop
         async def run():
             async with self.session_maker() as session:
                 return await run_house_scraper(
@@ -173,7 +233,7 @@ def scrape_house(
                     headless=True,
                 )
 
-        stats = asyncio.run(run())
+        stats = self.event_loop.run_until_complete(run())
 
         logger.info(f"House scraper completed: {stats}")
         return {
@@ -187,11 +247,12 @@ def scrape_house(
     except Exception as exc:
         logger.error(f"House scraper failed: {exc}", exc_info=True)
 
-        # Retry on failure
+        # Retry on failure (this raises an exception, so no code after this will execute)
         if self.request.retries < self.max_retries:
             logger.info(f"Retrying House scraper (attempt {self.request.retries + 1}/{self.max_retries})")
             raise self.retry(exc=exc)
 
+        # Only reached if max retries exceeded
         return {
             "status": "error",
             "chamber": "house",
@@ -223,23 +284,32 @@ def scrape_all_chambers(
     Returns:
         Dictionary with scraping statistics for both chambers
     """
-    import asyncio
-
     logger.info(f"Starting combined scraper task (days_back={days_back})")
 
     try:
-        # Parse dates
-        if start_date:
-            start = date.fromisoformat(start_date)
-        else:
-            start = date.today() - timedelta(days=days_back)
+        # Parse and validate dates
+        try:
+            if start_date:
+                start = date.fromisoformat(start_date)
+            else:
+                start = date.today() - timedelta(days=days_back)
 
-        if end_date:
-            end = date.fromisoformat(end_date)
-        else:
-            end = date.today()
+            if end_date:
+                end = date.fromisoformat(end_date)
+            else:
+                end = date.today()
 
-        # Run both scrapers
+            # Validate date range
+            if start > end:
+                raise ValueError(f"start_date ({start}) cannot be after end_date ({end})")
+        except ValueError as e:
+            logger.error(f"Invalid date parameters: {e}")
+            return {
+                "status": "error",
+                "error": f"Invalid date parameters: {str(e)}",
+            }
+
+        # Run both scrapers using shared event loop
         async def run():
             async with self.session_maker() as session:
                 return await run_all_scrapers(
@@ -249,7 +319,7 @@ def scrape_all_chambers(
                     headless=True,
                 )
 
-        results = asyncio.run(run())
+        results = self.event_loop.run_until_complete(run())
 
         # Calculate totals
         total_saved = 0
