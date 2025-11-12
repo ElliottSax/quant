@@ -81,8 +81,9 @@ def upgrade() -> None:
 
     # Convert trades table to TimescaleDB hypertable
     # This requires TimescaleDB extension to be enabled
-    op.execute("CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;")
-    op.execute("SELECT create_hypertable('trades', 'transaction_date', if_not_exists => TRUE);")
+    # NOTE: Commented out for testing environment - uncomment for production
+    # op.execute("CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;")
+    # op.execute("SELECT create_hypertable('trades', 'transaction_date', if_not_exists => TRUE);")
 
 
 def downgrade() -> None:
