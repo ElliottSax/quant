@@ -1,0 +1,30 @@
+[Unit]
+Description=Celery Flower Monitoring Dashboard for Quant Analytics Platform
+After=network.target redis.service celery-worker.service
+
+[Service]
+Type=simple
+User=quant
+Group=www-data
+WorkingDirectory=/home/quant/quant-app/quant/backend
+
+# Environment
+EnvironmentFile=/home/quant/quant-app/quant/backend/.env.production
+
+# Flower dashboard
+ExecStart=/home/quant/quant-app/quant/backend/venv/bin/celery \
+    -A app.celery_app flower \
+    --port=5555 \
+    --url_prefix=flower \
+    --basic_auth=admin:${FLOWER_PASSWORD}
+
+# Process management
+Restart=always
+RestartSec=5s
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

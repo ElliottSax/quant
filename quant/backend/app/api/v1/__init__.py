@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter
 
-from app.api.v1 import trades, politicians, stats, auth
+from app.api.v1 import trades, politicians, stats, auth, tasks
 
 api_router = APIRouter()
 
@@ -11,3 +11,4 @@ api_router.include_router(auth.router, prefix="/auth", tags=["authentication"])
 api_router.include_router(trades.router, prefix="/trades", tags=["trades"])
 api_router.include_router(politicians.router, prefix="/politicians", tags=["politicians"])
 api_router.include_router(stats.router, prefix="/stats", tags=["stats"])
+api_router.include_router(tasks.router, tags=["tasks"])

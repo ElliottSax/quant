@@ -1,0 +1,32 @@
+[Unit]
+Description=Celery Beat Scheduler for Quant Analytics Platform
+After=network.target redis.service postgresql.service celery-worker.service
+
+[Service]
+Type=simple
+User=quant
+Group=www-data
+WorkingDirectory=/home/quant/quant-app/quant/backend
+
+# Environment
+EnvironmentFile=/home/quant/quant-app/quant/backend/.env.production
+
+# Celery beat
+ExecStart=/home/quant/quant-app/quant/backend/venv/bin/celery \
+    -A app.celery_app beat \
+    --loglevel=INFO \
+    --pidfile=/var/run/celery/beat.pid \
+    --logfile=/var/log/celery/beat.log
+
+ExecStop=/bin/kill -s TERM $MAINPID
+
+# Process management
+Restart=always
+RestartSec=10s
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

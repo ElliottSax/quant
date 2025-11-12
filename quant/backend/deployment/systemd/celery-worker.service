@@ -1,0 +1,42 @@
+[Unit]
+Description=Celery Worker for Quant Analytics Platform
+After=network.target redis.service postgresql.service
+
+[Service]
+Type=forking
+User=quant
+Group=www-data
+WorkingDirectory=/home/quant/quant-app/quant/backend
+
+# Environment
+EnvironmentFile=/home/quant/quant-app/quant/backend/.env.production
+
+# Celery worker
+ExecStart=/home/quant/quant-app/quant/backend/venv/bin/celery \
+    -A app.celery_app worker \
+    --loglevel=INFO \
+    --concurrency=2 \
+    --max-tasks-per-child=10 \
+    --pidfile=/var/run/celery/%n.pid \
+    --logfile=/var/log/celery/%n%I.log \
+    --detach
+
+ExecStop=/home/quant/quant-app/quant/backend/venv/bin/celery \
+    -A app.celery_app control shutdown
+
+ExecReload=/bin/kill -s HUP $MAINPID
+
+# Process management
+Restart=always
+RestartSec=10s
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Resource limits
+LimitNOFILE=65536
+TimeoutStopSec=600
+
+[Install]
+WantedBy=multi-user.target
