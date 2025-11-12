@@ -1,6 +1,6 @@
 """Authentication API endpoints."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select, or_
@@ -126,7 +126,7 @@ async def login(
         raise UnauthorizedException("Inactive user")
 
     # Update last login
-    user.last_login = datetime.utcnow()
+    user.last_login = datetime.now(timezone.utc)
     await db.commit()
 
     # Create tokens

@@ -1,6 +1,6 @@
 """Security utilities for authentication and authorization."""
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from jose import JWTError, jwt
@@ -27,9 +27,9 @@ def create_access_token(subject: str, expires_delta: timedelta | None = None) ->
         Encoded JWT token
     """
     if expires_delta:
-        expire = datetime.utcnow() + expires_delta
+        expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(
+        expire = datetime.now(timezone.utc) + timedelta(
             minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
         )
 
@@ -48,7 +48,7 @@ def create_refresh_token(subject: str) -> str:
     Returns:
         Encoded JWT refresh token
     """
-    expire = datetime.utcnow() + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
+    expire = datetime.now(timezone.utc) + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
     to_encode = {"exp": expire, "sub": str(subject), "type": "refresh"}
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt
@@ -79,7 +79,7 @@ def verify_token(token: str, token_type: str = "access") -> str | None:
             return None
 
         # Check if token is expired
-        if datetime.fromtimestamp(token_exp) < datetime.utcnow():
+        if datetime.fromtimestamp(token_exp, tz=timezone.utc) < datetime.now(timezone.utc):
             logger.warning("Token has expired")
             return None
 
