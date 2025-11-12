@@ -383,3 +383,95 @@ async def run_senate_scraper(
     except Exception as e:
         logger.error(f"Senate scraper failed: {e}", exc_info=True)
         raise
+
+
+async def run_house_scraper(
+    db: AsyncSession,
+    start_date: date | None = None,
+    end_date: date | None = None,
+    headless: bool = True,
+) -> dict[str, int]:
+    """
+    Run House scraper and save results to database.
+
+    Args:
+        db: Database session
+        start_date: Start date for scraping
+        end_date: End date for scraping
+        headless: Run browser in headless mode
+
+    Returns:
+        Statistics dictionary from save_trades
+    """
+    from app.scrapers.house import HouseScraper
+
+    logger.info("Starting House scraper")
+
+    try:
+        # Run scraper
+        scraper = HouseScraper(
+            start_date=start_date,
+            end_date=end_date,
+            headless=headless,
+        )
+        trades_data = scraper.run()
+
+        logger.info(f"Scraper completed. Scraped {len(trades_data)} trades")
+
+        # Save to database
+        service = ScraperService(db)
+        stats = await service.save_trades(trades_data, skip_duplicates=True)
+
+        logger.info(f"House scraper completed: {stats}")
+        return stats
+
+    except Exception as e:
+        logger.error(f"House scraper failed: {e}", exc_info=True)
+        raise
+
+
+async def run_all_scrapers(
+    db: AsyncSession,
+    start_date: date | None = None,
+    end_date: date | None = None,
+    headless: bool = True,
+) -> dict[str, dict[str, int]]:
+    """
+    Run both Senate and House scrapers.
+
+    Args:
+        db: Database session
+        start_date: Start date for scraping
+        end_date: End date for scraping
+        headless: Run browser in headless mode
+
+    Returns:
+        Dictionary with stats for each scraper:
+            {
+                "senate": {...},
+                "house": {...}
+            }
+    """
+    results = {}
+
+    # Run Senate scraper
+    try:
+        logger.info("=" * 80)
+        logger.info("Running Senate scraper...")
+        logger.info("=" * 80)
+        results["senate"] = await run_senate_scraper(db, start_date, end_date, headless)
+    except Exception as e:
+        logger.error(f"Senate scraper failed: {e}")
+        results["senate"] = {"error": str(e)}
+
+    # Run House scraper
+    try:
+        logger.info("=" * 80)
+        logger.info("Running House scraper...")
+        logger.info("=" * 80)
+        results["house"] = await run_house_scraper(db, start_date, end_date, headless)
+    except Exception as e:
+        logger.error(f"House scraper failed: {e}")
+        results["house"] = {"error": str(e)}
+
+    return results
