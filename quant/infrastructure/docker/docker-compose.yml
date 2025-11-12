@@ -45,11 +45,11 @@ services:
       dockerfile: Dockerfile
     container_name: quant-backend
     environment:
-      DATABASE_URL: postgresql://quant_user:quant_password@postgres:5432/quant_db
+      DATABASE_URL: postgresql://${POSTGRES_USER:-quant_user}:${POSTGRES_PASSWORD:-quant_password}@postgres:5432/${POSTGRES_DB:-quant_db}
       REDIS_URL: redis://redis:6379/0
-      SECRET_KEY: ${SECRET_KEY:-dev-secret-key}
-      ENVIRONMENT: development
-      DEBUG: "true"
+      SECRET_KEY: ${SECRET_KEY:-dev-secret-key-CHANGE-THIS-IN-PRODUCTION}
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+      DEBUG: ${DEBUG:-true}
     ports:
       - "8000:8000"
     volumes:
@@ -63,25 +63,8 @@ services:
       - quant-network
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
-  # Celery Worker (for background tasks)
-  celery-worker:
-    build:
-      context: ../../backend
-      dockerfile: Dockerfile
-    container_name: quant-celery-worker
-    environment:
-      DATABASE_URL: postgresql://quant_user:quant_password@postgres:5432/quant_db
-      REDIS_URL: redis://redis:6379/0
-      CELERY_BROKER_URL: redis://redis:6379/0
-      CELERY_RESULT_BACKEND: redis://redis:6379/0
-    volumes:
-      - ../../backend:/app
-    depends_on:
-      - postgres
-      - redis
-    networks:
-      - quant-network
-    command: celery -A app.tasks worker --loglevel=info
+  # Note: Celery worker removed - will be added when background tasks are implemented
+  # To add Celery, create app/tasks.py and uncomment the service below
 
 volumes:
   postgres_data:

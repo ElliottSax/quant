@@ -5,7 +5,17 @@ from datetime import date, datetime
 from decimal import Decimal
 from typing import TYPE_CHECKING
 
-from sqlalchemy import String, Date, DateTime, Numeric, Text, ForeignKey, func
+from sqlalchemy import (
+    String,
+    Date,
+    DateTime,
+    Numeric,
+    Text,
+    ForeignKey,
+    func,
+    CheckConstraint,
+    Index,
+)
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -49,6 +59,39 @@ class Trade(Base):
 
     # Relationships
     politician: Mapped["Politician"] = relationship("Politician", back_populates="trades")
+
+    # Database constraints
+    __table_args__ = (
+        CheckConstraint(
+            "transaction_type IN ('buy', 'sell')",
+            name="valid_transaction_type",
+        ),
+        CheckConstraint(
+            "amount_min IS NULL OR amount_min >= 0",
+            name="valid_amount_min",
+        ),
+        CheckConstraint(
+            "amount_max IS NULL OR amount_max >= 0",
+            name="valid_amount_max",
+        ),
+        CheckConstraint(
+            "amount_min IS NULL OR amount_max IS NULL OR amount_min <= amount_max",
+            name="valid_amount_range",
+        ),
+        CheckConstraint(
+            "disclosure_date >= transaction_date",
+            name="disclosure_after_transaction",
+        ),
+        # Unique constraint to prevent duplicate trades
+        Index(
+            "idx_unique_trade",
+            "politician_id",
+            "ticker",
+            "transaction_date",
+            "transaction_type",
+            unique=True,
+        ),
+    )
 
     def __repr__(self) -> str:
         """String representation."""

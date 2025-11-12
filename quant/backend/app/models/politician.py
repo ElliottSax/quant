@@ -4,7 +4,7 @@ import uuid
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import String, DateTime, func
+from sqlalchemy import String, DateTime, func, CheckConstraint
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -48,6 +48,14 @@ class Politician(Base):
         "Trade",
         back_populates="politician",
         cascade="all, delete-orphan",
+    )
+
+    # Database constraints
+    __table_args__ = (
+        CheckConstraint(
+            "chamber IN ('senate', 'house')",
+            name="valid_chamber",
+        ),
     )
 
     def __repr__(self) -> str:

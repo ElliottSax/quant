@@ -22,6 +22,16 @@ from app.schemas.trade import (
     TradeUpdate,
     TradeWithPolitician,
 )
+from app.schemas.user import (
+    UserBase,
+    UserCreate,
+    UserUpdate,
+    UserResponse,
+    UserLogin,
+    Token,
+    TokenRefresh,
+    TokenPayload,
+)
 
 __all__ = [
     # Politician schemas
@@ -47,4 +57,13 @@ __all__ = [
     "LeaderboardResponse",
     "SectorStats",
     "SectorStatsResponse",
+    # User schemas
+    "UserBase",
+    "UserCreate",
+    "UserUpdate",
+    "UserResponse",
+    "UserLogin",
+    "Token",
+    "TokenRefresh",
+    "TokenPayload",
 ]
