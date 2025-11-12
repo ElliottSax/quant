@@ -1,15 +1,16 @@
 """Main FastAPI application."""
 
 from contextlib import asynccontextmanager
-from typing import AsyncGenerator
+from typing import Any, AsyncGenerator
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
 from sqlalchemy.exc import DatabaseError, IntegrityError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
-from app.core.database import init_db
+from app.core.database import init_db, get_db
 from app.core.logging import setup_logging, get_logger
 from app.core.rate_limit import RateLimitMiddleware
 from app.core.exceptions import (
@@ -26,6 +27,10 @@ from app.api.v1 import api_router
 # Set up logging
 setup_logging()
 logger = get_logger(__name__)
+
+# Set up monitoring
+from app.core.monitoring import setup_sentry
+setup_sentry()
 
 
 @asynccontextmanager
@@ -105,9 +110,29 @@ async def root() -> dict[str, str]:
 
 # Health check endpoint
 @app.get("/health")
-async def health_check() -> dict[str, str]:
-    """Health check endpoint."""
-    return {
+async def health_check(db: AsyncSession = Depends(get_db)) -> dict[str, Any]:
+    """
+    Health check endpoint with database connectivity test.
+
+    Returns:
+        Health status including database connectivity
+    """
+    from sqlalchemy import text
+
+    health_status = {
         "status": "healthy",
         "environment": settings.ENVIRONMENT,
+        "version": settings.VERSION,
+        "database": "disconnected",
     }
+
+    try:
+        # Test database connectivity
+        await db.execute(text("SELECT 1"))
+        health_status["database"] = "connected"
+    except Exception as e:
+        logger.error(f"Health check failed - database connection error: {e}")
+        health_status["status"] = "unhealthy"
+        health_status["database"] = "error"
+
+    return health_status

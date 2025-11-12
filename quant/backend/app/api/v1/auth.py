@@ -34,20 +34,53 @@ logger = get_logger(__name__)
 router = APIRouter()
 
 
-@router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/register",
+    response_model=UserResponse,
+    status_code=status.HTTP_201_CREATED,
+    responses={
+        201: {
+            "description": "User created successfully",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "id": "123e4567-e89b-12d3-a456-426614174000",
+                        "email": "user@example.com",
+                        "username": "johndoe",
+                        "is_active": True,
+                        "is_superuser": False,
+                        "created_at": "2025-01-15T10:30:00Z",
+                        "last_login": None
+                    }
+                }
+            }
+        },
+        409: {"description": "Username or email already exists"},
+        422: {"description": "Validation error"}
+    }
+)
 async def register(
     user_data: UserCreate,
     db: AsyncSession = Depends(get_db),
 ) -> UserResponse:
     """
-    Register a new user.
+    Register a new user account.
+
+    Creates a new user with the provided credentials. The password will be securely
+    hashed before storage. Usernames must be unique and alphanumeric (underscores allowed).
+
+    **Password Requirements:**
+    - Minimum 8 characters
+    - At least one uppercase letter
+    - At least one lowercase letter
+    - At least one digit
 
     Args:
         user_data: User registration data
         db: Database session
 
     Returns:
-        Created user
+        Created user (password not included in response)
 
     Raises:
         ConflictException: If username or email already exists
@@ -85,16 +118,42 @@ async def register(
     return UserResponse.model_validate(new_user)
 
 
-@router.post("/login", response_model=Token)
+@router.post(
+    "/login",
+    response_model=Token,
+    responses={
+        200: {
+            "description": "Login successful",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                        "token_type": "bearer"
+                    }
+                }
+            }
+        },
+        401: {"description": "Invalid credentials or inactive user"}
+    }
+)
 async def login(
     login_data: UserLogin,
     db: AsyncSession = Depends(get_db),
 ) -> Token:
     """
-    Authenticate user and return tokens.
+    Authenticate user and return JWT tokens.
+
+    Login with username or email. Returns both an access token (short-lived, 30 minutes)
+    and a refresh token (long-lived, 7 days) for session management.
+
+    **Usage:**
+    1. Use access token in Authorization header: `Bearer <access_token>`
+    2. When access token expires, use refresh token to get new tokens
+    3. Store refresh token securely on client
 
     Args:
-        login_data: User login credentials
+        login_data: User login credentials (username or email + password)
         db: Database session
 
     Returns:
