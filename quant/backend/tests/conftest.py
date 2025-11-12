@@ -29,11 +29,19 @@ def event_loop():
 @pytest.fixture
 async def test_engine():
     """Create test database engine."""
+    from sqlalchemy import event
+
     engine = create_async_engine(
         TEST_DATABASE_URL,
         connect_args={"check_same_thread": False},
         poolclass=StaticPool,
     )
+
+    # SQLite doesn't support char_length() - register it as length()
+    @event.listens_for(engine.sync_engine, "connect")
+    def do_connect(dbapi_connection, connection_record):
+        # Register char_length as an alias for length in SQLite
+        dbapi_connection.create_function('char_length', 1, len)
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
