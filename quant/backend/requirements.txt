@@ -28,6 +28,15 @@ yfinance>=0.2.40
 pandas>=2.2.2
 numpy>=2.0.0
 
+# Pattern Detection & Time Series Analysis
+statsmodels>=0.14.0
+scipy>=1.11.0
+pmdarima>=2.0.4
+tslearn>=0.6.2
+fastdtw>=0.3.4
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+
 # Authentication & Security
 python-jose[cryptography]>=3.3.0
 passlib[bcrypt]>=1.7.4

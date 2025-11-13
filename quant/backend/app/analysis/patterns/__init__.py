@@ -1,15 +1,23 @@
 """Pattern detection module for cyclical pattern recognition."""
 
-from .base import PatternDetector, Pattern, PatternType
-from .sarima_detector import SARIMADetector
+from .base import (
+    Frequency,
+    Pattern,
+    PatternDetector,
+    PatternOccurrence,
+    PatternType,
+    ValidationMetrics,
+)
 from .calendar_detector import CalendarEffectsDetector
-from .cycle_analyzer import CycleAnalyzer
+from .sarima_detector import SARIMADetector
 
 __all__ = [
     "PatternDetector",
     "Pattern",
     "PatternType",
+    "PatternOccurrence",
+    "ValidationMetrics",
+    "Frequency",
     "SARIMADetector",
     "CalendarEffectsDetector",
-    "CycleAnalyzer",
 ]
