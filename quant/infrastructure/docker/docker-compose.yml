@@ -5,17 +5,15 @@ services:
   postgres:
     image: timescale/timescaledb:latest-pg15
     container_name: quant-postgres
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-quant_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-quant_password}
-      POSTGRES_DB: ${POSTGRES_DB:-quant_db}
+    env_file:
+      - ../../.env
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U quant_user -d quant_db"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-quant_user} -d ${POSTGRES_DB:-quant_db}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -44,12 +42,8 @@ services:
       context: ../../backend
       dockerfile: Dockerfile
     container_name: quant-backend
-    environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-quant_user}:${POSTGRES_PASSWORD:-quant_password}@postgres:5432/${POSTGRES_DB:-quant_db}
-      REDIS_URL: redis://redis:6379/0
-      SECRET_KEY: ${SECRET_KEY:-dev-secret-key-CHANGE-THIS-IN-PRODUCTION}
-      ENVIRONMENT: ${ENVIRONMENT:-development}
-      DEBUG: ${DEBUG:-true}
+    env_file:
+      - ../../.env
     ports:
       - "8000:8000"
     volumes:

@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
 
 # Install Python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements-ml.txt .
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir -r requirements-ml.txt
 
 # Copy application code
 COPY . .
@@ -19,4 +21,5 @@ COPY . .
 EXPOSE 8000
 
 # Run uvicorn with hot reload for development
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Use polling for file watching in WSL/mounted volumes
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload", "--reload-delay", "2"]
