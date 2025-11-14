@@ -1,0 +1,81 @@
+[
+  {
+    "name": "SQL Injection in politician_id",
+    "status": "PASS",
+    "details": {
+      "passed": true,
+      "vulnerabilities": [],
+      "payloads_tested": 6
+    }
+  },
+  {
+    "name": "SQL Injection in list parameters",
+    "status": "PASS",
+    "details": {
+      "passed": true,
+      "vulnerabilities": []
+    }
+  },
+  {
+    "name": "Invalid UUID format rejection",
+    "status": "FAIL",
+    "details": {
+      "passed": false,
+      "properly_rejected": 3,
+      "total_tested": 9
+    }
+  },
+  {
+    "name": "Boundary condition handling",
+    "status": "ERROR",
+    "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)"
+  },
+  {
+    "name": "Special character handling",
+    "status": "FAIL",
+    "details": {
+      "passed": false,
+      "properly_handled": 2,
+      "total": 6
+    }
+  },
+  {
+    "name": "Error message disclosure",
+    "status": "PASS",
+    "details": {
+      "passed": true,
+      "exposures": [],
+      "tests_run": 3
+    }
+  },
+  {
+    "name": "Concurrent request handling",
+    "status": "FAIL",
+    "details": {
+      "passed": false,
+      "successful": 2,
+      "errors": 8,
+      "total": 10,
+      "avg_response_time": 2.4248348
+    }
+  },
+  {
+    "name": "Large input handling",
+    "status": "PASS",
+    "details": {
+      "passed": true,
+      "tests": [
+        {
+          "test": "1000 politician IDs",
+          "passed": true,
+          "status": "timeout"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Empty data handling",
+    "status": "ERROR",
+    "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)"
+  }
+]
