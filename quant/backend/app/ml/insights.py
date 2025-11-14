@@ -166,13 +166,14 @@ class InsightGenerator:
         # Multiple strong cycles (complex pattern)
         strong_cycles = [c for c in result['dominant_cycles'] if c['confidence'] > 0.75]
         if len(strong_cycles) >= 3:
+            cycle_periods = ', '.join([f"{c['period_days']:.0f}d" for c in strong_cycles[:3]])
             insights.append(Insight(
                 type=InsightType.PATTERN,
                 severity=InsightSeverity.MEDIUM,
                 title="Complex Multi-Cycle Trading Pattern",
                 description=(
                     f"Detected {len(strong_cycles)} distinct trading cycles "
-                    f"({', '.join([f\"{c['period_days']:.0f}d\" for c in strong_cycles[:3]])}). "
+                    f"({cycle_periods}). "
                     f"This indicates a sophisticated trading strategy with multiple time horizons."
                 ),
                 confidence=np.mean([c['confidence'] for c in strong_cycles]),

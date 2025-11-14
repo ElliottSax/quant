@@ -13,7 +13,7 @@ Author: Claude
 from fastapi import APIRouter, Depends, HTTPException, Query, Path
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Tuple
 from datetime import datetime
 from pydantic import BaseModel, Field
 
@@ -168,9 +168,9 @@ async def get_ensemble_prediction(
 
     # Run all three models
     try:
-        fourier_analysis = await analyze_fourier(politician_id, db)
-        hmm_analysis = await analyze_regime(politician_id, db)
-        dtw_analysis = await analyze_patterns(politician_id, db)
+        fourier_analysis = await analyze_fourier(politician_id, db, min_strength=0.05, min_confidence=0.6, include_forecast=False)
+        hmm_analysis = await analyze_regime(politician_id, db, n_states=4)
+        dtw_analysis = await analyze_patterns(politician_id, db, window_size=30, top_k=5, similarity_threshold=0.6)
 
         # Convert to dicts
         fourier_result = fourier_analysis.dict()
@@ -490,9 +490,9 @@ async def generate_insights(
 
     try:
         # Run all analyses
-        fourier_analysis = await analyze_fourier(politician_id, db)
-        hmm_analysis = await analyze_regime(politician_id, db) if len(trades_df) >= 100 else None
-        dtw_analysis = await analyze_patterns(politician_id, db) if len(trades_df) >= 90 else None
+        fourier_analysis = await analyze_fourier(politician_id, db, min_strength=0.05, min_confidence=0.6, include_forecast=False)
+        hmm_analysis = await analyze_regime(politician_id, db, n_states=4) if len(trades_df) >= 100 else None
+        dtw_analysis = await analyze_patterns(politician_id, db, window_size=30, top_k=5, similarity_threshold=0.6) if len(trades_df) >= 90 else None
 
         # Sector analysis
         sector_analyzer = SectorAnalyzer()
