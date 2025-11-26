@@ -12,7 +12,10 @@ from app.api.v1 import (
     analytics,
     signals,
     backtesting,
-    sentiment
+    sentiment,
+    market_data,
+    portfolio,
+    reports
 )
 
 api_router = APIRouter()
@@ -26,7 +29,12 @@ api_router.include_router(patterns.router, prefix="/patterns", tags=["pattern-an
 api_router.include_router(export.router, prefix="/export", tags=["data-export"])
 api_router.include_router(analytics.router, prefix="/analytics", tags=["advanced-analytics"])
 
-# New high-priority features
+# High-priority features (Sprint 1)
 api_router.include_router(signals.router, tags=["trading-signals"])
 api_router.include_router(backtesting.router, tags=["backtesting"])
 api_router.include_router(sentiment.router, tags=["sentiment-analysis"])
+
+# High-priority features (Sprint 2)
+api_router.include_router(market_data.router, tags=["market-data"])
+api_router.include_router(portfolio.router, tags=["portfolio-optimization"])
+api_router.include_router(reports.router, tags=["automated-reporting"])
