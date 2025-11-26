@@ -23,10 +23,11 @@ beautifulsoup4>=4.12.3
 selenium>=4.22.0
 webdriver-manager>=4.0.1
 
-# Market Data
+# Market Data & Analytics
 yfinance>=0.2.40
 pandas>=2.2.2
 numpy>=2.0.0
+scipy>=1.13.0
 
 # Authentication & Security
 python-jose[cryptography]>=3.3.0
@@ -37,6 +38,10 @@ python-multipart>=0.0.9
 # External Services
 supabase>=2.5.1
 sentry-sdk[fastapi]>=2.10.0
+
+# Email Providers (Optional)
+# sendgrid>=6.11.0  # Uncomment for SendGrid support
+# boto3>=1.34.0      # Uncomment for AWS SES support
 
 # CLI
 typer[all]>=0.12.0
