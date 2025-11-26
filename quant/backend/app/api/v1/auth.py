@@ -3,6 +3,7 @@
 from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy import select, or_
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -21,6 +22,7 @@ from app.core.exceptions import (
     ConflictException,
 )
 from app.core.logging import get_logger
+from app.core.audit import audit_logger, AuditEventType, AuditSeverity
 from app.models.user import User
 from app.schemas.user import (
     UserCreate,
@@ -28,6 +30,7 @@ from app.schemas.user import (
     UserLogin,
     Token,
     TokenRefresh,
+    PasswordChange,
 )
 
 logger = get_logger(__name__)
@@ -115,6 +118,21 @@ async def register(
     await db.refresh(new_user)
 
     logger.info(f"User registered successfully: {new_user.username}")
+    
+    # Audit log registration
+    from app.core.audit import AuditEventSchema
+    await audit_logger.log_event(
+        AuditEventSchema(
+            event_type=AuditEventType.ACCOUNT_CREATED,
+            severity=AuditSeverity.INFO,
+            user_id=str(new_user.id),
+            username=new_user.username,
+            user_email=new_user.email,
+            action="user_registration",
+            result="success"
+        )
+    )
+    
     return UserResponse.model_validate(new_user)
 
 
@@ -268,18 +286,120 @@ async def get_current_user_info(
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
 async def logout(
     current_user: User = Depends(get_current_active_user),
+    credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer()),
 ) -> None:
     """
-    Logout user (client should discard tokens).
+    Logout user and invalidate current token.
+
+    The access token will be blacklisted until it naturally expires.
+    Client should also discard both access and refresh tokens.
 
     Args:
         current_user: Current authenticated user
+        credentials: Authorization credentials with token
 
     Note:
-        Since we're using stateless JWT tokens, logout is handled client-side
-        by discarding the tokens. This endpoint is provided for completeness
-        and could be extended with token blacklisting if needed.
+        This blacklists only the current access token. Refresh tokens
+        should not be reused after logout on the client side.
     """
+    from app.core.token_blacklist import token_blacklist
+    from app.core.audit import AuditEventSchema
+
+    token = credentials.credentials
+
+    # Blacklist the current token
+    await token_blacklist.blacklist_token(token)
+
     logger.info(f"User logged out: {current_user.username}")
-    # In a production system, you might want to blacklist the token here
+
+    # Audit log logout
+    await audit_logger.log_event(
+        AuditEventSchema(
+            event_type=AuditEventType.LOGOUT,
+            severity=AuditSeverity.INFO,
+            user_id=str(current_user.id),
+            username=current_user.username,
+            user_email=current_user.email,
+            action="user_logout",
+            result="success"
+        )
+    )
+
     return None
+
+
+@router.post("/change-password", response_model=dict)
+async def change_password(
+    password_data: PasswordChange,
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncSession = Depends(get_db),
+) -> dict:
+    """
+    Change user password.
+
+    This will:
+    1. Verify the current password
+    2. Update to new password
+    3. Invalidate all existing sessions (user must re-login)
+
+    Args:
+        password_data: Current and new password
+        current_user: Current authenticated user
+        db: Database session
+
+    Returns:
+        Success message
+
+    Raises:
+        UnauthorizedException: If current password is incorrect
+    """
+    from app.core.token_blacklist import token_blacklist
+    from app.core.audit import AuditEventSchema
+
+    # Verify current password
+    if not verify_password(password_data.current_password, current_user.hashed_password):
+        logger.warning(f"Password change failed - incorrect current password: {current_user.username}")
+        await audit_logger.log_event(
+            AuditEventSchema(
+                event_type=AuditEventType.PASSWORD_CHANGE_FAILED,
+                severity=AuditSeverity.WARNING,
+                user_id=str(current_user.id),
+                username=current_user.username,
+                user_email=current_user.email,
+                action="password_change_attempt",
+                result="failed"
+            )
+        )
+        raise UnauthorizedException("Incorrect current password")
+
+    # Don't allow changing to same password
+    if verify_password(password_data.new_password, current_user.hashed_password):
+        raise BadRequestException("New password must be different from current password")
+
+    # Update password
+    current_user.hashed_password = get_password_hash(password_data.new_password)
+    current_user.updated_at = datetime.utcnow()
+    await db.commit()
+
+    # Invalidate all user sessions
+    await token_blacklist.blacklist_user_tokens(str(current_user.id))
+
+    logger.info(f"Password changed successfully: {current_user.username}")
+
+    # Audit log password change
+    await audit_logger.log_event(
+        AuditEventSchema(
+            event_type=AuditEventType.PASSWORD_CHANGED,
+            severity=AuditSeverity.INFO,
+            user_id=str(current_user.id),
+            username=current_user.username,
+            user_email=current_user.email,
+            action="password_change",
+            result="success"
+        )
+    )
+
+    return {
+        "message": "Password changed successfully. Please login again with your new password.",
+        "sessions_invalidated": True
+    }

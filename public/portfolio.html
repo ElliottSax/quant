@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Manager - Quant Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .profit { color: #10b981; }
+        .loss { color: #ef4444; }
+        .alert-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        Portfolio Manager
+                    </h1>
+                    <div class="flex space-x-4">
+                        <button onclick="switchView('overview')" class="px-3 py-1 rounded hover:bg-gray-700">Overview</button>
+                        <button onclick="switchView('positions')" class="px-3 py-1 rounded hover:bg-gray-700">Positions</button>
+                        <button onclick="switchView('signals')" class="px-3 py-1 rounded hover:bg-gray-700">Signals</button>
+                        <button onclick="switchView('risk')" class="px-3 py-1 rounded hover:bg-gray-700">Risk</button>
+                        <button onclick="switchView('backtest')" class="px-3 py-1 rounded hover:bg-gray-700">Backtest</button>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-400">Portfolio Value:</span>
+                    <span id="portfolioValue" class="text-xl font-bold profit">$127,432.18</span>
+                    <span id="portfolioChange" class="text-sm profit">+2.34%</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+        <!-- Portfolio Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="glass p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-400 text-sm">Total Return</span>
+                    <i class="fas fa-chart-line text-green-400"></i>
+                </div>
+                <div class="text-2xl font-bold profit">+$24,831.42</div>
+                <div class="text-sm profit">+24.2% YTD</div>
+            </div>
+            <div class="glass p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-400 text-sm">Win Rate</span>
+                    <i class="fas fa-trophy text-yellow-400"></i>
+                </div>
+                <div class="text-2xl font-bold">68.4%</div>
+                <div class="text-sm text-gray-400">26 of 38 trades</div>
+            </div>
+            <div class="glass p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-400 text-sm">Sharpe Ratio</span>
+                    <i class="fas fa-balance-scale text-blue-400"></i>
+                </div>
+                <div class="text-2xl font-bold">1.82</div>
+                <div class="text-sm text-green-400">Excellent</div>
+            </div>
+            <div class="glass p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-400 text-sm">Risk Score</span>
+                    <i class="fas fa-shield-alt text-purple-400"></i>
+                </div>
+                <div class="text-2xl font-bold">Low</div>
+                <div class="text-sm text-gray-400">VaR: $3,421</div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div id="mainContent">
+            <!-- Overview View -->
+            <div id="overviewView" class="space-y-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Portfolio Performance Chart -->
+                    <div class="glass p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Portfolio Performance</h3>
+                        <div id="performanceChart" style="height: 300px;"></div>
+                    </div>
+                    
+                    <!-- Asset Allocation -->
+                    <div class="glass p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Asset Allocation</h3>
+                        <div id="allocationChart" style="height: 300px;"></div>
+                    </div>
+                </div>
+
+                <!-- Top Performers -->
+                <div class="glass p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-4">Top Performers Today</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-green-400">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <div class="font-bold">NVDA</div>
+                                    <div class="text-sm text-gray-400">NVIDIA Corp</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold profit">+8.34%</div>
+                                    <div class="text-sm">$487.23</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-green-400">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <div class="font-bold">TSLA</div>
+                                    <div class="text-sm text-gray-400">Tesla Inc</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold profit">+5.21%</div>
+                                    <div class="text-sm">$238.67</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-green-400">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <div class="font-bold">AMZN</div>
+                                    <div class="text-sm text-gray-400">Amazon.com</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold profit">+3.15%</div>
+                                    <div class="text-sm">$142.89</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Positions View -->
+            <div id="positionsView" class="hidden">
+                <div class="glass p-6 rounded-lg">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">Current Positions</h3>
+                        <button class="bg-blue-600 px-4 py-2 rounded hover:bg-blue-700">
+                            <i class="fas fa-plus mr-2"></i>Add Position
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-2">Symbol</th>
+                                    <th class="text-left py-2">Shares</th>
+                                    <th class="text-left py-2">Avg Cost</th>
+                                    <th class="text-left py-2">Current</th>
+                                    <th class="text-left py-2">P&L</th>
+                                    <th class="text-left py-2">% Change</th>
+                                    <th class="text-left py-2">Value</th>
+                                    <th class="text-left py-2">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="positionsTable">
+                                <!-- Positions will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signals View -->
+            <div id="signalsView" class="hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Active Signals -->
+                    <div class="glass p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">AI Trading Signals</h3>
+                        <div class="space-y-3" id="signalsList">
+                            <!-- Signals will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Signal Performance -->
+                    <div class="glass p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Signal Performance</h3>
+                        <div id="signalPerformanceChart" style="height: 300px;"></div>
+                    </div>
+                </div>
+
+                <!-- Politicians Following -->
+                <div class="glass p-6 rounded-lg mt-6">
+                    <h3 class="text-lg font-semibold mb-4">Politicians You're Following</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="politiciansList">
+                        <!-- Politicians will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk View -->
+            <div id="riskView" class="hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Risk Metrics -->
+                    <div class="glass p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Risk Analytics</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center py-2 border-b border-gray-700">
+                                <span>Value at Risk (95%)</span>
+                                <span class="font-bold">$3,421</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-700">
+                                <span>Beta</span>
+                                <span class="font-bold">1.12</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-700">
+                                <span>Max Drawdown</span>
+                                <span class="font-bold loss">-8.3%</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-700">
+                                <span>Volatility (Annual)</span>
+                                <span class="font-bold">18.7%</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-700">
+                                <span>Correlation to S&P</span>
+                                <span class="font-bold">0.73</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Risk Heatmap -->
+                    <div class="glass p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">Sector Risk Exposure</h3>
+                        <div id="riskHeatmap" style="height: 300px;"></div>
+                    </div>
+                </div>
+
+                <!-- Hedging Recommendations -->
+                <div class="glass p-6 rounded-lg mt-6">
+                    <h3 class="text-lg font-semibold mb-4">Hedging Recommendations</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="hedgingRecommendations">
+                        <!-- Recommendations will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backtest View -->
+            <div id="backtestView" class="hidden">
+                <div class="glass p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-4">Strategy Backtesting</h3>
+                    
+                    <!-- Backtest Controls -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Strategy</label>
+                            <select class="w-full bg-gray-800 p-2 rounded">
+                                <option>Follow Nancy Pelosi</option>
+                                <option>Senate Leaders Only</option>
+                                <option>Tech Committee Members</option>
+                                <option>Custom Strategy</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Start Date</label>
+                            <input type="date" class="w-full bg-gray-800 p-2 rounded" value="2023-01-01">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">End Date</label>
+                            <input type="date" class="w-full bg-gray-800 p-2 rounded" value="2024-11-20">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">&nbsp;</label>
+                            <button onclick="runBacktest()" class="w-full bg-blue-600 p-2 rounded hover:bg-blue-700">
+                                Run Backtest
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Backtest Results -->
+                    <div id="backtestResults" class="hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                            <div class="bg-gray-800 p-4 rounded">
+                                <div class="text-sm text-gray-400">Total Return</div>
+                                <div class="text-xl font-bold profit">+142.3%</div>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded">
+                                <div class="text-sm text-gray-400">Annual Return</div>
+                                <div class="text-xl font-bold profit">+68.2%</div>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded">
+                                <div class="text-sm text-gray-400">Win Rate</div>
+                                <div class="text-xl font-bold">71.2%</div>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded">
+                                <div class="text-sm text-gray-400">Max Drawdown</div>
+                                <div class="text-xl font-bold loss">-12.4%</div>
+                            </div>
+                        </div>
+
+                        <div id="backtestChart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Watchlist Sidebar -->
+        <div class="fixed right-0 top-20 w-80 h-screen bg-gray-800 p-4 transform translate-x-full transition-transform" id="watchlistSidebar">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-semibold">Watchlist</h3>
+                <button onclick="toggleWatchlist()" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-2" id="watchlistItems">
+                <!-- Watchlist items will be populated here -->
+            </div>
+        </div>
+
+        <!-- Floating Action Button -->
+        <button onclick="toggleWatchlist()" class="fixed bottom-6 right-6 bg-blue-600 w-14 h-14 rounded-full shadow-lg hover:bg-blue-700 flex items-center justify-center">
+            <i class="fas fa-eye text-xl"></i>
+        </button>
+    </div>
+
+    <script>
+        // Initialize charts
+        let performanceChart, allocationChart, signalChart, riskHeatmap, backtestChart;
+        let currentView = 'overview';
+        let positions = [];
+        let signals = [];
+        let watchlist = [];
+
+        // Sample data
+        const samplePositions = [
+            { symbol: 'NVDA', shares: 100, avgCost: 450.23, current: 487.23, company: 'NVIDIA Corp' },
+            { symbol: 'TSLA', shares: 50, avgCost: 220.45, current: 238.67, company: 'Tesla Inc' },
+            { symbol: 'AMZN', shares: 75, avgCost: 138.50, current: 142.89, company: 'Amazon.com' },
+            { symbol: 'AAPL', shares: 200, avgCost: 175.30, current: 172.45, company: 'Apple Inc' },
+            { symbol: 'MSFT', shares: 80, avgCost: 340.20, current: 358.90, company: 'Microsoft Corp' }
+        ];
+
+        const sampleSignals = [
+            { type: 'BUY', symbol: 'META', strength: 'Strong', reason: 'Nancy Pelosi bought $1.2M', time: '2 hours ago', confidence: 85 },
+            { type: 'SELL', symbol: 'BA', strength: 'Moderate', reason: 'Multiple senators selling', time: '4 hours ago', confidence: 72 },
+            { type: 'BUY', symbol: 'AMD', strength: 'Strong', reason: 'Tech committee accumulation', time: '1 day ago', confidence: 78 },
+            { type: 'HOLD', symbol: 'GOOGL', strength: 'Neutral', reason: 'Mixed signals', time: '1 day ago', confidence: 65 }
+        ];
+
+        const politicians = [
+            { name: 'Nancy Pelosi', trades: 142, winRate: '72%', avgReturn: '+18.3%', lastTrade: 'NVDA (Buy)' },
+            { name: 'Dan Crenshaw', trades: 89, winRate: '68%', avgReturn: '+14.2%', lastTrade: 'XOM (Buy)' },
+            { name: 'Josh Gottheimer', trades: 234, winRate: '65%', avgReturn: '+12.8%', lastTrade: 'MSFT (Buy)' },
+            { name: 'Tommy Tuberville', trades: 156, winRate: '61%', avgReturn: '+10.4%', lastTrade: 'AAPL (Sell)' }
+        ];
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+            loadPositions();
+            loadSignals();
+            loadWatchlist();
+            startRealTimeUpdates();
+        });
+
+        function initializeCharts() {
+            // Performance Chart
+            performanceChart = new ApexCharts(document.querySelector("#performanceChart"), {
+                series: [{
+                    name: 'Portfolio Value',
+                    data: generateTimeSeriesData(365, 100000, 127432)
+                }],
+                chart: { type: 'area', height: 300, toolbar: { show: false }, background: 'transparent' },
+                stroke: { curve: 'smooth', width: 2 },
+                fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.3 } },
+                colors: ['#3b82f6'],
+                xaxis: { type: 'datetime', labels: { style: { colors: '#9ca3af' } } },
+                yaxis: { labels: { style: { colors: '#9ca3af' }, formatter: (v) => '$' + (v/1000).toFixed(0) + 'K' } },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#374151' }
+            });
+            performanceChart.render();
+
+            // Allocation Chart
+            allocationChart = new ApexCharts(document.querySelector("#allocationChart"), {
+                series: [35, 25, 20, 10, 10],
+                labels: ['Technology', 'Healthcare', 'Finance', 'Energy', 'Other'],
+                chart: { type: 'donut', height: 300, background: 'transparent' },
+                colors: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'],
+                theme: { mode: 'dark' },
+                legend: { position: 'bottom', labels: { colors: '#9ca3af' } }
+            });
+            allocationChart.render();
+
+            // Signal Performance Chart
+            signalChart = new ApexCharts(document.querySelector("#signalPerformanceChart"), {
+                series: [{
+                    name: 'Win Rate',
+                    data: [68, 72, 65, 78, 71, 69, 74]
+                }],
+                chart: { type: 'bar', height: 300, toolbar: { show: false }, background: 'transparent' },
+                colors: ['#10b981'],
+                xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], labels: { style: { colors: '#9ca3af' } } },
+                yaxis: { labels: { style: { colors: '#9ca3af' }, formatter: (v) => v + '%' } },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#374151' }
+            });
+
+            // Risk Heatmap
+            riskHeatmap = new ApexCharts(document.querySelector("#riskHeatmap"), {
+                series: [
+                    { name: 'Tech', data: [8, 9, 7, 8, 9] },
+                    { name: 'Healthcare', data: [5, 6, 5, 4, 5] },
+                    { name: 'Finance', data: [7, 8, 9, 8, 7] },
+                    { name: 'Energy', data: [9, 8, 9, 10, 9] }
+                ],
+                chart: { type: 'heatmap', height: 300, toolbar: { show: false }, background: 'transparent' },
+                dataLabels: { enabled: false },
+                colors: ["#008FFB"],
+                xaxis: { categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'], labels: { style: { colors: '#9ca3af' } } },
+                yaxis: { labels: { style: { colors: '#9ca3af' } } },
+                theme: { mode: 'dark' }
+            });
+        }
+
+        function switchView(view) {
+            // Hide all views
+            document.querySelectorAll('#mainContent > div').forEach(div => div.classList.add('hidden'));
+            
+            // Show selected view
+            document.getElementById(view + 'View').classList.remove('hidden');
+            currentView = view;
+
+            // Initialize view-specific charts if needed
+            if (view === 'signals' && !signalChart) {
+                setTimeout(() => {
+                    signalChart.render();
+                }, 100);
+            } else if (view === 'risk' && !riskHeatmap) {
+                setTimeout(() => {
+                    riskHeatmap.render();
+                }, 100);
+            }
+        }
+
+        function loadPositions() {
+            const tbody = document.getElementById('positionsTable');
+            if (!tbody) return;
+
+            tbody.innerHTML = samplePositions.map(pos => {
+                const pl = (pos.current - pos.avgCost) * pos.shares;
+                const plPercent = ((pos.current - pos.avgCost) / pos.avgCost * 100);
+                const value = pos.current * pos.shares;
+                const plClass = pl >= 0 ? 'profit' : 'loss';
+
+                return `
+                    <tr class="border-b border-gray-800 hover:bg-gray-800">
+                        <td class="py-3">
+                            <div class="font-bold">${pos.symbol}</div>
+                            <div class="text-xs text-gray-400">${pos.company}</div>
+                        </td>
+                        <td class="py-3">${pos.shares}</td>
+                        <td class="py-3">$${pos.avgCost.toFixed(2)}</td>
+                        <td class="py-3">$${pos.current.toFixed(2)}</td>
+                        <td class="py-3 ${plClass}">$${pl.toFixed(2)}</td>
+                        <td class="py-3 ${plClass}">${plPercent >= 0 ? '+' : ''}${plPercent.toFixed(2)}%</td>
+                        <td class="py-3">$${value.toFixed(2)}</td>
+                        <td class="py-3">
+                            <button class="text-blue-400 hover:text-blue-300 mr-2">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="text-red-400 hover:text-red-300">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function loadSignals() {
+            const signalsList = document.getElementById('signalsList');
+            if (!signalsList) return;
+
+            signalsList.innerHTML = sampleSignals.map(signal => {
+                const colorClass = signal.type === 'BUY' ? 'text-green-400 bg-green-900' : 
+                                  signal.type === 'SELL' ? 'text-red-400 bg-red-900' : 
+                                  'text-yellow-400 bg-yellow-900';
+
+                return `
+                    <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 cursor-pointer">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="px-2 py-1 rounded text-xs ${colorClass}">${signal.type}</span>
+                                <div class="font-bold mt-1">${signal.symbol}</div>
+                                <div class="text-sm text-gray-400">${signal.reason}</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-bold">Confidence: ${signal.confidence}%</div>
+                                <div class="text-xs text-gray-400">${signal.time}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Load politicians list
+            const politiciansList = document.getElementById('politiciansList');
+            if (politiciansList) {
+                politiciansList.innerHTML = politicians.map(pol => `
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="font-bold">${pol.name}</div>
+                            <button class="text-blue-400 text-sm">Unfollow</button>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div>
+                                <span class="text-gray-400">Trades:</span> ${pol.trades}
+                            </div>
+                            <div>
+                                <span class="text-gray-400">Win Rate:</span> ${pol.winRate}
+                            </div>
+                            <div>
+                                <span class="text-gray-400">Avg Return:</span> 
+                                <span class="profit">${pol.avgReturn}</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">Last:</span> ${pol.lastTrade}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Load hedging recommendations
+            const hedgingRecs = document.getElementById('hedgingRecommendations');
+            if (hedgingRecs) {
+                hedgingRecs.innerHTML = `
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-shield-alt text-blue-400 mr-2"></i>
+                            <span class="font-bold">Buy VIX Calls</span>
+                        </div>
+                        <p class="text-sm text-gray-400">Protect against market volatility spike</p>
+                        <button class="mt-2 bg-blue-600 px-3 py-1 rounded text-sm hover:bg-blue-700">Execute</button>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-shield-alt text-green-400 mr-2"></i>
+                            <span class="font-bold">Add Gold ETF</span>
+                        </div>
+                        <p class="text-sm text-gray-400">Diversify with safe haven assets</p>
+                        <button class="mt-2 bg-blue-600 px-3 py-1 rounded text-sm hover:bg-blue-700">Execute</button>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded-lg">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-shield-alt text-purple-400 mr-2"></i>
+                            <span class="font-bold">Short QQQ</span>
+                        </div>
+                        <p class="text-sm text-gray-400">Hedge tech sector exposure</p>
+                        <button class="mt-2 bg-blue-600 px-3 py-1 rounded text-sm hover:bg-blue-700">Execute</button>
+                    </div>
+                `;
+            }
+        }
+
+        function loadWatchlist() {
+            const watchlistItems = document.getElementById('watchlistItems');
+            if (!watchlistItems) return;
+
+            const watchlistStocks = [
+                { symbol: 'SPY', price: 445.23, change: 1.2 },
+                { symbol: 'QQQ', price: 378.45, change: -0.8 },
+                { symbol: 'PLTR', price: 23.67, change: 5.4 },
+                { symbol: 'GME', price: 18.23, change: -2.1 }
+            ];
+
+            watchlistItems.innerHTML = watchlistStocks.map(stock => `
+                <div class="bg-gray-700 p-3 rounded hover:bg-gray-600 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold">${stock.symbol}</div>
+                            <div class="text-sm">$${stock.price.toFixed(2)}</div>
+                        </div>
+                        <div class="${stock.change >= 0 ? 'profit' : 'loss'}">
+                            ${stock.change >= 0 ? '+' : ''}${stock.change}%
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleWatchlist() {
+            const sidebar = document.getElementById('watchlistSidebar');
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        function runBacktest() {
+            const results = document.getElementById('backtestResults');
+            results.classList.remove('hidden');
+
+            if (!backtestChart) {
+                backtestChart = new ApexCharts(document.querySelector("#backtestChart"), {
+                    series: [
+                        {
+                            name: 'Strategy',
+                            data: generateTimeSeriesData(365, 100000, 242300)
+                        },
+                        {
+                            name: 'S&P 500',
+                            data: generateTimeSeriesData(365, 100000, 118000)
+                        }
+                    ],
+                    chart: { type: 'line', height: 400, toolbar: { show: false }, background: 'transparent' },
+                    stroke: { curve: 'smooth', width: 2 },
+                    colors: ['#10b981', '#6b7280'],
+                    xaxis: { type: 'datetime', labels: { style: { colors: '#9ca3af' } } },
+                    yaxis: { labels: { style: { colors: '#9ca3af' }, formatter: (v) => '$' + (v/1000).toFixed(0) + 'K' } },
+                    theme: { mode: 'dark' },
+                    grid: { borderColor: '#374151' },
+                    legend: { position: 'top', labels: { colors: '#9ca3af' } }
+                });
+                backtestChart.render();
+            }
+        }
+
+        function generateTimeSeriesData(days, startValue, endValue) {
+            const data = [];
+            const now = new Date();
+            const volatility = 0.02;
+            let currentValue = startValue;
+            const dailyReturn = Math.pow(endValue / startValue, 1 / days) - 1;
+
+            for (let i = days; i >= 0; i--) {
+                const date = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+                const randomFactor = 1 + (Math.random() - 0.5) * volatility;
+                currentValue = currentValue * (1 + dailyReturn) * randomFactor;
+                data.push([date.getTime(), Math.round(currentValue)]);
+            }
+            return data;
+        }
+
+        function startRealTimeUpdates() {
+            // Simulate real-time price updates
+            setInterval(() => {
+                const value = document.getElementById('portfolioValue');
+                const change = document.getElementById('portfolioChange');
+                
+                const currentValue = parseFloat(value.textContent.replace('$', '').replace(',', ''));
+                const randomChange = (Math.random() - 0.5) * 100;
+                const newValue = currentValue + randomChange;
+                const changePercent = (randomChange / currentValue * 100).toFixed(2);
+                
+                value.textContent = '$' + newValue.toFixed(2);
+                change.textContent = (randomChange >= 0 ? '+' : '') + changePercent + '%';
+                change.className = randomChange >= 0 ? 'text-sm profit' : 'text-sm loss';
+            }, 5000);
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case '1': switchView('overview'); break;
+                    case '2': switchView('positions'); break;
+                    case '3': switchView('signals'); break;
+                    case '4': switchView('risk'); break;
+                    case '5': switchView('backtest'); break;
+                    case 'w': toggleWatchlist(); break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

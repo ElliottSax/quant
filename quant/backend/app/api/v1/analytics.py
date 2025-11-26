@@ -14,11 +14,15 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Path
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 from typing import List, Optional, Dict, Any, Tuple
-from datetime import datetime
-from pydantic import BaseModel, Field
+from datetime import datetime, timezone
+from pydantic import BaseModel, Field, UUID4
+from uuid import UUID
+import asyncio
 
 from app.core.database import get_db
 from app.core.logging import get_logger
+from app.core.cache import cache_manager
+from app.core.concurrency import ml_semaphore, network_semaphore, with_concurrency_limit
 from app.models.politician import Politician
 from app.models.trade import Trade
 
@@ -38,6 +42,12 @@ from app.api.v1.patterns import (
 
 logger = get_logger(__name__)
 router = APIRouter()
+
+
+# Helper for parallel execution when some analyses are skipped
+async def _return_none():
+    """Helper coroutine that returns None for skipped analyses"""
+    return None
 
 
 # ============================================================================
@@ -119,44 +129,18 @@ class ComprehensiveInsightsResponse(BaseModel):
 # Ensemble Prediction Endpoints
 # ============================================================================
 
-@router.get(
-    "/ensemble/{politician_id}",
-    response_model=EnsemblePredictionResponse,
-    summary="Ensemble prediction combining all models",
-    description="Get combined prediction from Fourier, HMM, and DTW models with confidence scoring"
-)
-async def get_ensemble_prediction(
-    politician_id: str = Path(..., description="Politician UUID"),
-    db: AsyncSession = Depends(get_db)
+async def _compute_ensemble_prediction(
+    politician_id_str: str,
+    politician_name: str,
+    db: AsyncSession
 ) -> EnsemblePredictionResponse:
     """
-    Generate ensemble prediction combining all three pattern detection models.
+    Internal function to compute ensemble prediction (cacheable).
 
-    This advanced endpoint:
-    - Runs Fourier, HMM, and DTW analyses
-    - Combines predictions using confidence-weighted voting
-    - Detects model disagreement (high uncertainty)
-    - Calculates anomaly scores
-    - Generates automated insights
-
-    **Research Applications**:
-    - Most robust predictions
-    - Uncertainty quantification
-    - Anomaly detection
-    - Model comparison
-
-    **Example**: "What's the most reliable prediction for Paul Pelosi's trading?"
+    This is separated to enable caching while keeping the endpoint logic clean.
     """
-
-    # Load politician
-    result = await db.execute(select(Politician).where(Politician.id == politician_id))
-    politician = result.scalar_one_or_none()
-
-    if not politician:
-        raise HTTPException(status_code=404, detail=f"Politician {politician_id} not found")
-
     # Load trades and prepare time series
-    trades_df = await load_politician_trades(db, politician_id)
+    trades_df = await load_politician_trades(db, politician_id_str)
 
     if trades_df.empty or len(trades_df) < 100:
         raise HTTPException(
@@ -166,11 +150,37 @@ async def get_ensemble_prediction(
 
     trade_frequency = prepare_time_series(trades_df)
 
-    # Run all three models
+    # Load politician
+    result = await db.execute(select(Politician).where(Politician.id == politician_id_str))
+    politician = result.scalar_one_or_none()
+
+    if not politician:
+        raise HTTPException(status_code=404, detail="Politician not found")
+
+    # Run all three models IN PARALLEL for better concurrency
     try:
-        fourier_analysis = await analyze_fourier(politician_id, db, min_strength=0.05, min_confidence=0.6, include_forecast=False)
-        hmm_analysis = await analyze_regime(politician_id, db, n_states=4)
-        dtw_analysis = await analyze_patterns(politician_id, db, window_size=30, top_k=5, similarity_threshold=0.6)
+        # Run analyses concurrently to prevent blocking, with timeout to prevent hangs
+        logger.debug(f"Running parallel ML analyses for {politician.name}")
+        fourier_analysis, hmm_analysis, dtw_analysis = await asyncio.wait_for(
+            asyncio.gather(
+                analyze_fourier(politician_id_str, db, min_strength=0.05, min_confidence=0.6, include_forecast=False),
+                analyze_regime(politician_id_str, db, n_states=4),
+                analyze_patterns(politician_id_str, db, window_size=30, top_k=5, similarity_threshold=0.6),
+                return_exceptions=True
+            ),
+            timeout=60.0  # 60 second timeout for all ML operations
+        )
+
+        # Check for exceptions from parallel execution
+        if isinstance(fourier_analysis, Exception):
+            logger.error(f"Fourier analysis failed: {fourier_analysis}")
+            raise fourier_analysis
+        if isinstance(hmm_analysis, Exception):
+            logger.error(f"HMM analysis failed: {hmm_analysis}")
+            raise hmm_analysis
+        if isinstance(dtw_analysis, Exception):
+            logger.error(f"DTW analysis failed: {dtw_analysis}")
+            raise dtw_analysis
 
         # Convert to dicts
         fourier_result = fourier_analysis.dict()
@@ -192,7 +202,8 @@ async def get_ensemble_prediction(
             PredictionType.TRADE_DECREASE: "Significant decrease in trading activity expected",
             PredictionType.REGIME_CHANGE: "Trading regime transition imminent",
             PredictionType.CYCLE_PEAK: "Approaching peak of trading cycle",
-            PredictionType.ANOMALY: "Anomalous pattern detected"
+            PredictionType.ANOMALY: "Anomalous pattern detected",
+            PredictionType.INSUFFICIENT_DATA: "Insufficient cyclical patterns for prediction"
         }
 
         interpretation = type_descriptions.get(
@@ -204,7 +215,7 @@ async def get_ensemble_prediction(
         response = EnsemblePredictionResponse(
             politician_id=str(politician.id),
             politician_name=politician.name,
-            analysis_date=datetime.utcnow(),
+            analysis_date=datetime.now(timezone.utc),
             prediction_type=prediction.prediction_type.value,
             predicted_value=prediction.value,
             confidence=prediction.confidence,
@@ -227,9 +238,23 @@ async def get_ensemble_prediction(
 
         return response
 
+    except asyncio.TimeoutError:
+        logger.error(f"Ensemble prediction timed out for {politician.name}")
+        raise HTTPException(
+            status_code=504,
+            detail="Analysis timed out. This politician may have too much data for real-time analysis. Please try again later."
+        )
+    except ValueError as e:
+        # Expected errors - safe to expose message
+        logger.warning(f"Ensemble prediction validation error: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        # Unexpected errors - don't expose internal details
         logger.error(f"Ensemble prediction failed: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Ensemble prediction failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail="Prediction analysis failed. Please try again later or contact support if the issue persists."
+        )
 
 
 # ============================================================================
@@ -242,7 +267,7 @@ async def get_ensemble_prediction(
     description="Analyze trading correlations between multiple politicians"
 )
 async def analyze_pairwise_correlations(
-    politician_ids: List[str] = Query(..., description="List of politician UUIDs (2-10)"),
+    politician_ids: List[UUID4] = Query(..., description="List of politician UUIDs (2-10)", min_length=2, max_length=10),
     db: AsyncSession = Depends(get_db)
 ) -> List[CorrelationPairResponse]:
     """
@@ -257,15 +282,12 @@ async def analyze_pairwise_correlations(
     **Example**: "Do Nancy and Paul Pelosi trade in sync?"
     """
 
-    if len(politician_ids) < 2:
-        raise HTTPException(status_code=400, detail="Need at least 2 politicians")
-
-    if len(politician_ids) > 10:
-        raise HTTPException(status_code=400, detail="Maximum 10 politicians")
+    # Convert UUIDs to strings
+    politician_ids_str = [str(pid) for pid in politician_ids]
 
     # Load all politicians
     result = await db.execute(
-        select(Politician).where(Politician.id.in_(politician_ids))
+        select(Politician).where(Politician.id.in_(politician_ids_str))
     )
     politicians = {str(p.id): p for p in result.scalars().all()}
 
@@ -274,7 +296,7 @@ async def analyze_pairwise_correlations(
 
     # Load trade data for each
     politician_data = {}
-    for pol_id in politician_ids:
+    for pol_id in politician_ids_str:
         trades_df = await load_politician_trades(db, pol_id)
         if not trades_df.empty:
             politician_data[pol_id] = prepare_time_series(trades_df)
@@ -315,7 +337,7 @@ async def analyze_pairwise_correlations(
     description="Analyze trading network structure and identify clusters of correlated politicians"
 )
 async def analyze_trading_network(
-    min_trades: int = Query(50, description="Minimum trades per politician"),
+    min_trades: int = Query(50, ge=1, le=1000, description="Minimum trades per politician"),
     min_correlation: float = Query(0.5, ge=0, le=1, description="Minimum correlation for edges"),
     db: AsyncSession = Depends(get_db)
 ) -> NetworkAnalysisResponse:
@@ -392,7 +414,7 @@ async def analyze_trading_network(
 
     # Format response
     response = NetworkAnalysisResponse(
-        analysis_date=datetime.utcnow(),
+        analysis_date=datetime.now(timezone.utc),
         num_politicians=len(politicians),
         density=metrics.density,
         clustering_coefficient=metrics.clustering_coefficient,
@@ -435,7 +457,7 @@ async def analyze_trading_network(
     description="AI-generated insights from comprehensive pattern analysis"
 )
 async def generate_insights(
-    politician_id: str = Path(..., description="Politician UUID"),
+    politician_id: UUID4 = Path(..., description="Politician UUID"),
     confidence_threshold: float = Query(0.7, ge=0, le=1, description="Minimum confidence"),
     db: AsyncSession = Depends(get_db)
 ) -> ComprehensiveInsightsResponse:
@@ -472,15 +494,18 @@ async def generate_insights(
     **Example**: "Give me the top insights for Nancy Pelosi"
     """
 
+    # Convert UUID to string
+    politician_id_str = str(politician_id)
+
     # Load politician
-    result = await db.execute(select(Politician).where(Politician.id == politician_id))
+    result = await db.execute(select(Politician).where(Politician.id == politician_id_str))
     politician = result.scalar_one_or_none()
 
     if not politician:
-        raise HTTPException(status_code=404, detail=f"Politician {politician_id} not found")
+        raise HTTPException(status_code=404, detail="Politician not found")
 
     # Load trades
-    trades_df = await load_politician_trades(db, politician_id)
+    trades_df = await load_politician_trades(db, politician_id_str)
 
     if trades_df.empty or len(trades_df) < 30:
         raise HTTPException(
@@ -489,14 +514,49 @@ async def generate_insights(
         )
 
     try:
-        # Run all analyses
-        fourier_analysis = await analyze_fourier(politician_id, db, min_strength=0.05, min_confidence=0.6, include_forecast=False)
-        hmm_analysis = await analyze_regime(politician_id, db, n_states=4) if len(trades_df) >= 100 else None
-        dtw_analysis = await analyze_patterns(politician_id, db, window_size=30, top_k=5, similarity_threshold=0.6) if len(trades_df) >= 90 else None
+        # Run all analyses IN PARALLEL for better concurrency
+        logger.debug(f"Running parallel ML analyses for insights: {politician.name}")
 
-        # Sector analysis
+        # Prepare async tasks (conditionally include HMM and DTW based on data requirements)
+        tasks = [
+            analyze_fourier(politician_id_str, db, min_strength=0.05, min_confidence=0.6, include_forecast=False)
+        ]
+
+        # Only run HMM if sufficient data
+        if len(trades_df) >= 100:
+            tasks.append(analyze_regime(politician_id_str, db, n_states=4))
+        else:
+            tasks.append(_return_none())  # Placeholder that returns None
+
+        # Only run DTW if sufficient data
+        if len(trades_df) >= 90:
+            tasks.append(analyze_patterns(politician_id_str, db, window_size=30, top_k=5, similarity_threshold=0.6))
+        else:
+            tasks.append(_return_none())  # Placeholder that returns None
+
+        # Run analyses concurrently with timeout to prevent hangs
+        results = await asyncio.wait_for(
+            asyncio.gather(*tasks, return_exceptions=True),
+            timeout=60.0  # 60 second timeout for all ML operations
+        )
+        fourier_analysis = results[0]
+        hmm_analysis = results[1] if len(results) > 1 else None
+        dtw_analysis = results[2] if len(results) > 2 else None
+
+        # Check for exceptions
+        if isinstance(fourier_analysis, Exception):
+            logger.error(f"Fourier analysis failed: {fourier_analysis}")
+            raise fourier_analysis
+        if isinstance(hmm_analysis, Exception):
+            logger.error(f"HMM analysis failed: {hmm_analysis}")
+            hmm_analysis = None  # Continue without HMM
+        if isinstance(dtw_analysis, Exception):
+            logger.error(f"DTW analysis failed: {dtw_analysis}")
+            dtw_analysis = None  # Continue without DTW
+
+        # Sector analysis (run in thread to not block)
         sector_analyzer = SectorAnalyzer()
-        sector_prefs = sector_analyzer.analyze_sector_preference(trades_df)
+        sector_prefs = await asyncio.to_thread(sector_analyzer.analyze_sector_preference, trades_df)
 
         # Generate insights
         insight_gen = InsightGenerator(confidence_threshold=confidence_threshold)
@@ -520,7 +580,7 @@ async def generate_insights(
         response = ComprehensiveInsightsResponse(
             politician_id=str(politician.id),
             politician_name=politician.name,
-            analysis_date=datetime.utcnow(),
+            analysis_date=datetime.now(timezone.utc),
             executive_summary=exec_summary,
             total_insights=len(insights),
             critical_count=critical_count,
@@ -544,9 +604,23 @@ async def generate_insights(
 
         return response
 
+    except asyncio.TimeoutError:
+        logger.error(f"Insight generation timed out for {politician.name}")
+        raise HTTPException(
+            status_code=504,
+            detail="Insight generation timed out. This politician may have too much data for real-time analysis. Please try again later."
+        )
+    except ValueError as e:
+        # Expected errors - safe to expose message
+        logger.warning(f"Insight generation validation error: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        # Unexpected errors - don't expose internal details
         logger.error(f"Insight generation failed: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Insight generation failed: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail="Insight generation failed. Please try again later or contact support if the issue persists."
+        )
 
 
 @router.get(
@@ -555,7 +629,7 @@ async def generate_insights(
     description="Detect anomalous trading patterns requiring investigation"
 )
 async def detect_anomalies(
-    politician_id: str = Path(..., description="Politician UUID"),
+    politician_id: UUID4 = Path(..., description="Politician UUID"),
     anomaly_threshold: float = Query(0.7, ge=0, le=1, description="Anomaly score threshold"),
     db: AsyncSession = Depends(get_db)
 ) -> Dict[str, Any]:
@@ -597,9 +671,9 @@ async def detect_anomalies(
         has_high_anomaly_score = False
 
     return {
-        'politician_id': politician_id,
+        'politician_id': str(politician_id),
         'politician_name': insights_response.politician_name,
-        'analysis_date': datetime.utcnow(),
+        'analysis_date': datetime.now(timezone.utc),
         'anomaly_detected': len(anomalies) > 0 or has_high_anomaly_score,
         'anomaly_count': len(anomalies),
         'ensemble_anomaly_score': ensemble_response.anomaly_score if has_high_anomaly_score else 0,

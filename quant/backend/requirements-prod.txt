@@ -1,0 +1,27 @@
+# Production-specific dependencies
+
+# WSGI Server
+gunicorn==21.2.0
+
+# Monitoring & Logging
+sentry-sdk[fastapi]==1.40.0
+python-json-logger==2.0.7
+
+# Performance
+uvloop==0.19.0
+httptools==0.6.1
+
+# Security
+python-multipart==0.0.9
+
+# Database connection pooling
+psycopg2-binary==2.9.9
+
+# AWS SDK (for S3 backups)
+boto3==1.34.34
+
+# Email
+aiosmtplib==3.0.1
+
+# Metrics
+prometheus-client==0.19.0

@@ -22,7 +22,8 @@ class CacheManager:
 
     def __init__(self):
         self.redis_client: Optional[redis.Redis] = None
-        self.enabled = settings.ENVIRONMENT == "production"
+        # Enable caching in production AND development for testing
+        self.enabled = settings.ENVIRONMENT in ["production", "development"]
 
     async def connect(self):
         """Connect to Redis"""

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Experience - Quant Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .bg-animated {
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #1e293b);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen bg-animated">
+    <div class="min-h-screen flex items-center justify-center p-6">
+        <div class="max-w-6xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Choose Your Experience
+                </h1>
+                <p class="text-xl text-gray-300">
+                    Select the interface that best suits your needs
+                </p>
+            </div>
+
+            <!-- Professional Quant Interface -->
+            <div class="glass p-6 rounded-2xl mb-8 border-2 border-green-500/30 bg-gradient-to-r from-green-900/20 to-blue-900/20">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-green-400">QUANT RESEARCH LAB</h2>
+                        <p class="text-sm text-gray-400 mt-1">Professional quantitative analysis platform</p>
+                    </div>
+                    <div class="flex space-x-3">
+                        <button onclick="window.open('anomalies.html', '_self')" class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded-lg font-semibold transition-all transform hover:scale-105">
+                            <i class="fas fa-exclamation-triangle mr-1"></i>
+                            ANOMALY SCANNER
+                        </button>
+                        <button onclick="window.open('quant.html', '_self')" class="bg-green-600 hover:bg-green-500 px-6 py-3 rounded-lg font-bold text-lg transition-all transform hover:scale-105">
+                            LAUNCH LAB →
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-4 gap-4 mt-4">
+                    <div class="text-center">
+                        <i class="fas fa-brain text-2xl text-green-400 mb-2"></i>
+                        <div class="text-sm font-semibold">Pattern Recognition</div>
+                        <div class="text-xs text-gray-500">ML-powered detection</div>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-chart-area text-2xl text-blue-400 mb-2"></i>
+                        <div class="text-sm font-semibold">Volatility Surface</div>
+                        <div class="text-xs text-gray-500">3D Greeks analysis</div>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-wave-square text-2xl text-purple-400 mb-2"></i>
+                        <div class="text-sm font-semibold">Seasonality</div>
+                        <div class="text-xs text-gray-500">Temporal patterns</div>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-exclamation-triangle text-2xl text-red-400 mb-2"></i>
+                        <div class="text-sm font-semibold">Anomaly Detection</div>
+                        <div class="text-xs text-gray-500">Dark flow & outliers</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access Tools -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <button onclick="window.open('portfolio.html', '_self')" class="glass p-4 rounded-lg hover-glow cursor-pointer text-center">
+                    <i class="fas fa-briefcase text-3xl text-purple-400 mb-2"></i>
+                    <div class="font-semibold">Portfolio</div>
+                    <div class="text-xs text-gray-400">Manage positions</div>
+                </button>
+                <button onclick="window.open('signals.html', '_self')" class="glass p-4 rounded-lg hover-glow cursor-pointer text-center">
+                    <i class="fas fa-bolt text-3xl text-yellow-400 mb-2"></i>
+                    <div class="font-semibold">Signals</div>
+                    <div class="text-xs text-gray-400">Trade alerts</div>
+                </button>
+                <button onclick="window.open('analysis.html', '_self')" class="glass p-4 rounded-lg hover-glow cursor-pointer text-center">
+                    <i class="fas fa-chart-pie text-3xl text-orange-400 mb-2"></i>
+                    <div class="font-semibold">Analysis</div>
+                    <div class="text-xs text-gray-400">Market insights</div>
+                </button>
+                <button onclick="window.open('mobile.html', '_self')" class="glass p-4 rounded-lg hover-glow cursor-pointer text-center">
+                    <i class="fas fa-mobile-alt text-3xl text-blue-400 mb-2"></i>
+                    <div class="font-semibold">Mobile</div>
+                    <div class="text-xs text-gray-400">On the go</div>
+                </button>
+            </div>
+
+            <!-- Interface Options -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Simple Interface -->
+                <div class="glass p-8 rounded-2xl transition duration-300 hover-glow cursor-pointer" onclick="window.open('index.html', '_self')">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-rocket text-3xl text-white"></i>
+                        </div>
+                        
+                        <h2 class="text-3xl font-bold mb-4 text-green-400">Simple Interface</h2>
+                        
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Perfect for getting started quickly. Clean, straightforward design with essential features.
+                        </p>
+                        
+                        <div class="space-y-3 text-left mb-8">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                <span>Easy authentication</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                <span>Basic API testing</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                <span>Live data feeds</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                <span>Rate limiting demo</span>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-gradient-to-r from-green-600 to-emerald-600 py-3 rounded-lg font-semibold text-lg hover:from-green-500 hover:to-emerald-500 transition duration-300">
+                            <i class="fas fa-play mr-2"></i>
+                            Launch Simple View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Advanced Interface -->
+                <div class="glass p-8 rounded-2xl transition duration-300 hover-glow cursor-pointer" onclick="window.open('advanced.html', '_self')">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-chart-line text-3xl text-white"></i>
+                        </div>
+                        
+                        <h2 class="text-3xl font-bold mb-4 text-blue-400">Advanced Interface</h2>
+                        
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Full-featured analytics platform with interactive visualizations and advanced tools.
+                        </p>
+                        
+                        <div class="space-y-3 text-left mb-8">
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-blue-400 mr-3"></i>
+                                <span>Interactive charts & graphs</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-blue-400 mr-3"></i>
+                                <span>Network analysis tools</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-blue-400 mr-3"></i>
+                                <span>Pattern detection</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-blue-400 mr-3"></i>
+                                <span>ML prediction engine</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-blue-400 mr-3"></i>
+                                <span>Real-time data feed</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check text-blue-400 mr-3"></i>
+                                <span>Export & reporting</span>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 rounded-lg font-semibold text-lg hover:from-blue-500 hover:to-purple-500 transition duration-300">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Launch Advanced View
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+                <div class="glass p-4 rounded-xl text-center">
+                    <div class="text-2xl font-bold text-blue-400 mb-1">247</div>
+                    <div class="text-sm text-gray-400">Politicians</div>
+                </div>
+                <div class="glass p-4 rounded-xl text-center">
+                    <div class="text-2xl font-bold text-green-400 mb-1">15K+</div>
+                    <div class="text-sm text-gray-400">Trades</div>
+                </div>
+                <div class="glass p-4 rounded-xl text-center">
+                    <div class="text-2xl font-bold text-purple-400 mb-1">$2.4B</div>
+                    <div class="text-sm text-gray-400">Volume</div>
+                </div>
+                <div class="glass p-4 rounded-xl text-center">
+                    <div class="text-2xl font-bold text-yellow-400 mb-1">23ms</div>
+                    <div class="text-sm text-gray-400">Response</div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center mt-12">
+                <p class="text-gray-400 mb-4">
+                    Powered by advanced machine learning and real-time analytics
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="http://localhost:8000/api/v1/docs" target="_blank" class="text-blue-400 hover:text-blue-300 transition duration-300">
+                        <i class="fas fa-book mr-2"></i>
+                        API Documentation
+                    </a>
+                    <a href="http://localhost:8000/health" target="_blank" class="text-green-400 hover:text-green-300 transition duration-300">
+                        <i class="fas fa-heartbeat mr-2"></i>
+                        System Status
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stats on load
+            const stats = document.querySelectorAll('.text-2xl.font-bold');
+            stats.forEach((stat, index) => {
+                setTimeout(() => {
+                    stat.style.opacity = '0';
+                    stat.style.transform = 'scale(0.5)';
+                    setTimeout(() => {
+                        stat.style.transition = 'all 0.5s ease';
+                        stat.style.opacity = '1';
+                        stat.style.transform = 'scale(1)';
+                    }, 100);
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

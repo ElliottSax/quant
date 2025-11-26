@@ -38,6 +38,7 @@ class PredictionType(str, Enum):
     REGIME_CHANGE = "regime_change"
     CYCLE_PEAK = "cycle_peak"
     ANOMALY = "anomaly"
+    INSUFFICIENT_DATA = "insufficient_data"
 
 
 @dataclass
@@ -133,7 +134,22 @@ class EnsemblePredictor:
             predictions.append(dtw_pred)
 
         if not predictions:
-            raise ValueError("No valid predictions from any model")
+            # Return graceful response when no patterns detected
+            logger.warning("No valid predictions from any model - insufficient cyclical patterns")
+            return EnsemblePrediction(
+                prediction_type=PredictionType.INSUFFICIENT_DATA,
+                value=0.0,
+                confidence=0.0,
+                model_agreement=0.0,
+                predictions=[],
+                insights=[
+                    "Insufficient cyclical patterns detected in trading history",
+                    "Models require clear periodic behavior for predictions",
+                    "Consider this politician may have irregular trading patterns",
+                    "At least 100 trades with consistent cycles needed for analysis"
+                ],
+                anomaly_score=0.0
+            )
 
         # Combine predictions
         combined_value = self._weighted_average(predictions)

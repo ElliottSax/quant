@@ -39,11 +39,22 @@ async def get_current_user(
     """
     token = credentials.credentials
 
+    # Check if token is blacklisted
+    from app.core.token_blacklist import token_blacklist
+    if await token_blacklist.is_blacklisted(token):
+        logger.warning("Blacklisted token used")
+        raise UnauthorizedException("Token has been revoked")
+
     # Verify token
     user_id = verify_token(token, token_type="access")
     if not user_id:
         logger.warning("Invalid or expired token")
         raise UnauthorizedException("Invalid or expired token")
+
+    # Check if user's tokens are blacklisted (e.g., after password change)
+    if await token_blacklist.is_user_blacklisted(user_id):
+        logger.warning(f"User tokens blacklisted: {user_id}")
+        raise UnauthorizedException("Session invalidated. Please login again.")
 
     # Get user from database
     try:

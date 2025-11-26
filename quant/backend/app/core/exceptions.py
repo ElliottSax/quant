@@ -8,6 +8,7 @@ from sqlalchemy.exc import IntegrityError, DatabaseError
 from pydantic import ValidationError
 
 from app.core.logging import get_logger
+from app.schemas.error import create_error_response, ErrorDetail
 
 logger = get_logger(__name__)
 
@@ -89,9 +90,17 @@ async def app_exception_handler(request: Request, exc: AppException) -> JSONResp
         },
     )
 
+    error_response = create_error_response(
+        error=exc.__class__.__name__,
+        message=exc.message,
+        status_code=exc.status_code,
+        path=str(request.url.path),
+        details=exc.details if exc.details else None
+    )
+
     return JSONResponse(
         status_code=exc.status_code,
-        content={"detail": exc.message, "extra": exc.details},
+        content=error_response.model_dump(exclude_none=True),
     )
 
 
@@ -106,9 +115,16 @@ async def http_exception_handler(request: Request, exc: HTTPException) -> JSONRe
         },
     )
 
+    error_response = create_error_response(
+        error="HTTPException",
+        message=str(exc.detail),
+        status_code=exc.status_code,
+        path=str(request.url.path)
+    )
+
     return JSONResponse(
         status_code=exc.status_code,
-        content={"detail": exc.detail},
+        content=error_response.model_dump(exclude_none=True),
     )
 
 
@@ -120,9 +136,16 @@ async def database_error_handler(request: Request, exc: DatabaseError) -> JSONRe
         exc_info=True,
     )
 
+    error_response = create_error_response(
+        error="DatabaseError",
+        message="Database error occurred. Please try again later.",
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        path=str(request.url.path)
+    )
+
     return JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        content={"detail": "Database error occurred"},
+        content=error_response.model_dump(exclude_none=True),
     )
 
 
@@ -135,9 +158,16 @@ async def integrity_error_handler(
         extra={"path": request.url.path, "method": request.method},
     )
 
+    error_response = create_error_response(
+        error="IntegrityError",
+        message="Resource conflict - duplicate or invalid data",
+        status_code=status.HTTP_409_CONFLICT,
+        path=str(request.url.path)
+    )
+
     return JSONResponse(
         status_code=status.HTTP_409_CONFLICT,
-        content={"detail": "Resource conflict - duplicate or invalid data"},
+        content=error_response.model_dump(exclude_none=True),
     )
 
 
@@ -150,9 +180,27 @@ async def validation_error_handler(
         extra={"path": request.url.path, "method": request.method},
     )
 
+    # Convert Pydantic errors to ErrorDetail format
+    errors = []
+    for error in exc.errors():
+        field = ".".join(str(loc) for loc in error["loc"])
+        errors.append(ErrorDetail(
+            field=field,
+            message=error["msg"],
+            code=error["type"]
+        ))
+
+    error_response = create_error_response(
+        error="ValidationError",
+        message="Request validation failed",
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        path=str(request.url.path),
+        errors=errors
+    )
+
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-        content={"detail": "Validation error", "errors": exc.errors()},
+        content=error_response.model_dump(exclude_none=True),
     )
 
 
@@ -164,7 +212,14 @@ async def general_exception_handler(request: Request, exc: Exception) -> JSONRes
         exc_info=True,
     )
 
+    error_response = create_error_response(
+        error="InternalServerError",
+        message="An unexpected error occurred. Please try again later.",
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        path=str(request.url.path)
+    )
+
     return JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        content={"detail": "Internal server error"},
+        content=error_response.model_dump(exclude_none=True),
     )

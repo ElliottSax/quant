@@ -93,3 +93,29 @@ class TokenPayload(BaseModel):
     sub: str  # Subject (user ID)
     exp: int  # Expiration timestamp
     type: str  # Token type (access or refresh)
+
+
+class PasswordChange(BaseModel):
+    """Schema for password change request."""
+
+    current_password: str = Field(..., description="Current password")
+    new_password: str = Field(..., min_length=8, max_length=100, description="New password")
+
+    @field_validator("new_password")
+    @classmethod
+    def password_strength(cls, v: str) -> str:
+        """Validate password strength."""
+        if len(v) < 8:
+            raise ValueError("Password must be at least 8 characters long")
+
+        has_upper = any(c.isupper() for c in v)
+        has_lower = any(c.islower() for c in v)
+        has_digit = any(c.isdigit() for c in v)
+
+        if not (has_upper and has_lower and has_digit):
+            raise ValueError(
+                "Password must contain at least one uppercase letter, "
+                "one lowercase letter, and one digit"
+            )
+
+        return v

@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quant Research Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #0a0a0a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 20px rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+        
+        .data-grid {
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 136, 0.05) 50%, transparent 100%);
+            background-size: 4px 4px;
+            animation: grid-move 2s linear infinite;
+        }
+        
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+        
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1;
+        }
+        
+        .glass-card {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .glass-card:hover::before {
+            left: 100%;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 168, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+        
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+        
+        .chart-container {
+            position: relative;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .heatmap-cell {
+            transition: all 0.2s;
+        }
+        
+        .heatmap-cell:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 136, 0.3);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 136, 0.5);
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen relative z-10">
+    <!-- Matrix Rain Effect -->
+    <canvas class="matrix-rain" id="matrix"></canvas>
+
+    <!-- Top Bar -->
+    <nav class="glass-card border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-8">
+                <h1 class="text-xl font-bold">
+                    <span class="text-green-400">QUANT</span>
+                    <span class="text-gray-500">LAB</span>
+                </h1>
+                <div class="flex items-center space-x-1">
+                    <button onclick="setMode('research')" id="btn-research" class="px-4 py-2 text-sm hover:text-green-400 transition-colors">Research</button>
+                    <button onclick="setMode('patterns')" id="btn-patterns" class="px-4 py-2 text-sm hover:text-green-400 transition-colors">Patterns</button>
+                    <button onclick="setMode('seasonality')" id="btn-seasonality" class="px-4 py-2 text-sm hover:text-green-400 transition-colors">Seasonality</button>
+                    <button onclick="setMode('correlation')" id="btn-correlation" class="px-4 py-2 text-sm hover:text-green-400 transition-colors">Correlation</button>
+                    <button onclick="setMode('volatility')" id="btn-volatility" class="px-4 py-2 text-sm hover:text-green-400 transition-colors">Volatility</button>
+                    <button onclick="setMode('flow')" id="btn-flow" class="px-4 py-2 text-sm hover:text-green-400 transition-colors">Flow</button>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="anomalies.html" class="text-xs px-3 py-1 bg-red-900/30 rounded hover:bg-red-900/50 text-red-400 border border-red-900/50">
+                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                    ANOMALY SCANNER
+                </a>
+                <div class="flex items-center space-x-2">
+                    <div class="pulse-dot"></div>
+                    <span class="text-xs text-gray-400">LIVE</span>
+                </div>
+                <span class="text-xs text-gray-500">NYC 09:42:17</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-4">
+        <!-- Key Metrics Bar -->
+        <div class="grid grid-cols-6 gap-3 mb-4">
+            <div class="metric-card p-3 rounded">
+                <div class="text-xs text-gray-500">VIX</div>
+                <div class="text-lg font-bold text-green-400">14.32</div>
+                <div class="text-xs text-green-400">-2.1%</div>
+            </div>
+            <div class="metric-card p-3 rounded">
+                <div class="text-xs text-gray-500">SPX</div>
+                <div class="text-lg font-bold">4,521.18</div>
+                <div class="text-xs text-green-400">+0.8%</div>
+            </div>
+            <div class="metric-card p-3 rounded">
+                <div class="text-xs text-gray-500">DXY</div>
+                <div class="text-lg font-bold">103.42</div>
+                <div class="text-xs text-red-400">-0.3%</div>
+            </div>
+            <div class="metric-card p-3 rounded">
+                <div class="text-xs text-gray-500">10Y</div>
+                <div class="text-lg font-bold">4.28%</div>
+                <div class="text-xs text-gray-400">+2bp</div>
+            </div>
+            <div class="metric-card p-3 rounded">
+                <div class="text-xs text-gray-500">BTC</div>
+                <div class="text-lg font-bold">43,521</div>
+                <div class="text-xs text-green-400">+3.2%</div>
+            </div>
+            <div class="metric-card p-3 rounded">
+                <div class="text-xs text-gray-500">GOLD</div>
+                <div class="text-lg font-bold">2,042</div>
+                <div class="text-xs text-green-400">+0.4%</div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div id="mainContent">
+            <!-- Research Mode -->
+            <div id="research-content" class="space-y-4">
+                <div class="grid grid-cols-3 gap-4">
+                    <!-- Advanced Chart -->
+                    <div class="col-span-2 glass-card rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-sm font-semibold text-gray-400">MARKET MICROSTRUCTURE</h3>
+                            <div class="flex space-x-2">
+                                <button class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700">1M</button>
+                                <button class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700">5M</button>
+                                <button class="text-xs px-2 py-1 rounded bg-green-900 text-green-400">15M</button>
+                                <button class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700">1H</button>
+                            </div>
+                        </div>
+                        <div id="microstructureChart" style="height: 400px;"></div>
+                    </div>
+
+                    <!-- Order Flow -->
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">ORDER FLOW IMBALANCE</h3>
+                        <div id="orderFlowChart" style="height: 400px;"></div>
+                    </div>
+                </div>
+
+                <!-- Market Depth & Greeks -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">MARKET DEPTH ANALYSIS</h3>
+                        <div id="depthChart" style="height: 300px;"></div>
+                    </div>
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">OPTIONS GREEKS SURFACE</h3>
+                        <div id="greeksChart" style="height: 300px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patterns Mode -->
+            <div id="patterns-content" class="hidden space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">PATTERN RECOGNITION ENGINE</h3>
+                        <div id="patternChart" style="height: 400px;"></div>
+                    </div>
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">DETECTED PATTERNS</h3>
+                        <div class="space-y-2" id="detectedPatterns"></div>
+                    </div>
+                </div>
+                
+                <!-- Fractal Analysis -->
+                <div class="glass-card rounded-lg p-4">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-4">FRACTAL DIMENSION ANALYSIS</h3>
+                    <div id="fractalChart" style="height: 300px;"></div>
+                </div>
+            </div>
+
+            <!-- Seasonality Mode -->
+            <div id="seasonality-content" class="hidden space-y-4">
+                <div class="glass-card rounded-lg p-4">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-4">SEASONAL DECOMPOSITION</h3>
+                    <div id="seasonalChart" style="height: 400px;"></div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">MONTHLY RETURNS</h3>
+                        <div id="monthlyHeatmap" style="height: 300px;"></div>
+                    </div>
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">DAY OF WEEK EFFECT</h3>
+                        <div id="dayOfWeekChart" style="height: 300px;"></div>
+                    </div>
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">INTRADAY PATTERNS</h3>
+                        <div id="intradayChart" style="height: 300px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Correlation Mode -->
+            <div id="correlation-content" class="hidden space-y-4">
+                <div class="glass-card rounded-lg p-4">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-4">CORRELATION MATRIX</h3>
+                    <div id="correlationMatrix" style="height: 500px;"></div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">ROLLING CORRELATIONS</h3>
+                        <div id="rollingCorrelation" style="height: 300px;"></div>
+                    </div>
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">LEAD-LAG ANALYSIS</h3>
+                        <div id="leadLagChart" style="height: 300px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volatility Mode -->
+            <div id="volatility-content" class="hidden space-y-4">
+                <div class="glass-card rounded-lg p-4">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-4">VOLATILITY SURFACE</h3>
+                    <div id="volSurface" style="height: 400px;"></div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">GARCH FORECAST</h3>
+                        <div id="garchChart" style="height: 300px;"></div>
+                    </div>
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">TERM STRUCTURE</h3>
+                        <div id="termStructure" style="height: 300px;"></div>
+                    </div>
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">VOL REGIMES</h3>
+                        <div id="volRegimes" style="height: 300px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flow Mode -->
+            <div id="flow-content" class="hidden space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">NET FLOW ANALYSIS</h3>
+                        <div id="netFlowChart" style="height: 400px;"></div>
+                    </div>
+                    <div class="glass-card rounded-lg p-4">
+                        <h3 class="text-sm font-semibold text-gray-400 mb-4">DARK POOL ACTIVITY</h3>
+                        <div id="darkPoolChart" style="height: 400px;"></div>
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-lg p-4">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-4">GAMMA EXPOSURE</h3>
+                    <div id="gammaExposure" style="height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Analysis Panel -->
+        <div class="fixed bottom-4 right-4 glass-card rounded-lg p-4 w-80 hidden" id="analysisPanel">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="text-sm font-semibold text-green-400">QUICK ANALYSIS</h3>
+                <button onclick="togglePanel()" class="text-gray-500 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-3">
+                <div>
+                    <label class="text-xs text-gray-500">Symbol</label>
+                    <input type="text" class="w-full bg-black border border-gray-800 rounded px-2 py-1 text-sm" placeholder="SPY">
+                </div>
+                <div>
+                    <label class="text-xs text-gray-500">Analysis Type</label>
+                    <select class="w-full bg-black border border-gray-800 rounded px-2 py-1 text-sm">
+                        <option>Volatility Cone</option>
+                        <option>Seasonal Pattern</option>
+                        <option>Correlation Study</option>
+                        <option>Market Profile</option>
+                    </select>
+                </div>
+                <button class="w-full bg-green-900 hover:bg-green-800 text-green-400 py-2 rounded text-sm font-semibold">
+                    RUN ANALYSIS
+                </button>
+            </div>
+        </div>
+
+        <!-- Floating Action Button -->
+        <button onclick="togglePanel()" class="fixed bottom-4 right-4 bg-green-900 hover:bg-green-800 text-green-400 w-12 h-12 rounded-full flex items-center justify-center neon-glow">
+            <i class="fas fa-chart-line"></i>
+        </button>
+    </div>
+
+    <script>
+        // Initialize variables
+        let currentMode = 'research';
+        let charts = {};
+        
+        // Matrix rain effect
+        function initMatrix() {
+            const canvas = document.getElementById('matrix');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+            const matrixArray = matrix.split("");
+            
+            const fontSize = 10;
+            const columns = canvas.width / fontSize;
+            
+            const drops = [];
+            for(let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#00ff88';
+                ctx.font = fontSize + 'px monospace';
+                
+                for(let i = 0; i < drops.length; i++) {
+                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 35);
+        }
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            initMatrix();
+            initializeCharts();
+            setMode('research');
+            startRealTimeUpdates();
+        });
+        
+        function setMode(mode) {
+            currentMode = mode;
+            
+            // Hide all content
+            document.querySelectorAll('[id$="-content"]').forEach(el => el.classList.add('hidden'));
+            
+            // Show selected content
+            document.getElementById(`${mode}-content`).classList.remove('hidden');
+            
+            // Update button styles
+            document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+                btn.classList.remove('text-green-400', 'border-b-2', 'border-green-400');
+            });
+            document.getElementById(`btn-${mode}`).classList.add('text-green-400', 'border-b-2', 'border-green-400');
+            
+            // Initialize mode-specific charts
+            setTimeout(() => initializeModeCharts(mode), 100);
+        }
+        
+        function initializeCharts() {
+            // Market Microstructure Chart
+            charts.microstructure = new ApexCharts(document.querySelector("#microstructureChart"), {
+                series: [{
+                    name: 'Price',
+                    type: 'candlestick',
+                    data: generateCandlestickData()
+                }, {
+                    name: 'Volume',
+                    type: 'column',
+                    data: generateVolumeData()
+                }],
+                chart: {
+                    height: 400,
+                    type: 'line',
+                    toolbar: { show: false },
+                    background: 'transparent',
+                    animations: {
+                        enabled: true,
+                        easing: 'linear',
+                        dynamicAnimation: { speed: 1000 }
+                    }
+                },
+                stroke: { width: [3, 1] },
+                colors: ['#00ff88', '#0088ff'],
+                xaxis: {
+                    type: 'datetime',
+                    labels: { style: { colors: '#666' } },
+                    axisBorder: { color: '#333' }
+                },
+                yaxis: [
+                    {
+                        labels: { style: { colors: '#666' } },
+                        title: { text: 'Price', style: { color: '#666' } }
+                    },
+                    {
+                        opposite: true,
+                        labels: { style: { colors: '#666' } },
+                        title: { text: 'Volume', style: { color: '#666' } }
+                    }
+                ],
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.microstructure.render();
+            
+            // Order Flow Chart
+            charts.orderFlow = new ApexCharts(document.querySelector("#orderFlowChart"), {
+                series: [{
+                    name: 'Buy',
+                    data: generateRandomData(20, 0, 100)
+                }, {
+                    name: 'Sell',
+                    data: generateRandomData(20, -100, 0)
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 400,
+                    stacked: true,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                colors: ['#00ff88', '#ff0044'],
+                xaxis: {
+                    categories: generateTimeLabels(20),
+                    labels: { style: { colors: '#666' } }
+                },
+                yaxis: {
+                    labels: { style: { colors: '#666' } }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' },
+                plotOptions: {
+                    bar: { horizontal: false, columnWidth: '80%' }
+                }
+            });
+            charts.orderFlow.render();
+        }
+        
+        function initializeModeCharts(mode) {
+            switch(mode) {
+                case 'research':
+                    initializeDepthChart();
+                    initializeGreeksChart();
+                    break;
+                case 'patterns':
+                    initializePatternChart();
+                    loadDetectedPatterns();
+                    initializeFractalChart();
+                    break;
+                case 'seasonality':
+                    initializeSeasonalChart();
+                    initializeMonthlyHeatmap();
+                    initializeDayOfWeekChart();
+                    initializeIntradayChart();
+                    break;
+                case 'correlation':
+                    initializeCorrelationMatrix();
+                    initializeRollingCorrelation();
+                    initializeLeadLagChart();
+                    break;
+                case 'volatility':
+                    initializeVolSurface();
+                    initializeGarchChart();
+                    initializeTermStructure();
+                    initializeVolRegimes();
+                    break;
+                case 'flow':
+                    initializeNetFlowChart();
+                    initializeDarkPoolChart();
+                    initializeGammaExposure();
+                    break;
+            }
+        }
+        
+        function initializeDepthChart() {
+            if (!document.querySelector("#depthChart")) return;
+            
+            const trace1 = {
+                x: generateRandomData(50, 4500, 4520),
+                y: generateRandomData(50, 0, 1000),
+                fill: 'tozeroy',
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Bids',
+                line: { color: '#00ff88' }
+            };
+            
+            const trace2 = {
+                x: generateRandomData(50, 4520, 4540),
+                y: generateRandomData(50, 0, 1000),
+                fill: 'tozeroy',
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Asks',
+                line: { color: '#ff0044' }
+            };
+            
+            const layout = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { color: '#666' },
+                xaxis: { gridcolor: '#222' },
+                yaxis: { gridcolor: '#222' },
+                showlegend: true,
+                legend: { x: 0, y: 1 },
+                margin: { t: 20, b: 40, l: 40, r: 20 }
+            };
+            
+            Plotly.newPlot('depthChart', [trace1, trace2], layout, {responsive: true});
+        }
+        
+        function initializeGreeksChart() {
+            if (!document.querySelector("#greeksChart")) return;
+            
+            // Generate 3D surface for Greeks
+            const size = 25;
+            const x = [];
+            const y = [];
+            const z = [];
+            
+            for (let i = 0; i < size; i++) {
+                x.push(4000 + i * 20);
+                y.push(i);
+                const row = [];
+                for (let j = 0; j < size; j++) {
+                    row.push(Math.sin(i/5) * Math.cos(j/5) * 50);
+                }
+                z.push(row);
+            }
+            
+            const data = [{
+                x: x,
+                y: y,
+                z: z,
+                type: 'surface',
+                colorscale: [
+                    [0, '#0000ff'],
+                    [0.5, '#00ff88'],
+                    [1, '#ffff00']
+                ]
+            }];
+            
+            const layout = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { color: '#666' },
+                scene: {
+                    xaxis: { title: 'Strike', gridcolor: '#222', color: '#666' },
+                    yaxis: { title: 'Days to Expiry', gridcolor: '#222', color: '#666' },
+                    zaxis: { title: 'Delta', gridcolor: '#222', color: '#666' }
+                },
+                margin: { t: 0, b: 0, l: 0, r: 0 }
+            };
+            
+            Plotly.newPlot('greeksChart', data, layout, {responsive: true});
+        }
+        
+        function initializePatternChart() {
+            if (!document.querySelector("#patternChart")) return;
+            
+            charts.pattern = new ApexCharts(document.querySelector("#patternChart"), {
+                series: [{
+                    name: 'Price',
+                    data: generatePatternData()
+                }],
+                chart: {
+                    type: 'line',
+                    height: 400,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                stroke: { curve: 'smooth', width: 2 },
+                colors: ['#00ff88'],
+                annotations: {
+                    xaxis: [
+                        {
+                            x: new Date().getTime() - 3600000 * 10,
+                            x2: new Date().getTime() - 3600000 * 5,
+                            fillColor: '#00ff88',
+                            opacity: 0.1,
+                            label: {
+                                text: 'Head & Shoulders',
+                                style: { color: '#00ff88' }
+                            }
+                        }
+                    ]
+                },
+                xaxis: { type: 'datetime', labels: { style: { colors: '#666' } } },
+                yaxis: { labels: { style: { colors: '#666' } } },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.pattern.render();
+        }
+        
+        function loadDetectedPatterns() {
+            const patterns = [
+                { name: 'Double Top', symbol: 'SPY', confidence: 87, trend: 'Bearish', time: '15m ago' },
+                { name: 'Bull Flag', symbol: 'QQQ', confidence: 92, trend: 'Bullish', time: '32m ago' },
+                { name: 'Triangle', symbol: 'IWM', confidence: 78, trend: 'Neutral', time: '1h ago' },
+                { name: 'Cup & Handle', symbol: 'AAPL', confidence: 84, trend: 'Bullish', time: '2h ago' },
+                { name: 'Wedge', symbol: 'TSLA', confidence: 71, trend: 'Bearish', time: '3h ago' }
+            ];
+            
+            const container = document.getElementById('detectedPatterns');
+            if (container) {
+                container.innerHTML = patterns.map(p => `
+                    <div class="bg-black border border-gray-800 rounded p-3 hover:border-green-400 transition-colors cursor-pointer">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="font-semibold text-sm">${p.name}</div>
+                                <div class="text-xs text-gray-500">${p.symbol} • ${p.time}</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-bold ${p.trend === 'Bullish' ? 'text-green-400' : p.trend === 'Bearish' ? 'text-red-400' : 'text-yellow-400'}">
+                                    ${p.confidence}%
+                                </div>
+                                <div class="text-xs text-gray-500">${p.trend}</div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        function initializeFractalChart() {
+            if (!document.querySelector("#fractalChart")) return;
+            
+            charts.fractal = new ApexCharts(document.querySelector("#fractalChart"), {
+                series: [{
+                    name: 'Hurst Exponent',
+                    data: generateRandomData(100, 0.3, 0.7)
+                }],
+                chart: {
+                    type: 'line',
+                    height: 300,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                stroke: { curve: 'smooth', width: 2 },
+                colors: ['#0088ff'],
+                annotations: {
+                    yaxis: [
+                        {
+                            y: 0.5,
+                            borderColor: '#ff0044',
+                            label: {
+                                text: 'Random Walk',
+                                style: { color: '#ff0044' }
+                            }
+                        }
+                    ]
+                },
+                xaxis: { type: 'datetime', labels: { style: { colors: '#666' } } },
+                yaxis: { min: 0, max: 1, labels: { style: { colors: '#666' } } },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.fractal.render();
+        }
+        
+        function initializeSeasonalChart() {
+            if (!document.querySelector("#seasonalChart")) return;
+            
+            charts.seasonal = new ApexCharts(document.querySelector("#seasonalChart"), {
+                series: [
+                    { name: 'Observed', data: generateRandomData(365, 4000, 4600) },
+                    { name: 'Trend', data: generateRandomData(365, 4200, 4400) },
+                    { name: 'Seasonal', data: generateRandomData(365, -50, 50) }
+                ],
+                chart: {
+                    type: 'line',
+                    height: 400,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                stroke: { curve: 'smooth', width: [2, 2, 1] },
+                colors: ['#00ff88', '#0088ff', '#ff8800'],
+                xaxis: { type: 'datetime', labels: { style: { colors: '#666' } } },
+                yaxis: { labels: { style: { colors: '#666' } } },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' },
+                legend: { position: 'top', labels: { colors: '#666' } }
+            });
+            charts.seasonal.render();
+        }
+        
+        function initializeMonthlyHeatmap() {
+            if (!document.querySelector("#monthlyHeatmap")) return;
+            
+            const years = ['2020', '2021', '2022', '2023', '2024'];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const z = [];
+            
+            for (let i = 0; i < years.length; i++) {
+                const row = [];
+                for (let j = 0; j < months.length; j++) {
+                    row.push(Math.random() * 20 - 10);
+                }
+                z.push(row);
+            }
+            
+            const data = [{
+                x: months,
+                y: years,
+                z: z,
+                type: 'heatmap',
+                colorscale: [
+                    [0, '#ff0044'],
+                    [0.5, '#333333'],
+                    [1, '#00ff88']
+                ]
+            }];
+            
+            const layout = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { color: '#666' },
+                xaxis: { side: 'bottom' },
+                yaxis: { autorange: 'reversed' },
+                margin: { t: 20, b: 40, l: 40, r: 20 }
+            };
+            
+            Plotly.newPlot('monthlyHeatmap', data, layout, {responsive: true});
+        }
+        
+        function initializeDayOfWeekChart() {
+            if (!document.querySelector("#dayOfWeekChart")) return;
+            
+            charts.dayOfWeek = new ApexCharts(document.querySelector("#dayOfWeekChart"), {
+                series: [{
+                    name: 'Average Return',
+                    data: [0.12, -0.05, 0.18, 0.08, 0.15]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 300,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                plotOptions: {
+                    bar: {
+                        colors: {
+                            ranges: [{
+                                from: -100,
+                                to: 0,
+                                color: '#ff0044'
+                            }, {
+                                from: 0,
+                                to: 100,
+                                color: '#00ff88'
+                            }]
+                        }
+                    }
+                },
+                xaxis: {
+                    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                    labels: { style: { colors: '#666' } }
+                },
+                yaxis: {
+                    labels: { 
+                        style: { colors: '#666' },
+                        formatter: (v) => v + '%'
+                    }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.dayOfWeek.render();
+        }
+        
+        function initializeIntradayChart() {
+            if (!document.querySelector("#intradayChart")) return;
+            
+            const hours = [];
+            const data = [];
+            for (let i = 9; i <= 16; i++) {
+                for (let j = 0; j < 60; j += 30) {
+                    hours.push(`${i}:${j === 0 ? '00' : j}`);
+                    data.push(Math.random() * 0.4 - 0.2);
+                }
+            }
+            
+            charts.intraday = new ApexCharts(document.querySelector("#intradayChart"), {
+                series: [{
+                    name: 'Return',
+                    data: data
+                }],
+                chart: {
+                    type: 'area',
+                    height: 300,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.7,
+                        opacityTo: 0.3
+                    }
+                },
+                stroke: { curve: 'smooth', width: 2 },
+                colors: ['#0088ff'],
+                xaxis: {
+                    categories: hours,
+                    labels: { style: { colors: '#666' }, rotate: -45 }
+                },
+                yaxis: {
+                    labels: { 
+                        style: { colors: '#666' },
+                        formatter: (v) => v.toFixed(2) + '%'
+                    }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.intraday.render();
+        }
+        
+        function initializeCorrelationMatrix() {
+            if (!document.querySelector("#correlationMatrix")) return;
+            
+            const assets = ['SPY', 'QQQ', 'IWM', 'DIA', 'GLD', 'TLT', 'VXX', 'USO', 'UUP', 'EEM'];
+            const z = [];
+            
+            for (let i = 0; i < assets.length; i++) {
+                const row = [];
+                for (let j = 0; j < assets.length; j++) {
+                    if (i === j) {
+                        row.push(1);
+                    } else {
+                        row.push(Math.random() * 2 - 1);
+                    }
+                }
+                z.push(row);
+            }
+            
+            const data = [{
+                x: assets,
+                y: assets,
+                z: z,
+                type: 'heatmap',
+                colorscale: [
+                    [0, '#ff0044'],
+                    [0.5, '#333333'],
+                    [1, '#00ff88']
+                ]
+            }];
+            
+            const layout = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { color: '#666' },
+                xaxis: { side: 'bottom' },
+                yaxis: { autorange: 'reversed' },
+                margin: { t: 20, b: 60, l: 60, r: 20 }
+            };
+            
+            Plotly.newPlot('correlationMatrix', data, layout, {responsive: true});
+        }
+        
+        function initializeRollingCorrelation() {
+            if (!document.querySelector("#rollingCorrelation")) return;
+            
+            charts.rollingCorr = new ApexCharts(document.querySelector("#rollingCorrelation"), {
+                series: [
+                    { name: 'SPY-QQQ', data: generateRandomData(100, 0.6, 0.9) },
+                    { name: 'SPY-GLD', data: generateRandomData(100, -0.3, 0.3) },
+                    { name: 'SPY-VXX', data: generateRandomData(100, -0.9, -0.6) }
+                ],
+                chart: {
+                    type: 'line',
+                    height: 300,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                stroke: { curve: 'smooth', width: 2 },
+                colors: ['#00ff88', '#0088ff', '#ff0044'],
+                xaxis: { type: 'datetime', labels: { style: { colors: '#666' } } },
+                yaxis: { 
+                    min: -1, 
+                    max: 1,
+                    labels: { style: { colors: '#666' } }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' },
+                legend: { position: 'top', labels: { colors: '#666' } }
+            });
+            charts.rollingCorr.render();
+        }
+        
+        function initializeLeadLagChart() {
+            if (!document.querySelector("#leadLagChart")) return;
+            
+            const lags = [];
+            const correlations = [];
+            for (let i = -20; i <= 20; i++) {
+                lags.push(i);
+                correlations.push(Math.exp(-Math.abs(i)/10) * (i < 0 ? -1 : 1) * 0.8);
+            }
+            
+            charts.leadLag = new ApexCharts(document.querySelector("#leadLagChart"), {
+                series: [{
+                    name: 'Correlation',
+                    data: correlations
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 300,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                plotOptions: {
+                    bar: {
+                        colors: {
+                            ranges: [{
+                                from: -1,
+                                to: 0,
+                                color: '#ff0044'
+                            }, {
+                                from: 0,
+                                to: 1,
+                                color: '#00ff88'
+                            }]
+                        }
+                    }
+                },
+                xaxis: {
+                    categories: lags,
+                    labels: { style: { colors: '#666' } },
+                    title: { text: 'Lag (days)', style: { color: '#666' } }
+                },
+                yaxis: {
+                    labels: { style: { colors: '#666' } }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.leadLag.render();
+        }
+        
+        function initializeVolSurface() {
+            if (!document.querySelector("#volSurface")) return;
+            
+            const strikes = [];
+            const expiries = [];
+            const z = [];
+            
+            for (let i = 0; i < 20; i++) {
+                strikes.push(4000 + i * 50);
+                expiries.push(i * 5);
+            }
+            
+            for (let i = 0; i < 20; i++) {
+                const row = [];
+                for (let j = 0; j < 20; j++) {
+                    const moneyness = strikes[j] / 4500;
+                    const timeEffect = Math.sqrt(expiries[i] / 30);
+                    row.push(0.15 + 0.2 * Math.pow(moneyness - 1, 2) + 0.05 * timeEffect);
+                }
+                z.push(row);
+            }
+            
+            const data = [{
+                x: strikes,
+                y: expiries,
+                z: z,
+                type: 'surface',
+                colorscale: [
+                    [0, '#0000ff'],
+                    [0.5, '#00ff88'],
+                    [1, '#ff0044']
+                ]
+            }];
+            
+            const layout = {
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: { color: '#666' },
+                scene: {
+                    xaxis: { title: 'Strike', gridcolor: '#222', color: '#666' },
+                    yaxis: { title: 'Days to Expiry', gridcolor: '#222', color: '#666' },
+                    zaxis: { title: 'IV', gridcolor: '#222', color: '#666' }
+                },
+                margin: { t: 0, b: 0, l: 0, r: 0 }
+            };
+            
+            Plotly.newPlot('volSurface', data, layout, {responsive: true});
+        }
+        
+        function initializeGarchChart() {
+            if (!document.querySelector("#garchChart")) return;
+            
+            const historical = generateRandomData(100, 10, 30);
+            const forecast = generateRandomData(20, 15, 25);
+            
+            charts.garch = new ApexCharts(document.querySelector("#garchChart"), {
+                series: [
+                    { name: 'Historical', data: historical },
+                    { name: 'Forecast', data: forecast }
+                ],
+                chart: {
+                    type: 'line',
+                    height: 300,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                stroke: { 
+                    curve: 'smooth', 
+                    width: [2, 2],
+                    dashArray: [0, 5]
+                },
+                colors: ['#00ff88', '#0088ff'],
+                xaxis: { type: 'datetime', labels: { style: { colors: '#666' } } },
+                yaxis: { 
+                    labels: { 
+                        style: { colors: '#666' },
+                        formatter: (v) => v.toFixed(1) + '%'
+                    }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' },
+                legend: { position: 'top', labels: { colors: '#666' } }
+            });
+            charts.garch.render();
+        }
+        
+        function initializeTermStructure() {
+            if (!document.querySelector("#termStructure")) return;
+            
+            charts.termStructure = new ApexCharts(document.querySelector("#termStructure"), {
+                series: [{
+                    name: 'IV',
+                    data: [
+                        { x: '1W', y: 18 },
+                        { x: '2W', y: 19 },
+                        { x: '1M', y: 21 },
+                        { x: '2M', y: 22 },
+                        { x: '3M', y: 23 },
+                        { x: '6M', y: 24 },
+                        { x: '1Y', y: 25 }
+                    ]
+                }],
+                chart: {
+                    type: 'line',
+                    height: 300,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                stroke: { curve: 'smooth', width: 2 },
+                markers: { size: 4 },
+                colors: ['#00ff88'],
+                xaxis: { labels: { style: { colors: '#666' } } },
+                yaxis: { 
+                    labels: { 
+                        style: { colors: '#666' },
+                        formatter: (v) => v + '%'
+                    }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.termStructure.render();
+        }
+        
+        function initializeVolRegimes() {
+            if (!document.querySelector("#volRegimes")) return;
+            
+            charts.volRegimes = new ApexCharts(document.querySelector("#volRegimes"), {
+                series: [{
+                    name: 'Regime',
+                    data: generateRegimeData()
+                }],
+                chart: {
+                    type: 'area',
+                    height: 300,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.7,
+                        opacityTo: 0.3
+                    }
+                },
+                stroke: { curve: 'stepline', width: 2 },
+                colors: ['#ff8800'],
+                xaxis: { type: 'datetime', labels: { style: { colors: '#666' } } },
+                yaxis: { 
+                    labels: { 
+                        style: { colors: '#666' },
+                        formatter: (v) => ['Low', 'Medium', 'High', 'Extreme'][Math.floor(v)]
+                    },
+                    min: 0,
+                    max: 3
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.volRegimes.render();
+        }
+        
+        function initializeNetFlowChart() {
+            if (!document.querySelector("#netFlowChart")) return;
+            
+            charts.netFlow = new ApexCharts(document.querySelector("#netFlowChart"), {
+                series: [
+                    { name: 'Institutional', data: generateRandomData(50, -100, 200) },
+                    { name: 'Retail', data: generateRandomData(50, -50, 50) }
+                ],
+                chart: {
+                    type: 'area',
+                    height: 400,
+                    stacked: true,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                colors: ['#0088ff', '#00ff88'],
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.7,
+                        opacityTo: 0.3
+                    }
+                },
+                xaxis: { type: 'datetime', labels: { style: { colors: '#666' } } },
+                yaxis: { 
+                    labels: { 
+                        style: { colors: '#666' },
+                        formatter: (v) => '$' + v + 'M'
+                    }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' },
+                legend: { position: 'top', labels: { colors: '#666' } }
+            });
+            charts.netFlow.render();
+        }
+        
+        function initializeDarkPoolChart() {
+            if (!document.querySelector("#darkPoolChart")) return;
+            
+            charts.darkPool = new ApexCharts(document.querySelector("#darkPoolChart"), {
+                series: [{
+                    name: 'Dark Pool %',
+                    data: generateRandomData(50, 30, 50)
+                }],
+                chart: {
+                    type: 'area',
+                    height: 400,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.7,
+                        opacityTo: 0.3,
+                        colorStops: [
+                            { offset: 0, color: '#8800ff', opacity: 0.7 },
+                            { offset: 100, color: '#ff00ff', opacity: 0.3 }
+                        ]
+                    }
+                },
+                stroke: { curve: 'smooth', width: 2 },
+                colors: ['#8800ff'],
+                xaxis: { type: 'datetime', labels: { style: { colors: '#666' } } },
+                yaxis: { 
+                    labels: { 
+                        style: { colors: '#666' },
+                        formatter: (v) => v + '%'
+                    }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.darkPool.render();
+        }
+        
+        function initializeGammaExposure() {
+            if (!document.querySelector("#gammaExposure")) return;
+            
+            const strikes = [];
+            const gamma = [];
+            
+            for (let i = 4000; i <= 4600; i += 10) {
+                strikes.push(i);
+                const moneyness = i / 4500;
+                gamma.push(1000000 * Math.exp(-Math.pow(moneyness - 1, 2) * 50));
+            }
+            
+            charts.gammaExposure = new ApexCharts(document.querySelector("#gammaExposure"), {
+                series: [{
+                    name: 'Gamma',
+                    data: gamma
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 300,
+                    toolbar: { show: false },
+                    background: 'transparent'
+                },
+                plotOptions: {
+                    bar: {
+                        colors: {
+                            ranges: [{
+                                from: 0,
+                                to: 500000,
+                                color: '#00ff88'
+                            }, {
+                                from: 500000,
+                                to: 1000000,
+                                color: '#ff8800'
+                            }, {
+                                from: 1000000,
+                                to: 10000000,
+                                color: '#ff0044'
+                            }]
+                        }
+                    }
+                },
+                xaxis: {
+                    categories: strikes.filter((_, i) => i % 5 === 0),
+                    labels: { style: { colors: '#666' }, rotate: -45 }
+                },
+                yaxis: { 
+                    labels: { 
+                        style: { colors: '#666' },
+                        formatter: (v) => '$' + (v/1000000).toFixed(1) + 'M'
+                    }
+                },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#222' }
+            });
+            charts.gammaExposure.render();
+        }
+        
+        // Helper functions
+        function generateRandomData(count, min, max) {
+            const data = [];
+            const now = new Date().getTime();
+            for (let i = 0; i < count; i++) {
+                data.push([now - (count - i) * 3600000, Math.random() * (max - min) + min]);
+            }
+            return data;
+        }
+        
+        function generateCandlestickData() {
+            const data = [];
+            const now = new Date().getTime();
+            let lastClose = 4500;
+            
+            for (let i = 0; i < 50; i++) {
+                const open = lastClose;
+                const close = open + (Math.random() - 0.5) * 20;
+                const high = Math.max(open, close) + Math.random() * 10;
+                const low = Math.min(open, close) - Math.random() * 10;
+                
+                data.push({
+                    x: now - (50 - i) * 900000,
+                    y: [open, high, low, close]
+                });
+                
+                lastClose = close;
+            }
+            return data;
+        }
+        
+        function generateVolumeData() {
+            const data = [];
+            const now = new Date().getTime();
+            for (let i = 0; i < 50; i++) {
+                data.push([now - (50 - i) * 900000, Math.random() * 1000000]);
+            }
+            return data;
+        }
+        
+        function generateTimeLabels(count) {
+            const labels = [];
+            const now = new Date();
+            for (let i = 0; i < count; i++) {
+                const time = new Date(now.getTime() - (count - i) * 60000);
+                labels.push(time.toTimeString().substr(0, 5));
+            }
+            return labels;
+        }
+        
+        function generatePatternData() {
+            const data = [];
+            const now = new Date().getTime();
+            for (let i = 0; i < 100; i++) {
+                const base = 4500;
+                const trend = i * 0.5;
+                const pattern = i > 30 && i < 70 ? Math.sin((i - 30) * 0.3) * 30 : 0;
+                const noise = Math.random() * 10 - 5;
+                data.push([now - (100 - i) * 3600000, base + trend + pattern + noise]);
+            }
+            return data;
+        }
+        
+        function generateRegimeData() {
+            const data = [];
+            const now = new Date().getTime();
+            let regime = 1;
+            
+            for (let i = 0; i < 100; i++) {
+                if (Math.random() > 0.95) {
+                    regime = Math.floor(Math.random() * 4);
+                }
+                data.push([now - (100 - i) * 86400000, regime]);
+            }
+            return data;
+        }
+        
+        function togglePanel() {
+            const panel = document.getElementById('analysisPanel');
+            panel.classList.toggle('hidden');
+        }
+        
+        function startRealTimeUpdates() {
+            setInterval(() => {
+                // Update metrics
+                document.querySelectorAll('.metric-card').forEach(card => {
+                    const valueEl = card.querySelector('.text-lg');
+                    const changeEl = card.querySelector('.text-xs:last-child');
+                    
+                    if (valueEl && changeEl) {
+                        const currentValue = parseFloat(valueEl.textContent.replace(/[^0-9.-]/g, ''));
+                        const change = (Math.random() - 0.5) * 0.5;
+                        const newValue = currentValue * (1 + change / 100);
+                        
+                        valueEl.textContent = valueEl.textContent.includes('%') ? 
+                            newValue.toFixed(2) + '%' : 
+                            newValue.toFixed(2);
+                        
+                        changeEl.className = change > 0 ? 'text-xs text-green-400' : 'text-xs text-red-400';
+                        changeEl.textContent = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
+                    }
+                });
+            }, 5000);
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key >= '1' && e.key <= '6') {
+                const modes = ['research', 'patterns', 'seasonality', 'correlation', 'volatility', 'flow'];
+                setMode(modes[parseInt(e.key) - 1]);
+            }
+        });
+    </script>
+</body>
+</html>

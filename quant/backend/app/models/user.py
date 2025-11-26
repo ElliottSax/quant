@@ -41,13 +41,14 @@ class User(Base):
     )
 
     # Database constraints
+    # Note: Using length() for SQLite compatibility (PostgreSQL also supports it)
     __table_args__ = (
         CheckConstraint(
-            "char_length(email) >= 3",
+            "length(email) >= 3",
             name="valid_email_length",
         ),
         CheckConstraint(
-            "char_length(username) >= 3",
+            "length(username) >= 3",
             name="valid_username_length",
         ),
     )

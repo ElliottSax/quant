@@ -1,6 +1,7 @@
 """Main FastAPI application."""
 
 from contextlib import asynccontextmanager
+from datetime import datetime
 from typing import Any, AsyncGenerator
 
 from fastapi import FastAPI, HTTPException, Depends
@@ -32,6 +33,10 @@ logger = get_logger(__name__)
 from app.core.monitoring import setup_sentry
 setup_sentry()
 
+# Validate configuration on startup
+from app.core.config_validator import validate_config_on_startup
+validate_config_on_startup()
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
@@ -46,14 +51,40 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     try:
         await init_db()
         logger.info("Database initialized successfully")
+
+        # Initialize cache manager
+        from app.core.cache import cache_manager
+        await cache_manager.connect()
+        logger.info("Cache manager initialized")
+
+        # Initialize token blacklist
+        from app.core.token_blacklist import token_blacklist
+        await token_blacklist.connect()
+        logger.info("Token blacklist initialized")
+
+        # Initialize audit logging
+        from app.core.audit import audit_logger
+        from app.core.database import get_db
+        async for db in get_db():
+            audit_logger.db = db
+            break
+
     except Exception as e:
-        logger.error(f"Failed to initialize database: {e}", exc_info=True)
+        logger.error(f"Failed to initialize: {e}", exc_info=True)
         raise
 
     yield
 
     # Shutdown
     logger.info("Shutting down Quant Analytics Platform...")
+
+    # Close cache connection
+    from app.core.cache import cache_manager
+    await cache_manager.close()
+
+    # Close token blacklist connection
+    from app.core.token_blacklist import token_blacklist
+    await token_blacklist.close()
 
 
 # Create FastAPI app
@@ -77,12 +108,15 @@ app.add_middleware(
     max_age=3600,  # Cache preflight requests for 1 hour
 )
 
-# Add rate limiting
-app.add_middleware(
-    RateLimitMiddleware,
-    requests_per_minute=60,
-    requests_per_hour=1000,
+# Add enhanced rate limiting with per-user limits
+from app.core.rate_limit_enhanced import EnhancedRateLimitMiddleware, EnhancedRateLimiter
+rate_limiter = EnhancedRateLimiter(
+    default_limit=60,
+    window_seconds=60,
+    enable_user_limits=True,
+    enable_ip_limits=True
 )
+app.add_middleware(EnhancedRateLimitMiddleware, rate_limiter=rate_limiter)
 
 # Register exception handlers
 app.add_exception_handler(AppException, app_exception_handler)
@@ -112,10 +146,16 @@ async def root() -> dict[str, str]:
 @app.get("/health")
 async def health_check(db: AsyncSession = Depends(get_db)) -> dict[str, Any]:
     """
-    Health check endpoint with database connectivity test.
+    Comprehensive health check endpoint.
+
+    Checks:
+    - Database connectivity
+    - Redis cache connectivity
+    - Token blacklist connectivity
+    - Service status
 
     Returns:
-        Health status including database connectivity
+        Health status including all service dependencies
     """
     from sqlalchemy import text
 
@@ -123,16 +163,60 @@ async def health_check(db: AsyncSession = Depends(get_db)) -> dict[str, Any]:
         "status": "healthy",
         "environment": settings.ENVIRONMENT,
         "version": settings.VERSION,
-        "database": "disconnected",
+        "timestamp": datetime.utcnow().isoformat(),
+        "services": {
+            "database": "unknown",
+            "cache": "unknown",
+            "token_blacklist": "unknown",
+        }
     }
 
+    all_healthy = True
+
+    # Check database connectivity
     try:
-        # Test database connectivity
         await db.execute(text("SELECT 1"))
-        health_status["database"] = "connected"
+        health_status["services"]["database"] = "connected"
     except Exception as e:
-        logger.error(f"Health check failed - database connection error: {e}")
-        health_status["status"] = "unhealthy"
-        health_status["database"] = "error"
+        logger.error(f"Health check failed - database error: {e}")
+        health_status["services"]["database"] = "error"
+        all_healthy = False
+
+    # Check Redis cache
+    try:
+        from app.core.cache import cache_manager
+        if cache_manager.enabled and cache_manager.redis_client:
+            await cache_manager.redis_client.ping()
+            health_status["services"]["cache"] = "connected"
+        else:
+            health_status["services"]["cache"] = "disabled"
+    except Exception as e:
+        logger.error(f"Health check failed - cache error: {e}")
+        health_status["services"]["cache"] = "error"
+        all_healthy = False
+
+    # Check token blacklist
+    try:
+        from app.core.token_blacklist import token_blacklist
+        if token_blacklist.enabled and token_blacklist.redis_client:
+            await token_blacklist.redis_client.ping()
+            health_status["services"]["token_blacklist"] = "connected"
+        else:
+            health_status["services"]["token_blacklist"] = "disabled"
+    except Exception as e:
+        logger.error(f"Health check failed - token blacklist error: {e}")
+        health_status["services"]["token_blacklist"] = "error"
+        # Not critical for overall health
+        logger.warning("Token blacklist error is non-critical")
+
+    # Set overall status
+    health_status["status"] = "healthy" if all_healthy else "degraded"
+
+    # Return 503 if unhealthy
+    if not all_healthy:
+        raise HTTPException(
+            status_code=503,
+            detail=health_status
+        )
 
     return health_status
