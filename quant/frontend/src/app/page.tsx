@@ -16,8 +16,6 @@ export default function Home() {
     setMounted(true)
   }, [])
 
-  if (!mounted) return null
-
   return (
     <>
       <GradientBackground />
@@ -96,43 +94,45 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <FeatureCard
-                title="Ensemble Predictions"
-                description="Multi-model predictions combining Fourier analysis, Hidden Markov Models, and Dynamic Time Warping with confidence scoring and automated insights."
+                title="Trading Signals"
+                description="AI-powered trading signals with 10+ technical indicators including RSI, MACD, Bollinger Bands, and real-time confidence scoring."
                 icon="📊"
                 gradient="from-blue-500 to-cyan-500"
                 delay={0}
+                href="/signals"
               />
               <FeatureCard
-                title="Pattern Detection"
-                description="Identify cyclical trading patterns, regime changes, and historical precedents using advanced statistical methods and machine learning."
+                title="Backtesting Engine"
+                description="Test trading strategies on historical data with realistic market simulation, slippage modeling, and comprehensive performance metrics."
                 icon="🔍"
                 gradient="from-purple-500 to-pink-500"
                 delay={100}
+                href="/backtesting"
               />
               <FeatureCard
-                title="Network Analysis"
-                description="Discover correlated trading behavior, central figures, and coordinated groups through sophisticated network graph analysis."
-                icon="🕸️"
+                title="Portfolio Optimization"
+                description="Modern Portfolio Theory implementation with efficient frontier generation, risk metrics, and 6 optimization strategies."
+                icon="💼"
                 gradient="from-green-500 to-emerald-500"
                 delay={200}
               />
               <FeatureCard
-                title="Anomaly Detection"
-                description="Automatically flag unusual trading patterns and potential insider trading with multi-model anomaly scoring."
+                title="Sentiment Analysis"
+                description="Multi-source sentiment analysis powered by AI with keyword fallback, historical tracking, and confidence scoring."
                 icon="⚠️"
                 gradient="from-orange-500 to-red-500"
                 delay={300}
               />
               <FeatureCard
-                title="Correlation Analysis"
-                description="Statistical correlation analysis with p-values and significance testing to identify synchronized trading patterns."
+                title="Market Data Integration"
+                description="Real-time and historical market data from Yahoo Finance, Alpha Vantage, Polygon.io, and IEX Cloud with live quotes."
                 icon="📈"
                 gradient="from-teal-500 to-blue-500"
                 delay={400}
               />
               <FeatureCard
-                title="Automated Insights"
-                description="AI-generated insights with severity levels, confidence scores, and actionable recommendations for researchers."
+                title="Automated Reporting"
+                description="Scheduled reports in JSON, HTML, Markdown, and Text formats with email delivery and custom alert notifications."
                 icon="🤖"
                 gradient="from-indigo-500 to-purple-500"
                 delay={500}
@@ -146,21 +146,21 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <AnimatedCard variant="gradient" className="p-12">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">Advanced Analytics & ML</h2>
-                <p className="text-muted-foreground">
-                  Built on cutting-edge algorithms and proven statistical methods
+                <h2 className="text-3xl font-bold mb-4 text-white">Comprehensive Trading Analytics</h2>
+                <p className="text-white/80">
+                  Professional-grade algorithms and proven quantitative methods
                 </p>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <TechItem title="Fourier Transform" subtitle="Cyclical Detection" icon="〰️" />
-                <TechItem title="Hidden Markov Models" subtitle="Regime Analysis" icon="🔄" />
-                <TechItem title="Dynamic Time Warping" subtitle="Pattern Matching" icon="📉" />
-                <TechItem title="Network Graphs" subtitle="Correlation Networks" icon="🕸️" />
-                <TechItem title="Ensemble Methods" subtitle="Meta-Learning" icon="🎯" />
-                <TechItem title="Statistical Tests" subtitle="Significance Analysis" icon="📊" />
-                <TechItem title="Anomaly Detection" subtitle="Outlier Identification" icon="⚠️" />
-                <TechItem title="Time Series" subtitle="Forecasting" icon="📈" />
+                <TechItem title="Technical Indicators" subtitle="RSI, MACD, Bollinger" icon="📊" />
+                <TechItem title="Modern Portfolio Theory" subtitle="Efficient Frontier" icon="💼" />
+                <TechItem title="Backtesting Engine" subtitle="Strategy Validation" icon="🔄" />
+                <TechItem title="Sentiment Analysis" subtitle="Market Psychology" icon="🧠" />
+                <TechItem title="Risk Metrics" subtitle="Sharpe & Sortino" icon="⚖️" />
+                <TechItem title="Real-time Data" subtitle="Live Market Feed" icon="⚡" />
+                <TechItem title="WebSocket Streaming" subtitle="Real-time Signals" icon="📡" />
+                <TechItem title="ML Predictions" subtitle="AI-Powered Insights" icon="🤖" />
               </div>
             </AnimatedCard>
           </div>
@@ -211,11 +211,12 @@ interface FeatureCardProps {
   icon: string
   gradient: string
   delay: number
+  href?: string
 }
 
-function FeatureCard({ title, description, icon, gradient, delay }: FeatureCardProps) {
-  return (
-    <AnimatedCard variant="glass" className="group" delay={delay}>
+function FeatureCard({ title, description, icon, gradient, delay, href }: FeatureCardProps) {
+  const content = (
+    <>
       <div
         className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${gradient} text-white text-3xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}
       >
@@ -225,8 +226,29 @@ function FeatureCard({ title, description, icon, gradient, delay }: FeatureCardP
         {title}
       </h3>
       <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+      {href && (
+        <div className="mt-4 text-primary text-sm font-medium flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+          Explore <span>→</span>
+        </div>
+      )}
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link href={href}>
+        <AnimatedCard variant="glass" className="group cursor-pointer h-full" delay={delay}>
+          {content}
+        </AnimatedCard>
+      </Link>
+    );
+  }
+
+  return (
+    <AnimatedCard variant="glass" className="group" delay={delay}>
+      {content}
     </AnimatedCard>
-  )
+  );
 }
 
 interface TechItemProps {
@@ -237,12 +259,12 @@ interface TechItemProps {
 
 function TechItem({ title, subtitle, icon }: TechItemProps) {
   return (
-    <div className="text-center p-4 rounded-lg hover:bg-primary/5 transition-all duration-200 group">
+    <div className="text-center p-4 rounded-lg hover:bg-white/10 transition-all duration-200 group">
       <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">{icon}</div>
-      <p className="font-semibold text-sm mb-1 group-hover:text-primary transition-colors">
+      <p className="font-semibold text-sm mb-1 text-white group-hover:text-white/80 transition-colors">
         {title}
       </p>
-      <p className="text-xs text-muted-foreground">{subtitle}</p>
+      <p className="text-xs text-white/60">{subtitle}</p>
     </div>
   )
 }

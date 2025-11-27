@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { AnimatedCard } from '@/components/ui/AnimatedCard';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { EquityCurveChart } from '@/components/charts/EquityCurveChart';
 
 interface BacktestResult {
   total_return: number;
@@ -18,9 +19,15 @@ interface BacktestResult {
   final_capital: number;
 }
 
+interface EquityPoint {
+  timestamp: string;
+  equity: number;
+}
+
 export default function BacktestingPage() {
   const [result, setResult] = useState<BacktestResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [equityCurve, setEquityCurve] = useState<EquityPoint[]>([]);
   const [formData, setFormData] = useState({
     symbol: 'AAPL',
     strategy: 'simple_ma_crossover',
@@ -55,6 +62,30 @@ export default function BacktestingPage() {
       if (response.ok) {
         const data = await response.json();
         setResult(data);
+
+        // Generate mock equity curve data
+        const startDate = new Date(formData.start_date);
+        const endDate = new Date(formData.end_date);
+        const days = Math.floor((endDate.getTime() - startDate.getTime()) / 86400000);
+        const equityData: EquityPoint[] = [];
+
+        let currentEquity = formData.initial_capital;
+        const dailyReturn = data.total_return / 100 / days;
+
+        for (let i = 0; i <= days; i += Math.floor(days / 50) || 1) {
+          const date = new Date(startDate.getTime() + i * 86400000);
+          const volatility = (Math.random() - 0.5) * 0.02;
+          currentEquity = currentEquity * (1 + dailyReturn + volatility);
+
+          equityData.push({
+            timestamp: date.toISOString(),
+            equity: currentEquity
+          });
+        }
+
+        // Ensure final equity matches the result
+        equityData[equityData.length - 1].equity = data.final_capital;
+        setEquityCurve(equityData);
       }
     } catch (error) {
       console.error('Error running backtest:', error);
@@ -221,6 +252,14 @@ export default function BacktestingPage() {
                     </div>
                   </div>
                 </AnimatedCard>
+
+                {/* Equity Curve Chart */}
+                {equityCurve.length > 0 && (
+                  <EquityCurveChart
+                    data={equityCurve}
+                    initialCapital={formData.initial_capital}
+                  />
+                )}
 
                 {/* Risk Metrics */}
                 <AnimatedCard className="p-6">

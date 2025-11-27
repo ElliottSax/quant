@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { AnimatedCard } from '@/components/ui/AnimatedCard';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { PriceChart } from '@/components/charts/PriceChart';
 
 interface TradingSignal {
   symbol: string;
@@ -18,11 +19,21 @@ interface TradingSignal {
   indicators: Record<string, number>;
 }
 
+interface PriceData {
+  timestamp: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+}
+
 export default function SignalsPage() {
   const [signals, setSignals] = useState<TradingSignal[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedSymbol, setSelectedSymbol] = useState('AAPL');
   const [watchlist] = useState(['AAPL', 'GOOGL', 'MSFT', 'TSLA', 'AMZN']);
+  const [priceData, setPriceData] = useState<PriceData[]>([]);
 
   const generateSignal = async (symbol: string) => {
     setLoading(true);
@@ -34,6 +45,22 @@ export default function SignalsPage() {
         const noise = (Math.random() - 0.5) * 10;
         return base + trend + noise;
       });
+
+      // Generate OHLCV data for chart
+      const now = new Date();
+      const chartData: PriceData[] = prices.map((price, i) => {
+        const timestamp = new Date(now.getTime() - (50 - i) * 86400000); // Daily bars
+        const volatility = price * 0.02;
+        return {
+          timestamp: timestamp.toISOString(),
+          open: price + (Math.random() - 0.5) * volatility,
+          high: price + Math.random() * volatility * 1.5,
+          low: price - Math.random() * volatility * 1.5,
+          close: price,
+          volume: Math.floor(Math.random() * 10000000) + 1000000
+        };
+      });
+      setPriceData(chartData);
 
       const response = await fetch('/api/v1/signals/generate', {
         method: 'POST',
@@ -139,6 +166,13 @@ export default function SignalsPage() {
             )}
           </button>
         </div>
+
+        {/* Price Chart */}
+        {priceData.length > 0 && (
+          <div className="mb-8">
+            <PriceChart data={priceData} symbol={selectedSymbol} />
+          </div>
+        )}
 
         {/* Signals List */}
         <div className="space-y-4">
