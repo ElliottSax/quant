@@ -1,0 +1,24 @@
+# Nixpacks configuration for Railway
+# Optimized Python build for FastAPI
+
+[phases.setup]
+nixPkgs = ["python312", "postgresql"]
+
+[phases.install]
+cmds = [
+  "pip install --upgrade pip",
+  "pip install -r requirements.txt"
+]
+
+[phases.build]
+cmds = [
+  "python -m compileall .",
+  "echo 'Build completed'"
+]
+
+[start]
+cmd = "uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 2"
+
+[variables]
+PYTHON_VERSION = "3.12"
+NIXPACKS_PKGS = "python312 postgresql"
