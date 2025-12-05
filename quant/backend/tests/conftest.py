@@ -1,11 +1,19 @@
 """Pytest configuration and fixtures."""
 
 import asyncio
+import os
 from typing import AsyncGenerator, Generator
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlalchemy.pool import StaticPool
+
+# Set test environment BEFORE importing app modules
+os.environ["ENVIRONMENT"] = "test"
+os.environ["DEBUG"] = "true"
+os.environ["SECRET_KEY"] = "wR33Elo9wMAOIOHxyToVy8RE7c83SFuW6J0kfeY_jMo"  # Test key (same as dev)
+os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///:memory:"
+os.environ["SENTRY_DSN"] = ""  # Disable Sentry in tests
 
 from app.main import app
 from app.core.database import Base, get_db

@@ -8,19 +8,29 @@ from sqlalchemy.pool import NullPool
 from app.core.config import settings
 
 # Create async engine with optimized pool settings
-engine = create_async_engine(
-    settings.async_database_url,
-    echo=settings.DEBUG,
-    future=True,
-    # Connection pool configuration for better concurrency
-    pool_size=20,  # Increased from default 5
-    max_overflow=40,  # Increased from default 10
-    pool_pre_ping=True,  # Verify connections before using
-    pool_recycle=3600,  # Recycle connections after 1 hour
-    pool_timeout=30,  # Wait up to 30s for connection
-    # Use NullPool in test environments
-    poolclass=None if settings.ENVIRONMENT != "test" else NullPool,
-)
+# Use different settings for test vs production
+if settings.ENVIRONMENT == "test":
+    # Test environment: use NullPool and no pool parameters
+    engine = create_async_engine(
+        settings.async_database_url,
+        echo=settings.DEBUG,
+        future=True,
+        poolclass=NullPool,
+        connect_args={"check_same_thread": False}  # For SQLite
+    )
+else:
+    # Production/development: use connection pooling
+    engine = create_async_engine(
+        settings.async_database_url,
+        echo=settings.DEBUG,
+        future=True,
+        # Connection pool configuration for better concurrency
+        pool_size=20,  # Increased from default 5
+        max_overflow=40,  # Increased from default 10
+        pool_pre_ping=True,  # Verify connections before using
+        pool_recycle=3600,  # Recycle connections after 1 hour
+        pool_timeout=30,  # Wait up to 30s for connection
+    )
 
 # Create async session maker
 AsyncSessionLocal = async_sessionmaker(
