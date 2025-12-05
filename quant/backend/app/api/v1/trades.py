@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
+from sqlalchemy.sql import Select
 
 from app.core.database import get_db
 from app.core.exceptions import BadRequestException, NotFoundException
@@ -90,6 +91,41 @@ def validate_transaction_type(transaction_type: str) -> str:
     return transaction_type_lower
 
 
+def apply_trade_filters(
+    query: Select,
+    ticker: str | None = None,
+    transaction_type: str | None = None,
+    politician_id: UUID | None = None,
+) -> Select:
+    """
+    Apply filters to trade query (reusable for both count and data queries).
+
+    This helper function ensures filter logic is consistent between count
+    and data queries, improving maintainability and reducing code duplication.
+
+    Args:
+        query: SQLAlchemy select query to add filters to
+        ticker: Filter by ticker symbol (will be validated)
+        transaction_type: Filter by transaction type (will be validated)
+        politician_id: Filter by politician UUID
+
+    Returns:
+        Query with filters applied
+    """
+    if ticker:
+        validated_ticker = validate_ticker(ticker)
+        query = query.where(Trade.ticker == validated_ticker)
+
+    if transaction_type:
+        validated_type = validate_transaction_type(transaction_type)
+        query = query.where(Trade.transaction_type == validated_type)
+
+    if politician_id:
+        query = query.where(Trade.politician_id == politician_id)
+
+    return query
+
+
 @router.get("/", response_model=TradeListResponse)
 async def list_trades(
     skip: int = 0,
@@ -124,39 +160,29 @@ async def list_trades(
     # Limit the maximum number of results
     limit = min(limit, 100)
 
-    # Build query with join to get politician info
-    query = select(Trade).join(Politician).options(joinedload(Trade.politician))
-
-    # Apply filters with validation
-    if ticker:
-        validated_ticker = validate_ticker(ticker)
-        query = query.where(Trade.ticker == validated_ticker)
-
-    if transaction_type:
-        validated_type = validate_transaction_type(transaction_type)
-        query = query.where(Trade.transaction_type == validated_type)
-
-    if politician_id:
-        query = query.where(Trade.politician_id == politician_id)
-
-    # Get total count with separate query (more efficient)
+    # Build base query for counting (optimized - no joins needed for count)
     count_query = select(func.count(Trade.id))
-    if ticker:
-        count_query = count_query.where(Trade.ticker == validate_ticker(ticker))
-    if transaction_type:
-        count_query = count_query.where(Trade.transaction_type == validate_transaction_type(transaction_type))
-    if politician_id:
-        count_query = count_query.where(Trade.politician_id == politician_id)
+    count_query = apply_trade_filters(count_query, ticker, transaction_type, politician_id)
 
-    total_result = await db.execute(count_query)
-    total = total_result.scalar_one()
+    # Build data query with join to get politician info
+    data_query = select(Trade).join(Politician).options(joinedload(Trade.politician))
+    data_query = apply_trade_filters(data_query, ticker, transaction_type, politician_id)
 
     # Add pagination and ordering (most recent first)
-    query = query.order_by(Trade.transaction_date.desc()).offset(skip).limit(limit)
+    data_query = data_query.order_by(Trade.transaction_date.desc()).offset(skip).limit(limit)
 
-    # Execute query
-    result = await db.execute(query)
-    trades = result.scalars().all()
+    # Execute both queries concurrently for better performance
+    # Note: In production with connection pooling, concurrent execution
+    # can reduce total wait time if database has capacity
+    import asyncio
+
+    count_task = db.execute(count_query)
+    data_task = db.execute(data_query)
+
+    total_result, data_result = await asyncio.gather(count_task, data_task)
+
+    total = total_result.scalar_one()
+    trades = data_result.scalars().all()
 
     # Convert to response models using helper function
     trade_responses = [
