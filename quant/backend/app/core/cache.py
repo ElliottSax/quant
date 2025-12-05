@@ -32,13 +32,9 @@ class CacheManager:
             return
 
         try:
-            # Connect to ML Redis instance
-            self.redis_client = redis.Redis(
-                host="localhost",
-                port=6380,
-                db=0,
-                decode_responses=False  # We'll handle serialization
-            )
+            # Use settings for Redis ML configuration
+            config = settings.redis_ml_config
+            self.redis_client = redis.Redis(**config)
             await self.redis_client.ping()
             logger.info("Connected to Redis cache")
         except Exception as e:

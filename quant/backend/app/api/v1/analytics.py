@@ -26,10 +26,21 @@ from app.core.concurrency import ml_semaphore, network_semaphore, with_concurren
 from app.models.politician import Politician
 from app.models.trade import Trade
 
-# Import analytics modules
-from app.ml.ensemble import EnsemblePredictor, EnsemblePrediction, PredictionType, ModelPrediction
-from app.ml.correlation import CorrelationAnalyzer, CorrelationResult, NetworkMetrics, SectorAnalyzer
-from app.ml.insights import InsightGenerator, Insight, InsightType, InsightSeverity, generate_executive_summary
+logger = get_logger(__name__)
+router = APIRouter()
+
+# Import analytics modules (optional - gracefully degrade if ML libs unavailable)
+try:
+    from app.ml.ensemble import EnsemblePredictor, EnsemblePrediction, PredictionType, ModelPrediction
+    from app.ml.correlation import CorrelationAnalyzer, CorrelationResult, NetworkMetrics, SectorAnalyzer
+    from app.ml.insights import InsightGenerator, Insight, InsightType, InsightSeverity, generate_executive_summary
+    ML_ANALYTICS_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"ML analytics libraries not available: {e}. Analytics endpoints will be disabled.")
+    ML_ANALYTICS_AVAILABLE = False
+    EnsemblePredictor = None
+    CorrelationAnalyzer = None
+    InsightGenerator = None
 
 # Import pattern analysis
 from app.api.v1.patterns import (
@@ -39,9 +50,6 @@ from app.api.v1.patterns import (
     analyze_regime,
     analyze_patterns
 )
-
-logger = get_logger(__name__)
-router = APIRouter()
 
 
 # Helper for parallel execution when some analyses are skipped

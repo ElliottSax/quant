@@ -29,10 +29,10 @@ class TokenBlacklist:
             return
 
         try:
-            self.redis_client = redis.Redis(
-                host="localhost",
-                port=6379,
-                db=1,  # Use different DB than cache
+            # Use settings for Redis configuration
+            self.redis_client = await redis.from_url(
+                settings.REDIS_URL,
+                encoding="utf-8",
                 decode_responses=True
             )
             await self.redis_client.ping()

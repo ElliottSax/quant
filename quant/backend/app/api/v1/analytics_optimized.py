@@ -32,9 +32,17 @@ from app.api.v1.patterns import (
     analyze_patterns
 )
 
-from app.ml.ensemble import EnsemblePredictor, PredictionType
-
 logger = get_logger(__name__)
+
+# Import ML modules (optional - gracefully degrade if unavailable)
+try:
+    from app.ml.ensemble import EnsemblePredictor, PredictionType
+    ML_ENSEMBLE_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"ML ensemble library not available: {e}. Ensemble predictions will be disabled.")
+    ML_ENSEMBLE_AVAILABLE = False
+    EnsemblePredictor = None
+    PredictionType = None
 
 
 async def get_cached_ensemble_prediction(

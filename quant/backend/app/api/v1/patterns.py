@@ -23,16 +23,25 @@ from app.core.logging import get_logger
 from app.models.politician import Politician
 from app.models.trade import Trade
 
-# Import cyclical models
-from app.ml.cyclical import (
-    FourierCyclicalDetector,
-    RegimeDetector,
-    DynamicTimeWarpingMatcher,
-    CyclicalExperimentTracker
-)
-
 logger = get_logger(__name__)
 router = APIRouter()
+
+# Import cyclical models (optional - gracefully degrade if ML libs unavailable)
+try:
+    from app.ml.cyclical import (
+        FourierCyclicalDetector,
+        RegimeDetector,
+        DynamicTimeWarpingMatcher,
+        CyclicalExperimentTracker
+    )
+    ML_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"ML libraries not available: {e}. Pattern analysis endpoints will be disabled.")
+    ML_AVAILABLE = False
+    FourierCyclicalDetector = None
+    RegimeDetector = None
+    DynamicTimeWarpingMatcher = None
+    CyclicalExperimentTracker = None
 
 
 # ============================================================================
@@ -285,6 +294,11 @@ async def analyze_fourier(
 
     **Example**: "Does Nancy Pelosi trade on a monthly cycle aligned with earnings seasons?"
     """
+    if not ML_AVAILABLE:
+        raise HTTPException(
+            status_code=503,
+            detail="ML libraries not available. Pattern analysis is currently disabled."
+        )
 
     # Load politician
     result = await db.execute(select(Politician).where(Politician.id == politician_id))
@@ -371,6 +385,11 @@ async def analyze_regime(
 
     **Example**: "When does Dan Crenshaw switch from buying to selling?"
     """
+    if not ML_AVAILABLE:
+        raise HTTPException(
+            status_code=503,
+            detail="ML libraries not available. Pattern analysis is currently disabled."
+        )
 
     # Load politician
     result = await db.execute(select(Politician).where(Politician.id == politician_id))
@@ -462,6 +481,11 @@ async def analyze_patterns(
 
     **Example**: "Has Paul Pelosi's current trading pattern happened before? What followed?"
     """
+    if not ML_AVAILABLE:
+        raise HTTPException(
+            status_code=503,
+            detail="ML libraries not available. Pattern analysis is currently disabled."
+        )
 
     # Load politician
     result = await db.execute(select(Politician).where(Politician.id == politician_id))
@@ -552,6 +576,11 @@ async def analyze_comprehensive(
 
     **Example**: "Give me the complete analysis of Nancy Pelosi's trading patterns"
     """
+    if not ML_AVAILABLE:
+        raise HTTPException(
+            status_code=503,
+            detail="ML libraries not available. Pattern analysis is currently disabled."
+        )
 
     # Run all three analyses
     fourier_result = await analyze_fourier(politician_id, db)

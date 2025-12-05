@@ -1,6 +1,7 @@
 """Application configuration."""
 
 from typing import Any
+from urllib.parse import urlparse
 from pydantic import field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -36,6 +37,7 @@ class Settings(BaseSettings):
 
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
+    REDIS_ML_URL: str = "redis://localhost:6380/0"  # For ML caching
 
     # Celery
     CELERY_BROKER_URL: str = "redis://localhost:6379/0"
@@ -116,6 +118,30 @@ class Settings(BaseSettings):
     def async_database_url(self) -> str:
         """Get async database URL."""
         return self.DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://")
+
+    @property
+    def redis_config(self) -> dict:
+        """Parse Redis URL into connection params."""
+        parsed = urlparse(self.REDIS_URL)
+        return {
+            "host": parsed.hostname or "localhost",
+            "port": parsed.port or 6379,
+            "db": int(parsed.path.lstrip("/")) if parsed.path else 0,
+            "password": parsed.password,
+            "decode_responses": True
+        }
+
+    @property
+    def redis_ml_config(self) -> dict:
+        """Parse Redis ML URL into connection params."""
+        parsed = urlparse(self.REDIS_ML_URL)
+        return {
+            "host": parsed.hostname or "localhost",
+            "port": parsed.port or 6380,
+            "db": int(parsed.path.lstrip("/")) if parsed.path else 0,
+            "password": parsed.password,
+            "decode_responses": False  # ML cache uses pickle
+        }
 
 
 settings = Settings()

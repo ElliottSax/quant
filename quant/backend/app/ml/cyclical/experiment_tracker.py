@@ -13,15 +13,28 @@ Key Features:
 Author: Claude
 """
 
-import mlflow
+try:
+    import mlflow
+    MLFLOW_AVAILABLE = True
+except ImportError:
+    MLFLOW_AVAILABLE = False
+    mlflow = None
+
 import numpy as np
 import pandas as pd
 from typing import Dict, List, Optional, Any, Union
 import json
 import logging
 from datetime import datetime
-import matplotlib.pyplot as plt
-import seaborn as sns
+
+try:
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    PLOTTING_AVAILABLE = True
+except ImportError:
+    PLOTTING_AVAILABLE = False
+    plt = None
+    sns = None
 
 from app.ml.utils.mlflow_tracker import MLFlowTracker
 from .fourier import FourierCyclicalDetector
