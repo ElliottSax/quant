@@ -1,0 +1,221 @@
+{
+  "timestamp": "2025-11-26T16:59:19.983856",
+  "tests": [
+    {
+      "category": "File Structure",
+      "name": "main.py",
+      "status": "pass",
+      "message": "Exists (6872 bytes)",
+      "details": {}
+    },
+    {
+      "category": "File Structure",
+      "name": "__init__.py",
+      "status": "pass",
+      "message": "Exists (1394 bytes)",
+      "details": {}
+    },
+    {
+      "category": "File Structure",
+      "name": "signal_generator.py",
+      "status": "pass",
+      "message": "Exists (16424 bytes)",
+      "details": {}
+    },
+    {
+      "category": "File Structure",
+      "name": "backtesting.py",
+      "status": "pass",
+      "message": "Exists (17994 bytes)",
+      "details": {}
+    },
+    {
+      "category": "File Structure",
+      "name": "email_service.py",
+      "status": "pass",
+      "message": "Exists (10252 bytes)",
+      "details": {}
+    },
+    {
+      "category": "File Structure",
+      "name": "page.tsx",
+      "status": "pass",
+      "message": "Exists (10985 bytes)",
+      "details": {}
+    },
+    {
+      "category": "File Structure",
+      "name": "PriceChart.tsx",
+      "status": "pass",
+      "message": "Exists (1700 bytes)",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "fastapi package",
+      "status": "pass",
+      "message": "FastAPI framework",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "uvicorn package",
+      "status": "pass",
+      "message": "ASGI server",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "sqlalchemy package",
+      "status": "pass",
+      "message": "ORM",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "redis package",
+      "status": "pass",
+      "message": "Redis client",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "pandas package",
+      "status": "pass",
+      "message": "Data analysis",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "numpy package",
+      "status": "pass",
+      "message": "Numerical computing",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "yfinance package",
+      "status": "pass",
+      "message": "Market data",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "scipy package",
+      "status": "pass",
+      "message": "Scientific computing",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "celery package",
+      "status": "pass",
+      "message": "Task queue",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "httpx package",
+      "status": "pass",
+      "message": "HTTP client",
+      "details": {}
+    },
+    {
+      "category": "Dependencies",
+      "name": "pydantic package",
+      "status": "pass",
+      "message": "Data validation",
+      "details": {}
+    },
+    {
+      "category": "Infrastructure",
+      "name": "quant-postgres container",
+      "status": "pass",
+      "message": "Running (port 5432)",
+      "details": {}
+    },
+    {
+      "category": "Infrastructure",
+      "name": "quant-redis-ml container",
+      "status": "pass",
+      "message": "Running (port 6380)",
+      "details": {}
+    },
+    {
+      "category": "Infrastructure",
+      "name": "quant-mlflow container",
+      "status": "pass",
+      "message": "Running (port 5000)",
+      "details": {}
+    },
+    {
+      "category": "Infrastructure",
+      "name": "quant-minio container",
+      "status": "pass",
+      "message": "Running (port 9000)",
+      "details": {}
+    },
+    {
+      "category": "Backend API",
+      "name": "Health check",
+      "status": "skip",
+      "message": "Backend not running",
+      "details": {}
+    },
+    {
+      "category": "Backend API",
+      "name": "API documentation",
+      "status": "skip",
+      "message": "Backend not running",
+      "details": {}
+    },
+    {
+      "category": "Backend API",
+      "name": "Auth endpoint (should fail without token)",
+      "status": "skip",
+      "message": "Backend not running",
+      "details": {}
+    },
+    {
+      "category": "Frontend",
+      "name": "Home page",
+      "status": "pass",
+      "message": "Loaded successfully (9187 bytes)",
+      "details": {}
+    },
+    {
+      "category": "Frontend",
+      "name": "Dashboard page",
+      "status": "pass",
+      "message": "Loaded successfully (10024 bytes)",
+      "details": {}
+    },
+    {
+      "category": "Frontend",
+      "name": "Signals page",
+      "status": "fail",
+      "message": "Status 404",
+      "details": {}
+    },
+    {
+      "category": "Frontend",
+      "name": "Backtesting page",
+      "status": "fail",
+      "message": "Status 404",
+      "details": {}
+    },
+    {
+      "category": "Frontend",
+      "name": "Discoveries page",
+      "status": "fail",
+      "message": "HTTPConnectionPool(host='localhost', port=3000): Read timed out. (read timeout=10)",
+      "details": {}
+    }
+  ],
+  "summary": {
+    "total": 30,
+    "passed": 24,
+    "failed": 3,
+    "skipped": 3
+  }
+}

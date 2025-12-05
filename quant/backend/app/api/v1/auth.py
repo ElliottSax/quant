@@ -14,6 +14,10 @@ from app.core.security import (
     verify_password,
     get_password_hash,
     verify_token,
+    is_account_locked,
+    get_lockout_time_remaining,
+    handle_failed_login,
+    reset_failed_login_attempts,
 )
 from app.core.deps import get_current_user, get_current_active_user
 from app.core.exceptions import (
@@ -193,22 +197,39 @@ async def login(
         logger.warning(f"Login failed - user not found: {login_data.username}")
         raise UnauthorizedException("Incorrect username or password")
 
+    # Check if account is locked
+    if is_account_locked(user):
+        remaining = get_lockout_time_remaining(user)
+        minutes = remaining // 60
+        logger.warning(f"Login attempt on locked account: {login_data.username}, {minutes}min remaining")
+        raise UnauthorizedException(
+            f"Account is locked due to too many failed login attempts. "
+            f"Try again in {minutes} minutes."
+        )
+
     # Verify password
     if not verify_password(login_data.password, user.hashed_password):
         logger.warning(f"Login failed - incorrect password: {login_data.username}")
+        # Track failed login attempt
+        await handle_failed_login(user, db)
         raise UnauthorizedException("Incorrect username or password")
 
     if not user.is_active:
         logger.warning(f"Login failed - inactive user: {login_data.username}")
         raise UnauthorizedException("Inactive user")
 
-    # Update last login
+    # Update last login and reset failed attempts
     user.last_login = datetime.utcnow()
+    user.failed_login_attempts = 0
+    user.locked_until = None
     await db.commit()
 
-    # Create tokens
+    # Create tokens with current version
     access_token = create_access_token(subject=str(user.id))
-    refresh_token = create_refresh_token(subject=str(user.id))
+    refresh_token = create_refresh_token(
+        subject=str(user.id),
+        version=user.refresh_token_version
+    )
 
     logger.info(f"User logged in successfully: {user.username}")
 
@@ -236,7 +257,7 @@ async def refresh_token(
     logger.debug("Token refresh attempt")
 
     # Verify refresh token
-    user_id = verify_token(refresh_data.refresh_token, token_type="refresh")
+    user_id, token_version = verify_token(refresh_data.refresh_token, token_type="refresh")
     if not user_id:
         logger.warning("Invalid or expired refresh token")
         raise UnauthorizedException("Invalid or expired refresh token")
@@ -257,11 +278,23 @@ async def refresh_token(
         logger.warning(f"Refresh failed - user not found or inactive: {user_id}")
         raise UnauthorizedException("User not found or inactive")
 
-    # Create new tokens
-    access_token = create_access_token(subject=str(user.id))
-    new_refresh_token = create_refresh_token(subject=str(user.id))
+    # Verify token version matches (prevent token reuse after rotation)
+    if token_version != user.refresh_token_version:
+        logger.warning(f"Refresh token version mismatch for user {user_id}: {token_version} != {user.refresh_token_version}")
+        raise UnauthorizedException("Refresh token has been revoked")
 
-    logger.info(f"Token refreshed for user: {user.username}")
+    # Rotate: increment version and issue new tokens
+    user.refresh_token_version += 1
+    await db.commit()
+
+    # Create new tokens with new version
+    access_token = create_access_token(subject=str(user.id))
+    new_refresh_token = create_refresh_token(
+        subject=str(user.id),
+        version=user.refresh_token_version
+    )
+
+    logger.info(f"Token refreshed and rotated for user: {user.username}, new version: {user.refresh_token_version}")
 
     return Token(access_token=access_token, refresh_token=new_refresh_token)
 
