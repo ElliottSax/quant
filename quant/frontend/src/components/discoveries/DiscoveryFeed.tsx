@@ -4,21 +4,7 @@
 
 import { formatDistanceToNow } from 'date-fns'
 import Link from 'next/link'
-
-interface Discovery {
-  id: string
-  discovery_date: string
-  politician_id: string
-  politician_name: string
-  pattern_type: string
-  strength: number
-  confidence: number
-  description: string
-  parameters: Record<string, any>
-  metadata: Record<string, any>
-  reviewed: boolean
-  deployed: boolean
-}
+import { Discovery } from '@/lib/types'
 
 interface DiscoveryFeedProps {
   discoveries: Discovery[]
@@ -46,7 +32,7 @@ export function DiscoveryFeed({ discoveries }: DiscoveryFeedProps) {
 }
 
 function DiscoveryCard({ discovery }: { discovery: Discovery }) {
-  const patternTypeConfig = {
+  const patternTypeConfig: Record<string, { icon: string; label: string; color: string }> = {
     fourier_cycle: {
       icon: '🔄',
       label: 'Cyclical Pattern',

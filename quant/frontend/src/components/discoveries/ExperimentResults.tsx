@@ -5,17 +5,7 @@
 
 'use client'
 
-interface Experiment {
-  id: string
-  experiment_date: string
-  model_name: string
-  deployment_ready: boolean
-  validation_metrics?: {
-    accuracy?: number
-    precision?: number
-    recall?: number
-  }
-}
+import { Experiment } from '@/lib/types'
 
 interface ExperimentResultsProps {
   experiments?: Experiment[]

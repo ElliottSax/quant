@@ -5,7 +5,7 @@
 
 'use client'
 
-import { use } from 'react'
+import { use, useMemo } from 'react'
 import {
   usePolitician,
   useTrades,
@@ -19,7 +19,9 @@ import {
 import { FourierSpectrumChart } from '@/components/charts/FourierSpectrumChart'
 import { RegimeTransitionChart } from '@/components/charts/RegimeTransitionChart'
 import { PatternMatchChart } from '@/components/charts/PatternMatchChart'
-import { AnomalyScoreGauge } from '@/components/charts/AnomalyScoreGauge'
+import { GaugeChart } from '@/components/charts/GaugeChart'
+import { RadarChart } from '@/components/charts/RadarChart'
+import { AdvancedTimeSeriesChart } from '@/components/charts/AdvancedTimeSeriesChart'
 import Link from 'next/link'
 
 export default function PoliticianDetailPage({
@@ -41,12 +43,55 @@ export default function PoliticianDetailPage({
   const { data: insights, isLoading: insightsLoading } = useInsights(politicianId)
   const { data: anomalies, isLoading: anomaliesLoading } = useAnomalies(politicianId)
 
+  // Generate trading activity time series from trades
+  const tradingActivityData = useMemo(() => {
+    if (!trades || trades.length === 0) return []
+
+    // Group trades by month
+    const tradesByMonth: Record<string, number> = {}
+    trades.forEach((trade) => {
+      const date = new Date(trade.transaction_date)
+      const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01`
+      tradesByMonth[monthKey] = (tradesByMonth[monthKey] || 0) + 1
+    })
+
+    return Object.entries(tradesByMonth)
+      .map(([timestamp, value]) => ({ timestamp, value }))
+      .sort((a, b) => a.timestamp.localeCompare(b.timestamp))
+  }, [trades])
+
+  // Generate radar data from ensemble predictions
+  const performanceRadarData = useMemo(() => {
+    if (!ensemble) {
+      return [
+        { name: 'Activity', value: 50, max: 100 },
+        { name: 'Timing', value: 50, max: 100 },
+        { name: 'Consistency', value: 50, max: 100 },
+        { name: 'Diversification', value: 50, max: 100 },
+        { name: 'Risk Score', value: 50, max: 100 },
+      ]
+    }
+
+    return [
+      { name: 'Activity', value: Math.min(100, (ensemble.predicted_value / 20) * 100), max: 100 },
+      { name: 'Confidence', value: ensemble.confidence * 100, max: 100 },
+      { name: 'Agreement', value: ensemble.model_agreement * 100, max: 100 },
+      { name: 'Signal Strength', value: Math.min(100, Math.abs(ensemble.predicted_value - 10) * 10), max: 100 },
+      { name: 'Anomaly Risk', value: anomalies ? anomalies.ensemble_anomaly_score * 100 : 50, max: 100 },
+    ]
+  }, [ensemble, anomalies])
+
   if (polLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
+      <div className="flex items-center justify-center min-h-[600px]">
         <div className="text-center">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent" />
-          <p className="mt-4 text-muted-foreground">Loading politician data...</p>
+          <div className="relative">
+            <div className="inline-block h-16 w-16 animate-spin rounded-full border-4 border-solid border-indigo-500/20 border-t-indigo-500" />
+            <div className="absolute inset-0 h-16 w-16 rounded-full bg-indigo-500/10 blur-xl animate-pulse" />
+          </div>
+          <p className="mt-6 text-lg font-medium text-slate-400 animate-pulse">
+            Loading politician data...
+          </p>
         </div>
       </div>
     )
@@ -54,12 +99,13 @@ export default function PoliticianDetailPage({
 
   if (!politician) {
     return (
-      <div className="text-center py-12">
-        <h2 className="text-2xl font-bold mb-2">Politician Not Found</h2>
-        <p className="text-muted-foreground mb-4">
+      <div className="text-center py-20">
+        <div className="text-6xl mb-4">🔍</div>
+        <h2 className="text-2xl font-bold mb-2 text-white">Politician Not Found</h2>
+        <p className="text-slate-400 mb-6">
           The politician you're looking for doesn't exist or has insufficient data.
         </p>
-        <Link href="/politicians" className="text-primary hover:underline">
+        <Link href="/politicians" className="btn-primary">
           ← Back to Politicians
         </Link>
       </div>
@@ -69,232 +115,321 @@ export default function PoliticianDetailPage({
   return (
     <div className="space-y-8">
       {/* Breadcrumb */}
-      <div className="text-sm text-muted-foreground">
-        <Link href="/politicians" className="hover:text-foreground transition-colors">
+      <div className="text-sm text-slate-400">
+        <Link href="/politicians" className="hover:text-white transition-colors">
           Politicians
         </Link>
-        <span className="mx-2">→</span>
-        <span>{politician.name}</span>
+        <span className="mx-2 text-slate-600">→</span>
+        <span className="text-white">{politician.name}</span>
       </div>
 
       {/* Header */}
-      <div className="flex items-start justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">{politician.name}</h1>
-          <div className="flex items-center gap-4 mt-2 text-sm">
-            <span className={`inline-flex px-3 py-1 font-semibold rounded-full ${
-              politician.party === 'Democratic'
-                ? 'bg-blue-500/10 text-blue-500'
-                : politician.party === 'Republican'
-                ? 'bg-red-500/10 text-red-500'
-                : 'bg-gray-500/10 text-gray-500'
-            }`}>
-              {politician.party}
-            </span>
-            <span className="text-muted-foreground">{politician.state}</span>
-            <span className="text-muted-foreground">{politician.chamber}</span>
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex-1">
+          <div className="glass-card p-6">
+            <div className="flex items-start justify-between">
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">{politician.name}</h1>
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className={`px-4 py-1.5 font-semibold rounded-full text-sm ${
+                    politician.party === 'Democratic'
+                      ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                      : politician.party === 'Republican'
+                      ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                      : 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
+                  }`}>
+                    {politician.party}
+                  </span>
+                  <span className="text-slate-400">{politician.state}</span>
+                  <span className="text-slate-500">•</span>
+                  <span className="text-slate-400">{politician.chamber}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-700/50">
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Total Trades</p>
+                <p className="text-2xl font-bold text-white">{politician.trade_count?.toLocaleString() || '—'}</p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Days Active</p>
+                <p className="text-2xl font-bold text-white">{politician.days_active?.toLocaleString() || '—'}</p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">First Trade</p>
+                <p className="text-sm font-semibold text-slate-300">
+                  {politician.first_trade ? new Date(politician.first_trade).toLocaleDateString() : '—'}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Last Trade</p>
+                <p className="text-sm font-semibold text-slate-300">
+                  {politician.last_trade ? new Date(politician.last_trade).toLocaleDateString() : '—'}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
+        {/* Anomaly Score Gauge */}
         {anomalies && (
-          <div className="hidden lg:block">
-            <AnomalyScoreGauge
-              score={anomalies.ensemble_anomaly_score}
-              size={150}
+          <div className="w-full lg:w-80">
+            <GaugeChart
+              value={anomalies.ensemble_anomaly_score * 100}
+              title="Anomaly Score"
+              subtitle="Unusual trading pattern detection"
+              size="md"
+              thresholds={{ low: 30, medium: 50, high: 70 }}
             />
           </div>
         )}
       </div>
 
-      {/* Ensemble Prediction */}
-      {ensemble && (
-        <div className="bg-card border border-border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Ensemble Prediction</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div>
-              <p className="text-sm text-muted-foreground mb-1">Prediction Type</p>
-              <p className="text-2xl font-bold capitalize">
-                {ensemble.prediction_type.replace('_', ' ')}
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                {ensemble.interpretation}
-              </p>
-            </div>
+      {/* Ensemble Prediction & Radar */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {ensemble && (
+          <div className="glass-card p-6">
+            <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <span className="text-2xl">🎯</span>
+              Ensemble Prediction
+            </h2>
 
-            <div>
-              <p className="text-sm text-muted-foreground mb-1">Predicted Value</p>
-              <p className="text-2xl font-bold">
-                {ensemble.predicted_value.toFixed(1)}
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                Trades in next 30 days
-              </p>
-            </div>
-
-            <div>
-              <p className="text-sm text-muted-foreground mb-1">Confidence</p>
-              <p className="text-2xl font-bold">
-                {(ensemble.confidence * 100).toFixed(1)}%
-              </p>
-              <div className="w-full h-2 bg-muted rounded-full overflow-hidden mt-2">
-                <div
-                  className="h-full bg-primary rounded-full transition-all"
-                  style={{ width: `${ensemble.confidence * 100}%` }}
-                />
+            <div className="grid grid-cols-2 gap-6 mb-6">
+              <div className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50">
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">Prediction</p>
+                <p className="text-2xl font-bold text-white capitalize">
+                  {ensemble.prediction_type.replace('_', ' ')}
+                </p>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50">
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-2">Expected Trades</p>
+                <p className="text-2xl font-bold text-indigo-400">
+                  {ensemble.predicted_value.toFixed(1)}
+                </p>
+                <p className="text-xs text-slate-500">next 30 days</p>
               </div>
             </div>
 
-            <div>
-              <p className="text-sm text-muted-foreground mb-1">Model Agreement</p>
-              <p className="text-2xl font-bold">
-                {(ensemble.model_agreement * 100).toFixed(1)}%
-              </p>
-              <div className="w-full h-2 bg-muted rounded-full overflow-hidden mt-2">
-                <div
-                  className="h-full bg-green-500 rounded-full transition-all"
-                  style={{ width: `${ensemble.model_agreement * 100}%` }}
-                />
-              </div>
-            </div>
-          </div>
-
-          {ensemble.insights.length > 0 && (
-            <div className="mt-6 space-y-2">
-              <p className="text-sm font-medium">Key Insights:</p>
-              {ensemble.insights.map((insight, idx) => (
-                <div key={idx} className="flex items-start gap-2 text-sm">
-                  <span className="text-primary mt-0.5">•</span>
-                  <span className="text-muted-foreground">{insight}</span>
+            <div className="space-y-4">
+              <div>
+                <div className="flex justify-between text-sm mb-2">
+                  <span className="text-slate-400">Confidence</span>
+                  <span className="font-semibold text-white">{(ensemble.confidence * 100).toFixed(1)}%</span>
                 </div>
-              ))}
+                <div className="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all"
+                    style={{ width: `${ensemble.confidence * 100}%` }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-sm mb-2">
+                  <span className="text-slate-400">Model Agreement</span>
+                  <span className="font-semibold text-white">{(ensemble.model_agreement * 100).toFixed(1)}%</span>
+                </div>
+                <div className="h-2 bg-slate-800/50 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-emerald-500 to-green-500 rounded-full transition-all"
+                    style={{ width: `${ensemble.model_agreement * 100}%` }}
+                  />
+                </div>
+              </div>
             </div>
-          )}
-        </div>
+
+            {ensemble.insights.length > 0 && (
+              <div className="mt-6 pt-6 border-t border-slate-700/50">
+                <p className="text-sm font-semibold text-slate-300 mb-3">Key Insights:</p>
+                <div className="space-y-2">
+                  {ensemble.insights.slice(0, 3).map((insight, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-sm">
+                      <span className="text-indigo-400 mt-0.5">•</span>
+                      <span className="text-slate-400">{insight}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        <RadarChart
+          data={performanceRadarData}
+          title="Trading Profile Analysis"
+          height={350}
+          colors={['#6366f1', '#22c55e']}
+        />
+      </div>
+
+      {/* Trading Activity Timeline */}
+      {tradingActivityData.length > 0 && (
+        <AdvancedTimeSeriesChart
+          data={tradingActivityData}
+          title="Monthly Trading Activity"
+          seriesName="Trades"
+          yAxisLabel="Trade Count"
+          color="#6366f1"
+          height={350}
+          showDataZoom={true}
+        />
       )}
 
-      {/* Fourier Analysis */}
-      {fourier && fourier.dominant_cycles.length > 0 && (
-        <div className="bg-card border border-border rounded-lg p-6">
-          <FourierSpectrumChart cycles={fourier.dominant_cycles} />
-          <p className="mt-4 text-sm text-muted-foreground">{fourier.summary}</p>
-        </div>
-      )}
+      {/* Analysis Charts Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Fourier Analysis */}
+        {fourier && fourier.dominant_cycles.length > 0 && (
+          <div className="glass-card p-6">
+            <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+              <span>📊</span> Fourier Cycle Analysis
+            </h2>
+            <FourierSpectrumChart cycles={fourier.dominant_cycles} />
+            <p className="mt-4 text-sm text-slate-400">{fourier.summary}</p>
+          </div>
+        )}
 
-      {/* Regime Analysis */}
-      {regime && (
-        <div className="bg-card border border-border rounded-lg p-6">
-          <RegimeTransitionChart
-            regimes={regime.regimes}
-            currentRegime={regime.current_regime}
-            transitionProbs={regime.transition_probabilities}
-          />
-          <p className="mt-4 text-sm text-muted-foreground">{regime.summary}</p>
-        </div>
-      )}
+        {/* Regime Analysis */}
+        {regime && (
+          <div className="glass-card p-6">
+            <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+              <span>🔄</span> Trading Regime Analysis
+            </h2>
+            <RegimeTransitionChart
+              regimes={regime.regimes}
+              currentRegime={regime.current_regime}
+              transitionProbs={regime.transition_probabilities}
+            />
+            <p className="mt-4 text-sm text-slate-400">{regime.summary}</p>
+          </div>
+        )}
+      </div>
 
       {/* DTW Pattern Matching */}
       {dtw && dtw.top_matches.length > 0 && (
-        <div className="bg-card border border-border rounded-lg p-6">
+        <div className="glass-card p-6">
+          <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <span>🔍</span> Historical Pattern Matching (DTW)
+          </h2>
           <PatternMatchChart matches={dtw.top_matches} />
-          <p className="mt-4 text-sm text-muted-foreground">{dtw.summary}</p>
+          <p className="mt-4 text-sm text-slate-400">{dtw.summary}</p>
         </div>
       )}
 
       {/* Insights */}
       {insights && insights.insights.length > 0 && (
-        <div className="bg-card border border-border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Automated Insights</h2>
-          <div className="mb-4 p-4 bg-muted/50 rounded-lg">
-            <p className="text-sm font-medium mb-2">Executive Summary</p>
-            <p className="text-sm text-muted-foreground">{insights.executive_summary}</p>
+        <div className="glass-card p-6">
+          <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+            <span className="text-2xl">💡</span>
+            Automated Insights
+          </h2>
+
+          <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20">
+            <p className="text-sm font-semibold text-indigo-300 mb-2">Executive Summary</p>
+            <p className="text-sm text-slate-300">{insights.executive_summary}</p>
           </div>
 
-          <div className="space-y-3">
-            {insights.insights.slice(0, 5).map((insight, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {insights.insights.slice(0, 6).map((insight, idx) => (
               <div
                 key={idx}
-                className={`p-4 rounded-lg border ${
+                className={`p-4 rounded-xl border ${
                   insight.severity === 'critical'
-                    ? 'border-red-500/50 bg-red-500/5'
+                    ? 'border-red-500/30 bg-red-500/5'
                     : insight.severity === 'high'
-                    ? 'border-amber-500/50 bg-amber-500/5'
-                    : 'border-border bg-muted/20'
+                    ? 'border-amber-500/30 bg-amber-500/5'
+                    : 'border-slate-700/50 bg-slate-800/20'
                 }`}
               >
-                <div className="flex items-start justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`px-2 py-0.5 text-xs font-semibold rounded uppercase ${
-                        insight.severity === 'critical'
-                          ? 'bg-red-500 text-white'
-                          : insight.severity === 'high'
-                          ? 'bg-amber-500 text-white'
-                          : 'bg-primary text-primary-foreground'
-                      }`}
-                    >
-                      {insight.severity}
-                    </span>
-                    <span className="text-xs text-muted-foreground uppercase">
-                      {insight.type}
-                    </span>
-                  </div>
-                  <span className="text-xs text-muted-foreground">
+                <div className="flex items-center justify-between mb-2">
+                  <span
+                    className={`px-2 py-0.5 text-xs font-bold rounded uppercase ${
+                      insight.severity === 'critical'
+                        ? 'bg-red-500 text-white'
+                        : insight.severity === 'high'
+                        ? 'bg-amber-500 text-white'
+                        : 'bg-indigo-500 text-white'
+                    }`}
+                  >
+                    {insight.severity}
+                  </span>
+                  <span className="text-xs text-slate-500">
                     {(insight.confidence * 100).toFixed(0)}% confidence
                   </span>
                 </div>
-                <p className="font-medium text-sm mb-2">{insight.title}</p>
-                <p className="text-sm text-muted-foreground">{insight.description}</p>
+                <p className="font-semibold text-sm text-white mb-1">{insight.title}</p>
+                <p className="text-xs text-slate-400">{insight.description}</p>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {/* Recent Trades */}
+      {/* Recent Trades Table */}
       {trades && trades.length > 0 && (
-        <div className="bg-card border border-border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Recent Trades</h2>
+        <div className="glass-card overflow-hidden">
+          <div className="p-6 border-b border-slate-700/50">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <span className="text-2xl">📋</span>
+              Recent Trades
+            </h2>
+          </div>
           <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="border-b border-border">
+            <table className="table-pro">
+              <thead>
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase">Date</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase">Ticker</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase">Type</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase">Amount</th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase">Asset</th>
+                  <th>Date</th>
+                  <th>Ticker</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Asset Description</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border">
-                {trades.slice(0, 10).map((trade) => (
-                  <tr key={trade.id} className="text-sm">
-                    <td className="px-4 py-3">
+              <tbody>
+                {trades.slice(0, 15).map((trade) => (
+                  <tr key={trade.id}>
+                    <td className="font-mono text-slate-400">
                       {new Date(trade.transaction_date).toLocaleDateString()}
                     </td>
-                    <td className="px-4 py-3 font-mono font-medium">{trade.ticker}</td>
-                    <td className="px-4 py-3">
+                    <td>
+                      <span className="font-mono font-bold text-indigo-400">{trade.ticker}</span>
+                    </td>
+                    <td>
                       <span
-                        className={`px-2 py-1 text-xs font-semibold rounded ${
+                        className={`px-2 py-1 text-xs font-bold rounded ${
                           trade.transaction_type === 'purchase'
-                            ? 'bg-green-500/10 text-green-500'
-                            : 'bg-red-500/10 text-red-500'
+                            ? 'bg-emerald-500/20 text-emerald-400'
+                            : 'bg-red-500/20 text-red-400'
                         }`}
                       >
-                        {trade.transaction_type}
+                        {trade.transaction_type.toUpperCase()}
                       </span>
                     </td>
-                    <td className="px-4 py-3">{trade.amount}</td>
-                    <td className="px-4 py-3 text-muted-foreground text-xs">
-                      {trade.asset_description.slice(0, 40)}
-                      {trade.asset_description.length > 40 && '...'}
+                    <td className="font-semibold">{trade.amount}</td>
+                    <td className="text-slate-500 text-xs max-w-xs truncate">
+                      {trade.asset_description}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          {trades.length > 15 && (
+            <div className="p-4 text-center border-t border-slate-700/50 bg-slate-800/30">
+              <p className="text-sm text-slate-400">
+                Showing 15 of {trades.length} trades
+              </p>
+            </div>
+          )}
         </div>
       )}
+
+      {/* Back link */}
+      <div className="text-center pt-8">
+        <Link href="/politicians" className="btn-secondary">
+          ← Back to All Politicians
+        </Link>
+      </div>
     </div>
   )
 }

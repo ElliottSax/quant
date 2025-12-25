@@ -4,21 +4,10 @@
 
 import { formatDistanceToNow } from 'date-fns'
 import Link from 'next/link'
-
-interface Anomaly {
-  id: string
-  detection_date: string
-  politician_id: string
-  politician_name: string
-  anomaly_type: string
-  severity: number
-  description: string
-  evidence: Record<string, any>
-  investigated: boolean
-}
+import { CriticalAnomaly } from '@/lib/types'
 
 interface AnomalyAlertsProps {
-  anomalies: Anomaly[]
+  anomalies: CriticalAnomaly[]
 }
 
 export function AnomalyAlerts({ anomalies }: AnomalyAlertsProps) {
@@ -31,7 +20,7 @@ export function AnomalyAlerts({ anomalies }: AnomalyAlertsProps) {
   )
 }
 
-function AnomalyCard({ anomaly }: { anomaly: Anomaly }) {
+function AnomalyCard({ anomaly }: { anomaly: CriticalAnomaly }) {
   const severityConfig = getSeverityConfig(anomaly.severity)
 
   return (
@@ -130,7 +119,7 @@ function getSeverityConfig(severity: number) {
 }
 
 function getAnomalyTitle(type: string): string {
-  const titles = {
+  const titles: Record<string, string> = {
     statistical_outlier: 'Statistical Outlier Detected',
     model_disagreement: 'Model Disagreement',
     off_cycle: 'Off-Cycle Trading',
