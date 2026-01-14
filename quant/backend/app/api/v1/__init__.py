@@ -23,6 +23,22 @@ api_router.include_router(politicians.router, prefix="/politicians", tags=["poli
 api_router.include_router(stats.router, prefix="/stats", tags=["stats"])
 api_router.include_router(export.router, prefix="/export", tags=["data-export"])
 
+# Market data router (no ML dependencies, uses yfinance)
+try:
+    from app.api.v1 import market_data
+    api_router.include_router(market_data.router, tags=["market-data"])
+    logger.info("Market data endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Market data endpoints disabled: {e}")
+
+# Discoveries router (no ML dependencies, generates from data)
+try:
+    from app.api.v1 import discoveries
+    api_router.include_router(discoveries.router, prefix="/discoveries", tags=["discoveries"])
+    logger.info("Discoveries endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Discoveries endpoints disabled: {e}")
+
 # ML-dependent features (optional)
 try:
     from app.api.v1 import (
@@ -31,7 +47,6 @@ try:
         signals,
         backtesting,
         sentiment,
-        market_data,
         portfolio,
         reports
     )
@@ -40,7 +55,6 @@ try:
     api_router.include_router(signals.router, tags=["trading-signals"])
     api_router.include_router(backtesting.router, tags=["backtesting"])
     api_router.include_router(sentiment.router, tags=["sentiment-analysis"])
-    api_router.include_router(market_data.router, tags=["market-data"])
     api_router.include_router(portfolio.router, tags=["portfolio-optimization"])
     api_router.include_router(reports.router, tags=["automated-reporting"])
     logger.info("ML-dependent features loaded successfully")
