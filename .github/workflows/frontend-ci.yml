@@ -116,7 +116,7 @@ jobs:
   build:
     name: Build Check
     runs-on: ubuntu-latest
-    needs: [lint, test]
+    needs: [lint]
     steps:
       - uses: actions/checkout@v4
 
@@ -145,7 +145,7 @@ jobs:
           npm run build -- --analyze || true
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-output
           path: quant/frontend/.next/
