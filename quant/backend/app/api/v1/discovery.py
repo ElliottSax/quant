@@ -137,6 +137,22 @@ async def get_predictions(
 
 
 @router.get(
+    "/predictions/multi-horizon",
+    summary="Get multi-horizon predictions"
+)
+async def get_multi_horizon_predictions():
+    """
+    Get predictions across multiple time horizons (7d, 14d, 30d).
+    """
+    predictions = discovery_service.get_multi_horizon_predictions()
+
+    if not predictions:
+        return {"message": "Multi-horizon predictions not available", "data": {}}
+
+    return {"data": predictions}
+
+
+@router.get(
     "/predictions/{ticker}",
     response_model=StockPrediction,
     summary="Get prediction for a specific stock"
@@ -160,22 +176,6 @@ async def get_stock_prediction(ticker: str):
         )
 
     return StockPrediction(**prediction)
-
-
-@router.get(
-    "/predictions/multi-horizon",
-    summary="Get multi-horizon predictions"
-)
-async def get_multi_horizon_predictions():
-    """
-    Get predictions across multiple time horizons (7d, 14d, 30d).
-    """
-    predictions = discovery_service.get_multi_horizon_predictions()
-
-    if not predictions:
-        return {"message": "Multi-horizon predictions not available", "data": {}}
-
-    return {"data": predictions}
 
 
 @router.get(
