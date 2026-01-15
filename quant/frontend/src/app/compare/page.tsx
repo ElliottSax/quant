@@ -25,18 +25,18 @@ interface PoliticianData {
   riskMetrics: { volatility: number; sharpe: number; maxDrawdown: number; beta: number }
 }
 
+const POLITICIANS = [
+  'Nancy Pelosi',
+  'Paul Pelosi Jr',
+  'Dan Crenshaw',
+  'Brian Higgins',
+  'Josh Gottheimer',
+  'Debbie Wasserman Schultz',
+]
+
 export default function ComparePage() {
   const [selected1, setSelected1] = useState('')
   const [selected2, setSelected2] = useState('')
-
-  const politicians = [
-    'Nancy Pelosi',
-    'Paul Pelosi Jr',
-    'Dan Crenshaw',
-    'Brian Higgins',
-    'Josh Gottheimer',
-    'Debbie Wasserman Schultz',
-  ]
 
   // Generate realistic mock data
   const generateData = (name: string, seed: number): PoliticianData => {
@@ -90,8 +90,8 @@ export default function ComparePage() {
     }
   }
 
-  const mockData1 = useMemo(() => selected1 ? generateData(selected1, politicians.indexOf(selected1) * 100) : null, [selected1])
-  const mockData2 = useMemo(() => selected2 ? generateData(selected2, politicians.indexOf(selected2) * 100 + 50) : null, [selected2])
+  const mockData1 = useMemo(() => selected1 ? generateData(selected1, POLITICIANS.indexOf(selected1) * 100) : null, [selected1])
+  const mockData2 = useMemo(() => selected2 ? generateData(selected2, POLITICIANS.indexOf(selected2) * 100 + 50) : null, [selected2])
 
   const showComparison = selected1 && selected2 && mockData1 && mockData2
 
@@ -396,7 +396,7 @@ export default function ComparePage() {
               className="input-field"
             >
               <option value="">Choose a politician...</option>
-              {politicians.filter(p => p !== selected2).map(pol => (
+              {POLITICIANS.filter(p => p !== selected2).map(pol => (
                 <option key={pol} value={pol}>{pol}</option>
               ))}
             </select>
@@ -409,7 +409,7 @@ export default function ComparePage() {
               className="input-field"
             >
               <option value="">Choose a politician...</option>
-              {politicians.filter(p => p !== selected1).map(pol => (
+              {POLITICIANS.filter(p => p !== selected1).map(pol => (
                 <option key={pol} value={pol}>{pol}</option>
               ))}
             </select>

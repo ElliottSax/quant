@@ -249,7 +249,7 @@ function StockScreener({ onClose }: { onClose: () => void }) {
           {/* Demo Results */}
           <div className="glass rounded-xl p-4 border border-border/50">
             <p className="text-sm text-muted-foreground text-center py-8">
-              Configure filters above and click "Screen Stocks" to find matching opportunities
+              Configure filters above and click &quot;Screen Stocks&quot; to find matching opportunities
             </p>
           </div>
         </div>

@@ -300,7 +300,7 @@ export function AdvancedTimeSeriesChart({
     animation: true,
     animationDuration: 800,
     animationEasing: 'cubicOut',
-  }), [timestamps, values, forecastTimestamps, forecastValues, markLines, color, seriesName, yAxisLabel, showAreaGradient, showDataZoom, showForecast]);
+  }), [timestamps, values, forecastTimestamps, forecastValues, forecastData.length, markLines, color, seriesName, yAxisLabel, showAreaGradient, showDataZoom, showForecast]);
 
   // Event handlers
   const onEvents = useMemo(() => ({

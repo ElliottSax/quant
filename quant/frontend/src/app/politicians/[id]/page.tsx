@@ -103,7 +103,7 @@ export default function PoliticianDetailPage({
         <div className="text-6xl mb-4">🔍</div>
         <h2 className="text-2xl font-bold mb-2 text-white">Politician Not Found</h2>
         <p className="text-slate-400 mb-6">
-          The politician you're looking for doesn't exist or has insufficient data.
+          The politician you&apos;re looking for doesn&apos;t exist or has insufficient data.
         </p>
         <Link href="/politicians" className="btn-primary">
           ← Back to Politicians

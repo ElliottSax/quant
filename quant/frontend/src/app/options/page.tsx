@@ -571,7 +571,7 @@ export default function OptionsPage() {
       <div className="glass-strong rounded-xl p-8 text-center">
         <h3 className="text-2xl font-bold mb-2">Master Options Trading</h3>
         <p className="text-muted-foreground mb-6">
-          Download: "Complete Guide to Options Greeks & Strategies" + Excel Calculator
+          Download: &quot;Complete Guide to Options Greeks &amp; Strategies&quot; + Excel Calculator
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button className="btn-primary">

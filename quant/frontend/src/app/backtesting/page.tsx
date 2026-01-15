@@ -588,7 +588,7 @@ export default function BacktestingPage() {
           <div className="text-6xl mb-4">📊</div>
           <h3 className="text-2xl font-bold mb-2">Ready to Test Your Strategy</h3>
           <p className="text-muted-foreground">
-            Configure your parameters above and click "Run Backtest" to see comprehensive results
+            Configure your parameters above and click &quot;Run Backtest&quot; to see comprehensive results
           </p>
         </div>
       ) : metrics && backtestResult && (
