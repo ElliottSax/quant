@@ -39,6 +39,14 @@ try:
 except ImportError as e:
     logger.warning(f"Discoveries endpoints disabled: {e}")
 
+# Discovery integration router (pulls from discovery project)
+try:
+    from app.api.v1 import discovery
+    api_router.include_router(discovery.router, prefix="/discovery", tags=["discovery-integration"])
+    logger.info("Discovery integration endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Discovery integration disabled: {e}")
+
 # ML-dependent features (optional)
 try:
     from app.api.v1 import (
