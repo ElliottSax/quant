@@ -5,16 +5,18 @@
 
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import { AdvancedCandlestickChart } from '@/components/charts/AdvancedCandlestickChart'
 import { AdvancedHeatmap } from '@/components/charts/AdvancedHeatmap'
 import { AdvancedTimeSeriesChart } from '@/components/charts/AdvancedTimeSeriesChart'
 import { GaugeChart } from '@/components/charts/GaugeChart'
 import { RadarChart } from '@/components/charts/RadarChart'
+import { useHistoricalData, useMarketQuote, useMarketStatus } from '@/lib/hooks'
 
-// Demo data generators
-const generateOHLCData = (days: number = 120) => {
+// Fallback data generator for when API is unavailable
+const generateFallbackOHLCData = (days: number = 120) => {
   const data = []
   let price = 150
   const startDate = new Date()
@@ -137,8 +139,11 @@ const STOCK_PRESETS = [
 ]
 
 export default function ChartsPage() {
+  const searchParams = useSearchParams()
+  const symbolFromUrl = searchParams.get('symbol')
+
   const [selectedChart, setSelectedChart] = useState<ChartType>('candlestick')
-  const [ticker, setTicker] = useState('AAPL')
+  const [ticker, setTicker] = useState(symbolFromUrl?.toUpperCase() || 'AAPL')
   const [showIndicators, setShowIndicators] = useState({
     volume: true,
     sma: true,
@@ -146,8 +151,50 @@ export default function ChartsPage() {
     bollinger: false,
   })
 
-  // Generate data
-  const ohlcData = useMemo(() => generateOHLCData(150), [])
+  // Update ticker when URL param changes
+  useEffect(() => {
+    if (symbolFromUrl) {
+      setTicker(symbolFromUrl.toUpperCase())
+    }
+  }, [symbolFromUrl])
+
+  // Calculate date range for historical data (1 year)
+  const startDate = useMemo(() => {
+    const date = new Date()
+    date.setFullYear(date.getFullYear() - 1)
+    return date
+  }, [])
+
+  // Fetch real market data from API
+  const {
+    data: historicalData,
+    isLoading: isLoadingHistorical,
+    error: historicalError
+  } = useHistoricalData(ticker, startDate)
+
+  const {
+    data: quoteData,
+    isLoading: isLoadingQuote
+  } = useMarketQuote(ticker)
+
+  const { data: marketStatus } = useMarketStatus()
+
+  // Transform API data to chart format, fallback to generated data
+  const ohlcData = useMemo(() => {
+    if (historicalData?.bars && historicalData.bars.length > 0) {
+      return historicalData.bars.map(bar => ({
+        timestamp: bar.timestamp.split('T')[0],
+        open: bar.open,
+        high: bar.high,
+        low: bar.low,
+        close: bar.close,
+        volume: bar.volume,
+      }))
+    }
+    // Fallback to generated data if API fails or no data
+    return generateFallbackOHLCData(150)
+  }, [historicalData])
+
   const correlationData = useMemo(() => generateCorrelationData(), [])
   const volatilityData = useMemo(() => generateVolatilityData(), [])
   const drawdownData = useMemo(() => generateDrawdownData(), [])
@@ -167,13 +214,58 @@ export default function ChartsPage() {
     <div className="space-y-8">
       {/* Header */}
       <div className="animate-fade-in">
-        <h1 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">
-          Advanced Charts
-        </h1>
-        <p className="text-lg text-slate-400 max-w-2xl">
-          Professional-grade visualization tools powered by TradingView Lightweight Charts
-          and Apache ECharts. Interactive, responsive, and built for serious analysis.
-        </p>
+        <div className="flex items-start justify-between">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">
+              Advanced Charts
+            </h1>
+            <p className="text-lg text-slate-400 max-w-2xl">
+              Professional-grade visualization tools powered by TradingView Lightweight Charts
+              and Apache ECharts. Interactive, responsive, and built for serious analysis.
+            </p>
+          </div>
+
+          {/* Market Status & Real-time Quote */}
+          <div className="flex flex-col items-end gap-2">
+            {marketStatus && (
+              <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg ${
+                marketStatus.is_open
+                  ? 'bg-emerald-500/10 border border-emerald-500/30'
+                  : 'bg-slate-700/50 border border-slate-600/30'
+              }`}>
+                <span className={`w-2 h-2 rounded-full ${
+                  marketStatus.is_open ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'
+                }`} />
+                <span className={`text-xs font-medium ${
+                  marketStatus.is_open ? 'text-emerald-400' : 'text-slate-400'
+                }`}>
+                  {marketStatus.is_open ? 'MARKET OPEN' : 'MARKET CLOSED'}
+                </span>
+              </div>
+            )}
+
+            {quoteData && !isLoadingQuote && (
+              <div className="text-right">
+                <div className="text-2xl font-bold text-white font-mono">
+                  ${quoteData.price?.toFixed(2) || '---'}
+                </div>
+                <div className={`text-sm font-medium ${
+                  (quoteData.change || 0) >= 0 ? 'text-emerald-400' : 'text-red-400'
+                }`}>
+                  {(quoteData.change || 0) >= 0 ? '+' : ''}
+                  {quoteData.change?.toFixed(2)} ({quoteData.change_percent?.toFixed(2)}%)
+                </div>
+              </div>
+            )}
+
+            {isLoadingHistorical && (
+              <div className="flex items-center gap-2 text-xs text-slate-400">
+                <div className="w-3 h-3 border-2 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin" />
+                Loading data...
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Control Panel */}
@@ -365,25 +457,49 @@ export default function ChartsPage() {
 
       {/* Stats Bar */}
       {selectedChart === 'candlestick' && ohlcData.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 animate-fade-in" style={{ animationDelay: '200ms' }}>
-          {[
-            { label: 'Open', value: `$${ohlcData[ohlcData.length - 1].open.toFixed(2)}`, color: 'text-slate-300' },
-            { label: 'High', value: `$${ohlcData[ohlcData.length - 1].high.toFixed(2)}`, color: 'text-emerald-400' },
-            { label: 'Low', value: `$${ohlcData[ohlcData.length - 1].low.toFixed(2)}`, color: 'text-red-400' },
-            { label: 'Close', value: `$${ohlcData[ohlcData.length - 1].close.toFixed(2)}`, color: 'text-white' },
-            { label: 'Volume', value: (ohlcData[ohlcData.length - 1].volume / 1000000).toFixed(2) + 'M', color: 'text-cyan-400' },
-            {
-              label: 'Change',
-              value: `${((ohlcData[ohlcData.length - 1].close - ohlcData[0].close) / ohlcData[0].close * 100).toFixed(2)}%`,
-              color: ohlcData[ohlcData.length - 1].close >= ohlcData[0].close ? 'text-emerald-400' : 'text-red-400'
-            },
-          ].map((stat) => (
-            <div key={stat.label} className="glass-card p-4 text-center">
-              <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">{stat.label}</p>
-              <p className={`text-lg font-bold ${stat.color}`}>{stat.value}</p>
+        <>
+          {/* Data source indicator */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className={`w-2 h-2 rounded-full ${
+                historicalData?.bars && historicalData.bars.length > 0
+                  ? 'bg-emerald-400'
+                  : 'bg-amber-400'
+              }`} />
+              <span className="text-xs text-slate-500">
+                {historicalData?.bars && historicalData.bars.length > 0
+                  ? `Live data: ${historicalData.count} bars from Yahoo Finance`
+                  : 'Demo data (backend not connected)'
+                }
+              </span>
             </div>
-          ))}
-        </div>
+            {historicalError && (
+              <span className="text-xs text-amber-400">
+                Using fallback data
+              </span>
+            )}
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 animate-fade-in" style={{ animationDelay: '200ms' }}>
+            {[
+              { label: 'Open', value: `$${ohlcData[ohlcData.length - 1].open.toFixed(2)}`, color: 'text-slate-300' },
+              { label: 'High', value: `$${ohlcData[ohlcData.length - 1].high.toFixed(2)}`, color: 'text-emerald-400' },
+              { label: 'Low', value: `$${ohlcData[ohlcData.length - 1].low.toFixed(2)}`, color: 'text-red-400' },
+              { label: 'Close', value: `$${ohlcData[ohlcData.length - 1].close.toFixed(2)}`, color: 'text-white' },
+              { label: 'Volume', value: (ohlcData[ohlcData.length - 1].volume / 1000000).toFixed(2) + 'M', color: 'text-cyan-400' },
+              {
+                label: 'Change',
+                value: `${((ohlcData[ohlcData.length - 1].close - ohlcData[0].close) / ohlcData[0].close * 100).toFixed(2)}%`,
+                color: ohlcData[ohlcData.length - 1].close >= ohlcData[0].close ? 'text-emerald-400' : 'text-red-400'
+              },
+            ].map((stat) => (
+              <div key={stat.label} className="glass-card p-4 text-center">
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">{stat.label}</p>
+                <p className={`text-lg font-bold ${stat.color}`}>{stat.value}</p>
+              </div>
+            ))}
+          </div>
+        </>
       )}
 
       {/* Pro Features CTA */}

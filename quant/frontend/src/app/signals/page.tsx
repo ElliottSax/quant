@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { PriceChart } from '@/components/charts/PriceChart';
 
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false })
@@ -37,8 +38,9 @@ export default function SignalsPage() {
   const [watchlist] = useState(['AAPL', 'GOOGL', 'MSFT', 'TSLA', 'AMZN', 'NVDA', 'META']);
   const [priceData, setPriceData] = useState<PriceData[]>([]);
   const [activeTab, setActiveTab] = useState<'signals' | 'analysis'>('signals');
+  const [initialized, setInitialized] = useState(false);
 
-  const generateSignal = async (symbol: string) => {
+  const generateSignal = useCallback(async (symbol: string, addToList = true) => {
     setLoading(true);
     try {
       // Generate mock price data for demo
@@ -97,13 +99,44 @@ export default function SignalsPage() {
         history: Array.from({ length: 20 }, () => Math.random() * 100),
       };
 
-      setSignals(prev => [mockSignal, ...prev].slice(0, 10));
+      if (addToList) {
+        setSignals(prev => [mockSignal, ...prev].slice(0, 10));
+      }
+      return mockSignal;
     } catch (error) {
       console.error('Error generating signal:', error);
+      return null;
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  // Auto-load signals on page mount
+  useEffect(() => {
+    if (!initialized) {
+      setInitialized(true);
+      // Generate initial signals for all watchlist stocks
+      const generateInitialSignals = async () => {
+        setLoading(true);
+        const initialSignals: TradingSignal[] = [];
+
+        for (const symbol of watchlist) {
+          const signal = await generateSignal(symbol, false);
+          if (signal) {
+            initialSignals.push(signal);
+          }
+        }
+
+        setSignals(initialSignals);
+        setLoading(false);
+
+        // Also generate price data for the selected symbol
+        generateSignal(selectedSymbol, false);
+      };
+
+      generateInitialSignals();
+    }
+  }, [initialized, watchlist, generateSignal, selectedSymbol]);
 
   const getSignalReasoning = (signalType: string, symbol: string) => {
     const reasons: Record<string, string[]> = {

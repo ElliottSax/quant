@@ -168,3 +168,7 @@ async def invalidate_politician_cache(politician_id: str):
         await cache_manager.delete_pattern(pattern)
 
     logger.info(f"Invalidated cache for politician {politician_id}")
+
+
+# Alias for backward compatibility with services that import cache_result
+cache_result = cached

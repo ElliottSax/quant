@@ -1,6 +1,6 @@
 /**
  * MarketTicker Component
- * Real-time scrolling market data ticker for the navbar
+ * BigCharts-style real-time scrolling market data ticker
  */
 
 'use client'
@@ -12,18 +12,25 @@ interface TickerItem {
   price: number
   change: number
   changePercent: number
+  type?: 'index' | 'stock' | 'futures'
 }
 
 // Simulated real-time market data
 const generateMarketData = (): TickerItem[] => [
-  { symbol: 'SPY', price: 478.52, change: 2.34, changePercent: 0.49 },
-  { symbol: 'QQQ', price: 412.18, change: -1.23, changePercent: -0.30 },
-  { symbol: 'AAPL', price: 189.45, change: 1.89, changePercent: 1.01 },
-  { symbol: 'MSFT', price: 378.91, change: 3.45, changePercent: 0.92 },
-  { symbol: 'NVDA', price: 495.22, change: -4.56, changePercent: -0.91 },
-  { symbol: 'GOOGL', price: 141.28, change: 0.78, changePercent: 0.56 },
-  { symbol: 'TSLA', price: 248.67, change: -2.34, changePercent: -0.93 },
-  { symbol: 'META', price: 358.91, change: 4.12, changePercent: 1.16 },
+  { symbol: 'DJIA', price: 38892.45, change: 156.78, changePercent: 0.40, type: 'index' },
+  { symbol: 'S&P 500', price: 5021.84, change: 23.45, changePercent: 0.47, type: 'index' },
+  { symbol: 'NASDAQ', price: 15927.90, change: -45.23, changePercent: -0.28, type: 'index' },
+  { symbol: 'SPY', price: 502.18, change: 2.34, changePercent: 0.47, type: 'stock' },
+  { symbol: 'QQQ', price: 437.52, change: -1.23, changePercent: -0.28, type: 'stock' },
+  { symbol: 'AAPL', price: 189.45, change: 1.89, changePercent: 1.01, type: 'stock' },
+  { symbol: 'MSFT', price: 412.91, change: 3.45, changePercent: 0.84, type: 'stock' },
+  { symbol: 'NVDA', price: 878.35, change: 12.56, changePercent: 1.45, type: 'stock' },
+  { symbol: 'GOOGL', price: 141.28, change: 0.78, changePercent: 0.56, type: 'stock' },
+  { symbol: 'TSLA', price: 185.67, change: -4.34, changePercent: -2.28, type: 'stock' },
+  { symbol: 'META', price: 485.12, change: 8.92, changePercent: 1.87, type: 'stock' },
+  { symbol: 'ES=F', price: 5025.50, change: 18.25, changePercent: 0.36, type: 'futures' },
+  { symbol: 'NQ=F', price: 17845.75, change: -32.50, changePercent: -0.18, type: 'futures' },
+  { symbol: 'VIX', price: 14.23, change: -0.45, changePercent: -3.06, type: 'index' },
 ]
 
 export function MarketTicker() {
@@ -35,7 +42,8 @@ export function MarketTicker() {
   useEffect(() => {
     const interval = setInterval(() => {
       setData(prev => prev.map(item => {
-        const priceChange = (Math.random() - 0.5) * 0.5
+        const volatility = item.type === 'index' ? 0.3 : item.type === 'futures' ? 0.5 : 0.4
+        const priceChange = (Math.random() - 0.5) * volatility * (item.price / 100)
         const newPrice = Math.max(0.01, item.price + priceChange)
         const newChange = item.change + priceChange
         const newChangePercent = (newChange / (newPrice - newChange)) * 100
@@ -47,51 +55,75 @@ export function MarketTicker() {
           changePercent: parseFloat(newChangePercent.toFixed(2)),
         }
       }))
-    }, 2000)
+    }, 1500)
 
     return () => clearInterval(interval)
   }, [])
 
+  const formatPrice = (price: number, symbol: string) => {
+    if (symbol.includes('=F') || ['DJIA', 'S&P 500', 'NASDAQ'].includes(symbol)) {
+      return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    }
+    return price.toFixed(2)
+  }
+
   return (
     <div
-      className="relative overflow-hidden bg-slate-900/50 border-b border-slate-800/50"
+      className="relative overflow-hidden bg-[hsl(220,60%,3%)] border-b border-[hsl(215,40%,12%)]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div
-        ref={tickerRef}
-        className={`flex items-center gap-8 py-1.5 px-4 ${isPaused ? '' : 'animate-ticker'}`}
-        style={{ width: 'max-content' }}
-      >
-        {/* Duplicate items for seamless loop */}
-        {[...data, ...data].map((item, idx) => (
+      <div className="flex items-center">
+        {/* Static market label */}
+        <div className="flex-shrink-0 px-3 py-1.5 bg-gradient-to-r from-[hsl(45,96%,58%)] to-[hsl(38,92%,50%)] text-[hsl(220,60%,8%)] text-xs font-bold uppercase tracking-wider">
+          Markets
+        </div>
+
+        {/* Scrolling ticker */}
+        <div className="flex-1 overflow-hidden">
           <div
-            key={`${item.symbol}-${idx}`}
-            className="flex items-center gap-2 text-xs font-medium whitespace-nowrap"
+            ref={tickerRef}
+            className={`flex items-center gap-0 ${isPaused ? '' : 'animate-ticker'}`}
+            style={{ width: 'max-content' }}
           >
-            <span className="text-slate-400 font-mono">{item.symbol}</span>
-            <span className="text-white font-semibold">${item.price.toFixed(2)}</span>
-            <span className={`flex items-center gap-0.5 ${
-              item.change >= 0 ? 'text-emerald-400' : 'text-red-400'
-            }`}>
-              {item.change >= 0 ? (
-                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                </svg>
-              ) : (
-                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 012 0v7.586l2.293-2.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              )}
-              <span>{Math.abs(item.changePercent).toFixed(2)}%</span>
-            </span>
+            {/* Duplicate items for seamless loop */}
+            {[...data, ...data].map((item, idx) => (
+              <div
+                key={`${item.symbol}-${idx}`}
+                className="flex items-center border-r border-[hsl(215,40%,12%)] px-4 py-1.5"
+              >
+                <span className={`text-xs font-bold mr-2 ${
+                  item.type === 'index' ? 'text-[hsl(45,96%,58%)]' :
+                  item.type === 'futures' ? 'text-[hsl(210,100%,56%)]' :
+                  'text-[hsl(210,20%,70%)]'
+                }`}>
+                  {item.symbol}
+                </span>
+                <span className="text-xs font-mono text-white mr-2">
+                  {formatPrice(item.price, item.symbol)}
+                </span>
+                <span className={`text-xs font-mono font-semibold flex items-center gap-0.5 ${
+                  item.change >= 0 ? 'text-[hsl(142,71%,55%)]' : 'text-[hsl(0,72%,55%)]'
+                }`}>
+                  {item.change >= 0 ? '+' : ''}{item.change.toFixed(2)}
+                  <span className="text-[10px] ml-1">
+                    ({item.change >= 0 ? '+' : ''}{item.changePercent.toFixed(2)}%)
+                  </span>
+                </span>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        {/* Time display */}
+        <div className="flex-shrink-0 px-3 py-1.5 text-[10px] font-mono text-[hsl(215,20%,50%)] border-l border-[hsl(215,40%,12%)] bg-[hsl(220,60%,4%)]">
+          <span className="text-[hsl(142,71%,55%)]">●</span> LIVE
+        </div>
       </div>
 
       {/* Gradient fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-slate-900/90 to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-900/90 to-transparent pointer-events-none" />
+      <div className="absolute left-[70px] top-0 bottom-0 w-6 bg-gradient-to-r from-[hsl(220,60%,3%)] to-transparent pointer-events-none" />
+      <div className="absolute right-[60px] top-0 bottom-0 w-6 bg-gradient-to-l from-[hsl(220,60%,3%)] to-transparent pointer-events-none" />
     </div>
   )
 }

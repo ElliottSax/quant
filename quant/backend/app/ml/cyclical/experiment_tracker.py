@@ -12,6 +12,7 @@ Key Features:
 
 Author: Claude
 """
+from __future__ import annotations
 
 try:
     import mlflow

@@ -7,8 +7,8 @@
 
 import { useMemo, useState } from 'react'
 import { NetworkGraph } from '@/components/charts/NetworkGraph'
-import { usePoliticians, useCorrelationAnalysis, useNetworkAnalysis } from '@/lib/hooks'
 import Link from 'next/link'
+import { usePoliticians, useNetworkAnalysis } from '@/lib/hooks'
 
 // Generate demo network data based on real politicians
 function generateNetworkFromPoliticians(
@@ -54,42 +54,20 @@ function generateNetworkFromPoliticians(
 }
 
 export default function NetworkPage() {
-  const { data: politicians, isLoading: politiciansLoading } = usePoliticians(100)
-  const { data: networkAnalysis, isLoading: networkLoading } = useNetworkAnalysis({
-    min_trades: 30,
-    min_correlation: 0.3,
-  })
+  // Fetch real data from API
+  const { data: politicians, isLoading: politiciansLoading, error: politiciansError } = usePoliticians()
+  const { data: networkAnalysis, isLoading: networkLoading, error: networkError } = useNetworkAnalysis()
+
+  const isLoading = politiciansLoading || networkLoading
+  const hasError = politiciansError || networkError
 
   const [selectedPolitician, setSelectedPolitician] = useState<string | null>(null)
   const [viewMode, setViewMode] = useState<'full' | 'clusters' | 'central'>('full')
 
-  // Generate network data
+  // Generate network data from politicians
   const networkData = useMemo(() => {
     if (!politicians || politicians.length === 0) {
-      // Demo data if no API data
-      const demoNames = [
-        { id: '1', name: 'Nancy Pelosi', party: 'Democratic', trade_count: 245 },
-        { id: '2', name: 'Mitch McConnell', party: 'Republican', trade_count: 189 },
-        { id: '3', name: 'Chuck Schumer', party: 'Democratic', trade_count: 156 },
-        { id: '4', name: 'Kevin McCarthy', party: 'Republican', trade_count: 178 },
-        { id: '5', name: 'Alexandria Ocasio-Cortez', party: 'Democratic', trade_count: 87 },
-        { id: '6', name: 'Ted Cruz', party: 'Republican', trade_count: 134 },
-        { id: '7', name: 'Elizabeth Warren', party: 'Democratic', trade_count: 167 },
-        { id: '8', name: 'Marco Rubio', party: 'Republican', trade_count: 145 },
-        { id: '9', name: 'Bernie Sanders', party: 'Independent', trade_count: 78 },
-        { id: '10', name: 'Mitt Romney', party: 'Republican', trade_count: 198 },
-        { id: '11', name: 'Josh Hawley', party: 'Republican', trade_count: 112 },
-        { id: '12', name: 'Cory Booker', party: 'Democratic', trade_count: 123 },
-        { id: '13', name: 'Rand Paul', party: 'Republican', trade_count: 156 },
-        { id: '14', name: 'Amy Klobuchar', party: 'Democratic', trade_count: 134 },
-        { id: '15', name: 'Lindsey Graham', party: 'Republican', trade_count: 178 },
-        { id: '16', name: 'Kirsten Gillibrand', party: 'Democratic', trade_count: 98 },
-        { id: '17', name: 'Tom Cotton', party: 'Republican', trade_count: 145 },
-        { id: '18', name: 'Chris Murphy', party: 'Democratic', trade_count: 87 },
-        { id: '19', name: 'John Thune', party: 'Republican', trade_count: 167 },
-        { id: '20', name: 'Tammy Duckworth', party: 'Democratic', trade_count: 76 },
-      ]
-      return generateNetworkFromPoliticians(demoNames)
+      return { nodes: [], links: [] }
     }
     return generateNetworkFromPoliticians(politicians)
   }, [politicians])
@@ -97,8 +75,6 @@ export default function NetworkPage() {
   const handleNodeClick = (node: any) => {
     setSelectedPolitician(node.id)
   }
-
-  const isLoading = politiciansLoading || networkLoading
 
   if (isLoading) {
     return (
@@ -113,6 +89,23 @@ export default function NetworkPage() {
           </p>
           <p className="mt-2 text-sm text-slate-500">
             Analyzing trading correlations
+          </p>
+        </div>
+      </div>
+    )
+  }
+
+  if (hasError) {
+    return (
+      <div className="flex items-center justify-center min-h-[600px]">
+        <div className="text-center glass-card p-10">
+          <div className="text-5xl mb-4">!</div>
+          <h2 className="text-xl font-bold text-red-400 mb-2">Connection Error</h2>
+          <p className="text-slate-400 mb-4">
+            {politiciansError?.message || networkError?.message || 'Failed to load network data'}
+          </p>
+          <p className="text-sm text-slate-500">
+            Ensure the backend is running at localhost:8000
           </p>
         </div>
       </div>

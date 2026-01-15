@@ -17,7 +17,7 @@ logger = get_logger(__name__)
 
 @router.get("/leaderboard")
 async def get_leaderboard(
-    period: str = Query("30d", regex="^(7d|30d|90d|1y)$"),
+    period: str = Query("30d", pattern="^(7d|30d|90d|1y)$"),
     limit: int = Query(10, ge=1, le=100),
     db: AsyncSession = Depends(get_db),
 ) -> dict:
@@ -110,7 +110,7 @@ async def get_leaderboard(
 
 @router.get("/sectors")
 async def get_sector_stats(
-    period: str = Query("30d", regex="^(7d|30d|90d|1y)$"),
+    period: str = Query("30d", pattern="^(7d|30d|90d|1y)$"),
     db: AsyncSession = Depends(get_db),
 ) -> dict:
     """

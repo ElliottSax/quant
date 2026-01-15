@@ -4,14 +4,43 @@ import uuid
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import String, DateTime, func, CheckConstraint
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import String, DateTime, func, CheckConstraint, TypeDecorator, CHAR
+from sqlalchemy.dialects.postgresql import UUID as PG_UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
+from app.core.config import settings
 
 if TYPE_CHECKING:
     from app.models.trade import Trade
+
+
+# Database-agnostic UUID type
+class UUID(TypeDecorator):
+    """Platform-independent UUID type. Uses PostgreSQL's UUID type or CHAR(36) for SQLite."""
+    impl = CHAR
+    cache_ok = True
+
+    def load_dialect_impl(self, dialect):
+        if dialect.name == 'postgresql':
+            return dialect.type_descriptor(PG_UUID(as_uuid=True))
+        else:
+            return dialect.type_descriptor(CHAR(36))
+
+    def process_bind_param(self, value, dialect):
+        if value is None:
+            return value
+        elif dialect.name == 'postgresql':
+            return value
+        else:
+            return str(value)
+
+    def process_result_value(self, value, dialect):
+        if value is None:
+            return value
+        if isinstance(value, uuid.UUID):
+            return value
+        return uuid.UUID(value)
 
 
 class Politician(Base):
@@ -20,7 +49,7 @@ class Politician(Base):
     __tablename__ = "politicians"
 
     id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
+        UUID(),
         primary_key=True,
         default=uuid.uuid4,
     )

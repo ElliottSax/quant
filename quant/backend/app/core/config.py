@@ -30,14 +30,15 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
     # Database
-    DATABASE_URL: str
+    DATABASE_URL: str = "sqlite+aiosqlite:///./quant_dev.db"
     POSTGRES_USER: str = "quant_user"
     POSTGRES_PASSWORD: str = "quant_password"
     POSTGRES_DB: str = "quant_db"
 
-    # Redis
+    # Redis (optional for development)
     REDIS_URL: str = "redis://localhost:6379/0"
     REDIS_ML_URL: str = "redis://localhost:6380/0"  # For ML caching
+    REDIS_ENABLED: bool = True  # Set to False if Redis not available
 
     # Celery
     CELERY_BROKER_URL: str = "redis://localhost:6379/0"
@@ -48,9 +49,11 @@ class Settings(BaseSettings):
     SUPABASE_ANON_KEY: str = ""
     SUPABASE_SERVICE_KEY: str = ""
 
-    # External APIs
+    # External Market Data APIs
     POLYGON_API_KEY: str = ""
     ALPHA_VANTAGE_API_KEY: str = ""
+    FINNHUB_API_KEY: str = ""
+    IEX_API_KEY: str = ""
 
     # Monitoring
     SENTRY_DSN: str = ""
@@ -117,6 +120,9 @@ class Settings(BaseSettings):
     @property
     def async_database_url(self) -> str:
         """Get async database URL."""
+        if self.DATABASE_URL.startswith("sqlite"):
+            # SQLite URLs are already async-compatible with aiosqlite
+            return self.DATABASE_URL
         return self.DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://")
 
     @property

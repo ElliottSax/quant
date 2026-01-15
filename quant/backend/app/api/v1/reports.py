@@ -164,7 +164,7 @@ async def get_report_schedule(
 @router.post("/schedule")
 async def create_scheduled_report(
     report_type: ReportType,
-    frequency: str = Query(..., regex="^(daily|weekly|monthly)$"),
+    frequency: str = Query(..., pattern="^(daily|weekly|monthly)$"),
     delivery_method: str = Query(default="email"),
     current_user: User = Depends(get_current_user)
 ):
