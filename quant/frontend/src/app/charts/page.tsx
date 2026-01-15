@@ -5,7 +5,7 @@
 
 'use client'
 
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import { AdvancedCandlestickChart } from '@/components/charts/AdvancedCandlestickChart'
@@ -138,7 +138,7 @@ const STOCK_PRESETS = [
   { symbol: 'AMZN', name: 'Amazon.com Inc.' },
 ]
 
-export default function ChartsPage() {
+function ChartsContent() {
   const searchParams = useSearchParams()
   const symbolFromUrl = searchParams.get('symbol')
 
@@ -521,5 +521,24 @@ export default function ChartsPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+function ChartsLoadingFallback() {
+  return (
+    <div className="space-y-8 animate-pulse">
+      <div className="h-12 w-64 bg-slate-800/50 rounded-lg" />
+      <div className="h-6 w-96 bg-slate-800/30 rounded" />
+      <div className="glass-card p-6 h-32" />
+      <div className="glass-card h-[600px]" />
+    </div>
+  )
+}
+
+export default function ChartsPage() {
+  return (
+    <Suspense fallback={<ChartsLoadingFallback />}>
+      <ChartsContent />
+    </Suspense>
   )
 }
