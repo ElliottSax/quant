@@ -1,6 +1,6 @@
 """Security utilities for authentication and authorization."""
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any, TYPE_CHECKING
 
 from jose import JWTError, jwt
@@ -35,9 +35,9 @@ def create_access_token(subject: str, expires_delta: timedelta | None = None) ->
         Encoded JWT token
     """
     if expires_delta:
-        expire = datetime.utcnow() + expires_delta
+        expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(
+        expire = datetime.now(timezone.utc) + timedelta(
             minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
         )
 
@@ -57,7 +57,7 @@ def create_refresh_token(subject: str, version: int = 0) -> str:
     Returns:
         Encoded JWT refresh token
     """
-    expire = datetime.utcnow() + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
+    expire = datetime.now(timezone.utc) + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
     to_encode = {
         "exp": expire,
         "sub": str(subject),
@@ -104,7 +104,7 @@ def verify_token(
             return None, None
 
         # Check if token is expired
-        if datetime.fromtimestamp(token_exp) < datetime.utcnow():
+        if datetime.fromtimestamp(token_exp, tz=timezone.utc) < datetime.now(timezone.utc):
             logger.warning("Token has expired")
             return None, None
 
@@ -142,6 +142,13 @@ def get_password_hash(password: str) -> str:
     return pwd_context.hash(password)
 
 
+def _ensure_utc(dt: datetime) -> datetime:
+    """Ensure datetime is timezone-aware UTC."""
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
 def is_account_locked(user: "User") -> bool:
     """
     Check if user account is locked.
@@ -155,11 +162,16 @@ def is_account_locked(user: "User") -> bool:
     if user.locked_until is None:
         return False
 
-    if datetime.utcnow() >= user.locked_until:
-        # Lockout expired
+    try:
+        locked_until_utc = _ensure_utc(user.locked_until)
+        if datetime.now(timezone.utc) >= locked_until_utc:
+            # Lockout expired
+            return False
+        return True
+    except (AttributeError, TypeError):
+        # Handle edge cases where locked_until is not a proper datetime
+        logger.warning(f"Invalid locked_until value for user: {type(user.locked_until)}")
         return False
-
-    return True
 
 
 def get_lockout_time_remaining(user: "User") -> int:
@@ -175,8 +187,12 @@ def get_lockout_time_remaining(user: "User") -> int:
     if user.locked_until is None:
         return 0
 
-    remaining = (user.locked_until - datetime.utcnow()).total_seconds()
-    return max(0, int(remaining))
+    try:
+        locked_until_utc = _ensure_utc(user.locked_until)
+        remaining = (locked_until_utc - datetime.now(timezone.utc)).total_seconds()
+        return max(0, int(remaining))
+    except (AttributeError, TypeError):
+        return 0
 
 
 async def handle_failed_login(user: "User", db: "AsyncSession") -> None:
@@ -191,7 +207,7 @@ async def handle_failed_login(user: "User", db: "AsyncSession") -> None:
 
     if user.failed_login_attempts >= MAX_FAILED_ATTEMPTS:
         # Lock the account
-        user.locked_until = datetime.utcnow() + timedelta(minutes=LOCKOUT_DURATION_MINUTES)
+        user.locked_until = datetime.now(timezone.utc) + timedelta(minutes=LOCKOUT_DURATION_MINUTES)
         logger.warning(
             f"Account locked due to {user.failed_login_attempts} failed attempts: {user.username}"
         )

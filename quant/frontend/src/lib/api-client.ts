@@ -27,6 +27,7 @@ import {
 } from './types'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'
+const DEFAULT_TIMEOUT_MS = 30000 // 30 second default timeout
 
 class APIError extends Error {
   constructor(
@@ -39,17 +40,50 @@ class APIError extends Error {
   }
 }
 
-async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
+/**
+ * Validate stock ticker symbol format
+ */
+function validateSymbol(symbol: string): string {
+  const trimmed = symbol.trim().toUpperCase()
+  // Allow letters, numbers, dots, and hyphens (for class shares like BRK.A)
+  if (!/^[A-Z0-9.-]{1,10}$/.test(trimmed)) {
+    throw new APIError(`Invalid ticker symbol: ${symbol}`, 400)
+  }
+  return trimmed
+}
+
+/**
+ * Create an AbortController with timeout
+ */
+function createTimeoutController(timeoutMs: number = DEFAULT_TIMEOUT_MS): {
+  controller: AbortController
+  timeoutId: NodeJS.Timeout
+} {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs)
+  return { controller, timeoutId }
+}
+
+async function fetchAPI<T>(
+  endpoint: string,
+  options?: RequestInit & { timeout?: number }
+): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`
+  const { timeout = DEFAULT_TIMEOUT_MS, ...fetchOptions } = options || {}
+
+  const { controller, timeoutId } = createTimeoutController(timeout)
 
   try {
     const response = await fetch(url, {
-      ...options,
+      ...fetchOptions,
+      signal: controller.signal,
       headers: {
         'Content-Type': 'application/json',
-        ...options?.headers,
+        ...fetchOptions?.headers,
       },
     })
+
+    clearTimeout(timeoutId)
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}))
@@ -62,7 +96,15 @@ async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> 
 
     return await response.json()
   } catch (error) {
+    clearTimeout(timeoutId)
+
     if (error instanceof APIError) throw error
+
+    // Handle abort/timeout
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new APIError(`Request timeout after ${timeout}ms`, 408)
+    }
+
     throw new APIError(
       error instanceof Error ? error.message : 'Network error',
       0
@@ -176,11 +218,14 @@ export const api = {
 
   // Market Data (public endpoints - no auth required)
   marketData: {
-    quote: (symbol: string) =>
-      fetchAPI<MarketQuote>(`/market-data/public/quote/${symbol}`),
+    quote: (symbol: string) => {
+      const validSymbol = validateSymbol(symbol)
+      return fetchAPI<MarketQuote>(`/market-data/public/quote/${validSymbol}`)
+    },
 
     quotes: (symbols: string[]) => {
-      const query = symbols.map(s => `symbols=${s}`).join('&')
+      const validSymbols = symbols.map(validateSymbol)
+      const query = validSymbols.map(s => `symbols=${s}`).join('&')
       return fetchAPI<{ quotes: Record<string, MarketQuote>; count: number; timestamp: string }>(
         `/market-data/public/quotes?${query}`
       )
@@ -192,18 +237,21 @@ export const api = {
       endDate?: Date,
       interval: string = '1d'
     ) => {
+      const validSymbol = validateSymbol(symbol)
       const query = new URLSearchParams()
       query.append('start_date', startDate.toISOString())
       if (endDate) query.append('end_date', endDate.toISOString())
       query.append('interval', interval)
 
       return fetchAPI<HistoricalDataResponse>(
-        `/market-data/public/historical/${symbol}?${query.toString()}`
+        `/market-data/public/historical/${validSymbol}?${query.toString()}`
       )
     },
 
-    company: (symbol: string) =>
-      fetchAPI<CompanyInfo>(`/market-data/public/company/${symbol}`),
+    company: (symbol: string) => {
+      const validSymbol = validateSymbol(symbol)
+      return fetchAPI<CompanyInfo>(`/market-data/public/company/${validSymbol}`)
+    },
 
     marketStatus: () =>
       fetchAPI<MarketStatus>('/market-data/public/market-status'),
@@ -222,8 +270,10 @@ export const api = {
       return fetchAPI<StockPrediction[]>(`/discovery/predictions?${query.toString()}`)
     },
 
-    prediction: (ticker: string) =>
-      fetchAPI<StockPrediction>(`/discovery/predictions/${ticker}`),
+    prediction: (ticker: string) => {
+      const validTicker = validateSymbol(ticker)
+      return fetchAPI<StockPrediction>(`/discovery/predictions/${validTicker}`)
+    },
 
     multiHorizon: () =>
       fetchAPI<{ data: Record<string, any> }>('/discovery/predictions/multi-horizon'),
@@ -247,4 +297,4 @@ export const api = {
   },
 }
 
-export { APIError }
+export { APIError, validateSymbol }

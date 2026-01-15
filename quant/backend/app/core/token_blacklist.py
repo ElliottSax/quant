@@ -4,7 +4,7 @@ Token blacklist for invalidating JWT tokens on logout/password change.
 Uses Redis to store blacklisted tokens until they expire naturally.
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 import redis.asyncio as redis
 
@@ -76,8 +76,8 @@ class TokenBlacklist:
                 logger.warning("Token has no expiration, cannot blacklist")
                 return False
 
-            exp_datetime = datetime.fromtimestamp(exp_timestamp)
-            now = datetime.utcnow()
+            exp_datetime = datetime.fromtimestamp(exp_timestamp, tz=timezone.utc)
+            now = datetime.now(timezone.utc)
 
             # Only blacklist if not already expired
             if exp_datetime <= now:

@@ -1,6 +1,6 @@
 """Authentication API endpoints."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -219,7 +219,7 @@ async def login(
         raise UnauthorizedException("Inactive user")
 
     # Update last login and reset failed attempts
-    user.last_login = datetime.utcnow()
+    user.last_login = datetime.now(timezone.utc)
     user.failed_login_attempts = 0
     user.locked_until = None
     await db.commit()
@@ -254,7 +254,14 @@ async def refresh_token(
     Raises:
         UnauthorizedException: If refresh token is invalid
     """
+    from app.core.token_blacklist import token_blacklist
+
     logger.debug("Token refresh attempt")
+
+    # Check if token is blacklisted before processing
+    if await token_blacklist.is_blacklisted(refresh_data.refresh_token):
+        logger.warning("Attempted refresh with blacklisted token")
+        raise UnauthorizedException("Token has been revoked")
 
     # Verify refresh token
     user_id, token_version = verify_token(refresh_data.refresh_token, token_type="refresh")
@@ -411,7 +418,7 @@ async def change_password(
 
     # Update password
     current_user.hashed_password = get_password_hash(password_data.new_password)
-    current_user.updated_at = datetime.utcnow()
+    current_user.updated_at = datetime.now(timezone.utc)
     await db.commit()
 
     # Invalidate all user sessions

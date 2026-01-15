@@ -67,6 +67,16 @@ class Settings(BaseSettings):
         "http://127.0.0.1:8000",
     ]
 
+    # Trusted Proxies (for X-Forwarded-For header validation)
+    # Add your load balancer/proxy IPs here in production
+    TRUSTED_PROXIES: list[str] = [
+        "127.0.0.1",
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "192.168.0.0/16",
+    ]
+    TRUST_PROXY_HEADERS: bool = False  # Set to True only behind trusted proxy
+
     @field_validator("SECRET_KEY")
     @classmethod
     def validate_secret_key(cls, v: str, info) -> str:
@@ -146,7 +156,7 @@ class Settings(BaseSettings):
             "port": parsed.port or 6380,
             "db": int(parsed.path.lstrip("/")) if parsed.path else 0,
             "password": parsed.password,
-            "decode_responses": False  # ML cache uses pickle
+            "decode_responses": True  # ML cache uses JSON serialization
         }
 
 

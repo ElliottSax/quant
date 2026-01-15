@@ -10,18 +10,40 @@ Features:
 """
 
 from typing import Optional, Dict, Any
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from fastapi import Request, HTTPException, status
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 import redis.asyncio as redis
 import hashlib
 import json
+import ipaddress
 
 from app.core.config import settings
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
+
+
+def is_trusted_proxy(ip: str) -> bool:
+    """Check if IP is in the trusted proxy list."""
+    if not settings.TRUST_PROXY_HEADERS:
+        return False
+
+    try:
+        client_ip = ipaddress.ip_address(ip)
+        for trusted in settings.TRUSTED_PROXIES:
+            if "/" in trusted:
+                # CIDR notation
+                if client_ip in ipaddress.ip_network(trusted, strict=False):
+                    return True
+            else:
+                if client_ip == ipaddress.ip_address(trusted):
+                    return True
+    except ValueError:
+        return False
+
+    return False
 
 
 class RateLimitTier:
@@ -30,7 +52,7 @@ class RateLimitTier:
     BASIC = "basic"
     PREMIUM = "premium"
     UNLIMITED = "unlimited"
-    
+
     # Limits per tier (requests per minute)
     LIMITS = {
         FREE: 20,
@@ -38,7 +60,7 @@ class RateLimitTier:
         PREMIUM: 200,
         UNLIMITED: float('inf')
     }
-    
+
     # Hourly limits
     HOURLY_LIMITS = {
         FREE: 500,
@@ -46,6 +68,15 @@ class RateLimitTier:
         PREMIUM: 10000,
         UNLIMITED: float('inf')
     }
+
+
+# Security-sensitive endpoints that should fail-closed on rate limiter errors
+FAIL_CLOSED_ENDPOINTS = {
+    "/api/v1/auth/login",
+    "/api/v1/auth/register",
+    "/api/v1/auth/refresh",
+    "/api/v1/auth/change-password",
+}
 
 
 class EnhancedRateLimiter:
@@ -100,22 +131,34 @@ class EnhancedRateLimiter:
     def _get_identifier(self, request: Request) -> tuple[str, str]:
         """
         Get user and IP identifiers from request.
-        
+
+        Only trusts proxy headers if request comes from a trusted proxy
+        to prevent IP spoofing attacks.
+
         Returns:
             Tuple of (user_id, ip_address)
         """
         # Get user ID from request state (set by auth middleware)
         user_id = getattr(request.state, "user_id", None)
-        
-        # Get IP address
-        ip = request.client.host if request.client else "unknown"
-        
-        # Handle proxy headers
-        if "X-Forwarded-For" in request.headers:
-            ip = request.headers["X-Forwarded-For"].split(",")[0].strip()
-        elif "X-Real-IP" in request.headers:
-            ip = request.headers["X-Real-IP"]
-        
+
+        # Get direct client IP
+        direct_ip = request.client.host if request.client else "unknown"
+        ip = direct_ip
+
+        # Only trust proxy headers if request comes from a trusted proxy
+        if is_trusted_proxy(direct_ip):
+            if "X-Forwarded-For" in request.headers:
+                # Take the first (client) IP from the chain
+                forwarded_ips = request.headers["X-Forwarded-For"].split(",")
+                ip = forwarded_ips[0].strip()
+            elif "X-Real-IP" in request.headers:
+                ip = request.headers["X-Real-IP"].strip()
+        elif "X-Forwarded-For" in request.headers or "X-Real-IP" in request.headers:
+            # Log potential spoofing attempt (but don't use the spoofed IP)
+            logger.warning(
+                f"Proxy headers present from untrusted source {direct_ip}, ignoring"
+            )
+
         return user_id, ip
     
     def _get_user_tier(self, user_id: Optional[str]) -> str:
@@ -186,7 +229,7 @@ class EnhancedRateLimiter:
         redis_client = await self._get_redis()
         
         # Create keys for rate limiting
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         window_start = now - timedelta(seconds=self.window_seconds)
         
         # User-based rate limiting
@@ -351,7 +394,7 @@ class EnhancedRateLimitMiddleware(BaseHTTPMiddleware):
                         "X-RateLimit-Remaining": str(metadata.get("remaining", 0)),
                         "X-RateLimit-Reset": str(metadata.get("reset", 0)),
                         "Retry-After": str(
-                            max(1, int(metadata.get("reset", 0) - datetime.utcnow().timestamp()))
+                            max(1, int(metadata.get("reset", 0) - datetime.now(timezone.utc).timestamp()))
                         )
                     }
                 )
@@ -368,5 +411,20 @@ class EnhancedRateLimitMiddleware(BaseHTTPMiddleware):
             
         except Exception as e:
             logger.error(f"Rate limiter error: {e}", exc_info=True)
-            # On error, allow request (fail open)
+
+            # Fail-closed for security-sensitive endpoints in production only
+            # In development/test, we fail-open to allow testing without Redis
+            if (
+                request.url.path in FAIL_CLOSED_ENDPOINTS
+                and settings.ENVIRONMENT == "production"
+            ):
+                logger.warning(f"Rate limiter failed in production, blocking sensitive endpoint: {request.url.path}")
+                return JSONResponse(
+                    status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                    content={
+                        "detail": "Rate limiting service unavailable, please try again later"
+                    }
+                )
+
+            # Fail-open for non-sensitive endpoints and non-production environments
             return await call_next(request)

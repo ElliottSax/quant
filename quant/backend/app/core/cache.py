@@ -8,13 +8,45 @@ import json
 import hashlib
 from typing import Any, Optional, Callable
 from functools import wraps
-import pickle
+from datetime import datetime, date
+from decimal import Decimal
 
 import redis.asyncio as redis
 from app.core.config import settings
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
+
+
+class CacheJSONEncoder(json.JSONEncoder):
+    """Custom JSON encoder for cache serialization (safer than pickle)"""
+
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return {"__type__": "datetime", "value": obj.isoformat()}
+        if isinstance(obj, date):
+            return {"__type__": "date", "value": obj.isoformat()}
+        if isinstance(obj, Decimal):
+            return {"__type__": "decimal", "value": str(obj)}
+        if hasattr(obj, "__dict__"):
+            return {"__type__": "object", "value": obj.__dict__}
+        return super().default(obj)
+
+
+def cache_json_decoder(obj: dict) -> Any:
+    """Custom JSON decoder for cache deserialization"""
+    if "__type__" in obj:
+        type_name = obj["__type__"]
+        value = obj["value"]
+        if type_name == "datetime":
+            return datetime.fromisoformat(value)
+        if type_name == "date":
+            return date.fromisoformat(value)
+        if type_name == "decimal":
+            return Decimal(value)
+        if type_name == "object":
+            return value
+    return obj
 
 
 class CacheManager:
@@ -49,15 +81,15 @@ class CacheManager:
             logger.info("Redis connection closed")
 
     def _make_key(self, prefix: str, **kwargs) -> str:
-        """Generate cache key from parameters"""
+        """Generate cache key from parameters using SHA256 for security"""
         # Sort kwargs for consistent keys
         sorted_params = sorted(kwargs.items())
-        param_str = json.dumps(sorted_params, sort_keys=True)
-        param_hash = hashlib.md5(param_str.encode()).hexdigest()
+        param_str = json.dumps(sorted_params, sort_keys=True, default=str)
+        param_hash = hashlib.sha256(param_str.encode()).hexdigest()[:32]
         return f"{prefix}:{param_hash}"
 
     async def get(self, key: str) -> Optional[Any]:
-        """Get value from cache"""
+        """Get value from cache using JSON (safer than pickle)"""
         if not self.enabled or not self.redis_client:
             return None
 
@@ -65,7 +97,7 @@ class CacheManager:
             value = await self.redis_client.get(key)
             if value:
                 logger.debug(f"Cache hit: {key}")
-                return pickle.loads(value)
+                return json.loads(value, object_hook=cache_json_decoder)
             logger.debug(f"Cache miss: {key}")
             return None
         except Exception as e:
@@ -73,12 +105,12 @@ class CacheManager:
             return None
 
     async def set(self, key: str, value: Any, ttl: int = 3600):
-        """Set value in cache with TTL (seconds)"""
+        """Set value in cache with TTL using JSON (safer than pickle)"""
         if not self.enabled or not self.redis_client:
             return
 
         try:
-            serialized = pickle.dumps(value)
+            serialized = json.dumps(value, cls=CacheJSONEncoder)
             await self.redis_client.setex(key, ttl, serialized)
             logger.debug(f"Cache set: {key} (TTL: {ttl}s)")
         except Exception as e:

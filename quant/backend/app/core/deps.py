@@ -45,8 +45,8 @@ async def get_current_user(
         logger.warning("Blacklisted token used")
         raise UnauthorizedException("Token has been revoked")
 
-    # Verify token
-    user_id = verify_token(token, token_type="access")
+    # Verify token (returns tuple of user_id, token_version)
+    user_id, _ = verify_token(token, token_type="access")
     if not user_id:
         logger.warning("Invalid or expired token")
         raise UnauthorizedException("Invalid or expired token")

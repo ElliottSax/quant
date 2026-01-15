@@ -1,7 +1,7 @@
 """Main FastAPI application."""
 
 from contextlib import asynccontextmanager
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, AsyncGenerator
 
 from fastapi import FastAPI, HTTPException, Depends
@@ -163,7 +163,7 @@ async def health_check(db: AsyncSession = Depends(get_db)) -> dict[str, Any]:
         "status": "healthy",
         "environment": settings.ENVIRONMENT,
         "version": settings.VERSION,
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "services": {
             "database": "unknown",
             "cache": "unknown",

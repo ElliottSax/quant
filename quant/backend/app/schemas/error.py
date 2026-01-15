@@ -1,8 +1,8 @@
 """Standardized error response schemas."""
 
 from typing import Optional, Dict, Any
-from pydantic import BaseModel, Field
-from datetime import datetime
+from pydantic import BaseModel, Field, computed_field
+from datetime import datetime, timezone
 
 
 class ErrorDetail(BaseModel):
@@ -20,12 +20,18 @@ class ErrorResponse(BaseModel):
     message: str = Field(..., description="Human-readable error message")
     status_code: int = Field(..., description="HTTP status code")
     timestamp: str = Field(
-        default_factory=lambda: datetime.utcnow().isoformat(),
+        default_factory=lambda: datetime.now(timezone.utc).isoformat(),
         description="Timestamp when error occurred"
     )
     path: Optional[str] = Field(None, description="Request path where error occurred")
     details: Optional[Dict[str, Any]] = Field(None, description="Additional error details")
     errors: Optional[list[ErrorDetail]] = Field(None, description="List of specific errors")
+
+    @computed_field
+    @property
+    def detail(self) -> str:
+        """Alias for message (backward compatibility with FastAPI HTTPException format)."""
+        return self.message
 
     class Config:
         json_schema_extra = {
