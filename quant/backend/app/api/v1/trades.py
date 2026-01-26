@@ -2,7 +2,6 @@
 
 import asyncio
 import re
-from typing import Query
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query as QueryParam
