@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import Link from 'next/link'
 import './globals.css'
 import { Providers } from '@/lib/providers'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { MobileMenu } from '@/components/ui/MobileMenu'
 import { MarketTicker } from '@/components/ui/MarketTicker'
 
@@ -33,7 +34,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
-        <Providers>
+        <ErrorBoundary>
+          <Providers>
           <div className="min-h-screen bg-[hsl(220,60%,4%)]">
             {/* Top Info Bar */}
             <div className="bg-gradient-to-r from-[hsl(220,60%,3%)] via-[hsl(215,50%,5%)] to-[hsl(220,60%,3%)] border-b border-[hsl(215,40%,12%)] py-1">
@@ -245,7 +247,8 @@ export default function RootLayout({
               </div>
             </footer>
           </div>
-        </Providers>
+          </Providers>
+        </ErrorBoundary>
       </body>
     </html>
   )

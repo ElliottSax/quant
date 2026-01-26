@@ -109,6 +109,12 @@ app.add_middleware(
     max_age=3600,  # Cache preflight requests for 1 hour
 )
 
+# Add security headers middleware (Week 3 Security Hardening)
+# Protects against: clickjacking, XSS, MIME sniffing, etc.
+from app.middleware import SecurityHeadersMiddleware
+app.add_middleware(SecurityHeadersMiddleware)
+logger.info("Security headers middleware enabled")
+
 # Add ETag caching middleware for GET requests
 # Performance impact: 70-90% bandwidth reduction for repeated requests
 from app.middleware import ETagMiddleware
