@@ -2,9 +2,10 @@
 
 from datetime import date, datetime
 from decimal import Decimal
+from typing import Set
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class TradeBase(BaseModel):
@@ -58,10 +59,71 @@ class TradeWithPolitician(TradeResponse):
     model_config = ConfigDict(from_attributes=True)
 
 
+class TradeFieldSelection(BaseModel):
+    """
+    Schema for field selection in trade queries.
+
+    Allows clients to request only specific fields to reduce payload size.
+    Example: ?fields=id,ticker,transaction_type,transaction_date
+    """
+
+    fields: Set[str] = Field(
+        default={
+            "id",
+            "ticker",
+            "transaction_type",
+            "transaction_date",
+            "politician_name",
+        },
+        description="Fields to include in response",
+    )
+
+    # All allowed fields that can be requested
+    ALLOWED_FIELDS: Set[str] = {
+        "id",
+        "ticker",
+        "transaction_type",
+        "transaction_date",
+        "disclosure_date",
+        "amount_min",
+        "amount_max",
+        "politician_id",
+        "politician_name",
+        "politician_chamber",
+        "politician_party",
+        "politician_state",
+        "source_url",
+        "created_at",
+    }
+
+    @field_validator("fields")
+    @classmethod
+    def validate_fields(cls, v: Set[str]) -> Set[str]:
+        """
+        Validate that requested fields are allowed.
+
+        Args:
+            v: Set of requested field names
+
+        Returns:
+            Validated set of field names
+
+        Raises:
+            ValueError: If any requested field is not allowed
+        """
+        invalid_fields = v - cls.ALLOWED_FIELDS
+        if invalid_fields:
+            raise ValueError(
+                f"Invalid fields requested: {invalid_fields}. "
+                f"Allowed fields: {cls.ALLOWED_FIELDS}"
+            )
+        return v
+
+
 class TradeListResponse(BaseModel):
     """Schema for paginated trade list response."""
 
-    trades: list[TradeWithPolitician]
+    trades: list[TradeWithPolitician] | list[dict]
     total: int
     skip: int
     limit: int
