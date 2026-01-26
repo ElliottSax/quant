@@ -37,6 +37,15 @@ class AuditEventType(str, Enum):
     PASSWORD_RESET = "password_reset"
     ACCOUNT_CREATED = "account_created"
     ACCOUNT_DELETED = "account_deleted"
+
+    # Two-Factor Authentication events
+    TWO_FACTOR_ENABLED = "two_factor_enabled"
+    TWO_FACTOR_DISABLED = "two_factor_disabled"
+    TWO_FACTOR_FAILED = "two_factor_failed"
+
+    # Email verification events
+    EMAIL_VERIFIED = "email_verified"
+    EMAIL_VERIFICATION_SENT = "email_verification_sent"
     
     # Authorization events
     ACCESS_GRANTED = "access_granted"

@@ -47,6 +47,14 @@ try:
 except ImportError as e:
     logger.warning(f"Discovery integration disabled: {e}")
 
+# WebSocket router for real-time updates
+try:
+    from app.api.v1 import websocket
+    api_router.include_router(websocket.router, tags=["websocket"])
+    logger.info("WebSocket endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"WebSocket endpoints disabled: {e}")
+
 # ML-dependent features (optional)
 try:
     from app.api.v1 import (

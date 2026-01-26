@@ -62,6 +62,8 @@ class UserResponse(UserBase):
     is_superuser: bool
     created_at: datetime
     last_login: datetime | None
+    email_verified: bool = False
+    totp_enabled: bool = False
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -119,3 +121,67 @@ class PasswordChange(BaseModel):
             )
 
         return v
+
+
+# Two-Factor Authentication Schemas
+class TwoFactorSetupResponse(BaseModel):
+    """Response for 2FA setup initialization."""
+
+    secret: str = Field(..., description="TOTP secret (base32)")
+    provisioning_uri: str = Field(..., description="otpauth:// URI for authenticator apps")
+    qr_code: str = Field(..., description="Base64 encoded QR code PNG")
+
+
+class TwoFactorVerify(BaseModel):
+    """Schema for verifying 2FA code."""
+
+    token: str = Field(..., min_length=6, max_length=6, description="6-digit TOTP code")
+
+
+class TwoFactorEnableResponse(BaseModel):
+    """Response after enabling 2FA."""
+
+    enabled: bool = True
+    backup_codes: list[str] = Field(..., description="Backup codes for recovery")
+    message: str = "Two-factor authentication enabled successfully"
+
+
+class TwoFactorDisable(BaseModel):
+    """Schema for disabling 2FA."""
+
+    password: str = Field(..., description="Current password for verification")
+    token: str = Field(..., min_length=6, max_length=6, description="Current 2FA code")
+
+
+class TwoFactorLoginVerify(BaseModel):
+    """Schema for 2FA verification during login."""
+
+    user_id: str = Field(..., description="User ID from initial login")
+    token: str = Field(..., description="6-digit TOTP code or backup code")
+
+
+class TwoFactorStatus(BaseModel):
+    """Schema for 2FA status check."""
+
+    enabled: bool
+    backup_codes_remaining: int = 0
+
+
+# Email Verification Schemas
+class EmailVerificationRequest(BaseModel):
+    """Schema for requesting email verification."""
+
+    pass  # No body needed, uses authenticated user
+
+
+class EmailVerificationConfirm(BaseModel):
+    """Schema for confirming email verification."""
+
+    token: str = Field(..., description="Email verification token")
+
+
+class EmailVerificationResponse(BaseModel):
+    """Response for email verification operations."""
+
+    message: str
+    email_verified: bool = False

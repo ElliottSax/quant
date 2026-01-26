@@ -35,6 +35,14 @@ from app.schemas.user import (
     Token,
     TokenRefresh,
     PasswordChange,
+    TwoFactorSetupResponse,
+    TwoFactorVerify,
+    TwoFactorEnableResponse,
+    TwoFactorDisable,
+    TwoFactorLoginVerify,
+    TwoFactorStatus,
+    EmailVerificationConfirm,
+    EmailVerificationResponse,
 )
 
 logger = get_logger(__name__)
@@ -142,16 +150,28 @@ async def register(
 
 @router.post(
     "/login",
-    response_model=Token,
     responses={
         200: {
-            "description": "Login successful",
+            "description": "Login successful or 2FA required",
             "content": {
                 "application/json": {
-                    "example": {
-                        "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                        "token_type": "bearer"
+                    "examples": {
+                        "success": {
+                            "summary": "Direct login (no 2FA)",
+                            "value": {
+                                "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                                "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                                "token_type": "bearer"
+                            }
+                        },
+                        "2fa_required": {
+                            "summary": "2FA verification required",
+                            "value": {
+                                "requires_2fa": True,
+                                "user_id": "123e4567-e89b-12d3-a456-426614174000",
+                                "message": "Two-factor authentication required"
+                            }
+                        }
                     }
                 }
             }
@@ -162,24 +182,25 @@ async def register(
 async def login(
     login_data: UserLogin,
     db: AsyncSession = Depends(get_db),
-) -> Token:
+) -> Token | dict:
     """
     Authenticate user and return JWT tokens.
 
-    Login with username or email. Returns both an access token (short-lived, 30 minutes)
-    and a refresh token (long-lived, 7 days) for session management.
+    Login with username or email. If 2FA is enabled, returns a user_id
+    that must be used with /auth/2fa/verify to complete login.
 
     **Usage:**
-    1. Use access token in Authorization header: `Bearer <access_token>`
-    2. When access token expires, use refresh token to get new tokens
-    3. Store refresh token securely on client
+    1. Call this endpoint with credentials
+    2. If 2FA is enabled, call /auth/2fa/verify with user_id and TOTP code
+    3. Use access token in Authorization header: `Bearer <access_token>`
+    4. When access token expires, use refresh token to get new tokens
 
     Args:
         login_data: User login credentials (username or email + password)
         db: Database session
 
     Returns:
-        Access and refresh tokens
+        Access and refresh tokens, or 2FA required response
 
     Raises:
         UnauthorizedException: If credentials are invalid
@@ -217,6 +238,19 @@ async def login(
     if not user.is_active:
         logger.warning(f"Login failed - inactive user: {login_data.username}")
         raise UnauthorizedException("Inactive user")
+
+    # Check if 2FA is enabled
+    if user.totp_enabled:
+        logger.info(f"2FA required for user: {user.username}")
+        # Reset failed attempts on successful password verification
+        user.failed_login_attempts = 0
+        user.locked_until = None
+        await db.commit()
+        return {
+            "requires_2fa": True,
+            "user_id": str(user.id),
+            "message": "Two-factor authentication required",
+        }
 
     # Update last login and reset failed attempts
     user.last_login = datetime.now(timezone.utc)
@@ -443,3 +477,396 @@ async def change_password(
         "message": "Password changed successfully. Please login again with your new password.",
         "sessions_invalidated": True
     }
+
+
+# ============================================================================
+# Two-Factor Authentication Endpoints
+# ============================================================================
+
+
+@router.post("/2fa/setup", response_model=TwoFactorSetupResponse)
+async def setup_two_factor(
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncSession = Depends(get_db),
+) -> TwoFactorSetupResponse:
+    """
+    Initialize 2FA setup for the current user.
+
+    Returns a TOTP secret, provisioning URI, and QR code for authenticator apps.
+    The user must verify a code before 2FA is enabled.
+
+    Args:
+        current_user: Current authenticated user
+        db: Database session
+
+    Returns:
+        Setup information including QR code
+
+    Raises:
+        BadRequestException: If 2FA is already enabled
+    """
+    from app.core.two_factor import (
+        generate_totp_secret,
+        generate_provisioning_uri,
+        generate_qr_code_base64,
+    )
+
+    if current_user.totp_enabled:
+        raise BadRequestException("Two-factor authentication is already enabled")
+
+    # Generate new secret
+    secret = generate_totp_secret()
+
+    # Store temporarily (user must verify before it's active)
+    current_user.totp_secret = secret
+    await db.commit()
+
+    # Generate provisioning URI and QR code
+    provisioning_uri = generate_provisioning_uri(secret, current_user.email)
+    qr_code = generate_qr_code_base64(provisioning_uri)
+
+    logger.info(f"2FA setup initiated for user: {current_user.username}")
+
+    return TwoFactorSetupResponse(
+        secret=secret,
+        provisioning_uri=provisioning_uri,
+        qr_code=qr_code,
+    )
+
+
+@router.post("/2fa/enable", response_model=TwoFactorEnableResponse)
+async def enable_two_factor(
+    verify_data: TwoFactorVerify,
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncSession = Depends(get_db),
+) -> TwoFactorEnableResponse:
+    """
+    Enable 2FA after verifying the initial code.
+
+    User must have called /2fa/setup first and provide a valid TOTP code.
+
+    Args:
+        verify_data: TOTP code to verify
+        current_user: Current authenticated user
+        db: Database session
+
+    Returns:
+        Confirmation with backup codes
+
+    Raises:
+        BadRequestException: If 2FA setup not initiated or code invalid
+    """
+    from app.core.two_factor import verify_totp, generate_backup_codes, hash_backup_codes
+    from app.core.audit import AuditEventSchema
+
+    if current_user.totp_enabled:
+        raise BadRequestException("Two-factor authentication is already enabled")
+
+    if not current_user.totp_secret:
+        raise BadRequestException("Please initiate 2FA setup first")
+
+    # Verify the provided code
+    if not verify_totp(current_user.totp_secret, verify_data.token):
+        logger.warning(f"Invalid 2FA code during enable for user: {current_user.username}")
+        raise BadRequestException("Invalid verification code")
+
+    # Generate backup codes
+    backup_codes = generate_backup_codes()
+
+    # Enable 2FA
+    current_user.totp_enabled = True
+    current_user.totp_backup_codes = hash_backup_codes(backup_codes)
+    await db.commit()
+
+    logger.info(f"2FA enabled for user: {current_user.username}")
+
+    # Audit log
+    await audit_logger.log_event(
+        AuditEventSchema(
+            event_type=AuditEventType.TWO_FACTOR_ENABLED,
+            severity=AuditSeverity.INFO,
+            user_id=str(current_user.id),
+            username=current_user.username,
+            user_email=current_user.email,
+            action="2fa_enabled",
+            result="success",
+        )
+    )
+
+    return TwoFactorEnableResponse(
+        enabled=True,
+        backup_codes=backup_codes,
+        message="Two-factor authentication enabled successfully. Save your backup codes securely.",
+    )
+
+
+@router.post("/2fa/disable")
+async def disable_two_factor(
+    disable_data: TwoFactorDisable,
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncSession = Depends(get_db),
+) -> dict:
+    """
+    Disable 2FA for the current user.
+
+    Requires both password and current 2FA code for security.
+
+    Args:
+        disable_data: Password and 2FA code
+        current_user: Current authenticated user
+        db: Database session
+
+    Returns:
+        Success message
+    """
+    from app.core.two_factor import verify_totp
+    from app.core.audit import AuditEventSchema
+
+    if not current_user.totp_enabled:
+        raise BadRequestException("Two-factor authentication is not enabled")
+
+    # Verify password
+    if not verify_password(disable_data.password, current_user.hashed_password):
+        raise UnauthorizedException("Invalid password")
+
+    # Verify 2FA code
+    if not verify_totp(current_user.totp_secret, disable_data.token):
+        raise BadRequestException("Invalid 2FA code")
+
+    # Disable 2FA
+    current_user.totp_enabled = False
+    current_user.totp_secret = None
+    current_user.totp_backup_codes = None
+    await db.commit()
+
+    logger.info(f"2FA disabled for user: {current_user.username}")
+
+    # Audit log
+    await audit_logger.log_event(
+        AuditEventSchema(
+            event_type=AuditEventType.TWO_FACTOR_DISABLED,
+            severity=AuditSeverity.WARNING,
+            user_id=str(current_user.id),
+            username=current_user.username,
+            user_email=current_user.email,
+            action="2fa_disabled",
+            result="success",
+        )
+    )
+
+    return {"message": "Two-factor authentication disabled successfully"}
+
+
+@router.get("/2fa/status", response_model=TwoFactorStatus)
+async def get_two_factor_status(
+    current_user: User = Depends(get_current_active_user),
+) -> TwoFactorStatus:
+    """
+    Get 2FA status for the current user.
+
+    Args:
+        current_user: Current authenticated user
+
+    Returns:
+        2FA status including backup codes remaining
+    """
+    from app.core.two_factor import get_remaining_backup_codes_count
+
+    return TwoFactorStatus(
+        enabled=current_user.totp_enabled,
+        backup_codes_remaining=get_remaining_backup_codes_count(current_user.totp_backup_codes),
+    )
+
+
+@router.post("/2fa/verify", response_model=Token)
+async def verify_two_factor_login(
+    verify_data: TwoFactorLoginVerify,
+    db: AsyncSession = Depends(get_db),
+) -> Token:
+    """
+    Complete login with 2FA verification.
+
+    Called after initial login returns a 2FA required response.
+
+    Args:
+        verify_data: User ID and 2FA code
+        db: Database session
+
+    Returns:
+        Access and refresh tokens
+
+    Raises:
+        UnauthorizedException: If code is invalid
+    """
+    from uuid import UUID
+    from app.core.two_factor import verify_totp, verify_backup_code
+
+    # Get user
+    try:
+        user_uuid = UUID(verify_data.user_id)
+    except ValueError:
+        raise UnauthorizedException("Invalid user ID")
+
+    query = select(User).where(User.id == user_uuid)
+    result = await db.execute(query)
+    user = result.scalar_one_or_none()
+
+    if not user or not user.is_active:
+        raise UnauthorizedException("User not found or inactive")
+
+    if not user.totp_enabled or not user.totp_secret:
+        raise BadRequestException("2FA is not enabled for this user")
+
+    # Try TOTP code first
+    token_value = verify_data.token.strip()
+
+    if len(token_value) == 6 and token_value.isdigit():
+        # Standard TOTP code
+        if not verify_totp(user.totp_secret, token_value):
+            logger.warning(f"Invalid 2FA code for user: {user.username}")
+            raise UnauthorizedException("Invalid 2FA code")
+    else:
+        # Try backup code
+        if user.totp_backup_codes:
+            is_valid, updated_codes = verify_backup_code(user.totp_backup_codes, token_value)
+            if is_valid:
+                user.totp_backup_codes = updated_codes
+                await db.commit()
+                logger.info(f"Backup code used for user: {user.username}")
+            else:
+                raise UnauthorizedException("Invalid 2FA code or backup code")
+        else:
+            raise UnauthorizedException("Invalid 2FA code")
+
+    # Update last login
+    user.last_login = datetime.now(timezone.utc)
+    await db.commit()
+
+    # Create tokens
+    access_token = create_access_token(subject=str(user.id))
+    refresh_token = create_refresh_token(
+        subject=str(user.id),
+        version=user.refresh_token_version,
+    )
+
+    logger.info(f"2FA login completed for user: {user.username}")
+
+    return Token(access_token=access_token, refresh_token=refresh_token)
+
+
+# ============================================================================
+# Email Verification Endpoints
+# ============================================================================
+
+
+@router.post("/email/send-verification", response_model=EmailVerificationResponse)
+async def send_verification_email(
+    current_user: User = Depends(get_current_active_user),
+    db: AsyncSession = Depends(get_db),
+) -> EmailVerificationResponse:
+    """
+    Send email verification link to current user.
+
+    Args:
+        current_user: Current authenticated user
+        db: Database session
+
+    Returns:
+        Success message
+    """
+    from app.core.email_verification import (
+        create_verification_token,
+        send_verification_email as send_email,
+        is_token_expired,
+    )
+
+    if current_user.email_verified:
+        return EmailVerificationResponse(
+            message="Email is already verified",
+            email_verified=True,
+        )
+
+    # Check rate limiting (don't resend if recently sent)
+    if (
+        current_user.email_verification_sent_at
+        and not is_token_expired(current_user.email_verification_sent_at)
+    ):
+        # Allow resend after 5 minutes
+        from datetime import timedelta
+        resend_after = current_user.email_verification_sent_at + timedelta(minutes=5)
+        if datetime.now(timezone.utc) < resend_after:
+            raise BadRequestException("Please wait before requesting another verification email")
+
+    # Create and send token
+    token = await create_verification_token(current_user, db)
+    await send_email(current_user.email, current_user.username, token)
+
+    logger.info(f"Verification email sent to: {current_user.email}")
+
+    return EmailVerificationResponse(
+        message="Verification email sent. Please check your inbox.",
+        email_verified=False,
+    )
+
+
+@router.post("/email/verify", response_model=EmailVerificationResponse)
+async def verify_email(
+    verify_data: EmailVerificationConfirm,
+    db: AsyncSession = Depends(get_db),
+) -> EmailVerificationResponse:
+    """
+    Verify email with token.
+
+    Args:
+        verify_data: Verification token
+        db: Database session
+
+    Returns:
+        Success message
+    """
+    from app.core.email_verification import is_token_expired
+    from app.core.audit import AuditEventSchema
+
+    # Find user by token
+    query = select(User).where(User.email_verification_token == verify_data.token)
+    result = await db.execute(query)
+    user = result.scalar_one_or_none()
+
+    if not user:
+        raise BadRequestException("Invalid verification token")
+
+    if user.email_verified:
+        return EmailVerificationResponse(
+            message="Email is already verified",
+            email_verified=True,
+        )
+
+    # Check token expiration
+    if is_token_expired(user.email_verification_sent_at):
+        raise BadRequestException("Verification token has expired. Please request a new one.")
+
+    # Verify email
+    user.email_verified = True
+    user.email_verification_token = None
+    user.email_verification_sent_at = None
+    await db.commit()
+
+    logger.info(f"Email verified for user: {user.username}")
+
+    # Audit log
+    await audit_logger.log_event(
+        AuditEventSchema(
+            event_type=AuditEventType.EMAIL_VERIFIED,
+            severity=AuditSeverity.INFO,
+            user_id=str(user.id),
+            username=user.username,
+            user_email=user.email,
+            action="email_verified",
+            result="success",
+        )
+    )
+
+    return EmailVerificationResponse(
+        message="Email verified successfully",
+        email_verified=True,
+    )

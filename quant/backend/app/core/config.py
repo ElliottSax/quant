@@ -67,6 +67,18 @@ class Settings(BaseSettings):
         "http://127.0.0.1:8000",
     ]
 
+    # Frontend URL (for email links, etc.)
+    FRONTEND_URL: str = "http://localhost:3000"
+
+    # Email Configuration
+    RESEND_API_KEY: str = ""
+    EMAIL_DOMAIN: str = "example.com"
+    SMTP_HOST: str = ""
+    SMTP_PORT: int = 587
+    SMTP_TLS: bool = True
+    SMTP_USER: str = ""
+    SMTP_PASSWORD: str = ""
+
     # Trusted Proxies (for X-Forwarded-For header validation)
     # Add your load balancer/proxy IPs here in production
     TRUSTED_PROXIES: list[str] = [

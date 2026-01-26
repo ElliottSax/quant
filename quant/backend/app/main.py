@@ -115,6 +115,16 @@ from app.middleware import SecurityHeadersMiddleware
 app.add_middleware(SecurityHeadersMiddleware)
 logger.info("Security headers middleware enabled")
 
+# Add GZip compression middleware
+# Performance impact: 60-80% bandwidth reduction for JSON responses
+from app.middleware import GZipMiddleware
+app.add_middleware(
+    GZipMiddleware,
+    minimum_size=500,
+    compression_level=6,
+)
+logger.info("GZip compression middleware enabled")
+
 # Add ETag caching middleware for GET requests
 # Performance impact: 70-90% bandwidth reduction for repeated requests
 from app.middleware import ETagMiddleware

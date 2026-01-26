@@ -60,6 +60,38 @@ class User(Base):
         nullable=True,
     )
 
+    # Email verification
+    email_verified: Mapped[bool] = mapped_column(
+        Boolean,
+        default=False,
+        nullable=False,
+        server_default="false",
+    )
+    email_verification_token: Mapped[str | None] = mapped_column(
+        String(255),
+        nullable=True,
+    )
+    email_verification_sent_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+
+    # Two-Factor Authentication
+    totp_enabled: Mapped[bool] = mapped_column(
+        Boolean,
+        default=False,
+        nullable=False,
+        server_default="false",
+    )
+    totp_secret: Mapped[str | None] = mapped_column(
+        String(64),
+        nullable=True,
+    )
+    totp_backup_codes: Mapped[str | None] = mapped_column(
+        String,  # Stored as JSON string
+        nullable=True,
+    )
+
     # Database constraints
     # Note: Using length() for SQLite compatibility (PostgreSQL also supports it)
     __table_args__ = (
