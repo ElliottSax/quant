@@ -106,11 +106,33 @@ class AlertingService:
     async def _send_email(self, alert: Alert):
         """Send alert via email"""
         try:
-            # TODO: Implement email sending
-            # This would use the email service to send alerts
-            logger.info(f"Email alert: {alert.title}")
+            from app.services.email_service import email_service
+
+            # Get configured alert email recipients
+            alert_email = getattr(settings, 'ALERT_EMAIL', None)
+            if not alert_email:
+                logger.debug("No alert email configured, skipping email alert")
+                return
+
+            # Parse email list (comma-separated)
+            recipients = [email.strip() for email in alert_email.split(",")]
+
+            # Send alert email using email service
+            success = await email_service.send_alert_email(
+                to_email=recipients,
+                title=alert.title,
+                message=alert.message,
+                severity=alert.severity.value,
+                metadata=alert.metadata,
+            )
+
+            if success:
+                logger.info(f"Email alert sent: {alert.title}")
+            else:
+                logger.warning(f"Failed to send email alert: {alert.title}")
+
         except Exception as e:
-            logger.error(f"Failed to send email alert: {e}")
+            logger.error(f"Failed to send email alert: {e}", exc_info=True)
 
     async def _send_slack(self, alert: Alert):
         """Send alert via Slack"""

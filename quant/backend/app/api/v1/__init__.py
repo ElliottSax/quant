@@ -47,7 +47,7 @@ try:
 except ImportError as e:
     logger.warning(f"Discovery integration disabled: {e}")
 
-# WebSocket router for real-time updates
+# WebSocket router for real-time updates (includes enhanced features)
 try:
     from app.api.v1 import websocket
     api_router.include_router(websocket.router, tags=["websocket"])
@@ -76,3 +76,21 @@ try:
     logger.info("ML-dependent features loaded successfully")
 except ImportError as e:
     logger.warning(f"ML-dependent features disabled due to missing dependencies: {e}")
+
+# Advanced Analytics (Task #14)
+try:
+    from app.api.v1 import advanced_analytics
+    api_router.include_router(advanced_analytics.router, tags=["advanced-analytics-v2"])
+    logger.info("Advanced analytics endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Advanced analytics endpoints disabled: {e}")
+
+# Premium Features (Task #10)
+try:
+    from app.api.v1 import alerts, subscriptions, portfolios
+    api_router.include_router(alerts.router, prefix="/alerts", tags=["alerts"])
+    api_router.include_router(subscriptions.router, prefix="/subscriptions", tags=["subscriptions"])
+    api_router.include_router(portfolios.router, prefix="/portfolios", tags=["portfolios"])
+    logger.info("Premium features endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Premium features endpoints disabled: {e}")

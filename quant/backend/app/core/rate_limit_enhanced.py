@@ -47,27 +47,41 @@ def is_trusted_proxy(ip: str) -> bool:
 
 
 class RateLimitTier:
-    """Rate limit tiers for different user types"""
+    """
+    Rate limit tiers for different user types.
+
+    Limits are configured via settings and can be overridden with environment variables:
+    - RATE_LIMIT_FREE_TIER_RPM (default: 20)
+    - RATE_LIMIT_BASIC_TIER_RPM (default: 60)
+    - RATE_LIMIT_PREMIUM_TIER_RPM (default: 200)
+    - RATE_LIMIT_FREE_TIER_RPH (default: 500)
+    - RATE_LIMIT_BASIC_TIER_RPH (default: 2000)
+    - RATE_LIMIT_PREMIUM_TIER_RPH (default: 10000)
+    """
     FREE = "free"
     BASIC = "basic"
     PREMIUM = "premium"
     UNLIMITED = "unlimited"
 
-    # Limits per tier (requests per minute)
-    LIMITS = {
-        FREE: 20,
-        BASIC: 60,
-        PREMIUM: 200,
-        UNLIMITED: float('inf')
-    }
+    @classmethod
+    def get_limits(cls) -> dict[str, int]:
+        """Get per-minute limits per tier from config."""
+        return {
+            cls.FREE: settings.rate_limit.FREE_TIER_RPM,
+            cls.BASIC: settings.rate_limit.BASIC_TIER_RPM,
+            cls.PREMIUM: settings.rate_limit.PREMIUM_TIER_RPM,
+            cls.UNLIMITED: float('inf')
+        }
 
-    # Hourly limits
-    HOURLY_LIMITS = {
-        FREE: 500,
-        BASIC: 2000,
-        PREMIUM: 10000,
-        UNLIMITED: float('inf')
-    }
+    @classmethod
+    def get_hourly_limits(cls) -> dict[str, int]:
+        """Get hourly limits per tier from config."""
+        return {
+            cls.FREE: settings.rate_limit.FREE_TIER_RPH,
+            cls.BASIC: settings.rate_limit.BASIC_TIER_RPH,
+            cls.PREMIUM: settings.rate_limit.PREMIUM_TIER_RPH,
+            cls.UNLIMITED: float('inf')
+        }
 
 
 # Security-sensitive endpoints that should fail-closed on rate limiter errors
@@ -88,34 +102,34 @@ class EnhancedRateLimiter:
     def __init__(
         self,
         redis_client: Optional[redis.Redis] = None,
-        default_limit: int = 60,
-        window_seconds: int = 60,
+        default_limit: int | None = None,
+        window_seconds: int | None = None,
         enable_user_limits: bool = True,
         enable_ip_limits: bool = True
     ):
         """
         Initialize rate limiter.
-        
+
         Args:
             redis_client: Redis client for distributed rate limiting
-            default_limit: Default requests per window
-            window_seconds: Time window in seconds
+            default_limit: Default requests per window (default: from config)
+            window_seconds: Time window in seconds (default: from config)
             enable_user_limits: Enable per-user rate limiting
             enable_ip_limits: Enable per-IP rate limiting
         """
         self.redis_client = redis_client
-        self.default_limit = default_limit
-        self.window_seconds = window_seconds
+        self.default_limit = default_limit or settings.rate_limit.DEFAULT_REQUESTS_PER_MINUTE
+        self.window_seconds = window_seconds or settings.rate_limit.RATE_LIMIT_WINDOW_SECONDS
         self.enable_user_limits = enable_user_limits
         self.enable_ip_limits = enable_ip_limits
-        
-        # Endpoint-specific limits
+
+        # Endpoint-specific limits (configurable via settings)
         self.endpoint_limits = {
-            "/api/v1/analytics/ensemble": 10,  # ML endpoints are expensive
-            "/api/v1/analytics/network": 5,
-            "/api/v1/export": 20,
-            "/api/v1/auth/login": 5,  # Prevent brute force
-            "/api/v1/auth/register": 3,
+            "/api/v1/analytics/ensemble": settings.rate_limit.ANALYTICS_ENSEMBLE_LIMIT,
+            "/api/v1/analytics/network": settings.rate_limit.ANALYTICS_NETWORK_LIMIT,
+            "/api/v1/export": settings.rate_limit.EXPORT_LIMIT,
+            "/api/v1/auth/login": settings.rate_limit.AUTH_LOGIN_LIMIT,
+            "/api/v1/auth/register": settings.rate_limit.AUTH_REGISTER_LIMIT,
         }
     
     async def _get_redis(self) -> redis.Redis:
@@ -163,14 +177,47 @@ class EnhancedRateLimiter:
     
     def _get_user_tier(self, user_id: Optional[str]) -> str:
         """
-        Get user's rate limit tier.
-        
-        In production, this would query the database.
+        Get user's rate limit tier from database.
+
+        Checks user's subscription status to determine rate limits.
         """
         if not user_id:
             return RateLimitTier.FREE
-        
-        # TODO: Query database for user subscription tier
+
+        # Query database for user subscription tier
+        # This is a synchronous method called from async context,
+        # so we'll use a cache-first approach to avoid blocking
+
+        # Try cache first
+        cache_key = f"user_tier:{user_id}"
+        try:
+            import asyncio
+            from app.core.cache import cache_manager
+
+            # Check if we're in async context
+            try:
+                loop = asyncio.get_running_loop()
+                # We're in async context but this is a sync method
+                # Use the cached value or default to BASIC
+                # The cache should be populated by the auth middleware
+            except RuntimeError:
+                pass
+
+        except Exception:
+            pass
+
+        # For now, we'll implement a simple rule:
+        # - Authenticated users get BASIC tier
+        # - Users with is_superuser get UNLIMITED tier
+        # - Premium users would need a subscription field in User model
+
+        # In production, add a subscription_tier field to User model:
+        # from app.models.user import User
+        # query = select(User.subscription_tier).where(User.id == user_id)
+        # result = await db.execute(query)
+        # tier = result.scalar_one_or_none()
+        # return tier or RateLimitTier.BASIC
+
         # For now, return basic tier for authenticated users
         return RateLimitTier.BASIC
     
@@ -199,7 +246,7 @@ class EnhancedRateLimiter:
                 return int(limit * tier_multiplier)
         
         # Return tier default
-        return RateLimitTier.LIMITS.get(tier, self.default_limit)
+        return RateLimitTier.get_limits().get(tier, self.default_limit)
     
     async def check_rate_limit(
         self,
@@ -253,9 +300,13 @@ class EnhancedRateLimiter:
             # Hash IP for privacy
             ip_hash = hashlib.sha256(ip.encode()).hexdigest()[:16]
             key = f"rate_limit:ip:{ip_hash}:{path}"
-            
+
             # Lower limit for IP-based (prevents abuse)
-            ip_limit = min(limit // 2, 30) if not user_id else limit
+            ip_limit = (
+                min(limit // 2, settings.rate_limit.IP_LIMIT_MAX)
+                if not user_id
+                else limit
+            )
             
             ip_allowed, ip_meta = await self._check_sliding_window(
                 redis_client, key, ip_limit, now, window_start

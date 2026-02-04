@@ -7,12 +7,10 @@ from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.types import ASGIApp
 
+from app.core.config import settings
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
-
-# Minimum content length to compress (bytes)
-MIN_COMPRESS_SIZE = 500
 
 # Content types to compress
 COMPRESSIBLE_TYPES = {
@@ -45,8 +43,8 @@ class GZipMiddleware(BaseHTTPMiddleware):
     def __init__(
         self,
         app: ASGIApp,
-        minimum_size: int = MIN_COMPRESS_SIZE,
-        compression_level: int = 6,
+        minimum_size: int | None = None,
+        compression_level: int | None = None,
         exclude_paths: set[str] | None = None,
     ):
         """
@@ -54,13 +52,17 @@ class GZipMiddleware(BaseHTTPMiddleware):
 
         Args:
             app: ASGI application
-            minimum_size: Minimum content size to compress (default: 500 bytes)
-            compression_level: GZip compression level 1-9 (default: 6)
+            minimum_size: Minimum content size to compress (default: from config)
+            compression_level: GZip compression level 1-9 (default: from config)
             exclude_paths: Paths to exclude from compression
+
+        Configuration via environment variables:
+        - PERFORMANCE_MIN_COMPRESS_SIZE_BYTES (default: 500)
+        - PERFORMANCE_GZIP_COMPRESSION_LEVEL (default: 6)
         """
         super().__init__(app)
-        self.minimum_size = minimum_size
-        self.compression_level = compression_level
+        self.minimum_size = minimum_size or settings.performance.MIN_COMPRESS_SIZE_BYTES
+        self.compression_level = compression_level or settings.performance.GZIP_COMPRESSION_LEVEL
         self.exclude_paths = exclude_paths or set()
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:

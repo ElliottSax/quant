@@ -104,10 +104,20 @@ class CacheManager:
             logger.error(f"Cache get error: {e}")
             return None
 
-    async def set(self, key: str, value: Any, ttl: int = 3600):
-        """Set value in cache with TTL using JSON (safer than pickle)"""
+    async def set(self, key: str, value: Any, ttl: int | None = None):
+        """
+        Set value in cache with TTL using JSON (safer than pickle).
+
+        Args:
+            key: Cache key
+            value: Value to cache
+            ttl: Time to live in seconds (default: settings.cache.DEFAULT_TTL)
+        """
         if not self.enabled or not self.redis_client:
             return
+
+        if ttl is None:
+            ttl = settings.cache.DEFAULT_TTL
 
         try:
             serialized = json.dumps(value, cls=CacheJSONEncoder)
@@ -148,16 +158,16 @@ class CacheManager:
 cache_manager = CacheManager()
 
 
-def cached(prefix: str, ttl: int = 3600):
+def cached(prefix: str, ttl: int | None = None):
     """
     Decorator to cache function results.
 
     Args:
         prefix: Cache key prefix
-        ttl: Time to live in seconds (default: 1 hour)
+        ttl: Time to live in seconds (default: settings.cache.DEFAULT_TTL)
 
     Example:
-        @cached("fourier", ttl=1800)
+        @cached("fourier", ttl=settings.cache.FOURIER_ANALYSIS_TTL)
         async def analyze_fourier(politician_id: str):
             ...
     """
@@ -179,8 +189,9 @@ def cached(prefix: str, ttl: int = 3600):
             # Execute function
             result = await func(*args, **kwargs)
 
-            # Store in cache
-            await cache_manager.set(cache_key, result, ttl)
+            # Store in cache with configured TTL
+            _ttl = ttl if ttl is not None else settings.cache.DEFAULT_TTL
+            await cache_manager.set(cache_key, result, _ttl)
 
             return result
         return wrapper

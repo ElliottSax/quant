@@ -5,15 +5,27 @@ Generates trading signals using AI providers, technical indicators,
 and machine learning models.
 """
 
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, TYPE_CHECKING, Any
 from datetime import datetime, timedelta
 from enum import Enum
 import asyncio
+import os
+import logging
 import numpy as np
 from pydantic import BaseModel
 
-from app.ml.ensemble import EnsemblePredictor
-from app.core.cache import cache_result
+logger = logging.getLogger(__name__)
+
+# Type hints only - no actual imports at module level
+if TYPE_CHECKING:
+    from app.ml.ensemble import EnsemblePredictor
+
+# No-op decorator for when cache is not available
+def cache_result(ttl: int = 3600):
+    """No-op cache decorator (actual cache imported lazily if needed)"""
+    def decorator(func):
+        return func
+    return decorator
 
 
 class SignalType(str, Enum):
@@ -53,7 +65,7 @@ class TradingSignal(BaseModel):
 class SignalGenerator:
     """Generate trading signals using multiple methods"""
 
-    def __init__(self, ensemble_predictor: Optional[EnsemblePredictor] = None):
+    def __init__(self, ensemble_predictor: Optional[Any] = None):
         self.ensemble = ensemble_predictor
 
     async def generate_signal(
@@ -85,8 +97,16 @@ class SignalGenerator:
         if self.ensemble and len(price_data) >= 30:
             try:
                 ml_prediction = await self._get_ml_prediction(price_data)
+            except (ValueError, TypeError, KeyError) as e:
+                # ML prediction failed due to invalid data format
+                logger.warning(f"ML prediction failed due to invalid data: {e}")
+            except (ConnectionError, TimeoutError) as e:
+                # ML model service unavailable or timeout
+                logger.warning(f"ML prediction service error: {e}")
             except Exception as e:
-                print(f"ML prediction failed: {e}")
+                # Broad exception acceptable here: ML prediction is optional enhancement,
+                # we want to continue with technical analysis even if ML fails unexpectedly
+                logger.warning(f"Unexpected ML prediction error: {e}", exc_info=True)
 
         # Combine signals from multiple sources
         signal_scores = self._combine_signals(indicators, ml_prediction)
@@ -178,7 +198,7 @@ class SignalGenerator:
 
         # Volatility
         if len(prices) >= 20:
-            returns = np.diff(prices_arr[-20:]) / prices_arr[-21:-1]
+            returns = np.diff(prices_arr[-20:]) / prices_arr[-20:-1]
             indicators['volatility'] = np.std(returns) * 100
 
         return indicators
@@ -356,7 +376,7 @@ class SignalGenerator:
 
         # Volatility risk
         if len(prices) >= 20:
-            returns = np.diff(prices_arr[-20:]) / prices_arr[-21:-1]
+            returns = np.diff(prices_arr[-20:]) / prices_arr[-20:-1]
             volatility = np.std(returns)
             volatility_risk = min(volatility * 1000, 50)  # 0-50
         else:

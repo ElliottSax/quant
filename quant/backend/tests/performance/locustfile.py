@@ -1,370 +1,310 @@
 """
-Load Testing Configuration for Quant Trading Platform
-
-Usage:
-    # Install locust
-    pip install locust
-
-    # Run load test
-    locust -f tests/performance/locustfile.py --host=http://localhost:8000
-
-    # Run headless with specific users/spawn rate
-    locust -f tests/performance/locustfile.py --host=http://localhost:8000 \
-           --users 100 --spawn-rate 10 --run-time 5m --headless
-
-    # Run with web UI
-    locust -f tests/performance/locustfile.py --host=http://localhost:8000 \
-           --web-host=127.0.0.1 --web-port=8089
-
-Scenarios Tested:
-- Anonymous user browsing public data
-- Authenticated user viewing portfolio
-- Heavy API user making frequent requests
-- Research user running complex analyses
+Locust load testing scenarios for the Quant API.
+Run with: locust -f tests/performance/locustfile.py --host=http://localhost:8000
 """
 
+from locust import HttpUser, task, between, TaskSet
 import random
 import json
-from datetime import datetime, timedelta
-from locust import HttpUser, task, between, SequentialTaskSet
 
 
-# ============================================================================
-# Helper Functions
-# ============================================================================
-
-def get_auth_token(client, email="loadtest@example.com", password="LoadTest123"):
-    """Get authentication token for load testing"""
-    response = client.post("/api/v1/auth/login", json={
-        "email": email,
-        "password": password
-    })
-    if response.status_code == 200:
-        return response.json().get("access_token")
-    return None
-
-
-def create_test_user(client, email, password):
-    """Create a test user for load testing"""
-    client.post("/api/v1/auth/register", json={
-        "email": email,
-        "username": email.split("@")[0],
-        "password": password
-    })
-
-
-# ============================================================================
-# Task Sets
-# ============================================================================
-
-class AnonymousBrowsingTasks(SequentialTaskSet):
-    """Simulates anonymous user browsing public data"""
-
-    @task
-    def view_stats_overview(self):
-        """View platform statistics"""
-        self.client.get("/api/v1/stats/overview")
-
-    @task
-    def view_leaderboard(self):
-        """View politician leaderboard"""
-        self.client.get("/api/v1/stats/leaderboard?limit=20")
-
-    @task
-    def view_ticker_stats(self):
-        """View popular ticker statistics"""
-        self.client.get("/api/v1/stats/tickers?limit=20")
-
-    @task
-    def view_party_stats(self):
-        """View statistics by party"""
-        self.client.get("/api/v1/stats/by-party")
-
-    @task
-    def get_public_quote(self):
-        """Get a public market quote"""
-        symbols = ["AAPL", "GOOGL", "MSFT", "TSLA", "AMZN"]
-        symbol = random.choice(symbols)
-        self.client.get(f"/api/v1/market-data/public/quote/{symbol}")
-
-    @task
-    def get_market_status(self):
-        """Check market status"""
-        self.client.get("/api/v1/market-data/public/market-status")
-
-
-class AuthenticatedUserTasks(SequentialTaskSet):
-    """Simulates authenticated user interacting with the platform"""
+class UserBehavior(TaskSet):
+    """Simulates typical user behavior patterns."""
 
     def on_start(self):
-        """Login before starting tasks"""
-        # Try to login with existing user
-        response = self.client.post("/api/v1/auth/login", json={
-            "email": "loadtest@example.com",
-            "password": "LoadTest123"
-        })
+        """Called when a simulated user starts."""
+        # Register and login
+        self.register_and_login()
 
-        if response.status_code == 200:
-            self.token = response.json().get("access_token")
-        else:
-            # Create user if doesn't exist
-            self.client.post("/api/v1/auth/register", json={
-                "email": "loadtest@example.com",
-                "username": "loadtest",
-                "password": "LoadTest123"
-            })
-            response = self.client.post("/api/v1/auth/login", json={
-                "email": "loadtest@example.com",
-                "password": "LoadTest123"
-            })
-            self.token = response.json().get("access_token")
+    def register_and_login(self):
+        """Register a new user and login."""
+        user_id = random.randint(100000, 999999)
+        self.email = f"loadtest{user_id}@test.com"
+        self.password = "testpass123"
 
-        self.headers = {"Authorization": f"Bearer {self.token}"}
-
-    @task(3)
-    def view_stats_overview(self):
-        """View platform statistics"""
-        self.client.get("/api/v1/stats/overview", headers=self.headers)
-
-    @task(3)
-    def view_leaderboard(self):
-        """View politician leaderboard"""
-        self.client.get("/api/v1/stats/leaderboard?limit=50", headers=self.headers)
-
-    @task(2)
-    def get_market_quote(self):
-        """Get market quote"""
-        symbols = ["AAPL", "GOOGL", "MSFT", "TSLA", "AMZN", "META", "NVDA"]
-        symbol = random.choice(symbols)
-        self.client.get(f"/api/v1/market-data/quote/{symbol}", headers=self.headers)
-
-    @task(2)
-    def get_multiple_quotes(self):
-        """Get multiple quotes at once"""
-        symbols = ["AAPL", "GOOGL", "MSFT", "TSLA", "AMZN"]
-        query = "&".join([f"symbols={s}" for s in random.sample(symbols, 3)])
-        self.client.get(f"/api/v1/market-data/quotes?{query}", headers=self.headers)
-
-    @task(2)
-    def get_historical_data(self):
-        """Get historical market data"""
-        symbol = random.choice(["AAPL", "GOOGL", "MSFT"])
-        start = (datetime.utcnow() - timedelta(days=30)).isoformat()
-        end = datetime.utcnow().isoformat()
-        self.client.get(
-            f"/api/v1/market-data/historical/{symbol}?start_date={start}&end_date={end}",
-            headers=self.headers
+        # Register
+        register_response = self.client.post(
+            "/api/v1/auth/register",
+            json={
+                "email": self.email,
+                "username": f"user{user_id}",
+                "password": self.password,
+                "password_confirm": self.password
+            },
+            name="Register User"
         )
 
-    @task(1)
-    def search_symbols(self):
-        """Search for stock symbols"""
-        queries = ["tech", "energy", "finance", "health", "real"]
-        query = random.choice(queries)
-        self.client.get(f"/api/v1/market-data/search?query={query}", headers=self.headers)
+        # Login
+        login_response = self.client.post(
+            "/api/v1/auth/login",
+            json={"email": self.email, "password": self.password},
+            name="Login"
+        )
 
-    @task(1)
-    def get_company_info(self):
-        """Get company information"""
-        symbol = random.choice(["AAPL", "GOOGL", "MSFT", "TSLA"])
-        self.client.get(f"/api/v1/market-data/company/{symbol}", headers=self.headers)
+        if login_response.status_code == 200:
+            self.token = login_response.json().get("access_token")
+            self.headers = {"Authorization": f"Bearer {self.token}"}
+        else:
+            self.headers = {}
 
+    @task(10)
+    def browse_trades(self):
+        """Browse recent trades - most common action."""
+        params = {
+            "limit": 50,
+            "skip": random.randint(0, 100)
+        }
+        self.client.get(
+            "/api/v1/trades/",
+            params=params,
+            headers=self.headers,
+            name="Browse Trades"
+        )
 
-class PowerUserTasks(SequentialTaskSet):
-    """Simulates power user running analyses and making frequent requests"""
-
-    def on_start(self):
-        """Login before starting tasks"""
-        response = self.client.post("/api/v1/auth/login", json={
-            "email": "poweruser@example.com",
-            "password": "PowerUser123"
-        })
-
-        if response.status_code != 200:
-            self.client.post("/api/v1/auth/register", json={
-                "email": "poweruser@example.com",
-                "username": "poweruser",
-                "password": "PowerUser123"
-            })
-            response = self.client.post("/api/v1/auth/login", json={
-                "email": "poweruser@example.com",
-                "password": "PowerUser123"
-            })
-
-        self.token = response.json().get("access_token")
-        self.headers = {"Authorization": f"Bearer {self.token}"}
+    @task(8)
+    def search_politicians(self):
+        """Search for politicians."""
+        search_terms = ["john", "smith", "johnson", "williams", "brown"]
+        params = {"search": random.choice(search_terms)}
+        self.client.get(
+            "/api/v1/politicians/",
+            params=params,
+            headers=self.headers,
+            name="Search Politicians"
+        )
 
     @task(5)
-    def get_multiple_quotes(self):
-        """Get multiple quotes (up to 50 for authenticated users)"""
-        symbols = ["AAPL", "GOOGL", "MSFT", "TSLA", "AMZN", "META", "NVDA",
-                   "JPM", "BAC", "WMT", "DIS", "NFLX", "AMD", "INTC"]
-        selected = random.sample(symbols, min(10, len(symbols)))
-        query = "&".join([f"symbols={s}" for s in selected])
-        self.client.get(f"/api/v1/market-data/quotes?{query}", headers=self.headers)
+    def view_politician_profile(self):
+        """View a specific politician's profile."""
+        # Random politician ID (would need real IDs in production)
+        self.client.get(
+            "/api/v1/politicians/1",
+            headers=self.headers,
+            name="View Politician Profile",
+            catch_response=True
+        )
+
+    @task(6)
+    def get_analytics(self):
+        """Fetch analytics data."""
+        self.client.get(
+            "/api/v1/analytics/summary",
+            headers=self.headers,
+            name="Get Analytics Summary"
+        )
+
+    @task(4)
+    def search_tickers(self):
+        """Search for stock tickers."""
+        tickers = ["AAPL", "GOOGL", "MSFT", "TSLA", "AMZN", "NVDA"]
+        params = {"ticker": random.choice(tickers)}
+        self.client.get(
+            "/api/v1/trades/",
+            params=params,
+            headers=self.headers,
+            name="Search by Ticker"
+        )
 
     @task(3)
-    def get_historical_data(self):
-        """Get historical data with various intervals"""
-        symbol = random.choice(["AAPL", "GOOGL", "MSFT", "TSLA"])
-        days = random.choice([7, 30, 90, 365])
-        start = (datetime.utcnow() - timedelta(days=days)).isoformat()
-        end = datetime.utcnow().isoformat()
-        interval = random.choice(["1d", "1h", "5m"])
-
+    def view_patterns(self):
+        """View trading patterns."""
         self.client.get(
-            f"/api/v1/market-data/historical/{symbol}?"
-            f"start_date={start}&end_date={end}&interval={interval}",
-            headers=self.headers
+            "/api/v1/patterns/",
+            headers=self.headers,
+            name="View Patterns"
         )
 
     @task(2)
-    def view_leaderboard_filtered(self):
-        """View leaderboard with different filters"""
-        days = random.choice([7, 30, 90, 365])
-        limit = random.choice([10, 20, 50, 100])
+    def get_market_data(self):
+        """Fetch market data."""
+        tickers = ["AAPL", "GOOGL", "MSFT"]
+        ticker = random.choice(tickers)
         self.client.get(
-            f"/api/v1/stats/leaderboard?days={days}&limit={limit}",
-            headers=self.headers
+            f"/api/v1/market-data/{ticker}",
+            headers=self.headers,
+            name="Get Market Data",
+            catch_response=True
         )
 
     @task(2)
-    def view_ticker_stats(self):
-        """View ticker statistics"""
-        limit = random.choice([20, 50, 100])
-        self.client.get(f"/api/v1/stats/tickers?limit={limit}", headers=self.headers)
+    def view_statistics(self):
+        """View statistics."""
+        self.client.get(
+            "/api/v1/stats/overview",
+            headers=self.headers,
+            name="View Statistics"
+        )
 
     @task(1)
-    def get_trade_volume(self):
-        """Get trade volume over time"""
-        start = (datetime.utcnow() - timedelta(days=90)).isoformat()
-        end = datetime.utcnow().isoformat()
-        self.client.get(
-            f"/api/v1/stats/volume?start_date={start}&end_date={end}",
-            headers=self.headers
-        )
+    def create_alert(self):
+        """Create a new alert."""
+        if hasattr(self, 'token'):
+            alert_data = {
+                "name": f"Load Test Alert {random.randint(1000, 9999)}",
+                "alert_type": "trade",
+                "conditions": {"min_amount": random.randint(50000, 500000)},
+                "notification_channels": ["email"]
+            }
+            self.client.post(
+                "/api/v1/alerts/",
+                json=alert_data,
+                headers=self.headers,
+                name="Create Alert",
+                catch_response=True
+            )
+
+    @task(1)
+    def export_data(self):
+        """Export data - resource intensive."""
+        if hasattr(self, 'token'):
+            export_data = {
+                "format": "csv",
+                "filters": {"limit": 100}
+            }
+            self.client.post(
+                "/api/v1/export/trades",
+                json=export_data,
+                headers=self.headers,
+                name="Export Data",
+                catch_response=True
+            )
 
 
-class ResearchUserTasks(SequentialTaskSet):
-    """Simulates researcher running complex analyses and exports"""
+class WebsiteUser(HttpUser):
+    """Simulates website users with realistic timing."""
+    tasks = [UserBehavior]
+    wait_time = between(1, 5)  # Wait 1-5 seconds between tasks
+
+
+class ApiUser(HttpUser):
+    """Simulates API users with faster requests."""
+    tasks = [UserBehavior]
+    wait_time = between(0.5, 2)  # Faster API requests
+
+
+class HeavyUser(HttpUser):
+    """Simulates heavy users with minimal wait time."""
+    tasks = [UserBehavior]
+    wait_time = between(0.1, 0.5)  # Very fast requests
+
+
+class ReadOnlyUser(HttpUser):
+    """Simulates read-only users (no writes)."""
+    wait_time = between(1, 3)
+
+    @task(10)
+    def browse_trades(self):
+        """Browse recent trades."""
+        self.client.get("/api/v1/trades/", params={"limit": 50})
+
+    @task(5)
+    def search_politicians(self):
+        """Search politicians."""
+        search_terms = ["john", "smith", "johnson"]
+        self.client.get("/api/v1/politicians/", params={"search": random.choice(search_terms)})
+
+    @task(3)
+    def view_analytics(self):
+        """View analytics."""
+        self.client.get("/api/v1/analytics/summary")
+
+
+# Custom scenarios for specific testing
+
+class DatabaseStressTest(TaskSet):
+    """Stress test database operations."""
+
+    @task(5)
+    def complex_query(self):
+        """Execute complex queries."""
+        params = {
+            "limit": 100,
+            "skip": 0,
+            "sort": "transaction_date",
+            "order": "desc",
+            "min_amount": 100000
+        }
+        self.client.get("/api/v1/trades/", params=params, name="Complex Query")
+
+    @task(3)
+    def aggregation_query(self):
+        """Test aggregation endpoints."""
+        self.client.get("/api/v1/analytics/aggregated", name="Aggregation Query")
+
+    @task(2)
+    def join_heavy_query(self):
+        """Test queries with joins."""
+        self.client.get("/api/v1/politicians/?include_trades=true", name="Join Query")
+
+
+class CacheStressTest(TaskSet):
+    """Test caching behavior under load."""
+
+    @task(10)
+    def cached_endpoint(self):
+        """Hit frequently cached endpoint."""
+        self.client.get("/api/v1/stats/overview", name="Cached Stats")
+
+    @task(5)
+    def cache_busting_query(self):
+        """Query with unique parameters to test cache misses."""
+        random_skip = random.randint(0, 10000)
+        self.client.get(f"/api/v1/trades/?skip={random_skip}", name="Cache Miss")
+
+
+class RateLimitTest(TaskSet):
+    """Test rate limiting under load."""
 
     def on_start(self):
-        """Login before starting tasks"""
-        response = self.client.post("/api/v1/auth/login", json={
-            "email": "researcher@example.com",
-            "password": "Research123"
-        })
+        """Login to get token."""
+        self.email = f"ratetest{random.randint(1000, 9999)}@test.com"
+        self.password = "testpass123"
 
-        if response.status_code != 200:
-            self.client.post("/api/v1/auth/register", json={
-                "email": "researcher@example.com",
-                "username": "researcher",
-                "password": "Research123"
-            })
-            response = self.client.post("/api/v1/auth/login", json={
-                "email": "researcher@example.com",
-                "password": "Research123"
-            })
-
-        self.token = response.json().get("access_token")
-        self.headers = {"Authorization": f"Bearer {self.token}"}
-
-    @task(3)
-    def view_all_politicians(self):
-        """View all politicians"""
-        self.client.get("/api/v1/politicians?limit=100", headers=self.headers)
-
-    @task(2)
-    def get_historical_data_long_range(self):
-        """Get long-range historical data"""
-        symbol = random.choice(["AAPL", "GOOGL", "MSFT"])
-        days = random.choice([365, 730, 1825])  # 1, 2, or 5 years
-        start = (datetime.utcnow() - timedelta(days=days)).isoformat()
-        end = datetime.utcnow().isoformat()
-
-        self.client.get(
-            f"/api/v1/market-data/historical/{symbol}?start_date={start}&end_date={end}",
-            headers=self.headers
+        # Register
+        self.client.post(
+            "/api/v1/auth/register",
+            json={
+                "email": self.email,
+                "username": f"rate{random.randint(1000, 9999)}",
+                "password": self.password,
+                "password_confirm": self.password
+            }
         )
 
-    @task(1)
-    def export_data_csv(self):
-        """Export data in CSV format"""
-        # This would need a valid politician ID in production
-        # For load testing, we just check the endpoint responds
-        self.client.get("/api/v1/stats/overview", headers=self.headers)
+        # Login
+        login_response = self.client.post(
+            "/api/v1/auth/login",
+            json={"email": self.email, "password": self.password}
+        )
 
-    @task(1)
-    def view_comprehensive_stats(self):
-        """View comprehensive statistics"""
-        self.client.get("/api/v1/stats/overview", headers=self.headers)
-        self.client.get("/api/v1/stats/leaderboard?limit=100", headers=self.headers)
-        self.client.get("/api/v1/stats/tickers?limit=100", headers=self.headers)
-        self.client.get("/api/v1/stats/by-party", headers=self.headers)
+        if login_response.status_code == 200:
+            self.token = login_response.json().get("access_token")
+            self.headers = {"Authorization": f"Bearer {self.token}"}
 
-
-# ============================================================================
-# User Classes
-# ============================================================================
-
-class AnonymousUser(HttpUser):
-    """Anonymous user browsing public data"""
-    tasks = [AnonymousBrowsingTasks]
-    wait_time = between(2, 5)  # Wait 2-5 seconds between tasks
-    weight = 3  # 30% of users
+    @task
+    def rapid_fire_requests(self):
+        """Make rapid requests to trigger rate limiting."""
+        for _ in range(20):
+            self.client.get(
+                "/api/v1/trades/",
+                headers=self.headers,
+                name="Rate Limit Test"
+            )
 
 
-class AuthenticatedUser(HttpUser):
-    """Regular authenticated user"""
-    tasks = [AuthenticatedUserTasks]
-    wait_time = between(1, 3)  # Wait 1-3 seconds between tasks
-    weight = 5  # 50% of users
+class DatabaseStressUser(HttpUser):
+    """User for database stress testing."""
+    tasks = [DatabaseStressTest]
+    wait_time = between(0.1, 0.5)
 
 
-class PowerUser(HttpUser):
-    """Power user making frequent requests"""
-    tasks = [PowerUserTasks]
-    wait_time = between(0.5, 2)  # Wait 0.5-2 seconds between tasks
-    weight = 1  # 10% of users
+class CacheStressUser(HttpUser):
+    """User for cache stress testing."""
+    tasks = [CacheStressTest]
+    wait_time = between(0.1, 0.3)
 
 
-class ResearchUser(HttpUser):
-    """Research user running complex analyses"""
-    tasks = [ResearchUserTasks]
-    wait_time = between(3, 8)  # Wait 3-8 seconds between tasks
-    weight = 1  # 10% of users
-
-
-# ============================================================================
-# Standalone Test Functions
-# ============================================================================
-
-def test_endpoint_availability(host="http://localhost:8000"):
-    """Quick test to verify endpoints are available before load testing"""
-    import requests
-
-    endpoints = [
-        "/api/v1/stats/overview",
-        "/api/v1/stats/leaderboard",
-        "/api/v1/market-data/public/providers",
-        "/api/v1/market-data/public/market-status",
-    ]
-
-    print(f"\nTesting endpoint availability at {host}...\n")
-
-    for endpoint in endpoints:
-        try:
-            response = requests.get(f"{host}{endpoint}", timeout=5)
-            status = "✅ OK" if response.status_code == 200 else f"❌ {response.status_code}"
-            print(f"{status} - {endpoint}")
-        except Exception as e:
-            print(f"❌ ERROR - {endpoint}: {str(e)}")
-
-    print("\nEndpoint availability check complete.\n")
-
-
-if __name__ == "__main__":
-    # Run availability test when executed directly
-    import sys
-    host = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8000"
-    test_endpoint_availability(host)
+class RateLimitUser(HttpUser):
+    """User for rate limit testing."""
+    tasks = [RateLimitTest]
+    wait_time = between(0.01, 0.1)  # Very fast to hit rate limits

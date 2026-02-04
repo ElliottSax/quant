@@ -23,19 +23,26 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
     def __init__(
         self,
         app,
-        requests_per_minute: int = 60,
-        requests_per_hour: int = 1000,
+        requests_per_minute: int | None = None,
+        requests_per_hour: int | None = None,
     ):
         super().__init__(app)
-        self.requests_per_minute = requests_per_minute
-        self.requests_per_hour = requests_per_hour
+        # Use config values by default
+        from app.core.config import settings
+
+        self.requests_per_minute = (
+            requests_per_minute or settings.rate_limit.DEFAULT_REQUESTS_PER_MINUTE
+        )
+        self.requests_per_hour = (
+            requests_per_hour or settings.rate_limit.DEFAULT_REQUESTS_PER_HOUR
+        )
 
         # Storage: {client_ip: [(timestamp, endpoint), ...]}
         self.request_log: dict[str, list[tuple[float, str]]] = defaultdict(list)
 
-        # Cleanup interval (seconds)
+        # Cleanup interval (seconds) - configurable via settings
         self.last_cleanup = time.time()
-        self.cleanup_interval = 300  # 5 minutes
+        self.cleanup_interval = settings.performance.RATE_LIMIT_CLEANUP_INTERVAL_SECONDS
 
     def _cleanup_old_requests(self) -> None:
         """Remove requests older than 1 hour."""

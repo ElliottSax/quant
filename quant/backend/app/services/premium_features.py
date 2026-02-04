@@ -22,7 +22,6 @@ class AdvancedAnalytics:
 
     @staticmethod
     @timed("advanced_pattern_detection")
-    @cached(ttl=1800, key_prefix="premium:patterns")
     async def detect_trading_patterns(
         db: AsyncSession,
         politician_id: Optional[str] = None,

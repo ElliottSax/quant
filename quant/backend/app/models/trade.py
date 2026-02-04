@@ -1,7 +1,6 @@
 """Trade model."""
 
 import uuid
-import json
 from datetime import date, datetime
 from decimal import Decimal
 from typing import TYPE_CHECKING
@@ -16,71 +15,14 @@ from sqlalchemy import (
     func,
     CheckConstraint,
     Index,
-    TypeDecorator,
-    CHAR,
 )
-from sqlalchemy.dialects.postgresql import UUID as PG_UUID, JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
+from app.models.common import UUID, JSONType
 
 if TYPE_CHECKING:
     from app.models.politician import Politician
-
-
-# Database-agnostic UUID type
-class UUID(TypeDecorator):
-    """Platform-independent UUID type."""
-    impl = CHAR
-    cache_ok = True
-
-    def load_dialect_impl(self, dialect):
-        if dialect.name == 'postgresql':
-            return dialect.type_descriptor(PG_UUID(as_uuid=True))
-        else:
-            return dialect.type_descriptor(CHAR(36))
-
-    def process_bind_param(self, value, dialect):
-        if value is None:
-            return value
-        elif dialect.name == 'postgresql':
-            return value
-        else:
-            return str(value)
-
-    def process_result_value(self, value, dialect):
-        if value is None:
-            return value
-        if isinstance(value, uuid.UUID):
-            return value
-        return uuid.UUID(value)
-
-
-# Database-agnostic JSON type
-class JSONType(TypeDecorator):
-    """Platform-independent JSON type."""
-    impl = Text
-    cache_ok = True
-
-    def load_dialect_impl(self, dialect):
-        if dialect.name == 'postgresql':
-            return dialect.type_descriptor(JSONB())
-        else:
-            return dialect.type_descriptor(Text())
-
-    def process_bind_param(self, value, dialect):
-        if value is None:
-            return value
-        if dialect.name == 'postgresql':
-            return value
-        return json.dumps(value)
-
-    def process_result_value(self, value, dialect):
-        if value is None:
-            return value
-        if isinstance(value, dict):
-            return value
-        return json.loads(value)
 
 
 class Trade(Base):

@@ -11,6 +11,7 @@ Not for trading signals or financial advice.
 from fastapi import APIRouter, Depends, HTTPException, Query, Path
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func, and_
+from sqlalchemy.orm import joinedload
 from typing import List, Optional, Dict, Any
 from datetime import datetime, date, timedelta
 from pydantic import BaseModel, Field
@@ -150,11 +151,12 @@ async def load_politician_trades(
 ) -> pd.DataFrame:
     """Load trades for a politician into a pandas DataFrame"""
 
-    # Build query
+    # Build query with eager loading to prevent N+1
     query = (
         select(Trade, Politician)
         .join(Politician, Trade.politician_id == Politician.id)
         .where(Trade.politician_id == politician_id)
+        .options(joinedload(Trade.politician))
     )
 
     if start_date:
@@ -225,6 +227,7 @@ async def list_politicians_with_data(
 ) -> List[Dict[str, Any]]:
     """List politicians with sufficient data for analysis"""
 
+    # Note: This query uses aggregation, no N+1 issue as we're only selecting aggregated data
     query = (
         select(
             Politician.id,

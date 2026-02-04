@@ -28,7 +28,7 @@ class ETagMiddleware(BaseHTTPMiddleware):
     def __init__(
         self,
         app: ASGIApp,
-        cache_max_age: int = 300,  # 5 minutes default
+        cache_max_age: int | None = None,
         exclude_paths: set[str] | None = None,
     ):
         """
@@ -36,11 +36,16 @@ class ETagMiddleware(BaseHTTPMiddleware):
 
         Args:
             app: ASGI application
-            cache_max_age: Maximum cache age in seconds (default: 300)
+            cache_max_age: Maximum cache age in seconds (default: from config)
             exclude_paths: Set of paths to exclude from ETag caching
+
+        Configuration via environment variables:
+        - CACHE_HTTP_CACHE_MAX_AGE (default: 300)
         """
         super().__init__(app)
-        self.cache_max_age = cache_max_age
+        from app.core.config import settings
+
+        self.cache_max_age = cache_max_age or settings.cache.HTTP_CACHE_MAX_AGE
         self.exclude_paths = exclude_paths or {
             "/docs",
             "/redoc",

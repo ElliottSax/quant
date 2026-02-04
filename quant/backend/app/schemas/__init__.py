@@ -17,6 +17,7 @@ from app.schemas.ticker import TickerBase, TickerCreate, TickerResponse, TickerU
 from app.schemas.trade import (
     TradeBase,
     TradeCreate,
+    TradeFieldSelection,
     TradeListResponse,
     TradeResponse,
     TradeUpdate,
@@ -47,6 +48,7 @@ __all__ = [
     "TradeResponse",
     "TradeWithPolitician",
     "TradeListResponse",
+    "TradeFieldSelection",
     # Ticker schemas
     "TickerBase",
     "TickerCreate",

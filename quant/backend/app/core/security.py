@@ -18,9 +18,10 @@ logger = get_logger(__name__)
 # Password hashing context
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# Account lockout settings
-MAX_FAILED_ATTEMPTS = 5
-LOCKOUT_DURATION_MINUTES = 30
+# Import account lockout settings from config
+# These can be overridden via environment variables:
+# - SECURITY_MAX_FAILED_LOGIN_ATTEMPTS (default: 5)
+# - SECURITY_LOCKOUT_DURATION_MINUTES (default: 30)
 
 
 def create_access_token(subject: str, expires_delta: timedelta | None = None) -> str:
@@ -205,15 +206,18 @@ async def handle_failed_login(user: "User", db: "AsyncSession") -> None:
     """
     user.failed_login_attempts += 1
 
-    if user.failed_login_attempts >= MAX_FAILED_ATTEMPTS:
+    if user.failed_login_attempts >= settings.security.MAX_FAILED_LOGIN_ATTEMPTS:
         # Lock the account
-        user.locked_until = datetime.now(timezone.utc) + timedelta(minutes=LOCKOUT_DURATION_MINUTES)
+        user.locked_until = datetime.now(timezone.utc) + timedelta(
+            minutes=settings.security.LOCKOUT_DURATION_MINUTES
+        )
         logger.warning(
             f"Account locked due to {user.failed_login_attempts} failed attempts: {user.username}"
         )
     else:
         logger.info(
-            f"Failed login attempt {user.failed_login_attempts}/{MAX_FAILED_ATTEMPTS} for user: {user.username}"
+            f"Failed login attempt {user.failed_login_attempts}/"
+            f"{settings.security.MAX_FAILED_LOGIN_ATTEMPTS} for user: {user.username}"
         )
 
     await db.commit()

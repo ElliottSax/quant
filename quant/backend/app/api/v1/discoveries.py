@@ -8,6 +8,7 @@ found by automated ML analysis of trading data.
 from fastapi import APIRouter, Depends, Query, Path
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func, and_, or_, desc
+from sqlalchemy.orm import selectinload
 from typing import List, Optional
 from datetime import datetime, timedelta
 from pydantic import BaseModel
@@ -85,6 +86,7 @@ async def _generate_discoveries_from_data(
     cutoff_date = datetime.utcnow() - timedelta(days=time_range_days)
 
     # Get politicians with recent trading activity
+    # Note: This uses aggregation with explicit columns, no N+1 issue
     result = await db.execute(
         select(Politician, func.count(Trade.id).label("trade_count"))
         .join(Trade, Trade.politician_id == Politician.id, isouter=True)
@@ -151,6 +153,7 @@ async def _generate_anomalies_from_data(
 
     cutoff_date = datetime.utcnow() - timedelta(days=30)
 
+    # Note: This uses aggregation with explicit columns, no N+1 issue
     result = await db.execute(
         select(Politician, func.count(Trade.id).label("trade_count"))
         .join(Trade, Trade.politician_id == Politician.id, isouter=True)

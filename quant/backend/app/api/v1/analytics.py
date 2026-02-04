@@ -4,8 +4,12 @@ Advanced Analytics API Endpoints
 Research endpoints for ensemble predictions, correlation analysis,
 automated insights, and multi-politician network analysis.
 
-**CUTTING-EDGE RESEARCH**: Multi-model ensemble, correlation detection,
-automated insight generation.
+Features:
+- Multi-model ensemble predictions
+- Correlation detection
+- Automated insight generation
+- Redis caching for expensive ML operations
+- Concurrency control to prevent overload
 
 Author: Claude
 """
@@ -13,6 +17,7 @@ Author: Claude
 from fastapi import APIRouter, Depends, HTTPException, Query, Path
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
+from sqlalchemy.orm import selectinload
 from typing import List, Optional, Dict, Any, Tuple
 from datetime import datetime, timezone
 from pydantic import BaseModel, Field, UUID4
@@ -265,6 +270,74 @@ async def _compute_ensemble_prediction(
         )
 
 
+@router.get(
+    "/ensemble/{politician_id}",
+    response_model=EnsemblePredictionResponse,
+    summary="Get ensemble prediction (cached)",
+    description="Multi-model ensemble prediction with caching for performance"
+)
+async def get_ensemble_prediction(
+    politician_id: UUID4 = Path(..., description="Politician UUID"),
+    db: AsyncSession = Depends(get_db)
+) -> EnsemblePredictionResponse:
+    """
+    Get ensemble prediction for a politician (with caching).
+
+    This endpoint:
+    - Runs Fourier, HMM, and DTW analyses in parallel
+    - Combines results using ensemble predictor
+    - Caches results for 1 hour to improve performance
+    - Uses concurrency control to prevent overload
+
+    **Models Used**:
+    - Fourier: Detects cyclical patterns
+    - HMM: Identifies regime changes
+    - DTW: Matches historical patterns
+
+    **Prediction Types**:
+    - TRADE_INCREASE: Expect more trading activity
+    - TRADE_DECREASE: Expect less trading activity
+    - REGIME_CHANGE: Trading pattern shift detected
+    - CYCLE_PEAK: Approaching cycle peak
+    - ANOMALY: Unusual pattern detected
+
+    **Example**: "What's the trading forecast for Nancy Pelosi?"
+    """
+    # Check cache first
+    politician_id_str = str(politician_id)
+    cache_key = cache_manager._make_key("ensemble", politician_id=politician_id_str)
+    cached_result = await cache_manager.get(cache_key)
+
+    if cached_result is not None:
+        logger.info(f"Cache hit for ensemble prediction: {politician_id_str}")
+        # Convert cached dict back to response model
+        return EnsemblePredictionResponse(**cached_result)
+
+    # Cache miss - compute prediction with concurrency control
+    logger.info(f"Cache miss for ensemble prediction: {politician_id_str}")
+
+    async with ml_semaphore:
+        # Load politician
+        result = await db.execute(select(Politician).where(Politician.id == politician_id_str))
+        politician = result.scalar_one_or_none()
+
+        if not politician:
+            raise HTTPException(status_code=404, detail="Politician not found")
+
+        # Compute prediction
+        response = await _compute_ensemble_prediction(
+            politician_id_str,
+            politician.name,
+            db
+        )
+
+        # Cache the result for 1 hour (3600 seconds)
+        cache_data = response.dict()
+        await cache_manager.set(cache_key, cache_data, ttl=3600)
+
+        return response
+
+
 # ============================================================================
 # Correlation Analysis Endpoints
 # ============================================================================
@@ -293,9 +366,11 @@ async def analyze_pairwise_correlations(
     # Convert UUIDs to strings
     politician_ids_str = [str(pid) for pid in politician_ids]
 
-    # Load all politicians
+    # Load all politicians with eager loading for trades
     result = await db.execute(
-        select(Politician).where(Politician.id.in_(politician_ids_str))
+        select(Politician)
+        .where(Politician.id.in_(politician_ids_str))
+        .options(selectinload(Politician.trades))
     )
     politicians = {str(p.id): p for p in result.scalars().all()}
 
@@ -373,6 +448,7 @@ async def analyze_trading_network(
         .join(Trade)
         .group_by(Politician.id)
         .having(func.count(Trade.id) >= min_trades)
+        .options(selectinload(Politician.trades))
     )
 
     result = await db.execute(query)
