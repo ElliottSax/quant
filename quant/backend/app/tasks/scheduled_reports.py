@@ -6,6 +6,9 @@ Background tasks for automated report generation and delivery.
 
 from typing import List, Optional, Dict
 from datetime import datetime, timedelta
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Celery setup
 try:
@@ -29,7 +32,7 @@ try:
     CELERY_AVAILABLE = True
 except ImportError:
     CELERY_AVAILABLE = False
-    print("Celery not installed. Install with: pip install celery")
+    logger.warning("Celery not installed. Install with: pip install celery")
     celery_app = None
 
 
@@ -200,7 +203,7 @@ if CELERY_AVAILABLE:
 def schedule_daily_report(emails: List[str], delay_seconds: int = 0):
     """Schedule daily report generation"""
     if not CELERY_AVAILABLE:
-        print("Celery not available")
+        logger.warning("Celery not available")
         return None
 
     if delay_seconds > 0:
@@ -212,7 +215,7 @@ def schedule_daily_report(emails: List[str], delay_seconds: int = 0):
 def schedule_weekly_report(emails: List[str], delay_seconds: int = 0):
     """Schedule weekly report generation"""
     if not CELERY_AVAILABLE:
-        print("Celery not available")
+        logger.warning("Celery not available")
         return None
 
     if delay_seconds > 0:

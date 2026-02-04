@@ -10,9 +10,12 @@ from datetime import datetime, timedelta
 from enum import Enum
 import asyncio
 import os
+import logging
 from pydantic import BaseModel
 import pandas as pd
 import numpy as np
+
+logger = logging.getLogger(__name__)
 
 # Import data providers
 try:
@@ -20,14 +23,14 @@ try:
     YFINANCE_AVAILABLE = True
 except ImportError:
     YFINANCE_AVAILABLE = False
-    print("Warning: yfinance not installed. Install with: pip install yfinance")
+    logger.warning("yfinance not installed. Install with: pip install yfinance")
 
 try:
     import httpx
     HTTPX_AVAILABLE = True
 except ImportError:
     HTTPX_AVAILABLE = False
-    print("Warning: httpx not installed. Install with: pip install httpx")
+    logger.warning("httpx not installed. Install with: pip install httpx")
 
 
 class DataProvider(str, Enum):
@@ -152,7 +155,7 @@ class MarketDataProvider:
             if isinstance(result, MarketQuote):
                 quotes[symbol] = result
             else:
-                print(f"Error fetching quote for {symbol}: {result}")
+                logger.error(f"Error fetching quote for {symbol}: {result}")
 
         return quotes
 
@@ -200,7 +203,7 @@ class MarketDataProvider:
             return bars
 
         except Exception as e:
-            print(f"Error fetching Yahoo Finance data: {e}")
+            logger.error(f"Error fetching Yahoo Finance data: {e}", exc_info=True)
             return self._generate_mock_data(symbol, start_date, end_date, interval)
 
     async def _fetch_yahoo_quote(self, symbol: str) -> MarketQuote:
@@ -232,7 +235,7 @@ class MarketDataProvider:
             )
 
         except Exception as e:
-            print(f"Error fetching Yahoo Finance quote: {e}")
+            logger.error(f"Error fetching Yahoo Finance quote: {e}", exc_info=True)
             return self._generate_mock_quote(symbol)
 
     # ==================== ALPHA VANTAGE ====================
@@ -246,7 +249,7 @@ class MarketDataProvider:
     ) -> List[MarketDataBar]:
         """Fetch historical data from Alpha Vantage"""
         if not self.ALPHA_VANTAGE_API_KEY or not self.http_client:
-            print("Alpha Vantage API key not configured, falling back to Yahoo Finance")
+            logger.warning("Alpha Vantage API key not configured, falling back to Yahoo Finance")
             return await self._fetch_yahoo_historical(symbol, start_date, end_date, interval)
 
         try:
@@ -304,7 +307,7 @@ class MarketDataProvider:
             return bars
 
         except Exception as e:
-            print(f"Error fetching Alpha Vantage data: {e}")
+            logger.error(f"Error fetching Alpha Vantage data: {e}", exc_info=True)
             return await self._fetch_yahoo_historical(symbol, start_date, end_date, interval)
 
     async def _fetch_alpha_vantage_quote(self, symbol: str) -> MarketQuote:
@@ -343,7 +346,7 @@ class MarketDataProvider:
             )
 
         except Exception as e:
-            print(f"Error fetching Alpha Vantage quote: {e}")
+            logger.error(f"Error fetching Alpha Vantage quote: {e}", exc_info=True)
             return await self._fetch_yahoo_quote(symbol)
 
     # ==================== POLYGON.IO ====================
@@ -357,7 +360,7 @@ class MarketDataProvider:
     ) -> List[MarketDataBar]:
         """Fetch historical data from Polygon.io"""
         if not self.POLYGON_API_KEY or not self.http_client:
-            print("Polygon API key not configured, falling back to Yahoo Finance")
+            logger.warning("Polygon API key not configured, falling back to Yahoo Finance")
             return await self._fetch_yahoo_historical(symbol, start_date, end_date, interval)
 
         try:
@@ -405,7 +408,7 @@ class MarketDataProvider:
             return bars
 
         except Exception as e:
-            print(f"Error fetching Polygon data: {e}")
+            logger.error(f"Error fetching Polygon data: {e}", exc_info=True)
             return await self._fetch_yahoo_historical(symbol, start_date, end_date, interval)
 
     async def _fetch_polygon_quote(self, symbol: str) -> MarketQuote:
@@ -453,7 +456,7 @@ class MarketDataProvider:
             )
 
         except Exception as e:
-            print(f"Error fetching Polygon quote: {e}")
+            logger.error(f"Error fetching Polygon quote: {e}", exc_info=True)
             return await self._fetch_yahoo_quote(symbol)
 
     # ==================== FINNHUB ====================
@@ -467,7 +470,7 @@ class MarketDataProvider:
     ) -> List[MarketDataBar]:
         """Fetch historical data from Finnhub"""
         if not self.FINNHUB_API_KEY or not self.http_client:
-            print("Finnhub API key not configured, falling back to Yahoo Finance")
+            logger.warning("Finnhub API key not configured, falling back to Yahoo Finance")
             return await self._fetch_yahoo_historical(symbol, start_date, end_date, interval)
 
         try:
@@ -515,7 +518,7 @@ class MarketDataProvider:
             return bars
 
         except Exception as e:
-            print(f"Error fetching Finnhub data: {e}")
+            logger.error(f"Error fetching Finnhub data: {e}", exc_info=True)
             return await self._fetch_yahoo_historical(symbol, start_date, end_date, interval)
 
     async def _fetch_finnhub_quote(self, symbol: str) -> MarketQuote:
@@ -552,7 +555,7 @@ class MarketDataProvider:
             )
 
         except Exception as e:
-            print(f"Error fetching Finnhub quote: {e}")
+            logger.error(f"Error fetching Finnhub quote: {e}", exc_info=True)
             return await self._fetch_yahoo_quote(symbol)
 
     # ==================== MOCK DATA ====================
@@ -662,7 +665,7 @@ class MarketDataProvider:
             }
 
         except Exception as e:
-            print(f"Error fetching company info: {e}")
+            logger.error(f"Error fetching company info: {e}", exc_info=True)
             return {"symbol": symbol, "error": str(e)}
 
     def to_dataframe(self, bars: List[MarketDataBar]) -> pd.DataFrame:

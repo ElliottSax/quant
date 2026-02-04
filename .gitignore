@@ -1,10 +1,343 @@
-.env
-.env.llm
-.env
-# Sensitive files
-.env
-**/.env
-*.env
-.env.*
-!.env.example
+# QuantEngines .gitignore
+
+# ============================================================================
+# Python / Backend
+# ============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
 venv/
+ENV/
+env/
+.venv
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# Pytype
+.pytype/
+
+# ============================================================================
+# Environment Variables & Secrets
+# ============================================================================
+
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+*.pem
+*.key
+*.crt
+secrets/
+
+# ============================================================================
+# Database
+# ============================================================================
+
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+postgres-data/
+pgdata/
+
+# ============================================================================
+# Frontend / Node.js
+# ============================================================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+.vercel
+
+# Production build
+build/
+dist/
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============================================================================
+# IDEs and Editors
+# ============================================================================
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================================================
+# OS Files
+# ============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# Logs
+# ============================================================================
+
+*.log
+logs/
+*.log.*
+log/
+
+# ============================================================================
+# Docker
+# ============================================================================
+
+docker-compose.override.yml
+.dockerignore
+
+# ============================================================================
+# Monitoring & Profiling
+# ============================================================================
+
+.profiling/
+*.prof
+profile_output.*
+
+# ============================================================================
+# Temporary Files
+# ============================================================================
+
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+*.cache
+
+# ============================================================================
+# Redis
+# ============================================================================
+
+dump.rdb
+appendonly.aof
+redis-data/
+
+# ============================================================================
+# Celery
+# ============================================================================
+
+celerybeat-schedule
+celerybeat-schedule.*
+celerybeat.pid
+
+# ============================================================================
+# AWS / Cloud
+# ============================================================================
+
+.aws/
+.elasticbeanstalk/
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+
+# ============================================================================
+# Sentry
+# ============================================================================
+
+.sentryclirc
+
+# ============================================================================
+# Documentation Build
+# ============================================================================
+
+docs/_build/
+docs/.doctrees/
+site/
+
+# ============================================================================
+# Testing & Coverage
+# ============================================================================
+
+.pytest_cache/
+.coverage
+coverage/
+*.cover
+test-results/
+junit.xml
+
+# ============================================================================
+# Jupyter Notebooks
+# ============================================================================
+
+.ipynb_checkpoints/
+*.ipynb
+
+# ============================================================================
+# Data Files
+# ============================================================================
+
+*.csv
+*.xlsx
+*.json
+!package.json
+!tsconfig.json
+!*config*.json
+*.parquet
+data/
+datasets/
+
+# ============================================================================
+# Machine Learning
+# ============================================================================
+
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib
+models/
+checkpoints/
+wandb/
+
+# ============================================================================
+# Scraping
+# ============================================================================
+
+scraped_data/
+screenshots/
+downloads/
+
+# ============================================================================
+# Project Specific
+# ============================================================================
+
+# Alembic
+alembic/versions/*.pyc
+
+# Scripts output
+scripts/output/
+scripts/logs/
+
+# Backup files
+backup/
+backups/
+*.backup
+
+# Local configuration
+local_config.py
+local_settings.py
+
+# API Keys (double check!)
+*_api_key.txt
+*_secret.txt
+
+# ============================================================================
+# Keep These Files
+# ============================================================================
+
+# Force include important files even if matched above
+!.gitkeep
+!.env.example
+!.env.local.example
+!README.md
+!LICENSE

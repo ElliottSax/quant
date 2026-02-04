@@ -8,9 +8,12 @@ from typing import Dict, List, Optional, Tuple
 from datetime import datetime, timedelta
 from enum import Enum
 from pydantic import BaseModel
+import logging
 import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
+
+logger = logging.getLogger(__name__)
 
 
 class OptimizationObjective(str, Enum):
@@ -305,7 +308,7 @@ class PortfolioOptimizer:
                     portfolios_list.append(weight_dict)
 
             except Exception as e:
-                print(f"Error optimizing for return {target_return}: {e}")
+                logger.error(f"Error optimizing for return {target_return}: {e}", exc_info=True)
                 continue
 
         return EfficientFrontier(

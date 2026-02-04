@@ -14,6 +14,10 @@ from bs4 import BeautifulSoup
 import re
 
 from app.core.cache import cache_result
+from app.core.config import settings
+from app.core.logging import get_logger
+
+logger = get_logger(__name__)
 
 
 class SentimentScore(str, Enum):
@@ -148,11 +152,11 @@ class SentimentAnalyzer:
                         metadata={'description': article.get('description', '')}
                     ))
                 except Exception as e:
-                    print(f"Error analyzing article: {e}")
+                    logger.error(f"Error analyzing article: {e}", exc_info=True)
                     continue
 
         except Exception as e:
-            print(f"Error collecting news sentiment: {e}")
+            logger.error(f"Error collecting news sentiment: {e}", exc_info=True)
 
         return sentiment_data
 
@@ -169,11 +173,31 @@ class SentimentAnalyzer:
         articles = []
 
         try:
-            # Example: Scrape from a financial news aggregator
-            # In production, use news APIs like NewsAPI, Alpha Vantage, etc.
+            # Integrate with real news APIs
+            # Priority: NewsAPI (free tier available), then fallback to mock data
 
-            # For demo, return mock data
-            # TODO: Integrate with real news APIs
+            # Try NewsAPI if configured
+            newsapi_key = getattr(settings, 'NEWSAPI_KEY', None)
+            if newsapi_key:
+                try:
+                    articles = await self._fetch_from_newsapi(symbol, newsapi_key, limit)
+                    if articles:
+                        return articles
+                except Exception as e:
+                    logger.warning(f"NewsAPI failed, falling back to mock data: {e}")
+
+            # Try Alpha Vantage News if configured
+            alpha_vantage_key = getattr(settings, 'ALPHA_VANTAGE_API_KEY', None)
+            if alpha_vantage_key:
+                try:
+                    articles = await self._fetch_from_alpha_vantage_news(symbol, alpha_vantage_key, limit)
+                    if articles:
+                        return articles
+                except Exception as e:
+                    logger.warning(f"Alpha Vantage News failed, falling back to mock data: {e}")
+
+            # Fallback to mock data for development/testing
+            logger.info(f"Using mock news data for {symbol}")
             mock_articles = [
                 {
                     'title': f'{symbol} reaches new milestone in market performance',
@@ -201,7 +225,99 @@ class SentimentAnalyzer:
             articles = mock_articles[:limit]
 
         except Exception as e:
-            print(f"Error fetching news: {e}")
+            logger.error(f"Error fetching news: {e}", exc_info=True)
+
+        return articles
+
+    async def _fetch_from_newsapi(
+        self,
+        symbol: str,
+        api_key: str,
+        limit: int = 10
+    ) -> List[Dict]:
+        """
+        Fetch news from NewsAPI.org
+
+        NewsAPI provides free tier with 100 requests/day for development.
+        """
+        articles = []
+
+        try:
+            # Search for company news
+            url = "https://newsapi.org/v2/everything"
+            params = {
+                "q": f"{symbol} stock OR {symbol} company",
+                "language": "en",
+                "sortBy": "publishedAt",
+                "pageSize": min(limit, 100),
+                "apiKey": api_key,
+            }
+
+            async with httpx.AsyncClient() as client:
+                response = await client.get(url, params=params, timeout=30.0)
+                response.raise_for_status()
+
+                data = response.json()
+                if data.get("status") == "ok":
+                    for article in data.get("articles", [])[:limit]:
+                        articles.append({
+                            "title": article.get("title", ""),
+                            "description": article.get("description", ""),
+                            "timestamp": datetime.fromisoformat(
+                                article.get("publishedAt", "").replace("Z", "+00:00")
+                            ),
+                            "url": article.get("url", ""),
+                            "author": article.get("source", {}).get("name", "Unknown"),
+                        })
+
+        except Exception as e:
+            logger.error(f"NewsAPI fetch failed: {e}")
+            raise
+
+        return articles
+
+    async def _fetch_from_alpha_vantage_news(
+        self,
+        symbol: str,
+        api_key: str,
+        limit: int = 10
+    ) -> List[Dict]:
+        """
+        Fetch news from Alpha Vantage News Sentiment API.
+
+        Alpha Vantage provides free tier with 25 requests/day.
+        """
+        articles = []
+
+        try:
+            url = "https://www.alphavantage.co/query"
+            params = {
+                "function": "NEWS_SENTIMENT",
+                "tickers": symbol,
+                "apikey": api_key,
+                "limit": min(limit, 50),
+            }
+
+            async with httpx.AsyncClient() as client:
+                response = await client.get(url, params=params, timeout=30.0)
+                response.raise_for_status()
+
+                data = response.json()
+                if "feed" in data:
+                    for item in data["feed"][:limit]:
+                        articles.append({
+                            "title": item.get("title", ""),
+                            "description": item.get("summary", ""),
+                            "timestamp": datetime.fromisoformat(
+                                item.get("time_published", "").replace("T", " ").replace("Z", "+00:00")
+                            ) if item.get("time_published") else datetime.utcnow(),
+                            "url": item.get("url", ""),
+                            "author": item.get("source", "Unknown"),
+                        })
+
+        except Exception as e:
+            logger.error(f"Alpha Vantage News fetch failed: {e}")
+            raise
 
         return articles
 
@@ -248,7 +364,7 @@ Example: 0.7,0.85"""
                     confidence = float(parts[1].strip())
                     return max(-1, min(1, score)), max(0, min(1, confidence))
             except Exception as e:
-                print(f"AI sentiment analysis failed: {e}")
+                logger.error(f"AI sentiment analysis failed: {e}", exc_info=True)
 
         # Fallback to simple keyword-based sentiment
         return self._simple_sentiment_analysis(text)

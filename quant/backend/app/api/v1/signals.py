@@ -11,6 +11,9 @@ from datetime import datetime, timedelta
 from pydantic import BaseModel
 import asyncio
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 from app.services.signal_generator import (
     SignalGenerator,
@@ -90,7 +93,7 @@ class WebSocketManager:
             )
             await self.broadcast_signal(symbol, signal)
         except Exception as e:
-            print(f"Error generating signal for {symbol}: {e}")
+            logger.error(f"Error generating signal for {symbol}: {e}", exc_info=True)
 
 
 # Global manager instance
@@ -129,7 +132,7 @@ async def websocket_signals(websocket: WebSocket, symbol: str):
     except WebSocketDisconnect:
         manager.disconnect(websocket, symbol.upper())
     except Exception as e:
-        print(f"WebSocket error for {symbol}: {e}")
+        logger.error(f"WebSocket error for {symbol}: {e}", exc_info=True)
         manager.disconnect(websocket, symbol.upper())
 
 
