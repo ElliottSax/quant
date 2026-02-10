@@ -216,16 +216,90 @@ class OptionsAnalyzer:
 
     async def _fetch_options_data(self, symbol: str) -> Optional[List[OptionsContract]]:
         """
-        Fetch options data from data provider
+        Fetch real options data via yfinance.
 
-        In production, this would connect to options data API
-        For now, returns simulated data
+        Falls back to simulated data if yfinance is unavailable or the symbol
+        has no listed options.
         """
-        # TODO: Integrate with real options data provider
-        # Options: CBOE API, TD Ameritrade, Interactive Brokers, etc.
-        logger.info(f"Fetching options data for {symbol} (simulated)")
+        try:
+            import yfinance as yf
+        except ImportError:
+            logger.warning("yfinance not installed, using simulated options data")
+            return self._generate_simulated_options(symbol)
 
-        # Simulate some options data
+        try:
+            logger.info(f"Fetching options data for {symbol} via yfinance")
+            loop = asyncio.get_event_loop()
+
+            ticker = await loop.run_in_executor(None, lambda: yf.Ticker(symbol))
+            expirations = await loop.run_in_executor(None, lambda: ticker.options)
+
+            if not expirations:
+                logger.warning(f"No options expirations available for {symbol}")
+                return None
+
+            # Limit to first 4 expirations to control data volume
+            expirations = expirations[:4]
+            contracts: List[OptionsContract] = []
+
+            for exp_str in expirations:
+                chain = await loop.run_in_executor(
+                    None, lambda exp=exp_str: ticker.option_chain(exp)
+                )
+                exp_date = datetime.strptime(exp_str, "%Y-%m-%d").date()
+
+                for _, row in chain.calls.iterrows():
+                    contract = self._row_to_contract(symbol, row, OptionsType.CALL, exp_date)
+                    if contract:
+                        contracts.append(contract)
+
+                for _, row in chain.puts.iterrows():
+                    contract = self._row_to_contract(symbol, row, OptionsType.PUT, exp_date)
+                    if contract:
+                        contracts.append(contract)
+
+            logger.info(f"Fetched {len(contracts)} options contracts for {symbol}")
+            return contracts if contracts else None
+
+        except Exception as e:
+            logger.error(f"Error fetching options data for {symbol}: {e}", exc_info=True)
+            return self._generate_simulated_options(symbol)
+
+    def _row_to_contract(
+        self, symbol: str, row, option_type: OptionsType, exp_date: date
+    ) -> Optional[OptionsContract]:
+        """Convert a yfinance DataFrame row to an OptionsContract."""
+        try:
+            volume = int(row.get("volume", 0) or 0)
+            open_interest = int(row.get("openInterest", 0) or 0)
+            implied_vol = float(row.get("impliedVolatility", 0) or 0)
+            premium = float(row.get("lastPrice", 0) or 0)
+            strike = float(row.get("strike", 0))
+
+            if strike <= 0:
+                return None
+
+            return OptionsContract(
+                symbol=symbol,
+                strike=strike,
+                expiration=exp_date,
+                option_type=option_type,
+                volume=volume,
+                open_interest=open_interest,
+                implied_volatility=implied_vol,
+                premium=premium,
+                delta=None,
+                gamma=None,
+                theta=None,
+                vega=None,
+            )
+        except (ValueError, TypeError) as e:
+            logger.debug(f"Skipping invalid options row for {symbol}: {e}")
+            return None
+
+    def _generate_simulated_options(self, symbol: str) -> List[OptionsContract]:
+        """Generate simulated options data as fallback."""
+        logger.info(f"Generating simulated options data for {symbol}")
         contracts = []
         base_price = 100.0
 
@@ -235,7 +309,6 @@ class OptionsAnalyzer:
             for strike_offset in [-10, -5, 0, 5, 10]:
                 strike = base_price + strike_offset
 
-                # Call option
                 contracts.append(OptionsContract(
                     symbol=symbol,
                     strike=strike,
@@ -248,10 +321,9 @@ class OptionsAnalyzer:
                     delta=0.5 if strike_offset == 0 else (0.3 if strike_offset > 0 else 0.7),
                     gamma=0.05,
                     theta=-0.1,
-                    vega=0.2
+                    vega=0.2,
                 ))
 
-                # Put option
                 contracts.append(OptionsContract(
                     symbol=symbol,
                     strike=strike,
@@ -264,7 +336,7 @@ class OptionsAnalyzer:
                     delta=-0.5 if strike_offset == 0 else (-0.3 if strike_offset < 0 else -0.7),
                     gamma=0.05,
                     theta=-0.1,
-                    vega=0.2
+                    vega=0.2,
                 ))
 
         return contracts

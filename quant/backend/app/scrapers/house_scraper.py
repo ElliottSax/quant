@@ -228,9 +228,7 @@ class HouseScraper:
 
             # Check if it's a PDF link
             if report_url.endswith('.pdf'):
-                logger.info(f"Skipping PDF report: {report_url}")
-                # TODO: Implement PDF parsing with PyPDF2 or similar
-                return transactions
+                return self._parse_pdf_report(report_url, politician_name, filing_date)
 
             # Parse HTML report
             # Look for transaction tables
@@ -387,6 +385,132 @@ class HouseScraper:
                 except:
                     pass
         return None
+
+    def _parse_pdf_report(
+        self, report_url: str, politician_name: str, filing_date
+    ) -> List[Dict]:
+        """
+        Parse a PDF disclosure report for transactions.
+
+        Args:
+            report_url: URL of the PDF report
+            politician_name: Name of politician
+            filing_date: Date of filing
+
+        Returns:
+            List of transactions from this PDF report
+        """
+        transactions = []
+
+        try:
+            import pdfplumber
+        except ImportError:
+            logger.warning("pdfplumber not installed, skipping PDF: %s", report_url)
+            return transactions
+
+        try:
+            response = httpx.get(report_url, timeout=30.0, follow_redirects=True)
+            response.raise_for_status()
+        except httpx.HTTPStatusError as e:
+            logger.error(f"Failed to download PDF {report_url}: HTTP {e.response.status_code}")
+            return transactions
+        except Exception as e:
+            logger.error(f"Failed to download PDF {report_url}: {e}", exc_info=True)
+            return transactions
+
+        import tempfile
+        import os
+
+        tmp_path = None
+        try:
+            with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp_file:
+                tmp_file.write(response.content)
+                tmp_path = tmp_file.name
+
+            with pdfplumber.open(tmp_path) as pdf:
+                for page in pdf.pages:
+                    tables = page.extract_tables()
+
+                    for table in tables:
+                        if not table or len(table) < 2:
+                            continue
+
+                        # Check if this looks like a transaction table
+                        headers = [str(cell).lower() if cell else "" for cell in table[0]]
+                        header_text = " ".join(headers)
+                        if not any(kw in header_text for kw in ["asset", "ticker", "security", "transaction", "amount"]):
+                            continue
+
+                        for row_data in table[1:]:
+                            transaction = self._parse_pdf_row(
+                                row_data, politician_name, filing_date, report_url
+                            )
+                            if transaction:
+                                transactions.append(transaction)
+
+            logger.info(f"Parsed {len(transactions)} transactions from PDF: {report_url}")
+
+        except Exception as e:
+            logger.error(f"Error parsing PDF report {report_url}: {e}", exc_info=True)
+        finally:
+            if tmp_path and os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+
+        return transactions
+
+    def _parse_pdf_row(
+        self, row_data: list, politician_name: str, filing_date, source_url: str
+    ) -> Optional[Dict]:
+        """
+        Parse a single row from a PDF table.
+
+        Uses a lightweight adapter to reuse the existing _extract_* methods
+        which expect objects with a get_text() method.
+        """
+        if not row_data or len(row_data) < 3:
+            return None
+
+        cell_values = [str(cell).strip() if cell else "" for cell in row_data]
+
+        # Skip rows that are mostly empty
+        non_empty = [c for c in cell_values if c]
+        if len(non_empty) < 3:
+            return None
+
+        class _Cell:
+            def __init__(self, text):
+                self._text = text
+            def get_text(self, strip=False):
+                return self._text.strip() if strip else self._text
+
+        mock_cells = [_Cell(val) for val in cell_values]
+
+        ticker = self._extract_ticker(mock_cells)
+        if not ticker:
+            return None
+
+        transaction_type = self._extract_transaction_type(mock_cells)
+        if not transaction_type:
+            return None
+
+        amount_min, amount_max = self._extract_amount_range(mock_cells)
+        transaction_date = self._extract_date(mock_cells) or filing_date
+
+        return {
+            "politician_name": politician_name,
+            "chamber": "house",
+            "ticker": ticker,
+            "transaction_type": transaction_type,
+            "amount_min": amount_min,
+            "amount_max": amount_max,
+            "transaction_date": transaction_date,
+            "disclosure_date": filing_date,
+            "source_url": source_url,
+            "raw_data": {
+                "cells": cell_values,
+                "source": "pdf",
+            },
+        }
 
     def close(self):
         """Close the driver."""

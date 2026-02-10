@@ -131,7 +131,7 @@ class Settings(BaseSettings):
     VERSION: str = "0.1.0"
     API_V1_STR: str = "/api/v1"
     ENVIRONMENT: str = "development"
-    DEBUG: bool = True
+    DEBUG: bool = False
 
     # Security
     SECRET_KEY: str
@@ -150,9 +150,9 @@ class Settings(BaseSettings):
 
     # Database
     DATABASE_URL: str = "sqlite+aiosqlite:///./quant_dev.db"
-    POSTGRES_USER: str = "quant_user"
-    POSTGRES_PASSWORD: str = "quant_password"
-    POSTGRES_DB: str = "quant_db"
+    POSTGRES_USER: str = ""
+    POSTGRES_PASSWORD: str = ""
+    POSTGRES_DB: str = ""
 
     # Redis (optional for development)
     REDIS_URL: str = "redis://localhost:6379/0"
@@ -204,6 +204,10 @@ class Settings(BaseSettings):
     SMTP_USER: str = ""
     SMTP_PASSWORD: str = ""
 
+    # Push Notifications
+    FCM_SERVER_KEY: str = ""
+    APNS_CERT_PATH: str = ""
+
     # Trusted Proxies (for X-Forwarded-For header validation)
     # Add your load balancer/proxy IPs here in production
     TRUSTED_PROXIES: list[str] = [
@@ -249,11 +253,10 @@ class Settings(BaseSettings):
             if self.DEBUG:
                 raise ValueError("DEBUG must be False in production")
 
-            # Ensure default passwords aren't used in production
-            if self.POSTGRES_PASSWORD == "quant_password":
+            # Ensure database credentials are set in production
+            if not self.POSTGRES_PASSWORD:
                 raise ValueError(
-                    "Default POSTGRES_PASSWORD detected. "
-                    "Please set a secure password in production."
+                    "POSTGRES_PASSWORD must be set in production."
                 )
 
             # Ensure CORS is properly configured

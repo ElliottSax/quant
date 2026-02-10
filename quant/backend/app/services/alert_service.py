@@ -191,43 +191,121 @@ class NotificationService:
                 await NotificationService._send_push(alert, context)
 
     @staticmethod
+    def _format_alert_message(alert: Alert, context: Dict[str, Any]) -> str:
+        """Format a human-readable alert message from context."""
+        alert_type = alert.alert_type
+        if alert_type == AlertType.TRADE:
+            ticker = context.get("ticker", "unknown")
+            tx_type = context.get("transaction_type", "trade")
+            amount_min = context.get("amount_min")
+            amount_max = context.get("amount_max")
+            amount_str = ""
+            if amount_min and amount_max:
+                amount_str = f" (${amount_min:,.0f} - ${amount_max:,.0f})"
+            elif amount_min:
+                amount_str = f" (${amount_min:,.0f}+)"
+            return f"A new {tx_type} trade for {ticker}{amount_str} matched your alert '{alert.name}'."
+        elif alert_type == AlertType.PRICE:
+            ticker = context.get("ticker", "unknown")
+            price = context.get("current_price", context.get("price", "N/A"))
+            return f"Price alert for {ticker} triggered at ${price}."
+        else:
+            return f"Alert '{alert.name}' has been triggered."
+
+    @staticmethod
     async def _send_email(alert: Alert, context: Dict[str, Any]):
-        """Send email notification."""
+        """Send email notification via the email service."""
         email = alert.notification_email
 
         if not email:
             logger.warning(f"No email configured for alert {alert.id}")
             return
 
-        # TODO: Integrate with email service
-        logger.info(f"Sending email notification to {email} for alert {alert.id}")
+        try:
+            from app.services.email_service import email_service
 
-        # In production, use email service:
-        # from app.services.email_service import email_service
-        # await email_service.send_alert_notification(email, alert, context)
+            title = f"Alert Triggered: {alert.name}"
+            message = NotificationService._format_alert_message(alert, context)
+            severity = "warning" if alert.alert_type == AlertType.PRICE else "info"
+
+            await email_service.send_alert_email(
+                to_email=email,
+                title=title,
+                message=message,
+                severity=severity,
+                metadata=context,
+            )
+            logger.info(f"Email notification sent to {email} for alert {alert.id}")
+        except Exception as e:
+            logger.error(f"Failed to send email for alert {alert.id}: {e}", exc_info=True)
 
     @staticmethod
     async def _send_webhook(alert: Alert, context: Dict[str, Any]):
-        """Send webhook notification."""
+        """Send webhook notification via HTTP POST."""
         webhook_url = alert.webhook_url
 
         if not webhook_url:
             logger.warning(f"No webhook URL configured for alert {alert.id}")
             return
 
-        # TODO: Send HTTP POST to webhook
-        logger.info(f"Sending webhook notification to {webhook_url} for alert {alert.id}")
+        try:
+            import httpx
 
-        # In production:
-        # import httpx
-        # async with httpx.AsyncClient() as client:
-        #     await client.post(webhook_url, json={"alert": alert.name, **context})
+            payload = {
+                "alert_id": str(alert.id),
+                "alert_name": alert.name,
+                "alert_type": alert.alert_type.value if hasattr(alert.alert_type, "value") else str(alert.alert_type),
+                "triggered_at": datetime.utcnow().isoformat(),
+                **context,
+            }
+
+            async with httpx.AsyncClient(timeout=10.0) as client:
+                response = await client.post(webhook_url, json=payload)
+                if response.status_code < 300:
+                    logger.info(f"Webhook sent to {webhook_url} for alert {alert.id}")
+                else:
+                    logger.warning(
+                        f"Webhook to {webhook_url} returned status {response.status_code} for alert {alert.id}"
+                    )
+        except httpx.TimeoutException:
+            logger.error(f"Webhook timed out for alert {alert.id}: {webhook_url}")
+        except Exception as e:
+            logger.error(f"Failed to send webhook for alert {alert.id}: {e}", exc_info=True)
 
     @staticmethod
     async def _send_push(alert: Alert, context: Dict[str, Any]):
-        """Send push notification."""
-        # TODO: Integrate with push notification service
-        logger.info(f"Sending push notification for alert {alert.id}")
+        """Send push notification to user's registered devices."""
+        try:
+            from app.services.push_notifications import push_notification_service
+            from app.models.device import MobileDevice
+            from app.core.database import AsyncSessionLocal
+            from sqlalchemy import select as sa_select
+
+            async with AsyncSessionLocal() as db:
+                result = await db.execute(
+                    sa_select(MobileDevice.device_token).where(
+                        MobileDevice.user_id == alert.user_id
+                    )
+                )
+                tokens = [row[0] for row in result.all()]
+
+            if not tokens:
+                logger.debug(f"No registered devices for user {alert.user_id}, skipping push")
+                return
+
+            title = f"Alert: {alert.name}"
+            body = NotificationService._format_alert_message(alert, context)
+            data = {k: str(v) for k, v in context.items() if v is not None}
+
+            result = await push_notification_service.send_notification(
+                device_tokens=tokens,
+                title=title,
+                body=body,
+                data=data,
+            )
+            logger.info(f"Push notification sent to {len(tokens)} device(s) for alert {alert.id}")
+        except Exception as e:
+            logger.error(f"Failed to send push for alert {alert.id}: {e}", exc_info=True)
 
 
 class AlertService:
