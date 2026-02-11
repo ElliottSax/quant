@@ -19,24 +19,14 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem('token')
-      if (!token) {
-        router.push('/auth/login')
-        return
-      }
-
       try {
-        const response = await fetch('http://localhost:8000/api/v1/auth/me', {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        })
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch profile')
+        const { api } = await import('@/lib/api')
+        if (!api.getToken()) {
+          router.push('/auth/login')
+          return
         }
 
-        const data = await response.json()
+        const data = await api.getProfile() as any
         setUser(data)
         setFormData({
           name: data.name,
@@ -53,8 +43,9 @@ export default function ProfilePage() {
     fetchProfile()
   }, [router])
 
-  const handleLogout = () => {
-    localStorage.removeItem('token')
+  const handleLogout = async () => {
+    const { api } = await import('@/lib/api')
+    api.logout()
     router.push('/')
   }
 

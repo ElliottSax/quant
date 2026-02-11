@@ -1,18 +1,11 @@
 {
   "version": 2,
-  "name": "quant-analytics-frontend",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
   "regions": ["iad1"],
   "env": {
-    "NEXT_PUBLIC_API_URL": "@api-url",
     "NODE_ENV": "production"
-  },
-  "build": {
-    "env": {
-      "NEXT_PUBLIC_API_URL": "@api-url"
-    }
   },
   "headers": [
     {
@@ -64,12 +57,7 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://your-railway-app.railway.app/api/:path*"
-    }
-  ],
+  "rewrites": [],
   "redirects": [
     {
       "source": "/home",

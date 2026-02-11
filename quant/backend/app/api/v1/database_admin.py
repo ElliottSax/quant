@@ -10,7 +10,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
-from app.core.security import require_admin
+from app.core.deps import get_current_superuser
 from app.services.database_optimizer import get_database_optimizer
 from app.core.logging import get_logger
 
@@ -22,7 +22,7 @@ router = APIRouter(prefix="/admin/database", tags=["database-admin"])
 @router.get("/optimization-report")
 async def get_optimization_report(
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Get comprehensive database optimization report.
@@ -48,7 +48,7 @@ async def get_optimization_report(
         logger.error(f"Failed to generate optimization report: {e}", exc_info=True)
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to generate report: {str(e)}"
+            detail="Failed to generate optimization report."
         )
 
 
@@ -56,7 +56,7 @@ async def get_optimization_report(
 async def get_query_stats(
     limit: int = Query(default=20, ge=1, le=100),
     sort_by: str = Query(default="avg_time", regex="^(avg_time|execution_count|total_time)$"),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Get query execution statistics.
@@ -83,7 +83,7 @@ async def get_query_stats(
 @router.get("/slow-queries")
 async def get_slow_queries(
     limit: int = Query(default=20, ge=1, le=100),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Get recent slow queries.
@@ -103,7 +103,7 @@ async def get_slow_queries(
 async def get_index_recommendations(
     db: AsyncSession = Depends(get_db),
     min_usage: int = Query(default=5, ge=1, le=100),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Get index recommendations based on query patterns.
@@ -128,7 +128,7 @@ async def get_index_recommendations(
 
 @router.get("/connection-pool")
 async def get_connection_pool_stats(
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Get database connection pool statistics and health.
@@ -144,7 +144,7 @@ async def get_connection_pool_stats(
 @router.get("/table-stats")
 async def get_table_statistics(
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Get database table statistics (sizes, row counts).
@@ -159,18 +159,26 @@ async def get_table_statistics(
 
 @router.post("/query-plan")
 async def analyze_query_plan(
-    query: str,
+    query: str = Query(..., max_length=2000),
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Get execution plan for a query.
 
     **Parameters**:
-    - **query**: SQL query to analyze
+    - **query**: SQL query to analyze (max 2000 chars, SELECT only)
 
     **Requires**: Admin privileges
     """
+    # Only allow SELECT/EXPLAIN queries - block mutations
+    query_upper = query.strip().upper()
+    if not query_upper.startswith(("SELECT", "EXPLAIN", "WITH")):
+        raise HTTPException(
+            status_code=400,
+            detail="Only SELECT, EXPLAIN, and WITH queries are allowed."
+        )
+
     optimizer = get_database_optimizer()
 
     try:
@@ -178,15 +186,16 @@ async def analyze_query_plan(
         return plan
 
     except Exception as e:
+        logger.error(f"Query plan analysis failed: {e}", exc_info=True)
         raise HTTPException(
             status_code=400,
-            detail=f"Failed to analyze query: {str(e)}"
+            detail="Failed to analyze query."
         )
 
 
 @router.post("/reset-stats")
 async def reset_statistics(
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Reset query statistics and slow query log.
@@ -199,7 +208,7 @@ async def reset_statistics(
     optimizer.query_analyzer.query_stats = {}
     optimizer.query_analyzer.slow_queries = []
 
-    logger.info(f"Database statistics reset by user {current_user.get('user_id')}")
+    logger.info(f"Database statistics reset by user {current_user.id}")
 
     return {
         "message": "Statistics reset successfully"
@@ -209,7 +218,7 @@ async def reset_statistics(
 @router.get("/health")
 async def database_health_check(
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Comprehensive database health check.
@@ -254,7 +263,7 @@ async def database_health_check(
 @router.get("/performance-recommendations")
 async def get_performance_recommendations(
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Get actionable performance recommendations.

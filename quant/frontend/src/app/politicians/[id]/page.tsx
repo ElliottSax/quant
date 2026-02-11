@@ -42,10 +42,11 @@ export default function PoliticianProfilePage({ params }: { params: Promise<{ id
 
   useEffect(() => {
     const fetchData = async () => {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'
       try {
         const [politicianRes, tradesRes] = await Promise.all([
-          fetch(`http://localhost:8000/api/v1/politicians/${resolvedParams.id}`),
-          fetch(`http://localhost:8000/api/v1/politicians/${resolvedParams.id}/trades`),
+          fetch(`${API_BASE}/politicians/${resolvedParams.id}`),
+          fetch(`${API_BASE}/politicians/${resolvedParams.id}/trades`),
         ])
 
         if (!politicianRes.ok) {

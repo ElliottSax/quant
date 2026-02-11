@@ -7,11 +7,13 @@ WARNING: These endpoints should only be accessible in development/testing enviro
 or to authenticated administrators.
 """
 
+from urllib.parse import urlparse
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
-from app.core.security import require_admin
+from app.core.deps import get_current_superuser
 from app.core.config import settings
 from app.security.penetration_tests import PenetrationTester
 from app.core.logging import get_logger
@@ -24,7 +26,7 @@ router = APIRouter(prefix="/admin/security", tags=["security-admin"])
 @router.get("/pen-test")
 async def run_penetration_tests(
     target_url: str = Query(default=None, description="Target URL to test (defaults to current host)"),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Run automated penetration tests.
@@ -49,11 +51,26 @@ async def run_penetration_tests(
 
     # Use provided URL or default to current host
     if not target_url:
-        target_url = f"http://localhost:8000"
+        target_url = "http://localhost:8000"
+    else:
+        # Validate URL to prevent SSRF against internal networks
+        parsed = urlparse(target_url)
+        if parsed.scheme not in ("http", "https"):
+            raise HTTPException(status_code=400, detail="Only HTTP/HTTPS URLs are allowed.")
+        if parsed.hostname in ("169.254.169.254", "metadata.google.internal"):
+            raise HTTPException(status_code=400, detail="Target URL not allowed.")
+        # Block common internal network ranges
+        import ipaddress
+        try:
+            ip = ipaddress.ip_address(parsed.hostname)
+            if ip.is_private and parsed.hostname not in ("127.0.0.1", "localhost"):
+                raise HTTPException(status_code=400, detail="Internal network targets are not allowed.")
+        except ValueError:
+            pass  # hostname is a domain name, not an IP - allow it
 
     logger.info(
         f"Running penetration tests against: {target_url}",
-        extra={"user_id": current_user.get("user_id"), "target_url": target_url}
+        extra={"user_id": str(current_user.id), "target_url": target_url}
     )
 
     try:
@@ -71,14 +88,14 @@ async def run_penetration_tests(
         logger.error(f"Penetration testing failed: {e}", exc_info=True)
         raise HTTPException(
             status_code=500,
-            detail=f"Penetration testing failed: {str(e)}"
+            detail="Penetration testing failed."
         )
 
 
 @router.get("/sql-injection-test")
 async def test_sql_injection(
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Run SQL injection tests.
@@ -97,7 +114,7 @@ async def test_sql_injection(
 
     logger.info(
         "Running SQL injection tests",
-        extra={"user_id": current_user.get("user_id")}
+        extra={"user_id": str(current_user.id)}
     )
 
     try:
@@ -125,13 +142,13 @@ async def test_sql_injection(
         logger.error(f"SQL injection testing failed: {e}", exc_info=True)
         raise HTTPException(
             status_code=500,
-            detail=f"SQL injection testing failed: {str(e)}"
+            detail="SQL injection testing failed."
         )
 
 
 @router.get("/security-audit")
 async def run_security_audit(
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Run comprehensive security audit.
@@ -219,7 +236,7 @@ async def run_security_audit(
 @router.get("/api-keys")
 async def list_api_keys(
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_admin),
+    current_user = Depends(get_current_superuser),
     user_id: str = Query(default=None, description="Filter by user ID"),
     is_active: bool = Query(default=None, description="Filter by active status"),
     limit: int = Query(default=100, ge=1, le=1000)
@@ -283,7 +300,7 @@ async def list_api_keys(
         logger.error(f"Failed to list API keys: {e}", exc_info=True)
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to list API keys: {str(e)}"
+            detail="Failed to list API keys."
         )
 
 
@@ -291,7 +308,7 @@ async def list_api_keys(
 async def rotate_api_key(
     key_id: str,
     db: AsyncSession = Depends(get_db),
-    current_user: dict = Depends(require_admin)
+    current_user = Depends(get_current_superuser)
 ):
     """
     Rotate an API key (admin function).
@@ -304,7 +321,7 @@ async def rotate_api_key(
         new_key_id, new_secret = await api_key_manager.rotate_key(
             db,
             key_id,
-            current_user["user_id"]
+            str(current_user.id)
         )
 
         return {
@@ -317,7 +334,7 @@ async def rotate_api_key(
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to rotate API key: {str(e)}"
+            detail="Failed to rotate API key."
         )
 
 

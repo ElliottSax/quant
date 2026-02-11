@@ -20,20 +20,8 @@ export default function LoginPage() {
     setError('')
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Invalid credentials')
-      }
-
-      const data = await response.json()
-      localStorage.setItem('token', data.access_token)
+      const { api } = await import('@/lib/api')
+      await api.login(email, password)
       router.push('/dashboard')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
@@ -114,7 +102,7 @@ export default function LoginPage() {
                 {isLoading ? 'Signing in...' : 'Sign in'}
               </Button>
               <p className="text-sm text-center text-[hsl(215,20%,55%)]">
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <Link href="/auth/register" className="text-[hsl(45,96%,58%)] hover:underline font-medium">
                   Sign up
                 </Link>

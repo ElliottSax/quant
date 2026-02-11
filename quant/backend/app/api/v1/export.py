@@ -239,7 +239,7 @@ async def export_analysis(
         raise e
     except Exception as e:
         logger.error(f"Analysis export failed: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
+        raise HTTPException(status_code=500, detail="Analysis export failed. Please try again later.")
 
     if not analyses:
         raise HTTPException(status_code=400, detail="No analyses selected")

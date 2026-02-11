@@ -13,11 +13,11 @@ import dynamic from 'next/dynamic'
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false })
 
 export default function PoliticiansPage() {
-  const { data: politicians, isLoading, error } = usePoliticians(1)
+  const { data: politicians, isLoading, error, isPlaceholderData } = usePoliticians(1)
   const [search, setSearch] = useState('')
   const [partyFilter, setPartyFilter] = useState<string>('all')
   const [chamberFilter, setChamberFilter] = useState<string>('all')
-  const [sortBy, setSortBy] = useState<'name' | 'party' | 'state'>('name')
+  const [sortBy, setSortBy] = useState<'name' | 'party' | 'state' | 'trades'>('trades')
 
   const filtered = useMemo(() => {
     if (!politicians) return []
@@ -29,7 +29,7 @@ export default function PoliticiansPage() {
                           (partyFilter === 'D' && p.party === 'Democratic') ||
                           (partyFilter === 'R' && p.party === 'Republican') ||
                           (partyFilter === 'I' && p.party === 'Independent')
-      const matchesChamber = chamberFilter === 'all' || p.chamber?.toLowerCase() === chamberFilter.toLowerCase()
+      const matchesChamber = chamberFilter === 'all' || (p.chamber || '').toLowerCase() === chamberFilter.toLowerCase()
       return matchesSearch && matchesParty && matchesChamber
     })
 
@@ -38,6 +38,7 @@ export default function PoliticiansPage() {
       if (sortBy === 'name') return a.name.localeCompare(b.name)
       if (sortBy === 'party') return (a.party || '').localeCompare(b.party || '')
       if (sortBy === 'state') return (a.state || '').localeCompare(b.state || '')
+      if (sortBy === 'trades') return (b.trade_count || 0) - (a.trade_count || 0)
       return 0
     })
 
@@ -83,8 +84,8 @@ export default function PoliticiansPage() {
   const chamberChartOptions = useMemo(() => {
     if (!politicians) return {}
 
-    const house = politicians.filter(p => p.chamber === 'house').length
-    const senate = politicians.filter(p => p.chamber === 'senate').length
+    const house = politicians.filter(p => (p.chamber || '').toLowerCase() === 'house').length
+    const senate = politicians.filter(p => (p.chamber || '').toLowerCase() === 'senate').length
 
     return {
       backgroundColor: 'transparent',
@@ -111,24 +112,12 @@ export default function PoliticiansPage() {
     }
   }, [politicians])
 
-  if (isLoading) {
+  if (isLoading && !isPlaceholderData) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-center">
           <div className="inline-block h-12 w-12 animate-spin rounded-full border-2 border-[hsl(215,40%,20%)] border-t-[hsl(45,96%,58%)]" />
           <p className="mt-4 text-sm font-mono text-[hsl(215,20%,55%)]">LOADING POLITICIANS...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-center">
-          <p className="text-[hsl(0,72%,55%)] font-mono">ERROR LOADING DATA</p>
-          <p className="text-sm text-[hsl(215,20%,55%)] mt-2">{error.message}</p>
-          <p className="text-xs text-[hsl(215,20%,45%)] mt-4">Make sure the backend is running at localhost:8000</p>
         </div>
       </div>
     )
@@ -140,6 +129,14 @@ export default function PoliticiansPage() {
 
   return (
     <div className="space-y-4">
+      {/* Demo Mode Banner */}
+      {isPlaceholderData && (
+        <div className="bg-[hsl(45,96%,58%)]/10 border border-[hsl(45,96%,58%)]/30 rounded-md px-4 py-2 flex items-center justify-between">
+          <span className="text-sm text-[hsl(45,96%,65%)]">Showing demo data &mdash; connect a backend API for live congressional trading data</span>
+          <span className="text-[10px] font-mono text-[hsl(45,96%,58%)] bg-[hsl(45,96%,58%)]/20 px-2 py-0.5 rounded">DEMO</span>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -169,18 +166,18 @@ export default function PoliticiansPage() {
         <div className="terminal-panel p-3">
           <span className="text-[10px] text-[hsl(210,100%,56%)] font-semibold">HOUSE</span>
           <p className="text-2xl font-bold font-mono text-white">
-            {politicians?.filter(p => p.chamber === 'house').length || 0}
+            {politicians?.filter(p => (p.chamber || '').toLowerCase() === 'house').length || 0}
           </p>
         </div>
         <div className="terminal-panel p-3">
           <span className="text-[10px] text-[hsl(142,71%,55%)] font-semibold">SENATE</span>
           <p className="text-2xl font-bold font-mono text-white">
-            {politicians?.filter(p => p.chamber === 'senate').length || 0}
+            {politicians?.filter(p => (p.chamber || '').toLowerCase() === 'senate').length || 0}
           </p>
         </div>
         <div className="terminal-panel p-3">
           <span className="text-[10px] text-[hsl(270,70%,60%)] font-semibold">DATA SOURCE</span>
-          <p className="text-sm font-mono text-[hsl(142,71%,55%)]">LIVE API</p>
+          <p className="text-sm font-mono text-[hsl(142,71%,55%)]">{isPlaceholderData ? 'DEMO' : 'LIVE API'}</p>
         </div>
       </div>
 
@@ -270,6 +267,7 @@ export default function PoliticiansPage() {
               onChange={e => setSortBy(e.target.value as any)}
               className="px-3 py-2 rounded bg-[hsl(215,50%,10%)] border border-[hsl(215,40%,18%)] text-white text-sm font-mono focus:border-[hsl(45,96%,58%)] focus:outline-none"
             >
+              <option value="trades">Sort by Trades</option>
               <option value="name">Sort by Name</option>
               <option value="party">Sort by Party</option>
               <option value="state">Sort by State</option>
@@ -291,6 +289,7 @@ export default function PoliticiansPage() {
                 <th className="px-4 py-3 text-left text-[10px] text-[hsl(45,96%,58%)] font-semibold uppercase">Party</th>
                 <th className="px-4 py-3 text-left text-[10px] text-[hsl(45,96%,58%)] font-semibold uppercase">Chamber</th>
                 <th className="px-4 py-3 text-left text-[10px] text-[hsl(45,96%,58%)] font-semibold uppercase">State</th>
+                <th className="px-4 py-3 text-right text-[10px] text-[hsl(45,96%,58%)] font-semibold uppercase">Trades</th>
                 <th className="px-4 py-3 text-right text-[10px] text-[hsl(45,96%,58%)] font-semibold uppercase">Actions</th>
               </tr>
             </thead>
@@ -329,6 +328,7 @@ export default function PoliticiansPage() {
                     </span>
                   </td>
                   <td className="px-4 py-3 text-[hsl(215,20%,70%)]">{pol.state || '-'}</td>
+                  <td className="px-4 py-3 text-right font-mono text-white">{pol.trade_count || '-'}</td>
                   <td className="px-4 py-3 text-right">
                     <Link
                       href={`/charts?politician=${pol.id}`}

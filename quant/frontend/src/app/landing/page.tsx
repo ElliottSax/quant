@@ -22,7 +22,7 @@ export default function LandingPage() {
           </h1>
           <p className="text-xl text-[hsl(215,20%,65%)] max-w-2xl mx-auto">
             Track real-time congressional stock trades with institutional-grade analytics.
-            Discover patterns, analyze performance, and gain insights from the market's most influential traders.
+            Discover patterns, analyze performance, and gain insights from the market&apos;s most influential traders.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/dashboard">

@@ -24,10 +24,30 @@ import {
   StockPrediction,
   CycleAnalysis,
   DiscoverySummary,
+  SignalGenerateRequest,
+  SignalResponse,
+  TradingSignal,
+  BacktestRequest,
+  BacktestResult,
+  StrategyInfo,
+  DashboardStats,
+  LeaderboardResponse,
+  SectorStats,
 } from './types'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'
 const DEFAULT_TIMEOUT_MS = 30000 // 30 second default timeout
+
+// Auth token management
+let authToken: string | null = null
+
+export function setAuthToken(token: string | null) {
+  authToken = token
+}
+
+export function getAuthToken(): string | null {
+  return authToken
+}
 
 class APIError extends Error {
   constructor(
@@ -64,28 +84,64 @@ function createTimeoutController(timeoutMs: number = DEFAULT_TIMEOUT_MS): {
   return { controller, timeoutId }
 }
 
+async function attemptTokenRefresh(): Promise<boolean> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/auth/refresh`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+      },
+    })
+    if (response.ok) {
+      const data = await response.json()
+      if (data.access_token) {
+        authToken = data.access_token
+        return true
+      }
+    }
+  } catch {
+    // Refresh failed
+  }
+  authToken = null
+  return false
+}
+
 async function fetchAPI<T>(
   endpoint: string,
-  options?: RequestInit & { timeout?: number }
+  options?: RequestInit & { timeout?: number; _retried?: boolean }
 ): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`
-  const { timeout = DEFAULT_TIMEOUT_MS, ...fetchOptions } = options || {}
+  const { timeout = DEFAULT_TIMEOUT_MS, _retried = false, ...fetchOptions } = options || {}
 
   const { controller, timeoutId } = createTimeoutController(timeout)
 
   try {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      ...(fetchOptions?.headers as Record<string, string> || {}),
+    }
+    if (authToken) {
+      headers['Authorization'] = `Bearer ${authToken}`
+    }
+
     const response = await fetch(url, {
       ...fetchOptions,
       signal: controller.signal,
-      headers: {
-        'Content-Type': 'application/json',
-        ...fetchOptions?.headers,
-      },
+      headers,
     })
 
     clearTimeout(timeoutId)
 
     if (!response.ok) {
+      // Attempt token refresh on 401, retry once
+      if (response.status === 401 && !_retried && authToken) {
+        const refreshed = await attemptTokenRefresh()
+        if (refreshed) {
+          return fetchAPI<T>(endpoint, { ...options, _retried: true })
+        }
+      }
+
       const errorData = await response.json().catch(() => ({}))
       throw new APIError(
         errorData.detail || `API Error: ${response.statusText}`,
@@ -294,6 +350,72 @@ export const api = {
 
     alerts: (limit: number = 20) =>
       fetchAPI<{ alerts: any[]; count: number; timestamp: string }>(`/discovery/alerts?limit=${limit}`),
+  },
+
+  // Trading Signals
+  signals: {
+    generate: (req: SignalGenerateRequest) =>
+      fetchAPI<SignalResponse>('/signals/generate', {
+        method: 'POST',
+        body: JSON.stringify(req),
+      }),
+
+    latest: (symbol: string) => {
+      const validSymbol = validateSymbol(symbol)
+      return fetchAPI<TradingSignal>(`/signals/latest/${validSymbol}`)
+    },
+
+    watchlist: (symbols: string[]) => {
+      const validSymbols = symbols.map(validateSymbol)
+      const query = validSymbols.map(s => `symbols=${s}`).join('&')
+      return fetchAPI<{ signals: TradingSignal[]; count: number }>(`/signals/watchlist?${query}`)
+    },
+
+    marketOverview: () =>
+      fetchAPI<{ market_sentiment: string; signal_distribution: Record<string, number>; top_movers: any[] }>(
+        '/signals/market-overview'
+      ),
+
+    performance: (symbol: string, days: number = 30) => {
+      const validSymbol = validateSymbol(symbol)
+      return fetchAPI<{ win_rate: number; avg_return: number; sharpe_ratio: number }>(
+        `/signals/performance/${validSymbol}?days=${days}`
+      )
+    },
+  },
+
+  // Backtesting
+  backtesting: {
+    run: (req: BacktestRequest) =>
+      fetchAPI<BacktestResult>('/backtesting/run', {
+        method: 'POST',
+        body: JSON.stringify(req),
+        timeout: 60000,
+      }),
+
+    strategies: () =>
+      fetchAPI<StrategyInfo[]>('/backtesting/strategies'),
+
+    compare: (symbol: string, strategies: string[], startDate: string, endDate: string) => {
+      const query = new URLSearchParams()
+      query.append('symbol', validateSymbol(symbol))
+      strategies.forEach(s => query.append('strategies', s))
+      query.append('start_date', startDate)
+      query.append('end_date', endDate)
+      return fetchAPI<Record<string, BacktestResult>>(`/backtesting/compare?${query.toString()}`)
+    },
+  },
+
+  // Dashboard Stats
+  stats: {
+    dashboard: () =>
+      fetchAPI<DashboardStats>('/stats/dashboard'),
+
+    leaderboard: (period: string = '30d', limit: number = 20) =>
+      fetchAPI<LeaderboardResponse>(`/stats/leaderboard?period=${period}&limit=${limit}`),
+
+    sectors: (period: string = '30d') =>
+      fetchAPI<SectorStats>(`/stats/sectors?period=${period}`),
   },
 }
 

@@ -385,3 +385,122 @@ export interface DiscoverySummary {
   latest_analysis_timestamp?: string
   data_path: string
 }
+
+// Trading Signals Types
+export type SignalType = 'buy' | 'sell' | 'hold' | 'strong_buy' | 'strong_sell'
+export type SignalConfidence = 'very_low' | 'low' | 'medium' | 'high' | 'very_high'
+
+export interface TradingSignal {
+  symbol: string
+  signal_type: SignalType
+  confidence: SignalConfidence
+  confidence_score: number
+  price: number
+  timestamp: string
+  indicators: Record<string, number>
+  risk_score: number
+  target_price?: number
+  stop_loss?: number
+  reasoning: string
+  sources: string[]
+}
+
+export interface SignalGenerateRequest {
+  symbol: string
+  price_data: number[]
+  volume_data?: number[]
+  use_ai?: boolean
+}
+
+export interface SignalResponse {
+  signal: TradingSignal
+  generated_at: string
+}
+
+// Backtesting Types
+export interface BacktestRequest {
+  symbol: string
+  start_date: string
+  end_date: string
+  strategy: string
+  strategy_params?: Record<string, any>
+  initial_capital?: number
+  commission?: number
+  slippage?: number
+}
+
+export interface BacktestResult {
+  total_return: number
+  annual_return: number
+  sharpe_ratio: number
+  sortino_ratio: number
+  max_drawdown: number
+  win_rate: number
+  profit_factor: number
+  total_trades: number
+  winning_trades: number
+  losing_trades: number
+  avg_win: number
+  avg_loss: number
+  largest_win: number
+  largest_loss: number
+  start_date: string
+  end_date: string
+  duration_days: number
+  initial_capital: number
+  final_capital: number
+  peak_capital: number
+  trades: Array<Record<string, any>>
+  equity_curve: Array<Record<string, any>>
+  drawdown_curve: Array<Record<string, any>>
+}
+
+export interface StrategyInfo {
+  name: string
+  description: string
+  parameters: Record<string, any>
+  category: string
+}
+
+// Dashboard Stats Types
+export interface DashboardStats {
+  total_trades: number
+  active_politicians_30d: number
+  recent_trades: Array<{
+    id: string
+    ticker: string
+    transaction_type: string
+    transaction_date: string
+    politician_name: string
+    politician_party: string
+  }>
+  top_politicians_30d: Array<{ name: string; party: string; trade_count: number }>
+  buy_sell_ratio_30d: Record<string, number>
+  timestamp: string
+}
+
+export interface LeaderboardEntry {
+  politician_id: string
+  name: string
+  party: string
+  trade_count: number
+  total_volume: number
+  rank: number
+}
+
+export interface LeaderboardResponse {
+  leaderboard: LeaderboardEntry[]
+  period: string
+  total_results: number
+}
+
+export interface SectorStats {
+  sectors: Array<{
+    sector: string
+    trade_count: number
+    total_volume: number
+    avg_trade_size: number
+  }>
+  period: string
+  total_sectors: number
+}

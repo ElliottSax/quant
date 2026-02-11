@@ -12,9 +12,10 @@ import pandas as pd
 
 from app.services.backtesting import (
     BacktestEngine,
-    BacktestResult,
-    simple_ma_crossover_strategy
+    BacktestResult
 )
+from app.services.strategies import STRATEGY_REGISTRY, get_strategy, get_strategies_by_tier
+from app.services.market_data import MarketDataProvider, DataProvider, Interval
 from app.core.deps import get_current_user
 from app.models.user import User
 
@@ -88,13 +89,27 @@ async def run_backtest(
         slippage=request.slippage
     )
 
-    # Get strategy function
-    strategy_func = _get_strategy_function(request.strategy)
-    if not strategy_func:
+    # Get strategy function from registry
+    strategy_info = get_strategy(request.strategy)
+    if not strategy_info:
         raise HTTPException(
             status_code=400,
             detail=f"Unknown strategy: {request.strategy}"
         )
+
+    # Check user subscription tier (placeholder - implement real subscription check)
+    user_tier = 'free'  # TODO: Get from current_user.subscription_tier
+    strategy_tier = strategy_info['tier']
+
+    # Verify access
+    tier_hierarchy = {'free': 0, 'premium': 1, 'enterprise': 2}
+    if tier_hierarchy.get(user_tier, 0) < tier_hierarchy.get(strategy_tier, 0):
+        raise HTTPException(
+            status_code=403,
+            detail=f"Strategy '{request.strategy}' requires {strategy_tier} subscription"
+        )
+
+    strategy_func = strategy_info['function']
 
     # Fetch historical data (placeholder - integrate with data provider)
     price_data = await _fetch_historical_data(
@@ -127,71 +142,35 @@ async def run_backtest(
 
 @router.get("/strategies", response_model=List[StrategyInfo])
 async def list_strategies(
+    tier: Optional[str] = Query(None, description="Filter by subscription tier"),
     current_user: User = Depends(get_current_user)
 ):
     """
     List available trading strategies
 
-    Returns all built-in and custom strategies available for backtesting
+    Returns strategies based on user's subscription tier.
+    Query parameter 'tier' can override for preview purposes.
     """
-    strategies = [
-        StrategyInfo(
-            name="simple_ma_crossover",
-            description="Simple Moving Average Crossover - Buy when fast MA crosses above slow MA, sell when it crosses below",
-            parameters={
-                "fast_period": {
-                    "type": "int",
-                    "default": 20,
-                    "description": "Fast moving average period"
-                },
-                "slow_period": {
-                    "type": "int",
-                    "default": 50,
-                    "description": "Slow moving average period"
-                }
-            },
-            category="trend_following"
-        ),
-        StrategyInfo(
-            name="rsi_mean_reversion",
-            description="RSI Mean Reversion - Buy when RSI is oversold, sell when overbought",
-            parameters={
-                "rsi_period": {
-                    "type": "int",
-                    "default": 14,
-                    "description": "RSI calculation period"
-                },
-                "oversold_threshold": {
-                    "type": "float",
-                    "default": 30,
-                    "description": "RSI oversold threshold"
-                },
-                "overbought_threshold": {
-                    "type": "float",
-                    "default": 70,
-                    "description": "RSI overbought threshold"
-                }
-            },
-            category="mean_reversion"
-        ),
-        StrategyInfo(
-            name="bollinger_breakout",
-            description="Bollinger Bands Breakout - Trade when price breaks above/below Bollinger Bands",
-            parameters={
-                "period": {
-                    "type": "int",
-                    "default": 20,
-                    "description": "Bollinger Bands period"
-                },
-                "std_dev": {
-                    "type": "float",
-                    "default": 2.0,
-                    "description": "Standard deviations for bands"
-                }
-            },
-            category="volatility_breakout"
-        )
-    ]
+    # Get user's tier (placeholder)
+    user_tier = tier or 'free'  # TODO: Get from current_user.subscription_tier
+
+    # Get strategies for this tier
+    available_strategies = get_strategies_by_tier(user_tier)
+
+    # Convert to response format
+    strategies = []
+    for name, info in available_strategies.items():
+        # Get strategy parameters from function signature
+        # Simplified version - could introspect function for exact params
+        parameters = _get_strategy_parameters(name)
+
+        strategies.append(StrategyInfo(
+            name=name,
+            description=f"{info['description']} [{info['tier'].upper()}]",
+            parameters=parameters,
+            category=info['category']
+        ))
+
     return strategies
 
 
@@ -306,13 +285,59 @@ async def monte_carlo_simulation(
 
 # Helper functions
 
-def _get_strategy_function(strategy_name: str):
-    """Get strategy function by name"""
-    strategies = {
-        "simple_ma_crossover": simple_ma_crossover_strategy,
-        # Add more strategies here
+def _get_strategy_parameters(strategy_name: str) -> Dict:
+    """Get default parameters for a strategy"""
+    # Parameter definitions for each strategy
+    params_map = {
+        'ma_crossover': {
+            "fast_period": {"type": "int", "default": 20, "description": "Fast MA period"},
+            "slow_period": {"type": "int", "default": 50, "description": "Slow MA period"}
+        },
+        'rsi': {
+            "rsi_period": {"type": "int", "default": 14, "description": "RSI period"},
+            "oversold": {"type": "float", "default": 30, "description": "Oversold threshold"},
+            "overbought": {"type": "float", "default": 70, "description": "Overbought threshold"}
+        },
+        'bollinger_breakout': {
+            "period": {"type": "int", "default": 20, "description": "BB period"},
+            "std_dev": {"type": "float", "default": 2.0, "description": "Standard deviations"}
+        },
+        'macd': {
+            "fast_period": {"type": "int", "default": 12, "description": "Fast EMA"},
+            "slow_period": {"type": "int", "default": 26, "description": "Slow EMA"},
+            "signal_period": {"type": "int", "default": 9, "description": "Signal line"}
+        },
+        'mean_reversion_zscore': {
+            "lookback": {"type": "int", "default": 20, "description": "Lookback period"},
+            "entry_threshold": {"type": "float", "default": 2.0, "description": "Entry Z-score"},
+            "exit_threshold": {"type": "float", "default": 0.5, "description": "Exit Z-score"}
+        },
+        'momentum': {
+            "lookback": {"type": "int", "default": 20, "description": "Momentum period"},
+            "momentum_threshold": {"type": "float", "default": 0.05, "description": "Min momentum %"}
+        },
+        'triple_ema': {
+            "short_period": {"type": "int", "default": 8, "description": "Short EMA"},
+            "medium_period": {"type": "int", "default": 21, "description": "Medium EMA"},
+            "long_period": {"type": "int", "default": 55, "description": "Long EMA"}
+        },
+        'ichimoku_cloud': {
+            "conversion_period": {"type": "int", "default": 9, "description": "Conversion line"},
+            "base_period": {"type": "int", "default": 26, "description": "Base line"},
+            "span_b_period": {"type": "int", "default": 52, "description": "Span B"},
+            "displacement": {"type": "int", "default": 26, "description": "Displacement"}
+        },
+        'multi_timeframe': {
+            "short_ma": {"type": "int", "default": 20, "description": "Short MA"},
+            "long_ma": {"type": "int", "default": 50, "description": "Long MA"},
+            "higher_tf_ma": {"type": "int", "default": 200, "description": "Higher TF MA"}
+        },
+        'volatility_breakout_atr': {
+            "atr_period": {"type": "int", "default": 14, "description": "ATR period"},
+            "breakout_multiplier": {"type": "float", "default": 2.0, "description": "Breakout ATR multiplier"}
+        },
     }
-    return strategies.get(strategy_name)
+    return params_map.get(strategy_name, {})
 
 
 async def _fetch_historical_data(
@@ -321,36 +346,66 @@ async def _fetch_historical_data(
     end_date: datetime
 ) -> pd.DataFrame:
     """
-    Fetch historical price data
+    Fetch historical price data from Yahoo Finance with fallback to mock data
 
-    Integration point for data providers like:
-    - yfinance
-    - Alpha Vantage
-    - Polygon.io
-    - IEX Cloud
+    Uses MarketDataProvider with Yahoo Finance as primary source.
+    Falls back to mock data if Yahoo Finance is unavailable.
     """
-    # Placeholder: Generate synthetic data for testing
-    import numpy as np
+    # Initialize market data provider (Yahoo Finance free tier)
+    provider = MarketDataProvider(provider=DataProvider.YAHOO_FINANCE)
 
-    # Generate daily bars
-    num_days = (end_date - start_date).days
-    dates = pd.date_range(start=start_date, end=end_date, freq='D')
+    try:
+        # Fetch real historical data
+        bars = await provider.get_historical_data(
+            symbol=symbol,
+            start_date=start_date,
+            end_date=end_date,
+            interval=Interval.DAY_1
+        )
 
-    # Random walk price data
-    np.random.seed(42)
-    price_base = 100
-    returns = np.random.normal(0.0005, 0.02, len(dates))
-    prices = price_base * np.exp(np.cumsum(returns))
+        if not bars:
+            raise ValueError(f"No data returned for {symbol}")
 
-    # Generate OHLC
-    data = {
-        'timestamp': dates,
-        'open': prices * (1 + np.random.uniform(-0.01, 0.01, len(dates))),
-        'high': prices * (1 + np.random.uniform(0.0, 0.02, len(dates))),
-        'low': prices * (1 + np.random.uniform(-0.02, 0.0, len(dates))),
-        'close': prices,
-        'volume': np.random.uniform(1e6, 5e6, len(dates))
-    }
+        # Convert to DataFrame
+        data = {
+            'timestamp': [bar.timestamp for bar in bars],
+            'open': [bar.open for bar in bars],
+            'high': [bar.high for bar in bars],
+            'low': [bar.low for bar in bars],
+            'close': [bar.close for bar in bars],
+            'volume': [bar.volume for bar in bars],
+        }
 
-    df = pd.DataFrame(data)
-    return df
+        df = pd.DataFrame(data)
+        df.set_index('timestamp', inplace=True)
+        return df
+
+    except Exception as e:
+        # Log error and use mock data for testing
+        import logging
+        logging.warning(f"Failed to fetch real data for {symbol}: {e}. Using mock data for testing.")
+
+        # Generate synthetic data for testing
+        import numpy as np
+        num_days = (end_date - start_date).days
+        dates = pd.date_range(start=start_date, end=end_date, freq='D')
+
+        np.random.seed(hash(symbol) % (2**32))  # Deterministic but symbol-specific
+        price_base = 100
+        returns = np.random.normal(0.0005, 0.02, len(dates))
+        prices = price_base * np.exp(np.cumsum(returns))
+
+        data = {
+            'timestamp': dates,
+            'open': prices * (1 + np.random.uniform(-0.01, 0.01, len(dates))),
+            'high': prices * (1 + np.random.uniform(0.0, 0.02, len(dates))),
+            'low': prices * (1 + np.random.uniform(-0.02, 0.0, len(dates))),
+            'close': prices,
+            'volume': np.random.uniform(1e6, 5e6, len(dates))
+        }
+
+        df = pd.DataFrame(data)
+        df.set_index('timestamp', inplace=True)
+        return df
+    finally:
+        await provider.close()

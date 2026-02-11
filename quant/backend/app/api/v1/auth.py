@@ -221,11 +221,10 @@ async def login(
     # Check if account is locked
     if is_account_locked(user):
         remaining = get_lockout_time_remaining(user)
-        minutes = remaining // 60
-        logger.warning(f"Login attempt on locked account: {login_data.username}, {minutes}min remaining")
+        logger.warning(f"Login attempt on locked account: {login_data.username}, {remaining // 60}min remaining")
         raise UnauthorizedException(
-            f"Account is locked due to too many failed login attempts. "
-            f"Try again in {minutes} minutes."
+            "Account is temporarily locked due to too many failed login attempts. "
+            "Please try again later."
         )
 
     # Verify password

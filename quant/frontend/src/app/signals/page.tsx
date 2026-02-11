@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { PriceChart } from '@/components/charts/PriceChart';
+import { api } from '@/lib/api-client';
 
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false })
 
@@ -40,40 +41,36 @@ export default function SignalsPage() {
   const [activeTab, setActiveTab] = useState<'signals' | 'analysis'>('signals');
   const [initialized, setInitialized] = useState(false);
 
-  const generateSignal = useCallback(async (symbol: string, addToList = true) => {
-    setLoading(true);
-    try {
-      // Generate mock price data for demo
-      const base = 100 + Math.random() * 200;
-      const prices = Array.from({ length: 50 }, (_, i) => {
-        const trend = i * (Math.random() - 0.3) * 0.5;
-        const noise = (Math.random() - 0.5) * 10;
-        return base + trend + noise;
-      });
+  const generateMockSignal = useCallback((symbol: string): { signal: TradingSignal; chartData: PriceData[] } => {
+    const base = 100 + Math.random() * 200;
+    const prices = Array.from({ length: 50 }, (_, i) => {
+      const trend = i * (Math.random() - 0.3) * 0.5;
+      const noise = (Math.random() - 0.5) * 10;
+      return base + trend + noise;
+    });
 
-      // Generate OHLCV data for chart
-      const now = new Date();
-      const chartData: PriceData[] = prices.map((price, i) => {
-        const timestamp = new Date(now.getTime() - (50 - i) * 86400000);
-        const volatility = price * 0.02;
-        return {
-          timestamp: timestamp.toISOString(),
-          open: price + (Math.random() - 0.5) * volatility,
-          high: price + Math.random() * volatility * 1.5,
-          low: price - Math.random() * volatility * 1.5,
-          close: price,
-          volume: Math.floor(Math.random() * 10000000) + 1000000
-        };
-      });
-      setPriceData(chartData);
+    const now = new Date();
+    const chartData: PriceData[] = prices.map((price, i) => {
+      const timestamp = new Date(now.getTime() - (50 - i) * 86400000);
+      const volatility = price * 0.02;
+      return {
+        timestamp: timestamp.toISOString(),
+        open: price + (Math.random() - 0.5) * volatility,
+        high: price + Math.random() * volatility * 1.5,
+        low: price - Math.random() * volatility * 1.5,
+        close: price,
+        volume: Math.floor(Math.random() * 10000000) + 1000000
+      };
+    });
 
-      // Generate mock signal
-      const signalTypes = ['strong_buy', 'buy', 'hold', 'sell', 'strong_sell'];
-      const signalType = signalTypes[Math.floor(Math.random() * signalTypes.length)];
-      const confidence = 0.6 + Math.random() * 0.35;
-      const currentPrice = prices[prices.length - 1];
+    const signalTypes = ['strong_buy', 'buy', 'hold', 'sell', 'strong_sell'];
+    const signalType = signalTypes[Math.floor(Math.random() * signalTypes.length)];
+    const confidence = 0.6 + Math.random() * 0.35;
+    const currentPrice = prices[prices.length - 1];
 
-      const mockSignal: TradingSignal = {
+    return {
+      chartData,
+      signal: {
         symbol,
         signal_type: signalType,
         confidence: signalType.includes('strong') ? 'high' : signalType === 'hold' ? 'medium' : 'moderate',
@@ -97,19 +94,71 @@ export default function SignalsPage() {
           'Stochastic %K': Math.random() * 100,
         },
         history: Array.from({ length: 20 }, () => Math.random() * 100),
+      },
+    };
+  }, []);
+
+  const generateSignal = useCallback(async (symbol: string, addToList = true) => {
+    setLoading(true);
+    try {
+      // Try real API first
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - 60);
+      const historical = await api.marketData.historical(symbol, startDate);
+
+      const chartData: PriceData[] = historical.bars.map(bar => ({
+        timestamp: bar.timestamp,
+        open: bar.open,
+        high: bar.high,
+        low: bar.low,
+        close: bar.close,
+        volume: bar.volume,
+      }));
+      setPriceData(chartData);
+
+      const closePrices = historical.bars.map(b => b.close);
+      const volumes = historical.bars.map(b => b.volume);
+      const response = await api.signals.generate({
+        symbol,
+        price_data: closePrices,
+        volume_data: volumes,
+        use_ai: true,
+      });
+
+      const s = response.signal;
+      const currentPrice = closePrices[closePrices.length - 1];
+      const mapped: TradingSignal = {
+        symbol: s.symbol,
+        signal_type: s.signal_type,
+        confidence: s.confidence,
+        confidence_score: s.confidence_score,
+        price: s.price || currentPrice,
+        timestamp: s.timestamp || response.generated_at,
+        risk_score: s.risk_score,
+        target_price: s.target_price,
+        stop_loss: s.stop_loss,
+        reasoning: s.reasoning,
+        indicators: s.indicators,
+        history: closePrices.slice(-20),
       };
 
       if (addToList) {
-        setSignals(prev => [mockSignal, ...prev].slice(0, 10));
+        setSignals(prev => [mapped, ...prev].slice(0, 10));
       }
-      return mockSignal;
-    } catch (error) {
-      console.error('Error generating signal:', error);
-      return null;
+      return mapped;
+    } catch {
+      // Fallback to mock data
+      const { signal, chartData } = generateMockSignal(symbol);
+      setPriceData(chartData);
+
+      if (addToList) {
+        setSignals(prev => [signal, ...prev].slice(0, 10));
+      }
+      return signal;
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [generateMockSignal]);
 
   // Auto-load signals on page mount
   useEffect(() => {

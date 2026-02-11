@@ -7,6 +7,7 @@
 
 import { useState, useMemo } from 'react'
 import dynamic from 'next/dynamic'
+import { usePoliticians } from '@/lib/hooks'
 
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false })
 
@@ -25,7 +26,7 @@ interface PoliticianData {
   riskMetrics: { volatility: number; sharpe: number; maxDrawdown: number; beta: number }
 }
 
-const POLITICIANS = [
+const FALLBACK_POLITICIANS = [
   'Nancy Pelosi',
   'Paul Pelosi Jr',
   'Dan Crenshaw',
@@ -37,6 +38,15 @@ const POLITICIANS = [
 export default function ComparePage() {
   const [selected1, setSelected1] = useState('')
   const [selected2, setSelected2] = useState('')
+
+  // Load real politician names from API, fall back to hardcoded list
+  const { data: apiPoliticians } = usePoliticians()
+  const POLITICIANS = useMemo(() => {
+    if (apiPoliticians && apiPoliticians.length > 0) {
+      return apiPoliticians.map(p => p.name)
+    }
+    return FALLBACK_POLITICIANS
+  }, [apiPoliticians])
 
   // Generate realistic mock data
   const generateData = (name: string, seed: number): PoliticianData => {

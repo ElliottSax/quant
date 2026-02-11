@@ -1,9 +1,10 @@
 /**
  * React Query hooks for Quant Analytics Platform
  * Provides data fetching with caching, loading states, and error handling
+ * Includes demo data fallback when backend API is unavailable
  */
 
-import { useQuery, UseQueryOptions } from '@tanstack/react-query'
+import { useQuery, useMutation } from '@tanstack/react-query'
 import { api, APIError } from './api-client'
 import {
   Politician,
@@ -26,13 +27,32 @@ import {
   StockPrediction,
   CycleAnalysis,
   DiscoverySummary,
+  SignalGenerateRequest,
+  SignalResponse,
+  TradingSignal,
+  BacktestRequest,
+  BacktestResult,
+  StrategyInfo,
+  DashboardStats,
+  LeaderboardResponse,
+  SectorStats,
 } from './types'
+import {
+  DEMO_POLITICIANS,
+  DEMO_PREDICTIONS,
+  DEMO_DISCOVERIES,
+  DEMO_ANOMALIES,
+  DEMO_DISCOVERY_STATUS,
+  DEMO_NETWORK,
+} from './demo-data'
 
 export function usePoliticians(minTrades: number = 10) {
   return useQuery<Politician[], APIError>({
     queryKey: ['politicians', minTrades],
     queryFn: () => api.politicians.list(minTrades),
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 60 * 5,
+    placeholderData: DEMO_POLITICIANS,
+    retry: 1,
   })
 }
 
@@ -41,6 +61,8 @@ export function usePolitician(id: string | null) {
     queryKey: ['politician', id],
     queryFn: () => api.politicians.get(id!),
     enabled: !!id,
+    placeholderData: DEMO_POLITICIANS.find(p => p.id === id),
+    retry: 1,
   })
 }
 
@@ -60,7 +82,7 @@ export function useFourierAnalysis(
     queryKey: ['fourier', politicianId, params],
     queryFn: () => api.patterns.fourier(politicianId!, params),
     enabled: !!politicianId,
-    staleTime: 1000 * 60 * 10, // 10 minutes
+    staleTime: 1000 * 60 * 10,
   })
 }
 
@@ -90,8 +112,8 @@ export function useEnsemblePrediction(politicianId: string | null) {
     queryKey: ['ensemble', politicianId],
     queryFn: () => api.analytics.ensemble(politicianId!),
     enabled: !!politicianId,
-    staleTime: 1000 * 60 * 15, // 15 minutes for expensive operation
-    retry: 1, // Retry once on failure
+    staleTime: 1000 * 60 * 15,
+    retry: 1,
   })
 }
 
@@ -109,6 +131,7 @@ export function useNetworkAnalysis(params?: { min_trades?: number; min_correlati
     queryKey: ['network', params],
     queryFn: () => api.analytics.network(params),
     staleTime: 1000 * 60 * 15,
+    placeholderData: DEMO_NETWORK,
     retry: 1,
   })
 }
@@ -136,7 +159,7 @@ export function useHealth() {
   return useQuery({
     queryKey: ['health'],
     queryFn: () => api.health(),
-    refetchInterval: 30000, // Check every 30 seconds
+    refetchInterval: 30000,
   })
 }
 
@@ -145,7 +168,9 @@ export function useDiscoveries(params?: { timeRange?: string; minStrength?: numb
   return useQuery<Discovery[], APIError>({
     queryKey: ['discoveries', params],
     queryFn: () => api.discoveries.list(params),
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 60 * 5,
+    placeholderData: DEMO_DISCOVERIES,
+    retry: 1,
   })
 }
 
@@ -154,6 +179,8 @@ export function useCriticalAnomalies(params?: { minSeverity?: number }) {
     queryKey: ['critical-anomalies', params],
     queryFn: () => api.discoveries.anomalies(params),
     staleTime: 1000 * 60 * 5,
+    placeholderData: DEMO_ANOMALIES,
+    retry: 1,
   })
 }
 
@@ -161,7 +188,7 @@ export function useRecentExperiments() {
   return useQuery<Experiment[], APIError>({
     queryKey: ['recent-experiments'],
     queryFn: () => api.discoveries.experiments(),
-    staleTime: 1000 * 60 * 10, // 10 minutes
+    staleTime: 1000 * 60 * 10,
   })
 }
 
@@ -171,8 +198,8 @@ export function useMarketQuote(symbol: string | null) {
     queryKey: ['market-quote', symbol],
     queryFn: () => api.marketData.quote(symbol!),
     enabled: !!symbol,
-    staleTime: 1000 * 30, // 30 seconds
-    refetchInterval: 1000 * 60, // Refresh every minute
+    staleTime: 1000 * 30,
+    refetchInterval: 1000 * 60,
   })
 }
 
@@ -196,7 +223,7 @@ export function useHistoricalData(
     queryKey: ['historical-data', symbol, startDate.toISOString(), endDate?.toISOString(), interval],
     queryFn: () => api.marketData.historical(symbol!, startDate, endDate, interval),
     enabled: !!symbol,
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 60 * 5,
   })
 }
 
@@ -205,7 +232,7 @@ export function useCompanyInfo(symbol: string | null) {
     queryKey: ['company-info', symbol],
     queryFn: () => api.marketData.company(symbol!),
     enabled: !!symbol,
-    staleTime: 1000 * 60 * 60, // 1 hour - company info doesn't change often
+    staleTime: 1000 * 60 * 60,
   })
 }
 
@@ -213,8 +240,8 @@ export function useMarketStatus() {
   return useQuery<MarketStatus, APIError>({
     queryKey: ['market-status'],
     queryFn: () => api.marketData.marketStatus(),
-    staleTime: 1000 * 60, // 1 minute
-    refetchInterval: 1000 * 60, // Refresh every minute
+    staleTime: 1000 * 60,
+    refetchInterval: 1000 * 60,
   })
 }
 
@@ -223,7 +250,9 @@ export function useDiscoveryStatus() {
   return useQuery<DiscoverySummary, APIError>({
     queryKey: ['discovery-status'],
     queryFn: () => api.discovery.status(),
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 60 * 5,
+    placeholderData: DEMO_DISCOVERY_STATUS,
+    retry: 1,
   })
 }
 
@@ -231,7 +260,9 @@ export function useStockPredictions(params?: { limit?: number; minConfidence?: n
   return useQuery<StockPrediction[], APIError>({
     queryKey: ['stock-predictions', params],
     queryFn: () => api.discovery.predictions(params),
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 60 * 5,
+    placeholderData: DEMO_PREDICTIONS,
+    retry: 1,
   })
 }
 
@@ -248,7 +279,7 @@ export function useCycleAnalysis(limit: number = 10) {
   return useQuery<CycleAnalysis[], APIError>({
     queryKey: ['cycle-analysis', limit],
     queryFn: () => api.discovery.cycleAnalysis(limit),
-    staleTime: 1000 * 60 * 10, // 10 minutes
+    staleTime: 1000 * 60 * 10,
   })
 }
 
@@ -272,7 +303,74 @@ export function useDiscoveryAlerts(limit: number = 20) {
   return useQuery({
     queryKey: ['discovery-alerts', limit],
     queryFn: () => api.discovery.alerts(limit),
-    staleTime: 1000 * 60 * 2, // 2 minutes for alerts
-    refetchInterval: 1000 * 60 * 2, // Auto-refresh every 2 minutes
+    staleTime: 1000 * 60 * 2,
+    refetchInterval: 1000 * 60 * 2,
+  })
+}
+
+// Trading Signal Hooks
+export function useGenerateSignal() {
+  return useMutation<SignalResponse, APIError, SignalGenerateRequest>({
+    mutationFn: (req) => api.signals.generate(req),
+  })
+}
+
+export function useWatchlistSignals(symbols: string[]) {
+  return useQuery<{ signals: TradingSignal[]; count: number }, APIError>({
+    queryKey: ['watchlist-signals', symbols.sort()],
+    queryFn: () => api.signals.watchlist(symbols),
+    enabled: symbols.length > 0,
+    staleTime: 1000 * 60,
+    refetchInterval: 1000 * 60 * 2,
+  })
+}
+
+export function useMarketOverview() {
+  return useQuery({
+    queryKey: ['market-overview'],
+    queryFn: () => api.signals.marketOverview(),
+    staleTime: 1000 * 60 * 2,
+    refetchInterval: 1000 * 60 * 5,
+  })
+}
+
+// Backtesting Hooks
+export function useRunBacktest() {
+  return useMutation<BacktestResult, APIError, BacktestRequest>({
+    mutationFn: (req) => api.backtesting.run(req),
+  })
+}
+
+export function useBacktestStrategies() {
+  return useQuery<StrategyInfo[], APIError>({
+    queryKey: ['backtest-strategies'],
+    queryFn: () => api.backtesting.strategies(),
+    staleTime: 1000 * 60 * 30,
+  })
+}
+
+// Dashboard Stats Hooks
+export function useDashboardStats() {
+  return useQuery<DashboardStats, APIError>({
+    queryKey: ['dashboard-stats'],
+    queryFn: () => api.stats.dashboard(),
+    staleTime: 1000 * 60 * 5,
+    refetchInterval: 1000 * 60 * 5,
+  })
+}
+
+export function useLeaderboard(period: string = '30d', limit: number = 20) {
+  return useQuery<LeaderboardResponse, APIError>({
+    queryKey: ['leaderboard', period, limit],
+    queryFn: () => api.stats.leaderboard(period, limit),
+    staleTime: 1000 * 60 * 5,
+  })
+}
+
+export function useSectorStats(period: string = '30d') {
+  return useQuery<SectorStats, APIError>({
+    queryKey: ['sector-stats', period],
+    queryFn: () => api.stats.sectors(period),
+    staleTime: 1000 * 60 * 5,
   })
 }

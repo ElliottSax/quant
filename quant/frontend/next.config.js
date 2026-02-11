@@ -3,12 +3,16 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 
-  // API configuration
+  // API configuration - only enable rewrites when API URL is configured
   async rewrites() {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL
+    if (!apiUrl || apiUrl === 'http://localhost:8000') {
+      return []
+    }
     return [
       {
         source: '/api/:path*',
-        destination: process.env.NEXT_PUBLIC_API_URL + '/:path*',
+        destination: apiUrl + '/:path*',
       },
     ]
   },
@@ -63,10 +67,11 @@ const nextConfig = {
             value: [
               // Default: Only allow same-origin content
               "default-src 'self'",
-              // Scripts: Allow self and inline scripts (required for Next.js)
-              // In production, consider using nonces instead of 'unsafe-inline'
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
-              // Styles: Allow self and inline styles (required for styled-components, Tailwind)
+              // Scripts: Allow self; unsafe-eval only in development (required for Next.js HMR)
+              process.env.NODE_ENV === 'production'
+                ? "script-src 'self' 'unsafe-inline'"
+                : "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+              // Styles: Allow self and inline styles (required for Tailwind)
               "style-src 'self' 'unsafe-inline'",
               // Images: Allow self, data URLs, and external image CDNs
               "img-src 'self' data: https:",

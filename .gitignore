@@ -69,6 +69,7 @@ dmypy.json
 .env.*.local
 .env.production
 .env.staging
+.env.llm
 *.pem
 *.key
 *.crt

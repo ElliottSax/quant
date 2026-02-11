@@ -360,7 +360,7 @@ async def analyze_fourier(
 
     except Exception as e:
         logger.error(f"Fourier analysis failed for {politician_id}: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
+        raise HTTPException(status_code=500, detail="Analysis failed. Please try again later.")
 
 
 @router.get(
@@ -454,7 +454,7 @@ async def analyze_regime(
 
     except Exception as e:
         logger.error(f"HMM analysis failed for {politician_id}: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
+        raise HTTPException(status_code=500, detail="Analysis failed. Please try again later.")
 
 
 @router.get(
@@ -552,7 +552,7 @@ async def analyze_patterns(
 
     except Exception as e:
         logger.error(f"DTW analysis failed for {politician_id}: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
+        raise HTTPException(status_code=500, detail="Analysis failed. Please try again later.")
 
 
 @router.get(

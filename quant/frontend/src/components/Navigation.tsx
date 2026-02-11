@@ -12,12 +12,16 @@ export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    setIsAuthenticated(!!token)
+    const checkAuth = async () => {
+      const { api } = await import('@/lib/api')
+      setIsAuthenticated(!!api.getToken())
+    }
+    checkAuth()
   }, [])
 
-  const handleLogout = () => {
-    localStorage.removeItem('token')
+  const handleLogout = async () => {
+    const { api } = await import('@/lib/api')
+    api.logout()
     setIsAuthenticated(false)
     router.push('/')
   }

@@ -31,8 +31,9 @@ export default function TradeDetailPage({ params }: { params: Promise<{ id: stri
 
   useEffect(() => {
     const fetchTrade = async () => {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'
       try {
-        const response = await fetch(`http://localhost:8000/api/v1/trades/${resolvedParams.id}`)
+        const response = await fetch(`${API_BASE}/trades/${resolvedParams.id}`)
         if (!response.ok) {
           throw new Error('Trade not found')
         }

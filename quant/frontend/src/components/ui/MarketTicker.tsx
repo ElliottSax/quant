@@ -6,6 +6,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { useMarketQuotes } from '@/lib/hooks'
 
 interface TickerItem {
   symbol: string
@@ -14,6 +15,8 @@ interface TickerItem {
   changePercent: number
   type?: 'index' | 'stock' | 'futures'
 }
+
+const TICKER_SYMBOLS = ['SPY', 'QQQ', 'AAPL', 'MSFT', 'NVDA', 'GOOGL', 'TSLA', 'META', 'AMZN']
 
 // Simulated real-time market data
 const generateMarketData = (): TickerItem[] => [
@@ -36,10 +39,33 @@ const generateMarketData = (): TickerItem[] => [
 export function MarketTicker() {
   const [data, setData] = useState<TickerItem[]>(generateMarketData())
   const [isPaused, setIsPaused] = useState(false)
+  const [usingRealData, setUsingRealData] = useState(false)
   const tickerRef = useRef<HTMLDivElement>(null)
 
-  // Simulate real-time price updates
+  // Try to fetch real quotes
+  const { data: quotesData } = useMarketQuotes(TICKER_SYMBOLS)
+
+  // Update ticker with real data when available
   useEffect(() => {
+    if (quotesData?.quotes && Object.keys(quotesData.quotes).length > 0) {
+      const realItems: TickerItem[] = Object.entries(quotesData.quotes).map(([symbol, quote]) => ({
+        symbol,
+        price: quote.price,
+        change: quote.change ?? 0,
+        changePercent: quote.change_percent ?? 0,
+        type: 'stock' as const,
+      }))
+      if (realItems.length > 0) {
+        setData(realItems)
+        setUsingRealData(true)
+      }
+    }
+  }, [quotesData])
+
+  // Only simulate price jitter when using mock data
+  useEffect(() => {
+    if (usingRealData) return
+
     const interval = setInterval(() => {
       setData(prev => prev.map(item => {
         const volatility = item.type === 'index' ? 0.3 : item.type === 'futures' ? 0.5 : 0.4
@@ -58,7 +84,7 @@ export function MarketTicker() {
     }, 1500)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [usingRealData])
 
   const formatPrice = (price: number, symbol: string) => {
     if (symbol.includes('=F') || ['DJIA', 'S&P 500', 'NASDAQ'].includes(symbol)) {

@@ -98,17 +98,22 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
    * Report error to monitoring service
    */
   private reportErrorToService(error: Error, errorInfo: React.ErrorInfo) {
-    // TODO: Integrate with error tracking service (Sentry, LogRocket, etc.)
-    // Example:
-    // Sentry.captureException(error, {
-    //   contexts: {
-    //     react: {
-    //       componentStack: errorInfo.componentStack,
-    //     },
-    //   },
-    // })
+    // Send to Sentry if available
+    import('@sentry/nextjs')
+      .then((Sentry) => {
+        Sentry.captureException(error, {
+          contexts: {
+            react: {
+              componentStack: errorInfo.componentStack || undefined,
+            },
+          },
+        })
+      })
+      .catch(() => {
+        // Sentry not installed - fall through to console logging
+      })
 
-    // For now, just log to console in a structured format
+    // Always log structured error report
     console.error('Error Report:', {
       timestamp: new Date().toISOString(),
       error: {

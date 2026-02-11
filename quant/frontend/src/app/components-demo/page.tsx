@@ -295,7 +295,7 @@ export default function ComponentsDemo() {
             <div>
               <p className="text-xs text-[hsl(215,20%,55%)] mb-2">Monospace</p>
               <p className="font-mono text-[hsl(215,20%,70%)]">
-                const code = 'example';
+                const code = &apos;example&apos;;
               </p>
             </div>
           </CardContent>

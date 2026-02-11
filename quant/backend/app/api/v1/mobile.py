@@ -46,7 +46,7 @@ class SyncRequest(BaseModel):
 
 class BatchRequest(BaseModel):
     """Batch request for multiple operations"""
-    operations: List[dict] = Field(..., description="List of operations to perform")
+    operations: List[dict] = Field(..., description="List of operations to perform", max_length=20)
 
 
 # ==================== ENDPOINTS ====================
