@@ -1,0 +1,192 @@
+version: '3.8'
+
+services:
+  # MLFlow Tracking Server
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.9.2
+    container_name: quant-mlflow
+    ports:
+      - "5000:5000"
+    environment:
+      - MLFLOW_BACKEND_STORE_URI=sqlite:///mlflow/mlflow.db
+      - MLFLOW_ARTIFACT_ROOT=s3://mlflow-artifacts
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-minioadmin}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-minioadmin}
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+      - GUNICORN_CMD_ARGS=--timeout 60 --workers 2 --worker-class sync --max-requests 100 --max-requests-jitter 10
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:///mlflow/mlflow.db
+      --default-artifact-root s3://mlflow-artifacts
+      --host 0.0.0.0
+      --port 5000
+      --workers 2
+    volumes:
+      - mlflow-data:/mlflow
+    depends_on:
+      - minio
+    networks:
+      - quant-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+
+  # MinIO for MLFlow artifacts storage
+  minio:
+    image: minio/minio:latest
+    container_name: quant-minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER:-minioadmin}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD:-minioadmin}
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio-data:/data
+    networks:
+      - quant-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  # Create MLFlow bucket in MinIO
+  minio-init:
+    image: minio/mc:latest
+    container_name: quant-minio-init
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      sleep 5;
+      /usr/bin/mc alias set myminio http://minio:9000 minioadmin minioadmin;
+      /usr/bin/mc mb myminio/mlflow-artifacts --ignore-existing;
+      /usr/bin/mc policy set download myminio/mlflow-artifacts;
+      exit 0;
+      "
+    networks:
+      - quant-network
+
+  # Redis for ML caching and Celery
+  redis-ml:
+    image: redis:7-alpine
+    container_name: quant-redis-ml
+    ports:
+      - "6380:6379"
+    command: redis-server --appendonly yes --maxmemory 2gb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-ml-data:/data
+    networks:
+      - quant-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Celery Worker for ML Training
+  celery-ml-worker:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    container_name: quant-celery-ml
+    command: celery -A app.tasks.ml_tasks worker --loglevel=info -Q ml-training -c 2
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=redis://redis-ml:6379/0
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - ENVIRONMENT=development
+    depends_on:
+      - postgres
+      - redis-ml
+      - mlflow
+    volumes:
+      - ../../backend:/app
+      - ml-models-cache:/app/models
+    networks:
+      - quant-network
+    restart: unless-stopped
+
+  # Celery Beat for scheduled ML tasks
+  celery-ml-beat:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    container_name: quant-celery-beat-ml
+    command: celery -A app.tasks.ml_tasks beat --loglevel=info
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=redis://redis-ml:6379/0
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - ENVIRONMENT=development
+    depends_on:
+      - postgres
+      - redis-ml
+      - mlflow
+    volumes:
+      - ../../backend:/app
+    networks:
+      - quant-network
+    restart: unless-stopped
+
+  # PostgreSQL (shared with main app)
+  postgres:
+    image: timescale/timescaledb:latest-pg15
+    container_name: quant-postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-quant}
+      - POSTGRES_MULTIPLE_DATABASES=quant,mlflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-multiple-databases.sh:/docker-entrypoint-initdb.d/init-multiple-databases.sh
+    networks:
+      - quant-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Flower - Celery monitoring
+  flower:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    container_name: quant-flower
+    command: celery -A app.tasks.ml_tasks flower --port=5555
+    ports:
+      - "5555:5555"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=redis://redis-ml:6379/0
+      - ENVIRONMENT=development
+    depends_on:
+      - redis-ml
+      - celery-ml-worker
+    networks:
+      - quant-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  minio-data:
+  redis-ml-data:
+  ml-models-cache:
+  mlflow-data:
+
+networks:
+  quant-network:
+    driver: bridge

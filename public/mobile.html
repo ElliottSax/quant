@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Quant Analytics - Mobile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    
+    <style>
+        /* Mobile-first responsive design */
+        .mobile-card { min-height: 120px; }
+        .chart-mobile { height: 200px; }
+        
+        /* Touch-friendly buttons */
+        .touch-btn { min-height: 44px; min-width: 44px; }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Bottom navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(59, 130, 246, 0.3);
+            z-index: 50;
+        }
+        
+        /* Swipe indicators */
+        .swipe-indicator {
+            background: linear-gradient(90deg, #3b82f6, transparent);
+            height: 3px;
+            animation: swipe 2s ease-in-out infinite;
+        }
+        
+        @keyframes swipe {
+            0%, 100% { width: 0%; }
+            50% { width: 100%; }
+        }
+        
+        /* Pull to refresh */
+        .pull-refresh {
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+        
+        .pull-refresh.active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white pb-20">
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-gray-900 bg-opacity-90 backdrop-blur-lg border-b border-gray-800">
+        <div class="flex items-center justify-between p-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-chart-line text-white text-sm"></i>
+                </div>
+                <h1 class="text-lg font-bold">Quant Analytics</h1>
+            </div>
+            <button id="menuBtn" class="touch-btn p-2">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Pull to refresh indicator -->
+    <div id="pullRefresh" class="pull-refresh bg-blue-600 text-center py-2 text-sm">
+        <i class="fas fa-sync-alt mr-2"></i>
+        Pull to refresh data
+    </div>
+
+    <!-- Quick Stats Cards -->
+    <section class="p-4">
+        <div class="grid grid-cols-2 gap-4">
+            <div class="mobile-card bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-4 text-center">
+                <div class="text-2xl font-bold mb-1" id="mobileApiStatus">
+                    <i class="fas fa-circle text-green-400"></i>
+                </div>
+                <p class="text-xs text-blue-200">System Status</p>
+            </div>
+            <div class="mobile-card bg-gradient-to-r from-purple-600 to-purple-800 rounded-xl p-4 text-center">
+                <div class="text-2xl font-bold mb-1" id="mobilePoliticians">247</div>
+                <p class="text-xs text-purple-200">Politicians</p>
+            </div>
+            <div class="mobile-card bg-gradient-to-r from-green-600 to-green-800 rounded-xl p-4 text-center">
+                <div class="text-2xl font-bold mb-1" id="mobileTrades">15.2K</div>
+                <p class="text-xs text-green-200">Total Trades</p>
+            </div>
+            <div class="mobile-card bg-gradient-to-r from-yellow-600 to-orange-600 rounded-xl p-4 text-center">
+                <div class="text-2xl font-bold mb-1" id="mobileVolume">$2.4B</div>
+                <p class="text-xs text-yellow-200">Trade Volume</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="p-4">
+        <div class="relative">
+            <input 
+                type="text" 
+                id="mobileSearch"
+                placeholder="Search politicians..."
+                class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 pr-12 text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none"
+            >
+            <i class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="p-4 space-y-6">
+        <!-- Trading Volume Chart -->
+        <div class="bg-gray-800 rounded-xl p-4">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                <i class="fas fa-chart-area text-blue-400 mr-2"></i>
+                Trading Volume
+            </h3>
+            <canvas id="mobileVolumeChart" class="chart-mobile"></canvas>
+        </div>
+
+        <!-- Top Politicians -->
+        <div class="bg-gray-800 rounded-xl p-4">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                <i class="fas fa-users text-purple-400 mr-2"></i>
+                Top Politicians
+            </h3>
+            <div class="space-y-3" id="topPoliticiansList">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Sector Distribution -->
+        <div class="bg-gray-800 rounded-xl p-4">
+            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                <i class="fas fa-pie-chart text-green-400 mr-2"></i>
+                Sectors
+            </h3>
+            <canvas id="mobileSectorChart" class="chart-mobile"></canvas>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="p-4">
+        <h2 class="text-xl font-bold mb-4">Quick Tools</h2>
+        <div class="grid grid-cols-2 gap-4">
+            <button class="touch-btn bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl p-4 text-center">
+                <i class="fas fa-search-plus text-2xl mb-2"></i>
+                <p class="text-sm">Pattern Detection</p>
+            </button>
+            <button class="touch-btn bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-4 text-center">
+                <i class="fas fa-network-wired text-2xl mb-2"></i>
+                <p class="text-sm">Network Analysis</p>
+            </button>
+            <button class="touch-btn bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl p-4 text-center">
+                <i class="fas fa-crystal-ball text-2xl mb-2"></i>
+                <p class="text-sm">Predictions</p>
+            </button>
+            <button class="touch-btn bg-gradient-to-r from-orange-600 to-red-600 rounded-xl p-4 text-center">
+                <i class="fas fa-download text-2xl mb-2"></i>
+                <p class="text-sm">Export Data</p>
+            </button>
+        </div>
+    </section>
+
+    <!-- Recent Activity -->
+    <section class="p-4">
+        <h2 class="text-xl font-bold mb-4">Recent Activity</h2>
+        <div class="space-y-3" id="recentActivity">
+            <!-- Will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="flex justify-around py-2">
+            <button class="flex flex-col items-center py-2 px-4 text-blue-400">
+                <i class="fas fa-home text-lg"></i>
+                <span class="text-xs mt-1">Home</span>
+            </button>
+            <button class="flex flex-col items-center py-2 px-4 text-gray-400">
+                <i class="fas fa-chart-bar text-lg"></i>
+                <span class="text-xs mt-1">Charts</span>
+            </button>
+            <button class="flex flex-col items-center py-2 px-4 text-gray-400">
+                <i class="fas fa-search text-lg"></i>
+                <span class="text-xs mt-1">Search</span>
+            </button>
+            <button class="flex flex-col items-center py-2 px-4 text-gray-400">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">Profile</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div id="sideMenu" class="fixed inset-y-0 left-0 z-50 w-64 bg-gray-800 transform -translate-x-full transition-transform duration-300">
+        <div class="p-4 border-b border-gray-700">
+            <h2 class="text-lg font-bold">Menu</h2>
+        </div>
+        <nav class="p-4">
+            <ul class="space-y-4">
+                <li><a href="#" class="flex items-center text-gray-300 hover:text-white"><i class="fas fa-tachometer-alt mr-3"></i> Dashboard</a></li>
+                <li><a href="#" class="flex items-center text-gray-300 hover:text-white"><i class="fas fa-users mr-3"></i> Politicians</a></li>
+                <li><a href="#" class="flex items-center text-gray-300 hover:text-white"><i class="fas fa-chart-line mr-3"></i> Analytics</a></li>
+                <li><a href="#" class="flex items-center text-gray-300 hover:text-white"><i class="fas fa-cog mr-3"></i> Settings</a></li>
+                <li><a href="http://localhost:8000/api/v1/docs" target="_blank" class="flex items-center text-gray-300 hover:text-white"><i class="fas fa-book mr-3"></i> API Docs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        const API_V1 = `${API_BASE}/api/v1`;
+
+        // Mobile-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMobile();
+            setupCharts();
+            loadMobileData();
+            setupPullToRefresh();
+        });
+
+        function initializeMobile() {
+            // Menu functionality
+            const menuBtn = document.getElementById('menuBtn');
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+
+            menuBtn.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+
+            // Bottom navigation
+            const navBtns = document.querySelectorAll('.bottom-nav button');
+            navBtns.forEach((btn, index) => {
+                btn.addEventListener('click', () => switchTab(index));
+            });
+
+            // Search functionality
+            document.getElementById('mobileSearch').addEventListener('input', handleMobileSearch);
+
+            // Touch gestures
+            let startY = 0;
+            document.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (window.scrollY === 0 && e.touches[0].clientY > startY + 50) {
+                    document.getElementById('pullRefresh').classList.add('active');
+                }
+            });
+
+            document.addEventListener('touchend', () => {
+                if (document.getElementById('pullRefresh').classList.contains('active')) {
+                    refreshData();
+                }
+            });
+        }
+
+        function setupCharts() {
+            // Mobile Volume Chart
+            const volumeCtx = document.getElementById('mobileVolumeChart').getContext('2d');
+            new Chart(volumeCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                    datasets: [{
+                        label: 'Volume',
+                        data: [12, 19, 15, 25, 22],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#374151' },
+                            ticks: { color: '#9ca3af' }
+                        },
+                        x: {
+                            grid: { color: '#374151' },
+                            ticks: { color: '#9ca3af' }
+                        }
+                    }
+                }
+            });
+
+            // Mobile Sector Chart
+            const sectorCtx = document.getElementById('mobileSectorChart').getContext('2d');
+            new Chart(sectorCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Tech', 'Health', 'Finance', 'Energy', 'Other'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#9ca3af', font: { size: 12 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        async function loadMobileData() {
+            try {
+                // Load politicians data
+                const politicians = ['Nancy Pelosi', 'Richard Burr', 'Kelly Loeffler', 'David Perdue'];
+                const volumes = ['$45M', '$32M', '$28M', '$25M'];
+                
+                const topList = document.getElementById('topPoliticiansList');
+                topList.innerHTML = '';
+                
+                politicians.forEach((name, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'flex items-center justify-between py-2 px-3 bg-gray-700 rounded-lg';
+                    item.innerHTML = `
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-xs font-bold">${name[0]}</span>
+                            </div>
+                            <span class="text-sm font-medium">${name}</span>
+                        </div>
+                        <span class="text-sm text-green-400 font-semibold">${volumes[index]}</span>
+                    `;
+                    topList.appendChild(item);
+                });
+
+                // Load recent activity
+                const activities = [
+                    'Nancy Pelosi: New NVDA trade detected',
+                    'Richard Burr: Healthcare sector activity',
+                    'Pattern detected: Tech stock clustering',
+                    'Anomaly alert: Unusual trading volume'
+                ];
+
+                const activityList = document.getElementById('recentActivity');
+                activityList.innerHTML = '';
+
+                activities.forEach(activity => {
+                    const item = document.createElement('div');
+                    item.className = 'flex items-start space-x-3 p-3 bg-gray-800 rounded-lg';
+                    item.innerHTML = `
+                        <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                            <p class="text-sm">${activity}</p>
+                            <p class="text-xs text-gray-400 mt-1">${new Date().toLocaleTimeString()}</p>
+                        </div>
+                    `;
+                    activityList.appendChild(item);
+                });
+
+            } catch (error) {
+                console.log('Using mock data for mobile interface');
+            }
+        }
+
+        function toggleMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('menuOverlay');
+            
+            sideMenu.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        function closeMenu() {
+            document.getElementById('sideMenu').classList.add('-translate-x-full');
+            document.getElementById('menuOverlay').classList.add('hidden');
+        }
+
+        function switchTab(index) {
+            const navBtns = document.querySelectorAll('.bottom-nav button');
+            navBtns.forEach(btn => btn.classList.add('text-gray-400'));
+            navBtns.forEach(btn => btn.classList.remove('text-blue-400'));
+            
+            navBtns[index].classList.remove('text-gray-400');
+            navBtns[index].classList.add('text-blue-400');
+
+            // Smooth scroll to relevant sections
+            const sections = ['header', 'stats', 'search', 'profile'];
+            if (sections[index]) {
+                document.querySelector('section').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function handleMobileSearch(event) {
+            const query = event.target.value.toLowerCase();
+            console.log('Mobile search:', query);
+            // Implement mobile search functionality
+        }
+
+        function setupPullToRefresh() {
+            // Simple pull to refresh implementation
+            let pullDistance = 0;
+            let isPulling = false;
+
+            document.addEventListener('touchstart', (e) => {
+                if (window.scrollY === 0) {
+                    isPulling = true;
+                }
+            });
+
+            document.addEventListener('touchend', () => {
+                if (isPulling && pullDistance > 100) {
+                    refreshData();
+                }
+                isPulling = false;
+                pullDistance = 0;
+                document.getElementById('pullRefresh').classList.remove('active');
+            });
+        }
+
+        function refreshData() {
+            const refreshElement = document.getElementById('pullRefresh');
+            refreshElement.innerHTML = '<i class="fas fa-sync-alt fa-spin mr-2"></i> Refreshing...';
+            
+            setTimeout(() => {
+                loadMobileData();
+                refreshElement.innerHTML = '<i class="fas fa-check mr-2"></i> Updated!';
+                refreshElement.classList.remove('active');
+                
+                setTimeout(() => {
+                    refreshElement.innerHTML = '<i class="fas fa-sync-alt mr-2"></i> Pull to refresh data';
+                }, 1000);
+            }, 1500);
+        }
+
+        // Auto-refresh data every 30 seconds
+        setInterval(loadMobileData, 30000);
+    </script>
+</body>
+</html>

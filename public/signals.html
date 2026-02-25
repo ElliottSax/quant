@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trading Signals - Quant Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .signal-buy { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .signal-sell { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+        .signal-hold { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.1); } }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+                        AI Trading Signals
+                    </h1>
+                    <div class="flex space-x-2">
+                        <button onclick="filterSignals('all')" class="px-3 py-1 rounded hover:bg-gray-700">All</button>
+                        <button onclick="filterSignals('buy')" class="px-3 py-1 rounded hover:bg-gray-700 text-green-400">Buy</button>
+                        <button onclick="filterSignals('sell')" class="px-3 py-1 rounded hover:bg-gray-700 text-red-400">Sell</button>
+                        <button onclick="filterSignals('politician')" class="px-3 py-1 rounded hover:bg-gray-700">Politicians</button>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></div>
+                        <span class="text-sm">Live</span>
+                    </div>
+                    <span class="text-sm text-gray-400">Signals Today: <span class="text-white font-bold">47</span></span>
+                    <span class="text-sm text-gray-400">Success Rate: <span class="text-green-400 font-bold">73.2%</span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+        <!-- Alert Banner -->
+        <div id="alertBanner" class="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-lg mb-6 flex items-center justify-between">
+            <div class="flex items-center">
+                <i class="fas fa-bolt text-yellow-300 text-xl mr-3"></i>
+                <span class="font-semibold">New Signal: Nancy Pelosi just bought $2.1M of NVDA calls</span>
+            </div>
+            <button onclick="document.getElementById('alertBanner').style.display='none'" class="text-white hover:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Signal Strength Meters -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="glass p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-400 text-sm">Market Sentiment</span>
+                    <i class="fas fa-chart-line text-blue-400"></i>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex-1 bg-gray-700 rounded-full h-2 mr-2">
+                        <div class="bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 h-2 rounded-full" style="width: 72%"></div>
+                    </div>
+                    <span class="text-sm font-bold">Bullish</span>
+                </div>
+            </div>
+            <div class="glass p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-400 text-sm">AI Confidence</span>
+                    <i class="fas fa-brain text-purple-400"></i>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex-1 bg-gray-700 rounded-full h-2 mr-2">
+                        <div class="bg-purple-500 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <span class="text-sm font-bold">85%</span>
+                </div>
+            </div>
+            <div class="glass p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-400 text-sm">Politician Activity</span>
+                    <i class="fas fa-landmark text-yellow-400"></i>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex-1 bg-gray-700 rounded-full h-2 mr-2">
+                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 92%"></div>
+                    </div>
+                    <span class="text-sm font-bold">Very High</span>
+                </div>
+            </div>
+            <div class="glass p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-400 text-sm">Risk Level</span>
+                    <i class="fas fa-exclamation-triangle text-orange-400"></i>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex-1 bg-gray-700 rounded-full h-2 mr-2">
+                        <div class="bg-orange-500 h-2 rounded-full" style="width: 35%"></div>
+                    </div>
+                    <span class="text-sm font-bold">Moderate</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Live Signal Feed -->
+            <div class="lg:col-span-2">
+                <div class="glass p-6 rounded-lg">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">Live Signal Feed</h3>
+                        <button class="bg-blue-600 px-3 py-1 rounded text-sm hover:bg-blue-700">
+                            <i class="fas fa-cog mr-1"></i>Settings
+                        </button>
+                    </div>
+                    <div class="space-y-3" id="signalFeed">
+                        <!-- Signals will be populated here -->
+                    </div>
+                </div>
+
+                <!-- ML Prediction Engine -->
+                <div class="glass p-6 rounded-lg mt-6">
+                    <h3 class="text-lg font-semibold mb-4">ML Prediction Engine</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Stock Symbol</label>
+                            <input type="text" id="mlStock" class="w-full bg-gray-800 p-2 rounded" placeholder="Enter symbol...">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-400 mb-1">Timeframe</label>
+                            <select class="w-full bg-gray-800 p-2 rounded">
+                                <option>1 Day</option>
+                                <option>1 Week</option>
+                                <option>1 Month</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="runMLPrediction()" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 py-2 rounded hover:from-purple-700 hover:to-blue-700">
+                        Run Prediction Analysis
+                    </button>
+                    <div id="mlResults" class="mt-4 hidden">
+                        <div class="bg-gray-800 p-4 rounded">
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-green-400">BUY</div>
+                                    <div class="text-sm text-gray-400">Signal</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold">87%</div>
+                                    <div class="text-sm text-gray-400">Confidence</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-blue-400">+12.3%</div>
+                                    <div class="text-sm text-gray-400">Expected</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="space-y-6">
+                <!-- Top Movers -->
+                <div class="glass p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-4">Top Signal Movers</h3>
+                    <div class="space-y-3" id="topMovers">
+                        <!-- Movers will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Pattern Detection -->
+                <div class="glass p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-4">Pattern Detection</h3>
+                    <div class="space-y-2" id="patterns">
+                        <div class="bg-gray-800 p-3 rounded">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <div class="text-sm font-bold">Bull Flag</div>
+                                    <div class="text-xs text-gray-400">TSLA - 4h chart</div>
+                                </div>
+                                <span class="text-green-400 text-sm">Active</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 p-3 rounded">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <div class="text-sm font-bold">Head & Shoulders</div>
+                                    <div class="text-xs text-gray-400">SPY - Daily</div>
+                                </div>
+                                <span class="text-yellow-400 text-sm">Forming</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 p-3 rounded">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <div class="text-sm font-bold">Breakout</div>
+                                    <div class="text-xs text-gray-400">NVDA - 1h</div>
+                                </div>
+                                <span class="text-blue-400 text-sm">Confirmed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Sentiment -->
+                <div class="glass p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-4">News Sentiment</h3>
+                    <div class="space-y-3" id="newsSentiment">
+                        <div class="bg-gray-800 p-3 rounded">
+                            <div class="text-sm mb-1">"Fed signals potential rate cuts"</div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-20 bg-gray-700 rounded-full h-2 mr-2">
+                                        <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                    <span class="text-xs text-green-400">Positive</span>
+                                </div>
+                                <span class="text-xs text-gray-400">2m ago</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 p-3 rounded">
+                            <div class="text-sm mb-1">"Tech earnings beat expectations"</div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-20 bg-gray-700 rounded-full h-2 mr-2">
+                                        <div class="bg-green-500 h-2 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                    <span class="text-xs text-green-400">Very Positive</span>
+                                </div>
+                                <span class="text-xs text-gray-400">15m ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signal History Chart -->
+        <div class="glass p-6 rounded-lg mt-6">
+            <h3 class="text-lg font-semibold mb-4">Signal Performance History</h3>
+            <div id="signalHistoryChart" style="height: 300px;"></div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="fixed bottom-6 right-6 bg-green-600 text-white p-4 rounded-lg shadow-lg transform translate-x-full transition-transform">
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-3"></i>
+            <div>
+                <div class="font-semibold">New Signal Alert!</div>
+                <div class="text-sm">Strong BUY signal for AAPL</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let signalChart;
+        let signals = [];
+        let ws = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSignals();
+            loadTopMovers();
+            initializeChart();
+            initializeWebSocket();
+            startSignalSimulation();
+        });
+
+        function loadSignals() {
+            const feed = document.getElementById('signalFeed');
+            const signalData = [
+                {
+                    type: 'BUY',
+                    symbol: 'NVDA',
+                    price: 487.23,
+                    confidence: 92,
+                    source: 'Nancy Pelosi',
+                    reason: 'Insider purchase of $2.1M in call options',
+                    time: 'Just now',
+                    impact: 'High'
+                },
+                {
+                    type: 'SELL',
+                    symbol: 'BA',
+                    price: 189.45,
+                    confidence: 78,
+                    source: 'Pattern Recognition',
+                    reason: 'Double top formation on daily chart',
+                    time: '2 min ago',
+                    impact: 'Medium'
+                },
+                {
+                    type: 'BUY',
+                    symbol: 'TSLA',
+                    price: 238.67,
+                    confidence: 85,
+                    source: 'ML Model',
+                    reason: 'Breakout above resistance with volume',
+                    time: '5 min ago',
+                    impact: 'High'
+                },
+                {
+                    type: 'HOLD',
+                    symbol: 'AAPL',
+                    price: 172.45,
+                    confidence: 65,
+                    source: 'Sentiment Analysis',
+                    reason: 'Mixed signals, awaiting earnings',
+                    time: '8 min ago',
+                    impact: 'Low'
+                },
+                {
+                    type: 'BUY',
+                    symbol: 'AMD',
+                    price: 123.89,
+                    confidence: 88,
+                    source: 'Senate Committee',
+                    reason: '3 committee members buying',
+                    time: '12 min ago',
+                    impact: 'High'
+                }
+            ];
+
+            feed.innerHTML = signalData.map(signal => {
+                const bgClass = signal.type === 'BUY' ? 'signal-buy' : 
+                               signal.type === 'SELL' ? 'signal-sell' : 'signal-hold';
+                const iconClass = signal.type === 'BUY' ? 'fa-arrow-up' : 
+                                 signal.type === 'SELL' ? 'fa-arrow-down' : 'fa-pause';
+
+                return `
+                    <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 cursor-pointer transition-all">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-start space-x-3">
+                                <div class="${bgClass} w-10 h-10 rounded-full flex items-center justify-center">
+                                    <i class="fas ${iconClass} text-white"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="font-bold text-lg">${signal.symbol}</span>
+                                        <span class="text-sm text-gray-400">$${signal.price}</span>
+                                        ${signal.impact === 'High' ? '<span class="bg-red-600 px-2 py-0.5 rounded text-xs">HIGH IMPACT</span>' : ''}
+                                    </div>
+                                    <div class="text-sm text-gray-400 mt-1">${signal.reason}</div>
+                                    <div class="flex items-center space-x-4 mt-2 text-xs">
+                                        <span class="text-blue-400">
+                                            <i class="fas fa-user mr-1"></i>${signal.source}
+                                        </span>
+                                        <span class="text-gray-400">
+                                            <i class="fas fa-clock mr-1"></i>${signal.time}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold">${signal.confidence}%</div>
+                                <div class="text-xs text-gray-400">Confidence</div>
+                                <button class="mt-2 bg-blue-600 px-3 py-1 rounded text-sm hover:bg-blue-700">
+                                    Trade
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function loadTopMovers() {
+            const movers = document.getElementById('topMovers');
+            const moverData = [
+                { symbol: 'PLTR', change: 12.3, volume: '142M', signal: 'Strong Buy' },
+                { symbol: 'COIN', change: 8.7, volume: '89M', signal: 'Buy' },
+                { symbol: 'RIOT', change: -6.2, volume: '67M', signal: 'Sell' },
+                { symbol: 'MARA', change: 5.4, volume: '54M', signal: 'Hold' }
+            ];
+
+            movers.innerHTML = moverData.map(mover => `
+                <div class="bg-gray-800 p-3 rounded hover:bg-gray-700 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold">${mover.symbol}</div>
+                            <div class="text-xs text-gray-400">Vol: ${mover.volume}</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="${mover.change >= 0 ? 'text-green-400' : 'text-red-400'} font-bold">
+                                ${mover.change >= 0 ? '+' : ''}${mover.change}%
+                            </div>
+                            <div class="text-xs ${mover.signal.includes('Buy') ? 'text-green-400' : mover.signal === 'Sell' ? 'text-red-400' : 'text-yellow-400'}">
+                                ${mover.signal}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function initializeChart() {
+            signalChart = new ApexCharts(document.querySelector("#signalHistoryChart"), {
+                series: [
+                    {
+                        name: 'Successful Signals',
+                        data: [65, 72, 68, 74, 71, 76, 73]
+                    },
+                    {
+                        name: 'Total Signals',
+                        data: [89, 95, 92, 98, 94, 101, 100]
+                    }
+                ],
+                chart: { type: 'area', height: 300, toolbar: { show: false }, background: 'transparent' },
+                stroke: { curve: 'smooth', width: 2 },
+                fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.3 } },
+                colors: ['#10b981', '#3b82f6'],
+                xaxis: { 
+                    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    labels: { style: { colors: '#9ca3af' } } 
+                },
+                yaxis: { labels: { style: { colors: '#9ca3af' } } },
+                theme: { mode: 'dark' },
+                grid: { borderColor: '#374151' },
+                legend: { position: 'top', labels: { colors: '#9ca3af' } }
+            });
+            signalChart.render();
+        }
+
+        function filterSignals(type) {
+            // Implementation for filtering signals
+            console.log('Filtering signals by:', type);
+        }
+
+        function runMLPrediction() {
+            const results = document.getElementById('mlResults');
+            results.classList.remove('hidden');
+            
+            // Simulate ML prediction
+            setTimeout(() => {
+                showNotification('ML Prediction Complete', 'Strong BUY signal detected');
+            }, 1000);
+        }
+
+        function initializeWebSocket() {
+            // Simulate WebSocket connection for real-time updates
+            console.log('Initializing WebSocket connection...');
+        }
+
+        function startSignalSimulation() {
+            // Simulate new signals coming in
+            setInterval(() => {
+                const symbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'META', 'TSLA'];
+                const types = ['BUY', 'SELL', 'HOLD'];
+                const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+                const randomType = types[Math.floor(Math.random() * types.length)];
+                
+                if (Math.random() > 0.7) {
+                    showNotification(`New ${randomType} Signal`, `${randomSymbol} - Check now!`);
+                }
+            }, 30000);
+        }
+
+        function showNotification(title, message) {
+            const toast = document.getElementById('notificationToast');
+            toast.querySelector('.font-semibold').textContent = title;
+            toast.querySelector('.text-sm').textContent = message;
+            
+            toast.classList.remove('translate-x-full');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 5000);
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 's': document.getElementById('mlStock').focus(); break;
+                    case 'r': location.reload(); break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

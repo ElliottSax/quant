@@ -1,0 +1,57 @@
+# Machine Learning & Advanced Analytics Requirements
+# Install with: pip install -r requirements-ml.txt
+
+# Core ML Libraries
+scikit-learn>=1.3.0
+scipy>=1.11.0
+statsmodels>=0.14.0
+
+# Deep Learning (Commented out for initial setup - add back when needed)
+# torch>=2.0.0  # 900MB - install separately with: pip install torch --index-url https://download.pytorch.org/whl/cpu
+# tensorflow>=2.13.0  # Very large - install separately if needed
+# transformers>=4.30.0  # Uncomment when needed
+
+# Time Series Analysis
+prophet>=1.1.4
+# statsforecast>=1.6.0  # Alternative time series lib
+hmmlearn>=0.3.0  # Hidden Markov Models
+dtaidistance>=2.3.10  # Dynamic Time Warping
+
+# Financial Analysis
+# py_vollib>=1.0.1  # Implied volatility calculations
+# mibian>=0.1.3  # Black-Scholes and options pricing
+
+# Network Analysis
+networkx>=3.1
+python-louvain>=0.16
+scikit-network>=0.31.0
+
+# Experiment Tracking & MLOps
+mlflow>=2.6.0
+# wandb>=0.15.0  # Alternative to MLFlow
+
+# Hyperparameter Optimization
+optuna>=3.3.0
+# ray[tune]>=2.6.0  # Distributed hyperparameter tuning
+
+# Model Explainability
+shap>=0.42.0
+lime>=0.2.0.1
+
+# Production Model Serving
+onnx>=1.14.0
+onnxruntime>=1.15.0
+
+# Additional Visualization
+plotly>=5.15.0
+seaborn>=0.12.0
+matplotlib>=3.7.0
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+pyarrow>=12.0.0  # Fast parquet reading
+
+# Utilities
+joblib>=1.3.0  # Model serialization
+tqdm>=4.65.0  # Progress bars
