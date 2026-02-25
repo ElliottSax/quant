@@ -1,0 +1,29 @@
+services:
+  # Backend API Service
+  - type: web
+    name: quant-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PROJECT_NAME
+        value: QuantBacktestingPlatform
+      - key: VERSION
+        value: 1.0.0
+      - key: API_V1_STR
+        value: /api/v1
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:///./quant.db
+      - key: FINNHUB_API_KEY
+        value: d6fl2j9r01qqnmbp36ogd6fl2j9r01qqnmbp36p0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: BACKEND_CORS_ORIGINS
+        value: '["*"]'
+    rootDir: quant/backend
+    healthCheckPath: /health
+    plan: free
