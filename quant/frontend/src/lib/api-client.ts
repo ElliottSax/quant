@@ -406,6 +406,29 @@ export const api = {
       query.append('end_date', endDate)
       return fetchAPI<Record<string, BacktestResult>>(`/backtesting/compare?${query.toString()}`)
     },
+
+    // Portfolio backtesting
+    portfolio: {
+      run: (req: any) =>
+        fetchAPI<any>('/backtesting/portfolio/demo/run', {
+          method: 'POST',
+          body: JSON.stringify(req),
+          timeout: 90000, // Longer timeout for portfolio backtests
+        }),
+
+      efficientFrontier: (req: any) =>
+        fetchAPI<any>('/backtesting/portfolio/demo/efficient-frontier', {
+          method: 'POST',
+          body: JSON.stringify(req),
+          timeout: 60000,
+        }),
+
+      optimizationMethods: () =>
+        fetchAPI<any>('/backtesting/portfolio/demo/optimization-methods'),
+
+      rebalanceFrequencies: () =>
+        fetchAPI<any>('/backtesting/portfolio/demo/rebalance-frequencies'),
+    },
   },
 
   // Dashboard Stats

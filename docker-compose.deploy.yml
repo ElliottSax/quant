@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./quant/backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PROJECT_NAME=QuantBacktestingPlatform
+      - VERSION=1.0.0
+      - API_V1_STR=/api/v1
+      - ENVIRONMENT=production
+      - DATABASE_URL=sqlite+aiosqlite:///./quant.db
+      - FINNHUB_API_KEY=d6fl2j9r01qqnmbp36ogd6fl2j9r01qqnmbp36p0
+      - SECRET_KEY=${SECRET_KEY:-ZGV2ZWxvcG1lbnRfa2V5}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-and3dF9rZXk=}
+      - BACKEND_CORS_ORIGINS=["*"]
+    volumes:
+      - ./quant/backend:/app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./quant/frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+    depends_on:
+      - backend
+    restart: unless-stopped

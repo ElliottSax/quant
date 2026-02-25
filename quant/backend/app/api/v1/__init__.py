@@ -55,13 +55,36 @@ try:
 except ImportError as e:
     logger.warning(f"WebSocket endpoints disabled: {e}")
 
+# Backtesting router (standalone - only requires yfinance)
+try:
+    from app.api.v1 import backtesting
+    api_router.include_router(backtesting.router, tags=["backtesting"])
+    logger.info("Backtesting endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Backtesting endpoints disabled: {e}")
+
+# Portfolio Backtesting router (standalone - only requires yfinance + numpy/pandas)
+try:
+    from app.api.v1 import portfolio_backtesting
+    api_router.include_router(portfolio_backtesting.router, tags=["portfolio-backtesting"])
+    logger.info("Portfolio backtesting endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Portfolio backtesting endpoints disabled: {e}")
+
+# Finnhub router (standalone - only requires aiohttp)
+try:
+    from app.api.v1 import finnhub
+    api_router.include_router(finnhub.router, tags=["finnhub"])
+    logger.info("Finnhub endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Finnhub endpoints disabled: {e}")
+
 # ML-dependent features (optional)
 try:
     from app.api.v1 import (
         patterns,
         analytics,
         signals,
-        backtesting,
         sentiment,
         portfolio,
         reports
@@ -69,7 +92,6 @@ try:
     api_router.include_router(patterns.router, prefix="/patterns", tags=["pattern-analysis"])
     api_router.include_router(analytics.router, prefix="/analytics", tags=["advanced-analytics"])
     api_router.include_router(signals.router, tags=["trading-signals"])
-    api_router.include_router(backtesting.router, tags=["backtesting"])
     api_router.include_router(sentiment.router, tags=["sentiment-analysis"])
     api_router.include_router(portfolio.router, tags=["portfolio-optimization"])
     api_router.include_router(reports.router, tags=["automated-reporting"])
