@@ -118,7 +118,7 @@ jobs:
           pip-licenses --fail-on="GPL;AGPL" --allow-only="MIT;Apache-2.0;BSD;ISC;Python-2.0"
 
       - name: Upload license report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: license-report
           path: quant/backend/licenses.md
