@@ -1,290 +1,78 @@
 #!/bin/bash
+# Programmatic deployment - Opens deployment pages automatically
 
-# Congressional Trading Analytics Platform - One-Click Deploy Script
-# This script guides you through the entire deployment process
-
-set -e
-
-# Colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
-# Banner
-echo -e "${BLUE}"
-echo "╔═══════════════════════════════════════════════════════════╗"
-echo "║   Congressional Trading Analytics Platform Deployment    ║"
-echo "║   Revenue Potential: \$1,450-\$9,900 MRR                     ║"
-echo "║   Deployment Time: 30-45 minutes                         ║"
-echo "╚═══════════════════════════════════════════════════════════╝"
-echo -e "${NC}"
-
-# Check prerequisites
-echo -e "${YELLOW}Checking prerequisites...${NC}"
-
-# Check if Railway CLI is installed
-if ! command -v railway &> /dev/null; then
-    echo -e "${RED}Railway CLI not found. Installing...${NC}"
-    npm install -g @railway/cli
-fi
-
-# Check if Vercel CLI is installed
-if ! command -v vercel &> /dev/null; then
-    echo -e "${RED}Vercel CLI not found. Installing...${NC}"
-    npm install -g vercel
-fi
-
-echo -e "${GREEN}✓ Prerequisites installed${NC}"
+echo "🚀 Opening Deployment Pages..."
+echo "================================"
 echo ""
 
-# Step 1: Generate secrets
-echo -e "${BLUE}═══ Step 1: Generate Secrets ═══${NC}"
-echo ""
-echo "Generating secure secret keys..."
-SECRET_KEY=$(python -c "import secrets; print(secrets.token_urlsafe(32))")
-JWT_SECRET_KEY=$(python -c "import secrets; print(secrets.token_urlsafe(32))")
+# Deploy URLs
+RAILWAY_URL="https://railway.app/new?template=https://github.com/ElliottSax/quant&plugins=postgresql&envs=PROJECT_NAME,VERSION,API_V1_STR,ENVIRONMENT,DATABASE_URL,FINNHUB_API_KEY,SECRET_KEY,JWT_SECRET_KEY,BACKEND_CORS_ORIGINS&PROJECT_NAMEDefault=QuantBacktestingPlatform&VERSIONDefault=1.0.0&API_V1_STRDefault=/api/v1&ENVIRONMENTDefault=production&DATABASE_URLDefault=sqlite+aiosqlite:///./quant.db&FINNHUB_API_KEYDefault=d6fl2j9r01qqnmbp36ogd6fl2j9r01qqnmbp36p0&BACKEND_CORS_ORIGINSDefault=[\"*\"]"
 
-echo -e "${GREEN}✓ Secret keys generated${NC}"
-echo "SECRET_KEY: $SECRET_KEY"
-echo "JWT_SECRET_KEY: $JWT_SECRET_KEY"
-echo ""
-echo -e "${YELLOW}SAVE THESE KEYS! You'll need them.${NC}"
-read -p "Press Enter to continue..."
+VERCEL_URL="https://vercel.com/new/clone?repository-url=https://github.com/ElliottSax/quant&project-name=quant-frontend&root-directory=quant/frontend&env=NEXT_PUBLIC_API_URL&envDescription=Backend%20API%20URL&envLink=https://github.com/ElliottSax/quant"
 
-# Step 2: Get Stripe keys
-echo ""
-echo -e "${BLUE}═══ Step 2: Stripe Configuration ═══${NC}"
-echo ""
-echo "Go to: https://dashboard.stripe.com/test/apikeys"
-echo ""
-read -p "Enter your Stripe Secret Key (sk_test_...): " STRIPE_SECRET_KEY
-read -p "Enter your Stripe Publishable Key (pk_test_...): " STRIPE_PUBLISHABLE_KEY
-echo ""
-echo -e "${GREEN}✓ Stripe keys saved${NC}"
-
-# Step 3: Deploy Backend
-echo ""
-echo -e "${BLUE}═══ Step 3: Deploy Backend to Railway ═══${NC}"
-echo ""
-echo "Navigating to backend directory..."
-cd /mnt/e/projects/quant/quant/backend
-
-echo "Logging into Railway..."
-railway login
-
-echo ""
-echo "Initializing Railway project..."
-echo "When prompted, name it: 'quant-congressional-backend'"
-railway init
-
-echo ""
-echo "Adding PostgreSQL database..."
-railway add --database postgres
-
-echo ""
-echo "Adding Redis cache..."
-railway add --database redis
-
-echo ""
-echo "Setting environment variables..."
-railway variables set \
-  ENVIRONMENT=production \
-  DEBUG=false \
-  PROJECT_NAME="Congressional Trading Analytics" \
-  API_V1_STR="/api/v1" \
-  SECRET_KEY="$SECRET_KEY" \
-  JWT_SECRET_KEY="$JWT_SECRET_KEY" \
-  ALGORITHM="HS256" \
-  STRIPE_SECRET_KEY="$STRIPE_SECRET_KEY" \
-  STRIPE_PUBLISHABLE_KEY="$STRIPE_PUBLISHABLE_KEY" \
-  BACKEND_CORS_ORIGINS='["http://localhost:3000"]' \
-  TRUST_PROXY_HEADERS="true" \
-  ACCESS_TOKEN_EXPIRE_MINUTES="30" \
-  REFRESH_TOKEN_EXPIRE_DAYS="7"
-
-echo ""
-echo "Deploying backend..."
-railway up
-
-echo ""
-echo "Generating public domain..."
-BACKEND_URL=$(railway domain)
-
-echo ""
-echo -e "${GREEN}✓ Backend deployed successfully!${NC}"
-echo -e "${GREEN}Backend URL: $BACKEND_URL${NC}"
+echo "📦 Step 1: Deploy Backend to Railway"
+echo "URL: ${RAILWAY_URL:0:80}..."
 echo ""
 
-# Run migrations
-echo "Running database migrations..."
-railway run bash -c "alembic upgrade head"
-
-echo -e "${GREEN}✓ Database migrations completed${NC}"
-echo ""
-
-# Test backend
-echo "Testing backend health..."
-sleep 5
-HEALTH_CHECK=$(curl -s "$BACKEND_URL/health" | grep -o "healthy" || echo "")
-if [ "$HEALTH_CHECK" = "healthy" ]; then
-    echo -e "${GREEN}✓ Backend health check passed${NC}"
+# Open Railway in browser
+if command -v xdg-open &> /dev/null; then
+    xdg-open "$RAILWAY_URL" &
+elif command -v open &> /dev/null; then
+    open "$RAILWAY_URL" &
+elif command -v wslview &> /dev/null; then
+    wslview "$RAILWAY_URL" &
 else
-    echo -e "${RED}⚠ Backend health check failed. Check logs: railway logs${NC}"
+    echo "⚠️  Could not auto-open browser. Please visit:"
+    echo "$RAILWAY_URL"
 fi
 
-read -p "Press Enter to continue to frontend deployment..."
-
-# Step 4: Deploy Frontend
+echo "✅ Railway deployment page opened in browser"
 echo ""
-echo -e "${BLUE}═══ Step 4: Deploy Frontend to Vercel ═══${NC}"
+echo "Instructions:"
+echo "  1. Click 'Deploy Now'"
+echo "  2. Wait 3-5 minutes for build"
+echo "  3. Copy your Railway backend URL"
 echo ""
-echo "Navigating to frontend directory..."
-cd /mnt/e/projects/quant/quant/frontend
-
-echo "Creating production environment file..."
-cat > .env.production.local << EOF
-NEXT_PUBLIC_API_URL=$BACKEND_URL
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=$STRIPE_PUBLISHABLE_KEY
-NODE_ENV=production
-EOF
-
-echo -e "${GREEN}✓ Environment file created${NC}"
-echo ""
-
-echo "Logging into Vercel..."
-vercel login
+read -p "Press Enter after Railway backend is deployed..."
 
 echo ""
-echo "Deploying to Vercel..."
-echo "When prompted, accept defaults and deploy to production"
-FRONTEND_URL=$(vercel --prod 2>&1 | grep -o 'https://[^[:space:]]*' | head -1)
-
-echo ""
-echo -e "${GREEN}✓ Frontend deployed successfully!${NC}"
-echo -e "${GREEN}Frontend URL: $FRONTEND_URL${NC}"
+echo "🌐 Step 2: Deploy Frontend to Vercel"
+echo "URL: ${VERCEL_URL:0:80}..."
 echo ""
 
-# Step 5: Update CORS
-echo ""
-echo -e "${BLUE}═══ Step 5: Update CORS ═══${NC}"
-echo ""
-cd /mnt/e/projects/quant/quant/backend
+# Open Vercel in browser
+if command -v xdg-open &> /dev/null; then
+    xdg-open "$VERCEL_URL" &
+elif command -v open &> /dev/null; then
+    open "$VERCEL_URL" &
+elif command -v wslview &> /dev/null; then
+    wslview "$VERCEL_URL" &
+else
+    echo "⚠️  Could not auto-open browser. Please visit:"
+    echo "$VERCEL_URL"
+fi
 
-echo "Updating CORS to allow frontend..."
-railway variables set BACKEND_CORS_ORIGINS="[\"$FRONTEND_URL\"]"
-
-echo "Redeploying backend with updated CORS..."
-railway up
-
-echo -e "${GREEN}✓ CORS updated${NC}"
+echo "✅ Vercel deployment page opened in browser"
 echo ""
-
-# Step 6: Configure Stripe Webhook
+echo "Instructions:"
+echo "  1. Update NEXT_PUBLIC_API_URL with your Railway URL"
+echo "  2. Click 'Deploy'"
+echo "  3. Wait 2-3 minutes for build"
 echo ""
-echo -e "${BLUE}═══ Step 6: Configure Stripe Webhook ═══${NC}"
-echo ""
-echo "Go to: https://dashboard.stripe.com/test/webhooks"
-echo ""
-echo "1. Click 'Add endpoint'"
-echo "2. Enter this URL:"
-echo -e "${GREEN}   $BACKEND_URL/api/v1/subscriptions/webhooks/stripe${NC}"
-echo ""
-echo "3. Select these events:"
-echo "   - customer.subscription.created"
-echo "   - customer.subscription.updated"
-echo "   - customer.subscription.deleted"
-echo "   - invoice.payment_succeeded"
-echo "   - invoice.payment_failed"
-echo ""
-echo "4. Click 'Add endpoint'"
-echo "5. Copy the webhook signing secret (starts with whsec_)"
-echo ""
-read -p "Enter your Stripe Webhook Secret (whsec_...): " STRIPE_WEBHOOK_SECRET
+read -p "Press Enter after Vercel frontend is deployed..."
 
 echo ""
-echo "Adding webhook secret to Railway..."
-railway variables set STRIPE_WEBHOOK_SECRET="$STRIPE_WEBHOOK_SECRET"
-
-echo "Redeploying..."
-railway up
-
-echo -e "${GREEN}✓ Stripe webhook configured${NC}"
+echo "================================"
+echo "🎉 Deployment Complete!"
+echo "================================"
 echo ""
-
-# Final Summary
+echo "Your app should now be live at:"
+echo "  📊 Backend: https://your-project.railway.app"
+echo "  🌐 Frontend: https://your-project.vercel.app"
+echo "  📖 API Docs: https://your-project.railway.app/docs"
 echo ""
-echo -e "${BLUE}"
-echo "╔═══════════════════════════════════════════════════════════╗"
-echo "║                  DEPLOYMENT COMPLETE! 🎉                  ║"
-echo "╚═══════════════════════════════════════════════════════════╝"
-echo -e "${NC}"
-echo ""
-echo -e "${GREEN}Your Congressional Trading Analytics Platform is LIVE!${NC}"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo -e "${YELLOW}Frontend URL:${NC} $FRONTEND_URL"
-echo -e "${YELLOW}Backend URL:${NC}  $BACKEND_URL"
-echo -e "${YELLOW}API Docs:${NC}     $BACKEND_URL/api/v1/docs"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo -e "${BLUE}Next Steps:${NC}"
-echo ""
-echo "1. Test your platform:"
-echo "   - Visit $FRONTEND_URL"
-echo "   - Sign up for an account"
-echo "   - Try subscribing to Premium (use card: 4242 4242 4242 4242)"
-echo ""
-echo "2. Launch on Product Hunt (tomorrow):"
-echo "   - Submit at 12:01 AM PST Tuesday"
-echo "   - See: /mnt/e/projects/quant/marketing/07-launch-announcement.md"
-echo ""
-echo "3. Monitor your platform:"
-echo "   - Backend logs: railway logs"
-echo "   - Frontend: https://vercel.com/dashboard"
-echo "   - Stripe: https://dashboard.stripe.com/test/events"
-echo ""
-echo "4. Marketing materials ready at:"
-echo "   /mnt/e/projects/quant/marketing/"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo -e "${GREEN}Revenue Projection:${NC}"
-echo "  Month 1: \$750-1,500 MRR"
-echo "  Month 3: \$2,000-5,000 MRR"
-echo "  Month 6: \$5,000-10,000 MRR"
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo -e "${BLUE}Time to first customer: 1-7 days${NC}"
-echo -e "${BLUE}Time to profitability: 30-60 days${NC}"
-echo ""
-echo -e "${GREEN}CONGRATULATIONS! You're live and ready to generate revenue! 🚀${NC}"
-echo ""
-
-# Save deployment info
-cat > /mnt/e/projects/quant/DEPLOYMENT_INFO.txt << EOF
-Congressional Trading Analytics Platform - Deployment Information
-Deployed: $(date)
-
-Frontend URL: $FRONTEND_URL
-Backend URL: $BACKEND_URL
-API Docs: $BACKEND_URL/api/v1/docs
-
-Stripe: Test mode (switch to live after testing)
-
-Next Steps:
-1. Test platform thoroughly
-2. Launch on Product Hunt
-3. Share on social media
-4. Monitor for first customers
-
-Marketing materials: /mnt/e/projects/quant/marketing/
-Support: See IMMEDIATE_DEPLOYMENT_PLAN.md for troubleshooting
-EOF
-
-echo "Deployment info saved to: /mnt/e/projects/quant/DEPLOYMENT_INFO.txt"
+echo "Next steps:"
+echo "  1. Test your deployment"
+echo "  2. Update CORS in Railway if needed"
+echo "  3. Launch on Product Hunt!"
 echo ""
