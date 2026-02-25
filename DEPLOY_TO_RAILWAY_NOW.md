@@ -1,8 +1,10 @@
 # 🚀 Deploy to Railway - One-Click Guide
 
 **Status**: ✅ Code pushed to GitHub
-**Commit**: `585720b` - Backtesting demo endpoints
+**Commit**: `a041817` - Railway deployment config + backtesting demo endpoints
 **Time to Deploy**: 5 minutes
+
+**Latest Update**: Railway config files created (railway.toml + nixpacks.toml)
 
 ---
 
