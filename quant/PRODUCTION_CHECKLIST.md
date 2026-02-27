@@ -1,309 +1,210 @@
 # Production Deployment Checklist
 
-Use this checklist before, during, and after production deployment.
+## Pre-Deployment (72 hours before)
 
-## Pre-Deployment Checklist
+### Planning
+- [ ] Notify team of deployment date/time
+- [ ] Plan rollback procedure
+- [ ] Schedule post-deployment monitoring
+- [ ] Prepare communication for users
 
-### Code Quality
-- [ ] All tests passing locally
-- [ ] All tests passing in CI/CD
-- [ ] Code reviewed and approved
-- [ ] No security vulnerabilities (run `safety check`)
-- [ ] No TODO/FIXME comments in critical paths
-- [ ] Linting passes (Black, Ruff)
-- [ ] Type checking passes (MyPy)
+### Testing
+- [ ] Run full test suite: `pytest tests/ -v`
+- [ ] Test subscription upgrade flow (use Stripe test keys)
+- [ ] Test referral code generation
+- [ ] Test webhook processing
+- [ ] Verify all components build without errors
 
-### Configuration
-- [ ] `.env.production` configured with all variables
-- [ ] All secrets rotated from defaults
-- [ ] SECRET_KEY generated (64 chars)
-- [ ] JWT_SECRET_KEY generated (64 chars)
-- [ ] Database credentials secured
-- [ ] API keys obtained and configured
-- [ ] CORS origins set to production domains only
-- [ ] Rate limiting configured appropriately
+### Staging Verification
+- [ ] Deploy to staging environment
+- [ ] Run full end-to-end tests
+- [ ] Verify database migrations
+- [ ] Test Stripe integration (test mode)
+- [ ] Monitor staging for 24 hours
 
-### Infrastructure
-- [ ] Railway account created and configured
-- [ ] Vercel account created and configured
-- [ ] Supabase database created
-- [ ] Redis instance provisioned
-- [ ] Domain purchased and configured
-- [ ] DNS records created
-- [ ] SSL certificates obtained (or using Cloudflare)
+## Deployment Day (4 hours before)
 
-### Database
-- [ ] Production database created
-- [ ] TimescaleDB extension enabled
-- [ ] Database backed up
-- [ ] Migration scripts tested
+### Pre-Deployment Verification
+- [ ] All PRs merged and reviewed
+- [ ] Latest code pulled
+- [ ] Environment variables ready
+- [ ] Database backup created
 - [ ] Rollback plan documented
-- [ ] Connection pooling configured
 
-### Monitoring
-- [ ] Sentry account created
-- [ ] Sentry DSN configured
-- [ ] Prometheus configured
-- [ ] Grafana dashboards imported
-- [ ] Alert rules configured
-- [ ] Slack webhook configured
-- [ ] Email alerts configured
-- [ ] Health check endpoint tested
+### 1 Hour Before Deployment
 
-### Security
-- [ ] Security headers enabled
-- [ ] HTTPS enforced
-- [ ] Rate limiting enabled
-- [ ] SQL injection protection verified
-- [ ] XSS protection verified
-- [ ] CSRF protection enabled
-- [ ] Input validation in place
-- [ ] Authentication working
-- [ ] Authorization working
-- [ ] Session management secure
+```bash
+# Verify builds
+npm run build  # Frontend
+pytest tests/ -v  # Backend
 
-### Performance
-- [ ] Database indexes created
-- [ ] Query optimization done
-- [ ] Caching enabled
-- [ ] CDN configured (if using)
-- [ ] Image optimization done
-- [ ] Bundle size acceptable
-- [ ] Load testing completed
-- [ ] Response times acceptable (<1s)
+# Check environment variables
+env | grep STRIPE
+env | grep DATABASE
 
-### Documentation
-- [ ] README.md updated
-- [ ] DEPLOYMENT_GUIDE.md reviewed
-- [ ] API documentation current
-- [ ] Environment variables documented
-- [ ] Runbooks created for common issues
-- [ ] Team trained on procedures
+# Verify service health on staging
+curl https://staging.quant.platform.com/health
+```
 
-### Communication
-- [ ] Deployment scheduled
-- [ ] Team notified of deployment window
-- [ ] Stakeholders informed
-- [ ] Status page prepared
-- [ ] Communication channels ready (Slack)
+## Deployment Steps
 
-## Deployment Checklist
+### Step 1: Database Migration (5 min)
+```bash
+cd backend
+alembic current  # Verify current revision
+# Already applied: 010_add_hybrid_model_fields
+```
 
-### Initial Deployment
+### Step 2: Backend Deployment (15 min)
+```bash
+# Build and deploy
+docker build -t quant-api:v1.0 .
+docker push registry.example.com/quant-api:v1.0
+kubectl set image deployment/quant-api quant-api=registry.example.com/quant-api:v1.0
+kubectl rollout status deployment/quant-api
+```
 
-#### Backend Deployment
-- [ ] Login to Railway: `railway login`
-- [ ] Set environment: `railway environment production`
-- [ ] Upload environment variables
-- [ ] Deploy backend: `railway up`
-- [ ] Check deployment status: `railway status`
-- [ ] View logs: `railway logs`
-- [ ] Verify health: `curl https://api.yourdomain.com/health`
+### Step 3: Frontend Deployment (10 min)
+```bash
+npm run build
+npm run deploy  # Or: vercel --prod
+```
 
-#### Frontend Deployment
-- [ ] Login to Vercel: `vercel login`
-- [ ] Set environment variables
-- [ ] Deploy frontend: `vercel --prod`
-- [ ] Verify deployment: `curl https://yourdomain.com`
-- [ ] Test in browser
+### Step 4: Verification (10 min)
+```bash
+# Check APIs
+curl https://api.quant.platform.com/health
+curl https://api.quant.platform.com/api/v1/subscription/tiers
 
-#### Database Migration
-- [ ] Set DATABASE_URL environment variable
-- [ ] Run migrations: `alembic upgrade head`
-- [ ] Verify: `alembic current`
-- [ ] Test database connectivity
+# Check frontend
+curl -I https://quant.platform.com
+```
 
-#### Post-Deployment Verification
-- [ ] Run smoke tests: `python scripts/smoke_test.py --url https://api.yourdomain.com`
-- [ ] Check all endpoints in API docs
-- [ ] Verify frontend loads correctly
-- [ ] Test user registration
-- [ ] Test user login
-- [ ] Test core functionality
-- [ ] Check metrics endpoint
-- [ ] Verify Sentry receiving events
-- [ ] Check Prometheus scraping metrics
-- [ ] View Grafana dashboards
+## Post-Deployment (1 hour after)
 
-### Monitoring Setup
-- [ ] Sentry receiving events
-- [ ] Prometheus collecting metrics
-- [ ] Grafana dashboards showing data
-- [ ] Alerts firing correctly (test)
-- [ ] Slack notifications working
-- [ ] Log aggregation working
-- [ ] Error tracking working
+### Immediate Checks
+- [ ] Website loads without errors
+- [ ] API endpoints respond
+- [ ] No critical errors in logs
+- [ ] Stripe webhooks receiving events
+- [ ] Database performing normally
 
-### Performance Verification
-- [ ] Response times acceptable (<1s)
-- [ ] No memory leaks
-- [ ] Database queries optimized
-- [ ] Cache hit rate acceptable (>80%)
-- [ ] No N+1 queries
-- [ ] Connection pool healthy
+### Test Subscription Flow
+```bash
+# Create test account
+# Upgrade to Starter ($9.99)
+# Verify webhook processed
+# Check subscription status updated
+```
 
-## Post-Deployment Checklist
+### Test Referral System
+```bash
+# Generate referral code
+# Share functionality works
+# Referral tracking working
+```
 
-### Immediate (0-30 minutes)
-- [ ] All smoke tests passed
-- [ ] No errors in Sentry
-- [ ] Response times normal
-- [ ] Database queries normal
-- [ ] Memory usage normal
-- [ ] CPU usage normal
-- [ ] No 5xx errors
-- [ ] Key features working
+### Monitor for 1 Hour
+- [ ] Error rates normal
+- [ ] Response times acceptable
+- [ ] No database issues
+- [ ] Stripe integration working
+- [ ] Ads displaying correctly
 
-### Short-term (30 minutes - 2 hours)
-- [ ] Monitor error rates
-- [ ] Check user feedback
-- [ ] Review application logs
-- [ ] Monitor database performance
-- [ ] Check cache effectiveness
-- [ ] Verify background jobs running
-- [ ] Monitor API rate limits
+## Rollback Procedure
 
-### Medium-term (2-24 hours)
-- [ ] Review Sentry issues
-- [ ] Analyze Prometheus metrics
-- [ ] Check Grafana dashboards
-- [ ] Review slow query logs
-- [ ] Monitor disk usage
-- [ ] Check backup completion
-- [ ] Review security logs
+If critical issues found:
 
-### Documentation
-- [ ] Update deployment log
-- [ ] Document any issues encountered
-- [ ] Update runbooks if needed
-- [ ] Share learnings with team
-- [ ] Update deployment checklist
+```bash
+# Backend
+kubectl rollout undo deployment/quant-api
 
-### Communication
-- [ ] Notify team of successful deployment
-- [ ] Update status page
-- [ ] Send summary email
-- [ ] Schedule retro meeting (if issues)
+# Frontend
+vercel rollback
 
-## Rollback Checklist
+# Verify rollback complete
+kubectl rollout status deployment/quant-api
+curl https://api.quant.platform.com/health
+```
 
-If something goes wrong:
+## Post-Deployment (24-48 hours)
 
-### Immediate Actions (<5 minutes)
-- [ ] Assess severity (critical vs. non-critical)
-- [ ] Notify team in Slack
-- [ ] Initiate rollback: `./scripts/rollback.sh production [TAG]`
-- [ ] Monitor rollback progress
-- [ ] Verify old version is stable
+### Daily Monitoring
+- [ ] Error logs reviewed
+- [ ] Failed payments checked
+- [ ] Webhook processing rate normal
+- [ ] Conversion metrics tracked
+- [ ] Revenue tracking verified
 
-### Verification (<15 minutes)
-- [ ] Run smoke tests on rolled-back version
-- [ ] Check error rates returned to normal
-- [ ] Verify database state
-- [ ] Check all critical features
-- [ ] Monitor for 15 minutes
+### Weekly Metrics
+- [ ] Free → Starter conversion rate
+- [ ] Free → Professional conversion rate
+- [ ] Trial start rate
+- [ ] Referral signup rate
+- [ ] Payment success rate
 
-### Post-Rollback (<1 hour)
-- [ ] Document what went wrong
-- [ ] Capture error logs
-- [ ] Save database state
-- [ ] Notify stakeholders
-- [ ] Plan fix and redeploy
+## Success Indicators
 
-### Post-Mortem (<24 hours)
-- [ ] Write incident report
-- [ ] Identify root cause
-- [ ] Document lessons learned
-- [ ] Update deployment process
-- [ ] Share with team
+✅ Deployment successful when:
+- All health checks passing
+- Error rate < 0.1%
+- API response time < 200ms (p95)
+- 3+ test subscriptions processed
+- Stripe webhooks 100% success rate
+- Database performing normally
+- Frontend pages load < 3s
+- Referral system working
+- Ad banners displaying
 
-## Weekly Maintenance Checklist
+## Failure Response
 
-- [ ] Review error rates
-- [ ] Check disk usage
-- [ ] Verify backups
-- [ ] Review security alerts
-- [ ] Check dependency updates
-- [ ] Review performance metrics
-- [ ] Clean up old logs
-- [ ] Test disaster recovery
+🔴 Rollback if:
+- Error rate > 1%
+- API unavailable
+- Database unreachable
+- Stripe integration broken
+- Payment processing failing
+- Critical data corruption
 
-## Monthly Checklist
+## Post-Deployment Report
 
-- [ ] Review and rotate secrets
-- [ ] Update dependencies
-- [ ] Security audit
-- [ ] Performance review
-- [ ] Cost optimization review
-- [ ] Documentation review
-- [ ] Team retro on deployments
-- [ ] Disaster recovery test
+After 24 hours, create report:
+- Deployment success/issues
+- Performance metrics
+- User feedback
+- Next optimizations
 
-## Quarterly Checklist
+## Important Notes
 
-- [ ] Full security audit
-- [ ] Load testing
-- [ ] Database optimization
-- [ ] Review architecture decisions
-- [ ] Update disaster recovery plan
-- [ ] Review and update runbooks
-- [ ] Infrastructure cost review
-- [ ] Capacity planning
+⚠️ **DO NOT:**
+- Deploy without running tests
+- Deploy without staging verification
+- Skip database migration steps
+- Forget to update environment variables
+- Deploy without rollback plan
 
-## Emergency Contacts
+✅ **DO:**
+- Verify at each step
+- Monitor logs closely
+- Have team on standby
+- Communicate status updates
+- Document any issues
 
-- **DevOps Lead:** [Name] - [Phone] - [Email]
-- **Backend Lead:** [Name] - [Phone] - [Email]
-- **Frontend Lead:** [Name] - [Phone] - [Email]
-- **Database Admin:** [Name] - [Phone] - [Email]
-- **On-Call Engineer:** See PagerDuty rotation
+## Contact Information
 
-## Critical URLs
+- **DevOps Lead**: [name/phone]
+- **Engineering Lead**: [name/phone]
+- **Product Manager**: [name/phone]
+- **On-Call**: Check rotation schedule
 
-- **Production API:** https://api.yourdomain.com
-- **Production Frontend:** https://yourdomain.com
-- **Sentry:** https://sentry.io/organizations/yourorg
-- **Grafana:** https://grafana.yourdomain.com
-- **Railway:** https://railway.app/project/YOUR_PROJECT
-- **Vercel:** https://vercel.com/yourorg/yourproject
+## Deployment Timeline
 
-## Emergency Procedures
+| Task | Duration | Owner | Status |
+|------|----------|-------|--------|
+| DB Migration | 5 min | DevOps | ⏳ |
+| Backend Deploy | 15 min | DevOps | ⏳ |
+| Frontend Deploy | 10 min | DevOps | ⏳ |
+| Verification | 10 min | QA | ⏳ |
+| Monitoring | 1 hour | Engineering | ⏳ |
 
-### Complete Outage
-1. Check status page: https://status.yourdomain.com
-2. Check Railway status: https://railway.app/status
-3. Check Vercel status: https://vercel.com/status
-4. Review recent deployments
-5. Check error logs
-6. Initiate rollback if recent deployment
-7. Notify stakeholders
-8. Update status page
-
-### Database Issues
-1. Check database status in Supabase
-2. Review slow query logs
-3. Check connection pool
-4. Verify migrations
-5. Check disk space
-6. Review recent schema changes
-7. Consider read replica failover
-
-### High Error Rate
-1. Check Sentry for new errors
-2. Review recent deployments
-3. Check external service status
-4. Review application logs
-5. Check database performance
-6. Consider rollback
-7. Implement hotfix if identified
-
----
-
-**Version:** 1.0
-**Last Updated:** 2024-01-15
-**Owner:** DevOps Team
-
-**Notes:**
-- Print this checklist for deployment day
-- Keep updated with lessons learned
-- Review quarterly for improvements
+**Total: ~1 hour for deployment + 1 hour monitoring**

@@ -10,6 +10,8 @@
 
 import { useState } from 'react'
 import { Check, X, Zap, TrendingUp, Crown, ArrowRight } from 'lucide-react'
+import { FeatureComparison } from '@/components/upsell/FeatureComparison'
+import { FreeTrialBanner } from '@/components/upsell/FreeTrialBanner'
 
 export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly')
@@ -17,68 +19,71 @@ export default function PricingPage() {
   const tiers = [
     {
       name: 'Free',
-      tagline: 'Get Started',
+      tagline: 'Perfect for Learning',
       price: 0,
       annualPrice: 0,
       icon: TrendingUp,
       color: 'from-gray-500 to-gray-600',
       features: [
-        { name: '3 Basic Strategies', included: true, description: 'MA Crossover, RSI, Bollinger' },
-        { name: '3 Backtests per month', included: true },
-        { name: '1 Year Historical Data', included: true },
-        { name: 'Basic Performance Metrics', included: true },
-        { name: 'Community Support', included: true },
-        { name: 'Unlimited Backtests', included: false },
-        { name: 'Advanced Strategies', included: false },
-        { name: 'CSV/PDF Export', included: false },
-        { name: 'Portfolio Optimization', included: false },
+        { name: 'Unlimited Backtests', included: true, description: 'Run as many backtests as you want' },
+        { name: 'All Strategies', included: true, description: 'Access all 10+ professional strategies' },
+        { name: 'Full Historical Data', included: true, description: 'Test on 10+ years of market data' },
+        { name: 'Basic Analytics', included: true },
+        { name: 'Affiliate Links', included: true, description: 'Broker recommendations with affiliate earnings' },
+        { name: 'Ad-Supported', included: true },
+        { name: 'CSV Export', included: false },
+        { name: 'Portfolio Tracking', included: false },
+        { name: 'Email Alerts', included: false },
+        { name: 'API Access', included: false },
       ],
       cta: 'Start Free',
       ctaAction: 'register',
       popular: false,
     },
     {
-      name: 'Premium',
+      name: 'Starter',
       tagline: 'Most Popular',
-      price: 29,
-      annualPrice: 290, // 2 months free
+      price: 9.99,
+      annualPrice: 99.90,
       icon: Zap,
       color: 'from-blue-500 to-purple-600',
       features: [
-        { name: '7 Total Strategies', included: true, description: 'All free + MACD, Z-Score, Momentum, Triple EMA' },
         { name: 'Unlimited Backtests', included: true },
-        { name: '10 Years Historical Data', included: true },
-        { name: 'Advanced Performance Metrics', included: true },
+        { name: 'All Strategies', included: true },
+        { name: 'Full Historical Data', included: true },
+        { name: 'Advanced Analytics', included: true },
+        { name: 'Ad-Free Experience', included: true, description: 'No ads, cleaner interface' },
+        { name: '2x Faster Backtests', included: true },
         { name: 'CSV Export', included: true },
-        { name: 'Email Support', included: true },
-        { name: 'Strategy Comparison', included: true },
-        { name: 'Real-time Notifications', included: true },
-        { name: 'Portfolio Optimization', included: false },
+        { name: 'Portfolio Tracking', included: false },
+        { name: 'Email Alerts', included: false },
+        { name: 'API Access', included: false },
       ],
-      cta: 'Start Premium',
-      ctaAction: 'checkout-premium',
+      cta: 'Upgrade to Starter',
+      ctaAction: 'checkout-starter',
       popular: true,
     },
     {
-      name: 'Enterprise',
-      tagline: 'Professional',
-      price: 99,
-      annualPrice: 990, // 2 months free
+      name: 'Professional',
+      tagline: 'For Serious Traders',
+      price: 29,
+      annualPrice: 290,
       icon: Crown,
       color: 'from-purple-600 to-pink-600',
       features: [
-        { name: '10 Total Strategies', included: true, description: 'All premium + Ichimoku, Multi-TF, ATR Volatility' },
         { name: 'Unlimited Backtests', included: true },
+        { name: 'All Strategies', included: true },
         { name: 'Full Historical Data', included: true },
-        { name: 'Professional Analytics', included: true },
-        { name: 'CSV + PDF Export', included: true },
-        { name: 'Priority Support', included: true },
-        { name: 'Walk-Forward Analysis', included: true },
-        { name: 'Portfolio Optimization', included: true },
-        { name: 'Monte Carlo Simulation', included: true },
+        { name: 'Advanced Analytics', included: true },
+        { name: 'Ad-Free Experience', included: true },
+        { name: '2x Faster Backtests', included: true },
+        { name: 'CSV Export', included: true },
+        { name: 'Portfolio Tracking', included: true },
+        { name: 'Email Alerts', included: true },
+        { name: 'API Access', included: true },
       ],
-      cta: 'Start Enterprise',
-      ctaAction: 'checkout-enterprise',
+      cta: 'Upgrade to Professional',
+      ctaAction: 'checkout-professional',
       popular: false,
     },
   ]
@@ -87,7 +92,7 @@ export default function PricingPage() {
     if (action === 'register') {
       window.location.href = '/auth/register'
     } else if (action.startsWith('checkout-')) {
-      const tier = action.replace('checkout-', '').toUpperCase()
+      const tier = action.replace('checkout-', '').toLowerCase()
 
       try {
         // Call backend to create Stripe checkout session
@@ -134,6 +139,13 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      {/* Free Trial Banner */}
+      <div className="bg-slate-900 border-b border-slate-800 px-4 py-4">
+        <div className="container mx-auto">
+          <FreeTrialBanner />
+        </div>
+      </div>
+
       {/* Header */}
       <div className="container mx-auto px-4 py-16 text-center">
         <div className="inline-block mb-4 px-4 py-2 bg-blue-500/10 rounded-full border border-blue-500/20">
@@ -374,6 +386,14 @@ export default function PricingPage() {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Feature Comparison Table */}
+      <div className="container mx-auto px-4 py-16 border-t border-slate-800">
+        <h2 className="text-4xl font-bold text-white mb-8 text-center">Detailed Feature Comparison</h2>
+        <div className="glass-strong rounded-xl p-8 overflow-hidden">
+          <FeatureComparison />
         </div>
       </div>
 

@@ -424,12 +424,39 @@ export default function Home() {
         </div>
       </Link>
 
+      {/* Backtesting Quick Start */}
+      <Link href="/backtesting" className="block">
+        <div className="terminal-panel border-[hsl(142,71%,55%)]/30 hover:border-[hsl(142,71%,55%)]/50 transition-colors cursor-pointer">
+          <div className="terminal-panel-header bg-gradient-to-r from-[hsl(142,71%,20%)] to-transparent">
+            <div className="flex items-center gap-2">
+              <span className="text-lg">⚡</span>
+              <span className="text-[hsl(142,71%,65%)]">STRATEGY BACKTESTING</span>
+            </div>
+            <span className="text-[10px] text-[hsl(45,96%,58%)]">10 STRATEGIES →</span>
+          </div>
+          <div className="p-4 bg-[hsl(220,60%,4%)]">
+            <p className="text-sm text-[hsl(215,20%,70%)] mb-3">
+              Test trading strategies with real market data. MA Crossover, RSI, MACD, Bollinger Bands, and more.
+              Build custom strategies or browse pre-built templates.
+            </p>
+            <div className="flex flex-wrap gap-4 text-xs text-[hsl(215,20%,55%)]">
+              <span>📋 Strategy Library</span>
+              <span>🔧 Strategy Builder</span>
+              <span>💼 Portfolio Optimization</span>
+              <span>📊 Results History</span>
+            </div>
+          </div>
+        </div>
+      </Link>
+
       {/* Quick Access */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
         <ToolCard title="Discoveries" description="ML pattern discoveries" href="/discoveries" icon="🔬" color="yellow" />
         <ToolCard title="Politicians" description="Congressional trades" href="/politicians" icon="🏛️" color="blue" />
         <ToolCard title="Network" description="Correlation analysis" href="/network" icon="🕸️" color="purple" />
         <ToolCard title="Charts" description="Technical analysis" href="/charts" icon="📊" color="green" />
+        <ToolCard title="Backtesting" description="Test strategies" href="/backtesting" icon="⚡" color="green" />
+        <ToolCard title="Strategies" description="Strategy library" href="/strategies" icon="📋" color="yellow" />
       </div>
 
       {/* System Status */}

@@ -610,7 +610,7 @@ export default function DashboardPage() {
       )}
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
         <QuickActionCard
           href="/compare"
           title="Compare Politicians"
@@ -629,6 +629,41 @@ export default function DashboardPage() {
           description="Pattern & anomaly detection"
           color="green"
         />
+        <QuickActionCard
+          href="/backtesting"
+          title="Strategy Backtesting"
+          description="Test strategies with real data"
+          color="green"
+        />
+      </div>
+
+      {/* Backtesting Quick Start */}
+      <div className="terminal-panel">
+        <div className="terminal-panel-header">
+          <div className="flex items-center gap-2">
+            <span className="text-sm">⚡</span>
+            <span>STRATEGY BACKTESTING</span>
+          </div>
+        </div>
+        <div className="p-4 bg-[hsl(220,60%,4%)]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <Link href="/backtesting" className="block p-3 rounded bg-[hsl(215,50%,10%)] border border-[hsl(215,40%,16%)] hover:border-green-500/50 transition-all">
+              <div className="text-lg mb-1">🚀</div>
+              <h4 className="text-sm font-bold text-white">Run Backtest</h4>
+              <p className="text-[10px] text-[hsl(215,20%,55%)]">Test a strategy with historical data</p>
+            </Link>
+            <Link href="/strategies" className="block p-3 rounded bg-[hsl(215,50%,10%)] border border-[hsl(215,40%,16%)] hover:border-blue-500/50 transition-all">
+              <div className="text-lg mb-1">📋</div>
+              <h4 className="text-sm font-bold text-white">Browse Strategies</h4>
+              <p className="text-[10px] text-[hsl(215,20%,55%)]">10 professional strategies available</p>
+            </Link>
+            <Link href="/backtesting/results" className="block p-3 rounded bg-[hsl(215,50%,10%)] border border-[hsl(215,40%,16%)] hover:border-purple-500/50 transition-all">
+              <div className="text-lg mb-1">📊</div>
+              <h4 className="text-sm font-bold text-white">View Results</h4>
+              <p className="text-[10px] text-[hsl(215,20%,55%)]">Compare past backtest results</p>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   )

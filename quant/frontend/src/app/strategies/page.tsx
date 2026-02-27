@@ -403,6 +403,22 @@ export default function StrategiesPage() {
           })}
         </div>
 
+        {/* Build Custom Strategy CTA */}
+        <div className="bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/20 rounded-xl p-8 text-center mb-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            Build Your Own Strategy
+          </h2>
+          <p className="text-gray-400 mb-6">
+            Create custom strategies with our visual strategy builder. Choose indicators, set conditions, and backtest instantly.
+          </p>
+          <Link href="/backtesting/builder">
+            <button className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-semibold px-8 py-3 rounded-lg shadow-lg inline-flex items-center gap-2">
+              Open Strategy Builder
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </Link>
+        </div>
+
         {/* Upgrade CTA */}
         {userTier === 'free' && (
           <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/20 rounded-xl p-8 text-center">

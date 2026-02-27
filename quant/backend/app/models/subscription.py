@@ -15,11 +15,11 @@ from app.models.common import UUID, JSONType
 
 
 class SubscriptionTier(str, enum.Enum):
-    """Subscription tiers."""
-    FREE = "free"
-    BASIC = "basic"
-    PREMIUM = "premium"
-    ENTERPRISE = "enterprise"
+    """Subscription tiers - Hybrid Revenue Model."""
+    FREE = "free"  # Unlimited backtests, ad-supported
+    STARTER = "starter"  # $9.99/mo - Ad-free, faster results
+    PROFESSIONAL = "professional"  # $29/mo - Advanced features + API
+    ENTERPRISE = "enterprise"  # Custom pricing
 
 
 class SubscriptionStatus(str, enum.Enum):

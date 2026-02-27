@@ -18,7 +18,7 @@ from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
 revision = 'add_analytics_20260203'
-down_revision = None  # Set this to the latest migration
+down_revision = '010_add_hybrid_model_fields'
 branch_labels = None
 depends_on = None
 

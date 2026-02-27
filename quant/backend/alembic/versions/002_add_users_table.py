@@ -1,7 +1,7 @@
 """Add users table for authentication
 
 Revision ID: 002
-Revises: 001
+Revises: 001_initial_schema
 Create Date: 2025-11-11
 
 """
@@ -11,7 +11,7 @@ from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
 revision = '002'
-down_revision = '001'
+down_revision = '001_initial_schema'
 branch_labels = None
 depends_on = None
 

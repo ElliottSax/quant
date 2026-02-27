@@ -63,6 +63,14 @@ try:
 except ImportError as e:
     logger.warning(f"Backtesting endpoints disabled: {e}")
 
+# Affiliate broker integration (standalone - no dependencies)
+try:
+    from app.api.v1 import affiliate
+    api_router.include_router(affiliate.router, tags=["affiliate"])
+    logger.info("Affiliate broker endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Affiliate broker endpoints disabled: {e}")
+
 # Portfolio Backtesting router (standalone - only requires yfinance + numpy/pandas)
 try:
     from app.api.v1 import portfolio_backtesting

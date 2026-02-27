@@ -15,9 +15,12 @@ from app.services.backtesting import (
     BacktestResult
 )
 from app.services.strategies import STRATEGY_REGISTRY, get_strategy, get_strategies_by_tier
+from app.services.subscription import SubscriptionService
 from app.core.deps import get_current_user
+from app.core.subscription_deps import check_backtest_quota
 from app.models.user import User
 import yfinance as yf  # For fetching real market data
+from app.core.database import get_db
 
 
 router = APIRouter(prefix="/backtesting", tags=["backtesting"])
@@ -56,7 +59,8 @@ class StrategyInfo(BaseModel):
 @router.post("/run", response_model=BacktestResult)
 async def run_backtest(
     request: BacktestRequest,
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
+    db = Depends(get_db),
 ):
     """
     Run backtest with specified strategy
@@ -67,6 +71,10 @@ async def run_backtest(
     - Drawdown analysis
     - Trade statistics
     - Equity curve
+
+    Backtesting is unlimited for all users (free tier included).
+    Users can optionally upgrade to $9.99/month to remove ads or
+    $29/month for advanced features.
     """
     # Validate dates
     if request.end_date <= request.start_date:
@@ -97,8 +105,8 @@ async def run_backtest(
             detail=f"Unknown strategy: {request.strategy}"
         )
 
-    # Check user subscription tier (placeholder - implement real subscription check)
-    user_tier = 'free'  # TODO: Get from current_user.subscription_tier
+    # Check user subscription tier
+    user_tier = current_user.subscription_tier
     strategy_tier = strategy_info['tier']
 
     # Verify access
@@ -132,6 +140,10 @@ async def run_backtest(
             strategy=strategy_func,
             **request.strategy_params
         )
+
+        # Track backtest for analytics (no quota enforcement)
+        await SubscriptionService.track_backtest(db, current_user.id)
+
         return result
     except Exception as e:
         raise HTTPException(

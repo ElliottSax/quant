@@ -2,6 +2,7 @@
 Subscription Service for managing premium subscriptions and Stripe integration.
 """
 
+import os
 from typing import Optional, Dict, Any
 from datetime import datetime, timedelta
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -20,7 +21,7 @@ from app.core.config import settings
 logger = get_logger(__name__)
 
 
-# Subscription tier configuration
+# Subscription tier configuration - Hybrid Revenue Model
 TIER_CONFIG = {
     SubscriptionTier.FREE: {
         "price": 0.00,
@@ -33,9 +34,11 @@ TIER_CONFIG = {
             "advanced_analytics": False,
             "real_time_alerts": False,
             "portfolio_tracking": False,
+            "ad_free": False,
+            "faster_backtests": False,
         },
     },
-    SubscriptionTier.BASIC: {
+    SubscriptionTier.STARTER: {
         "price": 9.99,
         "api_rate_limit": 1000,
         "features": {
@@ -46,9 +49,11 @@ TIER_CONFIG = {
             "advanced_analytics": True,
             "real_time_alerts": True,
             "portfolio_tracking": False,
+            "ad_free": True,
+            "faster_backtests": True,
         },
     },
-    SubscriptionTier.PREMIUM: {
+    SubscriptionTier.PROFESSIONAL: {
         "price": 29.99,
         "api_rate_limit": 10000,
         "features": {
@@ -59,10 +64,14 @@ TIER_CONFIG = {
             "advanced_analytics": True,
             "real_time_alerts": True,
             "portfolio_tracking": True,
+            "ad_free": True,
+            "faster_backtests": True,
+            "api_access": True,
+            "email_alerts": True,
         },
     },
     SubscriptionTier.ENTERPRISE: {
-        "price": 99.99,
+        "price": 0.00,  # Custom pricing
         "api_rate_limit": 100000,
         "features": {
             "historical_data_months": 0,  # unlimited
@@ -72,6 +81,12 @@ TIER_CONFIG = {
             "advanced_analytics": True,
             "real_time_alerts": True,
             "portfolio_tracking": True,
+            "ad_free": True,
+            "faster_backtests": True,
+            "api_access": True,
+            "email_alerts": True,
+            "white_label": True,
+            "dedicated_support": True,
         },
     },
 }
@@ -160,8 +175,8 @@ class SubscriptionService:
 
         # Check tier
         return subscription.tier in [
-            SubscriptionTier.BASIC,
-            SubscriptionTier.PREMIUM,
+            SubscriptionTier.STARTER,
+            SubscriptionTier.PROFESSIONAL,
             SubscriptionTier.ENTERPRISE,
         ]
 
@@ -452,14 +467,14 @@ class StripeService:
 
         In production, these would be created in Stripe dashboard.
         """
-        # Placeholder price IDs
+        # Placeholder price IDs (set these in Stripe dashboard and .env)
         price_ids = {
-            (SubscriptionTier.BASIC, "monthly"): "price_basic_monthly",
-            (SubscriptionTier.BASIC, "yearly"): "price_basic_yearly",
-            (SubscriptionTier.PREMIUM, "monthly"): "price_premium_monthly",
-            (SubscriptionTier.PREMIUM, "yearly"): "price_premium_yearly",
-            (SubscriptionTier.ENTERPRISE, "monthly"): "price_enterprise_monthly",
-            (SubscriptionTier.ENTERPRISE, "yearly"): "price_enterprise_yearly",
+            (SubscriptionTier.STARTER, "monthly"): os.getenv("STRIPE_STARTER_PRICE_ID", "price_starter_monthly"),
+            (SubscriptionTier.STARTER, "yearly"): os.getenv("STRIPE_STARTER_YEARLY_PRICE_ID", "price_starter_yearly"),
+            (SubscriptionTier.PROFESSIONAL, "monthly"): os.getenv("STRIPE_PROFESSIONAL_PRICE_ID", "price_professional_monthly"),
+            (SubscriptionTier.PROFESSIONAL, "yearly"): os.getenv("STRIPE_PROFESSIONAL_YEARLY_PRICE_ID", "price_professional_yearly"),
+            (SubscriptionTier.ENTERPRISE, "monthly"): os.getenv("STRIPE_ENTERPRISE_PRICE_ID", "price_enterprise_monthly"),
+            (SubscriptionTier.ENTERPRISE, "yearly"): os.getenv("STRIPE_ENTERPRISE_YEARLY_PRICE_ID", "price_enterprise_yearly"),
         }
 
         return price_ids.get((tier, billing_cycle), "")

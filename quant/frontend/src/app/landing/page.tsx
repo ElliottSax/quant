@@ -87,12 +87,45 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Backtesting Platform Section */}
+      <section className="space-y-12">
+        <div className="text-center space-y-4">
+          <Badge className="bg-[hsl(210,100%,56%)] text-white text-xs">
+            No-Code Backtesting
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            Professional Backtesting Platform
+          </h2>
+          <p className="text-[hsl(215,20%,60%)] max-w-2xl mx-auto">
+            Test trading strategies with real historical data. No coding required.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <FeatureCard icon="📋" title="10 Pre-Built Strategies" description="MA Crossover, RSI, MACD, Bollinger Bands, Momentum, and more ready to backtest." />
+          <FeatureCard icon="📈" title="Real Market Data" description="Powered by Yahoo Finance with up to 10 years of historical price data." />
+          <FeatureCard icon="💼" title="Portfolio Optimization" description="5 optimization methods including Max Sharpe, Min Variance, and Risk Parity." />
+          <FeatureCard icon="📊" title="Risk Analytics" description="Sharpe ratio, drawdown analysis, rolling metrics, and trade distribution charts." />
+          <FeatureCard icon="🔧" title="Strategy Builder" description="Create custom strategies with visual configuration - no coding needed." />
+          <FeatureCard icon="🔄" title="Compare & Optimize" description="Save results, compare strategies side-by-side, and find the best approach." />
+        </div>
+
+        <div className="text-center">
+          <Link href="/backtesting">
+            <Button size="lg" className="bg-[hsl(210,100%,56%)] text-white hover:bg-[hsl(210,100%,65%)] font-semibold text-lg px-8">
+              Try Backtesting Free
+            </Button>
+          </Link>
+        </div>
+      </section>
+
       {/* Stats Section */}
       <section className="py-12 border-y border-[hsl(215,40%,14%)]">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <StatCard value="500+" label="Politicians Tracked" />
           <StatCard value="10K+" label="Trades Monitored" />
           <StatCard value="$2.5B+" label="Total Trade Value" />
+          <StatCard value="10" label="Trading Strategies" />
           <StatCard value="99.9%" label="Data Accuracy" />
         </div>
       </section>

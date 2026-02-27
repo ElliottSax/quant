@@ -25,6 +25,9 @@ export function MobileMenu() {
     { href: '/options', label: '📈 Options Calculator' },
     { href: '/scanner', label: '🔍 Quant Scanner' },
     { href: '/backtesting', label: '⚡ Backtesting Engine' },
+    { href: '/strategies', label: '📋 Strategy Library' },
+    { href: '/backtesting/builder', label: '🔧 Strategy Builder' },
+    { href: '/backtesting/results', label: '📊 Backtest History' },
     { href: '/tools', label: '🛠️ Basic Tools' },
   ]
 

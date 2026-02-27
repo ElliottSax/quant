@@ -118,6 +118,20 @@ export default function RootLayout({
                               Insider Dashboard
                             </Link>
                             <div className="border-t border-[hsl(215,40%,16%)] my-1" />
+                            <div className="border-t border-[hsl(215,40%,16%)] my-1" />
+                            <div className="px-3 py-1.5 text-[10px] font-semibold text-[hsl(142,71%,55%)] uppercase tracking-wider">
+                              Backtesting
+                            </div>
+                            <Link href="/strategies" className="block px-3 py-2 text-sm text-[hsl(210,20%,75%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
+                              Strategy Library
+                            </Link>
+                            <Link href="/backtesting/builder" className="block px-3 py-2 text-sm text-[hsl(210,20%,75%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
+                              Strategy Builder
+                            </Link>
+                            <Link href="/backtesting/results" className="block px-3 py-2 text-sm text-[hsl(210,20%,75%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
+                              Backtest History
+                            </Link>
+                            <div className="border-t border-[hsl(215,40%,16%)] my-1" />
                             <Link href="/showcase" className="block px-3 py-2 text-sm text-[hsl(210,20%,70%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
                               Chart Showcase
                             </Link>
@@ -175,6 +189,9 @@ export default function RootLayout({
                   <Link href="/backtesting" className="px-3 py-1 text-xs font-medium text-[hsl(210,20%,55%)] hover:text-[hsl(45,96%,58%)] hover:bg-[hsl(215,50%,12%)] rounded transition-colors whitespace-nowrap">
                     Backtester
                   </Link>
+                  <Link href="/strategies" className="px-3 py-1 text-xs font-medium text-[hsl(210,20%,55%)] hover:text-[hsl(45,96%,58%)] hover:bg-[hsl(215,50%,12%)] rounded transition-colors whitespace-nowrap">
+                    Strategies
+                  </Link>
                   <Link href="/options" className="px-3 py-1 text-xs font-medium text-[hsl(210,20%,55%)] hover:text-[hsl(45,96%,58%)] hover:bg-[hsl(215,50%,12%)] rounded transition-colors whitespace-nowrap">
                     Options
                   </Link>
@@ -212,6 +229,8 @@ export default function RootLayout({
                       <li><Link href="/scanner" className="hover:text-[hsl(45,96%,58%)] transition-colors">Stock Screener</Link></li>
                       <li><Link href="/signals" className="hover:text-[hsl(45,96%,58%)] transition-colors">Trading Signals</Link></li>
                       <li><Link href="/backtesting" className="hover:text-[hsl(45,96%,58%)] transition-colors">Backtesting</Link></li>
+                      <li><Link href="/strategies" className="hover:text-[hsl(45,96%,58%)] transition-colors">Strategies</Link></li>
+                      <li><Link href="/backtesting/builder" className="hover:text-[hsl(45,96%,58%)] transition-colors">Strategy Builder</Link></li>
                     </ul>
                   </div>
 
