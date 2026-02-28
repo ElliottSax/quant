@@ -23,7 +23,7 @@ services:
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: BACKEND_CORS_ORIGINS
-        value: '["*"]'
+        value: '["https://quant-analytics-frontend.vercel.app","http://localhost:3000"]'
     rootDir: quant/backend
     healthCheckPath: /health
     plan: free
