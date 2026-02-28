@@ -5,7 +5,7 @@
 
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -23,7 +23,7 @@ function computeEquityData(record: BacktestResultRecord) {
   })) || []
 }
 
-export default function BacktestComparePage() {
+function BacktestComparePageContent() {
   const searchParams = useSearchParams()
   const [records, setRecords] = useState<BacktestResultRecord[]>([])
 
@@ -220,5 +220,13 @@ export default function BacktestComparePage() {
         </table>
       </div>
     </div>
+  )
+}
+
+export default function BacktestComparePage() {
+  return (
+    <Suspense fallback={<div className="text-center py-16 text-muted-foreground">Loading...</div>}>
+      <BacktestComparePageContent />
+    </Suspense>
   )
 }

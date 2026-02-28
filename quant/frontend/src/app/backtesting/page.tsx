@@ -5,7 +5,7 @@
 
 'use client'
 
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { api } from '@/lib/api-client'
@@ -127,7 +127,7 @@ const uniqueStrategies = strategyOptions.filter(
   (s, i, arr) => arr.findIndex(x => x.value === s.value) === i
 )
 
-export default function BacktestingPage() {
+function BacktestingPageContent() {
   const searchParams = useSearchParams()
 
   const [formData, setFormData] = useState({
@@ -398,5 +398,13 @@ export default function BacktestingPage() {
         />
       )}
     </div>
+  )
+}
+
+export default function BacktestingPage() {
+  return (
+    <Suspense fallback={<div className="text-center py-16 text-muted-foreground">Loading...</div>}>
+      <BacktestingPageContent />
+    </Suspense>
   )
 }
