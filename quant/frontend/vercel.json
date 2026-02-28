@@ -6,11 +6,11 @@
   "installCommand": "npm install",
   "outputDirectory": ".next",
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://quant-backend.onrender.com/api/v1"
+    "NEXT_PUBLIC_API_URL": "https://elliottsax-quant-backend.hf.space/api/v1"
   },
   "build": {
     "env": {
-      "NEXT_PUBLIC_API_URL": "https://quant-backend.onrender.com/api/v1"
+      "NEXT_PUBLIC_API_URL": "https://elliottsax-quant-backend.hf.space/api/v1"
     }
   }
 }
