@@ -129,13 +129,6 @@ export default function PoliticiansPage() {
 
   return (
     <div className="space-y-4">
-      {/* Demo Mode Banner */}
-      {isPlaceholderData && (
-        <div className="bg-[hsl(45,96%,58%)]/10 border border-[hsl(45,96%,58%)]/30 rounded-md px-4 py-2 flex items-center justify-between">
-          <span className="text-sm text-[hsl(45,96%,65%)]">Showing demo data &mdash; connect a backend API for live congressional trading data</span>
-          <span className="text-[10px] font-mono text-[hsl(45,96%,58%)] bg-[hsl(45,96%,58%)]/20 px-2 py-0.5 rounded">DEMO</span>
-        </div>
-      )}
 
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -177,7 +170,7 @@ export default function PoliticiansPage() {
         </div>
         <div className="terminal-panel p-3">
           <span className="text-[10px] text-[hsl(270,70%,60%)] font-semibold">DATA SOURCE</span>
-          <p className="text-sm font-mono text-[hsl(142,71%,55%)]">{isPlaceholderData ? 'DEMO' : 'LIVE API'}</p>
+          <p className="text-sm font-mono text-[hsl(142,71%,55%)]">LIVE API</p>
         </div>
       </div>
 

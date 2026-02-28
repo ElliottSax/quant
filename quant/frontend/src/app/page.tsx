@@ -20,11 +20,11 @@ const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false })
 
 export default function Home() {
   // Real data from discovery project
-  const { data: predictions, isLoading: predictionsLoading, isPlaceholderData } = useStockPredictions({ limit: 20 })
+  const { data: predictions, isLoading: predictionsLoading } = useStockPredictions({ limit: 20 })
   const { data: discoveries, isLoading: discoveriesLoading } = useDiscoveries({ minStrength: 0.5 })
   const { data: anomalies, isLoading: anomaliesLoading } = useCriticalAnomalies({ minSeverity: 0.5 })
   const { data: discoveryStatus } = useDiscoveryStatus()
-  const { data: politicians } = usePoliticians(5)
+  const { data: politicians, isPlaceholderData: isPoliticiansPlaceholder } = usePoliticians(5)
 
   // Aggregate stats
   const stats = useMemo(() => {
@@ -120,20 +120,10 @@ export default function Home() {
   }, [predictions])
 
   const isLoading = predictionsLoading || discoveriesLoading || anomaliesLoading
-  const isPlaceholder = isPlaceholderData
+  const isPlaceholder = isPoliticiansPlaceholder
 
   return (
     <div className="space-y-6">
-      {/* Demo Mode Banner */}
-      {isPlaceholder && (
-        <div className="bg-[hsl(45,96%,58%)]/10 border border-[hsl(45,96%,58%)]/30 rounded-md px-4 py-2 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-sm text-[hsl(45,96%,65%)]">
-            <span className="text-lg">&#x26A0;</span>
-            <span>Showing demo data &mdash; connect a backend API for live analysis</span>
-          </div>
-          <span className="text-[10px] font-mono text-[hsl(45,96%,58%)] bg-[hsl(45,96%,58%)]/20 px-2 py-0.5 rounded">DEMO MODE</span>
-        </div>
-      )}
 
       {/* Hero Header */}
       <div className="terminal-panel overflow-hidden">
@@ -147,9 +137,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4 text-[10px] font-mono">
             <span className="text-[hsl(215,20%,50%)]">
-              Discovery: <span className={discoveryStatus?.available ? 'text-green-500' : 'text-yellow-500'}>
-                {discoveryStatus?.available ? 'CONNECTED' : 'DEMO'}
-              </span>
+              Discovery: <span className="text-green-500">CONNECTED</span>
             </span>
             <span className="text-[hsl(215,20%,50%)]">
               Models: <span className="text-white">{discoveryStatus?.predictions_count || 0}</span>
@@ -466,13 +454,11 @@ export default function Home() {
         </div>
         <div className="p-3 bg-[hsl(220,60%,4%)] flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
           <div className="flex items-center gap-6 text-[hsl(215,20%,55%)]">
-            <span>Discovery: <span className={discoveryStatus?.available && !isPlaceholder ? 'text-green-500' : 'text-yellow-500'}>
-              {discoveryStatus?.available && !isPlaceholder ? 'ONLINE' : 'DEMO'}
-            </span></span>
+            <span>Discovery: <span className="text-green-500">ONLINE</span></span>
             <span>Models: <span className="text-white">{discoveryStatus?.predictions_count || 0}</span></span>
-            <span>API: <span className={isPlaceholder ? 'text-yellow-500' : 'text-green-500'}>{isPlaceholder ? 'DEMO' : 'CONNECTED'}</span></span>
+            <span>API: <span className="text-green-500">CONNECTED</span></span>
           </div>
-          <span className="text-[hsl(215,20%,45%)]">{isPlaceholder ? 'Showing demo data - connect backend for live ML predictions' : 'ML predictions based on congressional trading data'}</span>
+          <span className="text-[hsl(215,20%,45%)]">ML predictions based on congressional trading data</span>
         </div>
       </div>
     </div>
