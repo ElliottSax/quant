@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import Link from 'next/link'
+import Script from 'next/script'
 import './globals.css'
 import { Providers } from '@/lib/providers'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
@@ -65,6 +66,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-PHX6T0R1Y1"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PHX6T0R1Y1');
+          `}
+        </Script>
+      </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         <ErrorBoundary>
           <Providers>
