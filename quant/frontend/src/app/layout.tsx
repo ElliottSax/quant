@@ -22,8 +22,40 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 }
 
 export const metadata: Metadata = {
-  title: 'QuantEngines - Free Professional Trading Tools',
-  description: 'Professional-grade quantitative analysis tools, charts, screeners, and backtesting - free and open to everyone',
+  title: 'QuantEngines - Congressional Trading Analytics & Free Trading Tools',
+  description: 'Track and analyze congressional stock trades with ML-powered predictions, pattern detection, and backtesting tools. Free, no signup required.',
+  keywords: ['congressional trading', 'stock trading analytics', 'backtesting', 'trading signals', 'stock screener', 'options calculator', 'portfolio tracker', 'quantitative analysis', 'politician trades', 'insider trading'],
+  authors: [{ name: 'QuantEngines' }],
+  creator: 'QuantEngines',
+  publisher: 'QuantEngines',
+  metadataBase: new URL('https://quantengines.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://quantengines.com',
+    siteName: 'QuantEngines',
+    title: 'QuantEngines - Congressional Trading Analytics & Free Trading Tools',
+    description: 'Track and analyze congressional stock trades with ML-powered predictions, pattern detection, and backtesting tools. Free, no signup required.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'QuantEngines - Congressional Trading Analytics & Free Trading Tools',
+    description: 'Track and analyze congressional stock trades with ML-powered predictions, pattern detection, and backtesting tools. Free, no signup required.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export default function RootLayout({
