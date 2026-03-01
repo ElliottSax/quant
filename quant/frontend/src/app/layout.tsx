@@ -66,7 +66,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <head>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PHX6T0R1Y1"
           strategy="afterInteractive"
@@ -79,8 +79,6 @@ export default function RootLayout({
             gtag('config', 'G-PHX6T0R1Y1');
           `}
         </Script>
-      </head>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         <ErrorBoundary>
           <Providers>
           <div className="min-h-screen bg-[hsl(220,60%,4%)]">
