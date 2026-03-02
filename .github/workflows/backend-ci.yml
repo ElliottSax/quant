@@ -82,7 +82,7 @@ jobs:
           bandit -r app/ -ll -f json -o bandit-report.json || true
 
       - name: Upload Bandit results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: bandit-report
           path: quant/backend/bandit-report.json
@@ -171,7 +171,7 @@ jobs:
           name: backend-coverage
 
       - name: Upload coverage artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: coverage-report
           path: quant/backend/htmlcov/
@@ -314,7 +314,7 @@ jobs:
             --host https://api.yourdomain.com
 
       - name: Upload performance results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: performance-results
           path: quant/backend/tests/performance/*.html
