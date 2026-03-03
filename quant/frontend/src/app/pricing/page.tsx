@@ -1,418 +1,202 @@
 /**
- * Pricing Page - Revenue-Generating Subscription Tiers
+ * Open Beta - Free Forever
  *
- * FREE: 3 basic strategies
- * PREMIUM $29/mo: 7 strategies
- * ENTERPRISE $99/mo: 10 strategies + advanced features
+ * No paywalls. No tiers. No charges.
+ * Everything is free during open beta.
  */
 
 'use client'
 
-import { useState } from 'react'
-import { Check, X, Zap, TrendingUp, Crown, ArrowRight } from 'lucide-react'
-import { FeatureComparison } from '@/components/upsell/FeatureComparison'
-import { FreeTrialBanner } from '@/components/upsell/FreeTrialBanner'
+import { Check, Zap, TrendingUp, ArrowRight } from 'lucide-react'
 
 export default function PricingPage() {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly')
-
-  const tiers = [
-    {
-      name: 'Free',
-      tagline: 'Perfect for Learning',
-      price: 0,
-      annualPrice: 0,
-      icon: TrendingUp,
-      color: 'from-gray-500 to-gray-600',
-      features: [
-        { name: 'Unlimited Backtests', included: true, description: 'Run as many backtests as you want' },
-        { name: 'All Strategies', included: true, description: 'Access all 10+ professional strategies' },
-        { name: 'Full Historical Data', included: true, description: 'Test on 10+ years of market data' },
-        { name: 'Basic Analytics', included: true },
-        { name: 'Affiliate Links', included: true, description: 'Broker recommendations with affiliate earnings' },
-        { name: 'Ad-Supported', included: true },
-        { name: 'CSV Export', included: false },
-        { name: 'Portfolio Tracking', included: false },
-        { name: 'Email Alerts', included: false },
-        { name: 'API Access', included: false },
-      ],
-      cta: 'Start Free',
-      ctaAction: 'register',
-      popular: false,
-    },
-    {
-      name: 'Starter',
-      tagline: 'Most Popular',
-      price: 9.99,
-      annualPrice: 99.90,
-      icon: Zap,
-      color: 'from-blue-500 to-purple-600',
-      features: [
-        { name: 'Unlimited Backtests', included: true },
-        { name: 'All Strategies', included: true },
-        { name: 'Full Historical Data', included: true },
-        { name: 'Advanced Analytics', included: true },
-        { name: 'Ad-Free Experience', included: true, description: 'No ads, cleaner interface' },
-        { name: '2x Faster Backtests', included: true },
-        { name: 'CSV Export', included: true },
-        { name: 'Portfolio Tracking', included: false },
-        { name: 'Email Alerts', included: false },
-        { name: 'API Access', included: false },
-      ],
-      cta: 'Upgrade to Starter',
-      ctaAction: 'checkout-starter',
-      popular: true,
-    },
-    {
-      name: 'Professional',
-      tagline: 'For Serious Traders',
-      price: 29,
-      annualPrice: 290,
-      icon: Crown,
-      color: 'from-purple-600 to-pink-600',
-      features: [
-        { name: 'Unlimited Backtests', included: true },
-        { name: 'All Strategies', included: true },
-        { name: 'Full Historical Data', included: true },
-        { name: 'Advanced Analytics', included: true },
-        { name: 'Ad-Free Experience', included: true },
-        { name: '2x Faster Backtests', included: true },
-        { name: 'CSV Export', included: true },
-        { name: 'Portfolio Tracking', included: true },
-        { name: 'Email Alerts', included: true },
-        { name: 'API Access', included: true },
-      ],
-      cta: 'Upgrade to Professional',
-      ctaAction: 'checkout-professional',
-      popular: false,
-    },
+  const features = [
+    { name: 'Unlimited Backtests', included: true, description: 'Run as many backtests as you want' },
+    { name: 'All 10+ Strategies', included: true, description: 'Access to every professional trading strategy' },
+    { name: 'Full Historical Data', included: true, description: '10+ years of real market OHLC data' },
+    { name: 'Advanced Analytics', included: true, description: 'Detailed performance metrics and drawdown analysis' },
+    { name: 'Portfolio Tracking', included: true, description: 'Track multiple portfolios and positions' },
+    { name: 'Email Alerts', included: true, description: 'Alerts for strategy signals (coming soon)' },
+    { name: 'CSV Export', included: true, description: 'Export backtest results for further analysis' },
+    { name: 'API Access', included: true, description: 'Programmatic backtesting (coming soon)' },
+    { name: 'Congressional Trading', included: true, description: 'Free access to politician trading analytics' },
   ]
-
-  const handleCTA = async (action: string) => {
-    if (action === 'register') {
-      window.location.href = '/auth/register'
-    } else if (action.startsWith('checkout-')) {
-      const tier = action.replace('checkout-', '').toLowerCase()
-
-      try {
-        // Call backend to create Stripe checkout session
-        const response = await fetch('/api/v1/subscriptions/subscribe', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // Include auth token if user is logged in
-            ...(localStorage.getItem('token') && {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            }),
-          },
-          body: JSON.stringify({
-            tier,
-            billing_cycle: billingCycle === 'annual' ? 'yearly' : 'monthly',
-          }),
-        })
-
-        if (!response.ok) {
-          const error = await response.json()
-          throw new Error(error.detail || 'Failed to create checkout session')
-        }
-
-        const data = await response.json()
-
-        // Redirect to Stripe Checkout or show success
-        if (data.checkout_url) {
-          window.location.href = data.checkout_url
-        } else {
-          // Subscription updated directly (for logged-in users)
-          alert(`Successfully upgraded to ${tier} tier!`)
-          window.location.reload()
-        }
-      } catch (error) {
-        console.error('Checkout error:', error)
-        alert(
-          error instanceof Error
-            ? error.message
-            : 'Failed to initiate checkout. Please try again or contact support.'
-        )
-      }
-    }
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-      {/* Free Trial Banner */}
-      <div className="bg-slate-900 border-b border-slate-800 px-4 py-4">
-        <div className="container mx-auto">
-          <FreeTrialBanner />
-        </div>
-      </div>
-
       {/* Header */}
-      <div className="container mx-auto px-4 py-16 text-center">
-        <div className="inline-block mb-4 px-4 py-2 bg-blue-500/10 rounded-full border border-blue-500/20">
-          <span className="text-blue-400 text-sm font-medium">🚀 Revenue-Generating Trading Platform</span>
+      <div className="container mx-auto px-4 py-20 text-center">
+        <div className="inline-block mb-4 px-4 py-2 bg-green-500/10 rounded-full border border-green-500/20">
+          <span className="text-green-400 text-sm font-medium">🎉 Open Beta - Completely Free</span>
         </div>
 
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-          Choose Your
-          <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent"> Trading Edge</span>
+          Professional Backtesting
+          <span className="block bg-gradient-to-r from-green-400 to-blue-600 bg-clip-text text-transparent">
+            No Cost. No Limits.
+          </span>
         </h1>
 
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12">
-          Professional backtesting strategies with real market data. Start free, upgrade when you're ready.
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+          Everything is free forever. No paywalls, no tiers, no hidden charges. We're building the most accessible
+          quantitative trading platform on the internet.
         </p>
 
-        {/* Billing Toggle */}
-        <div className="inline-flex items-center gap-4 bg-slate-800/50 rounded-full p-1.5 border border-slate-700">
-          <button
-            onClick={() => setBillingCycle('monthly')}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-              billingCycle === 'monthly'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                : 'text-gray-400 hover:text-white'
-            }`}
+        <div className="flex gap-4 justify-center">
+          <a
+            href="/auth/register"
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-blue-500/25 inline-flex items-center gap-2 transition-all"
           >
-            Monthly
-          </button>
-          <button
-            onClick={() => setBillingCycle('annual')}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
-              billingCycle === 'annual'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                : 'text-gray-400 hover:text-white'
-            }`}
+            Start Backtesting Now
+            <ArrowRight className="w-5 h-5" />
+          </a>
+          <a
+            href="/backtesting"
+            className="border border-slate-600 hover:border-slate-500 text-white font-semibold px-8 py-4 rounded-xl transition-all"
           >
-            Annual
-            <span className="bg-green-500/20 text-green-400 text-xs px-2 py-0.5 rounded-full">
-              Save 17%
-            </span>
-          </button>
+            Try Demo
+          </a>
         </div>
       </div>
 
-      {/* Pricing Cards */}
-      <div className="container mx-auto px-4 pb-16">
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {tiers.map((tier) => {
-            const Icon = tier.icon
-            const displayPrice = billingCycle === 'monthly' ? tier.price : tier.annualPrice
-            const perMonth = billingCycle === 'monthly' ? '/mo' : '/year'
+      {/* Features Grid */}
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-white mb-12 text-center">Everything Included</h2>
 
-            return (
-              <div
-                key={tier.name}
-                className={`relative rounded-2xl border ${
-                  tier.popular
-                    ? 'border-blue-500/50 bg-gradient-to-b from-blue-500/5 to-transparent'
-                    : 'border-slate-700 bg-slate-800/30'
-                } p-8 hover:border-blue-500/30 transition-all duration-300 hover:scale-105`}
-              >
-                {/* Popular Badge */}
-                {tier.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <div className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-1 rounded-full text-sm font-semibold text-white shadow-lg">
-                      {tier.tagline}
-                    </div>
-                  </div>
-                )}
-
-                {/* Icon */}
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${tier.color} flex items-center justify-center mb-6`}>
-                  <Icon className="w-7 h-7 text-white" />
-                </div>
-
-                {/* Tier Name */}
-                <h3 className="text-2xl font-bold text-white mb-2">{tier.name}</h3>
-                {!tier.popular && (
-                  <p className="text-sm text-gray-400 mb-6">{tier.tagline}</p>
-                )}
-
-                {/* Price */}
-                <div className="mb-8">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold text-white">
-                      ${displayPrice}
-                    </span>
-                    <span className="text-gray-400 text-lg">{perMonth}</span>
-                  </div>
-                  {billingCycle === 'annual' && displayPrice > 0 && (
-                    <p className="text-sm text-green-400 mt-2">
-                      ${tier.price}/mo × 10 months
-                    </p>
-                  )}
-                </div>
-
-                {/* CTA Button */}
-                <button
-                  onClick={() => handleCTA(tier.ctaAction)}
-                  className={`w-full py-3 rounded-xl font-semibold text-white mb-8 transition-all flex items-center justify-center gap-2 ${
-                    tier.popular
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 shadow-lg shadow-blue-500/25'
-                      : 'bg-slate-700 hover:bg-slate-600'
-                  }`}
-                >
-                  {tier.cta}
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-
-                {/* Features */}
-                <div className="space-y-4">
-                  {tier.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <div
-                        className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${
-                          feature.included ? 'bg-green-500/20' : 'bg-slate-700/50'
-                        }`}
-                      >
-                        {feature.included ? (
-                          <Check className="w-3 h-3 text-green-400" />
-                        ) : (
-                          <X className="w-3 h-3 text-gray-600" />
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <p
-                          className={`text-sm ${
-                            feature.included ? 'text-white' : 'text-gray-600'
-                          }`}
-                        >
-                          {feature.name}
-                        </p>
-                        {feature.description && (
-                          <p className="text-xs text-gray-500 mt-0.5">
-                            {feature.description}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {features.map((feature, idx) => (
+            <div key={idx} className="flex items-start gap-4 bg-slate-800/30 rounded-xl p-6 border border-slate-700">
+              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mt-1">
+                <Check className="w-4 h-4 text-green-400" />
               </div>
-            )
-          })}
+              <div className="flex-1">
+                <h3 className="text-white font-semibold mb-1">{feature.name}</h3>
+                <p className="text-gray-400 text-sm">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Why Free? */}
+      <div className="container mx-auto px-4 py-16 border-t border-slate-800">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">Why Is Everything Free?</h2>
+
+          <div className="space-y-6">
+            <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
+              <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <Zap className="w-5 h-5 text-yellow-400" />
+                Community First
+              </h3>
+              <p className="text-gray-400">
+                We believe retail traders deserve access to professional-grade tools. We're building in public with the
+                community, not against it.
+              </p>
+            </div>
+
+            <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
+              <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-green-400" />
+                Sustainable Revenue
+              </h3>
+              <p className="text-gray-400">
+                We earn from optional broker affiliate partnerships. We recommend tools we believe in. Your success
+                benefits us too.
+              </p>
+            </div>
+
+            <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
+              <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <Check className="w-5 h-5 text-blue-400" />
+                Open Development
+              </h3>
+              <p className="text-gray-400">
+                You can see what we're building, contribute ideas, and help shape the future of the platform. This is
+                a public project.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Social Proof */}
       <div className="container mx-auto px-4 py-16 border-t border-slate-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-12">
-            Trusted by Traders Worldwide
-          </h2>
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-white mb-12">What Traders Are Using</h2>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
-              <div className="text-4xl font-bold text-white mb-2">10</div>
+              <div className="text-4xl font-bold text-white mb-2">10+</div>
               <div className="text-gray-400">Professional Strategies</div>
             </div>
             <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
-              <div className="text-4xl font-bold text-white mb-2">10+</div>
-              <div className="text-gray-400">Years Historical Data</div>
+              <div className="text-4xl font-bold text-white mb-2">10K+</div>
+              <div className="text-gray-400">Market Data Points</div>
             </div>
             <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
-              <div className="text-4xl font-bold text-white mb-2">Free</div>
-              <div className="text-gray-400">Yahoo Finance API</div>
-            </div>
-          </div>
-
-          {/* Testimonials Placeholder */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700 text-left">
-              <div className="flex gap-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-400">★</span>
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4">
-                "The Ichimoku Cloud strategy alone is worth the Enterprise subscription. Professional-grade backtesting."
-              </p>
-              <p className="text-sm text-gray-500">— Alex K., Day Trader</p>
-            </div>
-            <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700 text-left">
-              <div className="flex gap-1 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-400">★</span>
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4">
-                "Finally, a backtesting platform that doesn't break the bank. The free tier got me hooked!"
-              </p>
-              <p className="text-sm text-gray-500">— Sarah M., Retail Investor</p>
+              <div className="text-4xl font-bold text-white mb-2">∞</div>
+              <div className="text-gray-400">Backtests (Unlimited)</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* FAQ Section */}
+      {/* FAQ */}
       <div className="container mx-auto px-4 py-16 border-t border-slate-800">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">
-            Frequently Asked Questions
-          </h2>
+          <h2 className="text-3xl font-bold text-white text-center mb-12">Questions?</h2>
 
           <div className="space-y-6">
             <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-lg font-semibold text-white mb-2">
-                Can I cancel anytime?
-              </h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Will you always be free?</h3>
               <p className="text-gray-400">
-                Yes! All subscriptions are month-to-month or annual. Cancel anytime with no questions asked.
+                Yes! Our commitment is to keep the core platform free forever. If we add premium features, the core
+                backtesting suite stays free.
               </p>
             </div>
 
             <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-lg font-semibold text-white mb-2">
-                What's included in the Free tier?
-              </h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Is this data real?</h3>
               <p className="text-gray-400">
-                3 professional strategies (MA Crossover, RSI, Bollinger), 3 backtests per month, and 1 year of historical data.
+                100% real market data from Yahoo Finance. Historical OHLC bars with actual trading volumes. No
+                synthetic data.
               </p>
             </div>
 
             <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-lg font-semibold text-white mb-2">
-                Is the data real or simulated?
-              </h3>
+              <h3 className="text-lg font-semibold text-white mb-2">How do you make money?</h3>
               <p className="text-gray-400">
-                100% real market data from Yahoo Finance. No synthetic data. Historical OHLC bars with actual volumes.
+                We earn affiliate commissions when you open a trading account through our platform. You never pay extra
+                - your broker just gives us a commission.
               </p>
             </div>
 
             <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-lg font-semibold text-white mb-2">
-                Can I upgrade or downgrade?
-              </h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Can I use this commercially?</h3>
               <p className="text-gray-400">
-                Absolutely! Upgrade instantly to unlock more strategies. Downgrades take effect at the end of your billing cycle.
+                Yes! You can use the platform for personal trading, bot development, or even commercial applications.
+                Check our terms for details.
               </p>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Feature Comparison Table */}
-      <div className="container mx-auto px-4 py-16 border-t border-slate-800">
-        <h2 className="text-4xl font-bold text-white mb-8 text-center">Detailed Feature Comparison</h2>
-        <div className="glass-strong rounded-xl p-8 overflow-hidden">
-          <FeatureComparison />
         </div>
       </div>
 
       {/* Final CTA */}
-      <div className="container mx-auto px-4 py-16 border-t border-slate-800">
+      <div className="container mx-auto px-4 py-20 border-t border-slate-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Start Backtesting?
-          </h2>
+          <h2 className="text-4xl font-bold text-white mb-6">Ready?</h2>
           <p className="text-xl text-gray-400 mb-8">
-            Join thousands of traders using professional strategies with real market data.
+            Join traders building their edge with free, professional-grade backtesting.
           </p>
-          <button
-            onClick={() => handleCTA('register')}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-blue-500/25 inline-flex items-center gap-2 transition-all"
+          <a
+            href="/auth/register"
+            className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-green-500/25 inline-flex items-center gap-2 transition-all"
           >
-            Start Free Trial
+            Start Free Now
             <ArrowRight className="w-5 h-5" />
-          </button>
+          </a>
         </div>
       </div>
     </div>
