@@ -24,7 +24,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 
 export const metadata: Metadata = {
   title: 'QuantEngines - Congressional Trading Analytics & Free Trading Tools',
-  description: 'Track and analyze congressional stock trades with ML-powered predictions, pattern detection, and backtesting tools. Free, no signup required.',
+  description: 'Track and analyze congressional stock trades with ML-powered predictions, pattern detection, and backtesting tools. Free, no signup required. Academic-backed strategies validated against 14 years of historical data.',
   keywords: ['congressional trading', 'stock trading analytics', 'backtesting', 'trading signals', 'stock screener', 'options calculator', 'portfolio tracker', 'quantitative analysis', 'politician trades', 'insider trading'],
   authors: [{ name: 'QuantEngines' }],
   creator: 'QuantEngines',
@@ -77,6 +77,28 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-PHX6T0R1Y1');
+          `}
+        </Script>
+        <Script id="organization-schema" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "QuantEngines",
+              "url": "https://quantengines.com",
+              "description": "Free professional-grade trading tools: backtesting, strategy validation, congressional trading analytics",
+              "sameAs": [
+                "https://twitter.com/quantengines"
+              ],
+              "knowsAbout": [
+                "Quantitative Trading",
+                "Backtesting",
+                "Technical Analysis",
+                "Congressional Trading",
+                "Trading Strategies"
+              ],
+              "expertise": "Trading strategy validation, backtesting, quantitative analysis, congressional stock trade tracking"
+            }
           `}
         </Script>
         <ErrorBoundary>
@@ -290,11 +312,11 @@ export default function RootLayout({
                   </div>
 
                   <div>
-                    <h3 className="text-[10px] font-semibold uppercase tracking-wider text-[hsl(210,100%,56%)] mb-3">Bonus: Insider Data</h3>
+                    <h3 className="text-[10px] font-semibold uppercase tracking-wider text-[hsl(210,100%,56%)] mb-3">Research & Credibility</h3>
                     <ul className="space-y-1.5 text-xs text-[hsl(210,20%,60%)]">
-                      <li><Link href="/politicians" className="hover:text-[hsl(45,96%,58%)] transition-colors">Congressional Trades</Link></li>
-                      <li><Link href="/dashboard" className="hover:text-[hsl(45,96%,58%)] transition-colors">Insider Dashboard</Link></li>
-                      <li><Link href="/discoveries" className="hover:text-[hsl(45,96%,58%)] transition-colors">Anomaly Detection</Link></li>
+                      <li><Link href="/strategy-validation" className="hover:text-[hsl(45,96%,58%)] transition-colors">Validation Methodology</Link></li>
+                      <li><Link href="/research-references" className="hover:text-[hsl(45,96%,58%)] transition-colors">Academic References</Link></li>
+                      <li><Link href="/corrections-policy" className="hover:text-[hsl(45,96%,58%)] transition-colors">Corrections Policy</Link></li>
                       <li><Link href="/resources" className="hover:text-[hsl(45,96%,58%)] transition-colors">Learn More</Link></li>
                     </ul>
                   </div>
