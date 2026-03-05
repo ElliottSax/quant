@@ -67,8 +67,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
+        {/* Google Analytics 4 Tracking */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-PHX6T0R1Y1"
+          src="https://www.googletagmanager.com/gtag/js?id=G-QUANT_ID_PLACEHOLDER"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -76,7 +77,61 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-PHX6T0R1Y1');
+            gtag('config', 'G-QUANT_ID_PLACEHOLDER', {
+              send_page_view: true,
+              anonymize_ip: false
+            });
+
+            // Track email signup events
+            window.trackEmailSignup = (formType = 'inline') => {
+              gtag('event', 'email_signup', {
+                article_slug: document.body.getAttribute('data-article-slug') || 'unknown',
+                form_type: formType,
+                timestamp: new Date().toISOString()
+              });
+            };
+
+            // Track affiliate clicks
+            window.trackAffiliateClick = (network, toolName) => {
+              gtag('event', 'affiliate_click', {
+                article_slug: document.body.getAttribute('data-article-slug') || 'unknown',
+                affiliate_network: network,
+                tool_name: toolName,
+                timestamp: new Date().toISOString()
+              });
+            };
+
+            // Track calculator usage
+            window.trackCalculatorUsed = (calculatorName) => {
+              gtag('event', 'calculator_used', {
+                article_slug: document.body.getAttribute('data-article-slug') || 'unknown',
+                calculator_name: calculatorName,
+                timestamp: new Date().toISOString()
+              });
+            };
+
+            // Track scroll depth
+            let maxScroll = 0;
+            window.addEventListener('scroll', () => {
+              const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+
+              if (scrollPercent >= 100 && maxScroll < 100) {
+                gtag('event', 'scroll_to_100', {
+                  article_slug: document.body.getAttribute('data-article-slug') || 'unknown'
+                });
+                maxScroll = 100;
+              } else if (scrollPercent >= 75 && maxScroll < 75) {
+                gtag('event', 'scroll_to_75', {
+                  article_slug: document.body.getAttribute('data-article-slug') || 'unknown'
+                });
+                maxScroll = 75;
+              } else if (scrollPercent >= 50 && maxScroll < 50) {
+                gtag('event', 'scroll_to_50', {
+                  article_slug: document.body.getAttribute('data-article-slug') || 'unknown'
+                });
+                maxScroll = 50;
+              }
+            });
           `}
         </Script>
         <Script id="organization-schema" type="application/ld+json" strategy="afterInteractive">
