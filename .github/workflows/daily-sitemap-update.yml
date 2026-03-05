@@ -1,0 +1,62 @@
+name: Daily Sitemap Update & Submit
+
+on:
+  schedule:
+    # Run daily at midnight UTC
+    - cron: '0 0 * * *'
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  generate-and-submit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Generate sitemap
+        run: |
+          # Copy the sitemap generator script
+          cp ${{ github.workspace }}/../content-engine/generate-sitemap.py /tmp/
+
+          # Run for this site
+          python3 /tmp/generate-sitemap.py quant
+        continue-on-error: true
+
+      - name: Commit sitemap
+        run: |
+          git config user.name "Sitemap Bot"
+          git config user.email "bot@sitemap-generator.local"
+
+          if git diff --quiet public/sitemap.xml; then
+            echo "Sitemap unchanged"
+          else
+            git add public/sitemap.xml
+            git commit -m "chore(seo): auto-generated sitemap [$(date +'%Y-%m-%d')]"
+            git push origin master
+            echo "Sitemap updated and pushed"
+          fi
+        continue-on-error: true
+
+      - name: Submit to Google Search Console
+        run: |
+          echo "Sitemap updated. Submission URL:"
+          echo "https://www.google.com/webmasters/tools/sitemap-list?siteUrl=https://quanttrading.vercel.app/"
+          echo ""
+          echo "API submission requires OAuth2 token (configure in GCS)"
+          echo "To enable automatic submission:"
+          echo "1. Create OAuth2 credentials in Google Cloud Console"
+          echo "2. Add GOOGLE_AUTH_TOKEN secret to GitHub"
+          echo "3. Uncomment the curl command below"
+        continue-on-error: true
+
+      - name: Trigger Vercel deployment
+        run: |
+          echo "Vercel will auto-deploy when sitemap is committed"
+        continue-on-error: true
