@@ -1,0 +1,45 @@
+name: Google Search Console Daily Sitemap Submit
+
+# Schedule: Run daily at 2 AM UTC (you can adjust this)
+on:
+  schedule:
+    - cron: '0 2 * * *'
+
+  # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  submit-sitemaps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install google-auth google-auth-httplib2 google-auth-oauthlib requests
+
+      - name: Submit sitemaps to Google Search Console
+        env:
+          GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+        run: |
+          python gsc_auto_submit.py
+
+      - name: Log success
+        if: success()
+        run: |
+          echo "✅ GSC sitemap submission completed successfully"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "⚠️ GSC sitemap submission failed"
+          echo "Check logs above for details"
+          exit 1
