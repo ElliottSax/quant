@@ -333,6 +333,11 @@ export default function StrategyBuilderPage() {
                 {s.name[0]}
               </div>
               <div className="text-sm font-bold text-white">{s.name}</div>
+              {s.lastBacktestedDate && (
+                <div className="text-xs text-gray-400 mb-1">
+                  Backtested: {new Date(s.lastBacktestedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' })}
+                </div>
+              )}
               <div className="text-xs text-green-400">Free</div>
             </button>
           ))}
@@ -348,6 +353,11 @@ export default function StrategyBuilderPage() {
                 {s.name[0]}
               </div>
               <div className="text-sm font-bold text-white">{s.name}</div>
+              {s.lastBacktestedDate && (
+                <div className="text-xs text-gray-400 mb-1">
+                  Backtested: {new Date(s.lastBacktestedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: '2-digit' })}
+                </div>
+              )}
               <div className="text-xs text-purple-400">{s.tier}</div>
             </button>
           ))}
