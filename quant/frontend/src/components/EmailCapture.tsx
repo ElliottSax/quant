@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { createClient } from '@supabase/supabase-js'
 
 interface EmailCaptureProps {
   site: 'credit' | 'calc' | 'affiliate' | 'quant'
@@ -10,6 +11,11 @@ interface EmailCaptureProps {
   bgGradient: string
   theme: 'blue' | 'green' | 'orange' | 'purple'
 }
+
+const supabase = createClient(
+  'https://jznljskfvhlqlshofkvd.supabase.co',
+  'sb_publishable_HQPHIEY5M1dnQFbNJEO0nw_1YQjr46l'
+)
 
 export function EmailCapture({
   site,
@@ -29,27 +35,38 @@ export function EmailCapture({
     setStatus('loading')
 
     try {
-      const response = await fetch(`${supabaseUrl}/functions/v1/email-collection`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: email.toLowerCase(),
-          firstName: firstName || '',
-          site,
-        }),
-      })
+      const { error: insertError } = await supabase
+        .from('email_subscribers')
+        .insert([
+          {
+            email: email.toLowerCase(),
+            first_name: firstName || null,
+            source: site,
+          }
+        ])
 
-      const data = await response.json()
-
-      if (response.ok || data.success) {
+      if (insertError) {
+        if (insertError.code === '23505') {
+          setStatus('error')
+          setMessage('This email is already subscribed!')
+        } else {
+          throw insertError
+        }
+      } else {
         setStatus('success')
         setEmail('')
         setFirstName('')
         setMessage('✅ Email saved! Thank you for subscribing.')
+
+        // Track in GA4 if available
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'email_signup', {
+            source: site,
+            page_url: window.location.href
+          })
+        }
+
         setTimeout(() => setStatus('idle'), 3000)
-      } else {
-        setStatus('error')
-        setMessage(data.error || 'Something went wrong')
       }
     } catch (error) {
       setStatus('error')
