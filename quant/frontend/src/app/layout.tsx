@@ -69,7 +69,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         {/* Google Analytics 4 Tracking */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-QUANT_ID_PLACEHOLDER"
+          src="https://www.googletagmanager.com/gtag/js?id=G-PHX6T0R1Y1"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -77,7 +77,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-QUANT_ID_PLACEHOLDER', {
+            gtag('config', 'G-PHX6T0R1Y1', {
               send_page_view: true,
               anonymize_ip: false
             });
