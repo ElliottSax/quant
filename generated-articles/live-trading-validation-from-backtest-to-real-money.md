@@ -8,8 +8,8 @@ keywords:
 slug: "live-trading-validation-from-backtest-to-real-money"
 category: "backtest-optimization"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Live Trading Validation: From Backtest to Real Money

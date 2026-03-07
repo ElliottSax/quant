@@ -8,8 +8,8 @@ keywords:
 slug: "time-series-forecasting-predicting-price-movements"
 category: "misc-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Time Series Forecasting: Predicting Price Movements

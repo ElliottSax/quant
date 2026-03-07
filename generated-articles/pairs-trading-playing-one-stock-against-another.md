@@ -8,8 +8,8 @@ keywords:
 slug: "pairs-trading-playing-one-stock-against-another"
 category: "strategy-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Pairs Trading: Playing One Stock Against Another

@@ -8,8 +8,8 @@ keywords:
 slug: "volatility-regimes-high-vs-low-volatility-trading"
 category: "market-analysis"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Volatility Regimes: High vs. Low Volatility Trading

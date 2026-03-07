@@ -8,8 +8,8 @@ keywords:
 slug: "performance-attribution-understanding-your-returns"
 category: "backtest-optimization"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Performance Attribution: Understanding Your Returns

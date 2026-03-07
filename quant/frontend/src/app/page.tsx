@@ -15,6 +15,7 @@ import {
   useDiscoveryStatus,
   usePoliticians
 } from '@/lib/hooks'
+import { EmailCaptureHero } from '@/components/EmailCaptureHero'
 
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false })
 
@@ -445,6 +446,11 @@ export default function Home() {
         <ToolCard title="Charts" description="Technical analysis" href="/charts" icon="📊" color="green" />
         <ToolCard title="Backtesting" description="Test strategies" href="/backtesting" icon="⚡" color="green" />
         <ToolCard title="Strategies" description="Strategy library" href="/strategies" icon="📋" color="yellow" />
+      </div>
+
+      {/* Email Capture */}
+      <div className="py-4">
+        <EmailCaptureHero />
       </div>
 
       {/* System Status */}

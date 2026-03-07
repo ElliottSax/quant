@@ -8,8 +8,8 @@ keywords:
 slug: "dividend-trading-capturing-dividend-yield-and-capital-gains"
 category: "strategy-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Dividend Trading: Capturing Dividend Yield and Capital Gains

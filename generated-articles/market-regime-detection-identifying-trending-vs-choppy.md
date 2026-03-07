@@ -8,8 +8,8 @@ keywords:
 slug: "market-regime-detection-identifying-trending-vs-choppy"
 category: "market-analysis"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Market Regime Detection: Identifying Trending vs. Choppy

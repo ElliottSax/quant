@@ -8,8 +8,8 @@ keywords:
 slug: "backtesting-basics-setting-up-your-first-backtest"
 category: "backtest-optimization"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Backtesting Basics: Setting Up Your First Backtest

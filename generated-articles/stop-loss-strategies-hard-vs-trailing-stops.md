@@ -8,8 +8,8 @@ keywords:
 slug: "stop-loss-strategies-hard-vs-trailing-stops"
 category: "risk-management"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Stop-Loss Strategies: Hard vs. Trailing Stops

@@ -8,8 +8,8 @@ keywords:
 slug: "correlation-analysis-building-hedged-portfolios"
 category: "market-analysis"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Correlation Analysis: Building Hedged Portfolios

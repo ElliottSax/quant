@@ -8,8 +8,8 @@ keywords:
 slug: "statistical-arbitrage-finding-mispricings-with-math"
 category: "strategy-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Statistical Arbitrage: Finding Mispricings with Math

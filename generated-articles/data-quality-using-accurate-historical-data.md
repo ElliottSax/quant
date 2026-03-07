@@ -8,8 +8,8 @@ keywords:
 slug: "data-quality-using-accurate-historical-data"
 category: "backtest-optimization"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Data Quality: Using Accurate Historical Data

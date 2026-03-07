@@ -8,8 +8,8 @@ keywords:
 slug: "monte-carlo-simulation-testing-edge-under-different-sequences"
 category: "backtest-optimization"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Monte Carlo Simulation: Testing Edge Under Different Sequences

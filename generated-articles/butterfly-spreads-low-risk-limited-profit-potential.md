@@ -8,8 +8,8 @@ keywords:
 slug: "butterfly-spreads-low-risk-limited-profit-potential"
 category: "strategy-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Butterfly Spreads: Low Risk, Limited Profit Potential

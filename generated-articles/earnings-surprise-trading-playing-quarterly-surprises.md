@@ -8,8 +8,8 @@ keywords:
 slug: "earnings-surprise-trading-playing-quarterly-surprises"
 category: "strategy-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Earnings Surprise Trading: Playing Quarterly Surprises

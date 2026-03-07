@@ -8,8 +8,8 @@ keywords:
 slug: "machine-learning-in-trading-practical-applications"
 category: "misc-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Machine Learning in Trading: Practical Applications

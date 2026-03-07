@@ -1,0 +1,41 @@
+{
+  "credit": {
+    "domain": "cardclassroom.com",
+    "ga_property_id": "YOUR_PROPERTY_ID_1",
+    "tracking_enabled": false,
+    "custom_events": [
+      "email_signup",
+      "affiliate_click"
+    ]
+  },
+  "calc": {
+    "domain": "dividendengines.com",
+    "ga_property_id": "YOUR_PROPERTY_ID_2",
+    "tracking_enabled": false,
+    "custom_events": [
+      "email_signup",
+      "affiliate_click",
+      "calculator_used"
+    ]
+  },
+  "affiliate": {
+    "domain": "thestackguide.com",
+    "ga_property_id": "YOUR_PROPERTY_ID_3",
+    "tracking_enabled": false,
+    "custom_events": [
+      "email_signup",
+      "affiliate_click",
+      "tool_clicked"
+    ]
+  },
+  "quant": {
+    "domain": "quantengines.com",
+    "ga_property_id": "YOUR_PROPERTY_ID_4",
+    "tracking_enabled": false,
+    "custom_events": [
+      "email_signup",
+      "affiliate_click",
+      "backtest_run"
+    ]
+  }
+}

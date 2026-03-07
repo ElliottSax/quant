@@ -8,8 +8,8 @@ keywords:
 slug: "diversification-how-many-positions-are-enough"
 category: "risk-management"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Diversification: How Many Positions Are Enough?

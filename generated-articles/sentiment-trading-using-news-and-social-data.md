@@ -8,8 +8,8 @@ keywords:
 slug: "sentiment-trading-using-news-and-social-data"
 category: "misc-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Sentiment Trading: Using News and Social Data

@@ -8,8 +8,8 @@ keywords:
 slug: "out-of-sample-testing-validating-your-edge"
 category: "backtest-optimization"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Out-of-Sample Testing: Validating Your Edge

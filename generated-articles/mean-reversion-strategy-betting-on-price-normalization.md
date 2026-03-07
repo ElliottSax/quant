@@ -8,8 +8,8 @@ keywords:
 slug: "mean-reversion-strategy-betting-on-price-normalization"
 category: "strategy-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Mean Reversion Strategy: Betting on Price Normalization

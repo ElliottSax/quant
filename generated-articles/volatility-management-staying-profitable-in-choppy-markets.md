@@ -8,8 +8,8 @@ keywords:
 slug: "volatility-management-staying-profitable-in-choppy-markets"
 category: "risk-management"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Volatility Management: Staying Profitable in Choppy Markets

@@ -8,8 +8,8 @@ keywords:
 slug: "covered-call-strategy-generating-income-on-holdings"
 category: "strategy-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Covered Call Strategy: Generating Income on Holdings

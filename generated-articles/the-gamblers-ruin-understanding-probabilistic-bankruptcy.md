@@ -8,8 +8,8 @@ keywords:
 slug: "the-gamblers-ruin-understanding-probabilistic-bankruptcy"
 category: "risk-management"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # The Gambler's Ruin: Understanding Probabilistic Bankruptcy

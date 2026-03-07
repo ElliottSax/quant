@@ -8,8 +8,8 @@ keywords:
 slug: "forward-testing-paper-trading-your-system"
 category: "backtest-optimization"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Forward Testing: Paper Trading Your System

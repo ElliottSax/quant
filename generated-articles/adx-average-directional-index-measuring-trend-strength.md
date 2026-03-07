@@ -8,8 +8,8 @@ keywords:
 slug: "adx-average-directional-index-measuring-trend-strength"
 category: "indicator-guides"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # ADX (Average Directional Index): Measuring Trend Strength

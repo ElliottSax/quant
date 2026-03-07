@@ -8,8 +8,8 @@ keywords:
 slug: "overfitting-curve-fitting-vs-real-edge"
 category: "backtest-optimization"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Overfitting: Curve Fitting Vs. Real Edge

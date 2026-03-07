@@ -8,8 +8,8 @@ keywords:
 slug: "win-rate-vs-average-win-what-actually-matters"
 category: "risk-management"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Win Rate vs. Average Win: What Actually Matters

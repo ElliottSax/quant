@@ -8,8 +8,8 @@ keywords:
 slug: "risk-reward-ratios-13-12-and-what-actually-works"
 category: "risk-management"
 author: "Editor"
-date: "2026-03-03"
-updated: "2026-03-03"
+date: "2026-03-05"
+updated: "2026-03-05"
 ---
 
 # Risk-Reward Ratios: 1:3, 1:2, and What Actually Works
