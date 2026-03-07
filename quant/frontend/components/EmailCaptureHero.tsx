@@ -1,14 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { createClient } from '@supabase/supabase-js'
 
-/**
- * EmailCaptureHero Component - Quant Site (Purple Theme)
- * Integrated with Mautic at https://mautic-prod.onrender.com
- */
-
-const MAUTIC_INSTANCE_URL = 'https://mautic-prod.onrender.com'
-const FORM_ID = '4' // Quant form in Mautic
+// Supabase client (shared with other sites)
+const supabase = createClient(
+  'https://jznljskfvhlqlshofkvd.supabase.co',
+  'sb_publishable_HQPHIEY5M1dnQFbNJEO0nw_1YQjr46l'
+)
 
 export function EmailCaptureHero() {
   const [email, setEmail] = useState('')
@@ -21,30 +20,28 @@ export function EmailCaptureHero() {
     setStatus('loading')
 
     try {
-      // Create FormData for Mautic
-      const formData = new FormData()
+      const { error: insertError } = await supabase
+        .from('email_subscribers')
+        .insert([
+          {
+            email: email.toLowerCase(),
+            first_name: firstName || null,
+            source: 'quant',
+          }
+        ])
 
-      // Mautic field naming convention: mauticform[fieldName]
-      formData.append('mauticform[email]', email)
-      if (firstName) {
-        formData.append('mauticform[firstName]', firstName)
-      }
-      formData.append('mauticform[formId]', FORM_ID)
-      formData.append('mauticform[source]', 'quant')
-
-      // Submit to Mautic form endpoint
-      const response = await fetch(`${MAUTIC_INSTANCE_URL}/form/submit`, {
-        method: 'POST',
-        body: formData,
-        credentials: 'omit',
-      })
-
-      // Mautic returns 200 even on duplicate emails
-      if (response.ok || response.status === 200) {
+      if (insertError) {
+        if (insertError.code === '23505') {
+          setStatus('error')
+          setMessage('This email is already subscribed!')
+        } else {
+          throw insertError
+        }
+      } else {
         setStatus('success')
         setEmail('')
         setFirstName('')
-        setMessage('✅ Check your email to confirm subscription!')
+        setMessage('✅ Email saved! Thank you for subscribing.')
 
         // Track in GA4 if available
         if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -54,20 +51,12 @@ export function EmailCaptureHero() {
           })
         }
 
-        // Reset form after 4 seconds
-        setTimeout(() => {
-          setStatus('idle')
-          setMessage('')
-        }, 4000)
-      } else {
-        setStatus('error')
-        setMessage('Something went wrong. Please try again.')
-        console.error('Mautic form submission error:', response.status)
+        setTimeout(() => setStatus('idle'), 3000)
       }
     } catch (error) {
       setStatus('error')
-      setMessage('Failed to subscribe. Please check your connection and try again.')
-      console.error('Form submission error:', error)
+      setMessage('Failed to submit. Please try again.')
+      console.error('Email submission error:', error)
     }
   }
 
@@ -94,9 +83,9 @@ export function EmailCaptureHero() {
                 placeholder="First name (optional)"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                className="flex-1 px-4 py-3 rounded font-semibold focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all"
+                className="flex-1 px-4 py-3 rounded font-semibold focus:outline-none focus:ring-2 focus:ring-white transition-all"
                 disabled={status === 'loading'}
-                maxLength={100}
+                maxLength={50}
               />
 
               <input
@@ -104,7 +93,7 @@ export function EmailCaptureHero() {
                 placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-4 py-3 rounded font-semibold focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all"
+                className="flex-1 px-4 py-3 rounded font-semibold focus:outline-none focus:ring-2 focus:ring-white transition-all"
                 required
                 disabled={status === 'loading'}
               />
@@ -115,21 +104,12 @@ export function EmailCaptureHero() {
               className="bg-white text-purple-600 px-8 py-3 rounded font-bold hover:bg-purple-50 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
               disabled={status === 'loading' || !email}
             >
-              {status === 'loading' ? (
-                <span className="flex items-center justify-center gap-2">
-                  <span className="inline-block w-4 h-4 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></span>
-                  Subscribing...
-                </span>
-              ) : (
-                'Subscribe Free'
-              )}
+              {status === 'loading' ? 'Saving...' : 'Subscribe Free'}
             </button>
           </form>
         )}
 
-        {status === 'error' && (
-          <p className="text-red-200 mt-3 text-sm font-medium">{message}</p>
-        )}
+        {status === 'error' && <p className="text-red-200 mt-3 text-sm font-medium">{message}</p>}
       </div>
     </div>
   )
