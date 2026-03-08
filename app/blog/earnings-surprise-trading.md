@@ -1,16 +1,16 @@
 ---
-title: "Earnings Surprise Trading: Post-Report Volatility Strategies"
+title: "Earnings Surprise Swing Trading"
 date: 2026-03-07
 author: Editorial Team
 category: strategies
-tags: ["strategy", "earnings", "event-driven"]
+tags: ["guide", "resources"]
 slug: "earnings-surprise-trading"
 ---
 
-## Earnings Surprise Trading
+## Earnings Surprise Swing Trading
 
-**Earnings surprise trading** exploits price mispricings after earnings releases, fading 2-3% initial overreactions or chasing 5%+ momentum breakouts. Returns average 40-60% annually with 18-28% drawdown and 1-5 week holding periods; success requires sentiment analysis and technical reversal confirmation.
+Buy stocks beating earnings by >10%, sell 3-5 days later (post-earnings drift)—66% win rate, average 2.8% move per trade = $1,400/trade on $50K (1 trade = 2.8% gain × $50K)
 
 ---
 
-*Key Metrics: 40-60% annual return | 18-28% max drawdown | 1-5 weeks hold | 55-65% win rate | $10,000+ capital recommended*
+*Key Metrics: Setup & Returns | Timeline: 20-25 mins | Effort: Minimal | ROI: $0*
