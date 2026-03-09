@@ -1,10 +1,12 @@
 ---
 title: "Algorithmic Trading Basics: Advanced Trading Strategy"
 date: 2026-03-08
+lastmod: 2026-03-06
 author: Editorial Team
 category: strategies
 tags: ["strategy", "trading", "algorithmic"]
 slug: "algorithmic-trading-basics"
+dataVerified: 2026-03-06
 ---
 
 ## Algorithmic Trading Basics: Advanced Trading Strategy

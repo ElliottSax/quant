@@ -1,10 +1,12 @@
 ---
 title: "Earnings Momentum Strategy: Trading Post-Announcement Surprises"
 date: 2026-03-07
+lastmod: 2026-03-06
 author: Editorial Team
 category: strategies
 tags: ["trading", "investing strategy", "quantitative"]
 slug: "earnings-momentum-post-announcement-trading"
+dataVerified: 2026-03-06
 ---
 
 ## Earnings Momentum Strategy: Trading Post-Announcement Surprises

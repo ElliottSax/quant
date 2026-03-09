@@ -1,10 +1,12 @@
 ---
 title: "Bollinger Band Breakout Strategy: Volatility Trading Explained"
 date: 2026-03-07
+lastmod: 2026-03-06
 author: Editorial Team
 category: strategies
 tags: ["strategy", "volatility", "technical-analysis"]
 slug: "bollinger-band-breakout-strategy"
+dataVerified: 2026-03-06
 ---
 
 ## Bollinger Band Breakout Strategy

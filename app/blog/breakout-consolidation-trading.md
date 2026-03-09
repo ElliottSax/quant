@@ -1,10 +1,12 @@
 ---
 title: "Breakout Trading After Consolidation"
 date: 2026-03-07
+lastmod: 2026-03-06
 author: Editorial Team
 category: strategies
 tags: ["guide", "resources"]
 slug: "breakout-consolidation-trading"
+dataVerified: 2026-03-06
 ---
 
 ## Breakout Trading After Consolidation
