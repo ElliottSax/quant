@@ -75,18 +75,18 @@ const nextConfig = {
             value: [
               // Default: Only allow same-origin content
               "default-src 'self'",
-              // Scripts: Allow self; unsafe-eval only in development (required for Next.js HMR)
+              // Scripts: Allow self; unsafe-eval only in development (required for Next.js HMR); allow Google Analytics
               process.env.NODE_ENV === 'production'
-                ? "script-src 'self' 'unsafe-inline'"
-                : "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+                ? "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com"
+                : "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
               // Styles: Allow self and inline styles (required for Tailwind)
               "style-src 'self' 'unsafe-inline'",
               // Images: Allow self, data URLs, and external image CDNs
               "img-src 'self' data: https:",
               // Fonts: Allow self and data URLs
               "font-src 'self' data:",
-              // Connect: Allow API calls to backend
-              `connect-src 'self' ${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'} https:`,
+              // Connect: Allow API calls to backend and Google Analytics
+              `connect-src 'self' ${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'} https://www.google-analytics.com https://www.googletagmanager.com https:`,
               // Frame: Only allow same-origin iframes
               "frame-src 'self'",
               // Media: Only allow same-origin media
