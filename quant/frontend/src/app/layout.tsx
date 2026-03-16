@@ -75,6 +75,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link rel="alternate" type="application/rss+xml" title="QuantEngines" href="/feed.xml" />
+      </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         {/* Google Analytics 4 Tracking */}
         <Script
@@ -319,6 +322,12 @@ export default function RootLayout({
                               Backtest History
                             </Link>
                             <div className="border-t border-[hsl(215,40%,16%)] my-1" />
+                            <div className="px-3 py-1.5 text-[10px] font-semibold text-[hsl(210,100%,56%)] uppercase tracking-wider">
+                              Developers
+                            </div>
+                            <Link href="/api-docs" className="block px-3 py-2 text-sm text-[hsl(210,20%,70%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
+                              API Documentation
+                            </Link>
                             <Link href="/showcase" className="block px-3 py-2 text-sm text-[hsl(210,20%,70%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
                               Chart Showcase
                             </Link>
@@ -438,6 +447,7 @@ export default function RootLayout({
                       <li><Link href="/research-references" className="hover:text-[hsl(45,96%,58%)] transition-colors">Academic References</Link></li>
                       <li><Link href="/corrections-policy" className="hover:text-[hsl(45,96%,58%)] transition-colors">Corrections Policy</Link></li>
                       <li><Link href="/resources" className="hover:text-[hsl(45,96%,58%)] transition-colors">Learn More</Link></li>
+                      <li><Link href="/api-docs" className="hover:text-[hsl(45,96%,58%)] transition-colors">API Documentation</Link></li>
                     </ul>
                   </div>
                 </div>
