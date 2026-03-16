@@ -29,6 +29,7 @@ export function Navigation() {
   const navLinks = [
     { href: '/dashboard', label: 'Dashboard' },
     { href: '/politicians', label: 'Politicians' },
+    { href: '/leaderboard', label: 'Leaderboard' },
     { href: '/charts', label: 'Charts' },
     { href: '/landing', label: 'About' },
   ]

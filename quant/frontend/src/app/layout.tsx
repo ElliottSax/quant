@@ -7,6 +7,7 @@ import { Providers } from '@/lib/providers'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { MobileMenu } from '@/components/ui/MobileMenu'
 import { MarketTicker } from '@/components/ui/MarketTicker'
+import { ExitIntentPopup } from '@/components/ExitIntentPopup'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
@@ -77,6 +78,30 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <link rel="alternate" type="application/rss+xml" title="QuantEngines" href="/feed.xml" />
+
+        {/* Facebook Pixel - Replace YOUR_PIXEL_ID when ready */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          // fbq('init', 'YOUR_PIXEL_ID');
+          // fbq('track', 'PageView');
+        `}} />
+        <noscript dangerouslySetInnerHTML={{ __html: `
+          <!-- <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/> -->
+        `}} />
+
+        {/* Google Ads Remarketing Tag - Replace YOUR_CONVERSION_ID when ready */}
+        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=AW-YOUR_CONVERSION_ID"></script> */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          // Google Ads Remarketing - uncomment when ad account is ready
+          // gtag('config', 'AW-YOUR_CONVERSION_ID');
+        `}} />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         {/* Google Analytics 4 Tracking */}
@@ -405,7 +430,7 @@ export default function RootLayout({
             {/* Footer */}
             <footer className="border-t border-[hsl(215,40%,14%)] mt-auto bg-[hsl(220,60%,3%)]">
               <div className="container mx-auto px-4 py-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-6">
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded bg-gradient-to-br from-[hsl(45,96%,58%)] to-[hsl(38,92%,45%)] flex items-center justify-center text-[hsl(220,60%,8%)] font-bold text-xs">
@@ -450,6 +475,15 @@ export default function RootLayout({
                       <li><Link href="/api-docs" className="hover:text-[hsl(45,96%,58%)] transition-colors">API Documentation</Link></li>
                     </ul>
                   </div>
+
+                  <div>
+                    <h3 className="text-[10px] font-semibold uppercase tracking-wider text-[hsl(45,96%,58%)] mb-3">Our Network</h3>
+                    <ul className="space-y-1.5 text-xs text-[hsl(210,20%,60%)]">
+                      <li><a href="https://cardclassroom.com" target="_blank" rel="noopener noreferrer" className="hover:text-[hsl(45,96%,58%)] transition-colors">Credit Card Rewards</a></li>
+                      <li><a href="https://dividendengines.com" target="_blank" rel="noopener noreferrer" className="hover:text-[hsl(45,96%,58%)] transition-colors">Dividend Analysis</a></li>
+                      <li><a href="https://thestackguide.com" target="_blank" rel="noopener noreferrer" className="hover:text-[hsl(45,96%,58%)] transition-colors">Marketing Stack Guide</a></li>
+                    </ul>
+                  </div>
                 </div>
 
                 <div className="border-t border-[hsl(215,40%,14%)] pt-4 flex flex-col md:flex-row items-center justify-between gap-3">
@@ -463,6 +497,7 @@ export default function RootLayout({
               </div>
             </footer>
           </div>
+          <ExitIntentPopup />
           </Providers>
         </ErrorBoundary>
       </body>
