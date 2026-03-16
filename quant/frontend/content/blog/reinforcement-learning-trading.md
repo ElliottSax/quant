@@ -7,7 +7,6 @@ category: "Machine Learning"
 tags: ["reinforcement learning", "Q-learning", "DQN", "trading agents", "deep learning"]
 keywords: ["reinforcement learning trading", "Q-learning trading", "DQN trading agent"]
 ---
-
 # Reinforcement Learning for Trading: Q-Learning and DQN
 
 Reinforcement learning (RL) frames trading as a sequential decision problem where an agent learns to maximize cumulative reward by interacting with a market environment. Unlike supervised learning, which requires labeled examples of correct actions, RL discovers optimal strategies through trial and error, making it naturally suited to the adaptive, non-stationary nature of financial markets.
@@ -523,11 +522,11 @@ def evaluate_agent(
 
 ### Does reinforcement learning actually work for trading?
 
-RL has shown promise in specific trading applications: portfolio allocation, execution optimization, and market making. However, it rarely outperforms simpler methods for directional prediction. The main challenges are non-stationarity (the environment changes), low signal-to-noise ratios, and severe overfitting risk. RL works best when the action space is naturally sequential and the reward structure is well-defined, such as optimal execution where the goal (minimize implementation shortfall) is clear.
+RL has shown promise in specific trading applications: portfolio allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)), execution optimization, and [market making](/blog/market-making-strategies). However, it rarely outperforms simpler methods for directional prediction. The main challenges are non-stationarity (the environment changes), low signal-to-noise ratios, and severe overfitting risk. RL works best when the action space is naturally sequential and the reward structure is well-defined, such as optimal execution where the goal (minimize implementation shortfall) is clear.
 
 ### What reward function should I use for a trading RL agent?
 
-Avoid using raw PnL as the reward. Agents trained on raw PnL learn to take maximum leverage, which leads to catastrophic drawdowns. Risk-adjusted rewards work better: differential Sharpe ratio (incremental contribution to rolling Sharpe), or PnL with drawdown penalties. Some practitioners use the log return as the reward, which implicitly favors Kelly-optimal sizing.
+Avoid using raw PnL as the reward. Agents trained on raw PnL learn to take maximum leverage, which leads to catastrophic drawdowns. Risk-adjusted rewards work better: differential [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) (incremental contribution to rolling Sharpe), or PnL with drawdown penalties. Some practitioners use the log return as the reward, which implicitly favors Kelly-optimal sizing.
 
 ### How do I prevent the RL agent from overfitting to training data?
 
@@ -535,4 +534,4 @@ Use multiple independent training environments with different market periods, ad
 
 ### What is the difference between Q-learning and policy gradient methods for trading?
 
-Q-learning learns a value function (how good is each state-action pair) and derives the policy from it. Policy gradient methods learn the policy directly. For trading with discrete actions (buy/hold/sell), Q-learning tends to be more sample-efficient and stable. For continuous actions (position sizing, multi-asset allocation), policy gradient methods like PPO or SAC are more natural since they output continuous values without discretization.
+Q-learning learns a value function (how good is each state-action pair) and derives the policy from it. Policy gradient methods learn the policy directly. For trading with discrete actions (buy/hold/sell), Q-learning tends to be more sample-efficient and stable. For continuous actions ([position sizing](/blog/position-sizing-strategies), multi-asset allocation), policy gradient methods like PPO or SAC are more natural since they output continuous values without discretization.

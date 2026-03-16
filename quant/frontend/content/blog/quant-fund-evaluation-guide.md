@@ -7,7 +7,6 @@ category: "Fund Analysis"
 tags: ["quant funds", "due diligence", "hedge fund evaluation", "fund selection", "manager assessment"]
 keywords: ["evaluate quant funds", "quant fund due diligence", "hedge fund evaluation framework", "quantitative fund selection", "fund manager assessment"]
 ---
-
 # How to Evaluate Quant Funds: Due Diligence Framework
 
 Evaluating quantitative funds requires a different skillset than evaluating discretionary managers. The alpha source is embedded in models, data, and infrastructure rather than in the judgment of a portfolio manager. This creates unique due diligence challenges: understanding whether the fund's edge is genuine requires assessing backtesting methodology, model robustness, technology infrastructure, and organizational risk alongside the standard performance and risk metrics. This guide provides a comprehensive framework for evaluating quant funds across four dimensions: performance analysis, strategy assessment, risk management, and operational due diligence.
@@ -19,7 +18,7 @@ Evaluating quantitative funds requires a different skillset than evaluating disc
 **Annualized return**: The geometric mean annual return. Compare to an appropriate benchmark (not just the S&P 500 -- a market-neutral quant fund should be compared to cash plus an alpha target, not to equity indices).
 
 **Sharpe ratio**: The primary risk-adjusted return metric. Quant fund Sharpe ratios by strategy type:
-- Statistical arbitrage: 1.5-3.0 (high frequency, low per-trade alpha, many trades)
+- [Statistical arbitrage](/blog/crypto-statistical-arbitrage): 1.5-3.0 (high frequency, low per-trade alpha, many trades)
 - Equity market-neutral: 0.8-1.5 (medium frequency, diversified alpha sources)
 - Managed futures/CTA: 0.5-1.0 (trend-based, episodic alpha)
 - Multi-strategy quant: 1.0-2.0 (diversified across multiple quant strategies)
@@ -30,7 +29,7 @@ Evaluating quantitative funds requires a different skillset than evaluating disc
 
 ### Return Distribution Analysis
 
-**Skewness**: Negative skewness (frequent small gains, rare large losses) is common in convergence strategies (statistical arbitrage, relative value). Positive skewness (rare large gains, frequent small losses) is common in trend following. Understand whether the fund's skewness profile matches its claimed strategy.
+**Skewness**: Negative skewness (frequent small gains, rare large losses) is common in convergence strategies ([statistical arbitrage](/blog/statistical-arbitrage-guide), relative value). Positive skewness (rare large gains, frequent small losses) is common in [trend following](/blog/crypto-trend-following-systems). Understand whether the fund's skewness profile matches its claimed strategy.
 
 **Kurtosis**: High kurtosis indicates fat tails (extreme events more frequent than normal). Compare kurtosis to what the fund's strategy should produce. A market-neutral equity fund with kurtosis above 10 may have hidden tail risk.
 
@@ -52,7 +51,7 @@ Understanding where the alpha comes from is the single most important due dilige
 
 **Data edge**: Does the fund use unique or proprietary data that competitors do not have? Satellite imagery, credit card transaction data, sensor data, web scraping -- these data advantages can sustain alpha if the data source is defensible.
 
-**Model edge**: Does the fund use superior modeling techniques? Machine learning, alternative risk models, novel factor construction. Model edges erode over time as techniques proliferate.
+**Model edge**: Does the fund use superior modeling techniques? [Machine learning](/blog/machine-learning-trading), alternative risk models, novel factor construction. Model edges erode over time as techniques proliferate.
 
 **Speed edge**: Does the fund execute faster than competitors? Relevant for high-frequency strategies but increasingly competed away as technology becomes commoditized.
 
@@ -66,7 +65,7 @@ Understanding where the alpha comes from is the single most important due dilige
 
 2. **How many parameters does the model have?** A model with 50 free parameters fit to 5 years of data is almost certainly overfit. The ratio of data points to parameters (degrees of freedom) should exceed 10:1 for reasonable confidence.
 
-3. **Were transaction costs included in the backtest?** Many backtests assume zero transaction costs or use costs that are unrealistically low. Ask for the assumed market impact model and compare to the fund's actual transaction cost analysis (TCA) data.
+3. **Were transaction costs included in the backtest?** Many backtests assume zero transaction costs or use costs that are unrealistically low. Ask for the assumed market impact model and compare to the fund's actual [transaction cost analysis](/blog/transaction-cost-analysis) (TCA) data.
 
 4. **Was the investment universe survivorship-free?** Backtests using the current S&P 500 constituents exclude stocks that were in the index historically but later declined and were removed. This creates a positive bias of 1-2% annually.
 

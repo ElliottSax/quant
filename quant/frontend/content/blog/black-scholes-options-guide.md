@@ -7,10 +7,9 @@ category: "Derivatives"
 tags: ["Black-Scholes", "options pricing", "derivatives", "quantitative finance", "volatility"]
 keywords: ["Black-Scholes model", "options pricing formula", "Black-Scholes python"]
 ---
-
 # Black-Scholes Model: Options Pricing for Quant Traders
 
-The Black-Scholes model is the foundational framework for options pricing and risk management. Published in 1973 by Fischer Black, Myron Scholes, and Robert Merton, it provides closed-form solutions for European option prices under specific assumptions about the underlying asset's behavior. Despite its well-known limitations, Black-Scholes remains the lingua franca of options markets: traders quote in Black-Scholes implied volatility, risk is managed using Black-Scholes Greeks, and more sophisticated models are often expressed as extensions of the Black-Scholes framework.
+The Black-Scholes (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)) model is the foundational framework for options pricing and risk management. Published in 1973 by Fischer Black, Myron Scholes, and Robert Merton, it provides closed-form solutions for European option prices under specific assumptions about the underlying asset's behavior. Despite its well-known limitations, Black-Scholes remains the lingua franca of options markets: traders quote in Black-Scholes implied volatility, risk is managed using Black-Scholes Greeks, and more sophisticated models are often expressed as extensions of the Black-Scholes framework.
 
 This guide implements the complete Black-Scholes toolkit, from pricing and Greeks through implied volatility calculation and the model's practical limitations.
 
@@ -431,7 +430,7 @@ def demonstrate_bs_limitations():
 
 ### Why is Black-Scholes still used if its assumptions are wrong?
 
-Black-Scholes serves as a common language for options markets. Traders do not believe volatility is constant; they use implied volatility as a quoting convention and the volatility surface to express their views on the distribution of future returns. The Greeks from Black-Scholes provide first-order hedging ratios that work well in practice when re-hedged frequently. More sophisticated models (stochastic volatility, jump-diffusion) are used for pricing exotic options and managing higher-order risks.
+Black-Scholes serves as a common language for options markets. Traders do not believe volatility is constant; they use implied volatility as a quoting convention and the [volatility surface](/blog/volatility-surface-modeling) to express their views on the distribution of future returns. The Greeks from Black-Scholes provide first-order hedging ratios that work well in practice when re-hedged frequently. More sophisticated models (stochastic volatility, jump-diffusion) are used for pricing exotic options and managing higher-order risks.
 
 ### How accurate is Black-Scholes for pricing real options?
 
@@ -439,8 +438,8 @@ For at-the-money options with short expiry (less than 3 months), Black-Scholes i
 
 ### What is the difference between historical and implied volatility?
 
-Historical (realized) volatility measures past price fluctuations and is computed from actual returns. Implied volatility is extracted from option market prices and reflects the market's expectation of future volatility. Implied volatility is typically higher than realized volatility (the "volatility risk premium"), which is why systematic option selling strategies have positive expected returns. The gap between implied and realized is itself a trading signal.
+Historical (realized) volatility measures past price fluctuations and is computed from actual returns. Implied volatility is extracted from option market prices and reflects the market's expectation of future volatility. Implied volatility is typically higher than realized volatility (the "volatility risk premium"), which is why systematic option selling strategies have positive expected returns. The gap between implied and realized is itself a [trading signal](/blog/independent-component-analysis).
 
 ### Can Black-Scholes be used for American options?
 
-Black-Scholes provides exact solutions only for European options (exercisable only at expiry). For American options (exercisable anytime), the model gives a lower bound for call prices and is inappropriate for puts. American options require numerical methods: binomial trees, finite difference PDE solvers, or Monte Carlo with Longstaff-Schwartz regression for early exercise boundary estimation.
+Black-Scholes provides exact solutions only for European options (exercisable only at expiry). For American options (exercisable anytime), the model gives a lower bound for call prices and is inappropriate for puts. American options require numerical methods: binomial trees, finite difference PDE solvers, or [Monte Carlo](/blog/monte-carlo-simulation-trading) with Longstaff-Schwartz regression for early exercise boundary estimation.

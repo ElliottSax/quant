@@ -7,12 +7,11 @@ category: "Machine Learning"
 tags: ["tensorflow", "deep learning", "LSTM", "neural networks", "price prediction"]
 keywords: ["tensorflow trading", "LSTM stock prediction", "deep learning finance"]
 ---
-
 # TensorFlow for Trading: Neural Network Price Prediction
 
 Deep learning models offer the ability to learn complex temporal patterns from raw financial data. LSTMs capture long-range dependencies in price sequences, convolutional networks detect local patterns similar to chart formations, and attention mechanisms weigh the relevance of different time steps dynamically.
 
-However, deep learning for trading is significantly harder than for computer vision or NLP. Financial time series have low signal-to-noise ratios, non-stationarity, and regime changes that violate the i.i.d. assumptions underlying most neural network training. This guide covers architectures that address these challenges with production-tested patterns.
+However, deep learning for trading is significantly harder than for computer vision or NLP. Financial [time series](/blog/time-series-analysis-stocks) have low signal-to-noise ratios, non-stationarity, and regime changes that violate the i.i.d. assumptions underlying most neural network training. This guide covers architectures that address these challenges with production-tested patterns.
 
 ## Key Takeaways
 
@@ -410,7 +409,7 @@ print(f"Avg inference: {np.mean(times)*1000:.1f}ms")
 
 ### Are LSTMs still relevant compared to transformers for trading?
 
-LSTMs remain highly relevant for trading because financial time series are typically short (60-250 time steps), making transformer self-attention less advantageous than in NLP (where sequences span thousands of tokens). LSTMs also have fewer parameters, which reduces overfitting risk on the limited, noisy data typical of financial applications. Use transformers when you have large amounts of diverse input data (e.g., combining price, text, and alternative data).
+LSTMs remain highly relevant for trading because financial time series are typically short (60-250 time steps), making transformer self-attention less advantageous than in NLP (where sequences span thousands of tokens). LSTMs also have fewer parameters, which reduces overfitting risk on the limited, noisy data typical of financial applications. Use transformers when you have large amounts of diverse input data (e.g., combining price, text, and [alternative data](/blog/alternative-data-trading)).
 
 ### How do I prevent my neural network from overfitting to noise?
 

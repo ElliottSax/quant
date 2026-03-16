@@ -7,7 +7,6 @@ category: "Advanced Analytics"
 tags: ["bayesian-inference", "probabilistic-modeling", "uncertainty"]
 keywords: ["Bayesian inference", "Bayesian trading", "posterior distribution", "prior beliefs", "MCMC", "probabilistic forecasting"]
 ---
-
 # Bayesian Inference for Trading: Probabilistic Modeling
 
 Traditional statistical approaches provide point estimates—a single number for expected return or volatility. Bayesian inference offers a richer framework: full probability distributions that quantify uncertainty, update systematically as new data arrives, and incorporate prior knowledge. For traders navigating uncertain markets, Bayesian methods provide probabilistic forecasts, adaptive models, and principled uncertainty quantification.
@@ -592,7 +591,7 @@ Use weakly informative priors that regularize without dominating. For financial 
 
 ### Is Bayesian inference slower than frequentist methods?
 
-MCMC sampling is slower than closed-form MLE, but variational inference can be competitive. For production systems, run MCMC offline (nightly), use variational inference for real-time, or use conjugate priors for analytical posteriors (Kalman filter is Bayesian).
+MCMC sampling is slower than closed-form MLE, but variational inference can be competitive. For production systems, run MCMC offline (nightly), use variational inference for real-time, or use conjugate priors for analytical posteriors ([Kalman filter](/blog/kalman-filter-trading) is Bayesian).
 
 ### What's the advantage over frequentist confidence intervals?
 

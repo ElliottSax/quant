@@ -7,7 +7,6 @@ category: "Algo Trading"
 tags: ["market microstructure", "order flow", "liquidity", "bid-ask spread"]
 keywords: ["market microstructure trading", "order flow analysis", "liquidity trading"]
 ---
-
 # Market Microstructure: Understanding Order Flow and Liquidity
 
 Market microstructure is the study of how the actual mechanics of trading, the order books, matching engines, and participant behaviors, determine prices, execution quality, and market dynamics. While most retail traders focus on what to trade (strategy), understanding how trading works at the microstructure level reveals why certain strategies work and how to exploit market structure for better execution. The field was formalized by O'Hara (1995) and has been enriched by Hasbrouck (2007) and Bouchaud et al. (2018), providing quantitative frameworks for understanding price formation.
@@ -27,7 +26,7 @@ The order book (also called the limit order book or LOB) is a real-time record o
 
 ### Price Formation
 
-Prices are set by the interaction of two order types:
+Prices are set by the interaction of two [order types](/blog/order-types-execution-guide):
 
 **Limit orders**: Provide liquidity. A limit buy order at $99.50 waits in the order book until a seller agrees to that price. Limit orders are "passive" and earn the spread.
 
@@ -191,7 +190,7 @@ The Almgren-Chriss framework (2001) optimizes the trade-off between market impac
 
 ### What is the difference between market microstructure and technical analysis?
 
-Market microstructure studies the actual mechanics of how orders are matched and prices are formed at the exchange level, using order book data, trade-and-quote data, and market participant behavior. Technical analysis studies historical price and volume patterns to predict future price movements. Microstructure is grounded in economic theory (information asymmetry, inventory management) and uses tick-level data, while technical analysis uses aggregated price charts. Microstructure strategies typically operate on shorter timeframes (seconds to minutes) than technical analysis (minutes to days).
+Market microstructure studies the actual mechanics of how orders are matched and prices are formed at the exchange level, using order book data, trade-and-quote data, and market participant behavior. [Technical analysis](/blog/python-technical-analysis-library) studies historical price and volume patterns to predict future price movements. Microstructure is grounded in economic theory (information asymmetry, inventory management) and uses tick-level data, while technical analysis uses aggregated price charts. Microstructure strategies typically operate on shorter timeframes (seconds to minutes) than technical analysis (minutes to days).
 
 ### How does dark pool trading affect price discovery?
 
@@ -199,7 +198,7 @@ Dark pools execute approximately 15-20% of US equity volume off-exchange. Resear
 
 ### Why do bid-ask spreads widen during volatility spikes?
 
-During high volatility, market makers face two increased risks: (1) inventory risk increases because positions can move against them faster, and (2) adverse selection risk increases because informed traders are more active during information events. Both risks require wider spreads for compensation. Empirically, spreads widen 3-5x during events like earnings announcements, FOMC meetings, and market crashes. For systematic traders, this means execution costs increase precisely when strategies generate the most signals, making volatility-adjusted position sizing essential.
+During high volatility, market makers face two increased risks: (1) inventory risk increases because positions can move against them faster, and (2) adverse selection risk increases because informed traders are more active during information events. Both risks require wider spreads for compensation. Empirically, spreads widen 3-5x during events like earnings announcements, FOMC meetings, and market crashes. For systematic traders, this means execution costs increase precisely when strategies generate the most signals, making volatility-adjusted [position sizing](/blog/position-sizing-strategies) essential.
 
 ### How can retail traders use market microstructure insights?
 

@@ -7,12 +7,11 @@ category: "Trading Strategies"
 tags: ["options trading", "Greeks", "volatility", "delta neutral", "options strategies"]
 keywords: ["options trading strategies", "options Greeks quantitative", "volatility trading options"]
 ---
-
 # Options Trading Strategies: Quantitative Approach to Greeks
 
-Options trading strategies take on a new dimension when approached quantitatively. Rather than treating options as leveraged directional bets, systematic traders use the Greeks (delta, gamma, theta, vega) as measurable risk factors that can be isolated, traded, and hedged. The Black-Scholes-Merton framework (1973) provides the theoretical foundation, while modern practitioners extend it with stochastic volatility models, volatility surface analysis, and empirical Greek estimation to build market-neutral options portfolios.
+Options [trading strategies](/blog/backtesting-trading-strategies) take on a new dimension when approached quantitatively. Rather than treating options as leveraged directional bets, systematic traders use the Greeks (delta, gamma, theta, vega) as measurable risk factors that can be isolated, traded, and hedged. The Black-Scholes (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator))-Merton framework (1973) provides the theoretical foundation, while modern practitioners extend it with stochastic volatility models, [volatility surface](/blog/volatility-surface-modeling) analysis, and empirical Greek estimation to build market-neutral options portfolios.
 
-This guide presents quantitative options strategies that exploit systematic edge in volatility, time decay, and skew, with the mathematical rigor that separates professional options trading from speculative gambling.
+This guide presents quantitative [options strategies](/blog/crypto-options-strategies) that exploit systematic edge in volatility, time decay, and skew, with the mathematical rigor that separates professional options trading from speculative gambling.
 
 ## The Greeks as Risk Factors
 
@@ -131,7 +130,7 @@ When skew is extremely steep (above the 80th percentile of its 252-day history),
 | Avg Trade Duration | 18 days |
 | Trades Per Year | 8-12 |
 
-Skew trading exploits the persistent overpricing of downside protection. However, it has significant tail risk during actual crashes (when put skew increases are justified), making position sizing critical.
+Skew trading exploits the persistent overpricing of downside protection. However, it has significant tail risk during actual crashes (when put skew increases are justified), making [position sizing](/blog/position-sizing-strategies) critical.
 
 ## Strategy 4: Calendar Spreads (Theta Harvesting)
 

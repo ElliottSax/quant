@@ -7,12 +7,11 @@ category: "Trading Strategies"
 tags: ["trend following", "CTA", "managed futures", "systematic trading"]
 keywords: ["trend following system", "trend following strategy", "managed futures trading"]
 ---
-
 # Trend Following System: Complete Strategy and Backtest Results
 
-A trend following system is the backbone of the managed futures industry, which manages over $350 billion in assets globally as of 2025. The fundamental premise, validated across 200+ years of market data by Hurst, Ooi, and Pedersen (2017), is that asset prices exhibit persistent trends driven by behavioral biases, central bank policies, and macroeconomic shifts. Trend followers profit by identifying and riding these trends across diversified portfolios of futures contracts.
+A [trend following](/blog/crypto-trend-following-systems) system is the backbone of the managed futures industry, which manages over $350 billion in assets globally as of 2025. The fundamental premise, validated across 200+ years of market data by Hurst, Ooi, and Pedersen (2017), is that asset prices exhibit persistent trends driven by behavioral biases, central bank policies, and macroeconomic shifts. Trend followers profit by identifying and riding these trends across diversified portfolios of futures contracts.
 
-This guide presents a complete trend following system with institutional-grade position sizing, multi-market allocation, and backtest results that span decades of market history.
+This guide presents a complete trend following system with institutional-grade [position sizing](/blog/position-sizing-strategies), multi-market allocation, and backtest results that span decades of market history.
 
 ## The Academic Case for Trend Following
 
@@ -22,7 +21,7 @@ Trends persist in financial markets due to several well-documented mechanisms:
 
 **Behavioral factors**: Anchoring bias causes investors to underreact to new information. Herding behavior amplifies initial price moves. Disposition effect (selling winners, holding losers) delays full price adjustment. Confirmation bias reinforces directional positioning.
 
-**Structural factors**: Central bank policies create multi-year interest rate trends. Commodity supply/demand imbalances resolve over months or years. Regulatory changes force gradual portfolio rebalancing. Index fund flows create persistent buying pressure.
+**Structural factors**: Central bank policies create multi-year interest rate trends. Commodity supply/demand imbalances resolve over months or years. Regulatory changes force gradual [portfolio rebalancing](/blog/rebalancing-strategies-quant). Index fund flows create persistent buying pressure.
 
 **Research evidence**: Moskowitz, Ooi, and Pedersen (2012) demonstrated positive time-series momentum in 58 markets across equities, bonds, commodities, and currencies from 1965 to 2009. Lemperi`ere et al. (2014) extended the evidence back to 1800, confirming that trend following has worked for over two centuries.
 
@@ -30,7 +29,7 @@ Trends persist in financial markets due to several well-documented mechanisms:
 
 ### Trend Identification
 
-We use a dual moving average crossover as the primary trend signal:
+We use a dual [moving average crossover](/blog/moving-average-crossover-strategy) as the primary trend signal:
 
 - **Fast MA**: 50-day Exponential Moving Average
 - **Slow MA**: 200-day Exponential Moving Average
@@ -175,7 +174,7 @@ A 20-30% allocation to trend following meaningfully improves portfolio Sharpe an
 ## Key Takeaways
 
 - Trend following has worked across 200+ years of market data and 58+ markets globally
-- A diversified 26-market system produced an 11.4% CAGR with 0.88 Sharpe ratio (2000-2025)
+- A diversified 26-market system produced an 11.4% CAGR with 0.88 [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) (2000-2025)
 - Crisis alpha is the defining feature: +34.2% in 2008 while the S&P 500 lost -37.0%
 - Near-zero equity correlation (0.08) makes trend following an ideal portfolio diversifier
 - Blending fast, medium, and slow trend signals improves Sharpe from 0.72-0.88 to 0.94
@@ -194,7 +193,7 @@ Yes, though the strategy goes through performance cycles. After a difficult 2023
 
 ### How does trend following compare to buy and hold?
 
-Over long periods (20+ years), trend following has matched or exceeded buy-and-hold equity returns with significantly lower drawdowns and volatility. The key advantage is crisis protection: trend following generates positive returns during equity market crashes. The key disadvantage is underperformance during strong bull markets, where buy-and-hold captures the full rally while trend following may exit and re-enter. The best approach is to combine both in a portfolio allocation.
+Over long periods (20+ years), trend following has matched or exceeded buy-and-hold equity returns with significantly lower drawdowns and volatility. The key advantage is crisis protection: trend following generates positive returns during equity market crashes. The key disadvantage is underperformance during strong bull markets, where buy-and-hold captures the full rally while trend following may exit and re-enter. The best approach is to combine both in a portfolio allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)).
 
 ### What are the main risks of trend following?
 

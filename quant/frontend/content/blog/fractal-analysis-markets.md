@@ -7,7 +7,6 @@ category: "Advanced Analytics"
 tags: ["fractal-analysis", "hurst-exponent", "self-similarity"]
 keywords: ["fractal analysis", "Hurst exponent", "market fractals", "self-similarity", "persistence", "mean reversion"]
 ---
-
 # Fractal Analysis: Market Self-Similarity and Hurst Exponent
 
 Financial markets exhibit fractal properties—patterns that repeat across different time scales. A 5-minute chart of the S&P 500 can look remarkably similar to a daily or weekly chart. This self-similarity suggests that markets follow fractal dynamics rather than purely random walks. Fractal analysis, particularly the Hurst exponent, provides quantitative measures of this behavior, enabling traders to distinguish trending markets from mean-reverting ones.
@@ -18,7 +17,7 @@ A fractal is a pattern that repeats at different scales. In markets, this manife
 
 ### The Hurst Exponent
 
-The Hurst exponent (H) measures long-term memory in time series:
+The Hurst exponent (H) measures long-term memory in [time series](/blog/time-series-analysis-stocks):
 
 ```
 H = 0.5: Random walk (Brownian motion)
@@ -696,7 +695,7 @@ Yes and no. Markets do exhibit fractal properties and self-similarity (well docu
 
 ### How does Hurst relate to autocorrelation?
 
-Positive autocorrelation → H > 0.5 (persistence). Negative autocorrelation → H < 0.5 (mean reversion). Zero autocorrelation → H = 0.5 (random). Hurst measures long-range dependence while autocorrelation measures short-term dependence.
+Positive autocorrelation → H > 0.5 (persistence). Negative autocorrelation → H < 0.5 ([mean reversion](/blog/mean-reversion-trading-strategy)). Zero autocorrelation → H = 0.5 (random). Hurst measures long-range dependence while autocorrelation measures short-term dependence.
 
 ### What causes markets to exhibit fractal behavior?
 
@@ -708,7 +707,7 @@ Yes, but calculate on intraday data (5-min, 15-min bars). Hurst works at any tim
 
 ## Conclusion
 
-Fractal analysis reveals that markets are neither purely random nor deterministically predictable—they occupy a middle ground characterized by long-term memory and self-similar structure. The Hurst exponent quantifies this behavior, providing actionable insights into whether current conditions favor momentum or mean-reversion strategies.
+Fractal analysis reveals that markets are neither purely random nor deterministically predictable—they occupy a middle ground characterized by long-term memory and self-similar structure. The Hurst exponent quantifies this behavior, providing actionable insights into whether current conditions favor momentum or mean-[reversion strategies](/blog/mean-reversion-strategies-guide).
 
 While no single metric guarantees trading success, fractal analysis offers a scientifically grounded framework for understanding market dynamics. By measuring persistence and complexity, traders can adapt their approaches to market character rather than imposing rigid strategies on varying conditions.
 

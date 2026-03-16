@@ -27,9 +27,9 @@
 10. **mev-strategies-ethereum.md** - Sandwich attacks and backrunning
 
 ### 4. Derivatives Trading (3 articles)
-11. **perpetual-futures-funding-rate.md** - Funding rate arbitrage
+11. **perpetual-futures-funding-rate.md** - [Funding rate arbitrage](/blog/perpetual-futures-funding-rate)
 12. **crypto-options-strategies.md** - Deribit and Binance options
-13. **crypto-volatility-trading.md** - BTC implied vol strategies
+13. **crypto-volatility-trading.md** - BTC [implied vol strategies](/blog/crypto-volatility-trading)
 
 ### 5. Statistical & Quantitative (3 articles)
 14. **crypto-statistical-arbitrage.md** - Pair trading and cointegration
@@ -68,13 +68,13 @@ Each article includes:
 - Greeks management and portfolio construction
 - Volatility term structure analysis
 - Risk parity and Kelly Criterion optimization
-- Monte Carlo simulation and backtesting
+- [Monte Carlo simulation](/blog/monte-carlo-simulation-trading) and backtesting
 
 ### Practical Implementation
 - Smart contract interaction and safety
 - API integration and infrastructure
 - Position sizing and leverage calculations
-- Rebalancing strategies and automation
+- [Rebalancing strategies](/blog/rebalancing-strategies-quant) and automation
 - Tax optimization and accounting
 
 ### Market Structure
@@ -128,7 +128,7 @@ Each article includes:
 2. **Portfolio Addition**: Content for quant trading platform blogs
 3. **Reference Material**: Detailed strategies for practitioners
 4. **Lead Generation**: High-value content for sophisticated traders
-5. **Authority Building**: Establishes expertise in DeFi quantitative strategies
+5. **Authority Building**: Establishes expertise in [DeFi quantitative strategies](/blog/crypto-defi-quant-strategies)
 
 ## Next Steps
 

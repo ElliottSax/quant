@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["DeFi", "yield farming", "crypto arbitrage", "AMM", "blockchain"]
 keywords: ["DeFi quantitative strategies", "yield farming optimization", "DEX arbitrage"]
 ---
-
 # DeFi Quantitative Strategies: Yield Farming and Arbitrage
 
-Decentralized finance (DeFi) has created a new frontier for quantitative trading. The transparency of on-chain data, the programmability of smart contracts, and the structural inefficiencies of automated market makers (AMMs) present opportunities that are qualitatively different from traditional finance. While the risk profile is also different -- smart contract risk, impermanent loss, MEV extraction -- the quantitative toolkit for analyzing and exploiting these opportunities is remarkably similar to traditional quant methods.
+Decentralized finance (DeFi) has created a new frontier for [quantitative trading](/blog/crypto-quant-trading-strategies). The transparency of on-chain data, the programmability of smart contracts, and the structural inefficiencies of automated market makers (AMMs) present opportunities that are qualitatively different from traditional finance. While the risk profile is also different -- [smart contract risk](/blog/smart-contract-risk-management), [impermanent loss](/blog/impermanent-loss-mitigation), MEV extraction -- the quantitative toolkit for analyzing and exploiting these opportunities is remarkably similar to traditional quant methods.
 
 This guide covers the primary DeFi quantitative strategies: yield farming optimization, DEX arbitrage, liquidation strategies, and cross-protocol opportunities.
 
@@ -577,11 +576,11 @@ class MEVAnalyzer:
 
 ### Is DeFi yield farming still profitable in 2026?
 
-Yield farming remains profitable but the landscape has matured significantly. The astronomical APYs of 2020-2021 (1,000%+) have compressed to 5-20% for established protocols. Profitable farming now requires: (1) sophisticated risk assessment of protocol safety, (2) impermanent loss hedging for volatile pairs, (3) gas optimization across multiple chains, and (4) quick rotation into new protocols before yields compress. The edge has shifted from first-mover advantage to quantitative risk management.
+Yield farming remains profitable but the landscape has matured significantly. The astronomical APYs of 2020-2021 (1,000%+) have compressed to 5-20% for established protocols. Profitable farming now requires: (1) sophisticated risk assessment of protocol safety, (2) impermanent loss hedging for volatile pairs, (3) gas optimization across multiple chains, and (4) quick rotation into new protocols before yields compress. The edge has shifted from first-mover advantage to [quantitative risk management](/blog/quantitative-risk-management).
 
 ### How do I protect against impermanent loss?
 
-Three approaches: (1) provide liquidity to stablecoin pairs (USDC/USDT) where impermanent loss is minimal, (2) use concentrated liquidity positions (Uniswap v3) with tight ranges and active management, (3) hedge with options or perpetual futures on the underlying token. Quantitatively, impermanent loss only matters relative to fees earned: if trading fees exceed IL, the position is profitable. Calculate the break-even trading volume before deploying capital.
+Three approaches: (1) provide liquidity to stablecoin pairs (USDC/USDT) where impermanent loss is minimal, (2) use concentrated liquidity positions (Uniswap v3) with tight ranges and active management, (3) hedge with options or [perpetual futures](/blog/perpetual-futures-funding-rate) on the underlying token. Quantitatively, impermanent loss only matters relative to fees earned: if trading fees exceed IL, the position is profitable. Calculate the break-even trading volume before deploying capital.
 
 ### What is MEV and why does it matter for DeFi strategies?
 

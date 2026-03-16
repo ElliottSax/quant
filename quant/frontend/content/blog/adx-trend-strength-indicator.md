@@ -7,10 +7,9 @@ category: "Technical Analysis"
 tags: ["ADX", "trend strength", "directional movement", "DMI", "technical analysis"]
 keywords: ["ADX indicator", "average directional index", "ADX trend strength"]
 ---
-
 # ADX Indicator: Measuring Trend Strength for Better Entries
 
-The Average Directional Index (ADX), developed by J. Welles Wilder Jr. in 1978, answers a fundamental question that most indicators ignore: how strong is the current trend? While momentum oscillators like RSI and the stochastic measure price direction and overbought/oversold conditions, the ADX exclusively measures trend strength regardless of direction. An ADX reading of 30 indicates a strong trend whether the market is going up or down. This unique property makes the ADX an essential filter for any trading strategy, as the strength of a trend directly determines whether trend-following or mean-reversion approaches are more appropriate.
+The Average Directional Index (ADX), developed by J. Welles Wilder Jr. in 1978, answers a fundamental question that most indicators ignore: how strong is the current trend? While momentum oscillators like RSI and the stochastic measure price direction and overbought/oversold conditions, the ADX exclusively measures trend strength regardless of direction. An ADX reading of 30 indicates a strong trend whether the market is going up or down. This unique property makes the ADX an essential filter for any [trading strategy](/blog/breakout-trading-strategy), as the strength of a trend directly determines whether trend-following or mean-reversion approaches are more appropriate.
 
 This guide covers the complete ADX system, including the Directional Movement Index (+DI/-DI) crossovers, ADX thresholds, and practical strategies for integrating ADX into your trading.
 
@@ -73,7 +72,7 @@ The value of ADX tells you strength, but the direction of ADX tells you whether 
 
 - **Rising ADX:** The trend (up or down) is gaining momentum. Trend-following entries are favorable.
 - **Falling ADX:** The trend is losing momentum. Existing positions should tighten stops; new trend-following entries are risky.
-- **Flat ADX below 20:** The market is rangebound. Mean-reversion strategies are appropriate.
+- **Flat ADX below 20:** The market is rangebound. Mean-[reversion strategies](/blog/mean-reversion-strategies-guide) are appropriate.
 
 ## Trading Strategy 1: +DI/-DI Crossover with ADX Filter
 
@@ -123,13 +122,13 @@ High ADX readings can signal trend exhaustion, providing contrarian setups.
 
 **Entry:** Counter to the prevailing trend when ADX turns down and a confirmation signal appears (reversal candlestick, momentum divergence)
 **Stop-Loss:** Beyond the extreme made during the high ADX reading
-**Target:** The 20-period SMA (mean reversion) or the prior consolidation zone
+**Target:** The 20-period SMA ([mean reversion](/blog/mean-reversion-trading-strategy)) or the prior consolidation zone
 
 This is an advanced strategy that should be used with caution. Strong trends can remain strong longer than expected, and premature counter-trend entries can be costly. The ADX turndown from above 45 is a necessary condition, but a momentum divergence provides the confirming evidence needed to act.
 
 ## Using ADX as a Strategy Filter
 
-Perhaps the most valuable application of ADX is as a filter for other trading strategies:
+Perhaps the most valuable application of ADX is as a filter for other [trading strategies](/blog/backtesting-trading-strategies):
 
 ### For Trend-Following Strategies (Moving Average Crossovers, Breakouts)
 - **Enable:** When ADX > 25 and rising

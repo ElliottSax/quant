@@ -7,7 +7,6 @@ category: "Technical Analysis"
 tags: ["elliott wave", "wave theory", "market cycles", "technical analysis", "fibonacci"]
 keywords: ["elliott wave theory", "elliott wave trading", "wave analysis guide"]
 ---
-
 # Elliott Wave Theory: Practical Trading Application Guide
 
 Elliott Wave Theory, developed by Ralph Nelson Elliott in the 1930s, proposes that financial markets move in predictable patterns driven by collective investor psychology. The theory identifies repeating fractal wave structures that occur across all timeframes and markets. While often criticized for its subjectivity, Elliott Wave analysis provides a structural framework for understanding market cycles that, when applied with discipline and specific rules, can identify high-probability trade setups.
@@ -98,7 +97,7 @@ Fibonacci ratios are integral to Elliott Wave analysis and serve as the primary 
 | Wave B | 38.2-78.6% retracement of Wave A |
 | Wave C | 100% or 161.8% of Wave A |
 
-These ratios provide specific price targets that, when combined with other technical analysis methods, create well-defined trade plans.
+These ratios provide specific price targets that, when combined with other [technical analysis](/blog/python-technical-analysis-library) methods, create well-defined trade plans.
 
 ## Practical Trading with Elliott Waves
 
@@ -122,7 +121,7 @@ Identifying the end of Wave 5 allows traders to position for the corrective phas
 1. Count five waves from the start of the impulse
 2. Look for momentum divergence between Wave 3 and Wave 5 peaks (RSI, MACD)
 3. Calculate the Wave 5 target using Fibonacci (often equals Wave 1 in length)
-4. Look for bearish candlestick patterns at the projected Wave 5 terminus
+4. Look for bearish [candlestick patterns](/blog/candlestick-patterns-complete-guide) at the projected Wave 5 terminus
 5. Enter short with a stop above the Wave 5 high
 6. Target: The Wave 4 area (minimum correction target)
 

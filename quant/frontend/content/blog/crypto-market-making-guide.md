@@ -7,18 +7,17 @@ category: "Crypto & DeFi"
 tags: ["market-making", "hft", "trading-strategies"]
 keywords: ["crypto market making", "high-frequency trading", "spread trading", "inventory management"]
 ---
-
 # Crypto Market Making: HFT Strategies for Digital Assets
 
 Market making in cryptocurrency markets presents unique opportunities for algorithmic traders willing to deploy high-frequency strategies. Unlike traditional markets with designated market makers and regulatory obligations, crypto exchanges welcome anyone to provide liquidity and earn bid-ask spreads. The combination of high volatility (50-100% annualized), fragmented liquidity across 200+ exchanges, and 24/7 trading creates persistent opportunities for systematic spread capture.
 
-This comprehensive guide examines quantitative market making strategies for digital assets, covering order placement algorithms, inventory risk management, spread optimization, and execution infrastructure necessary to compete in modern crypto markets.
+This comprehensive guide examines quantitative [market making strategies](/blog/market-making-strategies) for digital assets, covering order placement algorithms, inventory risk management, spread optimization, and execution infrastructure necessary to compete in modern crypto markets.
 
 ## Market Making Fundamentals in Crypto
 
 Market making generates profit by simultaneously posting buy and sell orders, capturing the spread between them. A market maker quotes 100 BTC bids at $42,000 and 100 BTC offers at $42,020, earning $20 per BTC when both sides execute. Over thousands of trades daily, these small spreads compound into significant returns.
 
-The core economic principle: market makers provide liquidity to takers (those executing against posted orders) in exchange for spread compensation. Takers pay for immediacy - buying or selling instantly at posted prices rather than waiting. Market makers receive spread as payment for liquidity provision and inventory risk.
+The core economic principle: market makers provide liquidity to takers (those executing against posted orders) in exchange for spread compensation. Takers pay for immediacy - buying or selling instantly at posted prices rather than waiting. Market makers receive spread as payment for [liquidity provision](/blog/liquidity-provision-strategies) and inventory risk.
 
 Crypto markets differ fundamentally from traditional venues in several key aspects. Continuous 24/7 trading eliminates auction opens/closes that concentrate traditional volume. Most crypto exchanges operate as continuous limit order books without market makers' special privileges or obligations. Anyone can post competitive quotes alongside professional trading firms.
 
@@ -52,11 +51,11 @@ Dynamic inventory limits adjust based on volatility and market conditions. Durin
 
 Inventory liquidation strategies unwind excessive positions. Passive liquidation adjusts quote asymmetry: widen non-inventory-reducing side by 2-3× while maintaining competitive inventory-reducing side. Active liquidation crosses spread and takes liquidity when inventory exceeds critical thresholds (+15 BTC triggers market sell of 10 BTC to return to +5 BTC).
 
-Hedging with perpetual futures offsets inventory risk without liquidating positions. A market maker long 20 BTC from accumulating buys shorts 20 BTC perpetuals at 0.3% open cost. This locks in spread profit while maintaining the ability to continue market making. Periodically unwind both spot and futures positions simultaneously to realize profits.
+Hedging with [perpetual futures](/blog/perpetual-futures-funding-rate) offsets inventory risk without liquidating positions. A market maker long 20 BTC from accumulating buys shorts 20 BTC perpetuals at 0.3% open cost. This locks in spread profit while maintaining the ability to continue market making. Periodically unwind both spot and futures positions simultaneously to realize profits.
 
 Mean reversion exploitation treats temporary inventory as signal rather than pure risk. When accumulating long inventory during price drops, price often mean-reverts higher allowing profitable inventory liquidation. Small long inventories (+2 to +5 BTC) often flip naturally through passive market making rather than requiring aggressive liquidation.
 
-Statistical position sizing determines optimal maximum inventory using volatility and spread metrics. Maximum_Inventory = Daily_Volume × Spread × Target_Return / (Volatility × Risk_Tolerance). For 1,000 BTC daily volume, 0.05% spread, 50% target annual return, 80% volatility, 1% daily risk tolerance: Max = 1,000 × 0.0005 × 0.5 / (0.8 × 0.01) = 31 BTC maximum inventory.
+Statistical [position sizing](/blog/position-sizing-strategies) determines optimal maximum inventory using volatility and spread metrics. Maximum_Inventory = Daily_Volume × Spread × Target_Return / (Volatility × Risk_Tolerance). For 1,000 BTC daily volume, 0.05% spread, 50% target annual return, 80% volatility, 1% daily risk tolerance: Max = 1,000 × 0.0005 × 0.5 / (0.8 × 0.01) = 31 BTC maximum inventory.
 
 ## Spread Optimization and Pricing Models
 
@@ -84,7 +83,7 @@ The transfer arbitrage strategy exploits spread differences across exchanges. If
 
 Multi-pair market making quotes related pairs (BTC/USDT, BTC/USDC, BTC/USD) simultaneously, earning spreads on each while maintaining aggregate inventory limits. Buying BTC against USDT and selling against USDC creates offsetting positions, reducing net BTC exposure while earning spreads on both pairs.
 
-Statistical arbitrage between correlated pairs creates delta-neutral positions. If BTC/USDT and ETH/USDT maintain 0.80 correlation and BTC suddenly rallies while ETH lags, buy ETH and sell BTC to capture mean reversion. Market making on both pairs naturally accumulates positions suitable for stat arb strategies.
+[Statistical arbitrage](/blog/crypto-statistical-arbitrage) between correlated pairs creates delta-neutral positions. If BTC/USDT and ETH/USDT maintain 0.80 correlation and BTC suddenly rallies while ETH lags, buy ETH and sell BTC to capture mean reversion. Market making on both pairs naturally accumulates positions suitable for stat arb strategies.
 
 Triangular market making provides quotes on all three pairs in a triangle (BTC/USDT, ETH/USDT, ETH/BTC). Inventory imbalances from market making one pair create opportunities to market make related pairs. Long BTC from BTC/USDT buying can deploy to competitive ETH/BTC market making on the BTC side.
 

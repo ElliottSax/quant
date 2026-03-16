@@ -7,10 +7,9 @@ category: "Machine Learning"
 tags: ["NLP", "sentiment analysis", "FinBERT", "text mining", "financial news"]
 keywords: ["NLP finance", "financial sentiment analysis", "FinBERT trading"]
 ---
-
 # NLP for Finance: Sentiment Analysis from News and Filings
 
-Natural language processing transforms the vast ocean of unstructured financial text -- news articles, earnings calls, SEC filings, analyst reports, and social media -- into quantitative trading signals. While prices reflect all public information eventually, NLP provides the ability to process text faster and more consistently than human analysts, capturing sentiment shifts before they are fully priced in.
+Natural language processing transforms the vast ocean of unstructured financial text -- news articles, earnings calls, SEC filings, analyst reports, and social media -- into [quantitative trading](/blog/crypto-quant-trading-strategies) signals. While prices reflect all public information eventually, NLP provides the ability to process text faster and more consistently than human analysts, capturing sentiment shifts before they are fully priced in.
 
 This guide covers the practical implementation of financial NLP pipelines, from preprocessing raw text through sentiment scoring with FinBERT to constructing tradable signals from multiple text sources.
 
@@ -441,7 +440,7 @@ FinBERT significantly outperforms general-purpose models on financial text. In b
 
 ### How do I handle conflicting signals from different text sources?
 
-When news is bullish but social media is bearish (or vice versa), reduce position sizing rather than taking a directional bet. Conflicting signals indicate uncertainty, and the appropriate response is caution. Weight each source by its historical predictive accuracy for the specific ticker or sector, and require a minimum confidence threshold (e.g., 60% agreement) before acting.
+When news is bullish but social media is bearish (or vice versa), reduce [position sizing](/blog/position-sizing-strategies) rather than taking a directional bet. Conflicting signals indicate uncertainty, and the appropriate response is caution. Weight each source by its historical predictive accuracy for the specific ticker or sector, and require a minimum confidence threshold (e.g., 60% agreement) before acting.
 
 ### Can NLP signals be used for high-frequency trading?
 

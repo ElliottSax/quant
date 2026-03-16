@@ -7,7 +7,6 @@ category: "Risk Management"
 tags: ["liquidity risk", "market impact", "position sizing", "execution", "trading costs"]
 keywords: ["liquidity risk management", "market impact model", "position sizing illiquid", "liquidation cost", "liquidity risk quantification"]
 ---
-
 # Liquidity Risk Management: Position Sizing for Illiquid Markets
 
 Liquidity risk is the risk that a position cannot be exited at a fair price within a reasonable timeframe. Unlike market risk (which affects portfolio value regardless of trading) or credit risk (which depends on counterparty solvency), liquidity risk only materializes when you need to trade. This makes it particularly insidious: it is invisible during calm markets and devastating during crises, precisely when the need to trade is greatest. Quantitative approaches to measuring, managing, and incorporating liquidity risk into portfolio construction are essential for any strategy that trades outside the most liquid markets.
@@ -105,7 +104,7 @@ This prevents positions from becoming too large relative to market capacity. The
 
 ### Liquidity-Adjusted Position Sizing
 
-Integrate liquidity cost directly into the position sizing framework:
+Integrate liquidity cost directly into the [position sizing](/blog/position-sizing-strategies) framework:
 
 **w_i_adjusted = w_i_optimal * (1 - LC_i / expected_alpha_i)**
 
@@ -153,13 +152,13 @@ Target LCR > 100% at all times, with a buffer for unexpected redemptions.
 - The Almgren-Chriss framework optimizes the trade-off between market impact (faster execution = higher impact) and timing risk (slower execution = more price uncertainty), providing a principled approach to execution scheduling
 - Position sizing should incorporate liquidity constraints through volume-based limits (3-10% of ADV) and liquidity-adjusted alpha calculations that reduce positions when liquidation costs consume a significant fraction of expected returns
 - Liquidity stress tests should model deteriorated market conditions (50% ADV reduction, 2-3x impact increase) and calculate the gap between orderly and stressed liquidation costs
-- Crowding risk amplifies liquidity risk when many similar strategies hold the same positions; monitoring aggregate positioning and reducing size in crowded names is essential for quantitative strategies
+- Crowding risk amplifies liquidity risk when many similar strategies hold the same positions; monitoring aggregate positioning and reducing size in crowded names is essential for [quantitative strategies](/blog/crypto-defi-quant-strategies)
 
 ## Frequently Asked Questions
 
 ### How do I estimate market impact for a position I have not traded?
 
-Use cross-sectional models that estimate impact as a function of observable characteristics. The most common model: Impact = sigma * sqrt(Q/V) * k, where sigma is daily volatility, Q/V is the participation rate (shares traded / daily volume), and k is calibrated from the fund's own execution data or published research (typical range 0.1-0.5). For positions you have traded before, use your own transaction cost analysis (TCA) data to calibrate k for each market segment.
+Use cross-sectional models that estimate impact as a function of observable characteristics. The most common model: Impact = sigma * sqrt(Q/V) * k, where sigma is daily volatility, Q/V is the participation rate (shares traded / daily volume), and k is calibrated from the fund's own execution data or published research (typical range 0.1-0.5). For positions you have traded before, use your own [transaction cost analysis](/blog/transaction-cost-analysis) (TCA) data to calibrate k for each market segment.
 
 ### What is the relationship between liquidity risk and leverage?
 

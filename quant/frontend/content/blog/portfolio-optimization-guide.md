@@ -7,12 +7,11 @@ category: "Trading Strategies"
 tags: ["portfolio optimization", "modern portfolio theory", "risk parity", "asset allocation"]
 keywords: ["portfolio optimization", "modern portfolio theory", "risk parity portfolio"]
 ---
-
 # Portfolio Optimization: Modern Portfolio Theory in Practice
 
-Portfolio optimization is the quantitative framework for allocating capital across assets to achieve the best possible risk-adjusted returns. Harry Markowitz's Modern Portfolio Theory (MPT), introduced in 1952 and awarded the Nobel Prize in 1990, demonstrated that investors should evaluate portfolios holistically rather than individual securities in isolation. The key insight: diversification reduces risk without proportionally reducing returns, and there exists an "efficient frontier" of optimal portfolios that maximize return for each level of risk.
+Portfolio optimization (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)) is the quantitative framework for allocating capital across assets to achieve the best possible risk-adjusted returns. Harry Markowitz's [Modern Portfolio Theory](/blog/mean-variance-optimization) (MPT), introduced in 1952 and awarded the Nobel Prize in 1990, demonstrated that investors should evaluate portfolios holistically rather than individual securities in isolation. The key insight: diversification reduces risk without proportionally reducing returns, and there exists an "efficient frontier" of optimal portfolios that maximize return for each level of risk.
 
-While MPT provides the theoretical foundation, practitioners have developed numerous extensions and alternatives that address its well-known limitations. This guide covers the full spectrum from classical mean-variance optimization through modern approaches like risk parity and Black-Litterman.
+While MPT provides the theoretical foundation, practitioners have developed numerous extensions and alternatives that address its well-known limitations. This guide covers the full spectrum from classical mean-variance optimization through modern approaches like [risk parity](/blog/risk-parity-portfolio) and Black-Litterman.
 
 ## Mean-Variance Optimization: The Classic Approach
 

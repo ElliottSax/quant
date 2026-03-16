@@ -7,12 +7,11 @@ category: "Technical Analysis"
 tags: ["candlestick patterns", "price action", "reversal patterns", "continuation patterns", "technical analysis"]
 keywords: ["candlestick patterns guide", "candlestick trading patterns", "japanese candlestick patterns"]
 ---
-
 # Candlestick Patterns: Complete Guide to 20 Key Formations
 
 Candlestick patterns are the foundation of price action analysis, originating from 18th-century Japanese rice trader Munehisa Homma. Each candle encodes four data points (open, high, low, close) into a visual format that reveals the battle between buyers and sellers during a specific time period. When specific candles or sequences of candles appear at key chart locations, they provide probabilistic signals about future price direction.
 
-This guide covers 20 essential candlestick patterns organized by function: single-candle reversals, multi-candle reversals, and continuation patterns. For each pattern, we provide identification criteria, the market psychology it represents, and practical trading application.
+This guide covers 20 essential candlestick patterns organized by function: single-candle reversals, multi-candle reversals, and continuation patterns. For each pattern, we provide identification criteria, the market psychology it represents, and [practical trading application](/blog/elliott-wave-theory-guide).
 
 ## Understanding Candlestick Anatomy
 

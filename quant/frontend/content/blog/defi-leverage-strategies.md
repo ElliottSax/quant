@@ -7,7 +7,6 @@ category: "Crypto & DeFi"
 tags: ["leverage", "lending", "defi"]
 keywords: ["DeFi leverage", "recursive lending", "collateral management", "liquidation"]
 ---
-
 # DeFi Leverage Strategies: Aave, Compound, and Recursive Lending
 
 Leverage amplifies returns and risks in DeFi lending, enabling 2-5× position expansion through strategic collateral and borrowing. Conservative 1.5× leverage combined with strong risk management generates 15-40% annual yields. Aggressive 5× leverage creates 50%+ potential returns but faces liquidation risks during volatility.
@@ -32,7 +31,7 @@ Liquidation elimination requires maintaining safe LTV buffers and responsive mon
 
 The liquidation distance metric: current LTV vs. liquidation LTV. If currently 60% LTV and liquidation at 80%, margin = 20%. On $100k collateral, collateral can decline $20,000 (20%) before liquidation. If collateral volatility is 5% daily, 4% probability of 20% decline within 7 days (tail event). Most collateral survives, but risk exists.
 
-Position sizing limits prevent excessive leverage: maximum effective leverage of 2-3× protects against normal volatility. Effective leverage = (collateral + borrowed) / collateral. At 2× leverage, 50% collateral decline requires liquidation. At 3× leverage, 33% decline. At 5× leverage, 20% decline triggers liquidation (common during crashes).
+[Position sizing](/blog/position-sizing-strategies) limits prevent excessive leverage: maximum effective leverage of 2-3× protects against normal volatility. Effective leverage = (collateral + borrowed) / collateral. At 2× leverage, 50% collateral decline requires liquidation. At 3× leverage, 33% decline. At 5× leverage, 20% decline triggers liquidation (common during crashes).
 
 The safety calculator determines maximum borrowing: if willing to absorb 30% collateral decline (tail risk tolerance), maximum LTV = 70%. If willing to absorb 15% decline, maximum LTV = 85%. Conservative: 50% LTV (2× leverage). Moderate: 70% LTV (3.3× leverage). Aggressive: 85% LTV (5.67× leverage).
 
@@ -109,4 +108,4 @@ Yes, but carefully. 1.5× leverage on long-term ETH or BTC positions over 5+ yea
 
 **What protocols are safest for leverage trading?**
 
-Aave and Compound dominant and proven (5+ years without major liquidation bugs). Newer protocols (Curve for leveraged LP positions, dYdX for flash loan leveraging) acceptable but test with small amounts first. Avoid: unaudited protocols, protocols <1 year old, or anything promising no-liquidation mechanics (fundamentally flawed - at some LTV, liquidation must occur).
+Aave and Compound dominant and proven (5+ years without major liquidation bugs). Newer protocols (Curve for leveraged LP positions, dYdX for [flash loan](/blog/flashloan-arbitrage-guide) leveraging) acceptable but test with small amounts first. Avoid: unaudited protocols, protocols <1 year old, or anything promising no-liquidation mechanics (fundamentally flawed - at some LTV, liquidation must occur).

@@ -7,10 +7,9 @@ category: "Data Science"
 tags: ["python", "pandas", "stock analysis", "data science", "financial data"]
 keywords: ["python stock data analysis", "pandas financial analysis", "stock market python"]
 ---
-
 # Python Stock Data Analysis: Complete Guide with pandas
 
-Stock data analysis forms the foundation of every quantitative trading strategy. Whether you are building a simple moving average crossover or a sophisticated machine learning model, your ability to load, clean, transform, and analyze financial time series data determines the quality of your downstream results.
+Stock [data analysis](/blog/python-data-analysis-trading) forms the foundation of every [quantitative trading](/blog/crypto-quant-trading-strategies) strategy. Whether you are building a simple [moving average crossover](/blog/moving-average-crossover-strategy) or a sophisticated [machine learning](/blog/machine-learning-trading) model, your ability to load, clean, transform, and analyze financial time series data determines the quality of your downstream results.
 
 In this guide, we walk through the complete workflow for stock data analysis using Python and pandas, from fetching raw OHLCV data to computing portfolio-level analytics. Every code example here is production-tested and reflects patterns used in institutional quant workflows.
 
@@ -19,7 +18,7 @@ In this guide, we walk through the complete workflow for stock data analysis usi
 - **pandas is the workhorse** for financial data manipulation, offering vectorized operations that outperform row-by-row iteration by 100x or more.
 - **Data quality matters more than model complexity.** Corporate actions, missing values, and timezone inconsistencies silently corrupt backtest results.
 - **Returns analysis should use log returns** for multi-period aggregation and statistical modeling.
-- **Resampling and rolling windows** are essential for multi-timeframe analysis and feature engineering.
+- **Resampling and rolling windows** are essential for multi-timeframe analysis and [feature engineering](/blog/feature-engineering-trading).
 
 ## Setting Up Your Environment
 

@@ -7,12 +7,11 @@ category: "Crypto & DeFi"
 tags: ["flashloans", "arbitrage", "defi"]
 keywords: ["flash loans", "flash loan arbitrage", "DeFi arbitrage", "atomic transactions"]
 ---
-
 # Flash Loan Arbitrage: DeFi Atomic Profit Strategies
 
 Flash loans represent one of DeFi's most innovative mechanisms, enabling anyone to borrow millions of dollars without collateral for a single transaction block. This seemingly magical capability creates unprecedented opportunities for capital-efficient arbitrage, liquidations, and complex financial operations previously accessible only to well-capitalized institutions.
 
-The core innovation: borrow unlimited funds, execute profitable operations, repay loan plus fee, and keep profits - all within one atomic transaction that either completes entirely or reverts with only gas costs lost. This guide examines flash loan mechanics, arbitrage strategies, smart contract implementation, and risk management for atomic profit extraction.
+The core innovation: borrow unlimited funds, execute profitable operations, repay loan plus fee, and keep profits - all within one atomic transaction that either completes entirely or reverts with only gas costs lost. This guide examines flash loan mechanics, arbitrage strategies, [smart contract](/blog/smart-contract-risk-management) implementation, and risk management for atomic profit extraction.
 
 ## Flash Loan Fundamentals and Mechanics
 
@@ -168,7 +167,7 @@ Slippage protection prevents arbitrages from failing due to price movements betw
 
 Protocol risk monitoring tracks smart contract upgrades, pauses, and incidents affecting flash loan providers or target DEXes. Subscribe to protocol Discord/Telegram for real-time updates. Automated monitoring detects when protocols pause flash loans (common during security incidents), automatically halting operations.
 
-Position sizing limits flash loan amounts to minimize price impact and reduce exposure to failed transactions. Even though flash loans offer unlimited capital, borrowing $10M for an arbitrage opportunity with $1M liquidity creates massive slippage. Limit borrowing to 20-30% of target pool liquidity for consistent execution.
+[Position sizing](/blog/position-sizing-strategies) limits flash loan amounts to minimize price impact and reduce exposure to failed transactions. Even though flash loans offer unlimited capital, borrowing $10M for an arbitrage opportunity with $1M liquidity creates massive slippage. Limit borrowing to 20-30% of target pool liquidity for consistent execution.
 
 ## Key Takeaways
 
@@ -186,7 +185,7 @@ Success in flash loan arbitrage depends on: low-latency opportunity detection, g
 
 **Can flash loans be used to manipulate prices or attack protocols?**
 
-Yes, flash loans have enabled several DeFi protocol attacks exploiting vulnerabilities. Attackers borrow large amounts to manipulate price oracles, drain liquidity pools, or exploit governance mechanisms. Examples: bZx attack ($350k, 2020), Harvest Finance ($24M, 2020), Cream Finance ($130M, 2021). However, these exploited protocol vulnerabilities rather than flash loans themselves. Legitimate flash loan use focuses on arbitrage and liquidations. Protocols implement flash loan attack protection through time-weighted price oracles, liquidity lockups, and governance delays.
+Yes, flash loans have enabled several [DeFi protocol](/blog/defi-protocol-analysis) attacks exploiting vulnerabilities. Attackers borrow large amounts to manipulate price oracles, drain liquidity pools, or exploit governance mechanisms. Examples: bZx attack ($350k, 2020), Harvest Finance ($24M, 2020), Cream Finance ($130M, 2021). However, these exploited protocol vulnerabilities rather than flash loans themselves. Legitimate flash loan use focuses on arbitrage and liquidations. Protocols implement flash loan attack protection through time-weighted price oracles, liquidity lockups, and governance delays.
 
 **How much can realistically be earned from flash loan arbitrage?**
 

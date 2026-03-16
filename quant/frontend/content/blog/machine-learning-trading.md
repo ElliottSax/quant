@@ -7,18 +7,17 @@ category: "Algo Trading"
 tags: ["machine learning", "AI trading", "random forest", "feature engineering"]
 keywords: ["machine learning trading", "ML trading strategies", "AI quantitative trading"]
 ---
-
 # Machine Learning for Trading: Practical Applications Guide
 
 Machine learning for trading represents the intersection of data science and quantitative finance, offering the ability to discover non-linear patterns in market data that traditional statistical methods miss. However, the application of machine learning to financial markets is fraught with pitfalls that do not exist in other ML domains. The signal-to-noise ratio in financial data is extremely low, data is non-stationary, and the adversarial nature of markets means that exploitable patterns can disappear once they are widely known. De Prado's "Advances in Financial Machine Learning" (2018) and subsequent work have established rigorous frameworks for applying ML to trading that address these unique challenges.
 
-This guide covers the practical aspects of building ML trading models, from feature engineering through deployment, with an emphasis on what actually works in production.
+This guide covers the practical aspects of building ML trading models, from [feature engineering](/blog/feature-engineering-trading) through deployment, with an emphasis on what actually works in production.
 
 ## Why Financial ML Is Different
 
 ### Low Signal-to-Noise Ratio
 
-In image classification, the signal-to-noise ratio is high: a cat picture clearly looks like a cat. In financial data, the signal is buried in noise. Daily stock returns have a Sharpe ratio equivalent of approximately 0.05-0.10 per day, meaning the predictable component of returns is tiny relative to random variation.
+In image classification, the signal-to-noise ratio is high: a cat picture clearly looks like a cat. In financial data, the signal is buried in noise. Daily stock returns have a [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) equivalent of approximately 0.05-0.10 per day, meaning the predictable component of returns is tiny relative to random variation.
 
 **Implication**: Models must be designed for high precision with moderate recall. A model that correctly predicts direction 53% of the time with good confidence calibration can be extremely profitable. Attempting 90%+ accuracy leads to overfitting.
 
@@ -196,7 +195,7 @@ This threshold approach trades only on high-confidence predictions, improving th
 | Daily Trades | 8-15 | 10-20 | N/A |
 | Win Rate | 53.8% | 52.4% | N/A |
 
-The LightGBM model achieved a Sharpe of 1.34 with 54.2% accuracy, confirming that even modest predictive edge (slightly above 50%) can be highly profitable with proper position sizing and risk management.
+The LightGBM model achieved a Sharpe of 1.34 with 54.2% accuracy, confirming that even modest predictive edge (slightly above 50%) can be highly profitable with proper [position sizing](/blog/position-sizing-strategies) and risk management.
 
 ## Key Takeaways
 
@@ -216,7 +215,7 @@ Machine learning cannot reliably predict exact stock prices. However, it can ide
 
 ### Which machine learning model is best for trading?
 
-Gradient boosted tree models (LightGBM, XGBoost) consistently outperform other approaches on tabular financial data in both academic research and practitioner applications. They handle missing data, capture non-linear feature interactions, and are relatively robust to irrelevant features. Deep learning models (LSTMs, Transformers) can add value for sequence-dependent strategies and alternative data (text, images) but require significantly more data and engineering effort.
+Gradient boosted tree models (LightGBM, XGBoost) consistently outperform other approaches on tabular financial data in both academic research and practitioner applications. They handle missing data, capture non-linear feature interactions, and are relatively robust to irrelevant features. Deep learning models (LSTMs, Transformers) can add value for sequence-dependent strategies and [alternative data](/blog/alternative-data-trading) (text, images) but require significantly more data and engineering effort.
 
 ### How much data do you need for ML trading models?
 

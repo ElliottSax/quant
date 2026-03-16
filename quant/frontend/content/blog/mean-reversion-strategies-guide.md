@@ -7,14 +7,13 @@ category: "Algo Trading"
 tags: ["mean reversion", "pairs trading", "statistical arbitrage", "quantitative strategies"]
 keywords: ["mean reversion trading", "pairs trading strategy", "statistical arbitrage guide"]
 ---
-
 # Mean Reversion Strategies: Statistical Foundations and Implementation Guide
 
 ## Introduction
 
-Mean reversion is one of the oldest and most empirically validated phenomena in financial markets. The core premise is straightforward: asset prices, spreads between related instruments, or financial ratios that deviate significantly from their long-run equilibrium tend to revert toward that equilibrium over time. What separates professionals from amateurs in this space is the rigor applied to verifying that reversion actually exists in a given instrument before allocating capital.
+[Mean reversion](/blog/mean-reversion-trading-strategy) is one of the oldest and most empirically validated phenomena in financial markets. The core premise is straightforward: asset prices, spreads between related instruments, or financial ratios that deviate significantly from their long-run equilibrium tend to revert toward that equilibrium over time. What separates professionals from amateurs in this space is the rigor applied to verifying that reversion actually exists in a given instrument before allocating capital.
 
-This article covers the complete pipeline: the statistical theory underpinning mean reversion, the battery of tests required to validate it, a practical implementation of a pairs trading strategy, and the risk management framework needed to survive the inevitable regime changes that break any strategy. Concrete numbers and working Python code are included throughout.
+This article covers the complete pipeline: the statistical theory underpinning mean reversion, the battery of tests required to validate it, a practical implementation of a [pairs trading strategy](/blog/pairs-trading-strategy-guide), and the risk management framework needed to survive the inevitable regime changes that break any strategy. Concrete numbers and working Python code are included throughout.
 
 ---
 
@@ -292,7 +291,7 @@ A pairs trade requires four legs (enter two positions, exit two positions). At $
 
 ### Overfitting Entry/Exit Thresholds
 
-Optimizing the entry z-score from 1.5 to 2.5 in increments of 0.1 and the exit from -0.5 to 0.5 gives 110 combinations. On any finite backtest, one combination will look optimal by chance. Use walk-forward optimization with a minimum of 5 out-of-sample windows. If the optimal parameters shift materially across windows, the strategy is overfit.
+Optimizing the entry z-score from 1.5 to 2.5 in increments of 0.1 and the exit from -0.5 to 0.5 gives 110 combinations. On any finite backtest, one combination will look optimal by chance. Use walk-[forward optimization](/blog/walk-forward-optimization) with a minimum of 5 out-of-sample windows. If the optimal parameters shift materially across windows, the strategy is overfit.
 
 ### Survivorship Bias in Pair Selection
 
@@ -324,7 +323,7 @@ Net of costs, a well-implemented equity pairs strategy targeting liquid large-ca
 
 **Can mean reversion strategies be applied to cryptocurrencies?**
 
-Yes, with significant caveats. Crypto pairs (e.g., BTC/ETH spread) exhibit cointegration during stable regimes but break down violently during liquidity crises. The high volatility demands tighter position sizing. Transaction costs and funding rates on perpetual futures must be modeled explicitly. The half-life of crypto spreads tends to be shorter (2 to 5 days) requiring intraday data and more frequent rebalancing.
+Yes, with significant caveats. Crypto pairs (e.g., BTC/ETH spread) exhibit cointegration during stable regimes but break down violently during liquidity crises. The high volatility demands tighter [position sizing](/blog/position-sizing-strategies). Transaction costs and funding rates on [perpetual futures](/blog/perpetual-futures-funding-rate) must be modeled explicitly. The half-life of crypto spreads tends to be shorter (2 to 5 days) requiring intraday data and more frequent rebalancing.
 
 ---
 

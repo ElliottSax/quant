@@ -7,10 +7,9 @@ category: "Data Science"
 tags: ["matplotlib", "visualization", "trading charts", "python", "candlestick"]
 keywords: ["matplotlib trading charts", "python candlestick chart", "trading visualization"]
 ---
-
 # Matplotlib for Trading Charts: Visualization Best Practices
 
-Effective visualization is not optional in quantitative trading. Charts reveal patterns that raw numbers obscure: regime changes in equity curves, clustering in drawdown periods, divergence between price and indicators. A well-structured charting library accelerates research, debugging, and communication with stakeholders.
+Effective visualization is not optional in [quantitative trading](/blog/crypto-quant-trading-strategies). Charts reveal patterns that raw numbers obscure: regime changes in equity curves, clustering in drawdown periods, divergence between price and indicators. A well-structured charting library accelerates research, debugging, and communication with stakeholders.
 
 This guide covers the chart types that matter most for quant traders, built with Matplotlib and mplfinance. Every example produces publication-quality output suitable for research reports and dashboards.
 

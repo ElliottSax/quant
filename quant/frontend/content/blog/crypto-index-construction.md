@@ -7,14 +7,13 @@ category: "Crypto & DeFi"
 tags: ["indices", "portfolio-construction", "diversification"]
 keywords: ["crypto index", "market cap weighting", "factor-based indices", "portfolio diversification"]
 ---
-
 # Crypto Index Construction: Market-Cap and Factor-Based
 
 Cryptocurrency indices provide systematic diversification exposures across assets with varying characteristics. Market-cap weighted indices (most common approach) provide representative exposure proportional to network sizes. Factor-based indices enable thematic investing in specific crypto sectors (DeFi, Layer 1 platforms, privacy coins). This comprehensive guide develops frameworks for index construction, rebalancing mechanics, and performance evaluation.
 
 ## Market-Capitalization Weighted Indices
 
-Market-cap weighted construction allocates portfolio weights proportional to cryptocurrency market capitalizations. The largest index (Bitcoin/Ethereum mix) captures 60-70% of crypto market, leaving 30-40% for diversification.
+Market-cap weighted construction allocates portfolio weights proportional to cryptocurrency market capitalizations. The largest index (Bitcoin/Ethereum mix) captures 60-70% of [crypto market](/blog/crypto-market-making-guide), leaving 30-40% for diversification.
 
 The construction methodology: (1) Select universe (all cryptos >$1B market cap = 20-30 assets), (2) Calculate market cap for each (price × circulating supply), (3) Calculate weights (each asset's market cap / total market cap), (4) Implement (buy each asset at its weight), (5) Rebalance quarterly maintaining targets.
 
@@ -64,7 +63,7 @@ Evaluating index performance requires comparison to relevant benchmarks and risk
 
 Comparison benchmarks: (1) 60/40 BTC/ETH portfolio (simple alternative), (2) Market-cap weighted (representative alternative), (3) Equal-weight (naive alternative), (4) Hold Cash (risk-free baseline). Index performance versus these alternatives determines value-add.
 
-Sharpe ratio compares risk-adjusted returns: (Annual Return - Risk-Free Rate) / Volatility. Market-cap weighted crypto typically achieves 0.5-1.5 Sharpe ratio (attractive vs. traditional assets' 0.3-0.6). Factor-based indices typically 0.3-1.0 (depends on factor).
+[Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) compares risk-adjusted returns: (Annual Return - Risk-Free Rate) / Volatility. Market-cap weighted crypto typically achieves 0.5-1.5 Sharpe ratio (attractive vs. traditional assets' 0.3-0.6). Factor-based indices typically 0.3-1.0 (depends on factor).
 
 Information ratio measures excess return per unit of tracking error (deviation from benchmark): (Index Return - Benchmark Return) / Tracking Error. Factor-based indices aiming 0.5-1.0 information ratio. Values >1.0 indicate excellent factor selection, <0 indicate underperformance versus benchmark.
 

@@ -7,20 +7,19 @@ category: "Portfolio Management"
 tags: ["regime detection", "asset allocation", "Hidden Markov Model", "macro investing", "dynamic allocation"]
 keywords: ["regime based allocation", "market regime detection", "Hidden Markov Model finance", "dynamic asset allocation", "macro regime investing"]
 ---
-
 # Regime-Based Asset Allocation: Adapting to Market Conditions
 
 Financial markets do not behave the same way at all times. Bull markets exhibit low volatility, positive momentum, and tight credit spreads. Bear markets exhibit high volatility, negative momentum, and widening spreads. The transition between these regimes is often abrupt, and portfolios optimized for one regime can perform catastrophically in another. Regime-based allocation systematically identifies the current market environment and adjusts portfolio positioning accordingly, offering a principled approach to adapting investment strategy to changing conditions.
 
 ## What Are Market Regimes?
 
-A market regime is a persistent state characterized by distinct statistical properties of asset returns. The most common regime classification is:
+A [market regime](/blog/market-regime-detection) is a persistent state characterized by distinct statistical properties of asset returns. The most common regime classification is:
 
 **Bull/Risk-On**: Positive expected returns, low-to-moderate volatility (12-16% annualized for equities), low correlations across risk assets, tight credit spreads, upward-sloping yield curve. Duration: typically 3-7 years.
 
 **Bear/Risk-Off**: Negative expected returns, high volatility (25-45%), high correlations across risk assets (the "correlation convergence" phenomenon), widening credit spreads, flattening or inverting yield curve. Duration: typically 6-18 months.
 
-**High Volatility/Transition**: Uncertain direction, elevated volatility, rapid mean reversion, increased sensitivity to news flow. Often occurs at regime transitions. Duration: typically 2-6 months.
+**High Volatility/Transition**: Uncertain direction, elevated volatility, rapid [mean reversion](/blog/mean-reversion-strategies-guide), increased sensitivity to news flow. Often occurs at regime transitions. Duration: typically 2-6 months.
 
 **Low Volatility/Complacency**: Very low volatility (below 12%), compressed risk premia, carry trades outperform, negative skewness builds. Often precedes sharp corrections. Duration: typically 6-18 months.
 
@@ -155,12 +154,12 @@ HMMs with too many states or too many input features will overfit to historical 
 
 ### Transaction Costs
 
-Regime transitions require substantial portfolio rebalancing. A shift from 60% equities to 25% equities requires selling 35% of the portfolio. At typical institutional transaction costs (0.10-0.20% per trade), each full regime shift costs 0.15-0.30%. With 2-4 regime shifts per year, annual transaction costs can reach 0.5-1.0%, partially offsetting the risk reduction benefit.
+Regime transitions require substantial [portfolio rebalancing](/blog/rebalancing-strategies-quant). A shift from 60% equities to 25% equities requires selling 35% of the portfolio. At typical institutional transaction costs (0.10-0.20% per trade), each full regime shift costs 0.15-0.30%. With 2-4 regime shifts per year, annual transaction costs can reach 0.5-1.0%, partially offsetting the risk reduction benefit.
 
 ## Key Takeaways
 
 - Market regimes (bull, bear, high-volatility, low-volatility) exhibit distinct statistical properties that fundamentally affect optimal portfolio positioning
-- Hidden Markov Models provide the most rigorous quantitative framework for regime detection, estimating state-specific parameters and transition probabilities from observed returns
+- [Hidden Markov Models](/blog/hidden-markov-models-trading) provide the most rigorous quantitative framework for regime detection, estimating state-specific parameters and transition probabilities from observed returns
 - Regime-based allocation typically improves Sharpe ratios by 0.15-0.25 and reduces maximum drawdowns by 25-50% relative to static allocation, at the cost of modest return reduction
 - Blending regime-specific portfolios weighted by regime probabilities produces smoother transitions and better handles regime uncertainty than binary regime switching
 - Detection lag, overfitting risk, and transaction costs are the primary implementation challenges, addressed through composite signals, parsimonious models, and gradual reallocation
@@ -177,7 +176,7 @@ Regime detection identifies the transition into a bear regime after it begins, n
 
 ### How does regime-based allocation compare to trend following?
 
-They are closely related. Simple trend following (above/below 200-day moving average) is a special case of regime detection with a threshold-based rule. HMM-based regime detection is more sophisticated, using return distribution parameters rather than just price levels. In practice, both approaches produce similar performance improvements over buy-and-hold, with HMMs offering marginally better risk-adjusted returns due to their probabilistic framework.
+They are closely related. Simple [trend following](/blog/crypto-trend-following-systems) (above/below 200-day moving average) is a special case of regime detection with a threshold-based rule. HMM-based regime detection is more sophisticated, using return distribution parameters rather than just price levels. In practice, both approaches produce similar performance improvements over buy-and-hold, with HMMs offering marginally better risk-adjusted returns due to their probabilistic framework.
 
 ### Should regime detection use daily or monthly data?
 

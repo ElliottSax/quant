@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["fixed income", "bonds", "duration", "yield curve", "credit spread"]
 keywords: ["fixed income quantitative strategies", "duration trading", "yield curve strategy", "credit spread trading", "systematic bond strategies"]
 ---
-
 # Fixed Income Quantitative Strategies: Duration, Curve, and Spread
 
-Fixed income markets, with over $130 trillion in global outstanding debt, offer a rich landscape for systematic quantitative strategies. Unlike equities, where price discovery is primarily driven by earnings expectations and sentiment, fixed income pricing is grounded in measurable quantities: interest rates, credit quality, prepayment behavior, and the term structure of risk. This mathematical tractability makes bonds particularly suited to quantitative approaches. The three primary systematic strategies -- duration timing, yield curve positioning, and credit spread trading -- each exploit a different dimension of fixed income risk and return.
+Fixed income markets, with over $130 trillion in global outstanding debt, offer a rich landscape for systematic [quantitative strategies](/blog/crypto-defi-quant-strategies). Unlike equities, where price discovery is primarily driven by earnings expectations and sentiment, fixed income pricing is grounded in measurable quantities: interest rates, credit quality, prepayment behavior, and the term structure of risk. This mathematical tractability makes bonds particularly suited to quantitative approaches. The three primary systematic strategies -- duration timing, yield curve positioning, and credit spread trading -- each exploit a different dimension of fixed income risk and return.
 
 ## Duration Strategies
 
@@ -158,7 +157,7 @@ Corporate bonds are substantially less liquid than government bonds. Bid-ask spr
 - Fixed income quantitative strategies operate along three dimensions: duration (interest rate level), curve (term structure shape), and spread (credit risk premium), each providing independent sources of return
 - Duration timing based on momentum, mean-reversion, and macro signals adds 30-70 bps annually, with the primary value in drawdown reduction during rate-rising environments
 - Yield curve strategies exploit predictable patterns in curve slope and curvature, with carry and roll-down providing the most reliable systematic alpha
-- Credit spread strategies combining momentum, value, and carry signals capture the credit risk premium while managing default and liquidity risk
+- Credit spread strategies combining momentum, value, and carry signals capture the credit risk premium while managing default and [liquidity risk](/blog/liquidity-risk-management)
 - Combining duration, curve, and spread strategies achieves diversification benefits because the three return sources have low correlation with each other
 
 ## Frequently Asked Questions

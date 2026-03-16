@@ -7,7 +7,6 @@ category: "Crypto & DeFi"
 tags: ["mev", "ethereum", "trading-strategies"]
 keywords: ["MEV", "sandwich attacks", "backrunning", "Ethereum MEV", "flashbots"]
 ---
-
 # MEV Strategies on Ethereum: Sandwich Attacks and Backrunning
 
 Maximal Extractable Value (MEV) represents one of the most controversial yet profitable phenomena in decentralized finance. MEV extractors identify pending transactions in Ethereum's mempool, analyze their market impact, and insert their own transactions to profit from price movements caused by others' trades. Annual MEV extraction exceeds $600 million across Ethereum and Layer 2 networks, with sophisticated actors capturing millions daily through automated strategies.
@@ -28,7 +27,7 @@ The economics of MEV involve a priority gas auction (PGA) where multiple searche
 
 Flashbots fundamentally transformed MEV extraction by introducing private transaction pools and sealed-bid auctions. Searchers submit "bundles" of transactions directly to block proposers, specifying transaction order and profit-sharing. This reduces gas fee waste from PGAs and enables more complex multi-transaction MEV strategies.
 
-MEV infrastructure requires sophisticated mempool monitoring, smart contract interaction simulation, bundle construction, and direct relationships with block proposers through Flashbots or private order flow arrangements.
+MEV infrastructure requires sophisticated mempool monitoring, [smart contract](/blog/smart-contract-risk-management) interaction simulation, bundle construction, and direct relationships with block proposers through Flashbots or private order flow arrangements.
 
 ## Sandwich Attack Mechanics
 
@@ -54,13 +53,13 @@ DEX arbitrage backrunning detects trades creating price differences across excha
 
 The detection system monitors pending transactions for large swaps, simulates their execution, calculates resulting pool states, and compares against other DEX pools. If spread exceeds gas costs plus 0.3% minimum profit margin, construct arbitrage bundle.
 
-Flash loans enable capital-efficient backrunning. Instead of maintaining $500,000 inventory for arbitrage, borrow $500,000 from Aave flash loan, execute arbitrage, repay loan plus 0.09% fee, and keep profit. A $10,000 arbitrage opportunity costs $450 in flash loan fees plus $200 gas, netting $9,350 with zero capital deployed.
+Flash loans enable capital-efficient backrunning. Instead of maintaining $500,000 inventory for arbitrage, borrow $500,000 from Aave [flash loan](/blog/flashloan-arbitrage-guide), execute arbitrage, repay loan plus 0.09% fee, and keep profit. A $10,000 arbitrage opportunity costs $450 in flash loan fees plus $200 gas, netting $9,350 with zero capital deployed.
 
 Liquidation backrunning targets undercollateralized lending positions. When ETH price drops and a borrower's collateral falls below liquidation threshold, backrun price update transactions with liquidation calls. Aave and Compound offer 5-10% liquidation bonuses, creating guaranteed profits for fast liquidators.
 
 The liquidation detection flow: monitor price feeds for significant moves, query lending protocols for positions near liquidation thresholds, simulate price oracle updates, and submit liquidation bundles immediately after oracle updates confirm. Competition is intense - hundreds of bots monitor the same liquidations.
 
-Statistical arbitrage backrunning exploits temporary correlation breakdowns. If ETH and stETH normally trade at 1:1 but a large trade pushes ratio to 1:0.985, backrun with arbitrage betting on mean reversion. This requires historical correlation analysis and confidence intervals to distinguish temporary dislocations from permanent changes.
+[Statistical arbitrage](/blog/crypto-statistical-arbitrage) backrunning exploits temporary correlation breakdowns. If ETH and stETH normally trade at 1:1 but a large trade pushes ratio to 1:0.985, backrun with arbitrage betting on [mean reversion](/blog/mean-reversion-strategies-guide). This requires historical correlation analysis and confidence intervals to distinguish temporary dislocations from permanent changes.
 
 ## Frontrunning and Generalized Frontrunning
 
@@ -68,7 +67,7 @@ Frontrunning executes before a detected transaction to profit from its anticipat
 
 NFT frontrunning targets high-value NFT purchases. If detecting a pending 100 ETH bid on a rare NFT, frontrun with 101 ETH bid to acquire the NFT, then immediately relist at 110 ETH hoping the original buyer still wants it. This strategy faces significant inventory risk if the buyer doesn't follow through.
 
-Token listing frontrunning monitors exchange contracts for addLiquidity() calls creating new trading pairs. Frontrun the liquidity provision with small buy order at initial price, then sell after official listing announcement drives volume. Extremely risky due to rug pulls and scams, but potentially profitable on legitimate projects.
+Token listing frontrunning monitors exchange contracts for addLiquidity() calls creating new trading pairs. Frontrun the [liquidity provision](/blog/liquidity-provision-strategies) with small buy order at initial price, then sell after official listing announcement drives volume. Extremely risky due to rug pulls and scams, but potentially profitable on legitimate projects.
 
 Oracle frontrunning exploits latency between on-chain and off-chain prices. If Chainlink oracle hasn't updated to reflect 2% ETH price drop, frontrun oracle update with short position or liquidation call. Oracle MEV declined significantly as oracle update mechanisms improved, but opportunities persist on less sophisticated oracle implementations.
 

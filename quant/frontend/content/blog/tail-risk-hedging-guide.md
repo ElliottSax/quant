@@ -7,7 +7,6 @@ category: "Risk Management"
 tags: ["tail risk", "black swan", "hedging", "options strategies", "portfolio protection"]
 keywords: ["tail risk hedging", "black swan protection", "portfolio tail risk", "volatility hedging", "crisis alpha"]
 ---
-
 # Tail Risk Hedging: Protecting Against Black Swan Events
 
 The paradox of tail risk hedging is that it requires paying insurance premiums during precisely the periods when insurance seems unnecessary. Markets spend most of their time in benign conditions, making tail protection feel like an expensive luxury -- until the tail event arrives and the unhedged portfolio faces catastrophic losses. This guide examines the quantitative framework for tail risk assessment, the primary hedging instruments and their cost-benefit profiles, and the systematic approaches that institutional investors use to maintain protection without destroying long-term returns.
@@ -66,9 +65,9 @@ The most direct form of tail protection. A 10% out-of-the-money (OTM) SPX put pr
 
 ### Systematic Tail Hedging
 
-**Trend following (CTA-style)**: Momentum strategies across asset classes historically provide positive returns during sustained market declines. During the 2008 GFC, managed futures indices gained 14-20% while equities lost 50%+. Allocating 10-15% to trend following provides structural tail protection without explicit option costs.
+**Trend following (CTA-style)**: Momentum strategies across asset classes historically provide positive returns during sustained market declines. During the 2008 GFC, managed futures indices gained 14-20% while equities lost 50%+. Allocating 10-15% to [trend following](/blog/crypto-trend-following-systems) provides structural tail protection without explicit option costs.
 
-**Risk parity with tail overlay**: Combine a risk parity base allocation (which reduces equity concentration risk) with a dedicated tail risk overlay (5-10% OTM puts on equity indices). This dual approach provides both structural diversification and explicit tail protection.
+**Risk parity with tail overlay**: Combine a [risk parity](/blog/risk-parity-portfolio) base allocation (which reduces equity concentration risk) with a dedicated tail risk overlay (5-10% OTM puts on equity indices). This dual approach provides both structural diversification and explicit tail protection.
 
 **Dynamic hedging based on regime signals**: Increase tail protection when regime indicators signal elevated risk. Common signals include:
 - VIX term structure inversion (backwardation signals near-term fear)
@@ -135,11 +134,11 @@ For a truly long-term investor (20+ year horizon) with no leverage and no liquid
 
 ### How do I hedge tail risk in a fixed income portfolio?
 
-Interest rate tail risk can be hedged with receiver swaptions (protection against rate declines) or payer swaptions (protection against rate spikes). Credit tail risk is hedged with CDS index options (CDX or iTraxx) or by buying protection on investment grade CDS indices. Treasury volatility strategies (MOVE index derivatives) provide broad fixed income tail protection.
+Interest rate tail risk can be hedged with receiver swaptions (protection against rate declines) or payer swaptions (protection against rate spikes). Credit tail risk is hedged with CDS index options (CDX or iTraxx) or by buying protection on investment grade CDS indices. Treasury volatility strategies (MOVE index derivatives) provide broad [fixed income](/blog/fixed-income-quant-strategies) tail protection.
 
 ### What is "crisis alpha" and how does it relate to tail hedging?
 
-Crisis alpha refers to strategies that generate positive returns specifically during market crises. Trend following is the most well-documented source of crisis alpha, with managed futures producing average returns of +15-25% during the 10 worst equity drawdown periods since 1980. Unlike put options, crisis alpha strategies do not have a fixed cost -- they may also generate returns during non-crisis periods, making them structurally more efficient than options-based tail hedging.
+Crisis alpha refers to strategies that generate positive returns specifically during market crises. [Trend following](/blog/trend-following-system-guide) is the most well-documented source of crisis alpha, with managed futures producing average returns of +15-25% during the 10 worst equity drawdown periods since 1980. Unlike put options, crisis alpha strategies do not have a fixed cost -- they may also generate returns during non-crisis periods, making them structurally more efficient than options-based tail hedging.
 
 ### Can I use inverse ETFs for tail risk hedging?
 

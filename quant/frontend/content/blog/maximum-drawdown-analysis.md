@@ -7,7 +7,6 @@ category: "Risk Management"
 tags: ["drawdown", "risk management", "portfolio risk", "performance metrics", "quantitative trading"]
 keywords: ["maximum drawdown", "drawdown analysis", "portfolio drawdown management", "worst case loss", "drawdown recovery"]
 ---
-
 # Maximum Drawdown Analysis: Measuring and Managing Worst-Case Losses
 
 Maximum drawdown is the metric that separates academic risk measures from lived trading experience. While volatility treats upside and downside equally, and VaR focuses on a single percentile, maximum drawdown captures the most painful scenario an investor actually endures: the peak-to-trough decline before recovery. Understanding, measuring, and managing drawdown is essential for any quantitative strategy that intends to retain its capital -- both financial and psychological.
@@ -138,7 +137,7 @@ Where D_i are the individual drawdown magnitudes. The Burke ratio penalizes both
 - Maximum drawdown captures the peak-to-trough decline that investors actually experience, making it more psychologically and practically relevant than volatility or VaR for strategy evaluation
 - The asymmetry of losses and recoveries means that drawdown avoidance has disproportionate value: a 50% loss requires a 100% gain to recover
 - Volatility targeting and drawdown-based deleveraging are the two primary techniques for controlling drawdown, each with distinct trade-offs between protection and performance drag
-- Drawdown-adjusted metrics (Calmar, Sterling, Burke ratios) provide a more complete picture of risk-adjusted performance than Sharpe ratio alone
+- Drawdown-adjusted metrics (Calmar, Sterling, Burke ratios) provide a more complete picture of risk-adjusted performance than [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) alone
 - Strategy-specific drawdown patterns (momentum crashes, carry unwinds, quant quakes) require targeted controls rather than one-size-fits-all approaches
 
 ## Frequently Asked Questions
@@ -149,7 +148,7 @@ Acceptable drawdown depends on strategy type, leverage, and investor expectation
 
 ### How do I stress test for drawdowns beyond my historical experience?
 
-Combine historical worst-case scenarios with hypothetical stress tests. Apply the worst monthly returns from related but distinct markets (e.g., apply 1998 LTCM unwind correlations to your current portfolio). Use Monte Carlo simulation with fat-tailed distributions calibrated to crisis periods. Scale historical drawdowns by leverage and concentration ratios that differ from the historical context.
+Combine historical worst-case scenarios with hypothetical stress tests. Apply the worst monthly returns from related but distinct markets (e.g., apply 1998 LTCM unwind correlations to your current portfolio). Use [Monte Carlo simulation](/blog/monte-carlo-simulation-trading) with fat-tailed distributions calibrated to crisis periods. Scale historical drawdowns by leverage and concentration ratios that differ from the historical context.
 
 ### Does drawdown-based deleveraging hurt long-term returns?
 

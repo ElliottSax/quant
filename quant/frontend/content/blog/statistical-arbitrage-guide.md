@@ -7,12 +7,11 @@ category: "Trading Strategies"
 tags: ["statistical arbitrage", "pairs trading", "mean reversion", "quantitative trading", "spread trading"]
 keywords: ["statistical arbitrage", "pairs trading strategy", "quantitative pair trading"]
 ---
-
 # Statistical Arbitrage: Quantitative Pair Trading Systems
 
-Statistical arbitrage exploits temporary pricing dislocations between related securities. When two historically correlated stocks diverge beyond what fundamentals justify, a stat arb strategy goes long the underperformer and short the outperformer, profiting as the spread reverts to its historical mean.
+[Statistical arbitrage](/blog/crypto-statistical-arbitrage) exploits temporary pricing dislocations between related securities. When two historically correlated stocks diverge beyond what fundamentals justify, a stat arb strategy goes long the underperformer and short the outperformer, profiting as the spread reverts to its historical mean.
 
-This is one of the oldest and most robust quantitative strategies, used by hedge funds from D.E. Shaw to Renaissance Technologies. The edge comes not from predicting direction but from identifying pairs whose spread is mean-reverting, sizing positions correctly, and managing the risk of permanent divergence.
+This is one of the oldest and most robust [quantitative strategies](/blog/crypto-defi-quant-strategies), used by hedge funds from D.E. Shaw to Renaissance Technologies. The edge comes not from predicting direction but from identifying pairs whose spread is mean-reverting, sizing positions correctly, and managing the risk of permanent divergence.
 
 ## Key Takeaways
 
@@ -383,7 +382,7 @@ def pair_risk_monitor(
 
 ### What is the difference between correlation and cointegration for pairs trading?
 
-Correlation measures the linear relationship between returns (short-term co-movement). Cointegration measures whether two price series share a long-run equilibrium. Two stocks can be highly correlated but not cointegrated (they trend together but can drift apart permanently), or cointegrated but not always highly correlated (short-term divergences revert). Cointegration is the stronger and more useful condition for pairs trading because it implies the spread is stationary and mean-reverting.
+Correlation measures the linear relationship between returns (short-term co-movement). Cointegration measures whether two price series share a long-run equilibrium. Two stocks can be highly correlated but not cointegrated (they trend together but can drift apart permanently), or cointegrated but not always highly correlated (short-term divergences revert). Cointegration is the stronger and more useful condition for [pairs trading](/blog/pairs-trading-strategy-guide) because it implies the spread is stationary and mean-reverting.
 
 ### What is a good half-life for a pairs trade?
 

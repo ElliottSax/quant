@@ -7,10 +7,9 @@ category: "Portfolio Management"
 tags: ["HRP", "risk parity", "machine learning", "portfolio construction", "clustering"]
 keywords: ["hierarchical risk parity", "HRP portfolio", "machine learning portfolio construction", "clustering portfolio allocation", "Lopez de Prado"]
 ---
-
 # Hierarchical Risk Parity: Machine Learning Portfolio Construction
 
-Hierarchical Risk Parity (HRP), introduced by Marcos Lopez de Prado in 2016, represents a fundamental departure from traditional portfolio optimization. Rather than inverting a covariance matrix (which amplifies estimation errors), HRP uses machine learning techniques -- hierarchical clustering and graph theory -- to build portfolios from the correlation structure of asset returns. The result is a portfolio construction method that is more stable, better diversified, and more robust to estimation error than both mean-variance optimization and standard risk parity.
+Hierarchical Risk Parity (HRP), introduced by Marcos Lopez de Prado in 2016, represents a fundamental departure from traditional [portfolio optimization](/blog/portfolio-optimization-guide). Rather than inverting a covariance matrix (which amplifies estimation errors), HRP uses [machine learning](/blog/machine-learning-trading) techniques -- hierarchical clustering and graph theory -- to build portfolios from the correlation structure of asset returns. The result is a portfolio construction method that is more stable, better diversified, and more robust to estimation error than both mean-variance optimization and standard risk parity.
 
 ## Why Traditional Methods Fail
 
@@ -114,7 +113,7 @@ When a new asset is added to the universe, the dendrogram must be updated. Rathe
 
 ### Hierarchical Equal Risk Contribution (HERC)
 
-HERC, introduced by Raffinot (2017), modifies the recursive bisection step to equalize risk contributions rather than allocating inversely to variance. This produces portfolios where each cluster contributes equally to total portfolio risk, analogous to equal risk contribution (ERC) but respecting the hierarchical structure.
+HERC, introduced by Raffinot (2017), modifies the recursive bisection step to equalize risk contributions rather than allocating inversely to variance. This produces portfolios where each cluster contributes equally to total portfolio risk, analogous to [equal risk contribution](/blog/risk-parity-portfolio) (ERC) but respecting the hierarchical structure.
 
 HERC generally produces more equally weighted portfolios than HRP, which can be advantageous when the investor has no information about relative asset attractiveness.
 
@@ -135,7 +134,7 @@ Extend HRP to multiple time periods by:
 
 ### Rebalancing Frequency
 
-HRP portfolios are more stable than MVO portfolios, so less frequent rebalancing is acceptable. Monthly rebalancing is typical, with quarterly rebalancing producing only marginally higher tracking error. Transaction cost savings from reduced rebalancing often exceed the marginal benefit of more frequent optimization.
+HRP portfolios are more stable than MVO portfolios, so less frequent rebalancing is acceptable. Monthly rebalancing is typical, with quarterly rebalancing producing only marginally higher tracking error. [Transaction cost](/blog/transaction-cost-analysis) savings from reduced rebalancing often exceed the marginal benefit of more frequent optimization.
 
 ### Universe Size
 
@@ -151,7 +150,7 @@ HRP's clustering can be seeded with fundamental information (sector classificati
 - The three-step algorithm (clustering, quasi-diagonalization, recursive bisection) produces portfolios that are more diversified, more stable, and more robust to estimation error than both MVO and simple risk parity
 - HRP outperforms competing methods in out-of-sample tests, with higher Sharpe ratios, lower drawdowns, and substantially lower sensitivity to input estimation error
 - Ward's linkage method and correlation-based distance metrics are the standard choices, though tail-dependence and information-theoretic variants offer improved crisis diversification
-- Extensions including HERC, NCO, and dynamic HRP address specific limitations and allow integration of return views, factor models, and time-varying dynamics
+- Extensions including HERC, NCO, and dynamic HRP address specific limitations and allow integration of return views, [factor models](/blog/quantitative-factor-models), and time-varying dynamics
 
 ## Frequently Asked Questions
 

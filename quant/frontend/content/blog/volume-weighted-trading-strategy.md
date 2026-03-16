@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["VWAP", "volume profile", "order flow", "institutional trading"]
 keywords: ["volume-weighted trading strategy", "VWAP trading", "volume profile trading"]
 ---
-
 # Volume-Weighted Trading Strategy: VWAP and Volume Profile
 
-Volume-weighted trading strategy incorporates one of the most underutilized dimensions in retail quantitative analysis: volume. While most technical indicators focus exclusively on price, volume provides critical information about institutional participation, conviction behind price moves, and key support/resistance levels. The Volume Weighted Average Price (VWAP) is the benchmark that institutional traders use to evaluate execution quality, and volume profile reveals the price levels where the most trading activity occurs.
+Volume-weighted [trading strategy](/blog/momentum-trading-strategy-guide) incorporates one of the most underutilized dimensions in retail quantitative analysis: volume. While most technical indicators focus exclusively on price, volume provides critical information about institutional participation, conviction behind price moves, and key support/resistance levels. The Volume Weighted Average Price (VWAP) is the benchmark that institutional traders use to evaluate execution quality, and volume profile reveals the price levels where the most trading activity occurs.
 
 Understanding and incorporating volume into systematic strategies gives traders an informational edge that purely price-based approaches miss.
 
@@ -125,7 +124,7 @@ The POC strategy works because the Point of Control represents the price level o
 
 ## Strategy 4: Volume-Weighted Breakout
 
-This strategy combines volume analysis with breakout trading to identify high-conviction breakouts.
+This strategy combines volume analysis with [breakout trading](/blog/breakout-trading-strategy) to identify high-conviction breakouts.
 
 ### Rules
 
@@ -179,8 +178,8 @@ Trading only in the high-volume regimes improved overall portfolio Sharpe from 1
 
 ## Key Takeaways
 
-- VWAP creates genuine mean-reverting behavior due to institutional execution algorithms targeting it
-- VWAP mean reversion on ES futures produced a Sharpe of 1.52 in our intraday backtest
+- VWAP creates genuine mean-reverting behavior due to institutional [execution algorithms](/blog/execution-algorithms-guide) targeting it
+- VWAP [mean reversion](/blog/mean-reversion-strategies-guide) on ES futures produced a Sharpe of 1.52 in our intraday backtest
 - Volume-confirmed breakouts (2x average volume) outperform unconfirmed breakouts with a profit factor of 1.82 vs. 1.28
 - Volume Profile Point of Control is a high-probability support/resistance level (Sharpe 1.38)
 - OBV divergence leads price divergence by an average of 8 trading days
@@ -194,7 +193,7 @@ VWAP is calculated by maintaining a running sum of (Price * Volume) divided by a
 
 ### Is VWAP useful for swing trading or only day trading?
 
-While VWAP is primarily an intraday tool (it resets daily), anchored VWAP can be used for swing trading. Anchored VWAP calculates the volume-weighted average from a specific anchor point (e.g., earnings date, swing low, or beginning of the month). In our testing, weekly anchored VWAP provided useful support/resistance for 5-20 day swing trades with a hit rate of 64% for mean reversion signals.
+While VWAP is primarily an intraday tool (it resets daily), anchored VWAP can be used for swing trading. Anchored VWAP calculates the volume-weighted average from a specific anchor point (e.g., earnings date, swing low, or beginning of the month). In our testing, weekly anchored VWAP provided useful support/resistance for 5-20 day swing trades with a hit rate of 64% for [mean reversion](/blog/mean-reversion-trading-strategy) signals.
 
 ### What is the difference between VWAP and TWAP?
 

@@ -7,12 +7,11 @@ category: "Technical Analysis"
 tags: ["support resistance", "price levels", "technical analysis", "breakout trading", "price action"]
 keywords: ["support and resistance trading", "support resistance levels", "trading support resistance"]
 ---
-
 # Support and Resistance Trading: Identification and Strategy
 
-Support and resistance are the most fundamental concepts in technical analysis. Every chart pattern, indicator signal, and price action setup ultimately references the interaction between price and specific levels where buying or selling pressure historically concentrates. Understanding how to identify these levels accurately and how to trade them systematically separates consistent traders from those who rely on guesswork.
+Support and resistance are the most fundamental concepts in [technical analysis](/blog/python-technical-analysis-library). Every chart pattern, indicator signal, and price action setup ultimately references the interaction between price and specific levels where buying or selling pressure historically concentrates. Understanding how to identify these levels accurately and how to trade them systematically separates consistent traders from those who rely on guesswork.
 
-This guide covers the mechanics of support and resistance, methods for identification, and three distinct trading strategies with defined entry, stop-loss, and target rules.
+This guide covers the mechanics of support and resistance, methods for identification, and three distinct [trading strategies](/blog/backtesting-trading-strategies) with defined entry, stop-loss, and target rules.
 
 ## What Creates Support and Resistance
 
@@ -88,7 +87,7 @@ Bounce trading involves entering positions when price reaches a support or resis
 
 ## Trading Strategy 2: Breakout Trading
 
-Breakout trading involves entering when price breaks through a support or resistance level, anticipating that the break will lead to a sustained move.
+[Breakout trading](/blog/breakout-trading-strategy) involves entering when price breaks through a support or resistance level, anticipating that the break will lead to a sustained move.
 
 **Setup:**
 - Price has tested a resistance level multiple times (creating a clearly defined level)
@@ -106,7 +105,7 @@ Breakout trading involves entering when price breaks through a support or resist
 
 ## Trading Strategy 3: Retest Entry
 
-The retest strategy is a hybrid of bounce and breakout trading that offers the best risk/reward ratio of the three approaches.
+The retest strategy is a hybrid of bounce and breakout trading that offers the best risk/[reward ratio](/blog/risk-reward-ratio-optimization) of the three approaches.
 
 **Setup:**
 1. Price breaks through a resistance level (for longs) or support level (for shorts)
@@ -156,4 +155,4 @@ False breakouts typically feature low volume, quick reversals back below/above t
 
 ### Do support and resistance work in all market conditions?
 
-Support and resistance are most useful in rangebound and mildly trending markets. In strongly trending markets, resistance levels may break with minimal pullback, making bounce trading at resistance ineffective. In choppy, volatile markets, levels may be violated frequently by noise. Adjust your expectations and strategy to the market condition, using trend-following approaches in strong trends and level-based trading in ranges.
+Support and resistance are most useful in rangebound and mildly trending markets. In strongly trending markets, resistance levels may break with minimal pullback, making bounce trading at resistance ineffective. In choppy, volatile markets, levels may be violated frequently by noise. Adjust your expectations and strategy to the market condition, using trend-following approaches in strong trends and level-[based trading](/blog/entropy-based-trading) in ranges.

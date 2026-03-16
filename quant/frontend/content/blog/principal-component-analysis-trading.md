@@ -7,10 +7,9 @@ category: "Advanced Analytics"
 tags: ["pca", "dimension-reduction", "factor-analysis"]
 keywords: ["principal component analysis", "PCA trading", "dimension reduction", "factor models", "covariance analysis"]
 ---
-
 # PCA for Trading: Dimension Reduction and Factor Analysis
 
-In modern markets, traders face an explosion of data—hundreds of assets, thousands of features, and countless potential relationships. Principal Component Analysis (PCA) cuts through this complexity by identifying the core patterns that drive market movements. This powerful technique transforms high-dimensional data into a compact set of uncorrelated factors, revealing hidden market structure and enabling more robust trading strategies.
+In modern markets, traders face an explosion of data—hundreds of assets, thousands of features, and countless potential relationships. Principal Component Analysis (PCA) cuts through this complexity by identifying the core patterns that drive market movements. This powerful technique transforms high-dimensional data into a compact set of uncorrelated factors, revealing hidden market structure and enabling more robust [trading strategies](/blog/backtesting-trading-strategies).
 
 ## Understanding PCA
 
@@ -574,6 +573,6 @@ PCA is linear; autoencoders can be non-linear. PCA is fast, interpretable, and r
 
 Principal Component Analysis transforms the curse of dimensionality into an opportunity. By identifying the core factors driving market movements, PCA enables traders to build more robust strategies, understand risk exposures, and discover hidden structure in complex data.
 
-The power of PCA lies in its simplicity—it requires no assumptions about market behavior or economic theory. It simply reveals what patterns exist in the data. This empirical, data-driven approach complements theory-based factor models and provides a foundation for sophisticated quantitative strategies.
+The power of PCA lies in its simplicity—it requires no assumptions about market behavior or economic theory. It simply reveals what patterns exist in the data. This empirical, data-driven approach complements theory-based [factor models](/blog/quantitative-factor-models) and provides a foundation for sophisticated [quantitative strategies](/blog/crypto-defi-quant-strategies).
 
 Whether constructing portfolios, identifying arbitrage opportunities, or decomposing risk, PCA offers a principled mathematical framework for navigating high-dimensional market data. Master this technique, and you gain a powerful lens for seeing through market complexity to the fundamental patterns beneath.

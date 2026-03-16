@@ -7,10 +7,9 @@ category: "Python & Automation"
 tags: ["market regime", "regime detection", "Hidden Markov Model", "volatility", "adaptive strategy"]
 keywords: ["market regime detection", "regime switching trading", "market condition analysis"]
 ---
-
 # Market Regime Detection: Adapting Strategy to Market Conditions
 
-Market regime detection identifies the current state of market behavior and adapts trading strategies accordingly. Financial markets alternate between distinct behavioral patterns: trending versus ranging, high versus low volatility, risk-on versus risk-off. A strategy that performs well in one regime may underperform severely in another. Trend-following strategies thrive during sustained directional moves but generate losses during choppy, rangebound conditions. Mean-reversion strategies work in ranges but get steamrolled by strong trends.
+[Market regime detection](/blog/hidden-markov-models-trading) identifies the current state of market behavior and adapts [trading strategies](/blog/backtesting-trading-strategies) accordingly. Financial markets alternate between distinct behavioral patterns: trending versus ranging, high versus low volatility, risk-on versus risk-off. A strategy that performs well in one regime may underperform severely in another. Trend-following strategies thrive during sustained directional moves but generate losses during choppy, rangebound conditions. Mean-[reversion strategies](/blog/mean-reversion-strategies-guide) work in ranges but get steamrolled by strong trends.
 
 Detecting the current regime and selecting the appropriate strategy is one of the most impactful improvements a quantitative trader can implement. This guide covers four methods of regime detection, from simple indicator-based approaches to statistical models, with practical implementation in Python.
 
@@ -18,9 +17,9 @@ Detecting the current regime and selecting the appropriate strategy is one of th
 
 ### The Performance Problem
 
-Consider a simple moving average crossover strategy (50/200 SMA) tested on SPY from 2000-2025:
+Consider a simple moving [average crossover strategy](/blog/moving-average-crossover-strategy) (50/200 SMA) tested on SPY from 2000-2025:
 
-- **2003-2007 (uptrend):** The strategy captured the bull run with a Sharpe ratio of approximately 1.2
+- **2003-2007 (uptrend):** The strategy captured the bull run with a [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) of approximately 1.2
 - **2008-2009 (crisis):** The strategy avoided the worst of the crash but whipsawed during the recovery
 - **2010-2014 (low vol uptrend):** Multiple false signals due to shallow pullbacks, Sharpe approximately 0.4
 - **2015-2019 (mixed):** Inconsistent performance, Sharpe approximately 0.6

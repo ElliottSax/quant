@@ -7,7 +7,6 @@ category: "Technical Analysis"
 tags: ["order types", "trade execution", "limit orders", "stop orders", "market microstructure"]
 keywords: ["order types execution", "limit order vs market order", "stop loss order types"]
 ---
-
 # Order Types and Execution: Limit, Market, Stop, and Iceberg
 
 Order types are the mechanism through which trading decisions translate into actual market transactions. Selecting the correct order type for each situation directly impacts execution quality, which over hundreds of trades compounds into a meaningful difference in portfolio performance. A trader who consistently uses market orders when limit orders would suffice may give up 5-15 basis points per trade in slippage, a cost that compounds across the full trade cycle (entry and exit) and across all trades taken.
@@ -174,7 +173,7 @@ For liquid instruments (SPY, AAPL, EUR/USD), slippage on a standard-sized market
 
 ### How do professional traders handle large orders?
 
-Professional traders use algorithmic execution strategies to minimize market impact. Common approaches include TWAP (splitting evenly over time), VWAP (splitting according to volume patterns), and implementation shortfall algorithms that balance urgency against market impact. For orders exceeding 5-10% of average daily volume, execution is typically spread across multiple sessions.
+Professional traders use [algorithmic execution](/blog/algorithmic-execution-quality) strategies to minimize market impact. Common approaches include TWAP (splitting evenly over time), VWAP (splitting according to volume patterns), and implementation shortfall algorithms that balance urgency against market impact. For orders exceeding 5-10% of average daily volume, execution is typically spread across multiple sessions.
 
 ### What happens to my stop order if the market gaps?
 

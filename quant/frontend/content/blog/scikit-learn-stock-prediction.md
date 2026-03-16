@@ -7,16 +7,15 @@ category: "Machine Learning"
 tags: ["scikit-learn", "machine learning", "stock prediction", "random forest", "gradient boosting"]
 keywords: ["scikit-learn stock prediction", "machine learning stock market", "random forest trading"]
 ---
-
 # Scikit-Learn for Stock Prediction: Machine Learning Models
 
-Machine learning models offer the ability to capture nonlinear relationships in financial data that linear models miss. However, applying scikit-learn to stock prediction is fraught with pitfalls. Naive train/test splits introduce look-ahead bias, feature engineering without domain knowledge produces noise, and overfitting masquerades as alpha.
+[Machine learning](/blog/machine-learning-trading) models offer the ability to capture nonlinear relationships in financial data that linear models miss. However, applying scikit-learn to stock prediction is fraught with pitfalls. Naive train/test splits introduce look-ahead bias, [feature engineering](/blog/feature-engineering-trading) without domain knowledge produces noise, and overfitting masquerades as alpha.
 
 This guide walks through the correct approach: time-series-aware splitting, financially meaningful features, proper model selection, and honest evaluation. The goal is not to predict exact prices but to forecast the probability of directional moves with enough edge to be tradable after costs.
 
 ## Key Takeaways
 
-- **Never use random train/test splits** for time series data. Always use temporal splits or expanding/rolling windows.
+- **Never use random train/test splits** for [time series](/blog/time-series-analysis-stocks) data. Always use temporal splits or expanding/rolling windows.
 - **Feature engineering is 80% of the work.** Raw OHLCV data alone rarely produces useful signals.
 - **Gradient boosting (XGBoost, LightGBM)** consistently outperforms other models on tabular financial data.
 - **Evaluate with financial metrics** (Sharpe, profit factor), not just accuracy or AUC.

@@ -7,7 +7,6 @@ category: "Risk Management"
 tags: ["trading journal", "performance review", "trade analysis", "continuous improvement", "trading psychology"]
 keywords: ["trading journal systematic review", "trading performance analysis", "trade logging framework"]
 ---
-
 # Trading Journal: Systematic Performance Review Framework
 
 A trading journal is the most powerful, yet most underutilized, tool for improving trading performance. While most traders focus on finding better indicators or strategies, the traders who consistently improve are those who systematically record, analyze, and learn from their own trading data. A properly structured trading journal transforms subjective experiences into objective data, reveals behavioral patterns invisible in real-time, and provides the feedback loop necessary for continuous improvement.
@@ -196,7 +195,7 @@ class TradingJournal:
 2. **Equity Curve Analysis:** Is the equity curve trending upward? Are drawdowns within acceptable limits?
 3. **Strategy Viability:** Does the evidence support continuing each strategy being traded?
 4. **Goal Assessment:** Are you on track for annual goals?
-5. **Major Strategic Decisions:** Add/remove strategies, change position sizing, adjust risk parameters
+5. **Major Strategic Decisions:** Add/remove strategies, change [position sizing](/blog/position-sizing-strategies), adjust risk parameters
 
 ## Identifying Behavioral Patterns
 

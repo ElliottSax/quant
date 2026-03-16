@@ -7,7 +7,6 @@ category: "Portfolio Management"
 tags: ["Black-Litterman", "portfolio optimization", "asset allocation", "Bayesian", "equilibrium returns"]
 keywords: ["Black-Litterman model", "portfolio optimization", "market equilibrium", "investor views", "Bayesian portfolio construction"]
 ---
-
 # Black-Litterman Model: Combining Views with Market Equilibrium
 
 The Black-Litterman model, developed by Fischer Black and Robert Litterman at Goldman Sachs in 1992, solves the most vexing problem in mean-variance optimization: where to get expected return estimates that produce sensible portfolios. Rather than using historical returns (too noisy) or subjective forecasts (too arbitrary), Black-Litterman starts with the market equilibrium -- the expected returns implied by market capitalization weights -- and adjusts them based on the investor's specific views. The result is portfolio allocations that are intuitive, stable, and properly diversified.
@@ -22,13 +21,13 @@ Standard mean-variance optimization suffers from three interrelated problems:
 
 3. **No natural starting point**: Without a principled baseline for expected returns, every optimization is built on shaky foundations.
 
-Black-Litterman addresses all three by establishing market equilibrium as the starting point and using Bayesian inference to blend investor views with this equilibrium. When the investor has no views, the model recommends the market portfolio. Views shift allocations away from market weights proportionally to the strength and confidence of the view.
+Black-Litterman addresses all three by establishing market equilibrium as the starting point and using [Bayesian inference](/blog/bayesian-inference-trading) to blend investor views with this equilibrium. When the investor has no views, the model recommends the market portfolio. Views shift allocations away from market weights proportionally to the strength and confidence of the view.
 
 ## The Model in Detail
 
 ### Step 1: Reverse Optimization for Equilibrium Returns
 
-The market portfolio (weighted by market capitalization) is assumed to be the optimal mean-variance portfolio for the average investor. Given the market weights w_mkt and the covariance matrix Sigma, the implied equilibrium excess returns are:
+The market portfolio (weighted by market capitalization) is assumed to be the optimal mean-[variance portfolio](/blog/minimum-variance-portfolio) for the average investor. Given the market weights w_mkt and the covariance matrix Sigma, the implied equilibrium excess returns are:
 
 **Pi = delta * Sigma * w_mkt**
 
@@ -171,7 +170,7 @@ Yes. Express views as factor exposures: "The value factor will earn 3% premium" 
 
 ### How does Black-Litterman compare to risk parity?
 
-Black-Litterman and risk parity serve different purposes. Black-Litterman optimizes expected returns subject to risk, requiring expected return estimates (from equilibrium + views). Risk parity equalizes risk contributions across assets, requiring only the covariance matrix. Black-Litterman is appropriate when the investor has views to express; risk parity is appropriate when the investor has no views and wants maximum diversification.
+Black-Litterman and [risk parity](/blog/risk-parity-portfolio) serve different purposes. Black-Litterman optimizes expected returns subject to risk, requiring expected return estimates (from equilibrium + views). Risk parity equalizes risk contributions across assets, requiring only the covariance matrix. Black-Litterman is appropriate when the investor has views to express; risk parity is appropriate when the investor has no views and wants maximum diversification.
 
 ### What happens when views conflict with equilibrium?
 
@@ -179,4 +178,4 @@ Views that strongly contradict equilibrium produce larger portfolio tilts, but t
 
 ### Is Black-Litterman suitable for high-frequency strategies?
 
-The standard Black-Litterman model is designed for strategic asset allocation (monthly to annual horizons). For higher-frequency applications, the equilibrium concept is less meaningful (there is no clearly defined "market portfolio" for intraday returns), and the Bayesian framework adds computational overhead. Factor-based alpha models with regularized regression are more appropriate for high-frequency portfolio construction.
+The standard Black-Litterman model is designed for strategic asset allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)) (monthly to annual horizons). For higher-frequency applications, the equilibrium concept is less meaningful (there is no clearly defined "market portfolio" for intraday returns), and the Bayesian framework adds computational overhead. Factor-based alpha models with regularized regression are more appropriate for high-frequency portfolio construction.

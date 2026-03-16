@@ -7,12 +7,11 @@ category: "Trading Strategies"
 tags: ["moving average", "golden cross", "death cross", "technical analysis", "trend following"]
 keywords: ["moving average crossover strategy", "golden cross trading", "death cross signal"]
 ---
-
 # Moving Average Crossover Strategy: Golden Cross and Death Cross
 
 The moving average crossover strategy is one of the most widely used systematic trading approaches in both retail and institutional settings. By comparing a fast moving average to a slow moving average, traders generate objective, rule-based signals that eliminate emotional decision-making. The most famous variant, the golden cross (50-day MA crossing above the 200-day MA), has been cited in financial literature since the 1970s and continues to generate significant media attention during major market transitions.
 
-Despite its simplicity, the moving average crossover strategy remains effective when implemented with proper position sizing, filters, and risk management. This guide covers the mechanics, variations, backtest results, and practical implementation of moving average crossover systems.
+Despite its simplicity, the moving average crossover strategy remains effective when implemented with proper [position sizing](/blog/position-sizing-strategies), filters, and risk management. This guide covers the mechanics, variations, backtest results, and practical implementation of moving average crossover systems.
 
 ## How Moving Average Crossovers Work
 
@@ -71,7 +70,7 @@ The 50/200 crossover is inherently lagging. By the time the golden cross forms, 
 | 10/200 | 9.2% | 0.76 | -20.5% | 3.8 |
 | 20/100 | 10.1% | 0.88 | -16.2% | 4.1 |
 
-The 20/100 combination produced the best risk-adjusted returns in our S&P 500 backtest (1990-2025), with a Sharpe ratio of 0.88 and maximum drawdown of -16.2%.
+The 20/100 combination produced the best risk-adjusted returns in our S&P 500 backtest (1990-2025), with a [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) of 0.88 and maximum drawdown of -16.2%.
 
 ### Triple Moving Average System
 
@@ -154,7 +153,7 @@ For systematic implementation, the strategy requires:
 1. **Data**: Daily OHLCV data for the target universe
 2. **Signal generation**: Calculate fast and slow MAs, detect crossovers
 3. **Position management**: Track current position, handle entries and exits
-4. **Risk management**: Position sizing, stop-losses, portfolio allocation
+4. **Risk management**: Position sizing, stop-losses, portfolio allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator))
 
 The core logic involves comparing yesterday's MA relationship to today's: if yesterday fast < slow and today fast >= slow, generate a buy signal. This simple comparison drives the entire system.
 

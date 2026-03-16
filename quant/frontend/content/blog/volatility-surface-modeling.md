@@ -7,10 +7,9 @@ category: "Derivatives"
 tags: ["volatility surface", "implied volatility", "skew", "SVI", "options pricing"]
 keywords: ["volatility surface modeling", "implied volatility skew", "SVI parameterization"]
 ---
-
 # Volatility Surface Modeling: Skew, Term Structure, and Smile
 
-The implied volatility surface is the market's complete statement about the distribution of future asset returns. It captures two phenomena that Black-Scholes ignores: the volatility smile (OTM options trade at higher implied volatilities than ATM options) and the term structure (implied volatility varies with expiration). Understanding and modeling this surface is essential for options pricing, risk management, and volatility trading.
+The implied volatility surface is the market's complete statement about the distribution of future asset returns. It captures two phenomena that Black-Scholes (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)) ignores: the volatility smile (OTM options trade at higher implied volatilities than ATM options) and the term structure (implied volatility varies with expiration). Understanding and modeling this surface is essential for options pricing, risk management, and [volatility trading](/blog/volatility-trading-strategies).
 
 This guide covers the construction, parameterization, and analysis of implied volatility surfaces, from raw market quotes through fitted models suitable for pricing and hedging.
 

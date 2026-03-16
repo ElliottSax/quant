@@ -7,7 +7,6 @@ category: "Advanced Analytics"
 tags: ["quantile-regression", "risk-modeling", "statistical-methods"]
 keywords: ["quantile regression", "trading statistics", "risk modeling", "tail risk", "conditional quantiles"]
 ---
-
 # Quantile Regression for Trading: Beyond Mean Predictions
 
 Traditional regression models focus on predicting the conditional mean of a response variable. While useful, this approach misses critical information about the distribution of returns—particularly in the tails where extreme losses and gains occur. Quantile regression offers a powerful alternative that models the entire conditional distribution, providing traders with richer insights into risk and opportunity.
@@ -370,7 +369,7 @@ Quantile regression models tail behavior better than mean regression, but it can
 
 ### How computationally expensive is quantile regression?
 
-Quantile regression is more computationally intensive than OLS but less than many machine learning methods. Modern implementations using interior point methods or ADMM are efficient enough for real-time trading applications. Expect 2-10x the computation time of OLS for single quantile estimation.
+Quantile regression is more computationally intensive than OLS but less than many [machine learning](/blog/machine-learning-trading) methods. Modern implementations using interior point methods or ADMM are efficient enough for real-time trading applications. Expect 2-10x the computation time of OLS for single quantile estimation.
 
 ### Should I use parametric or non-parametric quantile regression?
 
@@ -388,6 +387,6 @@ Extreme quantiles (0.01, 0.99) require larger samples than central quantiles. As
 
 Quantile regression represents a paradigm shift from mean-centric to distribution-centric analysis. For traders, this means moving beyond asking "what will returns be on average?" to "what is my downside risk? My upside potential? How do these vary with market conditions?"
 
-By modeling the entire conditional distribution, quantile regression provides the granular risk insights necessary for sophisticated portfolio management, dynamic hedging, and regime-aware trading strategies. As markets become increasingly complex and tail events more frequent, tools that embrace distributional thinking become not just useful but essential.
+By modeling the entire conditional distribution, quantile regression provides the granular risk insights necessary for sophisticated portfolio management, dynamic hedging, and regime-aware [trading strategies](/blog/backtesting-trading-strategies). As markets become increasingly complex and tail events more frequent, tools that embrace distributional thinking become not just useful but essential.
 
 The mathematics may be more complex than OLS, but the payoff—comprehensive risk understanding and robust predictions—makes quantile regression an indispensable tool in the modern quantitative trader's toolkit.

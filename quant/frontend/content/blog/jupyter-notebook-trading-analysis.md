@@ -7,10 +7,9 @@ category: "Python & Automation"
 tags: ["jupyter notebook", "python", "trading analysis", "data visualization", "research workflow"]
 keywords: ["jupyter notebook trading", "jupyter trading analysis", "python notebook trading"]
 ---
-
 # Jupyter Notebook for Trading Analysis: Setup and Workflows
 
-Jupyter Notebook is the standard interactive computing environment for quantitative trading research. Its combination of executable code, rich text, mathematical notation, and inline visualizations makes it ideal for exploring market data, prototyping strategies, and documenting research findings in a single reproducible document. Professional quant teams at hedge funds and proprietary trading firms routinely use Jupyter for everything from initial data exploration to formal strategy presentations.
+Jupyter Notebook is the standard interactive computing environment for [quantitative trading](/blog/crypto-quant-trading-strategies) research. Its combination of executable code, rich text, mathematical notation, and inline visualizations makes it ideal for exploring market data, prototyping strategies, and documenting research findings in a single reproducible document. Professional quant teams at hedge funds and proprietary trading firms routinely use Jupyter for everything from initial data exploration to formal strategy presentations.
 
 This guide covers environment setup, essential configuration for trading analysis, visualization best practices, and workflow patterns that maximize research productivity.
 
@@ -322,4 +321,4 @@ For large datasets (millions of rows), load data in chunks, sample for explorati
 
 ### What are common mistakes when using Jupyter for trading analysis?
 
-The most common mistakes are: (1) running cells out of order, creating hidden state dependencies that make the notebook non-reproducible, (2) not saving intermediate results, requiring expensive recomputation, (3) introducing look-ahead bias by accidentally using future data in feature engineering, and (4) over-optimizing in-sample without out-of-sample validation. Always restart the kernel and run all cells sequentially before drawing conclusions.
+The most common mistakes are: (1) running cells out of order, creating hidden state dependencies that make the notebook non-reproducible, (2) not saving intermediate results, requiring expensive recomputation, (3) introducing look-ahead bias by accidentally using future data in [feature engineering](/blog/feature-engineering-trading), and (4) over-optimizing in-sample without out-of-sample validation. Always restart the kernel and run all cells sequentially before drawing conclusions.

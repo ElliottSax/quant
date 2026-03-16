@@ -7,7 +7,6 @@ category: "Crypto & DeFi"
 tags: ["nft", "trading-strategies", "arbitrage"]
 keywords: ["NFT trading", "floor price arbitrage", "rarity analysis", "NFT strategies"]
 ---
-
 # NFT Trading Strategies: Floor Price Arbitrage and Rarity
 
 Non-fungible tokens transformed from speculative mania to established asset class with $25B+ annual trading volume across art, collectibles, gaming items, and digital real estate. While retail traders chase hype and influencer calls, quantitative approaches analyzing floor prices, rarity distributions, holder behavior, and marketplace dynamics generate consistent returns with managed risk exposure.
@@ -58,7 +57,7 @@ Trait correlation analysis identifies valuable combinations. In Bored Apes, "Gol
 
 Dynamic rarity scoring adjusts for market preferences. Early in collection life, pure statistical rarity dominates. As communities mature, subjective preferences emerge - certain backgrounds or expressions become culturally significant despite moderate statistical rarity. Monitoring floor prices by trait reveals these preference shifts.
 
-Machine learning valuation models train on historical sales to predict prices based on traits. Random Forest or Gradient Boosting models using trait categories as features achieve 15-25% mean absolute percentage error predicting sale prices. Models identify undervalued NFTs (predicted 30% above listing price) for purchasing and overvalued NFTs (predicted 30% below) for selling.
+[Machine learning](/blog/machine-learning-trading) valuation models train on historical sales to predict prices based on traits. Random Forest or Gradient Boosting models using trait categories as features achieve 15-25% mean absolute percentage error predicting sale prices. Models identify undervalued NFTs (predicted 30% above listing price) for purchasing and overvalued NFTs (predicted 30% below) for selling.
 
 ## Whale Tracking and Smart Money Analysis
 
@@ -84,7 +83,7 @@ The collection diversification strategy spreads capital across 5-10 collections 
 
 Quality filters prevent capital deployment to dying collections. Require minimum: 100 ETH 30-day volume, 30+ unique traders monthly, floor price >0.5 ETH (filters out worthless collections), and founder activity within past 30 days. Collections failing these criteria face 80%+ probability of continued floor decline.
 
-Position sizing accounts for illiquidity. Unlike BTC where $1M positions exit within minutes, NFT positions might require weeks to liquidate without material price impact. Limit individual NFT positions to 5-10% of portfolio and collection exposure to 25-30%. This enables exiting positions without forced liquidation at large discounts.
+[Position sizing](/blog/position-sizing-strategies) accounts for illiquidity. Unlike BTC where $1M positions exit within minutes, NFT positions might require weeks to liquidate without material price impact. Limit individual NFT positions to 5-10% of portfolio and collection exposure to 25-30%. This enables exiting positions without forced liquidation at large discounts.
 
 The liquidity adjustment values illiquid NFTs at discounts. If floor is 10 ETH but average time-to-sale is 45 days with 15% discount required to sell quickly, mark position at 8.5 ETH (15% haircut). This conservative accounting prevents overstating portfolio value and encourages maintaining liquidity buffers.
 
@@ -94,7 +93,7 @@ Time-based rebalancing sells positions after predetermined periods regardless of
 
 ## Emerging Strategies and Infrastructure
 
-Advanced NFT trading requires sophisticated tooling for data analysis, automated execution, and marketplace monitoring.
+Advanced NFT trading requires sophisticated tooling for [data analysis](/blog/python-data-analysis-trading), automated execution, and marketplace monitoring.
 
 MEV in NFT markets involves front-running other buyers' transactions. When detecting a pending purchase of underpriced NFT, submit higher gas to ensure transaction orders before the original buyer. Ethics aside, this generates 5-15% quick profits but requires: mempool monitoring, instant simulation of NFT value, and sufficient capital for instant purchases.
 
@@ -110,7 +109,7 @@ Automated trading bots monitor multiple marketplaces 24/7, executing predefined 
 
 ## Key Takeaways
 
-NFT trading strategies generate 15-40% annual returns through systematic floor price arbitrage, rarity-based valuation, and whale wallet tracking, with quantitative approaches outperforming emotional hype-chasing retail trading.
+NFT [trading strategies](/blog/backtesting-trading-strategies) generate 15-40% annual returns through systematic floor price arbitrage, rarity-based valuation, and whale wallet tracking, with quantitative approaches outperforming emotional hype-chasing retail trading.
 
 Floor price arbitrage across OpenSea, Blur, and LooksRare captures 1-5% spreads within 24 hours, requiring automated monitoring and sub-minute execution speed to compete with professional traders.
 
@@ -144,4 +143,4 @@ Limited applicability due to illiquidity and small sample sizes. Support/resista
 
 **How do you automate NFT trading and what tools are needed?**
 
-Automation stack: (1) Data collection - OpenSea API, Blur API, Reservoir API for listings/sales, Alchemy NFT API for on-chain data, (2) Analysis - Python pandas for price history, rarity tools APIs for trait data, custom scoring models, (3) Execution - web3.py for smart contract interaction, marketplace-specific SDKs, (4) Monitoring - Discord webhooks for alerts, Grafana dashboards. Example bot: monitors OpenSea every 30 seconds, identifies listings <80% of 7-day floor with top 25% rarity, auto-purchases via smart contract, relists at fair value. Development requires 4-8 weeks for experienced blockchain developers, 3-6 months for beginners. Alternatively, use existing tools like NFT Trader, Gem, or Genie for semi-automated trading.
+Automation stack: (1) Data collection - OpenSea API, Blur API, Reservoir API for listings/sales, Alchemy NFT API for on-chain data, (2) Analysis - Python pandas for price history, rarity tools APIs for trait data, custom scoring models, (3) Execution - web3.py for [smart contract](/blog/smart-contract-risk-management) interaction, marketplace-specific SDKs, (4) Monitoring - Discord webhooks for alerts, Grafana dashboards. Example bot: monitors OpenSea every 30 seconds, identifies listings <80% of 7-day floor with top 25% rarity, auto-purchases via smart contract, relists at fair value. Development requires 4-8 weeks for experienced blockchain developers, 3-6 months for beginners. Alternatively, use existing tools like NFT Trader, Gem, or Genie for semi-automated trading.

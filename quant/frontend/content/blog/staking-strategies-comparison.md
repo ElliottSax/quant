@@ -7,7 +7,6 @@ category: "Crypto & DeFi"
 tags: ["staking", "defi", "yield"]
 keywords: ["crypto staking", "proof of stake", "staking rewards", "liquid staking"]
 ---
-
 # Staking Strategies: PoS Rewards vs Opportunity Cost
 
 Proof-of-Stake blockchain staking generates passive returns through validator participation - directly earning blockchain rewards plus MEV (Maximal Extractable Value). Returns range from 3-12% annually depending on asset, approach, and market conditions. However, staking locks capital with opportunity costs that often exceed earned yields, requiring careful economic analysis.
@@ -53,7 +52,7 @@ Reward calculation: 32 ETH at 4% APY with 5% validator commission = 1.22 ETH ann
 **Liquid Staking (Lido, Rocket Pool, others)**
 - Rewards: 80-90% of earned yield (protocol + validator fees)
 - Costs: $0 direct, but embedded in yield
-- Risks: smart contract risk, staking mechanism risk
+- Risks: [smart contract risk](/blog/smart-contract-risk-management), staking mechanism risk
 - Effort: minimal (stake, receive token)
 - Suitable: capital efficiency required
 
@@ -80,7 +79,7 @@ Dynamic opportunity costs shift as yields change. During bear markets (8% DeFi y
 
 ## Slashing Risk and Validator Performance
 
-Validator misconduct can result in slashing - permanent loss of portion of staked capital. Understanding slashing mechanics informs validator selection and position sizing.
+Validator misconduct can result in slashing - permanent loss of portion of staked capital. Understanding slashing mechanics informs validator selection and [position sizing](/blog/position-sizing-strategies).
 
 Ethereum slashing penalties: (1) Inactivity leak - offline validators lose 0.5-1% annually until rejoining, (2) Honest mistake penalties - 1 ETH loss, (3) Severe slashing - double proposals/attestations lose 16+ ETH. Total slashing historically very rare (<5 major incidents since Ethereum 2.0 launch, all from software bugs not misconduct).
 
@@ -126,7 +125,7 @@ Safest: Ethereum (battle-tested 3+ years, institutional adoption, robust slashin
 
 **Can you stake and still participate in DeFi opportunities?**
 
-Yes through liquid staking: stake to Lido receiving stETH token (liquid, tradeable), use stETH as collateral on Aave (borrow against it), deploy borrowed capital to DeFi yield farming. Example: stake 32 ETH to stETH earning 3.5%, borrow 20,000 USDC against stETH at 70% LTV (earn -4% interest cost), deploy USDC to Curve earning 8%. Net: 3.5% (stETH) - 4% (borrow cost) + 8% (farm yield) = 7.5% blended. Solo staking prevents this (capital locked, unavailable for other deployment).
+Yes through liquid staking: stake to Lido receiving stETH token (liquid, tradeable), use stETH as collateral on Aave (borrow against it), deploy borrowed capital to [DeFi yield farming](/blog/defi-yield-farming-quant). Example: stake 32 ETH to stETH earning 3.5%, borrow 20,000 USDC against stETH at 70% LTV (earn -4% interest cost), deploy USDC to Curve earning 8%. Net: 3.5% (stETH) - 4% (borrow cost) + 8% (farm yield) = 7.5% blended. Solo staking prevents this (capital locked, unavailable for other deployment).
 
 **What are the tax implications of staking rewards?**
 

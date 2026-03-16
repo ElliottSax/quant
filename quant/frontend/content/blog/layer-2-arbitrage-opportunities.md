@@ -7,7 +7,6 @@ category: "Crypto & DeFi"
 tags: ["layer-2", "arbitrage", "scaling"]
 keywords: ["Layer 2 arbitrage", "Optimism", "Arbitrum", "cross-chain arbitrage"]
 ---
-
 # Layer 2 Arbitrage: Optimism, Arbitrum, and Base Strategies
 
 Layer 2 blockchains (Optimism, Arbitrum, Base, Polygon) enable lower-cost transactions enabling arbitrage strategies unprofitable on Ethereum mainnet. A $100 arbitrage opportunity costing $150 in gas on L1 becomes $15 on L2, enabling smaller positions and more frequent trading. However, bridge mechanics, settlement costs, and liquidity fragmentation create new challenges.
@@ -16,7 +15,7 @@ This comprehensive guide examines Layer 2 arbitrage strategies specific to scali
 
 ## Layer 2 Mechanics and Transaction Economics
 
-Layer 2 solutions (Optimistic Rollups like Optimism/Arbitrum, ZK-Rollups like StarkNet) bundle thousands of transactions into single Ethereum settlement, reducing per-transaction cost.
+Layer 2 solutions (Optimistic Rollups like Optimism/Arbitrum, ZK-Rollups like StarkNet) bundle thousands of transactions into single Ethereum settlement, reducing per-[transaction cost](/blog/transaction-cost-analysis).
 
 Transaction cost structure on L2: (1) Execution cost on L2 (100-200k gas equivalent = $0.05-$0.20 at typical prices), (2) Rollup fee (compressed transaction data settlement on L1 = $0.10-$1.00), (3) Bridge cost if moving funds off L2 (varies 0.1-1% depending on mechanism). Total L2 arbitrage cost: $0.25-$1.50 per trade.
 
@@ -58,9 +57,9 @@ Settlement timing affects capital efficiency. If Optimism requires 7-day settlem
 
 Successful L2 arbitrage requires execution excellence, liquidity management, and cross-chain coordination.
 
-Monitoring infrastructure: subscribe to L2 DEX price feeds (Uniswap Optimism/Arbitrum APIs), bridge rate feeds (1inch cross-chain data), and execution infrastructure coordinating multi-chain transactions. Custom bots or platforms like Tenderly enable L2-specific execution.
+Monitoring infrastructure: subscribe to L2 DEX price feeds (Uniswap Optimism/Arbitrum APIs), bridge rate feeds (1inch cross-[chain data](/blog/on-chain-data-analysis)), and execution infrastructure coordinating multi-chain transactions. Custom bots or platforms like Tenderly enable L2-specific execution.
 
-Position sizing across L2s: allocate 40-50% capital to most-liquid L2 (Arbitrum), 30-40% to secondary (Optimism), 10-20% to emerging (Base). This balances liquidity access with concentration risk.
+[Position sizing](/blog/position-sizing-strategies) across L2s: allocate 40-50% capital to most-liquid L2 (Arbitrum), 30-40% to secondary (Optimism), 10-20% to emerging (Base). This balances liquidity access with concentration risk.
 
 Gas price optimization: L2 execution costs fluctuate less than L1 but still vary 2-5× based on network congestion. Monitor gas prices, execute during low-cost periods when possible, avoid high-gas periods for low-margin trades.
 
@@ -102,4 +101,4 @@ Automated monitoring: use bots checking 10+ DEXes across Arbitrum, Optimism, Bas
 
 **What are the biggest risks in L2 arbitrage beyond smart contract exploits?**
 
-Bridge risk: bridge contracts contain exploits/hacks potentially preventing withdrawals or stealing funds. Mitigation: use official L2 bridges (most audited), avoid third-party bridges unless absolutely necessary. Liquidity risk: rapid L2 liquidity changes (DEX launches/relocations) create unpredictable slippage. Capital impairment risk: L2 blockchains immature - Arbitrum/Optimism generally solid but still <4 years proven. Base (Coinbase's L2) backed but newer. Regulatory risk: layer 2s operate in gray area - SEC/CFTC guidance unclear whether L2 DEXes subject to different rules than L1.
+Bridge risk: bridge contracts contain exploits/hacks potentially preventing withdrawals or stealing funds. Mitigation: use official L2 bridges (most audited), avoid third-party bridges unless absolutely necessary. [Liquidity risk](/blog/liquidity-risk-management): rapid L2 liquidity changes (DEX launches/relocations) create unpredictable slippage. Capital impairment risk: L2 blockchains immature - Arbitrum/Optimism generally solid but still <4 years proven. Base (Coinbase's L2) backed but newer. Regulatory risk: layer 2s operate in gray area - SEC/CFTC guidance unclear whether L2 DEXes subject to different rules than L1.

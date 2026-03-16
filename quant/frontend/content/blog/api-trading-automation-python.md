@@ -7,7 +7,6 @@ category: "Python & Automation"
 tags: ["API trading", "python automation", "broker API", "algorithmic trading", "order management"]
 keywords: ["API trading automation python", "broker API integration", "python trading automation"]
 ---
-
 # API Trading Automation with Python: Broker Integration Guide
 
 API trading automation transforms a backtested strategy into a live system that executes trades programmatically without manual intervention. Python's ecosystem provides robust libraries for connecting to major brokerages, managing orders, monitoring positions, and implementing risk controls. The transition from backtest to live trading is one of the most critical steps in a quantitative trader's journey, requiring careful attention to error handling, execution quality, and risk management that do not exist in backtesting environments.
@@ -340,7 +339,7 @@ def send_alert(subject, message, to_email):
 
 ### What is the minimum capital needed for API trading?
 
-Alpaca has no minimum for cash accounts. Interactive Brokers requires $0 for cash accounts. For pattern day trading (4+ day trades per week), US regulations require $25,000 minimum equity. For most automated strategies, $10,000-$25,000 provides enough capital for meaningful position sizing with proper risk management.
+Alpaca has no minimum for cash accounts. Interactive Brokers requires $0 for cash accounts. For pattern day trading (4+ day trades per week), US regulations require $25,000 minimum equity. For most automated strategies, $10,000-$25,000 provides enough capital for meaningful [position sizing](/blog/position-sizing-strategies) with proper risk management.
 
 ### How do I handle API rate limits?
 
@@ -352,4 +351,4 @@ Implement a recovery protocol: (1) Use a process supervisor (systemd, supervisor
 
 ### Should I use a cloud server or local machine for automated trading?
 
-For latency-sensitive strategies, co-locate near the exchange or use a low-latency cloud provider (AWS in the same region as your broker's servers). For daily or swing trading strategies where millisecond latency is not critical, a reliable VPS (Virtual Private Server) from AWS, Google Cloud, or DigitalOcean provides better uptime than a local machine. Always have a backup access method (mobile app, web interface) to manage positions if the automated system fails.
+For latency-sensitive strategies, co-locate near the exchange or use a low-latency cloud provider (AWS in the same region as your broker's servers). For daily or swing [trading strategies](/blog/backtesting-trading-strategies) where millisecond latency is not critical, a reliable VPS (Virtual Private Server) from AWS, Google Cloud, or DigitalOcean provides better uptime than a local machine. Always have a backup access method (mobile app, web interface) to manage positions if the automated system fails.

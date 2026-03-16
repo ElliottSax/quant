@@ -7,7 +7,6 @@ category: "Trading Strategies"
 tags: ["smart beta", "factor investing", "index construction", "value factor", "momentum factor"]
 keywords: ["smart beta strategies", "factor-based index", "smart beta ETF", "factor investing guide", "alternative index construction"]
 ---
-
 # Smart Beta Strategies: Factor-Based Index Construction
 
 Smart beta strategies occupy the space between passive market-cap-weighted indexing and fully active management. They follow rules-based, transparent methodologies that systematically tilt toward well-documented return factors -- value, momentum, quality, low volatility, and size -- while maintaining the scalability and low cost associated with index investing. With over $1.5 trillion in assets globally, smart beta has become one of the most significant developments in investment management over the past two decades.
@@ -18,7 +17,7 @@ Traditional beta is the return from holding the market-cap-weighted index. Smart
 
 **Market-cap weighting** allocates the most capital to the largest (and often most expensive) companies. This creates a structural overweight to overvalued stocks and an underweight to undervalued stocks -- the opposite of a buy-low, sell-high strategy.
 
-**Smart beta** reweights the portfolio based on fundamentals (sales, earnings, book value), risk characteristics (volatility, beta), or return patterns (momentum, mean reversion). Each alternative weighting scheme implicitly or explicitly captures one or more factor premia.
+**Smart beta** reweights the portfolio based on fundamentals (sales, earnings, book value), risk characteristics (volatility, beta), or return patterns (momentum, [mean reversion](/blog/mean-reversion-strategies-guide)). Each alternative weighting scheme implicitly or explicitly captures one or more factor premia.
 
 ## The Major Factor Premia
 
@@ -82,9 +81,9 @@ Traditional beta is the return from holding the market-cap-weighted index. Smart
 
 **Fundamental weight**: Weight by composite fundamental value (sales + cash flow + dividends + book value). RAFI Fundamental Indices use this approach. Creates a value tilt because cheap stocks have large fundamental weight relative to their market cap.
 
-**Minimum variance weight**: Weights that minimize portfolio volatility (see Minimum Variance Portfolio article). Creates a low-volatility and quality tilt.
+**Minimum variance weight**: Weights that minimize portfolio volatility (see [Minimum Variance Portfolio](/blog/minimum-variance-portfolio) article). Creates a low-volatility and quality tilt.
 
-**Risk parity weight**: Equal risk contribution from each stock or sector. Creates a low-volatility tilt with better diversification than minimum variance.
+**Risk parity weight**: [Equal risk contribution](/blog/risk-parity-portfolio) from each stock or sector. Creates a low-volatility tilt with better diversification than minimum variance.
 
 **Factor tilt**: Start with market-cap weights and tilt toward desired factor exposures:
 
@@ -156,7 +155,7 @@ Some practitioners adjust factor allocations based on the factor's valuation (is
 
 - Smart beta strategies systematically capture factor premia (value, momentum, quality, low volatility, size) through rules-based index construction, bridging passive indexing and active management
 - Multi-factor combination produces superior risk-adjusted returns because factor premia are lowly or negatively correlated; integrated multi-factor portfolios achieve Sharpe ratios 35-40% higher than single factors
-- Implementation details matter: buffer rules reduce turnover by 30-40%, and transaction cost management is critical for high-turnover factors like momentum
+- Implementation details matter: buffer rules reduce turnover by 30-40%, and [transaction cost](/blog/transaction-cost-analysis) management is critical for high-turnover factors like momentum
 - Factor timing based on factor valuation and momentum can add modest alpha but carries the risk of extended factor drawdowns (value underperformed for a decade post-2010)
 - The smart beta industry manages over $1.5 trillion, validating these concepts at institutional scale while raising questions about factor crowding and diminished future premia
 
@@ -176,7 +175,7 @@ The strongest argument for persistence is that factor premia have survived for d
 
 ### What is the difference between smart beta and factor investing?
 
-Smart beta is the marketing term used by index providers and ETF issuers. Factor investing is the academic and institutional term for the same concept. Smart beta typically refers to long-only index products, while factor investing encompasses long-short factor portfolios and more sophisticated multi-factor strategies. The underlying concepts (capturing systematic factor premia through rules-based portfolios) are identical.
+Smart beta is the marketing term used by index providers and ETF issuers. [Factor investing](/blog/factor-investing-strategy-guide) is the academic and institutional term for the same concept. Smart beta typically refers to long-only index products, while factor investing encompasses long-short factor portfolios and more sophisticated multi-factor strategies. The underlying concepts (capturing systematic factor premia through rules-based portfolios) are identical.
 
 ### How does ESG integration affect smart beta strategies?
 

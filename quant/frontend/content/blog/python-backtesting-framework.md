@@ -7,10 +7,9 @@ category: "Python & Automation"
 tags: ["python", "backtesting", "backtrader", "zipline", "vectorbt", "quantitative trading"]
 keywords: ["python backtesting framework", "backtrader vs zipline", "vectorbt backtesting"]
 ---
-
 # Python Backtesting Framework: Backtrader vs Zipline vs VectorBT
 
-Backtesting is the process of evaluating a trading strategy against historical data to assess its viability before risking real capital. Python offers several mature backtesting frameworks, each with different design philosophies, performance characteristics, and use cases. The three most prominent are Backtrader (event-driven, flexible), Zipline (event-driven, institutional-grade), and VectorBT (vectorized, high-performance). Choosing the right framework for your project depends on your strategy complexity, performance requirements, and development speed priorities.
+Backtesting is the process of evaluating a [trading strategy](/blog/breakout-trading-strategy) against historical data to assess its viability before risking real capital. Python offers several mature backtesting frameworks, each with different design philosophies, performance characteristics, and use cases. The three most prominent are Backtrader (event-driven, flexible), Zipline (event-driven, institutional-grade), and VectorBT (vectorized, high-performance). Choosing the right framework for your project depends on your strategy complexity, performance requirements, and development speed priorities.
 
 This guide provides a detailed comparison, implementation examples for each framework, and guidance on which to choose for different trading scenarios.
 
@@ -28,7 +27,7 @@ Backtrader processes each bar sequentially, calling strategy methods (`next()`, 
 
 **Design:** Event-driven with an integrated research pipeline
 **Creator:** Quantopian (open-sourced, community-maintained since Quantopian's closure)
-**Best For:** Equity-focused research, institutional-style analysis, pipeline-based factor models
+**Best For:** Equity-focused research, institutional-style analysis, pipeline-based [factor models](/blog/quantitative-factor-models)
 
 Zipline was built for Quantopian's online research platform and includes a data pipeline for factor analysis, a robust event system, and integration with US equity calendar and data (Quandl/SHARADAR). Its pipeline abstraction makes it particularly powerful for cross-sectional strategies that rank and select from a universe of stocks.
 
@@ -254,7 +253,7 @@ sharpe_matrix.vbt.heatmap(
 ### Choose Zipline When:
 - You are building cross-sectional (stock selection/ranking) strategies
 - You need a robust pipeline for factor analysis
-- You want institutional-grade transaction cost modeling
+- You want institutional-grade [transaction cost](/blog/transaction-cost-analysis) modeling
 - Your focus is US equities with calendar-aware scheduling
 
 ### Choose VectorBT When:
@@ -289,7 +288,7 @@ VectorBT is designed for analysis and backtesting, not live trading. It does not
 
 ### How do I avoid overfitting in backtests?
 
-Three primary defenses: (1) Use out-of-sample data (train on 70% of data, test on the remaining 30%), (2) apply walk-forward optimization (re-optimize parameters periodically using only past data), and (3) favor simple strategies with fewer parameters over complex ones. A strategy with 2-3 parameters is far less likely to be overfit than one with 8-10 parameters. VectorBT's parameter sweep makes overfitting tempting, as it is easy to find a parameter set that looks great on historical data but fails forward.
+Three primary defenses: (1) Use out-of-sample data (train on 70% of data, test on the remaining 30%), (2) apply walk-[forward optimization](/blog/walk-forward-optimization) (re-optimize parameters periodically using only past data), and (3) favor simple strategies with fewer parameters over complex ones. A strategy with 2-3 parameters is far less likely to be overfit than one with 8-10 parameters. VectorBT's parameter sweep makes overfitting tempting, as it is easy to find a parameter set that looks great on historical data but fails forward.
 
 ### Which framework has the best community support?
 
@@ -297,4 +296,4 @@ Backtrader has the largest community with active forums, extensive documentation
 
 ### How do I backtest multi-asset or portfolio strategies?
 
-Backtrader supports multiple data feeds natively, allowing multi-asset strategies with cross-asset logic. VectorBT can handle multiple assets through its portfolio simulation, though cross-asset conditional logic is more limited. Zipline's Pipeline is specifically designed for portfolio-level strategies across large universes. For strategies that require simultaneous analysis of multiple assets (pairs trading, cross-asset momentum), Backtrader's event-driven model provides the most flexibility.
+Backtrader supports multiple data feeds natively, allowing multi-asset strategies with cross-asset logic. VectorBT can handle multiple assets through its portfolio simulation, though cross-asset conditional logic is more limited. Zipline's Pipeline is specifically designed for portfolio-level strategies across large universes. For strategies that require simultaneous analysis of multiple assets ([pairs trading](/blog/pairs-trading-strategy-guide), cross-asset momentum), Backtrader's event-driven model provides the most flexibility.

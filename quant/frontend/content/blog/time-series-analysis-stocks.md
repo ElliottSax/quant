@@ -7,10 +7,9 @@ category: "Data Science"
 tags: ["time series", "ARIMA", "GARCH", "forecasting", "volatility modeling"]
 keywords: ["time series analysis stocks", "ARIMA stock prediction", "GARCH volatility model"]
 ---
-
 # Time Series Analysis for Stock Markets: ARIMA and Beyond
 
-Time series analysis provides the statistical foundation for understanding and forecasting financial markets. Before the machine learning era, methods like ARIMA and GARCH were the primary tools for price and volatility forecasting. Today they remain essential: ARIMA models serve as benchmarks against which more complex models must prove their worth, and GARCH remains the industry standard for volatility estimation in risk management and options pricing.
+Time series analysis provides the statistical foundation for understanding and forecasting financial markets. Before the [machine learning](/blog/machine-learning-trading) era, methods like ARIMA and GARCH were the primary tools for price and volatility forecasting. Today they remain essential: ARIMA models serve as benchmarks against which more complex models must prove their worth, and GARCH remains the industry standard for volatility estimation in risk management and options pricing (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)).
 
 This guide covers the full time series modeling pipeline for stocks, from stationarity testing through ARIMA and GARCH estimation to out-of-sample evaluation.
 
@@ -402,7 +401,7 @@ ARIMA is generally not useful for predicting stock price levels with profitable 
 
 ### When should I use GARCH instead of historical volatility?
 
-Use GARCH whenever you need forward-looking volatility estimates that react to recent market conditions. Historical volatility (rolling standard deviation) assigns equal weight to all observations in the window, while GARCH weights recent observations more heavily and captures volatility clustering. GARCH is essential for options pricing, risk-based position sizing, and any system where volatility regime changes affect decisions.
+Use GARCH whenever you need forward-looking volatility estimates that react to recent market conditions. Historical volatility (rolling standard deviation) assigns equal weight to all observations in the window, while GARCH weights recent observations more heavily and captures volatility clustering. GARCH is essential for options pricing, risk-[based position sizing](/blog/atr-average-true-range-guide), and any system where volatility regime changes affect decisions.
 
 ### How do I choose between GARCH, EGARCH, and GJR-GARCH?
 

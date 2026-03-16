@@ -7,10 +7,9 @@ category: "Congressional Trading"
 tags: ["congressional trading", "trade tracking", "disclosure data", "trading alerts", "political trades"]
 keywords: ["track congress stock trades", "congressional trading tracker", "politician trade alerts", "congress stock disclosure", "track politician trades"]
 ---
-
 # How to Track Congress Stock Trades in Real-Time: Complete 2026 Guide
 
-Tracking congressional stock trades has evolved from a niche research activity into a mainstream investment strategy. The data is public by law -- the STOCK Act requires members of Congress to disclose securities transactions within 45 days -- but accessing, parsing, and acting on that data requires knowing where to look and how to filter signal from noise. This guide covers every step of the process, from raw government filings to automated alert systems that notify you when a senator buys a stock.
+Tracking [congressional stock](/blog/congressional-stock-trading-guide) trades has evolved from a niche research activity into a mainstream investment strategy. The data is public by law -- the STOCK Act requires members of Congress to disclose securities transactions within 45 days -- but accessing, parsing, and acting on that data requires knowing where to look and how to filter signal from noise. This guide covers every step of the process, from raw government filings to automated alert systems that notify you when a senator buys a stock.
 
 As of 2026, over 7,000 individual stock transactions are disclosed by members of Congress annually. The challenge is not the availability of data but the speed and structure of access. Members who file promptly create actionable signals; those who file at the 45-day deadline (or later) produce data that is often stale. Understanding this timing dynamic is critical to extracting value from congressional trading data.
 
@@ -195,7 +194,7 @@ Not all congressional trades are equal. Prioritize trades that exhibit these cha
 
 Avoid overreacting to:
 
-- **Systematic rebalancing**: Some members trade at regular intervals as part of a financial plan. These trades reflect asset allocation targets, not market views.
+- **Systematic rebalancing**: Some members trade at regular intervals as part of a financial plan. These trades reflect asset allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)) targets, not market views.
 - **Tax-loss harvesting**: Late-year sales of losing positions are tax-motivated and carry no directional signal.
 - **Estate planning**: Transfers and exchanges related to estate or trust restructuring.
 - **Index fund and ETF trades**: While some ETF trades can be informative (e.g., a sector-specific ETF), broad market ETF trades are generally noise.

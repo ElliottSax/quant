@@ -7,18 +7,17 @@ category: "Data Science"
 tags: ["numpy", "python", "portfolio math", "linear algebra", "quantitative finance"]
 keywords: ["numpy financial calculations", "portfolio math python", "numpy portfolio optimization"]
 ---
-
 # NumPy for Financial Calculations: Portfolio Math Made Easy
 
-NumPy is the computational engine beneath every serious quantitative finance application. While pandas handles data manipulation and labeling, NumPy provides the raw numerical horsepower for matrix operations, statistical calculations, and Monte Carlo simulations that drive portfolio optimization, risk modeling, and derivatives pricing.
+NumPy is the computational engine beneath every serious quantitative finance application. While pandas handles data manipulation and labeling, NumPy provides the raw numerical horsepower for matrix operations, statistical calculations, and [Monte Carlo](/blog/monte-carlo-simulation-trading) simulations that drive [portfolio optimization](/blog/portfolio-optimization-guide), risk modeling, and derivatives pricing.
 
 This guide covers the NumPy operations that matter most for quant finance, with production code you can deploy directly into your trading infrastructure.
 
 ## Key Takeaways
 
 - **Vectorized operations** in NumPy run 50-100x faster than Python loops, which matters for real-time risk calculations across large portfolios.
-- **Matrix algebra** (covariance matrices, eigendecomposition) is the foundation of modern portfolio theory.
-- **Monte Carlo simulation** in NumPy can generate millions of scenarios in seconds for VaR and options pricing.
+- **Matrix algebra** (covariance matrices, eigendecomposition) is the foundation of [modern portfolio theory](/blog/mean-variance-optimization).
+- **Monte Carlo simulation** in NumPy can generate millions of scenarios in seconds for VaR and options pricing (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)).
 - **Broadcasting rules** let you apply operations across mismatched array shapes without explicit loops.
 
 ## Portfolio Return and Risk Calculations

@@ -7,7 +7,6 @@ category: "Algo Trading"
 tags: ["trading bot", "Python", "automated trading", "API trading"]
 keywords: ["Python trading bot", "build trading bot Python", "automated trading system"]
 ---
-
 # Building a Trading Bot with Python: Step-by-Step Guide
 
 Building a trading bot with Python is one of the most practical applications of quantitative finance. A trading bot automates the entire trading process from data ingestion through signal generation to order execution, removing emotional decision-making and enabling 24/7 market monitoring. With modern broker APIs and Python's rich ecosystem of financial libraries, a functional trading bot can be built in a few hundred lines of code.
@@ -82,7 +81,7 @@ A crossover is detected by comparing the relationship between the fast and slow 
 
 Before deploying any strategy, it should pass these tests:
 - **Unit tests**: Signal generation on known data produces expected results
-- **Backtest**: Positive Sharpe ratio on out-of-sample data
+- **Backtest**: Positive [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) on out-of-sample data
 - **Paper trade**: 30+ days of paper trading with realistic execution
 - **Edge case tests**: Market holidays, gaps, halts, splits
 
@@ -240,7 +239,7 @@ For US equities, Alpaca offers the best beginner-friendly API with free real-tim
 
 ### How do you handle market gaps and overnight risk?
 
-Daily strategies should check for overnight gaps before generating signals. If the market opens significantly above or below the previous close (> 2%), skip the first signal or adjust position sizing. For overnight risk, consider: (1) closing all positions before market close, (2) using stop orders that trigger at market open, or (3) reducing position sizes to account for gap risk. In our backtests, gap filtering improved risk-adjusted returns by 8-12%.
+Daily strategies should check for overnight gaps before generating signals. If the market opens significantly above or below the previous close (> 2%), skip the first signal or adjust [position sizing](/blog/position-sizing-strategies). For overnight risk, consider: (1) closing all positions before market close, (2) using stop orders that trigger at market open, or (3) reducing position sizes to account for gap risk. In our backtests, gap filtering improved risk-adjusted returns by 8-12%.
 
 ### What happens if my trading bot crashes?
 

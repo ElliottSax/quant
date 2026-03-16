@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["pairs trading", "statistical arbitrage", "cointegration", "market neutral"]
 keywords: ["pairs trading strategy", "statistical arbitrage", "cointegration trading"]
 ---
-
 # Pairs Trading Strategy: Statistical Arbitrage Made Simple
 
-Pairs trading strategy is the foundational approach in statistical arbitrage, pioneered by Nunzio Tartaglia's quantitative group at Morgan Stanley in the 1980s. The concept is straightforward: identify two historically correlated securities, monitor their price spread, and trade the divergence when it exceeds a statistical threshold. When the spread widens, you short the outperformer and buy the underperformer, profiting when prices converge.
+Pairs [trading strategy](/blog/breakout-trading-strategy) is the foundational approach in [statistical arbitrage](/blog/crypto-statistical-arbitrage), pioneered by Nunzio Tartaglia's quantitative group at Morgan Stanley in the 1980s. The concept is straightforward: identify two historically correlated securities, monitor their price spread, and trade the divergence when it exceeds a statistical threshold. When the spread widens, you short the outperformer and buy the underperformer, profiting when prices converge.
 
 This market-neutral approach eliminates most directional market risk and has been a core strategy at quantitative hedge funds for decades. In this guide, we cover the full implementation from pair selection through risk management, with backtest results across US equity markets.
 
@@ -53,7 +52,7 @@ We test each candidate pair for cointegration over a 252-day (1-year) rolling wi
 
 - **Engle-Granger ADF test**: p-value < 0.05
 - **Johansen trace test**: Reject at 5% level
-- **Half-life of mean reversion**: Between 5 and 60 trading days
+- **Half-life of [mean reversion](/blog/mean-reversion-strategies-guide)**: Between 5 and 60 trading days
 
 Results from our screening (2024 data):
 - Pairs tested: 4,200
@@ -120,7 +119,7 @@ The strategy's near-zero market beta (0.04) confirms its market-neutral nature. 
 ### Drawdown Analysis
 
 The largest drawdowns occurred during:
-- **March 2020**: -8.9% (correlation breakdown during COVID panic)
+- **March 2020**: -8.9% ([correlation breakdown](/blog/correlation-breakdown-crisis) during COVID panic)
 - **January 2021**: -6.1% (GME/meme stock contagion disrupted sector relationships)
 - **March 2023**: -5.3% (regional banking crisis broke financial sector pairs)
 
@@ -173,7 +172,7 @@ Pairs trades require simultaneous execution of two legs. Slippage on either leg 
 - Requiring both Engle-Granger and Johansen tests reduces false positives significantly
 - The half-life of mean reversion should be 5-60 days for practical trading
 - Stop-losses at Z-score +/- 4.0 and monthly cointegration re-testing protect against relationship breakdown
-- Machine learning can enhance pair selection, improving Sharpe from 1.42 to 1.61
+- [Machine learning](/blog/machine-learning-trading) can enhance pair selection, improving Sharpe from 1.42 to 1.61
 
 ## Frequently Asked Questions
 

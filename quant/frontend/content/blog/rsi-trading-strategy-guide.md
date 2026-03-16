@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["RSI", "relative strength index", "oscillator", "overbought oversold"]
 keywords: ["RSI trading strategy", "relative strength index system", "RSI divergence trading"]
 ---
-
 # RSI Trading Strategy: Relative Strength Index System
 
-The RSI trading strategy built on the Relative Strength Index remains one of the most popular oscillator-based approaches in systematic trading. Developed by J. Welles Wilder in his 1978 book "New Concepts in Technical Trading Systems," the RSI measures the speed and magnitude of recent price changes to evaluate overbought and oversold conditions. While commonly used as a simple threshold indicator (buy below 30, sell above 70), quantitative analysis reveals more sophisticated and profitable applications.
+The RSI [trading strategy](/blog/breakout-trading-strategy) built on the Relative Strength Index remains one of the most popular oscillator-based approaches in systematic trading. Developed by J. Welles Wilder in his 1978 book "New Concepts in Technical Trading Systems," the RSI measures the speed and magnitude of recent price changes to evaluate overbought and oversold conditions. While commonly used as a simple threshold indicator (buy below 30, sell above 70), quantitative analysis reveals more sophisticated and profitable applications.
 
 This guide presents three distinct RSI-based systems with full backtesting methodology, optimized parameters, and risk management frameworks designed for the systematic trader.
 
@@ -34,7 +33,7 @@ Wilder's original RSI uses exponential smoothing, which gives more weight to rec
 
 ## Strategy 1: RSI Mean Reversion (Connors RSI Variant)
 
-Larry Connors' research demonstrated that the standard 14-period RSI with 30/70 thresholds is suboptimal. A 2-period RSI with extreme thresholds (5/95) produces significantly better mean reversion signals on daily charts.
+Larry Connors' research demonstrated that the standard 14-period RSI with 30/70 thresholds is suboptimal. A 2-period RSI with extreme thresholds (5/95) produces significantly better [mean reversion](/blog/mean-reversion-trading-strategy) signals on daily charts.
 
 ### Rules
 
@@ -137,7 +136,7 @@ Multi-timeframe confirmation nearly doubles the Sharpe ratio and cuts the maximu
 | 14 | Standard (all-purpose) | 30 / 70 |
 | 21 | Long-term trend | 40 / 60 |
 
-Shorter RSI periods are more sensitive and suit mean reversion strategies, while longer periods are smoother and suit trend-following applications.
+Shorter RSI periods are more sensitive and suit [mean reversion strategies](/blog/mean-reversion-strategies-guide), while longer periods are smoother and suit trend-following applications.
 
 ### Threshold Optimization
 
@@ -172,7 +171,7 @@ RSI signals accompanied by above-average volume (> 1.5x 20-day average) have a 7
 - The 200-day SMA trend filter adds 3.1% annual return by eliminating counter-trend trades
 - Multi-timeframe RSI (weekly + daily + 4-hour) nearly doubles the Sharpe ratio versus single-timeframe
 - RSI divergence produces reliable reversal signals with a 56.8% win rate and 1.48 profit factor
-- Combining RSI with Bollinger Bands increases win rate from 54% to 67%
+- Combining RSI with [Bollinger Bands](/blog/bollinger-bands-trading-strategy) increases win rate from 54% to 67%
 - The optimal RSI(14) thresholds are 20/80, not the standard 30/70
 
 ## Frequently Asked Questions
@@ -191,7 +190,7 @@ Programmatic divergence detection requires: (1) identifying swing highs and lows
 
 ### Can RSI be used for long-term investing?
 
-Yes, but with modifications. Weekly RSI(14) provides useful signals for long-term allocation decisions. When the weekly RSI of the S&P 500 drops below 30 (which has occurred only 12 times since 1950), subsequent 12-month returns averaged +22.4%. Monthly RSI below 25 has an even stronger track record. For long-term investors, RSI is best used as a timing tool for allocation decisions rather than a trading signal.
+Yes, but with modifications. Weekly RSI(14) provides useful signals for long-term allocation decisions. When the weekly RSI of the S&P 500 drops below 30 (which has occurred only 12 times since 1950), subsequent 12-month returns averaged +22.4%. Monthly RSI below 25 has an even stronger track record. For long-term investors, RSI is best used as a timing tool for allocation decisions rather than a [trading signal](/blog/independent-component-analysis).
 
 ### What is the failure rate of RSI signals?
 

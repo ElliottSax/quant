@@ -7,10 +7,9 @@ category: "Crypto & DeFi"
 tags: ["defi", "protocol-analysis", "risk-management"]
 keywords: ["DeFi analysis", "TVL metrics", "protocol risk", "DeFi valuation"]
 ---
-
 # DeFi Protocol Analysis: TVL, Volume, and Risk Metrics
 
-DeFi protocol assessment requires systematic evaluation frameworks moving beyond marketing narratives to quantitative metrics. Total Value Locked (TVL), trading volume, user growth, liquidity depth, and smart contract risk combine into comprehensive risk-return profiles. This analysis prevents allocating capital to protocols with attractive APYs but deteriorating fundamentals, network effects, or technological risks.
+DeFi protocol assessment requires systematic evaluation frameworks moving beyond marketing narratives to quantitative metrics. Total Value Locked (TVL), trading volume, user growth, liquidity depth, and [smart contract risk](/blog/smart-contract-risk-management) combine into comprehensive risk-return profiles. This analysis prevents allocating capital to protocols with attractive APYs but deteriorating fundamentals, network effects, or technological risks.
 
 This comprehensive guide develops systematic DeFi protocol evaluation frameworks enabling confident capital allocation across 100+ protocols with transparent risk assessment.
 
@@ -66,7 +65,7 @@ Market risk (15% weight): concentration risk (TVL across 10+ assets = 18-20, 70%
 
 Regulatory risk (15% weight): jurisdiction (friendly = 18-20, restrictive = 0-5), stablecoin dependency (uses USDC/USDT = 10-15, proprietary = 15-20), regulatory uncertainty (clear rules = 18-20, uncertain = 0-10).
 
-Liquidity risk (10% weight): TVL/daily volume ratio (1-10x = 18-20, >20x = 0-10), order book depth (able to exit 50% TVL without 5% slippage = 18-20, <25% TVL = 0-5), alternative exit routes (bridges, DEX liquidity = 10-15).
+[Liquidity risk](/blog/liquidity-risk-management) (10% weight): TVL/daily volume ratio (1-10x = 18-20, >20x = 0-10), order book depth (able to exit 50% TVL without 5% slippage = 18-20, <25% TVL = 0-5), alternative exit routes (bridges, DEX liquidity = 10-15).
 
 The risk score calculation: Σ(Category_Score × Weight) / 100. Result: 85-100 = Tier 1 (Aave, Curve), 70-84 = Tier 2 (reputable, minor weaknesses), 50-69 = Tier 3 (higher risk), <50 = avoid.
 
@@ -108,7 +107,7 @@ Daily TVL changes <±5%: normal, no action. Weekly changes ±5-15%: investigate 
 
 **How do you compare yield across protocols with different token reward schedules?**
 
-Stablecoin position earns: 4% from USDC interest + 2% from AAVE token rewards = 6% total. But AAVE rewards have: 50% annual inflation (token supply increasing) plus token price volatility risk. Conservative calculation: calculate stablecoin yield (4%) separately, treat token rewards as bonus with 50% discount for inflation risk. Net: 4% + (2% × 0.5 inflation discount) = 5% conservative. If AAVE tokens also vest/unlock (supply pressure), further discount. Safe approach: compare APY from interest only (without token rewards), view token yields as upside bonus rather than reliable income.
+Stablecoin position earns: 4% from USDC interest + 2% from AAVE token rewards = 6% total. But AAVE rewards have: 50% annual inflation (token supply increasing) plus token price volatility risk. Conservative calculation: calculate [stablecoin yield](/blog/stablecoin-yield-strategies) (4%) separately, treat token rewards as bonus with 50% discount for inflation risk. Net: 4% + (2% × 0.5 inflation discount) = 5% conservative. If AAVE tokens also vest/unlock (supply pressure), further discount. Safe approach: compare APY from interest only (without token rewards), view token yields as upside bonus rather than reliable income.
 
 **Which DeFi protocols are safest for conservative capital allocation?**
 

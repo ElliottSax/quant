@@ -7,10 +7,9 @@ category: "Algo Trading"
 tags: ["Sharpe ratio", "risk-adjusted returns", "portfolio analysis", "performance metrics"]
 keywords: ["Sharpe ratio portfolio analysis", "risk-adjusted returns", "Sortino ratio Calmar ratio"]
 ---
-
 # Sharpe Ratio and Portfolio Analysis: Risk-Adjusted Returns
 
-The Sharpe ratio is the most widely used measure of risk-adjusted performance in quantitative finance, and understanding it deeply is essential for evaluating and comparing trading strategies. Introduced by William Sharpe in 1966 (and refined in 1994), the Sharpe ratio measures the excess return earned per unit of risk taken. A Sharpe ratio of 1.0 means the strategy earns 1% excess return for every 1% of volatility, while a Sharpe of 2.0 means the strategy is twice as efficient at converting risk into return.
+The Sharpe ratio is the most widely used measure of risk-adjusted performance in quantitative finance, and understanding it deeply is essential for evaluating and comparing [trading strategies](/blog/backtesting-trading-strategies). Introduced by William Sharpe in 1966 (and refined in 1994), the Sharpe ratio measures the excess return earned per unit of risk taken. A Sharpe ratio of 1.0 means the strategy earns 1% excess return for every 1% of volatility, while a Sharpe of 2.0 means the strategy is twice as efficient at converting risk into return.
 
 This guide covers the Sharpe ratio in depth along with complementary risk-adjusted metrics, their proper calculation, common misinterpretations, and how to use them for systematic portfolio analysis.
 
@@ -69,7 +68,7 @@ The Sharpe ratio has a direct relationship with expected maximum drawdown:
 | 2.0 | -7 to -12% |
 | 3.0 | -4 to -8% |
 
-These are approximate relationships derived from Monte Carlo simulation assuming normal returns. Fat tails in real markets can produce larger drawdowns than these estimates suggest.
+These are approximate relationships derived from [Monte Carlo simulation](/blog/monte-carlo-simulation-trading) assuming normal returns. Fat tails in real markets can produce larger drawdowns than these estimates suggest.
 
 ### Asset Class Sharpe Ratios (Long-Term)
 
@@ -227,7 +226,7 @@ A strategy that outperforms in bear markets and high volatility (when protection
 
 Compare the strategy's metrics against relevant peers:
 - Same asset class strategies
-- Same strategy type (momentum, mean reversion, etc.)
+- Same strategy type (momentum, [mean reversion](/blog/mean-reversion-strategies-guide), etc.)
 - Same time period and market conditions
 
 ## Key Takeaways
@@ -244,7 +243,7 @@ Compare the strategy's metrics against relevant peers:
 
 ### What is a good Sharpe ratio for a trading strategy?
 
-A Sharpe ratio of 1.0-2.0 is considered good for a systematic trading strategy. In live trading (not backtesting), a Sharpe above 1.0 puts you in the top quartile of professional quantitative managers. Backtested Sharpe ratios are typically 30-50% higher than live performance due to execution differences, slippage, and strategy decay. Therefore, a backtest Sharpe of 1.5 might translate to 0.8-1.0 in production. Warren Buffett's long-term Sharpe ratio is approximately 0.76, and Renaissance Technologies' Medallion fund reportedly achieves 2.0+.
+A Sharpe ratio of 1.0-2.0 is considered good for a systematic [trading strategy](/blog/breakout-trading-strategy). In live trading (not backtesting), a Sharpe above 1.0 puts you in the top quartile of professional quantitative managers. Backtested Sharpe ratios are typically 30-50% higher than live performance due to execution differences, slippage, and strategy decay. Therefore, a backtest Sharpe of 1.5 might translate to 0.8-1.0 in production. Warren Buffett's long-term Sharpe ratio is approximately 0.76, and Renaissance Technologies' Medallion fund reportedly achieves 2.0+.
 
 ### Can you compare Sharpe ratios across different strategies?
 

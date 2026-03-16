@@ -7,12 +7,11 @@ category: "Crypto & DeFi"
 tags: ["defi", "yield-farming", "risk-management"]
 keywords: ["yield farming", "DeFi returns", "liquidity mining", "risk-adjusted yield"]
 ---
-
 # DeFi Yield Farming: Quantitative Risk-Return Analysis
 
-Yield farming has emerged as one of the most attractive yet complex opportunities in decentralized finance, promising annual percentage yields ranging from 5% on stablecoin pools to 500%+ on volatile token pairs. However, advertised APYs rarely tell the complete story. Hidden risks including impermanent loss, smart contract vulnerabilities, token emission schedules, and protocol sustainability often transform eye-popping yields into disappointing or negative returns.
+Yield farming has emerged as one of the most attractive yet complex opportunities in decentralized finance, promising annual percentage yields ranging from 5% on stablecoin pools to 500%+ on volatile token pairs. However, advertised APYs rarely tell the complete story. Hidden risks including [impermanent loss](/blog/impermanent-loss-mitigation), smart contract vulnerabilities, token emission schedules, and protocol sustainability often transform eye-popping yields into disappointing or negative returns.
 
-This comprehensive analysis applies quantitative finance principles to DeFi yield farming, developing frameworks for risk-adjusted return evaluation, position sizing, and portfolio construction across lending protocols, automated market makers, and liquidity mining programs.
+This comprehensive analysis applies quantitative finance principles to DeFi yield farming, developing frameworks for risk-adjusted return evaluation, [position sizing](/blog/position-sizing-strategies), and portfolio construction across lending protocols, automated market makers, and liquidity mining programs.
 
 ## Understanding Yield Farming Mechanics
 
@@ -30,7 +29,7 @@ Traditional Sharpe ratios prove difficult to calculate for DeFi positions due to
 
 The base risk-free rate in DeFi approximates USDC/USDT yields on established lending protocols (Aave, Compound), currently 3-5% APY. This represents the minimum acceptable return for deploying stablecoin capital into DeFi versus holding in a centralized exchange or traditional savings.
 
-Risk premiums should account for five primary factors: smart contract risk, impermanent loss, token emission risk, protocol sustainability, and liquidity risk. Each factor receives a risk score from 0-20%, with the sum representing required yield premium over the risk-free rate.
+Risk premiums should account for five primary factors: [smart contract risk](/blog/smart-contract-risk-management), impermanent loss, token emission risk, protocol sustainability, and [liquidity risk](/blog/liquidity-risk-management). Each factor receives a risk score from 0-20%, with the sum representing required yield premium over the risk-free rate.
 
 Smart contract risk scores consider audit quality (multiple audits by top firms = 0-2%, single audit = 5-8%, no audit = 15-20%), time in production (>2 years = 0-2%, 6-12 months = 5-8%, <6 months = 10-15%), and total value locked (>$1B TVL = 0-2%, $100M-$1B = 3-6%, <$100M = 8-12%). Curve Finance with extensive audits, 3+ years operation, and $3B+ TVL scores 2% smart contract risk premium, while a 3-month-old protocol with single audit and $50M TVL scores 15%.
 
@@ -106,7 +105,7 @@ Tax-loss harvesting strategies deliberately realize losses to offset yield incom
 
 ## Key Takeaways
 
-DeFi yield farming requires quantitative risk assessment beyond simple APY comparison, incorporating smart contract risk, impermanent loss, token sustainability, and protocol security into risk-adjusted return calculations.
+DeFi yield farming requires [quantitative risk](/blog/quantitative-risk-management) assessment beyond simple APY comparison, incorporating smart contract risk, impermanent loss, token sustainability, and protocol security into risk-adjusted return calculations.
 
 Stablecoin strategies on established protocols (Aave, Compound, Curve) offer 4-10% risk-adjusted yields with minimal IL exposure, serving as portfolio foundation for conservative allocators.
 

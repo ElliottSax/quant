@@ -7,10 +7,9 @@ category: "Risk Management"
 tags: ["drawdown management", "risk management", "capital preservation", "losing streaks", "trading psychology"]
 keywords: ["drawdown management", "trading drawdown", "maximum drawdown strategy"]
 ---
-
 # Drawdown Management: Protecting Capital During Losing Streaks
 
-Drawdown management is the process of systematically controlling portfolio losses during adverse periods. Every trading strategy, regardless of its edge, experiences drawdowns. The difference between traders who survive to benefit from their edge over thousands of trades and those who blow up during an inevitable losing streak comes down to one thing: how they manage drawdowns before, during, and after they occur.
+Drawdown management is the process of systematically controlling portfolio losses during adverse periods. Every [trading strategy](/blog/breakout-trading-strategy), regardless of its edge, experiences drawdowns. The difference between traders who survive to benefit from their edge over thousands of trades and those who blow up during an inevitable losing streak comes down to one thing: how they manage drawdowns before, during, and after they occur.
 
 This guide covers the mathematics of drawdowns, why they are more dangerous than most traders realize, and the specific protocols that professional risk managers use to survive them.
 
@@ -47,18 +46,18 @@ Many traders underestimate the probability and magnitude of drawdowns because th
 
 ### Expected Maximum Drawdown by Strategy Characteristics
 
-For a strategy with a 55% win rate and 1.5:1 risk-reward ratio, risking 1% per trade, the expected maximum drawdown over various trade counts:
+For a strategy with a 55% win rate and 1.5:1 risk-[reward ratio](/blog/risk-reward-ratio-optimization), risking 1% per trade, the expected maximum drawdown over various trade counts:
 
 - **100 trades:** ~6-8% MDD (most likely longest losing streak: 5-6)
 - **500 trades:** ~10-14% MDD (longest streak: 7-8)
 - **1,000 trades:** ~12-18% MDD (longest streak: 8-10)
 - **5,000 trades:** ~15-22% MDD (longest streak: 10-12)
 
-These are for independent trades. Correlated positions, market regime changes, or systematic risks can produce significantly worse outcomes.
+These are for independent trades. Correlated positions, [market regime](/blog/market-regime-detection) changes, or systematic risks can produce significantly worse outcomes.
 
 ### The Monte Carlo Approach
 
-Rather than relying on a single backtested equity curve, Monte Carlo simulation generates thousands of possible equity paths by randomly sampling from the historical trade distribution. This reveals the range of possible outcomes, including worst-case scenarios that did not appear in the specific historical sequence.
+Rather than relying on a single backtested equity curve, [Monte Carlo simulation](/blog/monte-carlo-simulation-trading) generates thousands of possible equity paths by randomly sampling from the historical trade distribution. This reveals the range of possible outcomes, including worst-case scenarios that did not appear in the specific historical sequence.
 
 ```python
 import numpy as np
@@ -84,7 +83,7 @@ The 95th percentile of the Monte Carlo distribution provides a realistic worst-c
 Implement automatic risk reduction as drawdowns deepen:
 
 **Tier 0 (Normal): 0-5% drawdown**
-- Full position sizing (standard 1-2% risk per trade)
+- Full [position sizing](/blog/position-sizing-strategies) (standard 1-2% risk per trade)
 - All strategies active
 - Standard portfolio limits
 

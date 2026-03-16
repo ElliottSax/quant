@@ -7,7 +7,6 @@ category: "Crypto & DeFi"
 tags: ["arbitrage", "execution", "trading-infrastructure"]
 keywords: ["cross-exchange arbitrage", "latency arbitrage", "execution", "multi-venue trading"]
 ---
-
 # Cross-Exchange Arbitrage: Latency and Execution Optimization
 
 Cross-exchange arbitrage exploits temporary price discrepancies across venues, requiring sophisticated execution infrastructure minimizing latency and maximizing fill probability. Unlike risk-free true arbitrage where profit is guaranteed, practical cross-exchange trading involves execution risk, transfer delays, and competition from other arbitrageurs reducing theoretical profits to realistic 0.3-2% per trade after all costs.
@@ -24,7 +23,7 @@ Geographical optimization reduces latency through co-location (servers physicall
 
 Network optimization implements direct connections to exchanges via FIX protocols (financial information exchange) where available, reducing REST API latency from 300-500ms to 50-100ms. Most crypto exchanges lack FIX but some (Coinbase, Kraken Futures) offer it for institutional clients.
 
-Order types impact execution certainty. Market orders execute immediately at current price but assume worst-case spread. Limit orders (bid at 50% of spread below mark, ask at 50% above) reduce slippage but risk non-execution. Optimal strategy: place limit orders at probabilities ensuring 70-80% fill rates, avoiding worst-case spread capture.
+[Order types](/blog/order-types-execution-guide) impact execution certainty. Market orders execute immediately at current price but assume worst-case spread. Limit orders (bid at 50% of spread below mark, ask at 50% above) reduce slippage but risk non-execution. Optimal strategy: place limit orders at probabilities ensuring 70-80% fill rates, avoiding worst-case spread capture.
 
 The execution probability model calculates fill rate for limit orders at various distances from mid-price. Historically, bids 0.1% below mid fill 80%+ of time, 0.5% below 40%, 1.0% below 10%. Asks 0.1% above mid fill 80%+, 0.5% above 40%, 1.0% above 10%. Position order placement 0.1-0.3% from mid for 70-80% fill probability, capturing majority of spread without excessive execution failures.
 
@@ -38,7 +37,7 @@ Funding distribution strategy: maintain $100,000 across 10 exchanges ($10,000 ea
 
 The rebalancing algorithm: run daily to ensure balanced positions. If Binance position grows to $12,000 (from profit) and Coinbase drops to $8,000, arbitrage opportunities skew toward Binance execution. Rebalance by moving $2,000 from Binance to Coinbase. Costs: $20-50 in withdrawal/deposit fees, elimination of brief profitable opportunities during rebalancing. Monthly rebalancing costs ~$300-500 for $100k portfolio, reasonable cost for reduced concentration risk.
 
-Position sizing accounts for exchange liquidity. Buy 50 BTC on Kraken when 100 BTC offered at best ask; execution at reasonable slippage. Try buying 500 BTC and you move price 5-10%, turning profitable trade unprofitable. The maximum profitable position = exchange liquidity × (spread - fees) / price impact from position. For $50M daily volume on pair and 0.5% spread, maximum profitable 200-300 BTC position.
+[Position sizing](/blog/position-sizing-strategies) accounts for exchange liquidity. Buy 50 BTC on Kraken when 100 BTC offered at best ask; execution at reasonable slippage. Try buying 500 BTC and you move price 5-10%, turning profitable trade unprofitable. The maximum profitable position = exchange liquidity × (spread - fees) / price impact from position. For $50M daily volume on pair and 0.5% spread, maximum profitable 200-300 BTC position.
 
 ## Advanced Infrastructure and Automation
 
@@ -66,7 +65,7 @@ Regulatory monitoring: track exchange status across jurisdictions. Coinbase rest
 
 Execution quality metrics: track fill rate (% of intended orders filled), average fill price (vs. target mid-price), latency to execution (order submission to fill time), and P&L realized vs. theoretical. Monthly dashboard: 95%+ fill rate = healthy, 80-95% = execution issues (widen order placement), <80% = systemic problems (gaps/slippage too large).
 
-The drawdown management policy: maximum daily loss -2% capital triggers shutdown, maximum weekly loss -5% halts trading until manual review, maximum monthly loss -10% requires strategy overhaul. This prevents cascading losses during unusual market conditions (delisting announcements, exchange manipulation, flash crashes).
+The [drawdown management](/blog/drawdown-management-guide) policy: maximum daily loss -2% capital triggers shutdown, maximum weekly loss -5% halts trading until manual review, maximum monthly loss -10% requires strategy overhaul. This prevents cascading losses during unusual market conditions (delisting announcements, exchange manipulation, flash crashes).
 
 ## Key Takeaways
 
@@ -84,7 +83,7 @@ Risk management limiting single-exchange concentration to 20% maximum, implement
 
 **How much capital is needed for meaningful cross-exchange arbitrage?**
 
-Minimum $50,000-$100,000 across exchanges ($10,000 per venue minimum spread 5-10 exchanges). Smaller amounts ($25,000) possible on 2-3 exchanges but: higher concentration risk, reduced opportunity quantity, insufficient margin for rebalancing. Professional operations deploy $500,000-$2M+ enabling: 15-20 venue positioning, larger position sizes per opportunity, active monitoring with personnel dedicated to monitoring/execution. Smaller traders ($10,000-$25,000) focus on single-pair arbitrage or use algorithmic trading services.
+Minimum $50,000-$100,000 across exchanges ($10,000 per venue minimum spread 5-10 exchanges). Smaller amounts ($25,000) possible on 2-3 exchanges but: higher concentration risk, reduced opportunity quantity, insufficient margin for rebalancing. Professional operations deploy $500,000-$2M+ enabling: 15-20 venue positioning, larger position sizes per opportunity, active monitoring with personnel dedicated to monitoring/execution. Smaller traders ($10,000-$25,000) focus on single-pair arbitrage or use [algorithmic trading](/blog/algorithmic-trading-beginners) services.
 
 **What are realistic monthly returns from cross-exchange arbitrage?**
 

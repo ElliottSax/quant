@@ -7,12 +7,11 @@ category: "Technical Analysis"
 tags: ["ichimoku cloud", "technical analysis", "trend following", "japanese indicators", "trading system"]
 keywords: ["ichimoku cloud trading system", "ichimoku strategy", "ichimoku cloud indicator"]
 ---
-
 # Ichimoku Cloud Trading System: Complete Strategy Guide
 
-The Ichimoku Cloud trading system, formally known as Ichimoku Kinko Hyo ("one glance equilibrium chart"), is a comprehensive technical analysis framework developed by Japanese journalist Goichi Hosoda in the late 1930s and published in 1969 after three decades of refinement. Unlike most Western indicators that measure a single dimension of price behavior, the Ichimoku system simultaneously displays support and resistance levels, trend direction, momentum, and trading signals in a single chart overlay.
+The Ichimoku Cloud trading system, formally known as Ichimoku Kinko Hyo ("one glance equilibrium chart"), is a comprehensive [technical analysis](/blog/python-technical-analysis-library) framework developed by Japanese journalist Goichi Hosoda in the late 1930s and published in 1969 after three decades of refinement. Unlike most Western indicators that measure a single dimension of price behavior, the Ichimoku system simultaneously displays support and resistance levels, trend direction, momentum, and trading signals in a single chart overlay.
 
-This guide breaks down each of the five components, explains how they interact, and provides concrete trading strategies used by professionals in equity, forex, and cryptocurrency markets.
+This guide breaks down each of the five components, explains how they interact, and provides concrete [trading strategies](/blog/backtesting-trading-strategies) used by professionals in equity, forex, and cryptocurrency markets.
 
 ## The Five Components of Ichimoku Cloud
 
@@ -164,7 +163,7 @@ The Ichimoku system was designed for trending markets and performs best in forex
 
 ### How do you use Ichimoku Cloud with other indicators?
 
-While the Ichimoku system is designed to be self-contained, many traders combine it with volume analysis and the RSI (Relative Strength Index). Volume confirms breakout strength through the cloud, while RSI can identify overbought/oversold conditions at key Ichimoku levels. Avoid adding too many indicators, as the Ichimoku system already encodes multiple dimensions of analysis.
+While the Ichimoku system is designed to be self-contained, many traders combine it with volume analysis and the RSI ([Relative Strength Index](/blog/rsi-trading-strategy-guide)). Volume confirms breakout strength through the cloud, while RSI can identify overbought/oversold conditions at key Ichimoku levels. Avoid adding too many indicators, as the Ichimoku system already encodes multiple dimensions of analysis.
 
 ### What does a flat Kijun-sen indicate?
 

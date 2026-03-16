@@ -7,10 +7,9 @@ category: "Portfolio Management"
 tags: ["mean-variance optimization", "modern portfolio theory", "efficient frontier", "Markowitz", "portfolio construction"]
 keywords: ["mean-variance optimization", "efficient frontier", "Markowitz portfolio theory", "portfolio optimization", "optimal portfolio construction"]
 ---
-
 # Mean-Variance Optimization: Modern Portfolio Theory in Practice
 
-Harry Markowitz's mean-variance optimization (MVO), introduced in 1952, remains the foundation of quantitative portfolio construction. Despite well-known limitations -- sensitivity to input estimates, concentration in estimation-error-favored assets, and the assumption that variance fully captures risk -- MVO provides the conceptual and mathematical framework upon which virtually all modern portfolio optimization methods are built. Understanding MVO thoroughly is prerequisite to understanding the methods that improve upon it.
+Harry Markowitz's mean-variance optimization (MVO), introduced in 1952, remains the foundation of quantitative portfolio construction. Despite well-known limitations -- sensitivity to input estimates, concentration in estimation-error-favored assets, and the assumption that variance fully captures risk -- MVO provides the conceptual and mathematical framework upon which virtually all modern [portfolio optimization](/blog/portfolio-optimization-guide) methods are built. Understanding MVO thoroughly is prerequisite to understanding the methods that improve upon it.
 
 ## The Mean-Variance Framework
 
@@ -120,7 +119,7 @@ This captures the intuition that investors care about downside risk, not upside 
 
 ### Mean-CVaR Optimization
 
-Replace variance with Conditional Value at Risk (see the Expected Shortfall article). This produces portfolios with lower tail risk, at the cost of solving a linear program rather than a quadratic program.
+Replace variance with Conditional Value at Risk (see the [Expected Shortfall](/blog/expected-shortfall-cvar) article). This produces portfolios with lower tail risk, at the cost of solving a linear program rather than a quadratic program.
 
 ### Multi-Period Optimization
 
@@ -134,9 +133,9 @@ Dynamic programming or stochastic programming methods address these extensions, 
 
 ## Key Takeaways
 
-- Mean-variance optimization finds the portfolio with minimum variance for a given expected return, producing the efficient frontier of optimal risk-return trade-offs
+- Mean-variance optimization finds the portfolio with [minimum variance](/blog/minimum-variance-portfolio) for a given expected return, producing the efficient frontier of optimal risk-return trade-offs
 - The primary practical challenge is input estimation: expected returns are noisy, and the covariance matrix is poorly estimated when assets outnumber observations
-- Shrinkage estimators, factor models, and regularization substantially improve out-of-sample portfolio performance by reducing sensitivity to estimation error
+- Shrinkage estimators, [factor models](/blog/quantitative-factor-models), and regularization substantially improve out-of-sample portfolio performance by reducing sensitivity to estimation error
 - Constraints (long-only, position limits, turnover limits) are not just practical requirements but serve as implicit regularization, improving portfolio stability
 - Extensions including robust optimization, resampled efficiency, mean-semivariance, and mean-CVaR address specific limitations of classical MVO while preserving its core framework
 
@@ -148,7 +147,7 @@ MVO maximizes in-sample fit to the estimated parameters, which includes fitting 
 
 ### What Sharpe ratio should I use as a target?
 
-The tangency portfolio's Sharpe ratio depends entirely on the input estimates. Historically, diversified equity portfolios achieve Sharpe ratios of 0.3-0.5. Multi-asset portfolios with risk parity characteristics can achieve 0.5-0.8. Individual stocks rarely sustain Sharpe ratios above 0.2. If your optimizer produces a Sharpe ratio above 1.0 for a long-only equity portfolio, the expected return estimates are likely too aggressive.
+The tangency portfolio's [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) depends entirely on the input estimates. Historically, diversified equity portfolios achieve Sharpe ratios of 0.3-0.5. Multi-asset portfolios with risk parity characteristics can achieve 0.5-0.8. Individual stocks rarely sustain Sharpe ratios above 0.2. If your optimizer produces a Sharpe ratio above 1.0 for a long-only equity portfolio, the expected return estimates are likely too aggressive.
 
 ### How often should I re-optimize the portfolio?
 

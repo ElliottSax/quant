@@ -7,7 +7,6 @@ category: "Trading Strategies"
 tags: ["risk parity", "portfolio construction", "equal risk contribution", "asset allocation", "risk management"]
 keywords: ["risk parity portfolio", "equal risk contribution", "risk parity python"]
 ---
-
 # Risk Parity Portfolio Construction: Equal Risk Contribution
 
 Risk parity challenges the fundamental assumption of traditional portfolio construction: that diversification should be measured in capital terms. A 60/40 stock/bond portfolio may appear diversified by weight, but equities contribute approximately 90% of the portfolio's total risk. Risk parity instead equalizes each asset's contribution to total portfolio volatility, producing portfolios that are truly diversified from a risk perspective.
@@ -393,11 +392,11 @@ def multi_asset_risk_parity(
 
 ### Does risk parity outperform 60/40?
 
-Risk parity has historically delivered higher risk-adjusted returns (Sharpe ratio) than 60/40 portfolios, though the improvement varies by period. During periods of rising interest rates (like 2022), risk parity's overweight to bonds caused significant drawdowns. The advantage comes from true diversification: risk parity avoids the equity concentration problem of 60/40. However, when equities outperform strongly (bull markets), the unleveraged risk parity portfolio underperforms on a total return basis because it holds less equity.
+Risk parity has historically delivered higher risk-adjusted returns ([Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis)) than 60/40 portfolios, though the improvement varies by period. During periods of rising interest rates (like 2022), risk parity's overweight to bonds caused significant drawdowns. The advantage comes from true diversification: risk parity avoids the equity concentration problem of 60/40. However, when equities outperform strongly (bull markets), the unleveraged risk parity portfolio underperforms on a total return basis because it holds less equity.
 
 ### What are the risks of using leverage in risk parity?
 
-Leverage amplifies both returns and losses. Key risks include: (1) margin calls during extreme drawdowns requiring forced selling at the worst time, (2) borrowing cost increases when interest rates rise, which directly reduces returns, (3) correlation spikes during crises causing all assets to fall simultaneously, and (4) liquidity risk if leveraged positions need to be unwound quickly. Limit leverage to 2-3x and stress-test against historical crises.
+Leverage amplifies both returns and losses. Key risks include: (1) margin calls during extreme drawdowns requiring forced selling at the worst time, (2) borrowing cost increases when interest rates rise, which directly reduces returns, (3) correlation spikes during crises causing all assets to fall simultaneously, and (4) [liquidity risk](/blog/liquidity-risk-management) if leveraged positions need to be unwound quickly. Limit leverage to 2-3x and stress-test against historical crises.
 
 ### How often should I rebalance a risk parity portfolio?
 

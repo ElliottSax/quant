@@ -7,7 +7,6 @@ category: "Risk Management"
 tags: ["risk budgeting", "risk allocation", "portfolio construction", "risk parity", "strategy allocation"]
 keywords: ["risk budgeting", "risk allocation framework", "equal risk contribution", "risk budget portfolio", "strategy risk management"]
 ---
-
 # Risk Budgeting Framework: Allocating Risk Across Strategies
 
 Risk budgeting inverts the traditional portfolio construction process. Rather than allocating capital and accepting whatever risk results, risk budgeting starts by defining how much risk each strategy or asset class should consume, then determines the capital allocation required to achieve those risk targets. This approach ensures that portfolio risk is distributed intentionally rather than accidentally, preventing the common problem where a single strategy or asset class dominates the portfolio's risk profile despite receiving a modest capital allocation.
@@ -119,7 +118,7 @@ The hierarchical structure ensures that risk budgets cascade consistently from t
 
 Static risk budgets may be suboptimal when strategy Sharpe ratios vary over time. Dynamic risk budgeting adjusts allocations based on:
 
-**Rolling Sharpe ratio**: Increase the risk budget for strategies that have recently performed well (momentum in allocation). Decrease for underperformers.
+**Rolling [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis)**: Increase the risk budget for strategies that have recently performed well (momentum in allocation). Decrease for underperformers.
 
 **Regime-conditional budgets**: Assign different risk budgets for different market regimes. During high-volatility regimes, increase the budget for defensive strategies (managed futures, tail hedging) and decrease for carry strategies.
 
@@ -171,14 +170,14 @@ A multi-strategy fund with four strategies and a total portfolio volatility targ
 | Credit | 1.2 | 20% | 12% | 13% | 1.6% |
 | **Total** | | **100%** | **100%** | | **8.0%** |
 
-Note how capital weights and risk weights differ substantially. Statistical arbitrage receives 56% of capital (because its lower volatility requires more capital to consume 35% of risk), while Event-Driven receives only 12% of capital (its higher volatility means a small capital allocation generates substantial risk contribution).
+Note how capital weights and risk weights differ substantially. [Statistical arbitrage](/blog/crypto-statistical-arbitrage) receives 56% of capital (because its lower volatility requires more capital to consume 35% of risk), while Event-Driven receives only 12% of capital (its higher volatility means a small capital allocation generates substantial risk contribution).
 
 ## Key Takeaways
 
 - Risk budgeting allocates portfolio risk intentionally rather than accepting whatever risk profile results from capital allocation, ensuring no single strategy dominates the portfolio's risk and return characteristics
-- Equal Risk Contribution (ERC) maximizes risk diversification across portfolio components without requiring expected return estimates, making it robust to the most common source of optimization error
+- [Equal Risk Contribution](/blog/risk-parity-portfolio) (ERC) maximizes risk diversification across portfolio components without requiring expected return estimates, making it robust to the most common source of optimization error
 - Custom risk budgets should be proportional to the square of each strategy's Sharpe ratio when Sharpe ratios are known, maximizing portfolio-level risk-adjusted returns
-- Multi-level hierarchical risk budgeting cascades risk allocations from asset classes down to individual positions, maintaining consistent risk governance across the portfolio
+- Multi-level [hierarchical risk](/blog/hierarchical-risk-parity) budgeting cascades risk allocations from asset classes down to individual positions, maintaining consistent risk governance across the portfolio
 - Dynamic risk budgets that adjust based on rolling performance, regime conditions, and aggregate volatility can improve risk-adjusted returns by 15-30% relative to static budgets
 
 ## Frequently Asked Questions
@@ -201,4 +200,4 @@ Negative risk contributions can occur when a position has a negative correlation
 
 ### What is the relationship between risk budgeting and the Kelly criterion?
 
-Both optimize position sizing, but from different perspectives. The Kelly criterion maximizes long-term geometric growth for a single strategy or bet. Risk budgeting allocates risk across multiple strategies. The connection: when each strategy is sized according to its individual Kelly fraction, and then scaled to fit within the portfolio's risk budget, the resulting allocation approximately maximizes portfolio-level geometric growth. Half-Kelly sizing within a risk budget framework is a common practical implementation.
+Both optimize [position sizing](/blog/position-sizing-strategies), but from different perspectives. The Kelly criterion maximizes long-term geometric growth for a single strategy or bet. Risk budgeting allocates risk across multiple strategies. The connection: when each strategy is sized according to its individual Kelly fraction, and then scaled to fit within the portfolio's risk budget, the resulting allocation approximately maximizes portfolio-level geometric growth. Half-Kelly sizing within a risk budget framework is a common practical implementation.

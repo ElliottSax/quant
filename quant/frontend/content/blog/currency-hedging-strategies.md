@@ -7,7 +7,6 @@ category: "Portfolio Management"
 tags: ["currency hedging", "FX risk", "international portfolio", "forward contracts", "currency overlay"]
 keywords: ["currency hedging strategies", "FX hedging", "international portfolio currency risk", "currency overlay", "forward contract hedging"]
 ---
-
 # Currency Hedging Strategies for International Portfolios
 
 International diversification exposes portfolios to currency risk. A US-based investor holding European equities earns the local equity return plus (or minus) the EUR/USD exchange rate movement. In some years, currency effects dominate the underlying investment return. During 2022, MSCI EAFE returned -14.5% in USD but only -5.7% in local currency terms -- nearly 9 percentage points of the loss came from the strengthening dollar. Systematic currency hedging manages this risk, and the choice of hedging approach materially affects portfolio risk and return.
@@ -185,7 +184,7 @@ Many investors accept unhedged EM currency exposure, treating it as a risk premi
 
 - Currency risk contributes 15-30% of international portfolio variance without providing systematic compensation, making some degree of hedging appropriate for most investors
 - Forward contracts are the primary hedging instrument, with the cost or benefit determined by interest rate differentials between domestic and foreign rates
-- The optimal hedge ratio for equity portfolios is typically 50-80%, reflecting the partial natural hedge between currency moves and local equity returns; fixed income portfolios warrant higher hedge ratios (80-100%)
+- The optimal hedge ratio for equity portfolios is typically 50-80%, reflecting the partial natural hedge between currency moves and local equity returns; [fixed income](/blog/fixed-income-quant-strategies) portfolios warrant higher hedge ratios (80-100%)
 - Dynamic hedge ratios incorporating carry, momentum, and volatility signals can add 50-100 basis points annually versus static hedging
 - Currency overlay separates FX management from security selection, enabling specialized expertise and centralized netting of currency exposures
 
@@ -209,4 +208,4 @@ Consolidate all foreign currency exposures and hedge the net exposure per curren
 
 ### Can currency hedging be a source of alpha?
 
-Yes. Active currency management (carry, momentum, value strategies applied to FX markets) has a well-documented track record of generating alpha. Academic research estimates the Sharpe ratio of systematic currency strategies at 0.3-0.5. The currency overlay structure explicitly enables alpha generation alongside hedging. However, currency alpha is cyclical and can experience extended drawdown periods, requiring a multi-year commitment.
+Yes. Active currency management (carry, momentum, value strategies applied to FX markets) has a well-documented track record of generating alpha. Academic research estimates the [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) of systematic currency strategies at 0.3-0.5. The currency overlay structure explicitly enables alpha generation alongside hedging. However, currency alpha is cyclical and can experience extended drawdown periods, requiring a multi-year commitment.

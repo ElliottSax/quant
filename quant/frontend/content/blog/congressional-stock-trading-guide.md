@@ -7,7 +7,6 @@ category: "Congressional Trading"
 tags: ["congressional trading", "STOCK Act", "politician stocks", "disclosure data", "insider trading"]
 keywords: ["congressional stock trading", "politician stock trades", "congress stock market", "STOCK Act", "how politicians trade stocks"]
 ---
-
 # Congressional Stock Trading: How Politicians Trade Stocks and What It Means for You
 
 Congressional stock trading has become one of the most scrutinized topics in American finance. Members of Congress collectively trade billions of dollars in securities each year while simultaneously crafting legislation that directly impacts the companies they own. Between 2019 and 2025, congressional stock trades exceeded $8.5 billion in disclosed value, and multiple academic studies have found that these trades outperform the market by statistically significant margins.
@@ -60,7 +59,7 @@ A qualified blind trust, when properly structured, removes the member from inves
 
 ### Options Trading
 
-A subset of members engage in options trading, which allows for leveraged bets on stock direction. Options trades are particularly notable because they demonstrate a high degree of market conviction and sophistication. A member purchasing short-dated call options on a stock days before favorable legislation suggests a level of timing that warrants scrutiny.
+A subset of members engage in [options trading](/blog/options-trading-strategies-quant), which allows for leveraged bets on stock direction. Options trades are particularly notable because they demonstrate a high degree of market conviction and sophistication. A member purchasing short-dated call options on a stock days before favorable legislation suggests a level of timing that warrants scrutiny.
 
 ## Notable Traders in Congress
 
@@ -122,7 +121,7 @@ The primary official source is the **Electronic Financial Disclosures** portal m
 
 Several platforms aggregate and structure congressional trading data:
 
-- **QuantEngines.com**: Provides analytics and tracking tools for congressional trading data alongside broader quantitative trading resources.
+- **QuantEngines.com**: Provides analytics and tracking tools for congressional trading data alongside broader [quantitative trading](/blog/crypto-quant-trading-strategies) resources.
 - **Capitol Trades**: Aggregates and visualizes congressional trades with filtering by politician, party, sector, and performance.
 - **Unusual Whales**: Offers a congressional trading dashboard with real-time alerts and performance tracking.
 - **Quiver Quantitative**: Provides free access to structured congressional trading data with an API for developers.
@@ -155,7 +154,7 @@ The basic thesis is simple: if politicians have an information advantage, system
 - Weight toward purchases over sales (sales may be for liquidity reasons unrelated to market views)
 - Track options trades, which imply higher conviction
 
-**Position sizing**: Congressional trade sizes are reported in ranges, so precise position sizing is impossible. Most copy-trading approaches use a fixed allocation per signal rather than trying to replicate the exact position.
+**Position sizing**: Congressional trade sizes are reported in ranges, so precise [position sizing](/blog/position-sizing-strategies) is impossible. Most copy-trading approaches use a fixed allocation per signal rather than trying to replicate the exact position.
 
 ### Historical Performance of Copy Strategies
 

@@ -7,7 +7,6 @@ category: "Risk Management"
 tags: ["CVaR", "expected shortfall", "tail risk", "risk metrics", "portfolio risk"]
 keywords: ["expected shortfall", "CVaR calculation", "conditional value at risk", "tail risk measurement", "coherent risk measures"]
 ---
-
 # Expected Shortfall (CVaR): Beyond VaR Risk Measurement
 
 Value at Risk tells you the door to the tail. Expected Shortfall tells you what lies behind it. While VaR identifies a loss threshold at a given confidence level, Expected Shortfall (ES), also known as Conditional Value at Risk (CVaR), measures the average magnitude of losses that exceed that threshold. This distinction matters profoundly for risk management: two portfolios with identical VaR can have dramatically different tail loss profiles, and ES captures this difference where VaR cannot.
@@ -141,7 +140,7 @@ Remedies include:
 
 ### Computational Efficiency
 
-For portfolios with thousands of positions, full Monte Carlo ES with scenario-by-scenario revaluation is computationally intensive. Practical approaches include:
+For portfolios with thousands of positions, full [Monte Carlo](/blog/monte-carlo-simulation-trading) ES with scenario-by-scenario revaluation is computationally intensive. Practical approaches include:
 
 - **Delta-gamma approximation**: Second-order Taylor expansion for non-linear positions, avoiding full revaluation
 - **Stratified sampling**: Oversample tail scenarios to improve ES precision without increasing total simulation count
@@ -150,10 +149,10 @@ For portfolios with thousands of positions, full Monte Carlo ES with scenario-by
 ## Key Takeaways
 
 - Expected Shortfall measures the average loss in the tail beyond VaR, answering the critical question of how bad losses are when they exceed the VaR threshold
-- ES is a coherent risk measure satisfying subadditivity, making it theoretically superior to VaR for capital allocation and portfolio optimization
+- ES is a coherent risk measure satisfying subadditivity, making it theoretically superior to VaR for capital allocation and [portfolio optimization](/blog/portfolio-optimization-guide)
 - The FRTB regulatory framework has adopted 97.5% ES as the primary market risk metric, replacing 99% VaR and driving institutional adoption
 - CVaR-optimized portfolios can be constructed via linear programming (Rockafellar-Uryasev formulation), producing portfolios with substantially lower tail risk than mean-variance alternatives
-- Accurate ES estimation requires careful attention to sample size, distributional assumptions, and tail modeling techniques such as Extreme Value Theory
+- Accurate ES estimation requires careful attention to sample size, distributional assumptions, and tail modeling techniques such as [Extreme Value Theory](/blog/extreme-value-theory-trading)
 
 ## Frequently Asked Questions
 

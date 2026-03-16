@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["MACD", "signal line crossover", "momentum", "technical analysis"]
 keywords: ["MACD trading strategy", "MACD signal crossover", "MACD histogram trading"]
 ---
-
 # MACD Trading Strategy: Signal Line Crossover System
 
-The MACD trading strategy built on the Moving Average Convergence Divergence indicator is a cornerstone of systematic technical analysis. Created by Gerald Appel in the late 1970s, MACD captures momentum shifts by measuring the relationship between two exponential moving averages. Unlike simple oscillators, MACD provides three distinct signal types: signal line crossovers, zero line crossovers, and histogram divergence, each with different risk-reward characteristics.
+The MACD [trading strategy](/blog/breakout-trading-strategy) built on the Moving Average Convergence Divergence indicator is a cornerstone of systematic [technical analysis](/blog/python-technical-analysis-library). Created by Gerald Appel in the late 1970s, MACD captures momentum shifts by measuring the relationship between two exponential moving averages. Unlike simple oscillators, MACD provides three distinct signal types: signal line crossovers, zero line crossovers, and histogram divergence, each with different risk-reward characteristics.
 
 This guide presents a fully quantified MACD trading system with optimized parameters, filter combinations, and backtest performance across equities and futures.
 
@@ -125,7 +124,7 @@ The combination of MACD (trend/momentum) with RSI (overbought/oversold) produces
 - **Buy**: MACD signal line crossover bullish AND RSI(14) < 40 (not overbought)
 - **Sell**: MACD signal line crossover bearish AND RSI(14) > 60 (not oversold)
 
-This combination improved the Sharpe ratio from 0.58 to 1.04 by filtering out signals that occur when momentum is already extended.
+This combination improved the [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) from 0.58 to 1.04 by filtering out signals that occur when momentum is already extended.
 
 ### MACD + Volume
 
@@ -140,7 +139,7 @@ Volume confirmation improved the win rate from 38.2% to 47.8%.
 
 Using Bollinger Band position to qualify MACD signals:
 
-- **Buy**: MACD bullish crossover while price is in the lower half of Bollinger Bands (%B < 0.5)
+- **Buy**: MACD bullish crossover while price is in the lower half of [Bollinger Bands](/blog/bollinger-bands-trading-strategy) (%B < 0.5)
 - **Sell**: MACD bearish crossover while price is in the upper half (%B > 0.5)
 
 This combination ensures entries occur before the trend is fully extended.
@@ -199,7 +198,7 @@ For day trading, adjust MACD parameters to 3/10/16 or 5/13/8 on 5-minute or 15-m
 
 ### Why does MACD sometimes give false signals?
 
-MACD false signals occur primarily during range-bound markets where the fast and slow EMAs oscillate around each other, generating frequent crossovers without meaningful price movement. The ADX indicator can identify these conditions: when ADX < 20, the market is range-bound and MACD signals should be ignored. In our backtest, filtering for ADX > 20 reduced false signals by 44%.
+MACD false signals occur primarily during range-bound markets where the fast and slow EMAs oscillate around each other, generating frequent crossovers without meaningful price movement. The [ADX indicator](/blog/adx-trend-strength-indicator) can identify these conditions: when ADX < 20, the market is range-bound and MACD signals should be ignored. In our backtest, filtering for ADX > 20 reduced false signals by 44%.
 
 ---
 

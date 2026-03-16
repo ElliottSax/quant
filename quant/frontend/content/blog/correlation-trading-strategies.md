@@ -7,12 +7,11 @@ category: "Risk Management"
 tags: ["correlation trading", "cross-asset", "pairs trading", "portfolio diversification", "risk management"]
 keywords: ["correlation trading strategies", "cross-asset correlation", "correlation analysis trading"]
 ---
-
 # Correlation Trading: Cross-Asset Relationships and Strategy
 
 Correlation trading exploits the statistical relationships between financial instruments to generate returns, hedge risk, or construct diversified portfolios. Understanding how assets move relative to each other is fundamental to professional risk management and provides trading opportunities that single-instrument analysis cannot capture. Whether constructing a pairs trade, hedging equity exposure with bonds, or building a multi-asset portfolio, correlation analysis is the quantitative foundation.
 
-This guide covers the mathematics of correlation, how to measure it reliably, the critical issue of correlation instability, and practical trading strategies built on cross-asset relationships.
+This guide covers the mathematics of correlation, how to measure it reliably, the critical issue of correlation instability, and practical [trading strategies](/blog/backtesting-trading-strategies) built on cross-asset relationships.
 
 ## Understanding Correlation
 
@@ -185,18 +184,18 @@ def portfolio_correlation_matrix(price_data, window=252):
 
 ## Key Takeaways
 
-- Correlation measures the statistical relationship between assets and is fundamental to portfolio construction, hedging, and pairs trading.
+- Correlation measures the statistical relationship between assets and is fundamental to portfolio construction, hedging, and [pairs trading](/blog/pairs-trading-strategy-guide).
 - Correlations are not static. Rolling correlation analysis reveals how relationships change over time, with crisis periods often driving all correlations toward +1.0.
 - Pairs trading exploits mean-reversion in the spread between highly correlated assets, using z-scores to identify entry and exit points.
 - Correlation breakdowns signal fundamental shifts that produce directional trading opportunities, but require investigation to distinguish temporary from structural changes.
-- Portfolio hedging efficiency depends on the correlation between the portfolio and the hedging instrument, quantified by the minimum variance hedge ratio.
+- Portfolio hedging efficiency depends on the correlation between the portfolio and the hedging instrument, quantified by the [minimum variance](/blog/minimum-variance-portfolio) hedge ratio.
 - Diversification benefits disappear when correlations exceed 0.6; portfolio construction should explicitly limit high-correlation exposure.
 
 ## Frequently Asked Questions
 
 ### How often should correlation estimates be updated?
 
-For active trading strategies (pairs trading), update correlation estimates weekly using a 60-day rolling window. For portfolio construction and risk management, monthly updates using a 120-252 day window are standard. During periods of market stress, increase monitoring frequency to daily, as correlations can shift rapidly during crises.
+For active [trading strategies](/blog/commodity-trading-strategies) (pairs trading), update correlation estimates weekly using a 60-day rolling window. For portfolio construction and risk management, monthly updates using a 120-252 day window are standard. During periods of market stress, increase monitoring frequency to daily, as correlations can shift rapidly during crises.
 
 ### What is the difference between correlation and cointegration?
 

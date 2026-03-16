@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["overfitting", "backtesting", "Sharpe ratio", "strategy validation", "statistical testing"]
 keywords: ["overfitting trading strategies", "backtest overfitting", "deflated Sharpe ratio"]
 ---
-
 # Overfitting in Trading Strategies: Detection and Prevention
 
-Overfitting is the silent killer of quantitative trading strategies. An overfit strategy exploits patterns in historical data that are artifacts of randomness rather than genuine market inefficiencies. In backtests, these strategies produce impressive Sharpe ratios, smooth equity curves, and high win rates. In live trading, they produce losses.
+Overfitting is the silent killer of [quantitative trading strategies](/blog/crypto-quant-trading-strategies). An overfit strategy exploits patterns in historical data that are artifacts of randomness rather than genuine market inefficiencies. In backtests, these strategies produce impressive Sharpe ratios, smooth equity curves, and high win rates. In live trading, they produce losses.
 
 The fundamental problem is that every dataset contains both signal and noise. When we optimize a strategy's parameters on historical data, we risk fitting the noise rather than the signal. With enough parameters and enough optimization, any strategy can be made to look profitable on any historical dataset.
 
@@ -25,7 +24,7 @@ The fundamental problem is that every dataset contains both signal and noise. Wh
 
 ### The Deflated Sharpe Ratio
 
-The deflated Sharpe ratio adjusts the observed Sharpe for the number of strategy variants tested. It answers: given that we tested N variations, what is the probability that the best Sharpe exceeds a threshold by chance alone?
+The deflated [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) adjusts the observed Sharpe for the number of strategy variants tested. It answers: given that we tested N variations, what is the probability that the best Sharpe exceeds a threshold by chance alone?
 
 ```python
 import numpy as np
@@ -395,7 +394,7 @@ def overfitting_checklist(
 
 ### What Sharpe ratio should I expect from a genuine trading strategy?
 
-After accounting for transaction costs and multiple testing, genuine daily trading strategies typically produce Sharpe ratios between 0.5 and 2.0. A Sharpe above 3.0 on daily data is almost certainly overfit unless it operates in extremely niche markets. Institutional quant funds target net Sharpe ratios of 1.0-2.0. If your backtest shows a Sharpe of 5.0, you have a bug, data error, or overfitting problem.
+After accounting for transaction costs and multiple testing, genuine daily [trading strategies](/blog/backtesting-trading-strategies) typically produce Sharpe ratios between 0.5 and 2.0. A Sharpe above 3.0 on daily data is almost certainly overfit unless it operates in extremely niche markets. Institutional [quant funds](/blog/quant-fund-evaluation-guide) target net Sharpe ratios of 1.0-2.0. If your backtest shows a Sharpe of 5.0, you have a bug, data error, or overfitting problem.
 
 ### How many parameters are too many for a trading strategy?
 

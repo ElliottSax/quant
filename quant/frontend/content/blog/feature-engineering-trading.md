@@ -7,7 +7,6 @@ category: "Data Science"
 tags: ["feature engineering", "alpha signals", "machine learning", "quantitative trading", "data science"]
 keywords: ["feature engineering trading", "alpha signal generation", "trading features machine learning"]
 ---
-
 # Feature Engineering for Trading Models: Creating Alpha Signals
 
 Feature engineering is the process that separates profitable quantitative models from academic exercises. Raw market data -- prices, volumes, timestamps -- contains latent information that models cannot extract without human-guided transformation. The features you construct encode your hypotheses about what drives returns, and the quality of these hypotheses determines the ceiling of model performance far more than the choice of algorithm.
@@ -443,7 +442,7 @@ Normalize after splitting, using only training data statistics. If you normalize
 
 ### What is the difference between alpha features and risk features?
 
-Alpha features predict expected returns (e.g., momentum, sentiment). Risk features predict volatility, correlation, or tail risk (e.g., realized volatility, implied volatility skew). Both are valuable: alpha features generate trading signals, while risk features determine position sizing and portfolio construction. Some features serve both purposes. A complete trading system needs both.
+Alpha features predict expected returns (e.g., momentum, sentiment). Risk features predict volatility, correlation, or tail risk (e.g., realized volatility, implied volatility skew). Both are valuable: alpha features generate trading signals, while risk features determine [position sizing](/blog/position-sizing-strategies) and portfolio construction. Some features serve both purposes. A complete trading system needs both.
 
 ### How do I detect look-ahead bias in features?
 

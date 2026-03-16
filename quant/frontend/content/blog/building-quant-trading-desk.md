@@ -7,10 +7,9 @@ category: "Infrastructure"
 tags: ["quant desk", "trading infrastructure", "team building", "technology stack", "trading systems"]
 keywords: ["building quant trading desk", "quant infrastructure", "trading desk technology", "quant team structure", "trading system architecture"]
 ---
-
 # Building a Quant Trading Desk: Infrastructure and Team Guide
 
-Building a quantitative trading desk from scratch is a multi-million dollar endeavor that requires coordinating technology infrastructure, research processes, data management, execution systems, risk controls, and human capital. The difference between a successful quant desk and a failed one often comes down to infrastructure decisions made in the first year. This guide covers the key components, common architectural patterns, and lessons from firms that have built and scaled quantitative trading operations.
+Building a [quantitative trading](/blog/crypto-quant-trading-strategies) desk from scratch is a multi-million dollar endeavor that requires coordinating technology infrastructure, research processes, data management, execution systems, risk controls, and human capital. The difference between a successful quant desk and a failed one often comes down to infrastructure decisions made in the first year. This guide covers the key components, common architectural patterns, and lessons from firms that have built and scaled quantitative trading operations.
 
 ## Technology Stack
 
@@ -43,7 +42,7 @@ Where researchers develop, test, and validate trading strategies.
 The signal generation engine that produces trading signals from data.
 
 - **Signal pipeline**: Feature engineering -> model inference -> signal generation -> signal combination
-- **Model types**: Linear factor models, gradient boosting (XGBoost, LightGBM), neural networks, reinforcement learning
+- **Model types**: Linear factor models, gradient boosting (XGBoost, LightGBM), neural networks, [reinforcement learning](/blog/reinforcement-learning-trading)
 - **Signal frequency**: From seconds (high-frequency) to monthly (fundamental quant)
 - **Signal storage**: Signals stored in time-series database with full audit trail
 
@@ -79,7 +78,7 @@ Real-time monitoring of portfolio risk, P&L, and system health.
 
 **Microservices**: Each component is an independent service communicating via APIs and message queues. More complex to build but scales better and allows independent deployment. Appropriate for multi-strategy desks with 5+ team members.
 
-**Event-driven**: All components communicate through an event bus (Kafka, RabbitMQ). Market data events trigger alpha updates, which trigger portfolio optimization, which triggers order generation. Low-latency and naturally parallel. The dominant architecture for medium-to-high-frequency trading.
+**Event-driven**: All components communicate through an event bus (Kafka, RabbitMQ). Market data events trigger alpha updates, which trigger [portfolio optimization](/blog/portfolio-optimization-guide), which triggers order generation. Low-latency and naturally parallel. The dominant architecture for medium-to-high-frequency trading.
 
 ### Language Selection
 
@@ -123,7 +122,7 @@ Python dominates research and data pipelines. C++ or Rust is necessary for laten
 - Compensation: $500K-$2M+ base + P&L participation
 
 **Risk Manager (1, often shared)**
-- Background: Quantitative risk management experience
+- Background: [Quantitative risk management](/blog/quantitative-risk-management) experience
 - Responsibilities: Risk model validation, limit monitoring, stress testing, regulatory compliance
 - Skills: Risk modeling, statistics, regulatory frameworks
 - Compensation: $150K-$350K base + bonus
@@ -219,7 +218,7 @@ Most startup quant desks require $1.5-3M in initial funding to reach revenue gen
 
 ### Should I build or buy the backtesting framework?
 
-For strategies with unique requirements (non-standard instruments, complex execution logic, custom risk models), build custom. For standard equity or futures strategies, start with an open-source framework (Zipline, Backtrader) and customize as needed. The critical requirement is that the backtesting framework must accurately model execution costs, corporate actions, and portfolio constraints. Many production backtesting failures stem from inadequate cost modeling.
+For strategies with unique requirements (non-standard instruments, complex execution logic, custom risk models), build custom. For standard equity or futures strategies, start with an open-source framework (Zipline, Backtrader) and customize as needed. The critical requirement is that the [backtesting framework](/blog/python-backtesting-framework) must accurately model execution costs, corporate actions, and portfolio constraints. Many production backtesting failures stem from inadequate cost modeling.
 
 ### What cloud provider is best for quant trading?
 

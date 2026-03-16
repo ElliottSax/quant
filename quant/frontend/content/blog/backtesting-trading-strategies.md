@@ -7,12 +7,11 @@ category: "Algo Trading"
 tags: ["backtesting", "strategy validation", "quantitative analysis", "walk-forward"]
 keywords: ["backtest trading strategies", "backtesting framework", "strategy validation"]
 ---
-
 # How to Backtest Trading Strategies: Complete Framework
 
-Learning how to backtest trading strategies correctly is the single most important skill in quantitative trading. A rigorous backtest separates viable strategies from curve-fitted illusions, and the difference between a properly conducted backtest and a naive one often determines whether a trader succeeds or fails in live markets. Bailey, Borwein, de Prado, and Zhu (2014) estimated that the majority of published backtested strategies are false discoveries due to methodological flaws, making proper backtesting methodology a critical competitive advantage.
+Learning how to backtest [trading strategies](/blog/commodity-trading-strategies) correctly is the single most important skill in [quantitative trading](/blog/crypto-quant-trading-strategies). A rigorous backtest separates viable strategies from curve-fitted illusions, and the difference between a properly conducted backtest and a naive one often determines whether a trader succeeds or fails in live markets. Bailey, Borwein, de Prado, and Zhu (2014) estimated that the majority of published backtested strategies are false discoveries due to methodological flaws, making proper backtesting methodology a critical competitive advantage.
 
-This guide covers the complete backtesting framework used by professional quants, including data preparation, bias prevention, statistical testing, and validation techniques.
+This guide covers the complete [backtesting framework](/blog/python-backtesting-framework) used by professional quants, including data preparation, bias prevention, statistical testing, and validation techniques.
 
 ## The Backtesting Process
 
@@ -87,7 +86,7 @@ Overfitting occurs when a strategy is optimized to match historical noise rather
 
 **Prevention**:
 1. Keep strategies simple (2-3 parameters)
-2. Use walk-forward optimization (described below)
+2. Use walk-[forward optimization](/blog/walk-forward-optimization) (described below)
 3. Test parameter robustness (neighboring parameters should perform similarly)
 4. Require strategies to work across multiple markets and time periods
 
@@ -186,7 +185,7 @@ More trades provide stronger statistical evidence.
 - Every backtest must begin with an economic hypothesis, not a data mining exercise
 - Survivorship bias, look-ahead bias, and selection bias are the three most dangerous pitfalls
 - Walk-forward optimization is the gold standard for preventing overfitting; WFE > 0.5 indicates robustness
-- Monte Carlo simulation provides confidence intervals for performance metrics
+- [Monte Carlo simulation](/blog/monte-carlo-simulation-trading) provides confidence intervals for performance metrics
 - The deflated Sharpe ratio adjusts for the number of strategies tested; a Sharpe of 2.0 after 100 tests may deflate to 0.5
 - Minimum t-statistic of 3.0 (not 2.0) is recommended for strategy significance in finance
 - Include realistic transaction costs: slippage (5-50 bps), commissions, and market impact

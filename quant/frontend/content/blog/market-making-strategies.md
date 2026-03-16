@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["market making", "liquidity provision", "bid-ask spread", "inventory management", "HFT"]
 keywords: ["market making strategies", "automated market maker", "liquidity provision trading"]
 ---
-
 # Market Making Strategies: Providing Liquidity for Profit
 
-Market makers earn the bid-ask spread by continuously quoting prices at which they are willing to buy and sell. In exchange for providing liquidity to other participants, market makers capture a small profit on each transaction. While the per-trade profit is tiny (often fractions of a cent), the high volume of transactions makes market making one of the most consistently profitable trading strategies when executed well.
+Market makers earn the bid-ask spread by continuously quoting prices at which they are willing to buy and sell. In exchange for providing liquidity to other participants, market makers capture a small profit on each transaction. While the per-trade profit is tiny (often fractions of a cent), the high volume of transactions makes market making one of the most consistently profitable [trading strategies](/blog/backtesting-trading-strategies) when executed well.
 
 The challenge is managing inventory risk (accumulating unwanted positions) and adverse selection (trading against informed counterparties who know something you don't). This guide covers the quantitative models and risk controls that separate profitable market makers from those who donate money to informed traders.
 
@@ -400,7 +399,7 @@ class MarketMakingRiskLimits:
 
 ### How much capital do I need to start market making?
 
-For equities, institutional market makers typically deploy $10-100 million per strategy. For crypto market making on centralized exchanges, $50,000-500,000 is sufficient to start due to lower regulatory barriers and wider spreads. The minimum capital depends on the margin requirements, position limits, and the spread-to-risk ratio of the instruments you trade. You need enough capital to absorb inventory risk during adverse periods without breaching risk limits.
+For equities, institutional market makers typically deploy $10-100 million per strategy. For [crypto market making](/blog/crypto-market-making-guide) on centralized exchanges, $50,000-500,000 is sufficient to start due to lower regulatory barriers and wider spreads. The minimum capital depends on the margin requirements, position limits, and the spread-to-risk ratio of the instruments you trade. You need enough capital to absorb inventory risk during adverse periods without breaching risk limits.
 
 ### What is the biggest risk in market making?
 
@@ -412,4 +411,4 @@ Market makers use several techniques: (1) skewing quotes to discourage trades th
 
 ### Can retail traders be market makers?
 
-In traditional equity markets, designated market making requires regulatory approval and significant infrastructure. However, in crypto markets and DeFi, anyone can provide liquidity. On centralized crypto exchanges, you can run market making bots via API. In DeFi, providing liquidity to automated market makers (Uniswap, Curve) is a form of passive market making, though with different risk profiles (impermanent loss).
+In traditional equity markets, designated market making requires regulatory approval and significant infrastructure. However, in crypto markets and DeFi, anyone can provide liquidity. On centralized crypto exchanges, you can run market making bots via API. In DeFi, providing liquidity to automated market makers (Uniswap, Curve) is a form of passive market making, though with different risk profiles ([impermanent loss](/blog/impermanent-loss-mitigation)).

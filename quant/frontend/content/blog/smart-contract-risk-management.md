@@ -7,12 +7,11 @@ category: "Crypto & DeFi"
 tags: ["smart-contracts", "risk-management", "defi-security"]
 keywords: ["smart contract risk", "audit evaluation", "DeFi insurance", "contract vulnerabilities"]
 ---
-
 # Smart Contract Risk Management: Audit and Exploit Prevention
 
 Smart contract risk represents the largest threat to DeFi capital allocation. Flawless financial design becomes meaningless if the code contains exploitable bugs. History proves this: over $10B lost to smart contract exploits since 2020. Yet most DeFi participants allocate capital based on APY yields without assessing underlying code risk.
 
-This comprehensive guide develops frameworks for evaluating smart contract risk, assessing audit quality, understanding common vulnerability patterns, implementing insurance strategies, and position sizing that reflects code risk rather than yield alone.
+This comprehensive guide develops frameworks for evaluating smart contract risk, assessing audit quality, understanding common vulnerability patterns, implementing insurance strategies, and [position sizing](/blog/position-sizing-strategies) that reflects code risk rather than yield alone.
 
 ## Smart Contract Audit Evaluation Framework
 
@@ -26,7 +25,7 @@ Audit age matters critically. 2024 audits assess current code. 2022 audits might
 
 Audit findings disclosure indicates transparency. Best practice: public report detailing all findings (critical/high/medium/low), remediation status, and why any unresolved findings are acceptable risks. Protocols withholding audit reports or claiming "audit passed" without details are red flags - likely found issues without meaningful fixes.
 
-Common vulnerability patterns in crypto smart contracts include: (1) Reentrancy - contract functions calling external code without state protection, (2) Integer overflow/underflow - variables exceeding data type limits, (3) Flash loan exploits - temporary capital use for price manipulation, (4) Oracle price manipulation - extracting bad price from single source, (5) Front-running - MEV extraction via transaction ordering, (6) Access control - functions callable by unauthorized addresses.
+Common vulnerability patterns in crypto smart contracts include: (1) Reentrancy - contract functions calling external code without state protection, (2) Integer overflow/underflow - variables exceeding data type limits, (3) [Flash loan](/blog/flashloan-arbitrage-guide) exploits - temporary capital use for price manipulation, (4) Oracle price manipulation - extracting bad price from single source, (5) Front-running - MEV extraction via transaction ordering, (6) Access control - functions callable by unauthorized addresses.
 
 Professional review checklist: (1) Audit from tier-1 firm? (2) Scope covers entire deployment? (3) Audit <6 months old? (4) Critical findings resolved? (5) Time-weighted price oracles (not just current block price)? (6) Reentrancy guards implemented? (7) Access control lists proper? (8) Admin keys timelock-protected (delays before changes)? Score 7-8 = acceptable, 5-6 = monitor closely, <5 = reconsider allocation.
 
@@ -60,7 +59,7 @@ Alternatively, diversification reduces insurance need. Instead of $100k in singl
 
 ## Position Sizing and Risk Budgeting
 
-Risk budgeting allocates capital to smart contract exposure relative to acceptable loss.
+[Risk budgeting](/blog/risk-budgeting-framework) allocates capital to smart contract exposure relative to acceptable loss.
 
 The position sizing formula: Position_Size = (Max_Acceptable_Loss / Max_Possible_Loss) × Capital. For $100k capital, 5% max acceptable loss, protocol with 20% max possible loss (worst-case exploit), position size = ($5,000 / $20,000) × $100k = $25,000. Limits single-protocol exposure to acceptable drawdown.
 

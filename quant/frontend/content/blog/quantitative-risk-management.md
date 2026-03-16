@@ -7,10 +7,9 @@ category: "Algo Trading"
 tags: ["risk management", "position sizing", "drawdown", "VaR", "portfolio risk"]
 keywords: ["quantitative risk management", "position sizing strategies", "drawdown control"]
 ---
-
 # Quantitative Risk Management: Position Sizing and Drawdown Control
 
-Quantitative risk management is the discipline that separates surviving traders from failed ones. While entry and exit signals receive the most attention, position sizing and risk management determine whether a strategy produces consistent returns or catastrophic losses. As Ed Seykota famously stated, "There are old traders and there are bold traders, but there are very few old, bold traders." Research by Balsara (1992) demonstrated that optimal position sizing can transform a modestly profitable strategy into a significantly profitable one, while poor sizing can make any strategy unprofitable.
+Quantitative risk management is the discipline that separates surviving traders from failed ones. While entry and exit signals receive the most attention, [position sizing](/blog/position-sizing-strategies) and risk management determine whether a strategy produces consistent returns or catastrophic losses. As Ed Seykota famously stated, "There are old traders and there are bold traders, but there are very few old, bold traders." Research by Balsara (1992) demonstrated that optimal position sizing can transform a modestly profitable strategy into a significantly profitable one, while poor sizing can make any strategy unprofitable.
 
 This guide covers the quantitative framework for managing risk at both the individual trade and portfolio level.
 
@@ -32,7 +31,7 @@ The most common approach: risk a fixed percentage of equity on each trade.
 
 ### Volatility-Adjusted Position Sizing
 
-Size positions inversely proportional to their volatility, ensuring equal risk contribution:
+Size positions inversely proportional to their volatility, ensuring [equal risk contribution](/blog/risk-parity-portfolio):
 
 **Formula**: Position Size = (Account Equity * Target Vol) / (ATR(14) * Multiplier * Price)
 
@@ -91,7 +90,7 @@ A drawdown is the peak-to-trough decline in account equity. It measures the wors
 
 ### Historical Drawdown Expectations
 
-Based on Monte Carlo analysis of a strategy with Sharpe ratio 1.0 and 10% annual volatility:
+Based on Monte Carlo analysis of a strategy with [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) 1.0 and 10% annual volatility:
 
 | Probability | Expected Max Drawdown |
 |------------|----------------------|
@@ -214,9 +213,9 @@ Use multiple metrics to get a complete picture. A strategy with a high Sharpe bu
 - Fixed fractional (1% risk per trade) is the recommended starting point for systematic traders
 - Half Kelly or quarter Kelly provides a practical balance between growth and drawdown
 - Dynamic drawdown control (reducing sizes during drawdowns) reduced max drawdown from -22.4% to -15.8% with only 1.2% CAGR cost
-- CVaR (Expected Shortfall) is a more robust risk measure than VaR for fat-tailed return distributions
+- CVaR ([Expected Shortfall](/blog/expected-shortfall-cvar)) is a more robust risk measure than VaR for fat-tailed return distributions
 - Correlation-aware position sizing prevents hidden concentration risk
-- Stress testing against historical crises is essential before deploying capital
+- [Stress testing](/blog/stress-testing-portfolios) against historical crises is essential before deploying capital
 
 ## Frequently Asked Questions
 

@@ -7,10 +7,9 @@ category: "Crypto & DeFi"
 tags: ["uniswap", "liquidity-provision", "amm"]
 keywords: ["Uniswap V3", "concentrated liquidity", "liquidity provision", "AMM strategies"]
 ---
-
 # Liquidity Provision Strategies: Uniswap V3 Range Optimization
 
-Uniswap V3 revolutionized automated market making by introducing concentrated liquidity, allowing liquidity providers to allocate capital within specific price ranges rather than across the entire price curve. This innovation enables 10-100x capital efficiency improvements compared to Uniswap V2, but also introduces complexity in range selection, active management, and impermanent loss dynamics.
+Uniswap V3 revolutionized automated market making by introducing concentrated liquidity, allowing liquidity providers to allocate capital within specific price ranges rather than across the entire price curve. This innovation enables 10-100x capital efficiency improvements compared to Uniswap V2, but also introduces complexity in range selection, active management, and [impermanent loss](/blog/impermanent-loss-mitigation) dynamics.
 
 Successful V3 liquidity provision requires quantitative approaches to range optimization, position sizing, rebalancing triggers, and fee tier selection. This comprehensive guide develops mathematical frameworks for maximizing risk-adjusted returns from concentrated liquidity positions across different volatility regimes and trading pairs.
 
@@ -88,7 +87,7 @@ Consider $10,000 deposited into ETH/USDC at $2,500 with $2,400-$2,600 range (rou
 
 Full-range V2 positions suffer ~13% IL at 2.8x price movement. Concentrated positions suffer higher IL (15-25%) depending on range width, but earn 5-10x more fees to compensate. Net outcome depends on volatility, volume, and fee tier.
 
-Hedging strategies use perpetual futures or options to offset directional risk. A provider with $10,000 in ETH/USDC range buys $5,000 notional ETH perpetuals, creating delta neutrality. If ETH rises 10%, the LP position loses $300 to IL but the perp gains $500, netting +$200. The hedge costs funding rates (typically -5% to +20% APY) but eliminates directional exposure.
+[Hedging strategies](/blog/beta-hedging-strategies) use [perpetual futures](/blog/perpetual-futures-funding-rate) or options to offset directional risk. A provider with $10,000 in ETH/USDC range buys $5,000 notional ETH perpetuals, creating delta neutrality. If ETH rises 10%, the LP position loses $300 to IL but the perp gains $500, netting +$200. The hedge costs funding rates (typically -5% to +20% APY) but eliminates directional exposure.
 
 Options-based hedging sells covered calls or buys protective puts around the liquidity range. If providing liquidity at $2,400-$2,600, sell ETH calls at $2,600 strike. Premium collected offsets IL if price rises above $2,600, effectively capping upside exposure in exchange for reduced downside risk.
 
@@ -106,7 +105,7 @@ Ladder strategies deploy multiple positions across different price ranges for th
 
 Fee tier arbitrage provides liquidity across multiple fee tiers simultaneously. Deploy 50% capital in 0.3% tier (high volume, standard fees) and 50% in 1% tier (lower volume, higher fees). During volatile periods, 1% tier captures more value. During stable periods, 0.3% tier's volume dominates. Total portfolio captures value across market conditions.
 
-Cross-chain strategies deploy liquidity on Ethereum mainnet, Arbitrum, Optimism, Polygon, and BSC for the same pairs. Different chains exhibit different volume patterns and fee structures. ETH/USDC might generate better returns on Arbitrum (lower gas, similar volume) while BNB/USDT performs better on BSC. Portfolio diversification across chains reduces smart contract risk and captures region-specific trading patterns.
+Cross-chain strategies deploy liquidity on Ethereum mainnet, Arbitrum, Optimism, Polygon, and BSC for the same pairs. Different chains exhibit different volume patterns and fee structures. ETH/USDC might generate better returns on Arbitrum (lower gas, similar volume) while BNB/USDT performs better on BSC. Portfolio diversification across chains reduces [smart contract risk](/blog/smart-contract-risk-management) and captures region-specific trading patterns.
 
 Seasonal rebalancing adjusts allocations based on market cycles. During bull markets, weight toward volatile pairs and asymmetric upside ranges. During bear markets, weight toward stablecoins and defensive positioning. During sideways consolidation, deploy tight ranges with high capital efficiency.
 
@@ -118,7 +117,7 @@ Volatility-based range selection using standard deviation multiples optimizes th
 
 Fee optimization requires analyzing liquidity concentration, volume patterns, and range occupancy probability to generate realistic return expectations, typically 20-100% APY on established pairs after accounting for IL and costs.
 
-Impermanent loss amplifies in concentrated ranges but can be mitigated through stablecoin pairs, correlated assets, delta hedging with perpetuals, or options strategies capping directional exposure.
+Impermanent loss amplifies in concentrated ranges but can be mitigated through stablecoin pairs, correlated assets, delta hedging with perpetuals, or [options strategies](/blog/crypto-options-strategies) capping directional exposure.
 
 Multi-position portfolio strategies using barbells, ladders, fee tier arbitrage, and cross-chain deployment reduce single-position risk while capturing diverse opportunities across market conditions.
 

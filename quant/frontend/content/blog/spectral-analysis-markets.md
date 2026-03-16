@@ -7,14 +7,13 @@ category: "Advanced Analytics"
 tags: ["spectral-analysis", "fourier-transform", "cycle-analysis"]
 keywords: ["spectral analysis", "Fourier transform", "market cycles", "periodicity", "frequency domain trading"]
 ---
-
 # Spectral Analysis of Markets: Fourier Transform Trading
 
 Markets exhibit cyclical behavior—earnings cycles, economic cycles, seasonal patterns, and technical cycles all influence price movements. Spectral analysis, powered by the Fourier transform, provides a mathematical framework for identifying these periodicities by decomposing price series into constituent frequency components. By moving from the time domain to the frequency domain, traders gain insights into dominant cycles, hidden periodicities, and optimal trading horizons.
 
 ## Understanding Spectral Analysis
 
-Spectral analysis reveals which frequencies (cycles) are present in a time series and how much power (variance) each frequency contributes.
+Spectral analysis reveals which frequencies (cycles) are present in a [time series](/blog/time-series-analysis-stocks) and how much power (variance) each frequency contributes.
 
 ### The Fourier Transform
 
@@ -706,7 +705,7 @@ FFT (Fast Fourier Transform) is an algorithm that computes DFT efficiently in O(
 
 ### Can I combine spectral analysis with machine learning?
 
-Yes. Use spectral features (dominant frequencies, spectral entropy, power ratios) as inputs to ML models. Or use spectral decomposition for preprocessing/feature engineering, then apply ML to components.
+Yes. Use spectral features (dominant frequencies, spectral entropy, power ratios) as inputs to ML models. Or use spectral decomposition for preprocessing/[feature engineering](/blog/feature-engineering-trading), then apply ML to components.
 
 ## Conclusion
 

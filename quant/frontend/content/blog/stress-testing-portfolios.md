@@ -7,10 +7,9 @@ category: "Risk Management"
 tags: ["stress testing", "scenario analysis", "risk management", "portfolio risk", "tail risk"]
 keywords: ["portfolio stress testing", "scenario analysis", "historical stress test", "hypothetical scenarios", "reverse stress testing"]
 ---
-
 # Stress Testing Portfolios: Historical and Hypothetical Scenarios
 
-Stress testing subjects a portfolio to extreme but plausible market scenarios to assess potential losses beyond what standard risk models capture. While VaR and Expected Shortfall quantify risk under the distribution estimated from recent history, stress tests ask "what if?" -- what if 2008 repeats, what if interest rates spike 300 basis points in a month, what if a major counterparty defaults. Regulators require stress testing for banks and systemically important institutions, but the practice is equally valuable for any quantitative portfolio manager seeking to understand hidden vulnerabilities.
+Stress testing subjects a portfolio to extreme but plausible market scenarios to assess potential losses beyond what standard risk models capture. While VaR and [Expected Shortfall](/blog/expected-shortfall-cvar) quantify risk under the distribution estimated from recent history, stress tests ask "what if?" -- what if 2008 repeats, what if interest rates spike 300 basis points in a month, what if a major counterparty defaults. Regulators require stress testing for banks and systemically important institutions, but the practice is equally valuable for any quantitative portfolio manager seeking to understand hidden vulnerabilities.
 
 ## Types of Stress Tests
 
@@ -35,7 +34,7 @@ Apply the actual market moves from a historical crisis to the current portfolio.
 3. Compute the portfolio P&L under each day of the scenario
 4. Report the cumulative loss, maximum drawdown, and recovery time
 
-**Critical consideration**: The current portfolio may contain assets or exposures that did not exist during the historical period. Synthetic proxies must be constructed for these positions, using factor models or similar assets that did exist.
+**Critical consideration**: The current portfolio may contain assets or exposures that did not exist during the historical period. Synthetic proxies must be constructed for these positions, using [factor models](/blog/quantitative-factor-models) or similar assets that did exist.
 
 ### Hypothetical Scenario Analysis
 
@@ -81,7 +80,7 @@ Reverse stress testing often reveals non-obvious vulnerabilities. A portfolio th
 Map every portfolio position to underlying risk factors:
 
 - **Equity positions**: Market return, sector returns, style factor returns (value, momentum, quality), individual stock residuals
-- **Fixed income**: Interest rate curve (2Y, 5Y, 10Y, 30Y key rates), credit spreads (IG, HY by sector), prepayment rates
+- **[Fixed income](/blog/fixed-income-quant-strategies)**: Interest rate curve (2Y, 5Y, 10Y, 30Y key rates), credit spreads (IG, HY by sector), prepayment rates
 - **FX positions**: Individual currency pair returns, volatility surfaces
 - **Commodities**: Individual commodity returns, roll yield, seasonal factors
 - **Derivatives**: Underlying price, implied volatility (by strike and tenor), rates, dividends
@@ -164,4 +163,4 @@ Beyond portfolio-level stress testing, ML models require model-specific stress t
 
 ### Should stress test results affect position sizing?
 
-Yes. If a stress test reveals that a particular position or concentration would produce losses exceeding the portfolio's risk tolerance under a plausible scenario, position sizing should be adjusted. The standard approach is to calculate the "stressed risk budget" -- the position size that would keep stressed losses within acceptable limits -- and use the minimum of the standard risk budget and the stressed risk budget for actual sizing.
+Yes. If a stress test reveals that a particular position or concentration would produce losses exceeding the portfolio's risk tolerance under a plausible scenario, [position sizing](/blog/position-sizing-strategies) should be adjusted. The standard approach is to calculate the "stressed risk budget" -- the position size that would keep stressed losses within acceptable limits -- and use the minimum of the standard risk budget and the stressed risk budget for actual sizing.

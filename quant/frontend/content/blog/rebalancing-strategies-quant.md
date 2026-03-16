@@ -7,7 +7,6 @@ category: "Portfolio Management"
 tags: ["rebalancing", "portfolio management", "transaction costs", "asset allocation", "tactical allocation"]
 keywords: ["portfolio rebalancing", "rebalancing strategies", "calendar rebalancing", "threshold rebalancing", "tactical rebalancing"]
 ---
-
 # Portfolio Rebalancing Strategies: Calendar, Threshold, and Tactical
 
 Rebalancing is the disciplined process of returning a portfolio to its target allocation after market movements cause weights to drift. Without rebalancing, a 60/40 stock-bond portfolio that experiences strong equity markets might drift to 75/25, fundamentally changing its risk profile. The choice of rebalancing methodology -- calendar-based, threshold-based, or tactical -- affects portfolio risk, return, transaction costs, and tax efficiency. This guide examines each approach quantitatively, providing frameworks for selecting and implementing the optimal strategy.
@@ -152,7 +151,7 @@ In taxable accounts, rebalancing triggers capital gains taxes. Tax-aware strateg
 
 **Estimated tax cost**: For each potential rebalancing trade, calculate the after-tax benefit:
 
-**Net benefit = (Risk reduction benefit) - (Transaction cost) - (Tax cost)**
+**Net benefit = (Risk reduction benefit) - ([Transaction cost](/blog/transaction-cost-analysis)) - (Tax cost)**
 
 Only execute trades where net benefit is positive.
 

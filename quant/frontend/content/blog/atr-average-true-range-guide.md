@@ -7,10 +7,9 @@ category: "Technical Analysis"
 tags: ["ATR", "average true range", "volatility", "position sizing", "risk management"]
 keywords: ["ATR average true range", "ATR position sizing", "ATR stop loss"]
 ---
-
 # ATR (Average True Range): Volatility-Based Position Sizing
 
-The Average True Range (ATR), developed by J. Welles Wilder Jr. in 1978, is the standard measure of market volatility in technical analysis. Unlike directional indicators that measure where price is going, ATR measures how much price moves regardless of direction. This makes it an essential tool for position sizing, stop-loss placement, and volatility-adjusted risk management, functions that directly impact a trader's survival and long-term profitability.
+The Average True Range (ATR), developed by J. Welles Wilder Jr. in 1978, is the standard measure of market volatility in [technical analysis](/blog/python-technical-analysis-library). Unlike directional indicators that measure where price is going, ATR measures how much price moves regardless of direction. This makes it an essential tool for [position sizing](/blog/position-sizing-strategies), stop-loss placement, and volatility-adjusted risk management, functions that directly impact a trader's survival and long-term profitability.
 
 This guide covers ATR calculation, practical applications for position sizing and stop placement, and advanced volatility-based strategies that adapt to changing market conditions.
 
@@ -77,7 +76,7 @@ ATR-based stops adapt to current volatility, solving the problem of stops that a
 
 The most common approach uses a fixed multiple of ATR for stop placement:
 
-- **Tight stop (1x ATR):** Aggressive, suitable for mean-reversion strategies
+- **Tight stop (1x ATR):** Aggressive, suitable for mean-[reversion strategies](/blog/mean-reversion-strategies-guide)
 - **Standard stop (1.5-2x ATR):** Balanced, suitable for most trend-following strategies
 - **Wide stop (2.5-3x ATR):** Conservative, suitable for longer-term positions
 
@@ -142,7 +141,7 @@ Keltner Channels use ATR to create volatility bands around a moving average:
 - **Upper Band:** 20-period EMA + (2 x ATR)
 - **Lower Band:** 20-period EMA - (2 x ATR)
 
-Unlike Bollinger Bands (which use standard deviation), Keltner Channels expand and contract based on True Range volatility. Trading strategies include:
+Unlike [Bollinger Bands](/blog/bollinger-bands-trading-strategy) (which use standard deviation), Keltner Channels expand and contract based on True Range volatility. [Trading strategies](/blog/backtesting-trading-strategies) include:
 
 - **Mean reversion:** Enter long at the lower band, short at the upper band (rangebound markets)
 - **Breakout:** Enter in the direction of a close outside the bands (trending markets)
@@ -173,4 +172,4 @@ ATR does not indicate direction, only the magnitude of price movement. However, 
 
 ### Why use ATR instead of standard deviation for volatility?
 
-ATR accounts for gaps between sessions (through the True Range calculation), while standard deviation of returns may understate volatility when significant gaps occur. ATR also directly measures price movement in the same units as the asset, making it intuitive for setting stop-loss levels and position sizes. Standard deviation is more appropriate for statistical analysis and options pricing, while ATR is more practical for active trading risk management.
+ATR accounts for gaps between sessions (through the True Range calculation), while standard deviation of returns may understate volatility when significant gaps occur. ATR also directly measures price movement in the same units as the asset, making it intuitive for setting stop-loss levels and position sizes. Standard deviation is more appropriate for statistical analysis and options pricing (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)), while ATR is more practical for active trading risk management.

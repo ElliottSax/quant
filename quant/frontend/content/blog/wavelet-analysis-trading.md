@@ -7,7 +7,6 @@ category: "Advanced Analytics"
 tags: ["wavelets", "signal-processing", "multi-scale-analysis"]
 keywords: ["wavelet analysis", "wavelet transform", "multi-scale decomposition", "time-frequency analysis", "trading signals"]
 ---
-
 # Wavelet Analysis for Trading: Multi-Scale Decomposition
 
 Financial markets operate across multiple time scales simultaneously—high-frequency noise, daily fluctuations, weekly trends, monthly cycles, and longer-term regime shifts all coexist in price data. Wavelet analysis provides a powerful mathematical framework for decomposing price series into these constituent scales, revealing structure invisible to traditional time-domain or frequency-domain methods alone.
@@ -678,7 +677,7 @@ Use causal (non-look-ahead) wavelets and appropriate boundary handling. The Disc
 
 ### Can wavelets remove noise without removing signal?
 
-Yes, via selective reconstruction. High-frequency details often contain noise; low-frequency approximation contains trends. Threshold or exclude high-frequency components to denoise. But be careful—high-frequency signals (momentum, mean reversion) may be intentional signals, not noise.
+Yes, via selective reconstruction. High-frequency details often contain noise; low-frequency approximation contains trends. Threshold or exclude high-frequency components to denoise. But be careful—high-frequency signals (momentum, [mean reversion](/blog/mean-reversion-strategies-guide)) may be intentional signals, not noise.
 
 ## Conclusion
 

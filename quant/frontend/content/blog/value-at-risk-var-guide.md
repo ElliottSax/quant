@@ -7,7 +7,6 @@ category: "Risk Management"
 tags: ["VaR", "risk management", "portfolio risk", "quantitative finance", "risk metrics"]
 keywords: ["value at risk", "VaR calculation", "portfolio risk measurement", "parametric VaR", "Monte Carlo VaR"]
 ---
-
 # Value at Risk (VaR): Complete Risk Measurement Guide
 
 Value at Risk remains the most widely adopted risk metric in institutional finance, used by banks, hedge funds, and asset managers to quantify potential portfolio losses. Despite its well-documented limitations, VaR provides a standardized language for communicating risk across trading desks, risk committees, and regulators. This guide covers the three primary VaR methodologies, their mathematical foundations, implementation trade-offs, and the practical considerations that separate textbook VaR from production-grade risk measurement.
@@ -132,25 +131,25 @@ For parametric and Monte Carlo VaR, the covariance matrix is the critical input.
 
 - **Shrinkage estimators** (Ledoit-Wolf): Blend the sample covariance with a structured target (e.g., constant correlation) to reduce estimation error
 - **Exponentially weighted moving average (EWMA)**: Weight recent observations more heavily, with typical decay factor lambda = 0.94 (RiskMetrics)
-- **Factor models**: Reduce dimensionality by decomposing returns into systematic factors and idiosyncratic components
+- **[Factor models](/blog/quantitative-factor-models)**: Reduce dimensionality by decomposing returns into systematic factors and idiosyncratic components
 
 ### Handling Non-Linear Positions
 
-Options and other non-linear instruments require special treatment. Delta-normal VaR (using first-order Greeks) understates risk for portfolios with significant gamma exposure. Full revaluation under Monte Carlo VaR is the standard approach for derivatives-heavy portfolios, though it carries substantial computational cost.
+Options and other non-linear instruments require special treatment. Delta-normal VaR (using first-order Greeks) understates risk for portfolios with significant gamma exposure. Full revaluation under [Monte Carlo](/blog/monte-carlo-simulation-trading) VaR is the standard approach for derivatives-heavy portfolios, though it carries substantial computational cost.
 
 ## Key Takeaways
 
 - VaR quantifies the maximum expected loss at a given confidence level and time horizon, providing a standardized risk metric for communication and regulatory compliance
 - Historical simulation makes no distributional assumptions but is sensitive to the lookback window; parametric VaR is fast but understates tail risk; Monte Carlo VaR offers maximum flexibility at higher computational cost
 - VaR backtesting through exceedance testing is essential for validating model accuracy, with both unconditional (Kupiec) and conditional (Christoffersen) tests providing complementary insights
-- Component VaR and marginal VaR decompose portfolio risk into position-level contributions, enabling risk-aware position sizing and portfolio construction
+- Component VaR and marginal VaR decompose portfolio risk into position-level contributions, enabling risk-aware [position sizing](/blog/position-sizing-strategies) and portfolio construction
 - Production VaR systems must address covariance estimation, non-linear positions, and the fundamental limitation that VaR says nothing about the magnitude of losses beyond the VaR threshold
 
 ## Frequently Asked Questions
 
 ### What is the difference between VaR and Expected Shortfall?
 
-VaR identifies a threshold loss level but provides no information about the severity of losses beyond that threshold. Expected Shortfall (also called CVaR or Conditional VaR) measures the average loss in the tail beyond VaR, capturing the shape of extreme losses. A portfolio could have the same VaR as another but vastly different Expected Shortfall if one has a heavier tail. Basel III has moved toward Expected Shortfall for regulatory capital, reflecting this limitation.
+VaR identifies a threshold loss level but provides no information about the severity of losses beyond that threshold. [Expected Shortfall](/blog/expected-shortfall-cvar) (also called CVaR or Conditional VaR) measures the average loss in the tail beyond VaR, capturing the shape of extreme losses. A portfolio could have the same VaR as another but vastly different Expected Shortfall if one has a heavier tail. Basel III has moved toward Expected Shortfall for regulatory capital, reflecting this limitation.
 
 ### How should I choose between VaR methodologies?
 
@@ -158,7 +157,7 @@ The choice depends on portfolio composition and computational constraints. Histo
 
 ### Why does VaR sometimes fail during market crises?
 
-VaR models calibrated to normal market conditions systematically understate risk during crises. Historical simulation over calm periods lacks extreme scenarios. Parametric VaR's normal distribution assumption assigns negligible probability to events that actually occur during crises. Correlations increase during stress, invalidating diversification benefits captured in the covariance matrix. This is why stress testing and Expected Shortfall complement VaR rather than replace it.
+VaR models calibrated to normal market conditions systematically understate risk during crises. Historical simulation over calm periods lacks extreme scenarios. Parametric VaR's normal distribution assumption assigns negligible probability to events that actually occur during crises. Correlations increase during stress, invalidating diversification benefits captured in the covariance matrix. This is why [stress testing](/blog/stress-testing-portfolios) and Expected Shortfall complement VaR rather than replace it.
 
 ### What lookback window should I use for historical VaR?
 

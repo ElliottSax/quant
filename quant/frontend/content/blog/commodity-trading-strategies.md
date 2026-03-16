@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["commodities", "trend following", "carry trade", "seasonal trading", "futures trading"]
 keywords: ["commodity trading strategies", "commodity trend following", "carry trade commodities", "seasonal commodity patterns", "commodity futures strategies"]
 ---
-
 # Commodity Trading Strategies: Trend, Carry, and Seasonal
 
-Commodity markets offer systematic alpha opportunities that are structurally different from equity and fixed income markets. Physical supply and demand dynamics, storage costs, weather patterns, and the hedging needs of commercial producers create persistent return patterns that quantitative strategies can exploit. The three dominant systematic approaches -- trend following, carry, and seasonal -- each capture a distinct source of return and exhibit low correlation with each other and with traditional asset classes. This guide examines each strategy's mechanics, implementation, and empirical performance.
+Commodity markets offer systematic alpha opportunities that are structurally different from equity and [fixed income](/blog/fixed-income-quant-strategies) markets. Physical supply and demand dynamics, storage costs, weather patterns, and the hedging needs of commercial producers create persistent return patterns that [quantitative strategies](/blog/crypto-defi-quant-strategies) can exploit. The three dominant systematic approaches -- [trend following](/blog/crypto-trend-following-systems), carry, and seasonal -- each capture a distinct source of return and exhibit low correlation with each other and with traditional asset classes. This guide examines each strategy's mechanics, implementation, and empirical performance.
 
 ## Commodity Market Structure
 
@@ -186,13 +185,13 @@ The three strategies (trend, carry, seasonal) have low pairwise correlations:
 
 An equally weighted combination of the three strategies achieves:
 - Annual return: 7-10%
-- Sharpe ratio: 0.8-1.2 (substantially higher than any individual strategy)
+- [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis): 0.8-1.2 (substantially higher than any individual strategy)
 - Maximum drawdown: -12 to -18%
 - Near-zero correlation with equities and bonds
 
 ## Key Takeaways
 
-- Commodity markets offer systematic alpha from trend following, carry, and seasonal patterns, each driven by distinct structural features of physical markets
+- Commodity markets offer systematic alpha from [trend following](/blog/trend-following-system-guide), carry, and seasonal patterns, each driven by distinct structural features of physical markets
 - Trend following in commodities benefits from supply response lags, inventory cycles, and hedging pressure, delivering positive returns during equity market crises
 - Carry strategies exploit the futures term structure, going long backwardated and short contangoed commodities to harvest the roll yield premium
 - Seasonal patterns arise from physical supply/demand cycles (planting/harvest, heating/cooling seasons) and must be rigorously tested for statistical significance

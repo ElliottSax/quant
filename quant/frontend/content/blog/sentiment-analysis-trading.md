@@ -7,7 +7,6 @@ category: "Algo Trading"
 tags: ["sentiment analysis", "NLP", "alternative data", "natural language processing"]
 keywords: ["sentiment analysis trading", "NLP trading signals", "market sentiment analysis"]
 ---
-
 # Sentiment Analysis for Trading: NLP-Based Market Signals
 
 Sentiment analysis for trading applies natural language processing (NLP) to extract actionable trading signals from text data, including news articles, social media posts, earnings call transcripts, and regulatory filings. The field has evolved rapidly from simple keyword counting to sophisticated transformer-based models that understand context, sarcasm, and implicit sentiment. Tetlock (2007) first demonstrated that media pessimism predicts downward pressure on stock prices, and subsequent research by Loughran and McDonald (2011) established finance-specific sentiment dictionaries that significantly outperform general-purpose tools for financial text analysis.
@@ -192,7 +191,7 @@ The most predictive feature is tone change (improvement or deterioration vs. pri
 | Win Rate | 52.4% |
 | Avg Trade Duration | 8.4 days |
 
-Social media sentiment works best as a contrarian indicator for popular stocks because extreme sentiment levels (both positive and negative) tend to precede mean reversion. However, during events like the GameStop short squeeze (January 2021), extreme positive social sentiment can persist, making stop-losses essential.
+Social media sentiment works best as a contrarian indicator for popular stocks because extreme sentiment levels (both positive and negative) tend to precede [mean reversion](/blog/mean-reversion-strategies-guide). However, during events like the GameStop short squeeze (January 2021), extreme positive social sentiment can persist, making stop-losses essential.
 
 ## Building a Production Sentiment Pipeline
 
@@ -265,7 +264,7 @@ Research suggests that news sentiment is mostly priced in within 1-3 trading day
 
 ### Can sentiment analysis predict market crashes?
 
-Aggregate market sentiment can provide warning signals but cannot predict exact crash timing. The VIX, investor surveys (AAII, CNN Fear & Greed), and news sentiment aggregates have shown predictive value for market direction over 1-3 month horizons. Extreme bullish sentiment (above the 90th percentile historically) has preceded below-average returns 68% of the time. However, sentiment can remain extreme for extended periods before reversing, making timing unreliable. Sentiment is best used for position sizing (reduce exposure during extreme bullish sentiment) rather than crash timing.
+Aggregate market sentiment can provide warning signals but cannot predict exact crash timing. The VIX, investor surveys (AAII, CNN Fear & Greed), and news sentiment aggregates have shown predictive value for market direction over 1-3 month horizons. Extreme bullish sentiment (above the 90th percentile historically) has preceded below-average returns 68% of the time. However, sentiment can remain extreme for extended periods before reversing, making timing unreliable. Sentiment is best used for [position sizing](/blog/position-sizing-strategies) (reduce exposure during extreme bullish sentiment) rather than crash timing.
 
 ---
 

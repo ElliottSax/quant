@@ -7,10 +7,9 @@ category: "Risk Management"
 tags: ["beta hedging", "market neutral", "portfolio hedging", "risk management", "alpha isolation"]
 keywords: ["beta hedging", "market neutral portfolio", "beta neutralization", "systematic risk hedging", "portfolio beta management"]
 ---
-
 # Beta Hedging Strategies: Neutralizing Market Risk
 
-Every equity portfolio carries two types of return: alpha (the skill-based component) and beta (the market-driven component). Beta hedging removes the market-driven component, isolating the manager's alpha. For quantitative strategies built on stock selection, factor timing, or statistical arbitrage, beta hedging is not optional -- it is the mechanism that transforms a directional bet into a repeatable, skill-based process. This guide covers the mathematics of beta estimation, hedging instrument selection, dynamic hedge adjustment, and the practical pitfalls that cause beta hedges to fail.
+Every equity portfolio carries two types of return: alpha (the skill-based component) and beta (the market-driven component). Beta hedging removes the market-driven component, isolating the manager's alpha. For [quantitative strategies](/blog/crypto-defi-quant-strategies) built on stock selection, factor timing, or [statistical arbitrage](/blog/crypto-statistical-arbitrage), beta hedging is not optional -- it is the mechanism that transforms a directional bet into a repeatable, skill-based process. This guide covers the mathematics of beta estimation, hedging instrument selection, dynamic hedge adjustment, and the practical pitfalls that cause beta hedges to fail.
 
 ## Understanding Beta
 

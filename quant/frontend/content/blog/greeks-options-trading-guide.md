@@ -7,12 +7,11 @@ category: "Derivatives"
 tags: ["options Greeks", "delta hedging", "gamma", "theta decay", "vega"]
 keywords: ["options Greeks guide", "delta gamma theta vega", "options risk management"]
 ---
-
 # Options Greeks Complete Guide: Delta, Gamma, Theta, Vega
 
 The Greeks are the quantitative language of options risk management. Every options position, no matter how complex, can be decomposed into its sensitivities to the underlying price (delta, gamma), time (theta), volatility (vega), and interest rates (rho). Professional options traders think in Greeks rather than in terms of profit and loss, because Greeks reveal the structural risks embedded in a position and guide hedging decisions.
 
-This guide covers each Greek in depth, with practical trading applications, hedging strategies, and the relationships between Greeks that experienced traders exploit.
+This guide covers each Greek in depth, with practical trading applications, [hedging strategies](/blog/beta-hedging-strategies), and the relationships between Greeks that experienced traders exploit.
 
 ## Key Takeaways
 

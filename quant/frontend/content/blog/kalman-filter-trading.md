@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["Kalman filter", "signal processing", "adaptive trading", "state space", "dynamic estimation"]
 keywords: ["Kalman filter trading", "adaptive hedge ratio", "Kalman filter pairs trading"]
 ---
-
 # Kalman Filter in Trading: Dynamic Signal Processing
 
-The Kalman filter is an optimal recursive estimator that excels at extracting signals from noisy observations. In trading, it serves three primary purposes: dynamically estimating hedge ratios for pairs trading, filtering noise from price series to reveal underlying trends, and tracking regime changes in model parameters.
+The Kalman filter is an optimal recursive estimator that excels at extracting signals from noisy observations. In trading, it serves three primary purposes: dynamically estimating hedge ratios for [pairs trading](/blog/pairs-trading-strategy-guide), filtering noise from price series to reveal underlying trends, and tracking regime changes in model parameters.
 
 Unlike static estimation methods (rolling OLS, exponential moving averages), the Kalman filter updates its state estimate with each new observation using a principled probabilistic framework. It automatically balances between trusting the current observation and trusting its existing model, with the balance controlled by the relative noise levels specified in the system matrices.
 

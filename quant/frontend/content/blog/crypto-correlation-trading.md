@@ -7,7 +7,6 @@ category: "Crypto & DeFi"
 tags: ["correlation", "relative-value", "trading"]
 keywords: ["bitcoin dominance", "crypto correlation", "alt season", "correlation trading"]
 ---
-
 # Crypto Correlation Trading: BTC Dominance and Alt Season
 
 Bitcoin dominance (BTC's share of total crypto market cap) drives altcoin performance patterns. During BTC dominance increases (BTC gaining market share), altcoins underperform. During dominance decreases, altcoins typically outperform. Trading correlation regimes between BTC and altcoins generates consistent alpha through systematic positioning around dominance shifts.
@@ -54,7 +53,7 @@ Execution mechanics: buy/sell altcoin indices rather than individual assets (red
 
 ## Performance Metrics and Risk Management
 
-Correlation trading performance depends on regime persistence and execution quality.
+[Correlation trading](/blog/correlation-trading-strategies) performance depends on regime persistence and execution quality.
 
 Success rate analysis: dominance mean-reversion achieves 65-75% success rate in normal markets, 40-50% during extreme volatility (when regimes shift suddenly). Profit factor (average win / average loss): 2.0-2.5× typical for systematic approaches.
 
@@ -62,19 +61,19 @@ Drawdown risk: periods when position against regime cause multi-month losses. If
 
 Portfolio implementation: core holdings maintain 50% BTC, 50% alts (neutral). Tactical allocations add 20-30% to dominant outperformer: if alts in favor, temporarily allocate 60-70% alts, 30-40% BTC. This maintains downside protection while capturing upside.
 
-Correlation hedge strategies use options or perpetual shorts to hedge undesired correlation risk. If holding alt positions but fearful of correlation spike (sudden market stress causing 0.95 correlation), buy BTC puts or short BTC perpetuals. Cost: small amount of upside, but eliminates catastrophic loss from correlation breakdown during stress periods.
+Correlation hedge strategies use options or perpetual shorts to hedge undesired correlation risk. If holding alt positions but fearful of correlation spike (sudden market stress causing 0.95 correlation), buy BTC puts or short BTC perpetuals. Cost: small amount of upside, but eliminates catastrophic loss from [correlation breakdown](/blog/correlation-breakdown-crisis) during stress periods.
 
 ## Key Takeaways
 
 Bitcoin dominance (30-70% range) drives altcoin relative performance, with high dominance (>65%) signaling altcoin undervaluation and mean reversion opportunities to 50-80% outperformance within 3-6 months.
 
-Correlation regimes between BTC and alts (0.4-0.95 range) shift predictably across market cycles, enabling pair trading strategies that profit from correlation compressions and expansions with 2:1 profit factor.
+Correlation regimes between BTC and alts (0.4-0.95 range) shift predictably across market cycles, enabling pair [trading strategies](/blog/backtesting-trading-strategies) that profit from correlation compressions and expansions with 2:1 profit factor.
 
 Dominance acceleration (rapid shifts in dominance direction) precedes regime changes 70-80% of time, enabling early positioning in emerging alt seasons before crowd recognition and providing 4-8 week alpha advantage.
 
-Mechanical mean-reversion strategies rebalancing toward lower-correlation assets at high dominance and higher-correlation assets at low dominance generate 15-25% annual returns with 65-75% success rate in normal market regimes.
+Mechanical mean-[reversion strategies](/blog/mean-reversion-strategies-guide) rebalancing toward lower-correlation assets at high dominance and higher-correlation assets at low dominance generate 15-25% annual returns with 65-75% success rate in normal market regimes.
 
-Risk management through position sizing adjustments during uncertain regimes, hedge positions offsetting correlation risk, and portfolio construction maintaining both upside and downside protection prevents catastrophic losses from regime failures.
+Risk management through [position sizing](/blog/position-sizing-strategies) adjustments during uncertain regimes, hedge positions offsetting correlation risk, and portfolio construction maintaining both upside and downside protection prevents catastrophic losses from regime failures.
 
 ## Frequently Asked Questions
 

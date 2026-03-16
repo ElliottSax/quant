@@ -7,10 +7,9 @@ category: "Portfolio Management"
 tags: ["multi-asset", "portfolio construction", "asset allocation", "diversification", "crypto allocation"]
 keywords: ["multi-asset portfolio", "portfolio construction", "asset allocation framework", "diversified portfolio", "crypto portfolio allocation"]
 ---
-
 # Multi-Asset Portfolio Construction: Stocks, Bonds, Commodities, Crypto
 
-Multi-asset portfolio construction is the highest-level investment decision. The allocation across asset classes -- equities, fixed income, commodities, real assets, and increasingly digital assets -- determines 80-90% of long-term portfolio return variability, according to decades of research starting with Brinson, Hood, and Beebower (1986). Getting asset allocation right matters more than security selection within any single asset class. This guide provides quantitative frameworks for determining allocation weights, managing cross-asset risk, and incorporating newer asset classes into a coherent portfolio structure.
+Multi-asset portfolio construction is the highest-level investment decision. The allocation across asset classes -- equities, [fixed income](/blog/fixed-income-quant-strategies), commodities, real assets, and increasingly digital assets -- determines 80-90% of long-term portfolio return variability, according to decades of research starting with Brinson, Hood, and Beebower (1986). Getting asset allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)) right matters more than security selection within any single asset class. This guide provides quantitative frameworks for determining allocation weights, managing cross-asset risk, and incorporating newer asset classes into a coherent portfolio structure.
 
 ## Asset Class Characteristics
 
@@ -47,7 +46,7 @@ The low and negative correlations between equities and bonds, and between financ
 
 Long-term target allocations based on capital market assumptions (expected returns, volatilities, and correlations estimated over a 5-10 year horizon).
 
-**Traditional 60/40**: 60% equities, 40% bonds. Simple and historically effective. Sharpe ratio approximately 0.62 (1990-2025). Weakness: dominated by equity risk (equities contribute approximately 90% of portfolio risk despite only 60% of capital).
+**Traditional 60/40**: 60% equities, 40% bonds. Simple and historically effective. [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) approximately 0.62 (1990-2025). Weakness: dominated by equity risk (equities contribute approximately 90% of portfolio risk despite only 60% of capital).
 
 **Endowment Model**: 30% equities, 15% bonds, 15% hedge funds, 15% private equity, 10% real assets, 10% commodities, 5% cash. Pioneered by Yale's David Swensen. Higher expected return through illiquidity premium and alternative alpha. Requires long time horizon and limited liquidity needs.
 
@@ -61,7 +60,7 @@ For N asset classes with volatility vector sigma and correlation matrix C:
 
 **Step 2**: Compute the risk contribution of each asset: RC_i = w_i * (Sigma * w)_i / sigma_p
 
-**Step 3**: Iterate weights until RC_i = 1/N for all i (equal risk contribution)
+**Step 3**: Iterate weights until RC_i = 1/N for all i ([equal risk contribution](/blog/risk-parity-portfolio))
 
 **Step 4**: Apply leverage to reach target portfolio volatility:
 
@@ -153,7 +152,7 @@ Multi-asset rebalancing is more complex than single-asset-class rebalancing:
 
 - Asset allocation across stocks, bonds, commodities, and alternatives determines 80-90% of long-term return variability, making it the most important investment decision
 - Risk parity allocation equalizes risk contributions across asset classes and historically achieves Sharpe ratios of 0.75-0.85, higher than traditional 60/40 portfolios, though requiring leverage
-- Cryptocurrency allocations of 1-5% are supported by low correlation with traditional assets and high historical Sharpe ratios, with position sizing constrained by extreme volatility and drawdown potential
+- Cryptocurrency allocations of 1-5% are supported by low correlation with traditional assets and high historical Sharpe ratios, with [position sizing](/blog/position-sizing-strategies) constrained by extreme volatility and drawdown potential
 - Multi-asset risk management must account for correlation convergence during crises; stressed-correlation analysis and dedicated tail hedging address this vulnerability
 - The Black-Litterman framework provides a stable methodology for expressing tactical views within a multi-asset portfolio, deviating from equilibrium weights proportionally to conviction
 

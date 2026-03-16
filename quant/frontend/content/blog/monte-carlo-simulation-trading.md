@@ -7,18 +7,17 @@ category: "Algo Trading"
 tags: ["Monte Carlo simulation", "risk assessment", "statistical analysis", "drawdown"]
 keywords: ["Monte Carlo simulation trading", "Monte Carlo risk assessment", "trading strategy simulation"]
 ---
-
 # Monte Carlo Simulation for Trading: Risk Assessment Guide
 
 Monte Carlo simulation for trading is one of the most powerful tools available for understanding the range of outcomes a strategy might produce. While a single backtest shows one possible path through historical data, Monte Carlo simulation generates thousands of possible paths, revealing the probability distribution of returns, drawdowns, and other critical metrics. Named after the famous casino district in Monaco, Monte Carlo methods use random sampling to approximate solutions to problems that are analytically intractable.
 
-For trading strategies, Monte Carlo simulation answers the essential question: "Given what I know about this strategy's characteristics, what is the range of outcomes I should expect in the future?"
+For [trading strategies](/blog/backtesting-trading-strategies), Monte Carlo simulation answers the essential question: "Given what I know about this strategy's characteristics, what is the range of outcomes I should expect in the future?"
 
 ## Why Monte Carlo Simulation Matters
 
 ### The Single Backtest Problem
 
-A single backtest produces one equity curve, one Sharpe ratio, and one maximum drawdown. But these are just one realization of many possible outcomes. The same strategy with the same edge could produce very different results depending on the sequence of trades.
+A single backtest produces one equity curve, one [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis), and one maximum drawdown. But these are just one realization of many possible outcomes. The same strategy with the same edge could produce very different results depending on the sequence of trades.
 
 **Example**: A strategy with 55% win rate and 2:1 reward-to-risk:
 - Best-case 100 trades: 70 winners, 30 losers, +140R
@@ -33,7 +32,7 @@ Monte Carlo simulation maps out this entire distribution, showing not just what 
 2. **Drawdown distribution**: Expected maximum drawdown and its probability
 3. **Confidence intervals**: 5th-95th percentile range for annual returns
 4. **Strategy robustness**: How sensitive results are to trade ordering
-5. **Position sizing validation**: Whether the position sizing method is appropriate for the strategy's characteristics
+5. **Position sizing validation**: Whether the [position sizing](/blog/position-sizing-strategies) method is appropriate for the strategy's characteristics
 
 ## Monte Carlo Methods for Trading
 
@@ -209,7 +208,7 @@ Report Monte Carlo results as probability distributions, not point estimates:
 
 ### How many Monte Carlo simulations do I need?
 
-For most trading strategy analysis, 10,000 iterations provides reliable probability estimates. At this level, the 5th and 95th percentile estimates stabilize to within 0.5% of their converged values. For extreme tail analysis (1st percentile and below), increase to 100,000 or more. You can check convergence by running 5,000 and then 10,000 iterations: if the percentile estimates change by less than 1%, you have sufficient iterations.
+For most [trading strategy](/blog/breakout-trading-strategy) analysis, 10,000 iterations provides reliable probability estimates. At this level, the 5th and 95th percentile estimates stabilize to within 0.5% of their converged values. For extreme tail analysis (1st percentile and below), increase to 100,000 or more. You can check convergence by running 5,000 and then 10,000 iterations: if the percentile estimates change by less than 1%, you have sufficient iterations.
 
 ### Can Monte Carlo simulation predict future performance?
 

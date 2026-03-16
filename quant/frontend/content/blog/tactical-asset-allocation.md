@@ -7,10 +7,9 @@ category: "Portfolio Management"
 tags: ["tactical allocation", "market timing", "asset allocation", "systematic investing", "dynamic allocation"]
 keywords: ["tactical asset allocation", "systematic market timing", "dynamic asset allocation", "TAA strategies", "tactical portfolio management"]
 ---
-
 # Tactical Asset Allocation: Systematic Market Timing Approaches
 
-Tactical Asset Allocation (TAA) dynamically adjusts portfolio weights across asset classes based on quantitative signals, aiming to improve risk-adjusted returns relative to a static strategic allocation. While market timing is often dismissed as impossible, systematic TAA strategies with well-defined signals and disciplined implementation have demonstrated the ability to reduce drawdowns and improve Sharpe ratios. The key is distinguishing between discretionary market timing (which fails consistently) and systematic, rules-based allocation adjustment (which captures predictable patterns in asset class returns).
+Tactical Asset Allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)) (TAA) dynamically adjusts portfolio weights across asset classes based on quantitative signals, aiming to improve risk-adjusted returns relative to a static strategic allocation. While market timing is often dismissed as impossible, systematic TAA strategies with well-defined signals and disciplined implementation have demonstrated the ability to reduce drawdowns and improve Sharpe ratios. The key is distinguishing between discretionary market timing (which fails consistently) and systematic, rules-based allocation adjustment (which captures predictable patterns in asset class returns).
 
 ## TAA Framework
 
@@ -66,7 +65,7 @@ Rank asset classes by recent performance and overweight the strongest:
 
 **Cross-sectional momentum across asset classes (1990-2025):**
 - Average annual alpha: 1.5-2.5% above equal-weight benchmark
-- Sharpe ratio improvement: 0.15-0.25 versus equal-weight
+- [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) improvement: 0.15-0.25 versus equal-weight
 
 ### Dual Momentum
 
@@ -76,7 +75,7 @@ Gary Antonacci's Dual Momentum combines time-series and cross-sectional momentum
 2. **Relative momentum**: Select the better-performing equity market (US or international)
 3. **Absolute momentum**: If the selected equity market's return exceeds the T-bill rate, hold it. Otherwise, hold bonds.
 
-This dual filter captures the benefits of both momentum types: relative strength across markets and trend following within markets.
+This dual filter captures the benefits of both momentum types: relative strength across markets and [trend following](/blog/crypto-trend-following-systems) within markets.
 
 ## Valuation-Based TAA
 
@@ -194,4 +193,4 @@ Yes, and ETFs are the preferred implementation vehicle for most TAA strategies. 
 
 ### Should I use TAA alongside factor investing?
 
-Yes, and the two approaches are complementary. TAA adjusts asset class weights (macro-level), while factor investing adjusts stock selection within asset classes (micro-level). A portfolio using TAA for the equity allocation decision (how much to hold) and factor investing for the equity composition decision (which stocks to hold) captures both macro and micro return premia. The two alpha sources are largely independent, with correlations typically below 0.2.
+Yes, and the two approaches are complementary. TAA adjusts asset class weights (macro-level), while [factor investing](/blog/factor-investing-strategy-guide) adjusts stock selection within asset classes (micro-level). A portfolio using TAA for the equity allocation decision (how much to hold) and factor investing for the equity composition decision (which stocks to hold) captures both macro and micro return premia. The two alpha sources are largely independent, with correlations typically below 0.2.

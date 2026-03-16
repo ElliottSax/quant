@@ -7,10 +7,9 @@ category: "Risk Management"
 tags: ["risk reward ratio", "expectancy", "trading edge", "risk management", "trade management"]
 keywords: ["risk reward ratio optimization", "trading risk reward", "risk reward ratio trading"]
 ---
-
 # Risk-Reward Ratio Optimization: Finding Your Edge
 
-The risk-reward ratio (R:R) quantifies how much potential profit a trade offers relative to its potential loss. A trade risking $100 to make $200 has a 1:2 risk-reward ratio. While the concept is simple, optimizing the risk-reward ratio for a specific trading strategy requires understanding the mathematical relationship between R:R, win rate, and expectancy, the true measure of trading edge.
+The risk-reward ratio (R:R) quantifies how much potential profit a trade offers relative to its potential loss. A trade risking $100 to make $200 has a 1:2 risk-reward ratio. While the concept is simple, optimizing the risk-reward ratio for a specific [trading strategy](/blog/breakout-trading-strategy) requires understanding the mathematical relationship between R:R, win rate, and expectancy, the true measure of trading edge.
 
 This guide provides the quantitative framework for evaluating, optimizing, and implementing risk-reward ratios that produce positive expectancy across different trading approaches.
 
@@ -141,7 +140,7 @@ def calculate_expectancy(trades):
 
 ### Interpreting Expectancy Results
 
-- **Expectancy > 0:** The strategy has a positive edge. Continue trading with proper position sizing.
+- **Expectancy > 0:** The strategy has a positive edge. Continue trading with proper [position sizing](/blog/position-sizing-strategies).
 - **Expectancy_R > 0.2R:** A meaningfully profitable system after accounting for slippage and commissions.
 - **Profit Factor > 1.5:** The strategy produces 50% more gross profit than gross loss, a sustainable edge.
 - **Profit Factor > 2.0:** Excellent edge, typical of well-optimized strategies.

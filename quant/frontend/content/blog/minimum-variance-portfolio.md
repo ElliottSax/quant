@@ -7,10 +7,9 @@ category: "Portfolio Management"
 tags: ["minimum variance", "portfolio optimization", "low volatility", "risk management", "portfolio construction"]
 keywords: ["minimum variance portfolio", "low volatility portfolio", "minimum risk portfolio", "portfolio variance minimization", "defensive portfolio construction"]
 ---
-
 # Minimum Variance Portfolio: Lowest Risk for Your Returns
 
-The minimum variance portfolio (MVP) occupies a unique position in quantitative finance: it is the only portfolio on the efficient frontier that requires no expected return estimates. By minimizing portfolio variance subject to full investment and optional long-only constraints, the MVP sidesteps the most error-prone input in portfolio optimization while exploiting the well-documented low-volatility anomaly. Institutional adoption has grown substantially, with over $100 billion in assets tracking minimum variance strategies globally.
+The minimum variance portfolio (MVP) occupies a unique position in quantitative finance: it is the only portfolio on the efficient frontier that requires no expected return estimates. By minimizing portfolio variance subject to full investment and optional long-only constraints, the MVP sidesteps the most error-prone input in [portfolio optimization](/blog/portfolio-optimization-guide) while exploiting the well-documented low-volatility anomaly. Institutional adoption has grown substantially, with over $100 billion in assets tracking minimum variance strategies globally.
 
 ## Mathematical Foundation
 
@@ -85,7 +84,7 @@ The MVP's sole input is the covariance matrix, making estimation quality paramou
 
 The optimal alpha is determined analytically (Ledoit-Wolf, 2004). Typical values: alpha = 0.10-0.30 for well-conditioned matrices, alpha = 0.50-0.80 for poorly conditioned ones.
 
-**Factor models**: Decompose returns into factor components:
+**[Factor models](/blog/quantitative-factor-models)**: Decompose returns into factor components:
 
 **Sigma_factor = B * F * B^T + D**
 
@@ -154,7 +153,7 @@ This produces the minimum tracking error portfolio, useful for managers with ben
 
 ### Conditional Minimum Variance
 
-Use regime-dependent covariance matrices (estimated separately for high-volatility and low-volatility regimes) and solve the MVP for each regime. Allocate between regime-specific MVPs based on regime probabilities from a Hidden Markov Model or similar regime detection framework.
+Use regime-dependent covariance matrices (estimated separately for high-volatility and low-volatility regimes) and solve the MVP for each regime. Allocate between regime-specific MVPs based on regime probabilities from a [Hidden Markov](/blog/hidden-markov-models-trading) Model or similar regime detection framework.
 
 ### Factor Minimum Variance
 

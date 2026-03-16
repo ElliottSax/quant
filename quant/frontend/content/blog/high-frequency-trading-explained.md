@@ -7,7 +7,6 @@ category: "Algo Trading"
 tags: ["high-frequency trading", "HFT", "market making", "latency arbitrage"]
 keywords: ["high-frequency trading explained", "how HFT works", "high-frequency trading strategies"]
 ---
-
 # High-Frequency Trading Explained: How HFT Actually Works
 
 High-frequency trading (HFT) is the most technologically intensive segment of financial markets, where firms compete to execute strategies at microsecond timescales. HFT accounts for approximately 50-60% of US equity volume and has fundamentally changed market structure since its rise in the mid-2000s. Despite widespread media attention and regulatory scrutiny, particularly after Michael Lewis's "Flash Boys" (2014), HFT remains poorly understood by most market participants. This guide explains how HFT actually works, the strategies employed, the technology required, and the impact on market quality.
@@ -77,7 +76,7 @@ Exploit the speed difference between exchanges to profit from stale quotes.
 
 ### Strategy 3: Statistical Arbitrage at High Frequency
 
-Apply traditional stat arb models (pairs trading, mean reversion) at millisecond timescales.
+Apply traditional stat arb models (pairs trading, [mean reversion](/blog/mean-reversion-strategies-guide)) at millisecond timescales.
 
 **How it works**:
 1. Monitor relationships between correlated instruments (SPY vs. ES futures, ETFs vs. component stocks)
@@ -178,7 +177,7 @@ Academic consensus (Menkveld, 2013; Brogaard, Hendershott, and Riordan, 2014) is
 
 For typical retail orders (100-1,000 shares), HFT's impact is minimal. Retail order flow is mostly handled by wholesalers (Citadel Securities, Virtu Financial) who provide price improvement relative to the NBBO. The average retail order receives $0.001-0.003 per share in price improvement.
 
-For institutional orders (10,000+ shares), HFT can significantly increase execution costs through information leakage and adverse selection. This is where dark pools and sophisticated execution algorithms provide value.
+For institutional orders (10,000+ shares), HFT can significantly increase execution costs through information leakage and adverse selection. This is where dark pools and sophisticated [execution algorithms](/blog/execution-algorithms-guide) provide value.
 
 ## Regulatory Landscape
 
@@ -202,11 +201,11 @@ For institutional orders (10,000+ shares), HFT can significantly increase execut
 ## Key Takeaways
 
 - HFT accounts for 50-60% of US equity volume, operating at microsecond timescales
-- The four core HFT strategies are market making, latency arbitrage, statistical arbitrage, and event-driven trading
+- The four core HFT strategies are market making, latency arbitrage, [statistical arbitrage](/blog/crypto-statistical-arbitrage), and event-driven trading
 - HFT market making has reduced spreads by 50-70% since the mid-2000s, benefiting all investors
 - Latency arbitrage extracts approximately $5 billion annually from other market participants
 - HFT infrastructure costs $5-50 million annually, creating a barrier to entry
-- Non-HFT traders should use limit orders, avoid the open/close, and use algorithmic execution for large orders
+- Non-HFT traders should use limit orders, avoid the open/close, and use [algorithmic execution](/blog/algorithmic-execution-quality) for large orders
 - Regulatory proposals (batch auctions, speed bumps) aim to reduce latency arbitrage while preserving market making benefits
 
 ## Frequently Asked Questions
@@ -217,7 +216,7 @@ Not at the same timescale, nor should they try. HFT competes on microseconds; re
 
 ### Is high-frequency trading legal?
 
-Yes, HFT is legal in all major jurisdictions. Market making, statistical arbitrage, and event-driven trading are all legitimate activities. However, specific practices like "spoofing" (placing orders with no intent to fill to manipulate prices) and "layering" (stacking orders to create false impressions of supply/demand) are illegal and have resulted in significant fines and criminal charges.
+Yes, HFT is legal in all major jurisdictions. Market making, [statistical arbitrage](/blog/statistical-arbitrage-guide), and event-driven trading are all legitimate activities. However, specific practices like "spoofing" (placing orders with no intent to fill to manipulate prices) and "layering" (stacking orders to create false impressions of supply/demand) are illegal and have resulted in significant fines and criminal charges.
 
 ### How profitable is HFT?
 

@@ -1,0 +1,40 @@
+# QuantEngines
+
+> A free congressional trading analytics platform and quantitative trading toolkit providing ML-powered predictions, pattern detection, and backtesting tools.
+
+## About
+
+QuantEngines (quantengines.com) tracks and analyzes stock trades made by U.S. Congress members, providing transparency into political insider trading. The platform uses machine learning models to detect patterns, predict trading signals, and help retail investors follow or analyze congressional trading activity. It also offers free backtesting tools, options analytics, and market research resources. All tools are free with no signup required.
+
+## Key Content Areas
+
+- **Congressional Trade Tracking**: Real-time monitoring of stock trades disclosed by U.S. Senators and Representatives, with filtering by politician, party, sector, and trade type
+- **ML-Powered Predictions**: Machine learning models that analyze congressional trading patterns and generate predictive signals
+- **Politician Profiles**: Detailed trading profiles for individual politicians including portfolio holdings, trade history, performance metrics, and sector exposure
+- **Backtesting Platform**: No-code strategy backtesting for stocks, options, crypto, and forex with customizable parameters
+- **Options Analytics**: Options flow analysis, GEX (Gamma Exposure) tracking, and unusual activity detection
+- **Market Scanner**: Stock screening tools with technical and fundamental filters
+- **Trading Signals**: Algorithmic signals derived from congressional trades, technical analysis, and sentiment data
+- **Blog & Research**: Articles on quantitative trading strategies, congressional trading analysis, and market research with academic references
+
+## Pages
+
+- /congressional-trades: Browse and filter all congressional stock trades
+- /politicians: Directory of politicians with trading activity
+- /politicians/[id]: Individual politician trading profiles and analytics
+- /backtesting: No-code strategy backtesting interface
+- /strategies: Pre-built trading strategy library
+- /strategy-validation: Academic validation of trading strategies
+- /options: Options analytics dashboard
+- /signals: Trading signal dashboard
+- /scanner: Stock market scanner with filters
+- /charts: Interactive charting tools
+- /compare: Compare politicians or strategies side-by-side
+- /blog: Articles on quant trading, congressional trades, and market analysis
+- /research-references: Academic papers and data sources
+- /tools: Free trading tools directory
+- /pricing: Premium feature tiers
+
+## Contact
+
+Website: https://quantengines.com

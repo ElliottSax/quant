@@ -7,18 +7,17 @@ category: "Trading Strategies"
 tags: ["volatility trading", "VIX", "straddle", "strangle", "options volatility"]
 keywords: ["volatility trading strategies", "VIX trading", "straddle strangle strategies"]
 ---
-
 # Volatility Trading Strategies: VIX, Straddles, and Strangles
 
-Volatility trading strategies treat volatility itself as a tradable asset, distinct from the directional movement of underlying prices. While most traders ask "will the market go up or down?", volatility traders ask "will the market move more or less than expected?" This distinction opens an entirely separate dimension of alpha that has low correlation to traditional long-only strategies. The VIX index, often called the "fear gauge," provides a real-time measure of expected S&P 500 volatility, and the rich ecosystem of VIX derivatives, options strategies, and variance products enables systematic exploitation of volatility patterns.
+Volatility [trading strategies](/blog/backtesting-trading-strategies) treat volatility itself as a tradable asset, distinct from the directional movement of underlying prices. While most traders ask "will the market go up or down?", volatility traders ask "will the market move more or less than expected?" This distinction opens an entirely separate dimension of alpha that has low correlation to traditional long-only strategies. The VIX index, often called the "fear gauge," provides a real-time measure of expected S&P 500 volatility, and the rich ecosystem of VIX derivatives, [options strategies](/blog/crypto-options-strategies), and variance products enables systematic exploitation of volatility patterns.
 
-Research by Carr and Wu (2009) documented the persistent volatility risk premium, the foundation upon which most systematic volatility strategies are built. This guide covers the major approaches to volatility trading, from simple VIX-based systems to advanced volatility surface arbitrage.
+Research by Carr and Wu (2009) documented the persistent volatility risk premium, the foundation upon which most systematic volatility strategies are built. This guide covers the major approaches to volatility trading, from simple VIX-based systems to advanced [volatility surface](/blog/volatility-surface-modeling) arbitrage.
 
 ## Understanding Volatility as an Asset Class
 
 ### Implied vs. Realized Volatility
 
-**Implied volatility (IV)**: The market's forecast of future volatility, extracted from options prices using the Black-Scholes model. IV represents what the market expects to happen.
+**Implied volatility (IV)**: The market's forecast of future volatility, extracted from options prices using the Black-Scholes (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)) model. IV represents what the market expects to happen.
 
 **Realized volatility (RV)**: The actual volatility that occurred, calculated from historical price returns. RV represents what actually happened.
 
@@ -231,7 +230,7 @@ The 10% tail hedge allocation costs approximately 0.4 Sharpe per year but provid
 
 - The volatility risk premium (IV > RV 85% of the time) is the foundation of systematic short volatility strategies
 - Delta-hedged straddle selling produced the highest Sharpe ratio (1.58) among individual volatility strategies
-- VIX mean reversion is highly profitable (78% win rate) but carries significant tail risk
+- VIX [mean reversion](/blog/mean-reversion-strategies-guide) is highly profitable (78% win rate) but carries significant tail risk
 - Wider strangles (16-delta) produce better risk-adjusted returns (Sharpe 1.24) than tighter strangles
 - VIX term structure roll yield earns approximately 2.4% per month during contango periods
 - A 10% allocation to tail hedges costs 0.4 Sharpe/year but provides essential crash protection
@@ -245,7 +244,7 @@ You can trade volatility using VIX futures (directly accessible through most fut
 
 ### Is selling volatility safe?
 
-Selling volatility is profitable on average (the volatility risk premium ensures positive expected returns) but carries extreme tail risk. The 2018 Volmageddon event destroyed $4 billion in short volatility products in a single day. Safety requires: (1) strict position sizing (maximum 5% of portfolio per position), (2) stop-losses triggered by VIX level (exit above 30), (3) tail hedges (1-2% of portfolio in far OTM puts), and (4) diversification across multiple volatility strategies with different risk profiles.
+Selling volatility is profitable on average (the volatility risk premium ensures positive expected returns) but carries extreme tail risk. The 2018 Volmageddon event destroyed $4 billion in short volatility products in a single day. Safety requires: (1) strict [position sizing](/blog/position-sizing-strategies) (maximum 5% of portfolio per position), (2) stop-losses triggered by VIX level (exit above 30), (3) tail hedges (1-2% of portfolio in far OTM puts), and (4) diversification across multiple volatility strategies with different risk profiles.
 
 ### What is the difference between trading VIX futures and options?
 

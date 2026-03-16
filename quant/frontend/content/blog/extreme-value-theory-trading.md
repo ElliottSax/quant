@@ -7,10 +7,9 @@ category: "Advanced Analytics"
 tags: ["extreme-value-theory", "tail-risk", "var"]
 keywords: ["extreme value theory", "EVT trading", "tail risk", "VaR", "CVaR", "black swan", "fat tails"]
 ---
-
 # Extreme Value Theory: Tail Risk in Trading
 
-Financial markets experience extreme events—crashes, flash rallies, Black Monday, the 2008 crisis, COVID-19 panic—far more frequently than normal distributions predict. Extreme Value Theory (EVT) provides mathematical tools specifically designed to model and forecast the distribution of rare extreme events. For traders managing tail risk, EVT offers superior estimates of Value-at-Risk, more accurate stress testing, and better portfolio protection against catastrophic losses.
+Financial markets experience extreme events—crashes, flash rallies, Black Monday, the 2008 crisis, COVID-19 panic—far more frequently than normal distributions predict. Extreme Value Theory (EVT) provides mathematical tools specifically designed to model and forecast the distribution of rare extreme events. For traders managing tail risk, EVT offers superior estimates of Value-at-Risk, more accurate [stress testing](/blog/stress-testing-portfolios), and better portfolio protection against catastrophic losses.
 
 ## Understanding Extreme Value Theory
 

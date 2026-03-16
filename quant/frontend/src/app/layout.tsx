@@ -156,6 +156,62 @@ export default function RootLayout({
             }
           `}
         </Script>
+        <Script id="website-schema" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "QuantEngines",
+              "url": "https://quantengines.com",
+              "description": "Free professional-grade trading tools for everyone. Charts, screeners, backtesting, congressional trading analytics, and more.",
+              "publisher": {
+                "@type": "Organization",
+                "name": "QuantEngines"
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://quantengines.com/search?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
+            }
+          `}
+        </Script>
+        <Script id="webapp-schema" type="application/ld+json" strategy="afterInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "QuantEngines Trading Tools",
+              "url": "https://quantengines.com",
+              "description": "Professional-grade trading tools suite: live charts, stock screener, backtesting engine, options calculator, congressional trading tracker, and portfolio analyzer. 100% free, no signup required.",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "Web Browser",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              },
+              "featureList": [
+                "Advanced Stock Charts",
+                "Stock Screener",
+                "Trading Signals",
+                "Strategy Backtesting",
+                "Options Calculator",
+                "Congressional Trading Tracker",
+                "Portfolio Analyzer",
+                "Correlation Network"
+              ],
+              "author": {
+                "@type": "Organization",
+                "name": "QuantEngines"
+              }
+            }
+          `}
+        </Script>
         <ErrorBoundary>
           <Providers>
           <div className="min-h-screen bg-[hsl(220,60%,4%)]">

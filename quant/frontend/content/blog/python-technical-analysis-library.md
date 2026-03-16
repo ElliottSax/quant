@@ -7,10 +7,9 @@ category: "Python & Automation"
 tags: ["python", "TA-Lib", "pandas-ta", "technical analysis", "quantitative trading"]
 keywords: ["python technical analysis", "TA-Lib python", "pandas-ta guide"]
 ---
-
 # Python Technical Analysis: TA-Lib and pandas-ta Guide
 
-Python has become the dominant programming language for quantitative trading and technical analysis, largely due to its rich ecosystem of specialized libraries. Two libraries stand at the center of Python-based technical analysis: TA-Lib, the industry-standard C library with Python bindings, and pandas-ta, a pure-Python alternative that integrates natively with pandas DataFrames. Each has distinct advantages, and understanding when to use each library is essential for building efficient, reliable analysis systems.
+Python has become the dominant programming language for [quantitative trading](/blog/crypto-quant-trading-strategies) and technical analysis, largely due to its rich ecosystem of specialized libraries. Two libraries stand at the center of Python-based technical analysis: TA-Lib, the industry-standard C library with Python bindings, and pandas-ta, a pure-Python alternative that integrates natively with pandas DataFrames. Each has distinct advantages, and understanding when to use each library is essential for building efficient, reliable analysis systems.
 
 This guide covers installation, core usage patterns, indicator calculation for both libraries, and practical examples of building complete technical analysis pipelines.
 

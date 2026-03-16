@@ -7,7 +7,6 @@ category: "Advanced Analytics"
 tags: ["copulas", "dependence-modeling", "tail-risk"]
 keywords: ["copula analysis", "copula trading", "tail dependence", "Gaussian copula", "t-copula", "dependence structure"]
 ---
-
 # Copula Analysis: Modeling Asset Dependence Structures
 
 Correlation is the most widely used measure of asset dependence, but it has severe limitations—it only captures linear relationships, assumes normality, and fails during market stress when dependencies strengthen. Copula theory provides a sophisticated framework for modeling the full dependence structure between assets, capturing tail dependencies, asymmetries, and non-linear relationships that correlation misses.
@@ -662,7 +661,7 @@ t-copula is most common—captures tail dependence symmetric in upper and lower 
 
 ### Can copulas predict crashes?
 
-Copulas don't predict timing, but they reveal tail dependence—how likely assets are to crash together. High tail dependence means poor diversification during stress. Use for risk management and stress testing, not market timing.
+Copulas don't predict timing, but they reveal tail dependence—how likely assets are to crash together. High tail dependence means poor diversification during stress. Use for risk management and [stress testing](/blog/stress-testing-portfolios), not market timing.
 
 ### How many observations do I need to fit copulas?
 
@@ -682,7 +681,7 @@ Yes! That's the beauty of Sklar's theorem. You can combine Student-t marginals w
 
 ## Conclusion
 
-Copula theory represents a paradigm shift from correlation-based thinking to dependence-structure modeling. By separating marginal behavior from joint dependencies, copulas enable more accurate risk assessment, better portfolio construction, and sophisticated pairs trading strategies.
+Copula theory represents a paradigm shift from correlation-based thinking to dependence-structure modeling. By separating marginal behavior from joint dependencies, copulas enable more accurate risk assessment, better portfolio construction, and sophisticated pairs [trading strategies](/blog/backtesting-trading-strategies).
 
 The limitations of correlation become painfully apparent during market stress—precisely when risk management matters most. Copulas, particularly t-copulas with tail dependence, capture the reality that assets tend to crash together more often than correlation suggests.
 

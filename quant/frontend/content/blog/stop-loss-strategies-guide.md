@@ -7,7 +7,6 @@ category: "Risk Management"
 tags: ["stop loss", "trailing stop", "ATR stop", "risk management", "exit strategy"]
 keywords: ["stop loss strategies", "trailing stop loss", "ATR based stop loss"]
 ---
-
 # Stop-Loss Strategies: Trailing, ATR-Based, and Time Stops
 
 Stop-loss strategies define the maximum loss you will accept on any trade before exiting. While most trading education focuses on entries, the exit strategy, and specifically the stop-loss methodology, has a disproportionate impact on both individual trade outcomes and long-term portfolio performance. A well-placed stop protects capital during adverse moves while allowing profitable trades the room they need to develop. A poorly placed stop either triggers on normal market noise (too tight) or allows unacceptable losses (too wide).
@@ -56,13 +55,13 @@ Place stops slightly beyond the obvious level, not at it. If support is at $100.
 
 ## Strategy 2: ATR-Based Stops
 
-Use the Average True Range to set stops that adapt to current volatility.
+Use the [Average True Range](/blog/atr-average-true-range-guide) to set stops that adapt to current volatility.
 
 **Stop Distance = Entry Price +/- (ATR Multiplier x ATR)**
 
 ### Standard Multipliers
 - **1.0x ATR:** Aggressive, suitable for scalping and mean-reversion
-- **1.5x ATR:** Moderate, suitable for most swing trading strategies
+- **1.5x ATR:** Moderate, suitable for most swing [trading strategies](/blog/backtesting-trading-strategies)
 - **2.0x ATR:** Standard for trend-following systems
 - **3.0x ATR:** Conservative, for longer-term trend captures (Chandelier Exit)
 

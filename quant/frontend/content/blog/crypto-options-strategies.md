@@ -7,7 +7,6 @@ category: "Crypto & DeFi"
 tags: ["options", "derivatives", "volatility"]
 keywords: ["crypto options", "Deribit options", "options strategies", "volatility trading"]
 ---
-
 # Crypto Options Strategies: Deribit and Binance Options
 
 Cryptocurrency options markets have evolved into sophisticated derivatives venues enabling institutional-grade strategies previously available only in traditional finance. Deribit, the dominant crypto options exchange, processes $5B+ weekly volume with tight spreads, deep liquidity, and diverse contract maturities. These conditions enable systematic options strategies generating 15-40% annual returns with careful risk management.
@@ -20,7 +19,7 @@ Options provide leveraged directional exposure or volatility positioning with de
 
 The Greeks quantify options' sensitivity to price movements: Delta (price sensitivity, 0-1.0), Theta (time decay per day), Gamma (delta sensitivity to price moves), Vega (sensitivity to volatility changes), and Rho (sensitivity to interest rates, minimal in crypto).
 
-Option pricing relies on implied volatility (market's forecast of future volatility). Black-Scholes formula: Call_Price = S×N(d1) - K×e^(-rT)×N(d2), where S is spot price, K is strike, T is time to expiration, and N() is cumulative normal distribution. When implied volatility rises, all option prices increase regardless of price direction - volatility plays major role in options returns.
+Option pricing relies on implied volatility (market's forecast of future volatility). Black-Scholes (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)) formula: Call_Price = S×N(d1) - K×e^(-rT)×N(d2), where S is spot price, K is strike, T is time to expiration, and N() is cumulative normal distribution. When implied volatility rises, all option prices increase regardless of price direction - volatility plays major role in options returns.
 
 Deribit offers perpetual options (no expiration) and dated options (expirations from 1 week to 6 months). Perpetual options simplify position management since they don't expire. Dated options allow volatility term structure strategies (front-month cheap, back-month expensive = backwardation arbitrage).
 
@@ -40,7 +39,7 @@ Iron condors (sell out-of-money call spread, sell out-of-money put spread) profi
 
 Theta decay strategies explicitly profit from time passing. Short straddles (sell call and put at same strike) collect premium from theta decay. If BTC stays near strike for 7 days, time decay profits $500-1,000. Risk: unlimited loss if BTC moves >2σ from strike. Generally requires active management to prevent losses from large moves.
 
-Position sizing limits exposure. Kelly criterion for options: Position_Size = (Win_Rate × Avg_Win - Loss_Rate × Avg_Loss) / Max_Loss. For call spreads showing 60% win rate, $2,000 avg win, $12,000 max loss: Kelly = (0.60×2,000 - 0.40×12,000) / 12,000 = -20% (don't trade). This strategy has negative expectancy despite 60% win rate due to asymmetric payoff.
+[Position sizing](/blog/position-sizing-strategies) limits exposure. Kelly criterion for options: Position_Size = (Win_Rate × Avg_Win - Loss_Rate × Avg_Loss) / Max_Loss. For call spreads showing 60% win rate, $2,000 avg win, $12,000 max loss: Kelly = (0.60×2,000 - 0.40×12,000) / 12,000 = -20% (don't trade). This strategy has negative expectancy despite 60% win rate due to asymmetric payoff.
 
 ## Volatility Arbitrage and IV Strategies
 
@@ -82,7 +81,7 @@ Calendar spreads (sell near-term options, buy far-term options at same strike) p
 
 If volatility stays constant, 1-month option decays faster than 6-month due to theta. After 30 days, 1-month expires and profit from theta differential. If volatility increases, far-month option gains more vega profit. If volatility decreases, near-month option loses less vega than far-month. Calendar spreads excel during flat-to-slightly-bullish, low-vol regimes.
 
-Volatility mean-reversion strategies assume extreme IV reverts to 60-80% normal levels. When IV spikes to 150% (volatility panic), sell vol (short straddles) betting IV compresses back to 80%. Opposite: when IV drops to 30%, buy vol expecting reversion to 70%. Historical backtests show 65-70% win rate with 2:1 payoff.
+Volatility mean-[reversion strategies](/blog/mean-reversion-strategies-guide) assume extreme IV reverts to 60-80% normal levels. When IV spikes to 150% (volatility panic), sell vol (short straddles) betting IV compresses back to 80%. Opposite: when IV drops to 30%, buy vol expecting reversion to 70%. Historical backtests show 65-70% win rate with 2:1 payoff.
 
 Cross-exchange volatility arbitrage exploits IV differences between Deribit and Binance options. If BTC IV on Deribit = 60% while Binance = 65%, buy Deribit options (cheaper) and sell Binance options (expensive). Execute sufficient volume capturing spread before market adjusts.
 
@@ -90,7 +89,7 @@ Event volatility strategies prepare for known catalysts (Fed meetings, Bitcoin h
 
 ## Key Takeaways
 
-Cryptocurrency options strategies generate 15-40% annual returns through volatility trading, time decay capture, and directional positioning, with Greeks-based management enabling sophisticated risk control unavailable to simple option buyers.
+Cryptocurrency options strategies generate 15-40% annual returns through [volatility trading](/blog/volatility-trading-strategies), time decay capture, and directional positioning, with Greeks-based management enabling sophisticated risk control unavailable to simple option buyers.
 
 Call/put spreads and iron condors define maximum risk while maintaining profitable payoff ratios, suitable for systematic traders willing to actively manage positions rather than passively holding long options.
 

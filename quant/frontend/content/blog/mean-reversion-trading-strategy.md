@@ -7,18 +7,17 @@ category: "Trading Strategies"
 tags: ["mean reversion", "backtesting", "statistical trading", "quantitative strategies"]
 keywords: ["mean reversion trading strategy", "mean reversion backtest", "statistical arbitrage"]
 ---
-
 # Mean Reversion Trading Strategy: Complete Backtest Guide
 
-Mean reversion trading strategy remains one of the most statistically robust approaches in quantitative finance. The core premise is elegant: prices tend to oscillate around a long-term equilibrium, and deviations from that equilibrium present exploitable trading opportunities. Research by Poterba and Summers (1988) first documented mean-reverting behavior in equity prices, and decades of subsequent work have refined the approach into a systematic, backtestable framework.
+Mean reversion [trading strategy](/blog/breakout-trading-strategy) remains one of the most statistically robust approaches in quantitative finance. The core premise is elegant: prices tend to oscillate around a long-term equilibrium, and deviations from that equilibrium present exploitable trading opportunities. Research by Poterba and Summers (1988) first documented mean-reverting behavior in equity prices, and decades of subsequent work have refined the approach into a systematic, backtestable framework.
 
-In this guide, we walk through the complete process of building a mean reversion trading strategy from scratch, including statistical validation, signal construction, position sizing, and backtest results across multiple asset classes.
+In this guide, we walk through the complete process of building a mean reversion [trading strategy](/blog/momentum-trading-strategy-guide) from scratch, including statistical validation, signal construction, position sizing, and backtest results across multiple asset classes.
 
 ## What Is Mean Reversion in Trading?
 
 Mean reversion is the statistical tendency of asset prices, returns, or other financial metrics to gravitate toward their historical average over time. When a stock's price deviates significantly from its mean, a mean reversion trader takes the opposite position, betting that the price will return to its average.
 
-This is fundamentally different from trend following, which assumes that recent price direction will continue. Mean reversion strategies profit from the oscillation between extremes, while trend followers profit from extended directional moves.
+This is fundamentally different from [trend following](/blog/crypto-trend-following-systems), which assumes that recent price direction will continue. [Mean reversion strategies](/blog/mean-reversion-strategies-guide) profit from the oscillation between extremes, while trend followers profit from extended directional moves.
 
 ### The Statistical Foundation
 
@@ -110,7 +109,7 @@ Mean reversion strategies suffer during trending markets. During the 2020-2021 b
 
 The most dangerous trap in mean reversion backtesting is optimizing lookback periods and Z-score thresholds on in-sample data. We mitigate this by:
 
-1. Using walk-forward optimization (12-month in-sample, 3-month out-of-sample)
+1. Using walk-[forward optimization](/blog/walk-forward-optimization) (12-month in-sample, 3-month out-of-sample)
 2. Testing parameter robustness across +/- 20% of optimal values
 3. Requiring the strategy to work across at least 3 different asset classes
 

@@ -7,10 +7,9 @@ category: "Trading Strategies"
 tags: ["execution algorithms", "TWAP", "VWAP", "implementation shortfall", "order execution"]
 keywords: ["execution algorithms trading", "TWAP VWAP algorithm", "implementation shortfall"]
 ---
-
 # Execution Algorithms: TWAP, VWAP, and Implementation Shortfall
 
-Execution algorithms bridge the gap between a trading strategy's ideal positions and the messy reality of placing orders in a market with finite liquidity, bid-ask spreads, and information leakage. The choice of execution algorithm directly impacts realized performance: poor execution can consume 30-50% of a strategy's gross alpha for institutional-size orders.
+Execution algorithms bridge the gap between a [trading strategy](/blog/breakout-trading-strategy)'s ideal positions and the messy reality of placing orders in a market with finite liquidity, bid-ask spreads, and information leakage. The choice of execution algorithm directly impacts realized performance: poor execution can consume 30-50% of a strategy's gross alpha for institutional-size orders.
 
 This guide implements the three most important execution algorithms -- TWAP, VWAP, and Implementation Shortfall -- and explains when to use each.
 
@@ -485,4 +484,4 @@ Compare your average execution price against multiple benchmarks: VWAP (standard
 
 ### Can execution algorithms be gamed by other participants?
 
-Yes. Predatory trading strategies can detect algorithmic execution patterns (especially TWAP and VWAP, which are predictable) and trade ahead of the remaining slices. This is why production algorithms include randomization, dynamic participation limits, and anti-gaming logic. Never use a perfectly uniform TWAP in practice. Add randomization to timing and size.
+Yes. Predatory [trading strategies](/blog/backtesting-trading-strategies) can detect [algorithmic execution](/blog/algorithmic-execution-quality) patterns (especially TWAP and VWAP, which are predictable) and trade ahead of the remaining slices. This is why production algorithms include randomization, dynamic participation limits, and anti-gaming logic. Never use a perfectly uniform TWAP in practice. Add randomization to timing and size.

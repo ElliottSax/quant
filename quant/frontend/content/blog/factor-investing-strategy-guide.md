@@ -7,12 +7,11 @@ category: "Trading Strategies"
 tags: ["factor investing", "smart beta", "value factor", "momentum factor", "quality factor"]
 keywords: ["factor investing strategy", "equity factors", "multi-factor portfolio"]
 ---
-
 # Factor Investing: Value, Momentum, Quality, Low Volatility
 
 Factor investing is the systematic practice of targeting specific, well-documented drivers of returns across asset classes. The concept began with Fama and French's three-factor model (1993), which demonstrated that market risk alone could not explain stock returns and that size and value factors captured additional, persistent sources of alpha. The framework has since expanded to include momentum (Carhart, 1997), quality (Novy-Marx, 2013), and low volatility (Baker, Bradley, and Wurgler, 2011), creating a comprehensive toolkit for systematic portfolio construction.
 
-Factor investing now underlies over $2 trillion in assets globally across smart beta ETFs, quantitative hedge funds, and institutional mandates. This guide covers each major factor, its theoretical basis, empirical performance, and how to combine factors into a robust multi-factor portfolio.
+Factor investing now underlies over $2 trillion in assets globally across [smart beta](/blog/smart-beta-strategies-guide) ETFs, quantitative hedge funds, and institutional mandates. This guide covers each major factor, its theoretical basis, empirical performance, and how to combine factors into a robust multi-factor portfolio.
 
 ## The Major Equity Factors
 
@@ -26,7 +25,7 @@ Factor investing now underlies over $2 trillion in assets globally across smart 
 
 **Historical performance (US equities, 1963-2025)**:
 - Annual value premium (HML): 3.8%
-- Sharpe ratio of HML factor: 0.42
+- [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) of HML factor: 0.42
 - Worst decade: 2010s (-1.2% annualized) due to growth stock dominance
 - Best decade: 2000s (+7.8% annualized) after the dot-com bust
 

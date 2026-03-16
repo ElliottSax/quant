@@ -7,10 +7,9 @@ category: "Risk Management"
 tags: ["correlation", "crisis", "diversification", "tail dependence", "portfolio risk"]
 keywords: ["correlation breakdown crisis", "correlation spike", "diversification failure", "tail dependence", "crisis correlation"]
 ---
-
 # Correlation Breakdown During Crises: What Quants Must Know
 
-The central promise of modern portfolio theory -- that diversification reduces risk -- depends on imperfect correlation between portfolio components. During normal market conditions, this promise holds. During crises, it breaks. Correlations across risk assets spike toward 1.0, diversification benefits evaporate, and portfolios experience losses far exceeding what normal-period risk models predict. Understanding this phenomenon, quantifying it, and building portfolios that are robust to it is one of the most important challenges in quantitative finance.
+The central promise of [modern portfolio theory](/blog/mean-variance-optimization) -- that diversification reduces risk -- depends on imperfect correlation between portfolio components. During normal market conditions, this promise holds. During crises, it breaks. Correlations across risk assets spike toward 1.0, diversification benefits evaporate, and portfolios experience losses far exceeding what normal-period risk models predict. Understanding this phenomenon, quantifying it, and building portfolios that are robust to it is one of the most important challenges in quantitative finance.
 
 ## The Empirical Evidence
 
@@ -170,12 +169,12 @@ Elevated correlations typically persist for 3-6 months after the acute phase of 
 
 ### Can machine learning predict correlation spikes?
 
-Machine learning models (random forests, gradient boosting, neural networks) trained on market microstructure features (order flow imbalance, bid-ask spread widening, intraday volatility patterns) can predict next-day correlation increases with modest accuracy (55-65% AUC). However, the economic significance of this prediction depends on the cost of acting on the signal (reducing exposure before correlation spikes) versus the cost of false positives (reducing exposure unnecessarily). Current research suggests that simple rule-based indicators (VIX level, credit spread change) capture most of the predictable variation.
+[Machine learning models](/blog/scikit-learn-stock-prediction) (random forests, gradient boosting, neural networks) trained on [market microstructure](/blog/market-microstructure-trading) features (order flow imbalance, bid-ask spread widening, intraday volatility patterns) can predict next-day correlation increases with modest accuracy (55-65% AUC). However, the economic significance of this prediction depends on the cost of acting on the signal (reducing exposure before correlation spikes) versus the cost of false positives (reducing exposure unnecessarily). Current research suggests that simple rule-based indicators (VIX level, credit spread change) capture most of the predictable variation.
 
 ### How should I adjust my risk model during a correlation spike?
 
-Switch from a long-lookback covariance matrix (which reflects average conditions) to a short-lookback or exponentially weighted matrix (which captures current conditions). Specifically, reduce the EWMA decay factor from the standard 0.94 to 0.90 or lower, giving more weight to recent high-correlation observations. Additionally, apply a floor to the correlation estimates (never use correlations below the crisis-period estimate when computing downside risk metrics). Many institutions maintain two risk models: a standard model for position sizing and a stressed model for risk limits.
+Switch from a long-lookback covariance matrix (which reflects average conditions) to a short-lookback or exponentially weighted matrix (which captures current conditions). Specifically, reduce the EWMA decay factor from the standard 0.94 to 0.90 or lower, giving more weight to recent high-correlation observations. Additionally, apply a floor to the correlation estimates (never use correlations below the crisis-period estimate when computing downside risk metrics). Many institutions maintain two risk models: a standard model for [position sizing](/blog/position-sizing-strategies) and a stressed model for risk limits.
 
 ### Does currency diversification help during global crises?
 
-Currency diversification provides partial protection during regional crises but limited protection during global crises. During the 2008 GFC, most currencies depreciated against the US dollar and Japanese yen (the two primary safe-haven currencies). The yen appreciated 24% against the euro during the crisis, benefiting yen-based investors but harming euro-based investors with yen exposure. For USD-based portfolios, currency hedging of international equity exposure actually improved crisis-period returns by eliminating the negative currency impact.
+Currency diversification provides partial protection during regional crises but limited protection during global crises. During the 2008 GFC, most currencies depreciated against the US dollar and Japanese yen (the two primary safe-haven currencies). The yen appreciated 24% against the euro during the crisis, benefiting yen-based investors but harming euro-based investors with yen exposure. For USD-based portfolios, [currency hedging](/blog/currency-hedging-strategies) of international equity exposure actually improved crisis-period returns by eliminating the negative currency impact.
