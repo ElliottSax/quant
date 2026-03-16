@@ -40,11 +40,20 @@ export const metadata: Metadata = {
     siteName: 'QuantEngines',
     title: 'QuantEngines - Congressional Trading Analytics & Free Trading Tools',
     description: 'Track and analyze congressional stock trades with ML-powered predictions, pattern detection, and backtesting tools. Free, no signup required.',
+    images: [
+      {
+        url: 'https://quantengines.com/api/og?title=QuantEngines',
+        width: 1200,
+        height: 630,
+        alt: 'QuantEngines - Quantitative Trading Platform',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'QuantEngines - Congressional Trading Analytics & Free Trading Tools',
     description: 'Track and analyze congressional stock trades with ML-powered predictions, pattern detection, and backtesting tools. Free, no signup required.',
+    images: ['https://quantengines.com/api/og?title=QuantEngines'],
   },
   robots: {
     index: true,
