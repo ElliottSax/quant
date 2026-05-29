@@ -1,5 +1,5 @@
 # Multi-stage build for Railway deployment
-FROM python:3.11-slim as base
+FROM python:3.14-slim as base
 
 # Set working directory
 WORKDIR /app
