@@ -9,6 +9,12 @@ import { MobileMenu } from '@/components/ui/MobileMenu'
 import { MarketTicker } from '@/components/ui/MarketTicker'
 import { ExitIntentPopup } from '@/components/ExitIntentPopup'
 
+// These pages render from live API data (react-query) and crash when Next tries
+// to statically prerender them with empty data (`Cannot read ... 'toFixed'`).
+// Opt the whole app out of build-time static generation — render on request
+// instead — so the build/deploy can't be broken by an unguarded page.
+export const dynamic = 'force-dynamic'
+
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
