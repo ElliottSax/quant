@@ -31,6 +31,12 @@ sdist/
 var/
 wheels/
 *.egg-info/
+
+# The Python `lib/` rule above is unanchored and also swallowed the Next.js
+# frontend source (quant/frontend/src/lib), which broke the Vercel build with
+# "Module not found: @/lib/api". Keep the frontend source tracked.
+!quant/frontend/src/lib/
+!quant/frontend/src/lib/**
 .installed.cfg
 *.egg
 
