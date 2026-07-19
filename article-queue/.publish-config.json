@@ -1,0 +1,6 @@
+{
+  "contentDir": "quant/frontend/content/blog",
+  "format": "flat",
+  "domain": "quantengines.com",
+  "articlesPerRun": 1
+}

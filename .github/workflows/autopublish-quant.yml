@@ -1,75 +1,45 @@
-name: "Auto-Publish Articles - quant"
+name: Autopublish
 
+# Self-publishing: every 2h a scheduled run moves one queued article from
+# article-queue/ into the site's content dir and pushes it (triggers Vercel).
 on:
   schedule:
-    - cron: "0 8,15 * * *"  # Configured per site
-  workflow_dispatch:      # Manual trigger option
+    - cron: '0 */2 * * *'   # every 2 hours = 12x/day
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'articles to publish this run'
+        default: '1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autopublish
+  cancel-in-progress: false
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
-      - name: Install dependencies
-        if: hashFiles('package.json') != ''
-        run: npm ci
+      - name: Publish next article(s) from queue
+        run: node scripts/queue-publish.mjs
+        env:
+          ARTICLES_PER_RUN: ${{ github.event.inputs.count || '1' }}
 
-      - name: Check for new articles
-        id: check_articles
+      - name: Commit & push
         run: |
-          # Look for uncommitted articles in blog directory
-          BLOG_DIR="."
-          if [ -d "app/blog" ]; then
-            BLOG_DIR="app/blog"
-          elif [ -d "src/app/blog" ]; then
-            BLOG_DIR="src/app/blog"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "nothing to publish"; exit 0
           fi
-
-          NEW_ARTICLES=$(git status --short "$BLOG_DIR" | grep "^?" | wc -l)
-          echo "new_articles=$NEW_ARTICLES" >> $GITHUB_OUTPUT
-
-      - name: Regenerate blog index
-        if: steps.check_articles.outputs.new_articles > 0
-        run: |
-          # Run your blog index generation script
-          # npm run generate:blog-index
-          echo "Blog index generation would run here"
-
-      - name: Commit articles
-        if: steps.check_articles.outputs.new_articles > 0
-        run: |
-          git config user.name "Content Bot"
-          git config user.email "bot@content-engine.local"
-
-          BLOG_DIR="."
-          if [ -d "app/blog" ]; then
-            BLOG_DIR="app/blog"
-          elif [ -d "src/app/blog" ]; then
-            BLOG_DIR="src/app/blog"
-          fi
-
-          git add "$BLOG_DIR"
-          git commit -m "chore(blog): auto-publish new articles [$(date +'%Y-%m-%d %H:%M')]\n\nAutomated content publishing via GitHub Actions"
-
-      - name: Push changes
-        if: steps.check_articles.outputs.new_articles > 0
-        run: |
-          git push origin master || git push origin main
-
-      - name: Trigger Vercel deployment
-        if: steps.check_articles.outputs.new_articles > 0
-        run: |
-          echo "Vercel deployment triggered automatically via git push"
-          # Optional: curl webhook if needed
-          # curl -X POST ${{ secrets.VERCEL_WEBHOOK }}
+          git config user.name "autopublish[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "content: autopublish article"
+          git push
