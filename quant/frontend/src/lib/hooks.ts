@@ -117,3 +117,24 @@ export function useNetworkAnalysis(): UseQueryResult<{ nodes: unknown[]; links: 
     initialData: { nodes: [], links: [] },
   });
 }
+
+// Homepage hooks left unimplemented during the discovery migration. Match the
+// safe-stub pattern above (no live backend at build/prerender time) so the
+// statically-rendered homepage compiles; the UI already guards empty/undefined.
+export function useStockPredictions(
+  _opts?: { limit?: number; minConfidence?: number },
+): UseQueryResult<Array<{ prediction?: string }>> {
+  return useQuery({
+    queryKey: ['stock-predictions', _opts ?? {}],
+    queryFn: async () => [] as Array<{ prediction?: string }>,
+    initialData: [],
+  });
+}
+
+export function useDiscoveryStatus(): UseQueryResult<{ predictions_count?: number } | null> {
+  return useQuery({
+    queryKey: ['discovery-status'],
+    queryFn: async () => null,
+    initialData: null,
+  });
+}
