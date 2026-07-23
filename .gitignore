@@ -350,3 +350,9 @@ local_settings.py
 !.env.local.example
 !README.md
 !LICENSE
+
+# The generic `data/` rule above also swallowed the Next.js frontend source
+# (quant/frontend/src/data), which breaks the build with "Module not found:
+# @/data/...". Keep the frontend source tracked.
+!quant/frontend/src/data/
+!quant/frontend/src/data/**
