@@ -8,6 +8,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { MobileMenu } from '@/components/ui/MobileMenu'
 import { MarketTicker } from '@/components/ui/MarketTicker'
 import { ExitIntentPopup } from '@/components/ExitIntentPopup'
+import { GaRouteTracker } from '@/components/analytics/ga-route-tracker'
 
 // These pages render from live API data (react-query) and crash when Next tries
 // to statically prerender them with empty data (`Cannot read ... 'toFixed'`).
@@ -111,6 +112,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         {/* Google Analytics 4 Tracking */}
+        {/* Sends pageviews on client-side route changes (initial view comes from
+            gtag config below, so this skips its first run). */}
+        <GaRouteTracker />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PHX6T0R1Y1"
           strategy="afterInteractive"
