@@ -38,6 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/network',
     '/discoveries',
     '/resources',
+    '/courses',
+    '/courses/backtesting-101',
   ]
 
   const toolEntries = toolPages.map(page => ({
