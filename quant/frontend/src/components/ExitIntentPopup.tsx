@@ -1,12 +1,6 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-  'https://jznljskfvhlqlshofkvd.supabase.co',
-  'sb_publishable_HQPHIEY5M1dnQFbNJEO0nw_1YQjr46l'
-)
 
 function getPageContent() {
   if (typeof window === 'undefined') return null
@@ -123,19 +117,19 @@ export function ExitIntentPopup() {
     setError('')
 
     try {
-      const { error: insertError } = await supabase
-        .from('email_subscribers')
-        .insert([{
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           email: email.toLowerCase(),
           source: content.source,
-        }])
+        }),
+      })
 
-      if (insertError) {
-        if (insertError.code === '23505') {
-          setError('This email is already subscribed!')
-        } else {
-          throw insertError
-        }
+      const data = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        setError(data.error || 'Failed to subscribe. Please try again.')
       } else {
         setSuccess(true)
 

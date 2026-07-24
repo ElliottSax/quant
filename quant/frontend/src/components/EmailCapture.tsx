@@ -1,25 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@supabase/supabase-js'
 
 interface EmailCaptureProps {
   site: 'credit' | 'calc' | 'affiliate' | 'quant'
-  supabaseUrl: string
   headline: string
   subheading: string
   bgGradient: string
   theme: 'blue' | 'green' | 'orange' | 'purple'
 }
 
-const supabase = createClient(
-  'https://jznljskfvhlqlshofkvd.supabase.co',
-  'sb_publishable_HQPHIEY5M1dnQFbNJEO0nw_1YQjr46l'
-)
-
 export function EmailCapture({
   site,
-  supabaseUrl,
   headline,
   subheading,
   bgGradient,
@@ -35,30 +27,33 @@ export function EmailCapture({
     setStatus('loading')
 
     try {
-      const { error: insertError } = await supabase
-        .from('email_subscribers')
-        .insert([
-          {
-            email: email.toLowerCase(),
-            first_name: firstName || null,
-            source: site,
-          }
-        ])
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email.toLowerCase(),
+          firstName: firstName || undefined,
+          source: site,
+        }),
+      })
 
-      if (insertError) {
-        if (insertError.code === '23505') {
-          setStatus('error')
-          setMessage('This email is already subscribed!')
-        } else {
-          throw insertError
-        }
+      const data = await res.json().catch(() => ({}))
+
+      if (!res.ok) {
+        setStatus('error')
+        setMessage(data.error || 'Failed to submit. Please try again.')
       } else {
         setStatus('success')
         setEmail('')
         setFirstName('')
-        setMessage('✅ Email saved! Thank you for subscribing.')
+        setMessage(
+          data.alreadySubscribed
+            ? "✅ You're already on the list — thanks!"
+            : '✅ Email saved! Thank you for subscribing.'
+        )
 
-        // Track in GA4 if available
+        // Track in GA4 if available. This is where per-form attribution lives,
+        // since Resend contacts carry no custom source field.
         if (typeof window !== 'undefined' && (window as any).gtag) {
           (window as any).gtag('event', 'email_signup', {
             source: site,
