@@ -7,7 +7,7 @@ category: crypto-trading
 tags: []
 keyword: DeFi yield farming strategies for passive income
 subcategory: strategies
-date: '''2026-03-19'''
+date: 2026-07-24
 updated: '''2026-03-19'''
 featured: '''true'''
 difficulty: Intermediate
