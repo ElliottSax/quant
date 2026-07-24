@@ -5,7 +5,7 @@ description: '''''''Consumer discretionary stocks 2026: retail, e-commerce, and 
 author: Quant Research Team
 category: Consumer Discretionary
 tags: []
-date: '''2026-03-19'''
+date: 2026-07-24
 keyword: Consumer discretionary sector analysis retail stocks
 focus_keyphrase: Consumer discretionary sector analysis retail stocks
 metaDescription: '''''''Consumer discretionary stocks 2026: retail, e-commerce, and
