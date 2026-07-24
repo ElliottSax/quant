@@ -27,8 +27,9 @@ export function Navigation() {
   }
 
   const navLinks = [
-    { href: '/dashboard', label: 'Dashboard' },
-    { href: '/politicians', label: 'Politicians' },
+    { href: '/tools', label: 'Tools' },
+    { href: '/congressional-trades', label: 'Congress Trades' },
+    { href: '/backtesting', label: 'Backtesting' },
     { href: '/leaderboard', label: 'Leaderboard' },
     { href: '/charts', label: 'Charts' },
     { href: '/landing', label: 'About' },

@@ -21,8 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Static tool pages
   const toolPages = [
+    '/tools',
     '/blog',
     '/politicians',
+    '/leaderboard',
     '/dashboard',
     '/backtesting',
     '/backtesting/builder',

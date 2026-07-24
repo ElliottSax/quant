@@ -110,11 +110,35 @@ export function useRecentExperiments(): UseQueryResult<Experiment[]> {
   return useQuery({ queryKey: ['experiments'], queryFn: async () => [] as Experiment[], initialData: [] });
 }
 
-export function useNetworkAnalysis(): UseQueryResult<{ nodes: unknown[]; links: unknown[] }> {
+// The /network page reads density/clustering_coefficient/average_path_length
+// (via .toFixed) plus central_politicians[] and clusters[]. The old stub only
+// returned {nodes,links}, so those were undefined and .toFixed crashed the whole
+// page with a 500. Return the COMPLETE shape with safe zero/empty defaults so the
+// page renders its empty state instead of throwing.
+export function useNetworkAnalysis(): UseQueryResult<{
+  nodes: unknown[];
+  links: unknown[];
+  density: number;
+  clustering_coefficient: number;
+  average_path_length: number;
+  num_politicians: number;
+  central_politicians: Array<{ politician_id: string; name: string; centrality_score: number }>;
+  clusters: Array<{ cluster_id: string | number; avg_correlation: number }>;
+}> {
+  const empty = {
+    nodes: [] as unknown[],
+    links: [] as unknown[],
+    density: 0,
+    clustering_coefficient: 0,
+    average_path_length: 0,
+    num_politicians: 0,
+    central_politicians: [] as Array<{ politician_id: string; name: string; centrality_score: number }>,
+    clusters: [] as Array<{ cluster_id: string | number; avg_correlation: number }>,
+  };
   return useQuery({
     queryKey: ['network-analysis'],
-    queryFn: async () => ({ nodes: [], links: [] }),
-    initialData: { nodes: [], links: [] },
+    queryFn: async () => empty,
+    initialData: empty,
   });
 }
 
