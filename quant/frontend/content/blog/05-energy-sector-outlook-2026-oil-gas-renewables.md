@@ -5,7 +5,7 @@ description: '''''''Energy sector 2026: oil, gas, and renewables analysis. Best 
 author: Quant Research Team
 category: Energy
 tags: []
-date: '''2026-03-19'''
+date: 2026-07-24
 keyword: Energy sector outlook 2026 - Oil gas renewables
 focus_keyphrase: Energy sector outlook 2026 - Oil gas renewables
 metaDescription: '''''''Energy sector 2026: oil, gas, and renewables analysis. Best
