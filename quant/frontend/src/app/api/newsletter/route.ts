@@ -70,6 +70,47 @@ function rateLimited(ip: string): boolean {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+// Sends a welcome email via Resend. Requires a verified sending domain for the
+// EMAIL_FROM address; until quantengines.com verifies, Resend rejects the send
+// and this throws — callers invoke it non-blocking so the signup still succeeds.
+async function sendWelcomeEmail(apiKey: string, email: string, firstName: string) {
+  const from = process.env.EMAIL_FROM || 'QuantEngines <hello@quantengines.com>'
+  const hi = firstName ? ` ${firstName}` : ''
+  const site = 'https://quantengines.com'
+  const res = await fetch(`${RESEND_API}/emails`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from,
+      to: [email],
+      subject: 'Welcome to QuantEngines',
+      text: `Hi${hi},
+
+Thanks for subscribing to QuantEngines — quantitative trading strategies, backtesting, and market insights, weekly.
+
+Start here:
+• Backtesting: ${site}/backtesting
+• Congressional trades: ${site}/congressional-trades
+• Free course: ${site}/courses/backtesting-101
+
+— The QuantEngines Team`,
+      html: `<div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;line-height:1.6;color:#e5e7eb;background:#0b1020;padding:24px;border-radius:8px">
+  <h1 style="font-size:22px;margin:0 0 12px;color:#fff">Welcome to QuantEngines</h1>
+  <p>Hi${hi},</p>
+  <p>Thanks for subscribing — quantitative trading strategies, backtesting, and market insights, weekly.</p>
+  <p style="margin:20px 0"><strong style="color:#fff">Start here:</strong></p>
+  <ul style="padding-left:18px">
+    <li><a href="${site}/backtesting" style="color:#fbbf24">Backtesting</a></li>
+    <li><a href="${site}/congressional-trades" style="color:#fbbf24">Congressional trades</a></li>
+    <li><a href="${site}/courses/backtesting-101" style="color:#fbbf24">Free backtesting course</a></li>
+  </ul>
+  <p style="margin-top:24px">— The QuantEngines Team</p>
+</div>`,
+    }),
+  })
+  if (!res.ok) throw new Error(`welcome send ${res.status}: ${(await res.text()).slice(0, 200)}`)
+}
+
 export async function POST(request: Request) {
   try {
     const ip =
@@ -129,6 +170,11 @@ export async function POST(request: Request) {
 
     if (res.ok) {
       console.log(`[newsletter] subscribed ${email} (source: ${source})`)
+      // Fire-and-forget welcome email. A failure (e.g. quantengines.com not yet
+      // verified in Resend) must never fail the signup response.
+      void sendWelcomeEmail(apiKey, email, firstName).catch((err) =>
+        console.error('[newsletter] welcome email failed:', err)
+      )
       return NextResponse.json({ success: true })
     }
 
