@@ -28,7 +28,7 @@ export function Navigation() {
 
   const navLinks = [
     { href: '/tools', label: 'Tools' },
-    { href: '/congressional-trades', label: 'Congress Trades' },
+    { href: '/congress-stock-trades', label: 'Congress Trades' },
     { href: '/backtesting', label: 'Backtesting' },
     { href: '/leaderboard', label: 'Leaderboard' },
     { href: '/charts', label: 'Charts' },

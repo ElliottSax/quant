@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Static tool pages
   const toolPages = [
     '/tools',
+    '/congress-stock-trades',
     '/blog',
     '/politicians',
     '/leaderboard',
