@@ -29,7 +29,7 @@ function Row({ t }: { t: Trade }) {
       <td className="py-2.5 pr-4 text-slate-400 whitespace-nowrap">{t.transactionDate}</td>
       <td className="py-2.5 pr-4"><span className="text-white">{t.member}</span> <ChamberTag c={t.chamber} /></td>
       <td className="py-2.5 pr-4">
-        <a href={`https://finance.yahoo.com/quote/${encodeURIComponent(t.ticker)}`} target="_blank" rel="noopener noreferrer" className="font-semibold text-indigo-400 hover:underline">{t.ticker}</a>
+        <Link href={`/congress-stock-trades/${t.ticker.toUpperCase()}`} className="font-semibold text-indigo-400 hover:underline">{t.ticker}</Link>
         <span className="ml-2 text-slate-500 text-xs hidden md:inline">{t.assetDescription?.slice(0, 30)}</span>
       </td>
       <td className="py-2.5 pr-4"><Badge buy={t.isBuy} /></td>
@@ -94,7 +94,7 @@ export default async function CongressTradesPage() {
           <ol className="space-y-1.5">
             {data.topTickers.map((t, i) => (
               <li key={t.ticker} className="flex items-center justify-between text-sm">
-                <span className="text-slate-300"><span className="text-slate-500 mr-2">{i + 1}.</span><span className="font-semibold text-indigo-400">{t.ticker}</span> <span className="text-slate-500">{t.name?.slice(0, 26)}</span></span>
+                <span className="text-slate-300"><span className="text-slate-500 mr-2">{i + 1}.</span><Link href={`/congress-stock-trades/${t.ticker.toUpperCase()}`} className="font-semibold text-indigo-400 hover:underline">{t.ticker}</Link> <span className="text-slate-500">{t.name?.slice(0, 26)}</span></span>
                 <span className="text-slate-400">{t.count} trades</span>
               </li>
             ))}

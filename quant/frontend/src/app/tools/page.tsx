@@ -21,7 +21,6 @@ const GROUPS: Group[] = [
     blurb: 'Track what members of Congress are buying and selling.',
     tools: [
       { href: '/congress-stock-trades', name: 'Congress Stock Trades', desc: 'Latest real House & Senate trades from official STOCK Act disclosures, updated daily.' },
-      { href: '/congressional-trades', name: 'Congressional Trades', desc: 'Every stock trade disclosed by members of Congress, searchable and filterable.' },
       { href: '/politicians', name: 'Politician Tracker', desc: 'Browse individual politicians and their full trading records.' },
       { href: '/leaderboard', name: 'Trader Leaderboard', desc: 'Congressional traders ranked by activity and estimated performance.' },
       { href: '/discoveries', name: 'Anomaly Detection', desc: 'Automatically flags unusual, well-timed, or outsized trades.' },

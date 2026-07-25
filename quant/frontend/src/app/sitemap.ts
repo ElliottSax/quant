@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
+import { getCongressTrades } from '@/lib/congress-trades'
 
 // Get all blog post slugs dynamically from content/blog/*.md
 function getBlogSlugs(): string[] {
@@ -15,9 +16,25 @@ function getBlogSlugs(): string[] {
   }
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://quantengines.com'
   const currentDate = new Date()
+
+  // Per-ticker congressional-trade pages (the actively-traded symbols in the
+  // current data). Guarded so a data hiccup can't break the sitemap.
+  let tickerEntries: MetadataRoute.Sitemap = []
+  try {
+    const congress = await getCongressTrades()
+    const tickers = new Set((congress?.trades ?? []).map((t) => t.ticker.toUpperCase()))
+    tickerEntries = [...tickers].map((tk) => ({
+      url: `${baseUrl}/congress-stock-trades/${tk}`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    }))
+  } catch {
+    tickerEntries = []
+  }
 
   // Static tool pages
   const toolPages = [
@@ -29,7 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/dashboard',
     '/backtesting',
     '/backtesting/builder',
-    '/congressional-trades',
     '/market-dashboard',
     '/signals',
     '/scanner',
@@ -71,6 +87,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Tool pages
     ...toolEntries,
+    // Per-ticker congressional-trade pages
+    ...tickerEntries,
     // Blog articles
     ...blogEntries,
   ]
