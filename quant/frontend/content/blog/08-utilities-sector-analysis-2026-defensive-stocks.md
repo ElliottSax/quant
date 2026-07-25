@@ -5,7 +5,7 @@ description: '''''''Utilities stocks 2026: defensive stocks, high dividends, rec
 author: Quant Research Team
 category: Utilities
 tags: []
-date: '''2026-03-19'''
+date: 2026-07-25
 keyword: Utilities sector analysis 2026 - Defensive stocks
 focus_keyphrase: Utilities sector analysis 2026 - Defensive stocks
 metaDescription: '''''''Utilities stocks 2026: defensive stocks, high dividends, recession'''
