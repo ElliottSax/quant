@@ -75,6 +75,9 @@ export default async function CongressTradesPage() {
           The latest U.S. House and Senate stock trades, from official STOCK Act disclosures. Updated
           daily. Most recent transaction: <strong className="text-white">{data.lastUpdated}</strong>.
         </p>
+        <Link href="/congress-stock-trades/weekly" className="inline-block mt-4 text-indigo-400 hover:underline font-medium">
+          → See this week&apos;s biggest trades digest
+        </Link>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2 mb-12">

@@ -40,6 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const toolPages = [
     '/tools',
     '/congress-stock-trades',
+    '/congress-stock-trades/weekly',
     '/blog',
     '/politicians',
     '/leaderboard',
