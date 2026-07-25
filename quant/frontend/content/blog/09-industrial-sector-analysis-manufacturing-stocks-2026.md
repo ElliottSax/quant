@@ -6,7 +6,7 @@ description: '''''''Industrial stocks 2026: machinery, aerospace, defense analys
 author: Quant Research Team
 category: Industrials
 tags: []
-date: '''2026-03-19'''
+date: 2026-07-25
 keyword: Industrial sector analysis manufacturing stocks 2026
 focus_keyphrase: Industrial sector analysis manufacturing stocks 2026
 metaDescription: '''''''Industrial stocks 2026: machinery, aerospace, defense analysis.'''
