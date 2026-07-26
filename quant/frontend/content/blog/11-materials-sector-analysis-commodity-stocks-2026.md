@@ -6,7 +6,7 @@ description: '''''''Materials stocks 2026: metals, mining, chemicals analysis. B
 author: Quant Research Team
 category: Materials
 tags: []
-date: '''2026-03-19'''
+date: 2026-07-26
 keyword: Materials sector analysis commodity stocks 2026
 focus_keyphrase: Materials sector analysis commodity stocks 2026
 metaDescription: '''''''Materials stocks 2026: metals, mining, chemicals analysis.
