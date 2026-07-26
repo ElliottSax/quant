@@ -5,7 +5,7 @@ description: '''''''Emerging markets 2026: growth opportunities in developing co
 author: Quant Research Team
 category: Emerging Markets
 tags: []
-date: '''2026-03-19'''
+date: 2026-07-26
 keyword: Emerging markets analysis 2026 - Growth opportunities
 focus_keyphrase: Emerging markets analysis 2026 - Growth opportunities
 metaDescription: '''''''Emerging markets 2026: growth opportunities in developing
