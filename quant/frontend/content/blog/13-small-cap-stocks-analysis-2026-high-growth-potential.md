@@ -5,7 +5,7 @@ description: '''''''Small-cap stocks 2026: high growth potential analysis. Best 
 author: Quant Research Team
 category: Small-Cap
 tags: []
-date: '''2026-03-19'''
+date: 2026-07-26
 keyword: Small-cap stocks analysis 2026 - High growth potential
 focus_keyphrase: Small-cap stocks analysis 2026 - High growth potential
 metaDescription: '''''''Small-cap stocks 2026: high growth potential analysis. Best
