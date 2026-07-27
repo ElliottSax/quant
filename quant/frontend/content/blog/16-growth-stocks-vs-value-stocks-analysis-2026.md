@@ -6,7 +6,7 @@ description: '''''''Growth vs value stocks 2026: comparative analysis and strate
 author: Quant Research Team
 category: Investment Styles
 tags: []
-date: '''2026-03-19'''
+date: 2026-07-27
 keyword: Growth stocks vs value stocks analysis 2026
 focus_keyphrase: Growth stocks vs value stocks analysis 2026
 metaDescription: '''''''Growth vs value stocks 2026: comparative analysis and strategy.'''
