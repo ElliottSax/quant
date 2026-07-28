@@ -6,7 +6,7 @@ description: '''''''Defensive stocks 2026: recession protection and stability. B
 author: Quant Research Team
 category: Defensive Investing
 tags: []
-date: '''2026-03-19'''
+date: 2026-07-28
 keyword: Defensive stocks analysis recession protection 2026
 focus_keyphrase: Defensive stocks analysis recession protection 2026
 metaDescription: '''''''Defensive stocks 2026: recession protection and stability.
