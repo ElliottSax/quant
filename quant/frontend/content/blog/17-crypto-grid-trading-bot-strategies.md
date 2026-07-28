@@ -7,7 +7,7 @@ category: crypto-trading
 tags: []
 keyword: Crypto grid trading bot strategies automation
 subcategory: strategies
-date: '''2026-03-19'''
+date: 2026-07-28
 updated: '''2026-03-19'''
 featured: '''true'''
 difficulty: Intermediate
