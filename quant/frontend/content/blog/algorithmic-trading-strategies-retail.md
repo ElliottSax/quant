@@ -6,7 +6,7 @@ author: '''"Trading Mastery"'''
 category: '''"Trading Strategies"'''
 tags: []
 keyword: '''"Algorithmic trading strategies for retail traders"'''
-date: '''2026-03-19'''
+date: 2026-07-29
 updated: '''2026-03-19'''
 canonical: '''"https://quantmastery.com/strategies/algorithmic-trading-strategies-retail/"'''
 og_title: '''"Algorithmic Trading Strategies for Retail Traders: Automate Your Trading"'''
