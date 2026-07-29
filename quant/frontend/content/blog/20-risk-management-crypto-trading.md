@@ -7,7 +7,7 @@ category: crypto-trading
 tags: []
 keyword: Risk management for crypto trading complete guide
 subcategory: strategies
-date: '''2026-03-19'''
+date: 2026-07-29
 updated: '''2026-03-19'''
 featured: '''true'''
 difficulty: Intermediate
