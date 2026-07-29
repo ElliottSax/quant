@@ -6,7 +6,7 @@ author: Content Team
 category: Technical Indicators
 tags: []
 keyword: ADX indicator trend strength analysis
-date: '''2026-03-19'''
+date: 2026-07-29
 readTime: 12-15 min read
 ---
 
