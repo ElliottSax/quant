@@ -7,7 +7,7 @@ category: Quant
 tags: []
 sector: Commodities
 focus: Commodity cycles, inflation hedges, supply-demand dynamics
-date: '''''''2026-03-19'''''''
+date: 2026-07-31
 status: template
 word_count: '''2400'''
 ---
