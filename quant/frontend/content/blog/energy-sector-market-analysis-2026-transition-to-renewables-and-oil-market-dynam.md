@@ -8,7 +8,7 @@ category: Quant
 tags: []
 sector: Energy
 focus: Renewable energy growth, oil/gas outlook, energy transition investments
-date: '''''''2026-03-19'''''''
+date: 2026-08-03
 status: template
 word_count: '''2400'''
 ---
