@@ -8,7 +8,7 @@ category: Quant
 tags: []
 sector: Thematic
 focus: ESG metrics, sustainable investing, green finance trends
-date: '''''''2026-03-19'''''''
+date: 2026-08-03
 status: template
 word_count: '''2400'''
 ---
