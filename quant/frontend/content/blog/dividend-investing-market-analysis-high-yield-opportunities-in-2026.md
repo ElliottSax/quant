@@ -7,7 +7,7 @@ category: Quant
 tags: []
 sector: Income Strategy
 focus: Dividend aristocrats, yield trends, income portfolio construction
-date: '''''''2026-03-19'''''''
+date: 2026-08-03
 status: template
 word_count: '''2400'''
 ---
