@@ -8,7 +8,7 @@ category: Quant
 tags: []
 sector: Macroeconomic
 focus: GDP, inflation, employment, leading vs lagging indicators
-date: '''''''2026-03-19'''''''
+date: 2026-08-03
 status: template
 word_count: '''2400'''
 ---
