@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getCongressTrades, type Trade } from '@/lib/congress-trades'
+import { getCongressTrades, memberSlug, type Trade } from '@/lib/congress-trades'
 
 // Daily ISR — regenerated at most once per 24h from Financial Modeling Prep.
 export const revalidate = 86400
@@ -27,7 +27,7 @@ function Row({ t }: { t: Trade }) {
   return (
     <tr className="border-b border-[hsl(215,40%,14%)]">
       <td className="py-2.5 pr-4 text-slate-400 whitespace-nowrap">{t.transactionDate}</td>
-      <td className="py-2.5 pr-4"><span className="text-white">{t.member}</span> <ChamberTag c={t.chamber} /></td>
+      <td className="py-2.5 pr-4"><Link href={`/congress-stock-trades/member/${memberSlug(t.member)}`} className="text-white hover:text-indigo-400 hover:underline">{t.member}</Link> <ChamberTag c={t.chamber} /></td>
       <td className="py-2.5 pr-4">
         <Link href={`/congress-stock-trades/${t.ticker.toUpperCase()}`} className="font-semibold text-indigo-400 hover:underline">{t.ticker}</Link>
         <span className="ml-2 text-slate-500 text-xs hidden md:inline">{t.assetDescription?.slice(0, 30)}</span>
@@ -86,7 +86,7 @@ export default async function CongressTradesPage() {
           <ol className="space-y-1.5">
             {data.topMembers.map((s, i) => (
               <li key={s.name} className="flex items-center justify-between text-sm">
-                <span className="text-slate-300"><span className="text-slate-500 mr-2">{i + 1}.</span>{s.name} <ChamberTag c={s.chamber as 'House' | 'Senate'} /></span>
+                <span className="text-slate-300"><span className="text-slate-500 mr-2">{i + 1}.</span><Link href={`/congress-stock-trades/member/${memberSlug(s.name)}`} className="hover:text-indigo-400 hover:underline">{s.name}</Link> <ChamberTag c={s.chamber as 'House' | 'Senate'} /></span>
                 <span className="text-slate-400">{s.count} trades</span>
               </li>
             ))}

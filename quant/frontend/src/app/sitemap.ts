@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
-import { getCongressTrades } from '@/lib/congress-trades'
+import { getCongressTrades, memberSlug } from '@/lib/congress-trades'
 
 // Get all blog post slugs dynamically from content/blog/*.md
 function getBlogSlugs(): string[] {
@@ -25,13 +25,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let tickerEntries: MetadataRoute.Sitemap = []
   try {
     const congress = await getCongressTrades()
-    const tickers = new Set((congress?.trades ?? []).map((t) => t.ticker.toUpperCase()))
-    tickerEntries = [...tickers].map((tk) => ({
-      url: `${baseUrl}/congress-stock-trades/${tk}`,
-      lastModified: currentDate,
-      changeFrequency: 'daily' as const,
-      priority: 0.6,
-    }))
+    const trades = congress?.trades ?? []
+    const tickers = new Set(trades.map((t) => t.ticker.toUpperCase()))
+    const members = new Set(trades.map((t) => memberSlug(t.member)).filter(Boolean))
+    tickerEntries = [
+      ...[...tickers].map((tk) => ({
+        url: `${baseUrl}/congress-stock-trades/${tk}`,
+        lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
+      })),
+      ...[...members].map((m) => ({
+        url: `${baseUrl}/congress-stock-trades/member/${m}`,
+        lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
+      })),
+    ]
   } catch {
     tickerEntries = []
   }

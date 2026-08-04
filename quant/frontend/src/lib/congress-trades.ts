@@ -35,6 +35,11 @@ export interface Trade {
   link: string
 }
 
+// Stable slug for a member name, shared by the per-member page and its links.
+export function memberSlug(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+}
+
 const AMOUNT_RE = /\$([\d,]+)\s*-\s*\$([\d,]+)/
 function amountMidpoint(amount: string): number {
   const m = AMOUNT_RE.exec(amount || '')
