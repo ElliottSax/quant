@@ -67,7 +67,7 @@ aiosmtplib==3.0.1
 boto3==1.34.34
 
 # Logging
-python-json-logger==2.0.7
+python-json-logger==4.0.0
 
 # CLI
 typer[all]==0.12.0
