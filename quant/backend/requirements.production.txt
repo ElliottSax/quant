@@ -61,7 +61,7 @@ httptools==0.6.1
 orjson==3.10.5
 
 # Email
-aiosmtplib==3.0.1
+aiosmtplib==5.1.0
 
 # AWS Integration (for S3 backups)
 boto3==1.34.34
