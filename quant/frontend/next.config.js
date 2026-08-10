@@ -17,10 +17,16 @@ const nextConfig = {
     if (!apiUrl || apiUrl === 'http://localhost:8000') {
       return []
     }
+    // NEXT_PUBLIC_API_URL already includes the "/api/v1" suffix (see api-client.ts,
+    // which uses it directly as the base URL). Relative widget fetches also send the
+    // full "/api/v1/..." path, so appending "/:path*" to the full apiUrl produced a
+    // doubled path like "/api/v1/v1/...". Strip the "/api/v1" suffix to get the backend
+    // origin, then proxy the original "/api/:path*" path through unchanged.
+    const apiOrigin = apiUrl.replace(/\/api\/v1\/?$/, '').replace(/\/+$/, '')
     return [
       {
         source: '/api/:path*',
-        destination: apiUrl + '/:path*',
+        destination: apiOrigin + '/api/:path*',
       },
     ]
   },

@@ -62,7 +62,7 @@ class AffiliateService:
             logo_url="https://www.interactivebrokers.com/images/logo.png",
             signup_url=os.getenv(
                 "AFFILIATE_IB_URL",
-                "https://www.interactivebrokers.com/en/home.php?affiliate=quant2024",
+                "https://www.interactivebrokers.com/en/home.php",
             ),
             commission_per_referral=50.0,
             description="Professional trading platform with advanced tools",
@@ -81,7 +81,7 @@ class AffiliateService:
             logo_url="https://www.tastytrade.com/images/logo.png",
             signup_url=os.getenv(
                 "AFFILIATE_TASTYTRADE_URL",
-                "https://www.tastytrade.com?affiliate=quant2024",
+                "https://www.tastytrade.com",
             ),
             commission_per_referral=75.0,
             description="Best for options trading with educational content",
@@ -100,7 +100,7 @@ class AffiliateService:
             logo_url="https://www.tdameritrade.com/images/logo.png",
             signup_url=os.getenv(
                 "AFFILIATE_TDA_URL",
-                "https://www.tdameritrade.com?affiliate=quant2024",
+                "https://www.tdameritrade.com",
             ),
             commission_per_referral=60.0,
             description="Comprehensive platform with Thinkorswim",
@@ -119,7 +119,7 @@ class AffiliateService:
             logo_url="https://www.schwab.com/images/logo.png",
             signup_url=os.getenv(
                 "AFFILIATE_SCHWAB_URL",
-                "https://www.schwab.com?affiliate=quant2024",
+                "https://www.schwab.com",
             ),
             commission_per_referral=55.0,
             description="User-friendly with excellent customer service",
@@ -138,7 +138,7 @@ class AffiliateService:
             logo_url="https://www.fidelity.com/images/logo.png",
             signup_url=os.getenv(
                 "AFFILIATE_FIDELITY_URL",
-                "https://www.fidelity.com?affiliate=quant2024",
+                "https://www.fidelity.com",
             ),
             commission_per_referral=65.0,
             description="Full-service broker with retirement account expertise",
@@ -157,7 +157,7 @@ class AffiliateService:
             logo_url="https://www.webull.com/images/logo.png",
             signup_url=os.getenv(
                 "AFFILIATE_WEBULL_URL",
-                "https://www.webull.com?affiliate=quant2024",
+                "https://www.webull.com",
             ),
             commission_per_referral=40.0,
             description="Mobile-first platform with fractional shares",
