@@ -41,6 +41,14 @@ const GROUPS: Group[] = [
       { href: '/market-dashboard', name: 'Market Dashboard', desc: 'Free live market data at a glance.' },
     ],
   },
+  {
+    title: 'Risk Management Calculators',
+    blurb: 'Size trades and check the math before you commit capital.',
+    tools: [
+      { href: '/tools/position-size', name: 'Position Size Calculator', desc: 'Find how many shares to buy from your account size, risk per trade, entry, and stop-loss.' },
+      { href: '/tools/risk-reward', name: 'Risk/Reward Ratio Calculator', desc: 'Get the R:R ratio, percentage gain/loss, and breakeven win rate of any trade.' },
+    ],
+  },
 ]
 
 export default function ToolsPage() {

@@ -45,6 +45,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static tool pages
   const toolPages = [
     '/tools',
+    '/tools/position-size',
+    '/tools/risk-reward',
     '/congress-stock-trades',
     '/congress-stock-trades/weekly',
     '/blog',
