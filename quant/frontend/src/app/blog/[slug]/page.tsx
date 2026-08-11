@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
+import { extractFaqs } from '@/lib/faq-extract'
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -325,24 +326,54 @@ export default async function BlogArticlePage({
     day: 'numeric',
   })
 
+  // Rich-result markup: Article + BreadcrumbList always, plus FAQPage when the
+  // article actually contains a Q&A section (markup must match visible content).
+  const url = `https://quantengines.com/blog/${slug}`
+  const faqs = extractFaqs(body)
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        headline: frontmatter.title,
+        description: frontmatter.description,
+        datePublished: frontmatter.date,
+        dateModified: frontmatter.date,
+        author: { '@type': 'Person', name: frontmatter.author },
+        publisher: { '@type': 'Organization', name: 'QuantEngines' },
+        url,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+        keywords: frontmatter.tags.join(', '),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://quantengines.com' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://quantengines.com/blog' },
+          { '@type': 'ListItem', position: 3, name: frontmatter.title, item: url },
+        ],
+      },
+      ...(faqs.length
+        ? [
+            {
+              '@type': 'FAQPage',
+              mainEntity: faqs.map((f) => ({
+                '@type': 'Question',
+                name: f.question,
+                acceptedAnswer: { '@type': 'Answer', text: f.answer },
+              })),
+            },
+          ]
+        : []),
+    ],
+  }
+
   return (
     <>
       {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: frontmatter.title,
-            description: frontmatter.description,
-            datePublished: frontmatter.date,
-            author: { '@type': 'Person', name: frontmatter.author },
-            publisher: { '@type': 'Organization', name: 'QuantEngines' },
-            url: `https://quantengines.com/blog/${slug}`,
-            keywords: frontmatter.tags.join(', '),
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
       <div className="max-w-4xl mx-auto">
