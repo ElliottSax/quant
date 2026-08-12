@@ -5,6 +5,11 @@ import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
 import { extractFaqs } from '@/lib/faq-extract'
+import {
+  readFrontmatterValue,
+  readFrontmatterArray,
+} from '@/lib/frontmatter'
+import { isNoindexDraft } from '@/lib/noindex-drafts'
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -20,6 +25,7 @@ interface Frontmatter {
   category: string
   tags: string[]
   keywords: string[]
+  status: string
 }
 
 interface Article {
@@ -28,41 +34,36 @@ interface Article {
   body: string
 }
 
+const EMPTY_FRONTMATTER: Frontmatter = {
+  title: '', description: '', date: '', author: '', category: '', tags: [], keywords: [], status: '',
+}
+
 function parseFrontmatter(raw: string): { frontmatter: Frontmatter; body: string } {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
   if (!match) {
-    return {
-      frontmatter: { title: '', description: '', date: '', author: '', category: '', tags: [], keywords: [] },
-      body: raw,
-    }
+    return { frontmatter: { ...EMPTY_FRONTMATTER }, body: raw }
   }
 
   const yamlBlock = match[1]
   const body = match[2]
 
-  const get = (key: string): string => {
-    const m = yamlBlock.match(new RegExp(`^${key}:\\s*"?(.*?)"?\\s*$`, 'm'))
-    return m ? m[1].replace(/^"|"$/g, '') : ''
-  }
-
-  const getArray = (key: string): string[] => {
-    const m = yamlBlock.match(new RegExp(`^${key}:\\s*\\[([^\\]]*)]`, 'm'))
-    if (!m) return []
-    return m[1]
-      .split(',')
-      .map((s) => s.trim().replace(/^"|"$/g, ''))
-      .filter(Boolean)
-  }
+  // Values are sanitised (stray quote runs collapsed, YAML line folding
+  // honoured) -- see src/lib/frontmatter.ts for the full rationale.
+  const get = (key: string) => readFrontmatterValue(yamlBlock, key)
 
   return {
     frontmatter: {
       title: get('title'),
       description: get('description'),
-      date: get('date'),
+      // 155 articles carry `published_date` instead of `date`; without this
+      // fallback the page rendered "Invalid Date" and the Article JSON-LD
+      // shipped an empty datePublished.
+      date: get('date') || get('published_date'),
       author: get('author'),
       category: get('category'),
-      tags: getArray('tags'),
-      keywords: getArray('keywords'),
+      tags: readFrontmatterArray(yamlBlock, 'tags'),
+      keywords: readFrontmatterArray(yamlBlock, 'keywords'),
+      status: get('status'),
     },
     body,
   }
@@ -80,6 +81,11 @@ function getAllArticles(): Article[] {
       return { slug, frontmatter, body }
     })
     .filter((a) => a.frontmatter.title)
+    // Unfinished drafts are never surfaced as "related" links and are kept out
+    // of generateStaticParams -- see src/lib/noindex-drafts.ts. Their own URLs
+    // still resolve (getArticle below is deliberately unfiltered), so no
+    // already-indexed link 404s; they are just noindex'd.
+    .filter((a) => !isNoindexDraft(a.slug, a.frontmatter.status))
     .sort((a, b) => (b.frontmatter.date > a.frontmatter.date ? 1 : -1))
 }
 
@@ -239,11 +245,18 @@ export async function generateMetadata({
 
   const { frontmatter } = article
 
+  // Unfinished drafts stay reachable (never break an indexed URL) but tell
+  // crawlers not to index them; `follow` keeps their outbound link equity.
+  const draft = isNoindexDraft(slug, frontmatter.status)
+
   return {
     title: `${frontmatter.title} | QuantEngines`,
     description: frontmatter.description,
     keywords: [...frontmatter.keywords, ...frontmatter.tags],
     authors: [{ name: frontmatter.author }],
+    robots: draft
+      ? { index: false, follow: true, googleBot: { index: false, follow: true } }
+      : undefined,
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.description,
@@ -320,11 +333,16 @@ export default async function BlogArticlePage({
     .sort((a, b) => b.score - a.score)
     .slice(0, 4)
 
-  const formattedDate = new Date(frontmatter.date + 'T00:00:00').toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+  // Guard against a missing/unparseable date so the byline never prints
+  // the literal string "Invalid Date".
+  const parsedDate = new Date(frontmatter.date + 'T00:00:00')
+  const formattedDate = Number.isNaN(parsedDate.getTime())
+    ? ''
+    : parsedDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
 
   // Rich-result markup: Article + BreadcrumbList always, plus FAQPage when the
   // article actually contains a Q&A section (markup must match visible content).

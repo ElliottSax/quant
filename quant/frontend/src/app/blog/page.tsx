@@ -4,9 +4,14 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
+import {
+  readFrontmatterValue,
+  readFrontmatterArray,
+} from '@/lib/frontmatter'
+import { isNoindexDraft } from '@/lib/noindex-drafts'
 
 // ---------------------------------------------------------------------------
-// Helpers (duplicated from [slug]/page.tsx to avoid shared lib dependency)
+// Helpers (frontmatter parsing shared with [slug]/page.tsx via @/lib/frontmatter)
 // ---------------------------------------------------------------------------
 
 const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog')
@@ -19,6 +24,7 @@ interface Frontmatter {
   category: string
   tags: string[]
   keywords: string[]
+  status: string
 }
 
 interface Article {
@@ -26,35 +32,30 @@ interface Article {
   frontmatter: Frontmatter
 }
 
+const EMPTY_FRONTMATTER: Frontmatter = {
+  title: '', description: '', date: '', author: '', category: '', tags: [], keywords: [], status: '',
+}
+
 function parseFrontmatter(raw: string): Frontmatter {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
-  if (!match) {
-    return { title: '', description: '', date: '', author: '', category: '', tags: [], keywords: [] }
-  }
+  if (!match) return { ...EMPTY_FRONTMATTER }
   const yamlBlock = match[1]
 
-  const get = (key: string): string => {
-    const m = yamlBlock.match(new RegExp(`^${key}:\\s*"?(.*?)"?\\s*$`, 'm'))
-    return m ? m[1].replace(/^"|"$/g, '') : ''
-  }
-
-  const getArray = (key: string): string[] => {
-    const m = yamlBlock.match(new RegExp(`^${key}:\\s*\\[([^\\]]*)]`, 'm'))
-    if (!m) return []
-    return m[1]
-      .split(',')
-      .map((s) => s.trim().replace(/^"|"$/g, ''))
-      .filter(Boolean)
-  }
+  // Values are sanitised (stray quote runs collapsed, YAML line folding
+  // honoured) -- see src/lib/frontmatter.ts for the full rationale.
+  const get = (key: string) => readFrontmatterValue(yamlBlock, key)
 
   return {
     title: get('title'),
     description: get('description'),
-    date: get('date'),
+    // 155 articles carry `published_date` instead of `date`; without this
+    // fallback they sorted as if dateless and rendered "Invalid Date".
+    date: get('date') || get('published_date'),
     author: get('author'),
     category: get('category'),
-    tags: getArray('tags'),
-    keywords: getArray('keywords'),
+    tags: readFrontmatterArray(yamlBlock, 'tags'),
+    keywords: readFrontmatterArray(yamlBlock, 'keywords'),
+    status: get('status'),
   }
 }
 
@@ -70,6 +71,9 @@ function getAllArticles(): Article[] {
       return { slug, frontmatter }
     })
     .filter((a) => a.frontmatter.title)
+    // Unfinished drafts (placeholder-bearing bodies and `status: template`)
+    // are not listed -- see src/lib/noindex-drafts.ts.
+    .filter((a) => !isNoindexDraft(a.slug, a.frontmatter.status))
     .sort((a, b) => (b.frontmatter.date > a.frontmatter.date ? 1 : -1))
 }
 

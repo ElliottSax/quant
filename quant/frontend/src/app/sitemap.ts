@@ -2,8 +2,12 @@ import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
 import { getCongressTrades, memberSlug } from '@/lib/congress-trades'
+import { readFrontmatterValue } from '@/lib/frontmatter'
+import { isNoindexDraft } from '@/lib/noindex-drafts'
 
-// Get all blog post slugs dynamically from content/blog/*.md
+// Get all publishable blog post slugs from content/blog/*.md.
+// Unfinished drafts -- placeholder-bearing bodies and articles declaring
+// `status: template` -- are excluded; see src/lib/noindex-drafts.ts.
 function getBlogSlugs(): string[] {
   try {
     const blogDir = path.join(process.cwd(), 'content', 'blog')
@@ -11,6 +15,17 @@ function getBlogSlugs(): string[] {
     return files
       .filter(f => f.endsWith('.md') && f !== 'ARTICLES_COMPLETED.md')
       .map(f => f.replace(/\.md$/, ''))
+      .filter(slug => {
+        let status = ''
+        try {
+          const raw = fs.readFileSync(path.join(blogDir, `${slug}.md`), 'utf-8')
+          const fm = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+          if (fm) status = readFrontmatterValue(fm[1], 'status')
+        } catch {
+          // Unreadable file -- fall back to the slug list alone.
+        }
+        return !isNoindexDraft(slug, status)
+      })
   } catch {
     return []
   }

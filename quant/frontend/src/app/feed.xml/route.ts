@@ -1,5 +1,7 @@
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
+import { readFrontmatterValue } from '@/lib/frontmatter';
+import { isNoindexDraft } from '@/lib/noindex-drafts';
 
 const SITE_URL = 'https://quantengines.com';
 const SITE_NAME = 'QuantEngines';
@@ -21,18 +23,10 @@ interface ArticleMeta {
   slug: string;
 }
 
-function parseFrontmatter(content: string): Record<string, string> {
-  const match = content.match(/^---\s*\n([\s\S]*?)\n---/);
-  if (!match) return {};
-  const frontmatter: Record<string, string> = {};
-  const lines = match[1].split('\n');
-  for (const line of lines) {
-    const m = line.match(/^(\w[\w_]*)\s*:\s*["']?(.*?)["']?\s*$/);
-    if (m) {
-      frontmatter[m[1]] = m[2];
-    }
-  }
-  return frontmatter;
+// Returns the raw YAML frontmatter block, or null when there is none.
+function frontmatterBlock(content: string): string | null {
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  return match ? match[1] : null;
 }
 
 function getAllArticles(): ArticleMeta[] {
@@ -51,16 +45,34 @@ function getAllArticles(): ArticleMeta[] {
 
     try {
       const content = readFileSync(join(blogDir, entry), 'utf-8');
-      const fm = parseFrontmatter(content);
-      if (fm.title) {
-        const slug = fm.slug || entry.replace(/\.md$/, '');
-        articles.push({
-          title: fm.title,
-          description: fm.description || '',
-          date: fm.date || '2026-01-01',
-          slug,
-        });
-      }
+      const yaml = frontmatterBlock(content);
+      if (!yaml) continue;
+
+      // Values are sanitised (stray quote runs collapsed, YAML line folding
+      // honoured) -- see src/lib/frontmatter.ts.
+      const title = readFrontmatterValue(yaml, 'title');
+      if (!title) continue;
+
+      // The slug MUST come from the filename: that is what /blog/[slug]
+      // resolves against and what sitemap.ts publishes. The frontmatter `slug`
+      // field disagrees with the filename in 200 of 615 articles (underscored
+      // or truncated variants, e.g. `01_covered_call_strategy_...`), so
+      // honouring it emitted feed links that 404.
+      const slug = entry.replace(/\.md$/, '');
+
+      // Unfinished drafts are not syndicated -- see src/lib/noindex-drafts.ts.
+      if (isNoindexDraft(slug, readFrontmatterValue(yaml, 'status'))) continue;
+
+      articles.push({
+        title,
+        description: readFrontmatterValue(yaml, 'description'),
+        // 155 articles carry `published_date` instead of `date`.
+        date:
+          readFrontmatterValue(yaml, 'date') ||
+          readFrontmatterValue(yaml, 'published_date') ||
+          '2026-01-01',
+        slug,
+      });
     } catch {
       // Skip files that can't be read
     }
