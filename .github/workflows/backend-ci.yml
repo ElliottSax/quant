@@ -164,7 +164,7 @@ jobs:
             --cov-fail-under=70
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
           file: quant/backend/coverage.xml
           flags: backend
