@@ -1,6 +1,6 @@
 # Seasonality Verdict — Statistical Specification
 
-**Status:** DRAFT v0.1, agent-authored 2026-08-18. Requires Elliott's line-by-line review
+**Status:** DRAFT v0.3, agent-authored 2026-08-18 (v0.2 trailing-partial-month rule §2; v0.3 Monte Carlo boundary rule §6 and cross-implementation tolerance §8 — all three found by the cross-check harness, none by review). Requires Elliott's line-by-line review
 and signature before ANY implementation of story 3.2 (Sprint 2 gate, 2–3 protected hours).
 **Spec version is a published field.** Every verdict rendered on the site carries the
 version of this document that produced it. Changing any rule below is a version bump and
@@ -29,11 +29,27 @@ say so.
 
 - **Observation:** one (ticker, year, calendar month) total return, computed from adjusted
   end-of-day closes: `r = (adj_close[last trading day of month] / adj_close[last trading day of prior month]) - 1`.
+- **Trailing partial months are excluded.** *(Added v0.2 — this gap was found by the
+  cross-check harness, not by review: the two implementations disagreed on every August
+  because the store ended mid-month.)* A month counts as complete only when the symbol has
+  data strictly after that month's last calendar day, so the "last trading day of month"
+  named above is actually observed. Interior months always satisfy this; only the ragged
+  edge of the vintage is affected. Including a part-month return is a false observation —
+  an 18-day return presented as a monthly one — and it contaminates twice: once in its own
+  cell, and again in every other cell through the "all other months" pool.
+- **Consecutive months only.** A return is formed only from adjacent calendar months; a gap
+  in the series must break the chain rather than silently span it.
 - **Adjustments:** splits and dividends must be included. If the vendor's adjusted series
   is unavailable for a ticker, that ticker is excluded — never mixed.
 - **Minimum history:** a (ticker, month) cell requires **n ≥ 20 observations** to be
   gradeable at all. Below that it is reported as `Insufficient history` with n shown. It is
   never given a tier and never enters the multiple-testing family (see §5).
+- **What an under-powered cell reports** *(added v0.3, third harness finding — the two
+  implementations disagreed on whether to report a t-statistic for ungradeable cells).*
+  It reports its **deterministic** descriptive statistics (n, both means, the difference,
+  Welch t) and **no resampling estimate, q-value or tier**. Descriptive numbers are honest
+  and cheap; a p-value on a cell the spec refuses to grade only invites a verdict to be
+  read into it.
 - **Survivorship:** the universe must come from a delisted-inclusive source, or be
   restricted to index ETFs and mega-caps where survivorship distortion is negligible. The
   chosen branch is recorded per run and stated on every page. A survivorship-biased
@@ -109,13 +125,33 @@ Tiers are assigned only after §5's correction. Thresholds are fixed here so the
 tuned after seeing results — tuning thresholds to produce a satisfying number of Robust
 entries is p-hacking with extra steps.
 
+**Precedence is top-down and exhaustive** *(clarified v0.3 — the original table was
+genuinely contradictory, since BH can reject a p-value above 0.05 while the Folklore row
+claimed every such cell. The second implementation caught this; one implementation alone
+would have silently picked a reading.)* Evaluate in order and stop at the first match:
+
 | Tier | Condition |
 |---|---|
-| **Robust** | BH-adjusted q ≤ 0.10 **and** n ≥ 25 **and** the 95% bootstrap CI for the mean difference excludes zero **and** the sign of the effect is stable under leave-one-year-out (see below) |
-| **Weak** | Raw p ≤ 0.05 but fails BH correction, or passes BH but fails the stability/CI conditions |
-| **Folklore** | Raw p > 0.05 — the pattern is not distinguishable from noise in this history. Applies especially to widely-repeated named effects, which is why they are worth publishing |
+| **Robust** | BH-rejected **and** n ≥ 25 **and** the 95% bootstrap CI for the mean difference excludes zero **and** the sign of the effect is stable under leave-one-year-out (see below) |
+| **Weak** | BH-rejected but failing any Robust condition, **or** raw p ≤ 0.05 |
+| **Folklore** | Everything else — the pattern is not distinguishable from noise in this history. Applies especially to widely-repeated named effects, which is why they are worth publishing |
 | **Nothing Clears the Bar** | Page-level state when no month of a ticker reaches Robust or Weak |
 | **Insufficient history** | n < 20 (§2). Not a verdict; excluded from the family |
+
+**Monte Carlo boundary rule (added v0.3).** A permutation p-value is an estimate with its
+own error: at B = 10,000 the standard error near p = 0.05 is ≈ 0.0022, so two honest runs
+can differ by ≈ 0.006 — exactly the width that flips `Weak` and `Folklore`. A tier that
+depends on which side of the line the sampling noise happened to land is false precision,
+and it would let a cell change verdict between runs with no new data.
+
+Therefore: **if `|p − threshold| < 3 × SE(p)`, where `SE(p) = sqrt(p(1−p)/B)`, the cell is
+assigned the more conservative tier** (`Folklore` over `Weak`; a cell may not be promoted
+to `Robust` on a BH decision that is itself inside this band). Cells resolved this way must
+record that the boundary rule applied, so the reason is inspectable rather than invisible.
+
+*This rule exists because the cross-check harness caught it, not because it was foreseen:
+the two implementations disagreed on exactly one cell, MSFT April, whose p-value straddled
+0.05. One engine alone would have published that tier with full confidence.*
 
 **Leave-one-year-out stability:** recompute `d_obs` with each single year removed in turn.
 If removing any one year flips the sign of the effect, the result is driven by one episode
@@ -145,9 +181,16 @@ without sharing code. They are compared by a harness:
 
 - **Tier agreement: 100%.** Any disagreement quarantines BOTH implementations; nothing
   publishes until reconciled.
-- **Numeric agreement:** means, effect sizes and CI bounds within `1e-9` relative. Permutation
-  p-values must match exactly given the shared seeding rule (§3); if they do not, the seeding
-  is not deterministic and that is a defect, not a tolerance question.
+- **Numeric agreement:** means, effect sizes and Welch t within `1e-9` relative — these are
+  deterministic functions of the data and must agree essentially exactly.
+- **Resampling estimates (p-values, CI bounds) agree to Monte Carlo tolerance, not bitwise.**
+  *(Corrected v0.3.)* The earlier requirement of exact agreement was wrong: it assumed a
+  shared seeding rule, but two independently written implementations legitimately use
+  different RNGs and hash schemes, so identical draws are neither achievable nor desirable —
+  requiring them would only force the second implementation to copy the first, destroying the
+  independence that makes agreement meaningful. The test is `|p_A − p_B| ≤ 4 × SE(p)` with
+  `SE(p) = sqrt(p(1−p)/B)`, and CI bounds within 4 × the bootstrap standard error. What must
+  agree exactly is every **tier**, which the §6 boundary rule makes robust to this noise.
 - The harness output is an artifact of the run, retained.
 
 ## 9. Hand-computed reference case (Elliott's check)
@@ -177,6 +220,23 @@ The statistics are only as honest as their presentation:
 6. Null results are first-class pages, not error states.
 
 ---
+
+## Open questions for the reviewer to settle
+
+These were raised by the implementations and are NOT yet decided. Each is written down
+rather than silently chosen, per the rule at the top of this document.
+
+- **A8 — where the BH decision band sits in p-space.** §6 states the Monte Carlo band in
+  p-space, but the BH half of the rule ("a BH decision itself inside this band") needs the
+  procedure's effective cutoff located in p-space. Implementation B reads it as
+  `p_cut = (k/m)·q` with k the number BH rejects, falling back to `(1/m)·q` when k = 0.
+  Unreachable on the current data (min q = 0.60), so it costs nothing today — but a
+  different mapping could change Robust eligibility once the history supports it.
+- **Ratify the implementation-B readings** carried forward as written: "same span" means
+  all other monthly returns with no trimming to whole years; leave-one-year-out removes the
+  year from both groups and an emptied group counts as unstable; failure years are
+  strictly-opposite-sign (zero is not opposite); the `|d_perm| ≥ |d_obs|` comparison carries
+  1e-15 slack so float noise cannot drop a tie, which raises p and is therefore conservative.
 
 ## Reviewer's checklist (Elliott, Sprint 2 gate)
 
