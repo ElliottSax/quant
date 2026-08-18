@@ -1,0 +1,20 @@
+# EOD ingest universe.
+#
+# DELIBERATELY PROVISIONAL. Every symbol here was verified reachable on the current
+# FMP entitlement (2026-08-18). It is NOT the product universe: on this tier ~33% of
+# mainstream large caps and every ETF except SPY return HTTP 402, and history is capped
+# at ~19.9 years — below the statistical spec's gradeable floor of n>=20 observations
+# per (symbol, calendar month), and well below the Robust floor of 25.
+#
+# In other words: this universe proves the pipeline, not the product. Expanding it is
+# gated on the vendor decision — see docs/VENDOR_DECISION_BRIEF.md.
+SPY
+AAPL
+MSFT
+JNJ
+XOM
+KO
+JPM
+WMT
+CVX
+PEP

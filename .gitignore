@@ -356,3 +356,4 @@ local_settings.py
 # @/data/...". Keep the frontend source tracked.
 !quant/frontend/src/data/
 !quant/frontend/src/data/**
+quant/data/
