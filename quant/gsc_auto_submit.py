@@ -15,23 +15,28 @@ from google.auth.transport.requests import Request
 from google.oauth2.service_account import Credentials
 from google.auth.exceptions import GoogleAuthError
 
-# Configuration for 4 sites
+# Configuration for 4 sites. The GSC properties are DOMAIN properties
+# (sc-domain:), not URL-prefix — verified against sites().list() 2026-08-18.
 SITES_CONFIG = {
     'credit': {
         'domain': 'cardclassroom.com',
-        'property_url': 'https://cardclassroom.com/',
+        'property_url': 'sc-domain:cardclassroom.com',
+        'sitemap_url': 'https://cardclassroom.com/sitemap.xml',
     },
     'calc': {
         'domain': 'dividendengines.com',
-        'property_url': 'https://dividendengines.com/',
+        'property_url': 'sc-domain:dividendengines.com',
+        'sitemap_url': 'https://dividendengines.com/sitemap.xml',
     },
     'affiliate': {
         'domain': 'thestackguide.com',
-        'property_url': 'https://thestackguide.com/',
+        'property_url': 'sc-domain:thestackguide.com',
+        'sitemap_url': 'https://www.thestackguide.com/sitemap.xml',
     },
     'quant': {
         'domain': 'quantengines.com',
-        'property_url': 'https://quantengines.com/',
+        'property_url': 'sc-domain:quantengines.com',
+        'sitemap_url': 'https://quantengines.com/sitemap.xml',
     }
 }
 
@@ -95,11 +100,12 @@ class GSCAutoSubmitter:
             print(f"❌ {site_name}: No access token available")
             return False
 
-        # Build submission URL
-        sitemap_full_url = f"{site_url}{sitemap_url}"
+        # Build submission URL — both path segments must be percent-encoded
+        from urllib.parse import quote
+        sitemap_full_url = sitemap_url
         endpoint = SITEMAP_ENDPOINT.format(
-            site_url=site_url,
-            sitemap_url=sitemap_url
+            site_url=quote(site_url, safe=''),
+            sitemap_url=quote(sitemap_url, safe='')
         )
 
         headers = {
@@ -159,7 +165,7 @@ class GSCAutoSubmitter:
             success = self.submit_sitemap(
                 site_name.upper(),
                 config['property_url'],
-                'sitemap.xml'
+                config['sitemap_url']
             )
             results[site_name] = success
             print()
