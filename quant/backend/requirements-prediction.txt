@@ -19,11 +19,13 @@ lightgbm>=4.3.0
 optuna>=3.5.0  # Hyperparameter optimization
 
 # Backtesting
-vectorbt>=0.26.0  # Lightning-fast vectorized backtesting
-# Note: vectorbt has many dependencies, install with: pip install vectorbt
-
-# Alternative backtesting (if vectorbt is too heavy)
-# backtrader>=1.9.78
+# DO NOT ADD vectorbt: its licence carries the Commons Clause, which forbids selling
+# software whose value derives substantially from it — incompatible with a monetized
+# site. It was never imported by app code; the dependency line is removed so it cannot
+# arrive by accident. Same restriction applies to OpenBB (AGPL) and mlfinlab (proprietary).
+# Licence-clean alternatives if a vectorized engine is needed: QuantConnect Lean
+# (Apache-2.0), quantstats (Apache-2.0), or the existing in-house pandas engine.
+# backtrader>=1.9.78   # GPL-3.0 — SaaS use only, never redistribute
 # bt>=0.2.9
 
 # Time Series & Statistics

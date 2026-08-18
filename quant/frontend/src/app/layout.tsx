@@ -303,9 +303,7 @@ export default function RootLayout({
                     <div className="hidden md:flex items-center border-l border-[hsl(215,40%,18%)] pl-6">
                       <NavLink href="/charts">Charts</NavLink>
                       <NavLink href="/scanner">Screener</NavLink>
-                      <NavLink href="/signals">Signals</NavLink>
                       <NavLink href="/backtesting">Backtest</NavLink>
-                      <NavLink href="/portfolio">Portfolio</NavLink>
 
                       {/* More Tools Dropdown */}
                       <div className="relative group">
@@ -328,9 +326,6 @@ export default function RootLayout({
                             </Link>
                             <Link href="/compare" className="block px-3 py-2 text-sm text-[hsl(210,20%,75%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
                               Stock Compare
-                            </Link>
-                            <Link href="/discoveries" className="block px-3 py-2 text-sm text-[hsl(210,20%,75%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
-                              Anomaly Detection
                             </Link>
                             <div className="border-t border-[hsl(215,40%,16%)] my-1" />
                             <div className="px-3 py-1.5 text-[10px] font-semibold text-[hsl(210,100%,56%)] uppercase tracking-wider">
@@ -362,9 +357,6 @@ export default function RootLayout({
                             </div>
                             <Link href="/api-docs" className="block px-3 py-2 text-sm text-[hsl(210,20%,70%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
                               API Documentation
-                            </Link>
-                            <Link href="/showcase" className="block px-3 py-2 text-sm text-[hsl(210,20%,70%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
-                              Chart Showcase
                             </Link>
                             <Link href="/tools" className="block px-3 py-2 text-sm text-[hsl(210,20%,70%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
                               All Tools
@@ -414,9 +406,6 @@ export default function RootLayout({
                   <Link href="/scanner" className="px-3 py-1 text-xs font-medium text-[hsl(210,20%,55%)] hover:text-[hsl(45,96%,58%)] hover:bg-[hsl(215,50%,12%)] rounded transition-colors whitespace-nowrap">
                     Stock Screener
                   </Link>
-                  <Link href="/signals" className="px-3 py-1 text-xs font-medium text-[hsl(210,20%,55%)] hover:text-[hsl(45,96%,58%)] hover:bg-[hsl(215,50%,12%)] rounded transition-colors whitespace-nowrap">
-                    Trading Signals
-                  </Link>
                   <Link href="/backtesting" className="px-3 py-1 text-xs font-medium text-[hsl(210,20%,55%)] hover:text-[hsl(45,96%,58%)] hover:bg-[hsl(215,50%,12%)] rounded transition-colors whitespace-nowrap">
                     Backtester
                   </Link>
@@ -458,7 +447,6 @@ export default function RootLayout({
                     <ul className="space-y-1.5 text-xs text-[hsl(210,20%,60%)]">
                       <li><Link href="/charts" className="hover:text-[hsl(45,96%,58%)] transition-colors">Advanced Charts</Link></li>
                       <li><Link href="/scanner" className="hover:text-[hsl(45,96%,58%)] transition-colors">Stock Screener</Link></li>
-                      <li><Link href="/signals" className="hover:text-[hsl(45,96%,58%)] transition-colors">Trading Signals</Link></li>
                       <li><Link href="/backtesting" className="hover:text-[hsl(45,96%,58%)] transition-colors">Backtesting</Link></li>
                       <li><Link href="/strategies" className="hover:text-[hsl(45,96%,58%)] transition-colors">Strategies</Link></li>
                       <li><Link href="/backtesting/builder" className="hover:text-[hsl(45,96%,58%)] transition-colors">Strategy Builder</Link></li>
@@ -468,7 +456,6 @@ export default function RootLayout({
                   <div>
                     <h3 className="text-[10px] font-semibold uppercase tracking-wider text-[hsl(45,96%,58%)] mb-3">More Tools</h3>
                     <ul className="space-y-1.5 text-xs text-[hsl(210,20%,60%)]">
-                      <li><Link href="/portfolio" className="hover:text-[hsl(45,96%,58%)] transition-colors">Portfolio Analyzer</Link></li>
                       <li><Link href="/options" className="hover:text-[hsl(45,96%,58%)] transition-colors">Options Calculator</Link></li>
                       <li><Link href="/network" className="hover:text-[hsl(45,96%,58%)] transition-colors">Correlation Network</Link></li>
                       <li><Link href="/compare" className="hover:text-[hsl(45,96%,58%)] transition-colors">Stock Compare</Link></li>

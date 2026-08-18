@@ -1,6 +1,12 @@
 /**
  * Dashboard Page
  * BigCharts-style overview with terminal panels and dense data visualization
+ *
+ * Every figure on this page must come from the API hooks below. Panels whose series
+ * have no endpoint behind them are not filled with placeholder or randomised numbers —
+ * they are declared missing. The 12-month buy/sell series, the sector allocation split
+ * and the weekly volume bars were all invented in the browser and have been removed;
+ * they may only return once an endpoint supplies them.
  */
 
 'use client'
@@ -34,25 +40,6 @@ export default function DashboardPage() {
   const isLoading = politiciansLoading || networkLoading
   const hasError = politiciansError || networkError
 
-  // Generate mock historical data for charts
-  const tradingActivityData = useMemo(() => {
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    return months.map((month, i) => ({
-      month,
-      buys: Math.floor(150 + Math.sin(i * 0.5) * 50 + Math.random() * 30),
-      sells: Math.floor(120 + Math.cos(i * 0.5) * 40 + Math.random() * 25),
-    }))
-  }, [])
-
-  const sectorData = useMemo(() => [
-    { name: 'Technology', value: 35, color: COLORS.blue },
-    { name: 'Healthcare', value: 22, color: COLORS.green },
-    { name: 'Finance', value: 18, color: COLORS.gold },
-    { name: 'Energy', value: 12, color: COLORS.cyan },
-    { name: 'Defense', value: 8, color: COLORS.red },
-    { name: 'Other', value: 5, color: COLORS.gray },
-  ], [])
-
   const partyData = useMemo(() => {
     if (!politicians) return []
     const dems = politicians.filter(p => p.party === 'Democratic').length
@@ -64,121 +51,6 @@ export default function DashboardPage() {
       { name: 'Independent', value: other, color: COLORS.gray },
     ].filter(d => d.value > 0)
   }, [politicians])
-
-  // Trading activity line chart - Terminal style
-  const activityChartOptions = useMemo(() => ({
-    backgroundColor: 'transparent',
-    tooltip: {
-      trigger: 'axis',
-      backgroundColor: 'hsl(220, 55%, 8%)',
-      borderColor: 'hsl(215, 40%, 20%)',
-      textStyle: { color: '#fff', fontFamily: 'JetBrains Mono, monospace', fontSize: 11 },
-    },
-    legend: {
-      data: ['BUYS', 'SELLS'],
-      textStyle: { color: COLORS.gray, fontFamily: 'JetBrains Mono, monospace', fontSize: 10 },
-      top: 5,
-      itemWidth: 12,
-      itemHeight: 2,
-    },
-    grid: { left: '3%', right: '4%', bottom: '3%', top: '18%', containLabel: true },
-    xAxis: {
-      type: 'category',
-      data: tradingActivityData.map(d => d.month),
-      axisLine: { lineStyle: { color: 'hsl(215, 40%, 20%)' } },
-      axisLabel: { color: COLORS.gray, fontFamily: 'JetBrains Mono, monospace', fontSize: 10 },
-      axisTick: { show: false },
-    },
-    yAxis: {
-      type: 'value',
-      axisLine: { show: false },
-      axisLabel: { color: COLORS.gray, fontFamily: 'JetBrains Mono, monospace', fontSize: 10 },
-      splitLine: { lineStyle: { color: 'hsl(215, 40%, 12%)', type: 'dashed' } },
-    },
-    series: [
-      {
-        name: 'BUYS',
-        type: 'line',
-        data: tradingActivityData.map(d => d.buys),
-        smooth: false,
-        lineStyle: { width: 2, color: COLORS.green },
-        areaStyle: {
-          color: {
-            type: 'linear',
-            x: 0, y: 0, x2: 0, y2: 1,
-            colorStops: [
-              { offset: 0, color: 'hsla(142, 71%, 55%, 0.25)' },
-              { offset: 1, color: 'hsla(142, 71%, 55%, 0)' },
-            ],
-          },
-        },
-        symbol: 'circle',
-        symbolSize: 6,
-        itemStyle: { color: COLORS.green },
-      },
-      {
-        name: 'SELLS',
-        type: 'line',
-        data: tradingActivityData.map(d => d.sells),
-        smooth: false,
-        lineStyle: { width: 2, color: COLORS.red },
-        areaStyle: {
-          color: {
-            type: 'linear',
-            x: 0, y: 0, x2: 0, y2: 1,
-            colorStops: [
-              { offset: 0, color: 'hsla(0, 72%, 55%, 0.25)' },
-              { offset: 1, color: 'hsla(0, 72%, 55%, 0)' },
-            ],
-          },
-        },
-        symbol: 'circle',
-        symbolSize: 6,
-        itemStyle: { color: COLORS.red },
-      },
-    ],
-  }), [tradingActivityData])
-
-  // Sector allocation pie chart
-  const sectorChartOptions = useMemo(() => ({
-    backgroundColor: 'transparent',
-    tooltip: {
-      trigger: 'item',
-      backgroundColor: 'hsl(220, 55%, 8%)',
-      borderColor: 'hsl(215, 40%, 20%)',
-      textStyle: { color: '#fff', fontFamily: 'JetBrains Mono, monospace', fontSize: 11 },
-      formatter: '{b}: {c}%'
-    },
-    series: [{
-      type: 'pie',
-      radius: ['40%', '65%'],
-      center: ['50%', '50%'],
-      avoidLabelOverlap: true,
-      itemStyle: {
-        borderRadius: 3,
-        borderColor: COLORS.bg,
-        borderWidth: 2,
-      },
-      label: {
-        show: true,
-        position: 'outside',
-        color: COLORS.gray,
-        fontSize: 10,
-        fontFamily: 'JetBrains Mono, monospace',
-        formatter: '{b}\n{c}%',
-      },
-      labelLine: { lineStyle: { color: 'hsl(215, 40%, 25%)' } },
-      emphasis: {
-        label: { show: true, fontSize: 11, fontWeight: 'bold' },
-        itemStyle: { shadowBlur: 10, shadowColor: 'rgba(0,0,0,0.5)' },
-      },
-      data: sectorData.map(s => ({
-        value: s.value,
-        name: s.name,
-        itemStyle: { color: s.color },
-      })),
-    }],
-  }), [sectorData])
 
   // Party distribution donut
   const partyChartOptions = useMemo(() => ({
@@ -266,53 +138,6 @@ export default function DashboardPage() {
     }
   }, [network])
 
-  // Weekly volume bar chart
-  const volumeChartOptions = useMemo(() => {
-    const days = ['MON', 'TUE', 'WED', 'THU', 'FRI']
-    const volumes = days.map(() => Math.floor(Math.random() * 50 + 30))
-    return {
-      backgroundColor: 'transparent',
-      tooltip: {
-        trigger: 'axis',
-        backgroundColor: 'hsl(220, 55%, 8%)',
-        borderColor: 'hsl(215, 40%, 20%)',
-        textStyle: { color: '#fff', fontFamily: 'JetBrains Mono, monospace', fontSize: 11 },
-      },
-      grid: { left: '3%', right: '4%', bottom: '3%', top: '10%', containLabel: true },
-      xAxis: {
-        type: 'category',
-        data: days,
-        axisLine: { lineStyle: { color: 'hsl(215, 40%, 20%)' } },
-        axisLabel: { color: COLORS.gray, fontFamily: 'JetBrains Mono, monospace', fontSize: 10 },
-        axisTick: { show: false },
-      },
-      yAxis: {
-        type: 'value',
-        axisLine: { show: false },
-        axisLabel: { color: COLORS.gray, fontFamily: 'JetBrains Mono, monospace', fontSize: 10 },
-        splitLine: { lineStyle: { color: 'hsl(215, 40%, 12%)', type: 'dashed' } },
-      },
-      series: [{
-        type: 'bar',
-        data: volumes.map((v) => ({
-          value: v,
-          itemStyle: {
-            color: {
-              type: 'linear',
-              x: 0, y: 0, x2: 0, y2: 1,
-              colorStops: [
-                { offset: 0, color: COLORS.gold },
-                { offset: 1, color: 'hsl(38, 92%, 45%)' }
-              ]
-            },
-            borderRadius: [2, 2, 0, 0],
-          }
-        })),
-        barWidth: '45%',
-      }]
-    }
-  }, [])
-
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
@@ -369,84 +194,72 @@ export default function DashboardPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
+          {/* Reports when this page fetched, not how fresh the filings are — a "LIVE"
+              badge over end-of-day disclosure data would be a claim we cannot support. */}
           <span className="text-xs font-mono text-[hsl(215,20%,50%)]">
-            Last Updated: {new Date().toLocaleTimeString()}
-          </span>
-          <span className="flex items-center gap-1.5 px-2 py-1 rounded bg-[hsl(142,71%,45%)]/10 border border-[hsl(142,71%,45%)]/30">
-            <span className="w-1.5 h-1.5 rounded-full bg-[hsl(142,71%,55%)] animate-pulse"></span>
-            <span className="text-[10px] font-bold text-[hsl(142,71%,55%)]">LIVE</span>
+            Loaded: {new Date().toLocaleTimeString()}
           </span>
         </div>
       </div>
 
       {/* Key metrics - Terminal style */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        {/* No period-over-period change is shown where the API returns only a current
+            total: the previous "+5.2%" / "+12.3%" deltas were written by hand. */}
         <MetricPanel
           label="POLITICIANS"
           value={totalPoliticians.toString()}
-          subtext="Active Traders"
-          change="+5.2%"
-          positive
+          subtext="Tracked Filers"
         />
         <MetricPanel
           label="TOTAL TRADES"
           value={totalTrades.toLocaleString()}
           subtext="All Time"
-          change="+12.3%"
-          positive
         />
         <MetricPanel
           label="ACTIVE 7D"
           value={activePoliticians.toString()}
-          subtext="Recent Activity"
-          change={`${((activePoliticians / totalPoliticians) * 100).toFixed(1)}%`}
-          positive
+          subtext="Filed In Last 7 Days"
+          note={totalPoliticians > 0 ? `${((activePoliticians / totalPoliticians) * 100).toFixed(1)}% of tracked` : undefined}
         />
         <MetricPanel
           label="NET DENSITY"
-          value={(network?.density || 0).toFixed(3)}
-          subtext="Correlation"
-          change={(network?.clustering_coefficient || 0).toFixed(2)}
-          positive={network?.density ? network.density > 0.3 : false}
+          value={network ? network.density.toFixed(3) : '—'}
+          subtext="Correlation Graph"
+          note={network ? `clustering ${network.clustering_coefficient.toFixed(2)}` : 'not loaded'}
         />
       </div>
 
-      {/* Main Chart Panel */}
+      {/* Series with no endpoint behind them are declared missing, not drawn. */}
       <div className="terminal-panel">
         <div className="terminal-panel-header">
-          <span>Trading Activity - 12 Month View</span>
-          <div className="flex items-center gap-4 text-[10px]">
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-0.5 bg-[hsl(142,71%,55%)]"></span>
-              <span className="text-[hsl(142,71%,55%)]">BUYS</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-0.5 bg-[hsl(0,72%,55%)]"></span>
-              <span className="text-[hsl(0,72%,55%)]">SELLS</span>
-            </span>
-          </div>
+          <span>Trading Activity, Sector Allocation & Weekly Volume</span>
+          <span className="text-[10px] text-[hsl(215,20%,55%)]">NOT AVAILABLE</span>
         </div>
-        <div className="p-3 bg-[hsl(220,60%,4%)]">
-          <div className="h-[260px]">
-            <ReactECharts option={activityChartOptions} style={{ height: '100%', width: '100%' }} />
+        <div className="p-4 bg-[hsl(220,60%,4%)]">
+          <p className="text-xs text-[hsl(210,20%,70%)] font-mono mb-2">
+            These three panels have been removed.
+          </p>
+          <p className="text-xs text-[hsl(215,20%,55%)] font-mono leading-relaxed max-w-3xl">
+            The 12-month buy/sell curve, the sector allocation split and the weekly volume
+            bars were generated in the browser — no endpoint supplied them. Aggregating
+            disclosure filings by month, sector and week is real work on the backend, and
+            these panels return when that endpoint does. Nothing invented stands in for it
+            in the meantime.
+          </p>
+          <div className="flex flex-wrap gap-4 mt-3">
+            <Link href="/politicians" className="text-[10px] font-mono text-[hsl(210,100%,56%)] hover:text-[hsl(45,96%,58%)] transition-colors">
+              BROWSE FILERS →
+            </Link>
+            <Link href="/network" className="text-[10px] font-mono text-[hsl(210,100%,56%)] hover:text-[hsl(45,96%,58%)] transition-colors">
+              NETWORK GRAPH →
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Three column panel grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-        {/* Sector Allocation */}
-        <div className="terminal-panel">
-          <div className="terminal-panel-header">
-            <span>Sector Allocation</span>
-          </div>
-          <div className="p-3 bg-[hsl(220,60%,4%)]">
-            <div className="h-[220px]">
-              <ReactECharts option={sectorChartOptions} style={{ height: '100%', width: '100%' }} />
-            </div>
-          </div>
-        </div>
-
+      {/* Two column panel grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* Party Distribution */}
         <div className="terminal-panel">
           <div className="terminal-panel-header">
@@ -468,21 +281,6 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Weekly Volume */}
-        <div className="terminal-panel">
-          <div className="terminal-panel-header">
-            <span>Weekly Volume</span>
-          </div>
-          <div className="p-3 bg-[hsl(220,60%,4%)]">
-            <div className="h-[220px]">
-              <ReactECharts option={volumeChartOptions} style={{ height: '100%', width: '100%' }} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Two column layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {/* Network Analysis */}
         <div className="terminal-panel">
           <div className="terminal-panel-header">
@@ -505,13 +303,13 @@ export default function DashboardPage() {
                 </div>
               </div>
             ) : (
-              <p className="text-sm text-[hsl(215,20%,50%)] font-mono">NO DATA</p>
+              <p className="text-sm text-[hsl(215,20%,50%)] font-mono">NETWORK ANALYSIS DID NOT LOAD</p>
             )}
           </div>
         </div>
 
         {/* Top Traders */}
-        <div className="terminal-panel">
+        <div className="terminal-panel lg:col-span-2">
           <div className="terminal-panel-header">
             <span>Top Traders</span>
             <Link href="/politicians" className="text-[10px] text-[hsl(210,100%,56%)] hover:text-[hsl(45,96%,58%)] transition-colors">
@@ -673,18 +471,19 @@ interface MetricPanelProps {
   label: string
   value: string
   subtext: string
-  change: string
-  positive?: boolean
+  /** A figure the API actually returns. Never a period-over-period delta unless the
+      API returns one — a signed, coloured number implies a comparison we can prove. */
+  note?: string
 }
 
-function MetricPanel({ label, value, subtext, change, positive }: MetricPanelProps) {
+function MetricPanel({ label, value, subtext, note }: MetricPanelProps) {
   return (
     <div className="terminal-panel p-3">
       <div className="flex items-start justify-between mb-1">
         <span className="text-[10px] font-semibold text-[hsl(45,96%,58%)] uppercase tracking-wider">{label}</span>
-        <span className={`text-[10px] font-mono font-semibold ${positive ? 'text-[hsl(142,71%,55%)]' : 'text-[hsl(0,72%,55%)]'}`}>
-          {positive ? '+' : ''}{change}
-        </span>
+        {note && (
+          <span className="text-[10px] font-mono text-[hsl(215,20%,55%)]">{note}</span>
+        )}
       </div>
       <p className="text-2xl font-bold font-mono text-white mb-0.5">{value}</p>
       <p className="text-[10px] text-[hsl(215,20%,50%)]">{subtext}</p>

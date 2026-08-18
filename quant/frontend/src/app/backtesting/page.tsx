@@ -14,52 +14,6 @@ import { BacktestResultView } from '@/components/backtesting'
 import { saveBacktestResult } from '@/lib/backtest-storage'
 import { getStrategyById, STRATEGIES } from '@/lib/strategy-definitions'
 
-// Generate realistic backtest equity curve
-const generateBacktestData = (initialCapital: number, strategy: string, days: number) => {
-  const data = []
-  let equity = initialCapital
-  let peak = equity
-  const trades: any[] = []
-
-  const strategyParams: any = {
-    simple_ma_crossover: { winRate: 0.58, avgWin: 0.025, avgLoss: 0.015, tradeFreq: 0.03 },
-    rsi_mean_reversion: { winRate: 0.62, avgWin: 0.018, avgLoss: 0.012, tradeFreq: 0.05 },
-    bollinger_breakout: { winRate: 0.54, avgWin: 0.032, avgLoss: 0.020, tradeFreq: 0.02 },
-    momentum: { winRate: 0.64, avgWin: 0.028, avgLoss: 0.016, tradeFreq: 0.04 },
-    mean_reversion_vol: { winRate: 0.60, avgWin: 0.022, avgLoss: 0.014, tradeFreq: 0.045 },
-    trend_following: { winRate: 0.55, avgWin: 0.035, avgLoss: 0.018, tradeFreq: 0.025 },
-    ma_crossover: { winRate: 0.58, avgWin: 0.025, avgLoss: 0.015, tradeFreq: 0.03 },
-    rsi: { winRate: 0.62, avgWin: 0.018, avgLoss: 0.012, tradeFreq: 0.05 },
-    macd: { winRate: 0.64, avgWin: 0.028, avgLoss: 0.016, tradeFreq: 0.04 },
-  }
-
-  const params = strategyParams[strategy] || strategyParams.simple_ma_crossover
-
-  for (let i = 0; i < days; i++) {
-    if (Math.random() < params.tradeFreq) {
-      const isWin = Math.random() < params.winRate
-      const returnPct = isWin
-        ? params.avgWin + (Math.random() - 0.5) * 0.01
-        : -(params.avgLoss + (Math.random() - 0.5) * 0.005)
-      const change = equity * returnPct
-      equity += change
-      trades.push({ day: i + 1, returnPct: returnPct * 100, profit: change, isWin, equity })
-    }
-    equity *= 1 + (Math.random() - 0.48) * 0.005
-    peak = Math.max(peak, equity)
-    const drawdown = ((equity - peak) / peak) * 100
-    data.push({
-      day: i + 1,
-      date: new Date(2023, 0, i + 1).toISOString().split('T')[0],
-      equity: parseFloat(equity.toFixed(2)),
-      drawdown: parseFloat(drawdown.toFixed(2)),
-      benchmark: parseFloat((initialCapital * (1 + 0.10 * (i / days))).toFixed(2)),
-      volume: Math.floor(Math.random() * 1000000) + 100000,
-    })
-  }
-  return { data, trades }
-}
-
 const generateMonthlyReturns = (equityData: any[]) => {
   const monthlyData = []
   const daysPerMonth = Math.floor(equityData.length / 12)
@@ -148,6 +102,7 @@ function BacktestingPageContent() {
   } | null>(null)
   const [isRunning, setIsRunning] = useState(false)
   const [savedId, setSavedId] = useState<string | null>(null)
+  const [runError, setRunError] = useState<string | null>(null)
 
   // Read query params for deep linking from /strategies page
   useEffect(() => {
@@ -167,9 +122,14 @@ function BacktestingPageContent() {
 
   const { data: apiStrategies } = useBacktestStrategies()
 
+  // A backtest either runs on real returned data or it fails visibly. There is no
+  // synthetic fallback: this page used to fabricate an equity curve (with per-strategy
+  // win rates baked in, so every run "profited") whenever the API errored or returned
+  // an empty curve. Fabricated results are worse than no results.
   const runBacktest = async () => {
     setIsRunning(true)
     setSavedId(null)
+    setRunError(null)
 
     try {
       const result = await api.backtesting.run({
@@ -180,24 +140,28 @@ function BacktestingPageContent() {
         initial_capital: formData.initial_capital,
       })
 
-      const equityData = result.equity_curve?.length > 0
-        ? result.equity_curve.map((point: any, i: number) => ({
-            day: i + 1,
-            date: point.date || new Date(2023, 0, i + 1).toISOString().split('T')[0],
-            equity: point.equity || point.value || formData.initial_capital,
-            drawdown: point.drawdown || 0,
-            benchmark: formData.initial_capital * (1 + 0.10 * (i / (result.equity_curve.length || 252))),
-            volume: point.volume || 0,
-          }))
-        : generateBacktestData(formData.initial_capital, formData.strategy, result.duration_days || 252).data
+      if (!result.equity_curve?.length) {
+        throw new Error(
+          `No price history was returned for ${formData.symbol} over ${formData.start_date} to ${formData.end_date}.`
+        )
+      }
 
-      const trades = result.trades?.map((t: any, i: number) => ({
+      const equityData = result.equity_curve.map((point: any, i: number) => ({
+        day: i + 1,
+        date: point.date || null,
+        equity: point.equity ?? point.value ?? null,
+        drawdown: point.drawdown ?? 0,
+        benchmark: point.benchmark ?? null,
+        volume: point.volume ?? null,
+      }))
+
+      const trades = (result.trades ?? []).map((t: any, i: number) => ({
         day: t.day || i + 1,
-        returnPct: t.return_pct || t.returnPct || 0,
-        profit: t.profit || 0,
-        isWin: (t.return_pct || t.returnPct || t.profit || 0) > 0,
-        equity: t.equity || formData.initial_capital,
-      })) || generateBacktestData(formData.initial_capital, formData.strategy, 252).trades
+        returnPct: t.return_pct ?? t.returnPct ?? 0,
+        profit: t.profit ?? 0,
+        isWin: (t.return_pct ?? t.returnPct ?? t.profit ?? 0) > 0,
+        equity: t.equity ?? null,
+      }))
 
       const monthly = generateMonthlyReturns(equityData)
       const distribution = generateTradeDistribution(trades)
@@ -205,14 +169,14 @@ function BacktestingPageContent() {
 
       setBacktestResult({ equityData, trades, monthlyReturns: monthly, tradeDistribution: distribution, rollingMetrics: rolling })
       setHasResults(true)
-    } catch {
-      const days = 252
-      const { data, trades } = generateBacktestData(formData.initial_capital, formData.strategy, days)
-      const monthly = generateMonthlyReturns(data)
-      const distribution = generateTradeDistribution(trades)
-      const rolling = generateRollingMetrics(data)
-      setBacktestResult({ equityData: data, trades, monthlyReturns: monthly, tradeDistribution: distribution, rollingMetrics: rolling })
-      setHasResults(true)
+    } catch (err) {
+      setBacktestResult(null)
+      setHasResults(false)
+      setRunError(
+        err instanceof Error && err.message
+          ? err.message
+          : 'The backtest service could not be reached.'
+      )
     } finally {
       setIsRunning(false)
     }
@@ -234,8 +198,16 @@ function BacktestingPageContent() {
     const avgReturn = returns.reduce((a: number, b: number) => a + b, 0) / returns.length
     const stdDev = Math.sqrt(returns.reduce((sum: number, r: number) => sum + Math.pow(r - avgReturn, 2), 0) / returns.length)
     const sharpeRatio = stdDev > 0 ? (avgReturn * 252) / (stdDev * Math.sqrt(252)) : 0
+    // Sortino uses downside deviation (returns below the 0% target only). It is not a
+    // fixed multiple of Sharpe — deriving it as one invents a number that happens to
+    // flatter the strategy, since downside deviation ≤ total deviation.
+    const downside = returns.filter((r: number) => r < 0)
+    const downsideDev = downside.length > 0
+      ? Math.sqrt(downside.reduce((sum: number, r: number) => sum + r * r, 0) / downside.length)
+      : 0
+    const sortinoRatio = downsideDev > 0 ? (avgReturn * 252) / (downsideDev * Math.sqrt(252)) : null
 
-    return { finalEquity, totalReturn, maxDrawdown, sharpeRatio, winRate, avgWin, avgLoss, profitFactor, totalTrades: trades.length }
+    return { finalEquity, totalReturn, maxDrawdown, sharpeRatio, sortinoRatio, winRate, avgWin, avgLoss, profitFactor, totalTrades: trades.length }
   }, [backtestResult, formData.initial_capital])
 
   const handleSave = () => {
@@ -247,7 +219,7 @@ function BacktestingPageContent() {
         total_return: metrics.totalReturn,
         annual_return: metrics.totalReturn,
         sharpe_ratio: metrics.sharpeRatio,
-        sortino_ratio: metrics.sharpeRatio * 1.2,
+        sortino_ratio: metrics.sortinoRatio,
         max_drawdown: metrics.maxDrawdown,
         win_rate: metrics.winRate,
         profit_factor: metrics.profitFactor,
@@ -374,7 +346,19 @@ function BacktestingPageContent() {
         </div>
       </div>
 
-      {!hasResults ? (
+      {runError && !hasResults ? (
+        <div className="glass-strong rounded-xl p-12 text-center border border-red-500/30">
+          <h3 className="text-2xl font-bold mb-3">This backtest did not run</h3>
+          <p className="text-muted-foreground mb-2 max-w-xl mx-auto">{runError}</p>
+          <p className="text-sm text-muted-foreground mb-6 max-w-xl mx-auto">
+            No results are shown because none were produced. This page will never display
+            simulated results in place of a failed run.
+          </p>
+          <button onClick={runBacktest} className="btn-primary" disabled={isRunning}>
+            Try again
+          </button>
+        </div>
+      ) : !hasResults ? (
         <div className="glass-strong rounded-xl p-16 text-center">
           <div className="text-6xl mb-4">📊</div>
           <h3 className="text-2xl font-bold mb-2">Ready to Test Your Strategy</h3>

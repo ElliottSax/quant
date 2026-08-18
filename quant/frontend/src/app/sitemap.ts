@@ -66,21 +66,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/congress-stock-trades/weekly',
     '/blog',
     '/politicians',
-    '/leaderboard',
     '/dashboard',
     '/backtesting',
     '/backtesting/builder',
     '/market-dashboard',
-    '/signals',
     '/scanner',
     '/options',
-    '/portfolio',
     '/strategies',
     '/pricing',
     '/charts',
     '/network',
-    '/discoveries',
     '/resources',
+    // Deliberately absent: /leaderboard, /signals, /portfolio, /showcase, /discoveries.
+    // Each was replaced with an in-development page carrying robots.index = false after
+    // its contents were found to be browser-generated rather than measured. A noindex
+    // page listed in the sitemap sends Google contradictory instructions, so they are
+    // added back here only when the real page ships.
     '/courses',
     '/courses/backtesting-101',
   ]

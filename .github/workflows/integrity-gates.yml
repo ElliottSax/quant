@@ -1,0 +1,79 @@
+name: Integrity Gates
+
+# Sprint 0 story NEW-0.3. Three merge gates that keep the site honest. Each one
+# encodes a rule that was violated before and must not be violated again:
+#
+#   1. No fabricated market data in app pages. The site shipped 107 Math.random
+#      calls inventing prices, signals and confidence scores. Skeleton shimmer and
+#      id generation are the only legitimate uses, so they are allowlisted by file.
+#   2. No licence-incompatible dependencies. vectorbt carries the Commons Clause
+#      (forbids selling), OpenBB is AGPL (infects a SaaS), mlfinlab is proprietary.
+#      Scoped to code and dependency manifests only — the words are legitimate as
+#      prose in blog content and comparison pages, so content dirs are excluded.
+#   3. No /correlation/* routes. Those pages are gated on a search-volume floor
+#      that has not been cleared; shipping them early creates thin pages at scale.
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  integrity:
+    name: Fabricated data, licences, route guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: No fabricated market data in app pages
+        run: |
+          # Matches CALLS (`Math.random(`), not the word. Comments explaining why a
+          # fabricated data path was removed are legitimate and must never fail a build —
+          # an unscoped grep here can only be satisfied by deleting the explanation.
+          # Allowlist: legitimate non-data randomness (shimmer widths, element ids).
+          ALLOW='src/components/skeletons/ChartSkeleton.tsx|src/components/skeletons/TableSkeleton.tsx|src/lib/backtest-storage.ts'
+          HITS=$(grep -rn "Math\.random(" quant/frontend/src/app quant/frontend/src/components quant/frontend/src/lib \
+                   --include="*.tsx" --include="*.ts" 2>/dev/null \
+                 | grep -Ev "$ALLOW" || true)
+          if [ -n "$HITS" ]; then
+            echo "FAIL: fabricated-data candidates found outside the allowlist."
+            echo "Market data must come from the API or not be shown at all."
+            echo "$HITS"
+            exit 1
+          fi
+          echo "PASS: no Math.random outside the skeleton/id allowlist."
+
+      - name: No licence-incompatible dependencies
+        run: |
+          # Scoped to code + dependency manifests. Content directories are excluded
+          # on purpose: "vectorbt" as page text is legitimate and must not fail a build.
+          TARGETS=$(find quant/backend quant/scripts -type f \( -name "*.py" -o -name "requirements*.txt" -o -name "pyproject.toml" -o -name "*.lock" \) 2>/dev/null)
+          TARGETS="$TARGETS $(ls quant/requirements*.txt 2>/dev/null || true)"
+          HITS=""
+          for f in $TARGETS; do
+            [ -f "$f" ] || continue
+            # Match real dependency/import usage, not prose in comments.
+            M=$(grep -nE "^[[:space:]]*(import|from)[[:space:]]+(vectorbt|openbb|mlfinlab)|^[[:space:]]*(vectorbt|openbb|mlfinlab)[[:space:]]*[><=]" "$f" || true)
+            [ -n "$M" ] && HITS="$HITS\n$f:\n$M"
+          done
+          if [ -n "$HITS" ]; then
+            echo "FAIL: licence-incompatible dependency detected."
+            echo "vectorbt = Commons Clause (forbids selling); openbb = AGPL; mlfinlab = proprietary."
+            printf "%b\n" "$HITS"
+            exit 1
+          fi
+          echo "PASS: no banned dependencies in code or manifests."
+
+      - name: No /correlation routes until the volume floor is cleared
+        run: |
+          HITS=$(find quant/frontend/src/app -type d -name "correlation*" 2>/dev/null || true)
+          SITEMAP=$(grep -rn "/correlation/" quant/frontend/src/app/sitemap.ts 2>/dev/null || true)
+          if [ -n "$HITS" ] || [ -n "$SITEMAP" ]; then
+            echo "FAIL: /correlation/* is gated on the Sprint 1 search-volume floor."
+            echo "$HITS"
+            echo "$SITEMAP"
+            exit 1
+          fi
+          echo "PASS: no correlation routes present."

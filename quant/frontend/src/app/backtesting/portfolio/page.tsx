@@ -558,7 +558,13 @@ export default function PortfolioBacktestingPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Sortino Ratio</span>
-                  <span className="font-bold text-purple-400">{results.metrics.sortino_ratio.toFixed(2)}</span>
+                  {/* Null when no losing periods exist — downside deviation is undefined
+                      then, and a dash is the honest render. */}
+                  <span className="font-bold text-purple-400">
+                    {typeof results.metrics.sortino_ratio === 'number'
+                      ? results.metrics.sortino_ratio.toFixed(2)
+                      : '—'}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Volatility</span>

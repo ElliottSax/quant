@@ -1,6 +1,13 @@
 /**
  * MarketTicker Component
- * BigCharts-style real-time scrolling market data ticker
+ * Scrolling market data ticker — real quotes only.
+ *
+ * This component previously seeded itself with a hardcoded price table and
+ * jittered it with Math.random on an interval, under a green "LIVE" badge.
+ * That is fabricated market data and it is gone: the ticker now renders only
+ * quotes returned by the market-data API, and renders nothing at all when
+ * none are available. Never reintroduce a synthetic fallback here — an empty
+ * ticker is honest, a fake one is not.
  */
 
 'use client'
@@ -18,73 +25,28 @@ interface TickerItem {
 
 const TICKER_SYMBOLS = ['SPY', 'QQQ', 'AAPL', 'MSFT', 'NVDA', 'GOOGL', 'TSLA', 'META', 'AMZN']
 
-// Simulated real-time market data
-const generateMarketData = (): TickerItem[] => [
-  { symbol: 'DJIA', price: 38892.45, change: 156.78, changePercent: 0.40, type: 'index' },
-  { symbol: 'S&P 500', price: 5021.84, change: 23.45, changePercent: 0.47, type: 'index' },
-  { symbol: 'NASDAQ', price: 15927.90, change: -45.23, changePercent: -0.28, type: 'index' },
-  { symbol: 'SPY', price: 502.18, change: 2.34, changePercent: 0.47, type: 'stock' },
-  { symbol: 'QQQ', price: 437.52, change: -1.23, changePercent: -0.28, type: 'stock' },
-  { symbol: 'AAPL', price: 189.45, change: 1.89, changePercent: 1.01, type: 'stock' },
-  { symbol: 'MSFT', price: 412.91, change: 3.45, changePercent: 0.84, type: 'stock' },
-  { symbol: 'NVDA', price: 878.35, change: 12.56, changePercent: 1.45, type: 'stock' },
-  { symbol: 'GOOGL', price: 141.28, change: 0.78, changePercent: 0.56, type: 'stock' },
-  { symbol: 'TSLA', price: 185.67, change: -4.34, changePercent: -2.28, type: 'stock' },
-  { symbol: 'META', price: 485.12, change: 8.92, changePercent: 1.87, type: 'stock' },
-  { symbol: 'ES=F', price: 5025.50, change: 18.25, changePercent: 0.36, type: 'futures' },
-  { symbol: 'NQ=F', price: 17845.75, change: -32.50, changePercent: -0.18, type: 'futures' },
-  { symbol: 'VIX', price: 14.23, change: -0.45, changePercent: -3.06, type: 'index' },
-]
-
 export function MarketTicker() {
-  const [data, setData] = useState<TickerItem[]>(generateMarketData())
+  const [data, setData] = useState<TickerItem[]>([])
   const [isPaused, setIsPaused] = useState(false)
-  const [usingRealData, setUsingRealData] = useState(false)
   const tickerRef = useRef<HTMLDivElement>(null)
 
-  // Try to fetch real quotes
   const { data: quotesData } = useMarketQuotes(TICKER_SYMBOLS)
 
-  // Update ticker with real data when available
   useEffect(() => {
-    if (quotesData?.quotes && Object.keys(quotesData.quotes).length > 0) {
-      const realItems: TickerItem[] = Object.entries(quotesData.quotes).map(([symbol, quote]) => ({
+    if (!quotesData?.quotes) return
+
+    const realItems: TickerItem[] = Object.entries(quotesData.quotes)
+      .filter(([, quote]) => typeof quote?.price === 'number')
+      .map(([symbol, quote]) => ({
         symbol,
         price: quote.price,
         change: quote.change ?? 0,
         changePercent: quote.change_percent ?? 0,
         type: 'stock' as const,
       }))
-      if (realItems.length > 0) {
-        setData(realItems)
-        setUsingRealData(true)
-      }
-    }
+
+    setData(realItems)
   }, [quotesData])
-
-  // Only simulate price jitter when using mock data
-  useEffect(() => {
-    if (usingRealData) return
-
-    const interval = setInterval(() => {
-      setData(prev => prev.map(item => {
-        const volatility = item.type === 'index' ? 0.3 : item.type === 'futures' ? 0.5 : 0.4
-        const priceChange = (Math.random() - 0.5) * volatility * (item.price / 100)
-        const newPrice = Math.max(0.01, item.price + priceChange)
-        const newChange = item.change + priceChange
-        const newChangePercent = (newChange / (newPrice - newChange)) * 100
-
-        return {
-          ...item,
-          price: parseFloat(newPrice.toFixed(2)),
-          change: parseFloat(newChange.toFixed(2)),
-          changePercent: parseFloat(newChangePercent.toFixed(2)),
-        }
-      }))
-    }, 1500)
-
-    return () => clearInterval(interval)
-  }, [usingRealData])
 
   const formatPrice = (price: number, symbol: string) => {
     if (symbol.includes('=F') || ['DJIA', 'S&P 500', 'NASDAQ'].includes(symbol)) {
@@ -92,6 +54,9 @@ export function MarketTicker() {
     }
     return price.toFixed(2)
   }
+
+  // No real quotes, no ticker. The bar is absent rather than invented.
+  if (data.length === 0) return null
 
   return (
     <div
@@ -141,9 +106,10 @@ export function MarketTicker() {
           </div>
         </div>
 
-        {/* Time display */}
+        {/* Delayed-quote label: the badge describes the feed, never a liveness claim
+            the component cannot substantiate. */}
         <div className="flex-shrink-0 px-3 py-1.5 text-[10px] font-mono text-[hsl(215,20%,50%)] border-l border-[hsl(215,40%,12%)] bg-[hsl(220,60%,4%)]">
-          <span className="text-[hsl(142,71%,55%)]">●</span> LIVE
+          END OF DAY
         </div>
       </div>
 

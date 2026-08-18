@@ -1,133 +1,75 @@
 /**
  * Advanced Charts & Visualizations Page
- * Professional-grade charting tools with TradingView & ECharts
+ *
+ * Every figure on this page is drawn from bars returned by the market-data API.
+ * There is no synthetic fallback and none may be reintroduced: this page used to
+ * generate a random-walk OHLC series whenever the API returned nothing, and label
+ * it "Demo data" in 11px grey while the chart, the stats bar and the percentage
+ * change above it all read as measured prices. A visitor could not tell the two
+ * apart. When no bars arrive, the page now says so and shows nothing else.
+ *
+ * The correlation heatmap, volatility series, drawdown series, risk gauges and
+ * technical radar that used to live here were removed for the same reason: none of
+ * them had a data source at all. They were random numbers and hardcoded scores.
+ * They come back only when they are computed from real history.
  */
 
 'use client'
 
 import { useState, useMemo, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
-import dynamic from 'next/dynamic'
 import { AdvancedCandlestickChart } from '@/components/charts/AdvancedCandlestickChart'
-import { AdvancedHeatmap } from '@/components/charts/AdvancedHeatmap'
-import { AdvancedTimeSeriesChart } from '@/components/charts/AdvancedTimeSeriesChart'
-import { GaugeChart } from '@/components/charts/GaugeChart'
-import { RadarChart } from '@/components/charts/RadarChart'
 import { useHistoricalData, useMarketQuote, useMarketStatus } from '@/lib/hooks'
 
-// Fallback data generator for when API is unavailable
-const generateFallbackOHLCData = (days: number = 120) => {
-  const data = []
-  let price = 150
-  const startDate = new Date()
-  startDate.setDate(startDate.getDate() - days)
-
-  for (let i = 0; i < days; i++) {
-    const date = new Date(startDate)
-    date.setDate(date.getDate() + i)
-
-    const volatility = 0.02 + Math.random() * 0.02
-    const trend = Math.sin(i / 30) * 0.005
-    const change = (Math.random() - 0.48 + trend) * price * volatility
-
-    const open = price
-    const close = Math.max(1, price + change)
-    const high = Math.max(open, close) * (1 + Math.random() * 0.015)
-    const low = Math.min(open, close) * (1 - Math.random() * 0.015)
-    const volume = Math.floor(1000000 + Math.random() * 8000000)
-
-    data.push({
-      timestamp: date.toISOString().split('T')[0],
-      open: parseFloat(open.toFixed(2)),
-      high: parseFloat(high.toFixed(2)),
-      low: parseFloat(low.toFixed(2)),
-      close: parseFloat(close.toFixed(2)),
-      volume,
-    })
-
-    price = close
-  }
-  return data
+interface OhlcBar {
+  timestamp: string
+  open: number
+  high: number
+  low: number
+  close: number
+  volume: number
 }
 
-const generateCorrelationData = () => {
-  const symbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'AMD', 'CRM']
-  const data: { xLabel: string; yLabel: string; value: number }[] = []
+/**
+ * Accept only bars that actually carry a date and four finite prices. Anything
+ * malformed is dropped rather than defaulted, so a partial response can never be
+ * padded out into a complete-looking series.
+ */
+function toOhlcBars(raw: unknown): OhlcBar[] {
+  if (!Array.isArray(raw)) return []
 
-  symbols.forEach((symbol1, i) => {
-    symbols.forEach((symbol2, j) => {
-      let correlation
-      if (i === j) {
-        correlation = 1.0
-      } else if (Math.abs(i - j) === 1) {
-        correlation = 0.6 + Math.random() * 0.3
-      } else {
-        correlation = (Math.random() - 0.3) * 1.2
-        correlation = Math.max(-1, Math.min(1, correlation))
-      }
+  const bars: OhlcBar[] = []
+  for (const item of raw) {
+    if (!item || typeof item !== 'object') continue
+    const record = item as Record<string, unknown>
 
-      data.push({
-        xLabel: symbol1,
-        yLabel: symbol2,
-        value: parseFloat(correlation.toFixed(4)),
-      })
-    })
-  })
+    const stamp =
+      typeof record.timestamp === 'string'
+        ? record.timestamp
+        : typeof record.date === 'string'
+          ? record.date
+          : null
+    if (!stamp) continue
 
-  return data
-}
+    const open = Number(record.open)
+    const high = Number(record.high)
+    const low = Number(record.low)
+    const close = Number(record.close)
+    if (![open, high, low, close].every(Number.isFinite)) continue
 
-const generateVolatilityData = () => {
-  const data = []
-  const startDate = new Date()
-  startDate.setDate(startDate.getDate() - 252)
+    const volume = Number(record.volume)
 
-  for (let i = 0; i < 252; i++) {
-    const date = new Date(startDate)
-    date.setDate(date.getDate() + i)
-
-    data.push({
-      timestamp: date.toISOString().split('T')[0],
-      value: parseFloat((0.15 + Math.sin(i / 20) * 0.1 + Math.random() * 0.05).toFixed(4)) * 100,
+    bars.push({
+      timestamp: stamp.split('T')[0],
+      open,
+      high,
+      low,
+      close,
+      volume: Number.isFinite(volume) ? volume : 0,
     })
   }
-  return data
+  return bars
 }
-
-const generateDrawdownData = () => {
-  const data = []
-  let portfolioValue = 100000
-  let peak = portfolioValue
-  const startDate = new Date()
-  startDate.setDate(startDate.getDate() - 252)
-
-  for (let i = 0; i < 252; i++) {
-    const date = new Date(startDate)
-    date.setDate(date.getDate() + i)
-
-    const dailyReturn = (Math.random() - 0.48) * 0.02
-    portfolioValue *= (1 + dailyReturn)
-    peak = Math.max(peak, portfolioValue)
-    const drawdown = ((portfolioValue - peak) / peak) * 100
-
-    data.push({
-      timestamp: date.toISOString().split('T')[0],
-      value: parseFloat(drawdown.toFixed(2)),
-    })
-  }
-
-  return data
-}
-
-const CHART_TYPES = [
-  { id: 'candlestick', label: 'Candlestick', icon: '📊', description: 'TradingView-style OHLC with indicators' },
-  { id: 'correlation', label: 'Correlation', icon: '🔥', description: 'Interactive correlation heatmap' },
-  { id: 'volatility', label: 'Volatility', icon: '📈', description: 'Historical volatility analysis' },
-  { id: 'drawdown', label: 'Drawdown', icon: '📉', description: 'Portfolio drawdown tracking' },
-  { id: 'metrics', label: 'Metrics', icon: '⏱️', description: 'Risk gauges and radar analysis' },
-] as const
-
-type ChartType = typeof CHART_TYPES[number]['id']
 
 const STOCK_PRESETS = [
   { symbol: 'AAPL', name: 'Apple Inc.' },
@@ -142,7 +84,6 @@ function ChartsContent() {
   const searchParams = useSearchParams()
   const symbolFromUrl = searchParams.get('symbol')
 
-  const [selectedChart, setSelectedChart] = useState<ChartType>('candlestick')
   const [ticker, setTicker] = useState(symbolFromUrl?.toUpperCase() || 'AAPL')
   const [showIndicators, setShowIndicators] = useState({
     volume: true,
@@ -162,53 +103,31 @@ function ChartsContent() {
   const startDate = useMemo(() => {
     const date = new Date()
     date.setFullYear(date.getFullYear() - 1)
-    return date
+    return date.toISOString()
   }, [])
 
   // Fetch real market data from API
   const {
     data: historicalData,
     isLoading: isLoadingHistorical,
-    error: historicalError
+    isError: isHistoricalError,
+    refetch: refetchHistorical,
   } = useHistoricalData(ticker, startDate)
 
-  const {
-    data: quoteData,
-    isLoading: isLoadingQuote
-  } = useMarketQuote(ticker)
+  const { data: quoteData, isLoading: isLoadingQuote } = useMarketQuote(ticker)
 
   const { data: marketStatus } = useMarketStatus()
 
-  // Transform API data to chart format, fallback to generated data
-  const ohlcData = useMemo(() => {
-    if (historicalData?.bars && historicalData.bars.length > 0) {
-      return historicalData.bars.map(bar => ({
-        timestamp: bar.timestamp.split('T')[0],
-        open: bar.open,
-        high: bar.high,
-        low: bar.low,
-        close: bar.close,
-        volume: bar.volume,
-      }))
-    }
-    // Fallback to generated data if API fails or no data
-    return generateFallbackOHLCData(150)
-  }, [historicalData])
+  const ohlcData = useMemo(() => toOhlcBars(historicalData), [historicalData])
 
-  const correlationData = useMemo(() => generateCorrelationData(), [])
-  const volatilityData = useMemo(() => generateVolatilityData(), [])
-  const drawdownData = useMemo(() => generateDrawdownData(), [])
+  const quotePrice = typeof quoteData?.price === 'number' ? quoteData.price : null
+  const quoteChange = typeof quoteData?.change === 'number' ? quoteData.change : null
+  const quoteChangePercent =
+    typeof quoteData?.changePercent === 'number' ? quoteData.changePercent : null
 
-  const radarData = useMemo(() => [
-    { name: 'Momentum', value: 75, max: 100 },
-    { name: 'Volatility', value: 45, max: 100 },
-    { name: 'Volume', value: 82, max: 100 },
-    { name: 'Trend', value: 68, max: 100 },
-    { name: 'Support', value: 55, max: 100 },
-    { name: 'Resistance', value: 62, max: 100 },
-  ], [])
-
-  const currentChartInfo = CHART_TYPES.find(c => c.id === selectedChart)
+  const hasBars = ohlcData.length > 0
+  const latest = hasBars ? ohlcData[ohlcData.length - 1] : null
+  const first = hasBars ? ohlcData[0] : null
 
   return (
     <div className="space-y-8">
@@ -221,7 +140,8 @@ function ChartsContent() {
             </h1>
             <p className="text-lg text-slate-400 max-w-2xl">
               Professional-grade visualization tools powered by TradingView Lightweight Charts
-              and Apache ECharts. Interactive, responsive, and built for serious analysis.
+              and Apache ECharts. Every price and indicator on this page is drawn from
+              market data returned by the API — nothing is simulated.
             </p>
           </div>
 
@@ -229,32 +149,35 @@ function ChartsContent() {
           <div className="flex flex-col items-end gap-2">
             {marketStatus && (
               <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg ${
-                marketStatus.is_open
+                marketStatus.isOpen
                   ? 'bg-emerald-500/10 border border-emerald-500/30'
                   : 'bg-slate-700/50 border border-slate-600/30'
               }`}>
                 <span className={`w-2 h-2 rounded-full ${
-                  marketStatus.is_open ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'
+                  marketStatus.isOpen ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'
                 }`} />
                 <span className={`text-xs font-medium ${
-                  marketStatus.is_open ? 'text-emerald-400' : 'text-slate-400'
+                  marketStatus.isOpen ? 'text-emerald-400' : 'text-slate-400'
                 }`}>
-                  {marketStatus.is_open ? 'MARKET OPEN' : 'MARKET CLOSED'}
+                  {marketStatus.isOpen ? 'MARKET OPEN' : 'MARKET CLOSED'}
                 </span>
               </div>
             )}
 
-            {quoteData && !isLoadingQuote && (
+            {quotePrice !== null && !isLoadingQuote && (
               <div className="text-right">
                 <div className="text-2xl font-bold text-white font-mono">
-                  ${quoteData.price?.toFixed(2) || '---'}
+                  ${quotePrice.toFixed(2)}
                 </div>
-                <div className={`text-sm font-medium ${
-                  (quoteData.change || 0) >= 0 ? 'text-emerald-400' : 'text-red-400'
-                }`}>
-                  {(quoteData.change || 0) >= 0 ? '+' : ''}
-                  {quoteData.change?.toFixed(2)} ({quoteData.change_percent?.toFixed(2)}%)
-                </div>
+                {quoteChange !== null && (
+                  <div className={`text-sm font-medium ${
+                    quoteChange >= 0 ? 'text-emerald-400' : 'text-red-400'
+                  }`}>
+                    {quoteChange >= 0 ? '+' : ''}
+                    {quoteChange.toFixed(2)}
+                    {quoteChangePercent !== null && ` (${quoteChangePercent.toFixed(2)}%)`}
+                  </div>
+                )}
               </div>
             )}
 
@@ -304,44 +227,9 @@ function ChartsContent() {
             </div>
           </div>
 
-          {/* Chart Type Selector */}
+          {/* Indicator Toggles */}
           <div className="flex-1">
             <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-              Chart Type
-            </label>
-            <div className="flex flex-wrap gap-2">
-              {CHART_TYPES.map((chart) => (
-                <button
-                  key={chart.id}
-                  onClick={() => setSelectedChart(chart.id)}
-                  className={`group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                    selectedChart === chart.id
-                      ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/25'
-                      : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 border border-slate-700/50'
-                  }`}
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="text-base">{chart.icon}</span>
-                    <span>{chart.label}</span>
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Chart Description */}
-        <div className="mt-4 pt-4 border-t border-slate-700/50">
-          <p className="text-sm text-slate-400">
-            <span className="text-indigo-400 font-medium">{currentChartInfo?.icon} {currentChartInfo?.label}:</span>{' '}
-            {currentChartInfo?.description}
-          </p>
-        </div>
-
-        {/* Indicator Toggles (for candlestick) */}
-        {selectedChart === 'candlestick' && (
-          <div className="mt-4 pt-4 border-t border-slate-700/50">
-            <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
               Technical Indicators
             </label>
             <div className="flex flex-wrap gap-3">
@@ -373,12 +261,27 @@ function ChartsContent() {
               ))}
             </div>
           </div>
-        )}
+        </div>
+
+        <div className="mt-4 pt-4 border-t border-slate-700/50">
+          <p className="text-sm text-slate-400">
+            <span className="text-indigo-400 font-medium">📊 Candlestick:</span>{' '}
+            One year of daily OHLC bars for the selected symbol, with indicators computed
+            from those bars. The correlation, volatility, drawdown and risk-score views
+            that used to sit alongside this chart were removed — they had no data source
+            behind them, and will return only once they are computed from real history.
+          </p>
+        </div>
       </div>
 
       {/* Chart Display */}
       <div className="animate-slide-up" style={{ animationDelay: '100ms' }}>
-        {selectedChart === 'candlestick' && (
+        {isLoadingHistorical ? (
+          <div className="glass-card p-16 text-center">
+            <div className="w-6 h-6 mx-auto mb-4 border-2 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin" />
+            <p className="text-slate-400">Loading {ticker} price history…</p>
+          </div>
+        ) : hasBars ? (
           <AdvancedCandlestickChart
             data={ohlcData}
             symbol={ticker}
@@ -388,109 +291,48 @@ function ChartsContent() {
             showRSI={showIndicators.rsi}
             showBollingerBands={showIndicators.bollinger}
           />
-        )}
-
-        {selectedChart === 'correlation' && (
-          <AdvancedHeatmap
-            data={correlationData}
-            title="Stock Correlation Matrix"
-            height={500}
-          />
-        )}
-
-        {selectedChart === 'volatility' && (
-          <AdvancedTimeSeriesChart
-            data={volatilityData}
-            title="Historical Volatility (Annualized)"
-            seriesName="Volatility %"
-            yAxisLabel="Volatility"
-            color="#f59e0b"
-            height={450}
-            showDataZoom={true}
-          />
-        )}
-
-        {selectedChart === 'drawdown' && (
-          <AdvancedTimeSeriesChart
-            data={drawdownData}
-            title="Portfolio Drawdown Analysis"
-            seriesName="Drawdown %"
-            yAxisLabel="Drawdown"
-            color="#ef4444"
-            height={450}
-            showDataZoom={true}
-          />
-        )}
-
-        {selectedChart === 'metrics' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-6">
-              <GaugeChart
-                value={67}
-                title="Risk Score"
-                subtitle="Portfolio risk assessment based on current holdings"
-                size="lg"
-                thresholds={{ low: 25, medium: 50, high: 75 }}
-              />
-              <GaugeChart
-                value={42}
-                title="Volatility Index"
-                subtitle="30-day rolling volatility percentile"
-                size="lg"
-                colors={{
-                  low: '#22c55e',
-                  medium: '#f59e0b',
-                  high: '#f97316',
-                  critical: '#ef4444',
-                }}
-              />
-            </div>
-            <RadarChart
-              data={radarData}
-              title="Technical Analysis Profile"
-              height={450}
-              colors={['#6366f1', '#22c55e']}
-            />
+        ) : (
+          <div className="glass-card p-12 text-center border border-red-500/30">
+            <h3 className="text-2xl font-bold mb-3">
+              {ticker} price history did not load
+            </h3>
+            <p className="text-slate-400 mb-2 max-w-xl mx-auto">
+              {isHistoricalError
+                ? 'The market-data service returned an error.'
+                : `No daily bars came back for ${ticker}. The symbol may not be covered, or the market-data service may be unavailable.`}
+            </p>
+            <p className="text-sm text-slate-500 mb-6 max-w-xl mx-auto">
+              No chart is shown because there are no prices to chart. This page will never
+              display a simulated price series in place of missing data.
+            </p>
+            <button onClick={() => refetchHistorical()} className="btn-primary">
+              Try again
+            </button>
           </div>
         )}
       </div>
 
       {/* Stats Bar */}
-      {selectedChart === 'candlestick' && ohlcData.length > 0 && (
+      {hasBars && latest && first && (
         <>
-          {/* Data source indicator */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className={`w-2 h-2 rounded-full ${
-                historicalData?.bars && historicalData.bars.length > 0
-                  ? 'bg-emerald-400'
-                  : 'bg-amber-400'
-              }`} />
-              <span className="text-xs text-slate-500">
-                {historicalData?.bars && historicalData.bars.length > 0
-                  ? `Live data: ${historicalData.count} bars from Yahoo Finance`
-                  : 'Demo data (backend not connected)'
-                }
-              </span>
-            </div>
-            {historicalError && (
-              <span className="text-xs text-amber-400">
-                Using fallback data
-              </span>
-            )}
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span className="text-xs text-slate-500">
+              {ohlcData.length} daily bars from the market-data API
+            </span>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 animate-fade-in" style={{ animationDelay: '200ms' }}>
             {[
-              { label: 'Open', value: `$${ohlcData[ohlcData.length - 1].open.toFixed(2)}`, color: 'text-slate-300' },
-              { label: 'High', value: `$${ohlcData[ohlcData.length - 1].high.toFixed(2)}`, color: 'text-emerald-400' },
-              { label: 'Low', value: `$${ohlcData[ohlcData.length - 1].low.toFixed(2)}`, color: 'text-red-400' },
-              { label: 'Close', value: `$${ohlcData[ohlcData.length - 1].close.toFixed(2)}`, color: 'text-white' },
-              { label: 'Volume', value: (ohlcData[ohlcData.length - 1].volume / 1000000).toFixed(2) + 'M', color: 'text-cyan-400' },
+              { label: 'Open', value: `$${latest.open.toFixed(2)}`, color: 'text-slate-300' },
+              { label: 'High', value: `$${latest.high.toFixed(2)}`, color: 'text-emerald-400' },
+              { label: 'Low', value: `$${latest.low.toFixed(2)}`, color: 'text-red-400' },
+              { label: 'Close', value: `$${latest.close.toFixed(2)}`, color: 'text-white' },
+              { label: 'Volume', value: `${(latest.volume / 1000000).toFixed(2)}M`, color: 'text-cyan-400' },
               {
                 label: 'Change',
-                value: `${((ohlcData[ohlcData.length - 1].close - ohlcData[0].close) / ohlcData[0].close * 100).toFixed(2)}%`,
-                color: ohlcData[ohlcData.length - 1].close >= ohlcData[0].close ? 'text-emerald-400' : 'text-red-400'
+                value: `${((latest.close - first.close) / first.close * 100).toFixed(2)}%`,
+                color: latest.close >= first.close ? 'text-emerald-400' : 'text-red-400'
               },
             ].map((stat) => (
               <div key={stat.label} className="glass-card p-4 text-center">

@@ -1,6 +1,12 @@
 /**
  * Strategy Builder Page
  * Form-based custom strategy creation with live preview and inline backtest results
+ *
+ * A custom strategy either backtests against real returned data or it fails visibly.
+ * No synthetic fallback may be reintroduced here: every number rendered on this page —
+ * equity curve, benchmark, trades, volume, win rate — must come from the backtest API
+ * response. A simulated equity curve shown in place of a failed run is worse than no
+ * result at all, and this page is the sibling of /backtesting, which holds the same line.
  */
 
 'use client'
@@ -25,9 +31,15 @@ interface Condition {
   params: Record<string, number>
 }
 
+// Monotonic counter rather than Math.random: these ids are React keys, never data, and
+// keeping randomness out of this file lets the fabricated-data merge gate stay strict
+// (no file-wide allowlist entry that would also excuse an invented market number).
+let conditionSeq = 0
+
 function newCondition(): Condition {
   return {
-    id: Math.random().toString(36).slice(2, 8),
+    // React key only — never used as data.
+    id: `c${++conditionSeq}`,
     indicator: 'sma',
     operator: 'crosses_above',
     referenceType: 'indicator',
@@ -52,42 +64,6 @@ function mapToBackendStrategy(entryConditions: Condition[]): string {
   return mapping[primary] || 'simple_ma_crossover'
 }
 
-// Generate mock data (same as backtesting page)
-function generateMockResult(initialCapital: number, strategy: string, days: number) {
-  const data = []
-  let equity = initialCapital
-  let peak = equity
-  const trades: any[] = []
-  const params: any = {
-    simple_ma_crossover: { winRate: 0.58, avgWin: 0.025, avgLoss: 0.015, tradeFreq: 0.03 },
-    rsi_mean_reversion: { winRate: 0.62, avgWin: 0.018, avgLoss: 0.012, tradeFreq: 0.05 },
-    bollinger_breakout: { winRate: 0.54, avgWin: 0.032, avgLoss: 0.020, tradeFreq: 0.02 },
-    momentum: { winRate: 0.64, avgWin: 0.028, avgLoss: 0.016, tradeFreq: 0.04 },
-    trend_following: { winRate: 0.55, avgWin: 0.035, avgLoss: 0.018, tradeFreq: 0.025 },
-  }
-  const p = params[strategy] || params.simple_ma_crossover
-
-  for (let i = 0; i < days; i++) {
-    if (Math.random() < p.tradeFreq) {
-      const isWin = Math.random() < p.winRate
-      const ret = isWin ? p.avgWin + (Math.random() - 0.5) * 0.01 : -(p.avgLoss + (Math.random() - 0.5) * 0.005)
-      const change = equity * ret
-      equity += change
-      trades.push({ day: i + 1, returnPct: ret * 100, profit: change, isWin, equity })
-    }
-    equity *= 1 + (Math.random() - 0.48) * 0.005
-    peak = Math.max(peak, equity)
-    data.push({
-      day: i + 1, date: new Date(2023, 0, i + 1).toISOString().split('T')[0],
-      equity: parseFloat(equity.toFixed(2)),
-      drawdown: parseFloat((((equity - peak) / peak) * 100).toFixed(2)),
-      benchmark: parseFloat((initialCapital * (1 + 0.10 * (i / days))).toFixed(2)),
-      volume: Math.floor(Math.random() * 1000000) + 100000,
-    })
-  }
-  return { data, trades }
-}
-
 function computeMetricsAndCharts(equityData: any[], trades: any[], initialCapital: number) {
   const finalEquity = equityData[equityData.length - 1].equity
   const totalReturn = ((finalEquity - initialCapital) / initialCapital) * 100
@@ -102,6 +78,14 @@ function computeMetricsAndCharts(equityData: any[], trades: any[], initialCapita
   const avgReturn = returns.reduce((a: number, b: number) => a + b, 0) / returns.length
   const stdDev = Math.sqrt(returns.reduce((s: number, r: number) => s + Math.pow(r - avgReturn, 2), 0) / returns.length)
   const sharpeRatio = stdDev > 0 ? (avgReturn * 252) / (stdDev * Math.sqrt(252)) : 0
+  // Sortino uses downside deviation (returns below the 0% target only). It is not a
+  // fixed multiple of Sharpe — deriving it as one invents a number that happens to
+  // flatter the strategy, since downside deviation ≤ total deviation.
+  const downside = returns.filter((r: number) => r < 0)
+  const downsideDev = downside.length > 0
+    ? Math.sqrt(downside.reduce((s: number, r: number) => s + r * r, 0) / downside.length)
+    : 0
+  const sortinoRatio = downsideDev > 0 ? (avgReturn * 252) / (downsideDev * Math.sqrt(252)) : null
 
   // Monthly returns
   const monthlyReturns = []
@@ -140,7 +124,7 @@ function computeMetricsAndCharts(equityData: any[], trades: any[], initialCapita
   }
 
   return {
-    metrics: { finalEquity, totalReturn, maxDrawdown, sharpeRatio, winRate, avgWin, avgLoss, profitFactor, totalTrades: trades.length },
+    metrics: { finalEquity, totalReturn, maxDrawdown, sharpeRatio, sortinoRatio, winRate, avgWin, avgLoss, profitFactor, totalTrades: trades.length },
     chartData: { equityData, trades, monthlyReturns, tradeDistribution, rollingMetrics },
   }
 }
@@ -161,6 +145,7 @@ export default function StrategyBuilderPage() {
   const [isRunning, setIsRunning] = useState(false)
   const [result, setResult] = useState<{ metrics: any; chartData: any } | null>(null)
   const [savedId, setSavedId] = useState<string | null>(null)
+  const [runError, setRunError] = useState<string | null>(null)
 
   const applyTemplate = (strategy: StrategyDefinition) => {
     setSelectedTemplate(strategy.id)
@@ -237,6 +222,7 @@ export default function StrategyBuilderPage() {
   const runBacktest = async () => {
     setIsRunning(true)
     setSavedId(null)
+    setRunError(null)
     try {
       const backendStrategy = mapToBackendStrategy(entryConditions)
       const apiResult = await api.backtesting.run({
@@ -244,22 +230,38 @@ export default function StrategyBuilderPage() {
         strategy: backendStrategy, initial_capital: initialCapital,
         commission: commission / 100, slippage: 0.0005,
       })
-      const equityData = apiResult.equity_curve?.length > 0
-        ? apiResult.equity_curve.map((point: any, i: number) => ({
-            day: i + 1, date: point.date || '', equity: point.equity || point.value || initialCapital,
-            drawdown: point.drawdown || 0,
-            benchmark: initialCapital * (1 + 0.10 * (i / (apiResult.equity_curve.length || 252))),
-          }))
-        : generateMockResult(initialCapital, backendStrategy, 252).data
-      const trades = apiResult.trades?.map((t: any, i: number) => ({
-        day: t.day || i + 1, returnPct: t.return_pct || 0, profit: t.profit || 0,
-        isWin: (t.return_pct || t.profit || 0) > 0, equity: t.equity || initialCapital,
-      })) || generateMockResult(initialCapital, backendStrategy, 252).trades
+
+      if (!apiResult.equity_curve?.length) {
+        throw new Error(
+          `No price history was returned for ${symbol} over ${startDate} to ${endDate}.`
+        )
+      }
+
+      const equityData = apiResult.equity_curve.map((point: any, i: number) => ({
+        day: i + 1,
+        date: point.date || null,
+        equity: point.equity ?? point.value ?? null,
+        drawdown: point.drawdown ?? 0,
+        benchmark: point.benchmark ?? null,
+        volume: point.volume ?? null,
+      }))
+
+      const trades = (apiResult.trades ?? []).map((t: any, i: number) => ({
+        day: t.day || i + 1,
+        returnPct: t.return_pct ?? t.returnPct ?? 0,
+        profit: t.profit ?? 0,
+        isWin: (t.return_pct ?? t.returnPct ?? t.profit ?? 0) > 0,
+        equity: t.equity ?? null,
+      }))
+
       setResult(computeMetricsAndCharts(equityData, trades, initialCapital))
-    } catch {
-      const backendStrategy = mapToBackendStrategy(entryConditions)
-      const { data, trades } = generateMockResult(initialCapital, backendStrategy, 252)
-      setResult(computeMetricsAndCharts(data, trades, initialCapital))
+    } catch (err) {
+      setResult(null)
+      setRunError(
+        err instanceof Error && err.message
+          ? err.message
+          : 'The backtest service could not be reached.'
+      )
     } finally {
       setIsRunning(false)
     }
@@ -270,14 +272,14 @@ export default function StrategyBuilderPage() {
     const id = saveBacktestResult(
       {
         total_return: result.metrics.totalReturn, annual_return: result.metrics.totalReturn,
-        sharpe_ratio: result.metrics.sharpeRatio, sortino_ratio: result.metrics.sharpeRatio * 1.2,
+        sharpe_ratio: result.metrics.sharpeRatio, sortino_ratio: result.metrics.sortinoRatio,
         max_drawdown: result.metrics.maxDrawdown, win_rate: result.metrics.winRate,
         profit_factor: result.metrics.profitFactor, total_trades: result.metrics.totalTrades,
         winning_trades: result.chartData.trades.filter((t: any) => t.isWin).length,
         losing_trades: result.chartData.trades.filter((t: any) => !t.isWin).length,
         avg_win: result.metrics.avgWin, avg_loss: result.metrics.avgLoss,
-        largest_win: Math.max(...result.chartData.trades.map((t: any) => t.returnPct)),
-        largest_loss: Math.min(...result.chartData.trades.map((t: any) => t.returnPct)),
+        largest_win: result.chartData.trades.length > 0 ? Math.max(...result.chartData.trades.map((t: any) => t.returnPct)) : 0,
+        largest_loss: result.chartData.trades.length > 0 ? Math.min(...result.chartData.trades.map((t: any) => t.returnPct)) : 0,
         start_date: startDate, end_date: endDate, duration_days: result.chartData.equityData.length,
         initial_capital: initialCapital, final_capital: result.metrics.finalEquity,
         peak_capital: Math.max(...result.chartData.equityData.map((d: any) => d.equity)),
@@ -539,6 +541,9 @@ export default function StrategyBuilderPage() {
                   {savedId ? 'Saved!' : 'Save Result'}
                 </button>
               )}
+              {runError && !result && (
+                <span className="text-sm text-red-400">Backtest failed — see below.</span>
+              )}
             </div>
           </div>
         </div>
@@ -603,7 +608,22 @@ export default function StrategyBuilderPage() {
         </div>
       </div>
 
-      {/* Full Results */}
+      {/* Full Results — shown only when the API returned a real curve */}
+      {runError && !result && (
+        <div className="glass-strong rounded-xl p-12 text-center border border-red-500/30">
+          <h3 className="text-2xl font-bold mb-3">This backtest did not run</h3>
+          <p className="text-muted-foreground mb-2 max-w-xl mx-auto">{runError}</p>
+          <p className="text-sm text-muted-foreground mb-6 max-w-xl mx-auto">
+            Your strategy configuration above is unchanged. No results are shown because none
+            were produced — this page will never display a simulated equity curve in place of
+            a failed run.
+          </p>
+          <button onClick={runBacktest} className="btn-primary" disabled={isRunning}>
+            Try again
+          </button>
+        </div>
+      )}
+
       {result && (
         <BacktestResultView
           metrics={result.metrics}
