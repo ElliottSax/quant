@@ -40,6 +40,54 @@
 // ---------------------------------------------------------------------------
 
 export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
+  // ---------------------------------------------------------------------------
+  // 13 articles asserting FIRST-PERSON RESEARCH THAT WAS NEVER RUN (measured 2026-08-19)
+  // ---------------------------------------------------------------------------
+  //
+  // These do not contain placeholders; they read as finished, confident writing.
+  // The problem is that they claim original empirical work in the site's own voice
+  // and report specific results from it: "we tested 1,247 variations of moving
+  // average crossover strategies" on S&P 500 futures, "We backtested a stat arb
+  // strategy on 10 crypto pairs", "Our analysis reveals ... the accuracy of the
+  // signal increases to 81.2%". No such backtests exist anywhere in this repo, and
+  // until 2026-08-18 the platform had no persisted market data at all to run them on.
+  //
+  // This is the same defect class as the fabricated tool pages, in prose: a number
+  // presented as measured when nothing measured it. It is arguably worse here,
+  // because a reader has no way to tell a written claim from a computed one.
+  //
+  // HOW THE SET WAS MEASURED, and why it is 13 and not 88:
+  //   * fenced/indented/inline code was stripped first — the same discipline the
+  //     placeholder pass used — because "we tested" inside a docstring or a quoted
+  //     example is not a claim the site is making.
+  //   * the pattern matched only FIRST-PERSON assertions of having done the work
+  //     ("we tested/backtested/analysed", "our backtest/analysis shows"). A crude
+  //     grep returns 88 files, but most are instructional prose addressed to the
+  //     reader ("if your backtest shows a Sharpe above 2.0..."), which is fine.
+  //   * every one of the 18 surviving matches was then read in context.
+  //
+  // DELIBERATELY EXCLUDED, after reading it: `overfitting-trading-strategies` uses
+  // "given that we tested N variations, what is the probability that the best Sharpe
+  // exceeds a threshold by chance" — a hypothetical inside an explanation of the
+  // deflated Sharpe ratio, not a claim about work we did. It stays indexed.
+  //
+  // Noindex is a stop-gap, not a fix. These articles remain readable and still
+  // contain the invented figures; the real repair is to rewrite the claims or run
+  // the backtests. Removing a slug re-publishes that article.
+  'breakout-trading-strategy',
+  'cerebras-backtesting-bollinger-bands-efficiently',
+  'cerebras-backtesting-macd-crossovers-using-machine-learning',
+  'cerebras-guide-to-statistical-arbitrage-on-crypto',
+  'cerebras-improving-algorithmic-trading-efficiently',
+  'cerebras-improving-bollinger-bands-on-forex',
+  'cerebras-improving-rsi-strategies-on-forex',
+  'congress-insider-selling-signals',
+  'macd-trading-strategy',
+  'mean-reversion-trading-strategy',
+  'momentum-trading-strategy-guide',
+  'pairs-trading-strategy-guide',
+  'rsi-trading-strategy-guide',
+
   // -- 25 forex articles: unresolved `[specific market mechanics based on timeframe]`
   '01-forex-scalping-strategy-5',
   '02-best-forex-day-trading',
