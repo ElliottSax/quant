@@ -32,16 +32,20 @@ const faqs = [
     a: 'Risk is the distance from your entry price to your stop-loss. Reward is the distance from your entry to your target. The ratio is reward divided by risk, shown as 1 : X. For example, an entry of $100, stop of $95, and target of $115 gives $5 of risk and $15 of reward, a 1 : 3 ratio.',
   },
   {
-    q: 'What is a good risk/reward ratio?',
-    a: 'Many traders look for at least 1 : 2, meaning they aim to make twice what they risk. A 1 : 3 ratio is common for swing setups. The higher the ratio, the lower the win rate you need to stay profitable.',
+    q: 'How does the ratio relate to the win rate?',
+    a: 'They trade off against each other through one equation. A 1 : 1 ratio breaks even at a 50% win rate, 1 : 2 at 33.3%, 1 : 3 at 25%, and 1 : 4 at 20%. Raising the ratio lowers the breakeven win rate, but the ratio is a property of the levels you chose, not evidence that the target will be reached — moving the target further away raises the ratio and lowers the chance of getting there. This calculator does not estimate that chance and does not suggest a ratio to aim for.',
   },
   {
     q: 'What is the breakeven win rate?',
-    a: 'It is the win percentage at which your winners exactly offset your losers over many trades. It equals 1 ÷ (1 + R:R) as a percentage. A 1 : 3 ratio has a 25% breakeven win rate, so winning more than a quarter of trades at that ratio is profitable before costs.',
+    a: 'It is the win percentage w that solves w × reward = (1 − w) × risk, which rearranges to w = 1 ÷ (1 + R). At that win rate, wins and losses cancel exactly over a long series of trades of the same shape. It is arithmetic about the numbers entered, not a forecast, and it excludes commissions and slippage, which raise the win rate actually required.',
+  },
+  {
+    q: 'Does it work for short trades?',
+    a: 'Yes. A stop-loss above the entry is read as a short and the target must then be below the entry. A stop below the entry is a long and the target must be above it. If the target is on the losing side of the entry the calculator says so instead of returning a ratio, because taking the absolute distance would otherwise report a loss as a reward.',
   },
   {
     q: 'Do I have to enter a position size?',
-    a: 'No. Position size is optional. Leave it blank to see per-share and percentage figures only, or enter a share count to also see your total dollar risk and dollar reward.',
+    a: 'No. Position size is optional. Leave it blank to see per-share and percentage figures only, or enter a share count to also see the total dollar risk and dollar reward for that many shares.',
   },
 ]
 
@@ -84,9 +88,10 @@ export default function RiskRewardPage() {
       <div className="max-w-3xl mb-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Risk/Reward Ratio Calculator</h1>
         <p className="text-lg text-slate-400">
-          Score any trade before you take it. Enter your entry, stop-loss, and target to see the
-          risk/reward ratio, the percentage you stand to gain or lose, and the win rate you need
-          just to break even.
+          Enter an entry, stop-loss, and target to get the reward-to-risk ratio those three prices
+          imply, each distance as a percentage of the entry, and the breakeven win rate that
+          follows from the ratio. Computed from your inputs alone — no market data is used and none
+          is shown.
         </p>
       </div>
 
@@ -95,22 +100,35 @@ export default function RiskRewardPage() {
 
       {/* Explainer */}
       <section className="max-w-3xl mt-14">
-        <h2 className="text-2xl font-bold text-white mb-4">Why risk/reward matters</h2>
+        <h2 className="text-2xl font-bold text-white mb-4">How the calculation works</h2>
         <p className="text-slate-400 leading-relaxed mb-4">
-          The risk/reward ratio compares how much you can lose against how much you can make on a
-          trade. It works hand in hand with your win rate: a favorable ratio means you can lose
-          more trades than you win and still come out ahead.
+          The risk/reward ratio compares the distance from your entry down to your stop against the
+          distance from your entry up to your target. It is four pieces of arithmetic over three
+          prices:
         </p>
         <ol className="text-slate-400 leading-relaxed space-y-2 mb-4 list-decimal pl-5">
           <li><strong className="text-slate-200">Risk</strong> = | entry price − stop-loss price |</li>
           <li><strong className="text-slate-200">Reward</strong> = | target price − entry price |</li>
-          <li><strong className="text-slate-200">R:R ratio</strong> = reward ÷ risk</li>
-          <li><strong className="text-slate-200">Breakeven win rate</strong> = 1 ÷ (1 + R:R)</li>
+          <li><strong className="text-slate-200">R</strong> = reward ÷ risk</li>
+          <li><strong className="text-slate-200">Breakeven win rate</strong> = 1 ÷ (1 + R)</li>
         </ol>
+        <p className="text-slate-400 leading-relaxed mb-4">
+          Worked through with the default inputs: an entry of $100, a stop at $95, and a target of
+          $115 give $5 of risk and $15 of reward, so R = 3 and the ratio displays as 1 : 3. The
+          breakeven win rate is 1 ÷ (1 + 3) = 0.25, or 25%. Reversed as a short — entry $100, stop
+          $105, target $85 — the same $5 and $15 distances give the same 1 : 3 and the same 25%.
+        </p>
+        <p className="text-slate-400 leading-relaxed mb-4">
+          The breakeven figure follows from setting the two sides equal. Over n trades at win rate
+          w, total gains are w × n × reward and total losses are (1 − w) × n × risk. Setting those
+          equal and dividing through by n × risk gives w × R = 1 − w, so w = 1 ÷ (1 + R).
+        </p>
         <p className="text-slate-400 leading-relaxed">
-          With an entry of $100, a stop at $95, and a target of $115, you risk $5 to make $15 — a
-          1 : 3 ratio. At that ratio you only need to win 25% of your trades to break even, so a
-          strategy that wins even a third of the time can be comfortably profitable.
+          What this does not tell you is how likely the target is. R is determined entirely by where
+          you place the stop and target, so it can be raised to any value by moving the target
+          further away — which also makes reaching it less likely. The calculator reports the ratio
+          and the win rate that ratio implies; it does not estimate the probability of either
+          outcome, and the breakeven figure ignores commissions and slippage.
         </p>
       </section>
 
@@ -152,6 +170,12 @@ export default function RiskRewardPage() {
           </Link>
         </div>
       </section>
+
+      <p className="max-w-3xl mt-14 text-xs text-[hsl(215,20%,45%)] leading-relaxed">
+        This calculator performs and displays arithmetic on the inputs you provide. It is not
+        investment advice, does not recommend a ratio, a target, or any trade, and makes no claim
+        about the likelihood of any outcome.
+      </p>
     </div>
   )
 }

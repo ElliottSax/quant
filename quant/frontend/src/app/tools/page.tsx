@@ -35,18 +35,19 @@ const GROUPS: Group[] = [
       { href: '/backtesting/builder', name: 'Strategy Builder', desc: 'Create a strategy with a visual, form-based editor — no code.' },
       { href: '/strategies', name: 'Strategy Library', desc: 'Pre-built, ready-to-run strategies like MA crossover and RSI.' },
       { href: '/scanner', name: 'Stock Scanner', desc: 'Scan the market for setups, breakouts, and signals.' },
-      { href: '/options', name: 'Options Calculator', desc: 'Price options and analyze the Greeks.' },
       { href: '/signals', name: 'Trade Signals', desc: 'Data-driven signals surfaced from market and trade data.' },
       { href: '/charts', name: 'Advanced Charts', desc: 'Interactive price charts with technical overlays.' },
       { href: '/market-dashboard', name: 'Market Dashboard', desc: 'Free live market data at a glance.' },
     ],
   },
   {
-    title: 'Risk Management Calculators',
-    blurb: 'Size trades and check the math before you commit capital.',
+    title: 'Calculators',
+    blurb:
+      'Closed-form math over the numbers you type in. These use no market data at all, so every figure they show can be checked by hand.',
     tools: [
-      { href: '/tools/position-size', name: 'Position Size Calculator', desc: 'Find how many shares to buy from your account size, risk per trade, entry, and stop-loss.' },
-      { href: '/tools/risk-reward', name: 'Risk/Reward Ratio Calculator', desc: 'Get the R:R ratio, percentage gain/loss, and breakeven win rate of any trade.' },
+      { href: '/tools/position-size', name: 'Position Size Calculator', desc: 'Share count implied by your account size, risk per trade, entry, and stop-loss. Handles longs and shorts.' },
+      { href: '/tools/risk-reward', name: 'Risk/Reward Ratio Calculator', desc: 'Reward-to-risk ratio, each distance as a percentage of entry, and the breakeven win rate the ratio implies.' },
+      { href: '/options', name: 'Black-Scholes Options Calculator', desc: 'Theoretical value and all five Greeks for a European call or put, from spot, strike, expiry, volatility, and rate.' },
     ],
   },
 ]

@@ -22,6 +22,11 @@ import {
   STRATEGIES, INDICATORS, CONDITION_OPERATORS,
   type StrategyDefinition, type ConditionOperator,
 } from '@/lib/strategy-definitions'
+import {
+  ENGINE_OUTAGE_NOTICE,
+  describeBacktestFailure,
+  type BacktestFailure,
+} from '../service-status'
 
 interface Condition {
   id: string
@@ -82,7 +87,7 @@ export default function StrategyBuilderPage() {
   const [isRunning, setIsRunning] = useState(false)
   const [result, setResult] = useState<NormalizedBacktest | null>(null)
   const [savedId, setSavedId] = useState<string | null>(null)
-  const [runError, setRunError] = useState<string | null>(null)
+  const [runError, setRunError] = useState<BacktestFailure | null>(null)
 
   const applyTemplate = (strategy: StrategyDefinition) => {
     setSelectedTemplate(strategy.id)
@@ -194,11 +199,7 @@ export default function StrategyBuilderPage() {
       setResult(normalized)
     } catch (err) {
       setResult(null)
-      setRunError(
-        err instanceof Error && err.message
-          ? err.message
-          : 'The backtest service could not be reached.'
-      )
+      setRunError(describeBacktestFailure(err))
     } finally {
       setIsRunning(false)
     }
@@ -497,6 +498,15 @@ export default function StrategyBuilderPage() {
               </div>
             </div>
 
+            {/* Stated next to the button rather than after a click: everything else on
+                this page (building and saving a strategy) works, only the run does not. */}
+            <div className="mt-6 rounded-lg p-3 border border-amber-500/30">
+              <p className="text-xs font-semibold text-amber-400 mb-1">
+                Backtest runs are currently unavailable
+              </p>
+              <p className="text-xs text-muted-foreground">{ENGINE_OUTAGE_NOTICE}</p>
+            </div>
+
             <div className="flex items-center gap-4 mt-6">
               <button onClick={runBacktest} className="btn-primary" disabled={isRunning}>
                 {isRunning ? (
@@ -587,16 +597,20 @@ export default function StrategyBuilderPage() {
       {/* Full Results — shown only when the API returned a real curve */}
       {runError && !result && (
         <div className="glass-strong rounded-xl p-12 text-center border border-red-500/30">
-          <h3 className="text-2xl font-bold mb-3">This backtest did not run</h3>
-          <p className="text-muted-foreground mb-2 max-w-xl mx-auto">{runError}</p>
+          <h3 className="text-2xl font-bold mb-3">{runError.headline}</h3>
+          <p className="text-muted-foreground mb-2 max-w-2xl mx-auto">{runError.detail}</p>
           <p className="text-sm text-muted-foreground mb-6 max-w-xl mx-auto">
             Your strategy configuration above is unchanged. No results are shown because none
             were produced — this page will never display a simulated equity curve in place of
             a failed run.
           </p>
-          <button onClick={runBacktest} className="btn-primary" disabled={isRunning}>
-            Try again
-          </button>
+          {/* Offered only when a retry could actually change the outcome. For a
+              deterministic server-side defect it would just repeat the same failure. */}
+          {runError.canRetry && (
+            <button onClick={runBacktest} className="btn-primary" disabled={isRunning}>
+              Try again
+            </button>
+          )}
         </div>
       )}
 

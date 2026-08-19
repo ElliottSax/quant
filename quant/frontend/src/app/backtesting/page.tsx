@@ -15,34 +15,25 @@ import { BacktestDataNotes, NoTradesPanel } from '@/components/BacktestDataNotes
 import { saveBacktestResult } from '@/lib/backtest-storage'
 import { normalizeBacktest, type NormalizedBacktest } from '@/lib/backtest-normalize'
 import { getStrategyById } from '@/lib/strategy-definitions'
+import {
+  DEMO_STRATEGIES,
+  ENGINE_OUTAGE_NOTICE,
+  describeBacktestFailure,
+  type BacktestFailure,
+} from './service-status'
 
-// Strategy options for the dropdown
-const strategyOptions = [
-  { value: 'simple_ma_crossover', label: 'Moving Average Crossover', icon: '📈' },
-  { value: 'rsi_mean_reversion', label: 'RSI Mean Reversion', icon: '🔄' },
-  { value: 'bollinger_breakout', label: 'Bollinger Breakout', icon: '💥' },
-  { value: 'momentum', label: 'Momentum Strategy', icon: '🚀' },
-  { value: 'mean_reversion_vol', label: 'Volatility Mean Reversion', icon: '📊' },
-  { value: 'trend_following', label: 'Trend Following', icon: '📉' },
-  // Mapped from strategy-definitions for deep linking
-  { value: 'ma_crossover', label: 'MA Crossover', icon: '📈' },
-  { value: 'rsi', label: 'RSI Mean Reversion', icon: '🔄' },
-  { value: 'macd', label: 'MACD Momentum', icon: '⚡' },
-  { value: 'mean_reversion_zscore', label: 'Z-Score Mean Reversion', icon: '🎯' },
-  { value: 'triple_ema', label: 'Triple EMA', icon: '📊' },
-]
-
-// De-duplicate by value
-const uniqueStrategies = strategyOptions.filter(
-  (s, i, arr) => arr.findIndex(x => x.value === s.value) === i
-)
+// Only the strategies GET /backtesting/demo/strategies actually advertises. The longer
+// list this replaced offered eight ids the deployed service answers with 400 "Unknown
+// strategy" or 403 "requires premium subscription" — including the one selected by
+// default, so the first click could never have worked.
+const uniqueStrategies = DEMO_STRATEGIES
 
 function BacktestingPageContent() {
   const searchParams = useSearchParams()
 
   const [formData, setFormData] = useState({
     symbol: 'AAPL',
-    strategy: 'simple_ma_crossover',
+    strategy: DEMO_STRATEGIES[0].value as string,
     start_date: '2023-01-01',
     end_date: '2024-01-01',
     initial_capital: 100000,
@@ -51,7 +42,7 @@ function BacktestingPageContent() {
   const [backtestResult, setBacktestResult] = useState<NormalizedBacktest | null>(null)
   const [isRunning, setIsRunning] = useState(false)
   const [savedId, setSavedId] = useState<string | null>(null)
-  const [runError, setRunError] = useState<string | null>(null)
+  const [runError, setRunError] = useState<BacktestFailure | null>(null)
 
   // Read query params for deep linking from /strategies page
   useEffect(() => {
@@ -115,11 +106,7 @@ function BacktestingPageContent() {
       setBacktestResult(normalized)
     } catch (err) {
       setBacktestResult(null)
-      setRunError(
-        err instanceof Error && err.message
-          ? err.message
-          : 'The backtest service could not be reached.'
-      )
+      setRunError(describeBacktestFailure(err))
     } finally {
       setIsRunning(false)
     }
@@ -208,6 +195,15 @@ function BacktestingPageContent() {
         </div>
       </div>
 
+      {/* Stated before the form rather than after a click, so the failure is not something
+          the user has to discover by spending time on a configuration. */}
+      <div className="glass-strong rounded-xl p-4 border border-amber-500/30">
+        <h2 className="text-sm font-semibold mb-1 text-amber-400">
+          Backtest runs are currently unavailable
+        </h2>
+        <p className="text-sm text-muted-foreground">{ENGINE_OUTAGE_NOTICE}</p>
+      </div>
+
       {/* Configuration */}
       <div className="glass-strong rounded-xl p-6">
         <h2 className="text-xl font-bold mb-4">Strategy Configuration</h2>
@@ -283,15 +279,19 @@ function BacktestingPageContent() {
 
       {runError && !hasResults ? (
         <div className="glass-strong rounded-xl p-12 text-center border border-red-500/30">
-          <h3 className="text-2xl font-bold mb-3">This backtest did not run</h3>
-          <p className="text-muted-foreground mb-2 max-w-xl mx-auto">{runError}</p>
+          <h3 className="text-2xl font-bold mb-3">{runError.headline}</h3>
+          <p className="text-muted-foreground mb-2 max-w-2xl mx-auto">{runError.detail}</p>
           <p className="text-sm text-muted-foreground mb-6 max-w-xl mx-auto">
             No results are shown because none were produced. This page will never display
             simulated results in place of a failed run.
           </p>
-          <button onClick={runBacktest} className="btn-primary" disabled={isRunning}>
-            Try again
-          </button>
+          {/* Offered only when a retry could actually change the outcome. For a
+              deterministic server-side defect it would just repeat the same failure. */}
+          {runError.canRetry && (
+            <button onClick={runBacktest} className="btn-primary" disabled={isRunning}>
+              Try again
+            </button>
+          )}
         </div>
       ) : !hasResults ? (
         <div className="glass-strong rounded-xl p-16 text-center">

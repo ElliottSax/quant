@@ -32,16 +32,24 @@ const faqs = [
     a: 'First find your dollar risk: account size multiplied by your risk percentage (e.g. $25,000 × 1% = $250). Then find your risk per share: the absolute difference between entry and stop-loss price. Divide dollar risk by risk per share and round down to get the number of shares to buy.',
   },
   {
-    q: 'What is a good risk per trade percentage?',
-    a: 'Most risk-management frameworks suggest risking 1% to 2% of your account on any single trade. Risking 1% means a string of losing trades has a far smaller impact on your capital than risking 5% or 10% per trade.',
+    q: 'What does changing the risk percentage do to the numbers?',
+    a: 'The risk percentage scales the dollar risk linearly, and therefore the share count too. On a $25,000 account, 1% is $250 of dollar risk and 2% is $500, which doubles the shares for the same stop distance. The compounding effect of a losing run scales with it: ten consecutive full stop-outs at 1% leave about 90.4% of the starting balance, at 2% about 81.7%, and at 10% about 34.9%. This calculator does not suggest a percentage — enter the one you use.',
   },
   {
     q: 'Why round the number of shares down?',
-    a: 'Rounding down guarantees your actual dollar risk stays at or below the amount you intended to risk. Rounding up would push your risk slightly above your limit.',
+    a: 'Rounding down keeps the realised dollar risk at or below the amount implied by your risk percentage. Rounding up would push it slightly above the limit. Because of the rounding, the dollar risk shown is usually a little under the target, and the gap is largest when the stop distance is wide relative to the dollar risk.',
+  },
+  {
+    q: 'Does it work for short trades?',
+    a: 'Yes. The calculator reads a stop-loss above the entry price as a short and one below the entry as a long, and labels the result accordingly. The risk per share is the absolute distance between entry and stop in both cases, so the share count is calculated the same way.',
   },
   {
     q: 'Does this calculator account for commissions or slippage?',
-    a: 'No. It gives you the theoretical position size from your entry, stop, and risk inputs. Real fills, commissions, and slippage can shift your true risk slightly, so treat the output as a close starting point.',
+    a: 'No. It computes the position size implied by your entry, stop, and risk inputs, assuming a single fill at the entry price and an exit at exactly the stop price. Commissions, slippage, gaps through the stop, and financing costs are outside the calculation and would each change the realised risk.',
+  },
+  {
+    q: 'What if the position value comes out larger than my account?',
+    a: 'That happens whenever the stop is tight relative to your risk percentage, and the calculator flags it. The arithmetic is still correct — the share count risks exactly what you specified if the stop is hit — but holding that many shares would require margin, and a gap through a tight stop can cost more than the stated risk.',
   },
 ]
 
@@ -84,9 +92,10 @@ export default function PositionSizePage() {
       <div className="max-w-3xl mb-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Position Size Calculator</h1>
         <p className="text-lg text-slate-400">
-          Find the exact number of shares to buy so a losing trade costs you no more than you
-          intend to risk. Enter your account size, risk per trade, entry price, and stop-loss —
-          the math updates instantly.
+          Work out the share count implied by your account size, the percentage of it you are
+          willing to risk, your entry price, and your stop-loss. Everything is computed from those
+          four numbers alone — no market data is used and none is shown, so you can check every
+          figure by hand.
         </p>
       </div>
 
@@ -95,25 +104,35 @@ export default function PositionSizePage() {
 
       {/* Explainer */}
       <section className="max-w-3xl mt-14">
-        <h2 className="text-2xl font-bold text-white mb-4">How position sizing works</h2>
+        <h2 className="text-2xl font-bold text-white mb-4">How the calculation works</h2>
         <p className="text-slate-400 leading-relaxed mb-4">
-          Position sizing is the single biggest lever in risk management. Instead of guessing how
-          many shares to buy, you let your maximum acceptable loss decide the size for you. The
-          formula is simple:
+          Position sizing inverts the usual question. Rather than picking a share count and seeing
+          what it costs if the stop is hit, you fix the loss you are willing to take and let that
+          determine the share count. Four steps, all of them arithmetic:
         </p>
         <ol className="text-slate-400 leading-relaxed space-y-2 mb-4 list-decimal pl-5">
           <li><strong className="text-slate-200">Dollar risk</strong> = account size × (risk % ÷ 100)</li>
           <li><strong className="text-slate-200">Risk per share</strong> = | entry price − stop-loss price |</li>
-          <li><strong className="text-slate-200">Shares to buy</strong> = floor(dollar risk ÷ risk per share)</li>
+          <li><strong className="text-slate-200">Shares</strong> = floor(dollar risk ÷ risk per share)</li>
+          <li><strong className="text-slate-200">Position value</strong> = shares × entry price</li>
         </ol>
         <p className="text-slate-400 leading-relaxed mb-4">
-          For example, on a $25,000 account risking 1% per trade, your dollar risk is $250. Buying
-          at $50 with a stop at $48 puts $2 of risk on each share, so you can buy 125 shares — a
-          $6,250 position, or 25% of the account, while still only risking $250 if the stop is hit.
+          Worked through with the default inputs: a $25,000 account at 1% per trade gives $250 of
+          dollar risk. An entry of $50 against a stop at $48 puts $2 of risk on each share, so
+          $250 ÷ $2 = 125 shares. That is a $6,250 position, 25% of the account, and exactly $250
+          is lost if the stop fills at $48.
+        </p>
+        <p className="text-slate-400 leading-relaxed mb-4">
+          The absolute value in step two is what makes the calculation direction-agnostic. A stop
+          at $52 against the same $50 entry is a short with the same $2 of risk per share and the
+          same 125 shares; the page labels the result long or short from the position of the stop
+          relative to the entry.
         </p>
         <p className="text-slate-400 leading-relaxed">
-          Keeping risk constant across trades means no single loss can badly damage your account,
-          and it lets you compare very different setups on equal footing.
+          Two things the arithmetic cannot promise. The floor in step three means the realised risk
+          is usually a little under the target rather than exactly on it. And the $250 figure holds
+          only if the exit actually fills at the stop price — a gap through the stop is a larger
+          loss than the calculation shows.
         </p>
       </section>
 
@@ -155,6 +174,12 @@ export default function PositionSizePage() {
           </Link>
         </div>
       </section>
+
+      <p className="max-w-3xl mt-14 text-xs text-[hsl(215,20%,45%)] leading-relaxed">
+        This calculator performs and displays arithmetic on the inputs you provide. It is not
+        investment advice, does not recommend a risk percentage, a share count, or any trade, and
+        makes no claim about how a trade sized this way would perform.
+      </p>
     </div>
   )
 }
