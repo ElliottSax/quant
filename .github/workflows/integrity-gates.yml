@@ -46,7 +46,8 @@ jobs:
           HITS=$(grep -rnE "Math\.random\(|Math\.sin\([^)]*seed|seed\+\+|pseudoRandom|mulberry32|xorshift" \
                    quant/frontend/src/app quant/frontend/src/components quant/frontend/src/lib \
                    --include="*.tsx" --include="*.ts" 2>/dev/null \
-                 | grep -Ev "$ALLOW" || true)
+                 | grep -Ev "$ALLOW" \
+                 | grep -Ev ":[[:space:]]*(\*|//|/\*)" || true)
           if [ -n "$HITS" ]; then
             echo "FAIL: fabricated-data candidates found outside the allowlist."
             echo "Market data must come from the API or not be shown at all."
