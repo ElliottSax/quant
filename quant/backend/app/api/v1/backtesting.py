@@ -462,13 +462,20 @@ async def _fetch_historical_data(
     end_date: datetime
 ) -> pd.DataFrame:
     """
-    Fetch historical price data from Yahoo Finance with fallback to mock data
+    Fetch historical price data from Yahoo Finance.
 
-    Uses yfinance (free) to fetch real historical data.
-    Falls back to mock data if Yahoo Finance is unavailable.
+    Returns a DataFrame with a `timestamp` COLUMN (not a DatetimeIndex) plus
+    open/high/low/close/volume, which is the contract the engine documents and relies on
+    (`BacktestEngine.run` sorts by 'timestamp' as its first action).
+
+    There is no fallback, deliberately. This function used to answer any failure —
+    network error, unknown symbol, empty response — by generating a random walk with
+    np.random.normal and returning it as history, so a backtest could report trades,
+    returns and a Sharpe ratio computed entirely from invented prices, with nothing on
+    screen distinguishing that from a real run. It raises now: a failed backtest is
+    recoverable, a fabricated one silently misinforms.
     """
     import logging
-    import numpy as np
 
     try:
         # Fetch real historical data using yfinance
@@ -491,30 +498,29 @@ async def _fetch_historical_data(
         if not all(col in df.columns for col in ['open', 'high', 'low', 'close', 'volume']):
             raise ValueError(f"Missing required price columns for {symbol}")
 
+        # yfinance returns the dates as a DatetimeIndex. The engine expects them as a
+        # 'timestamp' column and raises KeyError('timestamp') on the very first line
+        # otherwise — which is why every single-symbol backtest returned HTTP 500.
+        df = df.reset_index()
+        date_col = next(
+            (c for c in df.columns if c.lower() in ("date", "datetime", "index", "timestamp")),
+            None,
+        )
+        if date_col is None:
+            raise ValueError(f"No date column in price data for {symbol}")
+        df = df.rename(columns={date_col: "timestamp"})
+
         logging.info(f"Successfully fetched {len(df)} days of real market data for {symbol}")
         return df
 
     except Exception as e:
-        # Log error and use mock data for testing
-        logging.warning(f"Failed to fetch real data for {symbol}: {e}. Using mock data for testing.")
-
-        # Generate synthetic data for testing
-        num_days = (end_date - start_date).days
-        dates = pd.date_range(start=start_date, end=end_date, freq='D')
-
-        np.random.seed(hash(symbol) % (2**32))  # Deterministic but symbol-specific
-        price_base = 100
-        returns = np.random.normal(0.0005, 0.02, len(dates))
-        prices = price_base * np.exp(np.cumsum(returns))
-
-        data = {
-            'open': prices * (1 + np.random.uniform(-0.01, 0.01, len(dates))),
-            'high': prices * (1 + np.random.uniform(0.0, 0.02, len(dates))),
-            'low': prices * (1 + np.random.uniform(-0.02, 0.0, len(dates))),
-            'close': prices,
-            'volume': np.random.uniform(1e6, 5e6, len(dates))
-        }
-
-        df = pd.DataFrame(data, index=dates)
-        logging.info(f"Generated {len(df)} days of mock data for {symbol}")
-        return df
+        # No synthetic fallback. See the docstring: inventing prices here produced
+        # backtest results indistinguishable from real ones.
+        logging.error(f"Failed to fetch real data for {symbol}: {e}")
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                f"Historical price data for {symbol} is unavailable "
+                f"({type(e).__name__}). No backtest was run."
+            ),
+        )

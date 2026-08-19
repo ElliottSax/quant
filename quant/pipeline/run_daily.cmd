@@ -53,5 +53,11 @@ if errorlevel 1 (
   exit /b 4
 )
 
+python -m pipeline.export_prices >> "%LOG%" 2>&1
+if errorlevel 1 (
+  echo PRICE EXPORT REFUSED - chart/ticker data not updated >> "%LOG%"
+  exit /b 5
+)
+
 echo daily run OK >> "%LOG%"
 exit /b 0

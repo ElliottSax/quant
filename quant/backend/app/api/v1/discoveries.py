@@ -13,7 +13,6 @@ from typing import List, Optional
 from datetime import datetime, timedelta
 from pydantic import BaseModel
 import uuid
-import random
 
 from app.core.database import get_db
 from app.core.logging import get_logger
@@ -81,67 +80,24 @@ async def _generate_discoveries_from_data(
     time_range_days: int = 30,
     limit: int = 20
 ) -> List[DiscoveryResponse]:
-    """Generate discoveries based on actual trading patterns."""
+    """Pattern discovery is not implemented. Returns nothing.
 
-    cutoff_date = datetime.utcnow() - timedelta(days=time_range_days)
+    This function used to INVENT its results: it read real politicians out of the
+    database, then assigned each one a pattern type, a "strength" and a "confidence"
+    drawn from random.uniform, and returned them as analytical findings about named
+    people. The randomness was seeded from the politician id, so the same person always
+    got the same fabricated discovery and it looked stable across requests — which made
+    it more convincing, not less false.
 
-    # Get politicians with recent trading activity
-    # Note: This uses aggregation with explicit columns, no N+1 issue
-    result = await db.execute(
-        select(Politician, func.count(Trade.id).label("trade_count"))
-        .join(Trade, Trade.politician_id == Politician.id, isouter=True)
-        .where(Trade.transaction_date >= cutoff_date)
-        .group_by(Politician.id)
-        .having(func.count(Trade.id) >= 3)
-        .order_by(desc("trade_count"))
-        .limit(limit)
-    )
+    It survived because the politicians table is empty in production, so the loop never
+    ran. That is luck, not a safeguard: populating the table would have started
+    publishing invented analysis about real individuals.
 
-    politicians_data = result.all()
-
-    pattern_types = [
-        ("sector_concentration", "High concentration in specific sector detected"),
-        ("timing_pattern", "Consistent trading timing pattern identified"),
-        ("volume_spike", "Unusual trading volume detected"),
-        ("correlated_activity", "Trading activity correlated with market events"),
-        ("cyclic_pattern", "Recurring cyclical trading pattern"),
-        ("momentum_signal", "Strong momentum signal detected"),
-    ]
-
-    discoveries = []
-    for politician, trade_count in politicians_data:
-        # Deterministic random based on politician ID for consistency
-        politician_id_str = str(politician.id)
-        random.seed(hash(politician_id_str + str(time_range_days)))
-
-        # Each politician may have 1-2 discoveries
-        num_discoveries = random.randint(1, 2)
-        selected_patterns = random.sample(pattern_types, k=min(num_discoveries, len(pattern_types)))
-
-        for pattern_type, base_description in selected_patterns:
-            strength = round(random.uniform(0.55, 0.95), 3)
-            confidence = round(random.uniform(0.60, 0.92), 3)
-
-            if strength >= min_strength:
-                discovery = DiscoveryResponse(
-                    id=str(uuid.uuid5(uuid.NAMESPACE_DNS, f"{politician_id_str}-{pattern_type}")),
-                    discovery_date=datetime.utcnow() - timedelta(days=random.randint(0, time_range_days)),
-                    politician_id=politician_id_str,
-                    politician_name=politician.name,
-                    pattern_type=pattern_type,
-                    strength=strength,
-                    confidence=confidence,
-                    description=f"{base_description} for {politician.name} ({trade_count} trades analyzed)",
-                    parameters={"trade_count": trade_count, "time_range_days": time_range_days},
-                    metadata={"party": politician.party, "chamber": politician.chamber, "state": politician.state},
-                    reviewed=random.random() > 0.7,
-                    deployed=random.random() > 0.85,
-                )
-                discoveries.append(discovery)
-
-    # Sort by strength descending
-    discoveries.sort(key=lambda d: d.strength, reverse=True)
-    return discoveries[:limit]
+    Returning an empty list rather than raising keeps existing callers working while
+    guaranteeing nothing fabricated leaves this service. A real implementation must
+    compute from trade data and carry its own statistics.
+    """
+    return []
 
 
 async def _generate_anomalies_from_data(
@@ -149,104 +105,23 @@ async def _generate_anomalies_from_data(
     min_severity: float = 0.5,
     limit: int = 20
 ) -> List[AnomalyResponse]:
-    """Generate anomalies based on unusual trading patterns."""
+    """Anomaly detection is not implemented. Returns nothing.
 
-    cutoff_date = datetime.utcnow() - timedelta(days=30)
-
-    # Note: This uses aggregation with explicit columns, no N+1 issue
-    result = await db.execute(
-        select(Politician, func.count(Trade.id).label("trade_count"))
-        .join(Trade, Trade.politician_id == Politician.id, isouter=True)
-        .where(Trade.transaction_date >= cutoff_date)
-        .group_by(Politician.id)
-        .having(func.count(Trade.id) >= 2)
-        .order_by(desc("trade_count"))
-        .limit(15)
-    )
-
-    politicians_data = result.all()
-
-    anomaly_types = [
-        ("unusual_volume", "Unusual trading volume detected"),
-        ("timing_anomaly", "Suspicious timing relative to market events"),
-        ("concentration_risk", "High concentration in single ticker"),
-        ("pattern_deviation", "Significant deviation from historical pattern"),
-        ("size_anomaly", "Unusual trade size detected"),
-    ]
-
-    anomalies = []
-    for politician, trade_count in politicians_data:
-        politician_id_str = str(politician.id)
-        random.seed(hash(politician_id_str + "anomaly"))
-
-        # ~40% of politicians have anomalies
-        if random.random() > 0.6:
-            anomaly_type, description = random.choice(anomaly_types)
-            severity = round(random.uniform(0.5, 0.95), 3)
-
-            if severity >= min_severity:
-                anomaly = AnomalyResponse(
-                    id=str(uuid.uuid5(uuid.NAMESPACE_DNS, f"{politician_id_str}-{anomaly_type}")),
-                    detection_date=datetime.utcnow() - timedelta(days=random.randint(0, 7)),
-                    politician_id=politician_id_str,
-                    politician_name=politician.name,
-                    anomaly_type=anomaly_type,
-                    severity=severity,
-                    description=f"{description}: {politician.name} ({trade_count} trades)",
-                    evidence={
-                        "trade_count": trade_count,
-                        "detection_confidence": round(random.uniform(0.7, 0.95), 3),
-                        "historical_baseline": round(random.uniform(0.2, 0.5), 3),
-                    },
-                    investigated=random.random() > 0.8,
-                    false_positive=None,
-                )
-                anomalies.append(anomaly)
-
-    anomalies.sort(key=lambda a: a.severity, reverse=True)
-    return anomalies[:limit]
+    As with discoveries above, this assigned random.uniform "severity" and
+    "detection_confidence" scores to real named politicians and returned them as
+    detections. No detector existed behind any of it.
+    """
+    return []
 
 
 def _generate_experiments() -> List[ExperimentResponse]:
-    """Generate mock experiment records for ML tracking."""
-    random.seed(42)  # Consistent results
+    """ML experiment tracking is not implemented. Returns nothing.
 
-    models = [
-        ("fourier_cycle_detector_v2", True),
-        ("hmm_regime_detector_v3", True),
-        ("dtw_pattern_matcher_v2", False),
-        ("ensemble_predictor_v4", True),
-        ("anomaly_detector_v2", False),
-        ("sentiment_analyzer_v1", False),
-    ]
+    This returned a hardcoded roster of model names with invented accuracy and status
+    fields, presented as a record of experiments that were never run.
+    """
+    return []
 
-    experiments = []
-    for model_name, deployment_ready in models:
-        exp_date = datetime.utcnow() - timedelta(days=random.randint(1, 30))
-
-        experiments.append(ExperimentResponse(
-            id=str(uuid.uuid5(uuid.NAMESPACE_DNS, model_name)),
-            experiment_date=exp_date,
-            model_name=model_name,
-            hyperparameters={"learning_rate": 0.001, "epochs": 100},
-            training_metrics={"loss": round(random.uniform(0.1, 0.3), 4)},
-            validation_metrics={
-                "accuracy": round(random.uniform(0.72, 0.95), 3),
-                "precision": round(random.uniform(0.68, 0.92), 3),
-                "recall": round(random.uniform(0.65, 0.88), 3),
-            },
-            test_metrics={"f1_score": round(random.uniform(0.67, 0.90), 3)} if deployment_ready else None,
-            deployment_ready=deployment_ready,
-            notes=f"Model {model_name} training run",
-        ))
-
-    experiments.sort(key=lambda e: e.experiment_date, reverse=True)
-    return experiments
-
-
-# ============================================================================
-# Discovery Endpoints
-# ============================================================================
 
 @router.get(
     "/",
