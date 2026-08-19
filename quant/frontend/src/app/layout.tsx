@@ -86,29 +86,16 @@ export default function RootLayout({
       <head>
         <link rel="alternate" type="application/rss+xml" title="QuantEngines" href="/feed.xml" />
 
-        {/* Facebook Pixel - Replace YOUR_PIXEL_ID when ready */}
-        <script dangerouslySetInnerHTML={{ __html: `
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          // fbq('init', 'YOUR_PIXEL_ID');
-          // fbq('track', 'PageView');
-        `}} />
-        <noscript dangerouslySetInnerHTML={{ __html: `
-          <!-- <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/> -->
-        `}} />
-
-        {/* Google Ads Remarketing Tag - Replace YOUR_CONVERSION_ID when ready */}
-        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=AW-YOUR_CONVERSION_ID"></script> */}
-        <script dangerouslySetInnerHTML={{ __html: `
-          // Google Ads Remarketing - uncomment when ad account is ready
-          // gtag('config', 'AW-YOUR_CONVERSION_ID');
-        `}} />
+        {/* No advertising or behavioural trackers here, deliberately.
+            A Facebook Pixel loader used to sit in this block. Only the fbq('init')
+            call was commented out — the loader itself still ran, so every page view
+            fetched connect.facebook.net/en_US/fbevents.js and handed Meta the visitor's
+            IP, user agent and referring page. It did that while no pixel ID was even
+            configured, so it collected nothing for us and contradicted the published
+            privacy policy ("we do not run third-party advertising or behavioural ad
+            trackers"), which is exactly the claim affiliate networks and privacy
+            regulators check. A commented-out Google Ads remarketing tag went with it.
+            If advertising is ever added, the privacy policy changes in the same commit. */}
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         {/* Google Analytics 4 Tracking */}
@@ -483,12 +470,27 @@ export default function RootLayout({
                   </div>
                 </div>
 
+                {/* Legal. Kept on its own row rather than in a column above so the
+                    disclaimer sits directly beside the "not financial advice" line. */}
+                <div className="border-t border-[hsl(215,40%,14%)] pt-4 mb-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-[hsl(210,20%,60%)]">
+                  <Link href="/about" className="hover:text-[hsl(45,96%,58%)] transition-colors">About</Link>
+                  <Link href="/contact" className="hover:text-[hsl(45,96%,58%)] transition-colors">Contact</Link>
+                  <Link href="/disclaimer" className="hover:text-[hsl(45,96%,58%)] transition-colors">Disclaimer</Link>
+                  <Link href="/affiliate-disclosure" className="hover:text-[hsl(45,96%,58%)] transition-colors">Affiliate Disclosure</Link>
+                  <Link href="/privacy" className="hover:text-[hsl(45,96%,58%)] transition-colors">Privacy Policy</Link>
+                  <Link href="/terms" className="hover:text-[hsl(45,96%,58%)] transition-colors">Terms of Service</Link>
+                  <Link href="/affiliate-disclosure" className="hover:text-[hsl(45,96%,58%)] transition-colors">Affiliate Disclosure</Link>
+                </div>
+
                 <div className="border-t border-[hsl(215,40%,14%)] pt-4 flex flex-col md:flex-row items-center justify-between gap-3">
                   <p className="text-[10px] text-[hsl(215,20%,45%)] font-mono">
                     QUANTENGINES v2.0 | Free Professional Trading Tools
                   </p>
                   <p className="text-[10px] text-[hsl(215,20%,40%)]">
-                    For educational purposes only. Not financial advice.
+                    For educational purposes only.{' '}
+                    <Link href="/disclaimer" className="underline hover:text-[hsl(45,96%,58%)]">
+                      Not financial advice.
+                    </Link>
                   </p>
                 </div>
               </div>
