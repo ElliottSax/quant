@@ -74,12 +74,31 @@ export default function PrivacyPolicyPage() {
 
           <section>
             <h2 className="text-2xl font-bold text-white mb-3">Accounts</h2>
+            {/* This said "There are no user accounts... we hold no passwords,
+                credentials or profile records". That was wrong on every count:
+                /auth/login and /auth/register are live and call api.login(), the
+                backend hashes passwords with bcrypt (backend/app/core/security.py),
+                issues JWTs, and exposes /me, /change-password and 2FA endpoints. A
+                privacy policy denying that it holds credentials while the database
+                stores hashed passwords is the most consequential thing on this page
+                to get wrong. */}
             <p>
-              There are no user accounts. The whole site is readable without signing
-              in, we do not operate a sign-in or registration system, and we hold no
-              passwords, credentials or profile records for visitors. If we ever
-              introduce accounts, this page will say what they store before the first
-              one is created.
+              Most of the site is readable without an account. You can also register
+              at{' '}
+              <Link href="/auth/register" className="text-blue-400 underline">
+                /auth/register
+              </Link>{' '}
+              to use the dashboard and save your work. If you do, we store the email
+              address and profile details you give us, and a hashed version of your
+              password — hashed with bcrypt, so we cannot read the password itself
+              and neither can anyone who obtains the database.
+            </p>
+            <p className="mt-4">
+              Signed-in sessions use JSON Web Tokens issued by our own backend rather
+              than a third-party identity provider. If you enable two-factor
+              authentication we also store the secret needed to verify your codes.
+              You can change your password from your profile, and you can ask us to
+              delete your account and everything attached to it at any time.
             </p>
           </section>
 

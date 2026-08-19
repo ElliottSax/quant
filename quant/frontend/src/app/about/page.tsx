@@ -84,7 +84,7 @@ export default function AboutPage() {
             <p>
               Congressional trading records are derived from public filings published at
               house.gov and senate.gov. Market data — prices, quotes and historical bars
-              — is retrieved from Yahoo Finance. Neither source is perfect: filings are
+              — is retrieved from Yahoo Finance, with automatic fallback to Twelve Data, Alpha Vantage and Finnhub when it is unavailable. Neither source is perfect: filings are
               self-reported, delayed and stated as ranges rather than exact amounts, and
               the market data is delayed rather than real-time and can be incomplete. We
               set out those limits plainly in the{' '}

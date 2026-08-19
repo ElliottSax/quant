@@ -78,9 +78,17 @@ export default function LoginPage() {
                   <label htmlFor="password" className="text-sm font-medium text-[hsl(215,20%,70%)]">
                     Password
                   </label>
-                  <Link href="/auth/forgot-password" className="text-xs text-[hsl(45,96%,58%)] hover:underline">
+                  {/* This linked to /auth/forgot-password, which does not exist --
+                      no page, and no reset endpoint on the backend either (auth.py
+                      has change-password, which requires already being signed in).
+                      So the one link a locked-out user reaches for went to a 404.
+                      Point it at a person until a real reset flow exists. */}
+                  <a
+                    href="mailto:hello@quantengines.com?subject=Password%20reset"
+                    className="text-xs text-[hsl(45,96%,58%)] hover:underline"
+                  >
                     Forgot password?
-                  </Link>
+                  </a>
                 </div>
                 <Input
                   id="password"

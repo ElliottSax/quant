@@ -52,16 +52,29 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-2xl font-bold text-white mb-3">4. Accounts</h2>
+            {/* This said "There are no accounts", which is false -- /auth/login and
+                /auth/register work, the backend issues JWTs and supports 2FA, and
+                signing in leads to /dashboard. Terms that disclaim a login system
+                the site actually operates leave the real one ungoverned. */}
             <p>
-              There are no accounts. The site is used without registering or signing
-              in, so nothing here asks you to create credentials or hold you
-              responsible for activity under a login. The only detail you can give us
-              is an email address, if you choose to subscribe to updates — see the{' '}
+              You can read most of the site without an account. If you register, give
+              accurate details, keep your password secure, and do not share your
+              login — you are responsible for what happens under your account. We
+              offer two-factor authentication and we recommend turning it on.
+            </p>
+            <p className="mt-4">
+              Tell us at{' '}
+              <a href="mailto:hello@quantengines.com" className="text-blue-400 underline">
+                hello@quantengines.com
+              </a>{' '}
+              if you believe your account has been compromised, and we can close it
+              on request. Note that there is currently no self-service password
+              reset: if you lose access, email us. What an account stores is set out
+              in the{' '}
               <Link href="/privacy" className="text-blue-400 underline">
                 Privacy Policy
               </Link>
-              . If we introduce accounts, these terms will be updated to cover them
-              before anyone can register.
+              .
             </p>
           </section>
 
@@ -93,7 +106,7 @@ export default function TermsPage() {
             <p>
               Some data on this site originates with third parties, including government
               filing systems and market data providers. Price and quote data is
-              currently retrieved from Yahoo Finance. Their material remains theirs, may
+              currently retrieved from Yahoo Finance, with automatic fallback to Twelve Data, Alpha Vantage and Finnhub when it is unavailable. Their material remains theirs, may
               be subject to their own terms, and may be delayed, incomplete, or wrong.
               We pass it on in good faith and do not warrant it.
             </p>
