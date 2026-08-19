@@ -9,13 +9,13 @@ import { TradeDistributionChart } from './TradeDistributionChart'
 import { TradeScatterPlot } from './TradeScatterPlot'
 import { RiskMetricsPanel } from './RiskMetricsPanel'
 import { StrategyInsights } from './StrategyInsights'
-import { BrokerRecommendations } from './BrokerRecommendations'
 
 interface BacktestMetrics {
   finalEquity: number
   totalReturn: number
   maxDrawdown: number
   sharpeRatio: number
+  sortinoRatio?: number | null
   winRate: number
   avgWin: number
   avgLoss: number
@@ -51,7 +51,12 @@ export function BacktestResultView({
   return (
     <div className="space-y-8">
       {/* Broker recommendations section */}
-      <BrokerRecommendations strategy={strategy} userTier={userTier} />
+      {/* Broker recommendations are intentionally NOT rendered. The widget states
+          "We earn a small commission if you sign up" and links to signup URLs carrying a
+          placeholder tag (affiliate=quant2024), while /affiliate-disclosure states the
+          site carries no affiliate links and earns no commissions. Both cannot be true.
+          Restore this only in the same change that (a) configures real, approved
+          affiliate URLs and (b) updates the disclosure page to match. */}
 
       <MetricsGrid
         totalReturn={metrics.totalReturn}
@@ -81,6 +86,7 @@ export function BacktestResultView({
 
       <RiskMetricsPanel
         sharpeRatio={metrics.sharpeRatio}
+        sortinoRatio={metrics.sortinoRatio}
         maxDrawdown={metrics.maxDrawdown}
         profitFactor={metrics.profitFactor}
         totalReturn={metrics.totalReturn}

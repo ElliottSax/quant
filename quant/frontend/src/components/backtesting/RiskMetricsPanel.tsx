@@ -2,6 +2,11 @@
 
 interface RiskMetricsPanelProps {
   sharpeRatio: number
+  // Real Sortino from the caller. Null when downside deviation is undefined (no losing
+  // periods) — rendered as a dash. It is NOT derivable from Sharpe: this panel used to
+  // display sharpeRatio * 1.2, which flatters every strategy because downside deviation
+  // is by construction no larger than total deviation.
+  sortinoRatio?: number | null
   maxDrawdown: number
   profitFactor: number
   totalReturn: number
@@ -12,7 +17,7 @@ interface RiskMetricsPanelProps {
 }
 
 export function RiskMetricsPanel({
-  sharpeRatio, maxDrawdown, profitFactor, totalReturn,
+  sharpeRatio, sortinoRatio, maxDrawdown, profitFactor, totalReturn,
   totalTrades, winRate, avgWin, avgLoss,
 }: RiskMetricsPanelProps) {
   const expectancy = (winRate / 100 * avgWin) + ((100 - winRate) / 100 * avgLoss)
@@ -28,7 +33,9 @@ export function RiskMetricsPanel({
           </div>
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">Sortino Ratio</span>
-            <span className="font-bold text-purple-400">{(sharpeRatio * 1.2).toFixed(2)}</span>
+            <span className="font-bold text-purple-400">
+              {typeof sortinoRatio === 'number' ? sortinoRatio.toFixed(2) : '—'}
+            </span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">Calmar Ratio</span>

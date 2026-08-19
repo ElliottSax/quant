@@ -479,7 +479,6 @@ export default function RootLayout({
                   <Link href="/affiliate-disclosure" className="hover:text-[hsl(45,96%,58%)] transition-colors">Affiliate Disclosure</Link>
                   <Link href="/privacy" className="hover:text-[hsl(45,96%,58%)] transition-colors">Privacy Policy</Link>
                   <Link href="/terms" className="hover:text-[hsl(45,96%,58%)] transition-colors">Terms of Service</Link>
-                  <Link href="/affiliate-disclosure" className="hover:text-[hsl(45,96%,58%)] transition-colors">Affiliate Disclosure</Link>
                 </div>
 
                 <div className="border-t border-[hsl(215,40%,14%)] pt-4 flex flex-col md:flex-row items-center justify-between gap-3">
