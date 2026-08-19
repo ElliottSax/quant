@@ -5,7 +5,7 @@ export function EmailCaptureHero() {
     <EmailCapture
       site="quant"
       headline="Get Weekly Trading Strategies"
-      subheading="Join 5,000+ traders getting exclusive tips on quantitative strategies, backtesting, and market insights."
+      subheading="Tips on quantitative strategies, backtesting, and market insights. Free, unsubscribe anytime."
       bgGradient="from-purple-600 to-purple-800"
       theme="purple"
     />
