@@ -97,8 +97,8 @@ def record(engine_name: str = "a") -> int:
     # earlier verdict was reached on less evidence.
     already = con.execute(
         "SELECT COUNT(*) FROM calibration_log WHERE run_date = ? AND engine = ? "
-        "AND universe_hash = ? AND data_start = ?",
-        [today, engine_name, uhash, data_start],
+        "AND universe_hash = ? AND data_start = ? AND spec_version = ?",
+        [today, engine_name, uhash, data_start, engine.SPEC_VERSION],
     ).fetchone()[0]
     if already:
         # Not an error: re-running the same day is normal. Appending again would inflate

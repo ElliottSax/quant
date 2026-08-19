@@ -1,6 +1,6 @@
 # Seasonality Verdict — Statistical Specification
 
-**Status:** DRAFT v0.3, agent-authored 2026-08-18 (v0.2 trailing-partial-month rule §2; v0.3 Monte Carlo boundary rule §6 and cross-implementation tolerance §8 — all three found by the cross-check harness, none by review). Requires Elliott's line-by-line review
+**Status:** DRAFT v0.4, agent-authored 2026-08-18. Every amendment so far was found by the cross-check harness, none by review: v0.2 trailing partial months (§2); v0.3 Monte Carlo boundary rule (§6), cross-implementation tolerance (§8), under-powered-cell reporting (§2), tier precedence (§6); v0.4 adaptive precision near thresholds (§6). Requires Elliott's line-by-line review
 and signature before ANY implementation of story 3.2 (Sprint 2 gate, 2–3 protected hours).
 **Spec version is a published field.** Every verdict rendered on the site carries the
 version of this document that produced it. Changing any rule below is a version bump and
@@ -255,6 +255,18 @@ rather than silently chosen, per the rule at the top of this document.
   `p_cut = (k/m)·q` with k the number BH rejects, falling back to `(1/m)·q` when k = 0.
   Unreachable on the current data (min q = 0.60), so it costs nothing today — but a
   different mapping could change Robust eligibility once the history supports it.
+- **A9 — the refinement trigger is circular.** v0.4 refines cells near "a decision
+  threshold", but one threshold is the BH cutoff, which is computed from the very
+  p-values refinement changes. Refine first and the cutoff moves underneath; fix the
+  cutoff first and it rests on unrefined estimates. Implementation B iterates to a fixed
+  point (screen, refine, re-run BH, re-screen; capped, and it raises rather than
+  publishing a half-refined family) and converged in two passes. Implementation A screens
+  on the 0.05 threshold only. **The engines agree on all 120 tiers today, but they refined
+  different sets of cells to get there** — so this is an open question, not a settled rule.
+- **Residual instability is real and should be stated, not hidden.** WMT March resolved to
+  `Weak` at B = 100,000, but sits 0.000318 outside the band — about 0.47 SE. An independent
+  rerun has roughly a one-in-three chance of placing it inside and calling it `Folklore`.
+  v0.4 shrank the ambiguous radius; it did not abolish it, and no threshold rule can.
 - **Ratify the implementation-B readings** carried forward as written: "same span" means
   all other monthly returns with no trimming to whole years; leave-one-year-out removes the
   year from both groups and an emptied group counts as unstable; failure years are
