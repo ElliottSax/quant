@@ -36,6 +36,12 @@ def main() -> int:
         return 1
 
     # One observation per (symbol, calendar month, year): the monthly return.
+    # Counting MUST match the engines exactly, or this gate reports a family that does
+    # not exist. Two spec §2 rules were missing here and both inflate n:
+    #   * trailing partial months were counted (every August read one higher than the
+    #     engines, because 2026-08-01..18 was treated as a complete monthly return)
+    #   * non-adjacent months were chained, so a gap turned a 13-month return into an
+    #     "observation" — the exact defect §2 was amended to forbid.
     cells = con.execute(
         """
         WITH monthly AS (
@@ -44,14 +50,24 @@ def main() -> int:
               FROM eod_prices
              GROUP BY symbol, yr, mo
         ),
+        last_day AS (
+            SELECT symbol, MAX(day) AS max_day FROM eod_prices GROUP BY symbol
+        ),
+        complete AS (
+            SELECT m.symbol, m.yr, m.mo, m.close
+              FROM monthly m JOIN last_day l USING (symbol)
+             WHERE l.max_day > last_day(make_date(m.yr, m.mo, 1))
+        ),
         with_prev AS (
             SELECT symbol, yr, mo, close,
-                   lag(close) OVER (PARTITION BY symbol ORDER BY yr, mo) AS prev
-              FROM monthly
+                   lag(close) OVER (PARTITION BY symbol ORDER BY yr, mo) AS prev,
+                   lag(yr * 12 + mo) OVER (PARTITION BY symbol ORDER BY yr, mo) AS prev_idx,
+                   yr * 12 + mo AS idx
+              FROM complete
         )
         SELECT symbol, mo, COUNT(*) AS n
           FROM with_prev
-         WHERE prev IS NOT NULL
+         WHERE prev IS NOT NULL AND prev_idx = idx - 1
          GROUP BY symbol, mo
         """
     ).fetchall()
@@ -74,7 +90,7 @@ def main() -> int:
     if not gradeable:
         print("VERDICT: NOT READY. No cell reaches the gradeable floor, so the test")
         print("family would be empty and no page could carry a tier badge.")
-        print(f"Need ~{GRADEABLE_N + 1} complete years per symbol; the store holds {max_n + 1}.")
+        print(f"Need {GRADEABLE_N} observations per cell; the best cell holds {max_n}.")
         return 1
     if not robust_eligible:
         print("VERDICT: PARTIAL. Cells are gradeable but none can reach Robust, so")

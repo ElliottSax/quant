@@ -40,9 +40,27 @@ EXACT_FIELDS = ["n", "tier"]
 # destroys the independence that makes agreement evidence of anything.
 MC_FIELDS = ["p_perm", "ci_low", "ci_high"]
 MC_SIGMAS = 4
+N_RESAMPLE_REFINED = 100_000  # spec §6 v0.4 adaptive precision
+# Mandatory §6 outputs that must match exactly. Omitting these let the engines disagree
+# on failure years or leave-one-year-out stability while the harness reported 100%.
+EXACT_LIST_FIELDS = ["stable", "failure_years", "boundary_rule_applied"]
 
 
-def mc_tolerance(p_a: float, p_b: float) -> float:
+def _both_nan(a, b) -> bool:
+    return (isinstance(a, float) and math.isnan(a)) and (isinstance(b, float) and math.isnan(b))
+
+
+def _one_nan(a, b) -> bool:
+    """Exactly one side is NaN/None — one engine refused to produce a value while the
+    other published one. That is the most severe disagreement possible, and the original
+    guard skipped it: NaN comparisons are always False, so `abs(nan - 0.003) > tol` never
+    fired and the harness reported agreement."""
+    a_missing = a is None or (isinstance(a, float) and math.isnan(a))
+    b_missing = b is None or (isinstance(b, float) and math.isnan(b))
+    return a_missing != b_missing
+
+
+def mc_tolerance(p_a: float, p_b: float, n_resample: int = N_RESAMPLE) -> float:
     """Tolerance for the DIFFERENCE of two independent resampling estimates.
 
     The scale is sqrt(2) x SE, not SE: both engines report noisy estimates, so the
@@ -53,7 +71,7 @@ def mc_tolerance(p_a: float, p_b: float) -> float:
     to the binomial approximation. The tolerance was wrong, not the engines.
     """
     p = max(min((p_a + p_b) / 2, 1.0), 0.0)
-    se = math.sqrt(max(p * (1 - p), 1e-12) / N_RESAMPLE)
+    se = math.sqrt(max(p * (1 - p), 1e-12) / n_resample)
     return MC_SIGMAS * math.sqrt(2.0) * se
 
 
@@ -112,15 +130,31 @@ def main() -> int:
         for f in NUMERIC_FIELDS:
             if not close(ca.get(f), cb.get(f)):
                 numeric_disagreements.append((k, f, ca.get(f), cb.get(f)))
+        for f in EXACT_LIST_FIELDS:
+            if f in ca or f in cb:
+                if ca.get(f) != cb.get(f):
+                    numeric_disagreements.append((k, f, ca.get(f), cb.get(f)))
+
         for f in MC_FIELDS:
             va, vb = ca.get(f), cb.get(f)
-            if va is None or vb is None or (isinstance(va, float) and math.isnan(va)
-                                            and isinstance(vb, float) and math.isnan(vb)):
+            if _one_nan(va, vb):
+                # Never silently skipped: this is a real, severe disagreement.
+                numeric_disagreements.append((k, f + " (one side missing)", va, vb))
+                continue
+            if va is None or vb is None or _both_nan(va, vb):
                 continue
             # CI bounds are means of resampled differences, not proportions; scale their
             # tolerance off the interval width so it stays meaningful for either field.
-            tol = (mc_tolerance(va, vb) if f == "p_perm"
-                   else MC_SIGMAS * abs(ca["ci_high"] - ca["ci_low"]) / math.sqrt(N_RESAMPLE))
+            # Refined cells ran at 10x the permutations, so their true SE is ~3.2x
+            # smaller; applying the B=10,000 tolerance there would be 3.2x too generous
+            # on exactly the near-threshold cells §6 v0.4 exists to protect.
+            b_used = max(int(ca.get("perm_b") or 0), int(cb.get("perm_b") or 0)) or N_RESAMPLE
+            width = abs(ca["ci_high"] - ca["ci_low"])
+            tol = (mc_tolerance(va, vb, b_used) if f == "p_perm"
+                   else MC_SIGMAS * width / math.sqrt(N_RESAMPLE))
+            if f != "p_perm" and not math.isfinite(tol):
+                numeric_disagreements.append((k, f + " (tolerance not computable)", va, vb))
+                continue
             if abs(va - vb) > tol:
                 mc_disagreements.append((k, f, va, vb, tol))
 

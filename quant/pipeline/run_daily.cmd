@@ -29,6 +29,15 @@ if errorlevel 1 (
   exit /b 1
 )
 
+REM Spec 8: any disagreement between the two engines quarantines BOTH, and nothing
+REM publishes until it is reconciled. The harness was previously never invoked here, so
+REM a divergence could be recorded to the permanent log unnoticed.
+python -m pipeline.cross_check >> "%LOG%" 2>&1
+if errorlevel 1 (
+  echo ENGINES DISAGREE - both quarantined, calibration record skipped >> "%LOG%"
+  exit /b 3
+)
+
 python -m pipeline.calibration record >> "%LOG%" 2>&1
 python -m pipeline.calibration verify >> "%LOG%" 2>&1
 if errorlevel 1 (

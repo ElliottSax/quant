@@ -9,7 +9,10 @@ any downstream publish step must gate on it. A night that is not clean must NOT 
 
 "Clean" is defined as the plan specifies, with the staleness test as a floor:
   * every requested symbol returned usable rows, AND
-  * the newest day in the store is no older than the last completed trading day.
+  * EVERY requested symbol's newest day is no older than the last completed trading day
+    (per symbol, not a single global maximum — one current symbol must not vouch for a
+    stale one), AND
+  * the store contains no interior gap wider than a long weekend.
 
 Weekends and US market holidays are accounted for; a run on a Saturday expects Friday.
 The floor (rather than equality) exists because vendors publish the current session's
@@ -30,6 +33,10 @@ from pipeline import store  # noqa: E402
 from pipeline.providers import EntitlementError, ProviderError, get_provider  # noqa: E402
 
 DEFAULT_UNIVERSE = Path(__file__).resolve().parent / "universe.txt"
+
+# How far back the nightly interior-gap scan looks. Covers any plausible missed-run
+# outage while staying clear of genuine historical market closures.
+GAP_SCAN_DAYS = 120
 
 # US market holidays that fall on weekdays. Kept explicit rather than pulling a
 # calendar dependency; extend yearly. An unlisted holiday makes the run look unclean,
@@ -102,21 +109,54 @@ def main() -> int:
             failed.append((sym, str(e)))
             print(f"  {sym:6} FAILED — {e}")
 
-    max_day = con.execute("SELECT MAX(day) FROM eod_prices").fetchone()[0]
     expected = last_trading_day()
     notes = []
     if failed:
         notes.append(f"{len(failed)} symbol(s) failed: " + "; ".join(f"{s}({m})" for s, m in failed[:8]))
-    if max_day is None or max_day < expected:
-        notes.append(f"stale: newest day {max_day} is older than last trading day {expected}")
 
-    clean = not failed and max_day is not None and max_day >= expected
+    # Staleness is PER SYMBOL. A single global MAX(day) passes as long as any one symbol
+    # is current, so a vendor that quietly stops updating one ticker (delisting, ticker
+    # change, coverage drop) returns HTTP 200 with old bars, raises nothing, and the night
+    # is declared clean while a month-old series feeds the verdicts.
+    per_symbol = dict(con.execute(
+        "SELECT symbol, MAX(day) FROM eod_prices WHERE symbol IN "
+        "(SELECT UNNEST(?)) GROUP BY symbol", [symbols]
+    ).fetchall())
+    stale = {s: per_symbol.get(s) for s in symbols if per_symbol.get(s) is None or per_symbol[s] < expected}
+    if stale:
+        notes.append("stale symbols: " + "; ".join(f"{s}(newest {d})" for s, d in list(stale.items())[:8]))
+
+    # Interior gaps. Incremental runs only request the last 10 days, so an outage longer
+    # than that leaves a permanent hole that no MAX(day) check can see. If such a hole
+    # covers a month's last trading day, that month's close silently becomes an earlier
+    # day and its return is mis-measured with no error anywhere.
+    #
+    # Scoped to the recent window on purpose. The threat is a missed scheduled run, which
+    # is always recent; scanning all history instead flags genuine market closures — the
+    # first version of this check fired on 2001-09-10 -> 2001-09-17, which is the week the
+    # exchanges were shut after September 11. Deep-history integrity belongs to the
+    # supervised backfill, not to a nightly gate that would then cry wolf every night.
+    gap_window_start = date.today() - timedelta(days=GAP_SCAN_DAYS)
+    gaps = con.execute(
+        """
+        WITH d AS (SELECT DISTINCT day FROM eod_prices WHERE day >= ?),
+             s AS (SELECT day, lag(day) OVER (ORDER BY day) AS prev FROM d)
+        SELECT prev, day FROM s
+         WHERE prev IS NOT NULL AND date_diff('day', prev, day) > 5
+         ORDER BY day DESC LIMIT 5
+        """, [gap_window_start]
+    ).fetchall()
+    if gaps:
+        notes.append("interior gaps: " + "; ".join(f"{a}->{b}" for a, b in gaps))
+
+    max_day = max((d for d in per_symbol.values() if d), default=None)
+    clean = not failed and not stale and not gaps
     store.finish_run(con, run_id, symbols_ok=ok, symbols_failed=len(failed),
                      rows_written=rows_written, max_day=max_day, clean=clean,
                      notes=" | ".join(notes) or "clean")
 
     print(f"\nrows written: {rows_written} | ok: {ok} | failed: {len(failed)}")
-    print(f"max day in store: {max_day} | staleness floor: {expected}")
+    print(f"newest day: {max_day} | staleness floor: {expected} | stale symbols: {len(stale)} | interior gaps: {len(gaps)}")
     if clean:
         print("CLEAN NIGHT")
         return 0

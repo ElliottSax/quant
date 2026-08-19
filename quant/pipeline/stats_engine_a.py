@@ -104,16 +104,33 @@ def permutation_p(month_vals: np.ndarray, other_vals: np.ndarray, symbol: str, m
     d_obs = abs(month_vals.mean() - other_vals.mean())
 
     rng = _rng(symbol, month, stream)
-    # Vectorised: one (N_PERM x len(pooled)) argsort would be large, so permute indices
-    # per draw in a single call via random sampling of positions without replacement.
-    idx = np.argsort(rng.random((n_perm, len(pooled))), axis=1)
-    perm = pooled[idx]
-    means_m = perm[:, :n_m].mean(axis=1)
-    means_o = perm[:, n_m:].mean(axis=1)
-    d_perm = np.abs(means_m - means_o)
+
+    # Chunked. A single (n_perm x len(pooled)) argsort materialises three arrays of that
+    # size at once — measured at 706 MB of resident growth for one refined cell at
+    # B = 100,000 — which fails on a modest container and takes the whole family down
+    # with it. Chunking bounds peak memory without changing the draws consumed.
+    n_total = len(pooled)
+    total = float(pooled.sum())
+    count = 0
+    CHUNK = 5_000
+    done = 0
+    while done < n_perm:
+        size = min(CHUNK, n_perm - done)
+        idx = np.argsort(rng.random((size, n_total)), axis=1)
+        # Only the target-group sum is needed; the complement follows from the pooled
+        # total, so the full permuted matrix never has to be built.
+        sum_m = np.take_along_axis(np.broadcast_to(pooled, (size, n_total)),
+                                   idx[:, :n_m], axis=1).sum(axis=1)
+        means_m = sum_m / n_m
+        means_o = (total - sum_m) / (n_total - n_m)
+        # Ratified reading (spec §6 open questions): 1e-15 slack so floating-point noise
+        # cannot drop a tie. It raises p and is therefore the conservative direction —
+        # without it a perfectly flat series manufactures a p-value out of rounding.
+        count += int(np.count_nonzero(np.abs(means_m - means_o) >= d_obs - 1e-15))
+        done += size
 
     # +1 top and bottom: a finite resampling can never justify p = 0 (spec §3).
-    return float((1 + np.count_nonzero(d_perm >= d_obs)) / (n_perm + 1))
+    return float((1 + count) / (n_perm + 1))
 
 
 def bootstrap_ci(month_vals: np.ndarray, other_vals: np.ndarray, symbol: str, month: int) -> tuple[float, float]:

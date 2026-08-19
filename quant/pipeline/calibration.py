@@ -15,8 +15,12 @@ Two rules make the record worth anything, and both are enforced here rather than
   APPEND ONLY.   Rows are never updated or deleted. A verdict that changes is a NEW row;
                  the old one stays. Silently correcting the past would make the clock a
                  decoration.
-  CHECKSUMMED.   Each row carries a hash of its own content, and `verify` recomputes them.
-                 A record nobody can audit is a claim, not evidence.
+  HASH CHAINED.  Each row hashes its own content AND the previous row's hash. A per-row
+                 hash alone only catches accidental corruption: anyone who can rewrite a
+                 row can recompute its checksum, and a deleted row leaves no trace at all.
+                 Chaining means editing or removing any row breaks every row after it,
+                 which is what makes "append only" an enforced property rather than a
+                 claim in a docstring. `verify` walks the chain from the beginning.
 """
 
 from __future__ import annotations
@@ -52,11 +56,15 @@ CREATE TABLE IF NOT EXISTS calibration_log (
     ci_low        DOUBLE,
     ci_high       DOUBLE,
     boundary_rule BOOLEAN,
-    row_checksum  VARCHAR   NOT NULL
+    seq           BIGINT    NOT NULL,
+    prev_checksum VARCHAR   NOT NULL,
+    row_checksum  VARCHAR   NOT NULL,
+    PRIMARY KEY (seq)
 );
 """
 
-CHECKSUM_FIELDS = ["run_date", "spec_version", "engine", "universe_hash", "data_start",
+CHECKSUM_FIELDS = ["seq", "prev_checksum", "run_date", "spec_version", "engine",
+                   "universe_hash", "data_start", "data_vintage",
                    "symbol", "month", "tier", "n", "diff", "p_perm", "q_value"]
 
 
@@ -85,9 +93,39 @@ def record(engine_name: str = "a") -> int:
         "SELECT MAX(day), MIN(day), any_value(provider) FROM eod_prices"
     ).fetchone()
 
+    # The clock must never record from a night the ingest gate rejected. Previously this
+    # was enforced only by errorlevel chaining in run_daily.cmd, so running `calibration
+    # record` by hand bypassed it entirely and wrote a permanent row from stale data.
+    last_run = con.execute(
+        "SELECT run_id, clean, notes FROM ingest_runs WHERE finished_at IS NOT NULL "
+        "ORDER BY finished_at DESC LIMIT 1"
+    ).fetchone()
+    if not last_run:
+        print("refusing to record: no completed ingest run found")
+        return 1
+    if not last_run[1]:
+        print(f"refusing to record: last ingest run {last_run[0]} was NOT clean — {last_run[2]}")
+        return 1
+
     cells = engine.compute_cells()
-    symbols = sorted({c["symbol"] for c in cells})
+
+    # Universe hash comes from the REQUESTED universe, not from the symbols that happen
+    # to appear in the output. A symbol with no usable returns is dropped by the engine,
+    # so hashing the output produced a hash identical to a run where that symbol was
+    # never requested — and §5 requires a change of universe to be visible in the record.
+    universe_file = Path(__file__).resolve().parent / "universe.txt"
+    requested = []
+    if universe_file.exists():
+        for line in universe_file.read_text(encoding="utf-8").splitlines():
+            line = line.split("#", 1)[0].strip()
+            if line:
+                requested.append(line.upper())
+    symbols = sorted(requested) or sorted({c["symbol"] for c in cells})
     uhash = _universe_hash(symbols)
+
+    missing = sorted(set(symbols) - {c["symbol"] for c in cells})
+    if missing:
+        print(f"WARNING: requested but absent from engine output: {', '.join(missing)}")
     now = datetime.now(timezone.utc)
     today = date.today()
 
@@ -97,8 +135,8 @@ def record(engine_name: str = "a") -> int:
     # earlier verdict was reached on less evidence.
     already = con.execute(
         "SELECT COUNT(*) FROM calibration_log WHERE run_date = ? AND engine = ? "
-        "AND universe_hash = ? AND data_start = ? AND spec_version = ?",
-        [today, engine_name, uhash, data_start, engine.SPEC_VERSION],
+        "AND universe_hash = ? AND data_start = ? AND data_vintage = ? AND spec_version = ?",
+        [today, engine_name, uhash, data_start, vintage, engine.SPEC_VERSION],
     ).fetchone()[0]
     if already:
         # Not an error: re-running the same day is normal. Appending again would inflate
@@ -106,9 +144,16 @@ def record(engine_name: str = "a") -> int:
         print(f"already recorded today ({already} rows) for engine {engine_name} / universe {uhash}")
         return 0
 
+    seq, prev = con.execute(
+        "SELECT COALESCE(MAX(seq), 0), COALESCE(argMax(row_checksum, seq), 'GENESIS') "
+        "FROM calibration_log"
+    ).fetchone()
+
     rows = []
     for c in cells:
+        seq += 1
         r = {
+            "seq": seq, "prev_checksum": prev,
             "logged_at": now, "run_date": today, "spec_version": engine.SPEC_VERSION,
             "engine": engine_name, "provider": provider, "data_vintage": vintage,
             "data_start": data_start,
@@ -121,13 +166,15 @@ def record(engine_name: str = "a") -> int:
             "boundary_rule": c.get("boundary_rule_applied", False),
         }
         r["row_checksum"] = _checksum(r)
+        prev = r["row_checksum"]          # chain: each row commits to its predecessor
         rows.append(tuple(r[k] for k in [
             "logged_at", "run_date", "spec_version", "engine", "provider", "data_vintage",
             "data_start", "universe_hash", "symbol", "month", "tier", "n", "diff", "p_perm",
-            "q_value", "ci_low", "ci_high", "boundary_rule", "row_checksum"]))
+            "q_value", "ci_low", "ci_high", "boundary_rule", "seq", "prev_checksum",
+            "row_checksum"]))
 
     con.executemany(
-        "INSERT INTO calibration_log VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
+        "INSERT INTO calibration_log VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
     print(f"recorded {len(rows)} verdicts | spec {engine.SPEC_VERSION} | "
           f"universe {uhash} | vintage {vintage}")
     return 0
@@ -137,18 +184,29 @@ def verify() -> int:
     con = store.connect()
     con.execute(SCHEMA)
     rows = con.execute(
-        """SELECT run_date, spec_version, engine, universe_hash, data_start, symbol,
-                  month, tier, n, diff, p_perm, q_value, row_checksum FROM calibration_log"""
+        """SELECT seq, prev_checksum, run_date, spec_version, engine, universe_hash,
+                  data_start, data_vintage, symbol, month, tier, n, diff, p_perm,
+                  q_value, row_checksum
+             FROM calibration_log ORDER BY seq"""
     ).fetchall()
     if not rows:
         print("calibration log is empty — nothing to verify")
         return 1
 
     bad = 0
+    broken_links = []
+    expected_prev = "GENESIS"
+    expected_seq = 1
     for r in rows:
-        d = dict(zip(CHECKSUM_FIELDS, r[:12]))
-        if _checksum(d) != r[12]:
+        d = dict(zip(CHECKSUM_FIELDS, r[:15]))
+        if _checksum(d) != r[15]:
             bad += 1
+        # The chain is what makes deletion and back-editing detectable: a removed row
+        # leaves a seq hole, and an edited row breaks every successor's prev_checksum.
+        if r[1] != expected_prev or r[0] != expected_seq:
+            broken_links.append((r[0], expected_seq))
+        expected_prev = r[15]
+        expected_seq = r[0] + 1
 
     run_dates = con.execute(
         "SELECT DISTINCT run_date FROM calibration_log ORDER BY run_date").fetchall()
@@ -162,11 +220,15 @@ def verify() -> int:
     print(f"rows:          {len(rows)}")
     print(f"run dates:     {len(dates)}  ({dates[0]} -> {dates[-1]})" if dates else "run dates: 0")
     print(f"checksum bad:  {bad}")
+    print(f"chain breaks:  {len(broken_links)}")
     print(f"suspect gaps:  {len(gaps)}")
+    for got, want in broken_links[:5]:
+        detail = f"seq {got}" if got == want else f"seq {got}, expected {want}"
+        print(f"  broken at {detail} — a preceding row was edited or removed")
     for a, b, d in gaps[:5]:
         print(f"  {a} -> {b} ({d} days)")
 
-    if bad:
+    if bad or broken_links:
         print("\nINTEGRITY FAILURE — the record has been altered after the fact.")
         return 1
     print("\nintegrity OK")
@@ -176,15 +238,21 @@ def verify() -> int:
 def tenure() -> int:
     """How long each current verdict has held, unbroken, at the same tier.
 
-    This is what a Survivors roster displays. Tenure restarts when the tier changes —
-    a demotion is published, not smoothed over (spec §7).
+    Scoped to the CURRENT spec version. Spec §7: "if the spec changes, prior rows keep
+    their original spec version and a new series begins." Merging versions silently
+    absorbed a v0.3 Folklore into a v0.4 Weak run — and because both shared a run_date,
+    which tier survived depended on row order, making the roster non-deterministic.
+    Tenure restarts when the tier changes; a demotion is published, not smoothed over.
     """
     con = store.connect()
     con.execute(SCHEMA)
     rows = con.execute(
         """
-        SELECT symbol, month, run_date, tier FROM calibration_log
-         WHERE engine = 'a' ORDER BY symbol, month, run_date
+        SELECT symbol, month, run_date, tier, spec_version, seq
+          FROM calibration_log
+         WHERE engine = 'a' AND spec_version = (
+               SELECT spec_version FROM calibration_log ORDER BY seq DESC LIMIT 1)
+         ORDER BY symbol, month, seq
         """
     ).fetchall()
     if not rows:
@@ -192,7 +260,7 @@ def tenure() -> int:
         return 1
 
     current: dict[tuple[str, int], tuple[str, date, date]] = {}
-    for sym, mo, rdate, tier in rows:
+    for sym, mo, rdate, tier, _spec, _seq in rows:
         k = (sym, mo)
         if k not in current or current[k][0] != tier:
             current[k] = (tier, rdate, rdate)  # tier, since, last_seen

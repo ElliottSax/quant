@@ -99,7 +99,7 @@ class FmpProvider:
         rows: dict[str, dict] = {}
         today = date.today()
         cursor = start
-        entitlement_error: EntitlementError | None = None
+        dropped = 0
 
         while cursor <= today:
             window_end = min(date(cursor.year + self.WINDOW_YEARS, 1, 1) - timedelta(days=1), today)
@@ -124,8 +124,6 @@ class FmpProvider:
                         rows[d] = row  # dedupe across overlapping window edges
             cursor = window_end + timedelta(days=1)
 
-        if entitlement_error:
-            raise entitlement_error
         payload = list(rows.values())
         if not payload:
             raise ProviderError("empty response")
@@ -141,16 +139,29 @@ class FmpProvider:
                         adj_high=float(row["adjHigh"]),
                         adj_low=float(row["adjLow"]),
                         adj_close=float(row["adjClose"]),
+                        # Volume is not used in any published statistic, so a missing
+                        # value is recorded as 0 rather than dropping an otherwise-valid
+                        # price bar. Every field that DOES feed a statistic is required
+                        # above and raises here if absent.
                         volume=float(row.get("volume") or 0),
                     )
                 )
             except (KeyError, TypeError, ValueError):
                 # A malformed row is dropped, never defaulted. Padding a series with
                 # invented values is the failure mode this whole pipeline exists to avoid.
+                dropped += 1
                 continue
 
         if not bars:
             raise ProviderError("no usable rows after validation")
+        # Silent thinning is its own failure mode: a vendor that nulls adjClose on halted
+        # days would quietly shorten the series while every gate still passed.
+        if dropped and dropped > 0.01 * (len(bars) + dropped):
+            raise ProviderError(
+                f"{dropped} of {len(bars) + dropped} rows unusable (>1%) — refusing a thinned series"
+            )
+        if dropped:
+            print(f"    note: {symbol} dropped {dropped} malformed row(s)")
         bars.sort(key=lambda b: b.day)
         return bars
 
