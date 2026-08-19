@@ -27,17 +27,49 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: quant/frontend/package-lock.json
 
       - name: Publish next article(s) from queue
         run: node scripts/queue-publish.mjs
         env:
           ARTICLES_PER_RUN: ${{ github.event.inputs.count || '1' }}
 
-      - name: Commit & push
+      - name: Stop early if the queue produced nothing
+        id: changes
         run: |
           if [ -z "$(git status --porcelain)" ]; then
-            echo "nothing to publish"; exit 0
+            echo "nothing to publish"
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # The Next app lives in quant/frontend, not the repo root -- articles are
+      # published to quant/frontend/content/blog per article-queue/.publish-config.json.
+      - name: Install dependencies
+        if: steps.changes.outputs.has_changes == 'true'
+        working-directory: quant/frontend
+        run: npm ci
+
+      # THE GATE. These commits trigger a Vercel deploy and the articles are
+      # compiled at build time, so one malformed file breaks the entire site
+      # build rather than just its own page.
+      #
+      # The sibling cardclassroom repo ran without this and pushed 85 articles
+      # between 2026-08-12 and 2026-08-19 while every build failed on a syntax
+      # error. The workflow reported success every two hours because it never
+      # compiled anything, and the live site silently froze for a week.
+      #
+      # If the build fails the job stops here and nothing is pushed.
+      - name: Build must pass before anything is pushed
+        if: steps.changes.outputs.has_changes == 'true'
+        working-directory: quant/frontend
+        run: npm run build
+
+      - name: Commit & push
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
           git config user.name "autopublish[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
