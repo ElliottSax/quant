@@ -5,60 +5,16 @@
 
 'use client'
 
-import { useState, useMemo, useEffect, Suspense } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { api } from '@/lib/api-client'
 import { useBacktestStrategies } from '@/lib/hooks'
 import { BacktestResultView } from '@/components/backtesting'
+import { BacktestDataNotes, NoTradesPanel } from '@/components/BacktestDataNotes'
 import { saveBacktestResult } from '@/lib/backtest-storage'
-import { getStrategyById, STRATEGIES } from '@/lib/strategy-definitions'
-
-const generateMonthlyReturns = (equityData: any[]) => {
-  const monthlyData = []
-  const daysPerMonth = Math.floor(equityData.length / 12)
-  for (let month = 0; month < 12; month++) {
-    const startIdx = month * daysPerMonth
-    const endIdx = Math.min((month + 1) * daysPerMonth, equityData.length - 1)
-    const returnPct = ((equityData[endIdx].equity - equityData[startIdx].equity) / equityData[startIdx].equity) * 100
-    monthlyData.push({
-      month: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][month],
-      return: parseFloat(returnPct.toFixed(2)),
-    })
-  }
-  return monthlyData
-}
-
-const generateTradeDistribution = (trades: any[]) => {
-  const buckets: Record<string, number> = {}
-  for (let i = -15; i <= 25; i += 2) buckets[`${i}%`] = 0
-  trades.forEach((trade) => {
-    const bucket = Math.round(trade.returnPct / 2) * 2
-    const key = `${Math.max(-15, Math.min(25, bucket))}%`
-    if (buckets[key] !== undefined) buckets[key]++
-  })
-  return Object.entries(buckets).map(([range, count]) => ({ returnRange: range, count, value: parseInt(range) }))
-}
-
-const generateRollingMetrics = (equityData: any[], windowSize: number = 20) => {
-  const metrics = []
-  for (let i = windowSize; i < equityData.length; i++) {
-    const window = equityData.slice(i - windowSize, i)
-    const returns = window.map((d: any, idx: number) =>
-      idx > 0 ? (d.equity - window[idx - 1].equity) / window[idx - 1].equity : 0
-    ).slice(1)
-    const avgReturn = returns.reduce((a: number, b: number) => a + b, 0) / returns.length
-    const stdDev = Math.sqrt(returns.reduce((sum: number, r: number) => sum + Math.pow(r - avgReturn, 2), 0) / returns.length)
-    const sharpe = stdDev > 0 ? (avgReturn * 252) / (stdDev * Math.sqrt(252)) : 0
-    metrics.push({
-      day: equityData[i].day,
-      sharpe: parseFloat(sharpe.toFixed(2)),
-      volatility: parseFloat((stdDev * Math.sqrt(252) * 100).toFixed(2)),
-      avgReturn: parseFloat((avgReturn * 100).toFixed(3)),
-    })
-  }
-  return metrics
-}
+import { normalizeBacktest, type NormalizedBacktest } from '@/lib/backtest-normalize'
+import { getStrategyById } from '@/lib/strategy-definitions'
 
 // Strategy options for the dropdown
 const strategyOptions = [
@@ -92,14 +48,7 @@ function BacktestingPageContent() {
     initial_capital: 100000,
   })
 
-  const [hasResults, setHasResults] = useState(false)
-  const [backtestResult, setBacktestResult] = useState<{
-    equityData: any[]
-    trades: any[]
-    monthlyReturns: any[]
-    tradeDistribution: any[]
-    rollingMetrics: any[]
-  } | null>(null)
+  const [backtestResult, setBacktestResult] = useState<NormalizedBacktest | null>(null)
   const [isRunning, setIsRunning] = useState(false)
   const [savedId, setSavedId] = useState<string | null>(null)
   const [runError, setRunError] = useState<string | null>(null)
@@ -146,32 +95,26 @@ function BacktestingPageContent() {
         )
       }
 
-      const equityData = result.equity_curve.map((point: any, i: number) => ({
-        day: i + 1,
-        date: point.date || null,
-        equity: point.equity ?? point.value ?? null,
-        drawdown: point.drawdown ?? 0,
-        benchmark: point.benchmark ?? null,
-        volume: point.volume ?? null,
-      }))
+      // The backend sends equity_curve as { timestamp, equity } and ships drawdown
+      // separately as drawdown_curve; trades carry `pnl`, never `return_pct`. Mapping is
+      // in one place (lib/backtest-normalize) so the two run pages cannot drift apart.
+      const normalized = normalizeBacktest(
+        result.equity_curve,
+        (result as any).drawdown_curve,
+        result.trades,
+        formData.initial_capital
+      )
 
-      const trades = (result.trades ?? []).map((t: any, i: number) => ({
-        day: t.day || i + 1,
-        returnPct: t.return_pct ?? t.returnPct ?? 0,
-        profit: t.profit ?? 0,
-        isWin: (t.return_pct ?? t.returnPct ?? t.profit ?? 0) > 0,
-        equity: t.equity ?? null,
-      }))
+      if (normalized.points.length < 2) {
+        throw new Error(
+          `The backtest returned ${normalized.points.length} usable equity point(s) for ` +
+            `${formData.symbol}. At least two are needed to measure a return.`
+        )
+      }
 
-      const monthly = generateMonthlyReturns(equityData)
-      const distribution = generateTradeDistribution(trades)
-      const rolling = generateRollingMetrics(equityData)
-
-      setBacktestResult({ equityData, trades, monthlyReturns: monthly, tradeDistribution: distribution, rollingMetrics: rolling })
-      setHasResults(true)
+      setBacktestResult(normalized)
     } catch (err) {
       setBacktestResult(null)
-      setHasResults(false)
       setRunError(
         err instanceof Error && err.message
           ? err.message
@@ -182,73 +125,63 @@ function BacktestingPageContent() {
     }
   }
 
-  const metrics = useMemo(() => {
-    if (!backtestResult) return null
-    const { equityData, trades } = backtestResult
-    const finalEquity = equityData[equityData.length - 1].equity
-    const totalReturn = ((finalEquity - formData.initial_capital) / formData.initial_capital) * 100
-    const maxDrawdown = Math.min(...equityData.map((d: any) => d.drawdown))
-    const winningTrades = trades.filter((t: any) => t.isWin)
-    const losingTrades = trades.filter((t: any) => !t.isWin)
-    const winRate = (winningTrades.length / trades.length) * 100
-    const avgWin = winningTrades.length > 0 ? winningTrades.reduce((sum: number, t: any) => sum + t.returnPct, 0) / winningTrades.length : 0
-    const avgLoss = losingTrades.length > 0 ? losingTrades.reduce((sum: number, t: any) => sum + t.returnPct, 0) / losingTrades.length : 0
-    const profitFactor = avgLoss !== 0 ? Math.abs(avgWin * winningTrades.length / (avgLoss * losingTrades.length)) : 0
-    const returns = equityData.map((d: any, i: number) => i > 0 ? (d.equity - equityData[i - 1].equity) / equityData[i - 1].equity : 0).slice(1)
-    const avgReturn = returns.reduce((a: number, b: number) => a + b, 0) / returns.length
-    const stdDev = Math.sqrt(returns.reduce((sum: number, r: number) => sum + Math.pow(r - avgReturn, 2), 0) / returns.length)
-    const sharpeRatio = stdDev > 0 ? (avgReturn * 252) / (stdDev * Math.sqrt(252)) : 0
-    // Sortino uses downside deviation (returns below the 0% target only). It is not a
-    // fixed multiple of Sharpe — deriving it as one invents a number that happens to
-    // flatter the strategy, since downside deviation ≤ total deviation.
-    const downside = returns.filter((r: number) => r < 0)
-    const downsideDev = downside.length > 0
-      ? Math.sqrt(downside.reduce((sum: number, r: number) => sum + r * r, 0) / downside.length)
-      : 0
-    const sortinoRatio = downsideDev > 0 ? (avgReturn * 252) / (downsideDev * Math.sqrt(252)) : null
-
-    return { finalEquity, totalReturn, maxDrawdown, sharpeRatio, sortinoRatio, winRate, avgWin, avgLoss, profitFactor, totalTrades: trades.length }
-  }, [backtestResult, formData.initial_capital])
+  const hasResults = backtestResult !== null
+  // Trade statistics exist only when trades were realised. With none, the metrics object
+  // holds zeros that measure nothing, so the page shows the no-trades panel instead.
+  const hasTradeStats = (backtestResult?.trades.rows.length ?? 0) > 0
+  const metrics = backtestResult?.metrics ?? null
 
   const handleSave = () => {
-    if (!backtestResult || !metrics) return
+    if (!backtestResult || !metrics || !hasTradeStats) return
     const strategyDef = getStrategyById(formData.strategy)
     const strategyLabel = strategyDef?.name || uniqueStrategies.find(s => s.value === formData.strategy)?.label || formData.strategy
-    const id = saveBacktestResult(
-      {
+    const rows = backtestResult.trades.rows
+    // One record: the storage module takes a single object, and the history and compare
+    // pages read these flat fields off it.
+    const id = saveBacktestResult({
+      name: `${strategyLabel} · ${formData.symbol}`,
+      symbol: formData.symbol,
+      strategy: formData.strategy,
+      strategyLabel,
+      startDate: formData.start_date,
+      endDate: formData.end_date,
+      initialCapital: formData.initial_capital,
+      totalReturn: metrics.totalReturn,
+      sharpeRatio: metrics.sharpeRatio,
+      winRate: metrics.winRate,
+      maxDrawdown: metrics.maxDrawdown,
+      result: {
         total_return: metrics.totalReturn,
-        annual_return: metrics.totalReturn,
         sharpe_ratio: metrics.sharpeRatio,
         sortino_ratio: metrics.sortinoRatio,
         max_drawdown: metrics.maxDrawdown,
         win_rate: metrics.winRate,
         profit_factor: metrics.profitFactor,
         total_trades: metrics.totalTrades,
-        winning_trades: backtestResult.trades.filter((t: any) => t.isWin).length,
-        losing_trades: backtestResult.trades.filter((t: any) => !t.isWin).length,
+        executions: backtestResult.trades.executions,
+        winning_trades: rows.filter(t => t.isWin).length,
+        losing_trades: rows.filter(t => !t.isWin && t.profit < 0).length,
         avg_win: metrics.avgWin,
         avg_loss: metrics.avgLoss,
-        largest_win: Math.max(...backtestResult.trades.map((t: any) => t.returnPct)),
-        largest_loss: Math.min(...backtestResult.trades.map((t: any) => t.returnPct)),
+        largest_win: Math.max(...rows.map(t => t.profit)),
+        largest_loss: Math.min(...rows.map(t => t.profit)),
+        return_unit: backtestResult.trades.returnUnit,
+        drawdown_source: backtestResult.drawdownSource,
         start_date: formData.start_date,
         end_date: formData.end_date,
-        duration_days: backtestResult.equityData.length,
+        duration_days: backtestResult.points.length,
         initial_capital: formData.initial_capital,
         final_capital: metrics.finalEquity,
-        peak_capital: Math.max(...backtestResult.equityData.map((d: any) => d.equity)),
-        trades: backtestResult.trades,
-        equity_curve: backtestResult.equityData,
-        drawdown_curve: backtestResult.equityData.map((d: any) => ({ day: d.day, drawdown: d.drawdown })),
+        peak_capital: Math.max(...backtestResult.points.map(p => p.equity)),
+        // Stored the way the API sent them, so reopening a saved run re-derives the same
+        // figures instead of reading percentages that were never reported.
+        trades: rows.map(t => ({
+          timestamp: t.date, side: t.side, quantity: t.quantity, price: t.price, pnl: t.profit,
+        })),
+        equity_curve: backtestResult.points.map(p => ({ timestamp: p.date, equity: p.equity })),
+        drawdown_curve: backtestResult.points.map(p => ({ timestamp: p.date, drawdown: Math.abs(p.drawdown) })),
       },
-      {
-        symbol: formData.symbol,
-        strategy: formData.strategy,
-        strategyLabel,
-        startDate: formData.start_date,
-        endDate: formData.end_date,
-        initialCapital: formData.initial_capital,
-      }
-    )
+    })
     setSavedId(id)
   }
 
@@ -331,7 +264,9 @@ function BacktestingPageContent() {
             )}
           </button>
 
-          {hasResults && (
+          {/* Saving stores the run's headline statistics for the history and compare
+              tables. A run with no trades has none to store. */}
+          {hasResults && hasTradeStats && (
             <>
               <button onClick={handleSave} className="px-4 py-2 text-sm font-medium rounded-lg bg-green-600 text-white hover:bg-green-500 transition-colors">
                 {savedId ? 'Saved!' : 'Save Result'}
@@ -374,12 +309,30 @@ function BacktestingPageContent() {
             </Link>
           </div>
         </div>
-      ) : metrics && backtestResult && (
-        <BacktestResultView
-          metrics={metrics}
-          data={backtestResult}
-          initialCapital={formData.initial_capital}
+      ) : backtestResult && !hasTradeStats ? (
+        <NoTradesPanel
+          symbol={formData.symbol}
+          startDate={formData.start_date}
+          endDate={formData.end_date}
+          equityPoints={backtestResult.points.length}
+          executions={backtestResult.trades.executions}
         />
+      ) : metrics && backtestResult && (
+        <div className="space-y-8">
+          <BacktestDataNotes
+            returnUnit={backtestResult.trades.returnUnit}
+            drawdownSource={backtestResult.drawdownSource}
+            executions={backtestResult.trades.executions}
+            realizedTrades={backtestResult.trades.rows.length}
+            hasMonthlyReturns={backtestResult.chartData.monthlyReturns.length > 0}
+            initialCapital={formData.initial_capital}
+          />
+          <BacktestResultView
+            metrics={metrics}
+            data={backtestResult.chartData}
+            initialCapital={formData.initial_capital}
+          />
+        </div>
       )}
     </div>
   )

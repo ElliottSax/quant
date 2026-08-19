@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Terms of Service | QuantEngines',
   description:
-    'The terms covering use of QuantEngines: what the service is, what accounts require of you, and the limits of our liability.',
+    'The terms covering use of QuantEngines: what the service is, what you may and may not do with it, and the limits of our liability.',
 }
 
 export default function TermsPage() {
@@ -53,13 +53,15 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-bold text-white mb-3">4. Accounts</h2>
             <p>
-              You can read the site without an account. If you create one, give accurate
-              details, keep your credentials secure, and do not share the account. You
-              are responsible for activity under your account. Tell us at{' '}
-              <a href="mailto:hello@quantengines.com" className="text-blue-400 underline">
-                hello@quantengines.com
-              </a>{' '}
-              if you believe it has been compromised, and we can close it on request.
+              There are no accounts. The site is used without registering or signing
+              in, so nothing here asks you to create credentials or hold you
+              responsible for activity under a login. The only detail you can give us
+              is an email address, if you choose to subscribe to updates — see the{' '}
+              <Link href="/privacy" className="text-blue-400 underline">
+                Privacy Policy
+              </Link>
+              . If we introduce accounts, these terms will be updated to cover them
+              before anyone can register.
             </p>
           </section>
 
@@ -77,7 +79,7 @@ export default function TermsPage() {
               </li>
               <li>
                 Attempt to break, probe, or gain unauthorised access to the site, its
-                APIs, or other users&apos; accounts.
+                APIs, or the systems they run on.
               </li>
               <li>
                 Use the site to harass or make unfounded accusations against the public
@@ -90,9 +92,10 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold text-white mb-3">6. Third-party data</h2>
             <p>
               Some data on this site originates with third parties, including government
-              filing systems and market data vendors such as Polygon. Their material
-              remains theirs, may be subject to their own terms, and may be delayed,
-              incomplete, or wrong. We pass it on in good faith and do not warrant it.
+              filing systems and market data providers. Price and quote data is
+              currently retrieved from Yahoo Finance. Their material remains theirs, may
+              be subject to their own terms, and may be delayed, incomplete, or wrong.
+              We pass it on in good faith and do not warrant it.
             </p>
           </section>
 

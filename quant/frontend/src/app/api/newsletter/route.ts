@@ -70,6 +70,15 @@ function rateLimited(ip: string): boolean {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+// Address that handles opt-out requests. This is a transactional send (Resend's
+// `/emails` endpoint), so Resend's hosted `{{{RESEND_UNSUBSCRIBE_URL}}}` token is
+// NOT substituted here — using it would ship a literal placeholder. A mailto
+// unsubscribe is therefore the honest mechanism, and it is what the privacy
+// policy describes. If this ever moves to Resend Broadcasts, swap both the
+// visible link and the List-Unsubscribe header for the hosted URL.
+const UNSUBSCRIBE_EMAIL = 'hello@quantengines.com'
+const UNSUBSCRIBE_MAILTO = `mailto:${UNSUBSCRIBE_EMAIL}?subject=Unsubscribe`
+
 // Sends a welcome email via Resend. Requires a verified sending domain for the
 // EMAIL_FROM address; until quantengines.com verifies, Resend rejects the send
 // and this throws — callers invoke it non-blocking so the signup still succeeds.
@@ -84,6 +93,9 @@ async function sendWelcomeEmail(apiKey: string, email: string, firstName: string
       from,
       to: [email],
       subject: 'Welcome to QuantEngines',
+      // No List-Unsubscribe-Post: one-click unsubscribe requires an HTTPS
+      // endpoint, and claiming it with a mailto target would be a broken promise.
+      headers: { 'List-Unsubscribe': `<${UNSUBSCRIBE_MAILTO}>` },
       text: `Hi${hi},
 
 Thanks for subscribing to QuantEngines — quantitative trading strategies, backtesting, and market insights, weekly.
@@ -93,7 +105,11 @@ Start here:
 • Congressional trades: ${site}/congressional-trades
 • Free course: ${site}/courses/backtesting-101
 
-— The QuantEngines Team`,
+— The QuantEngines Team
+
+You are receiving this because you subscribed at quantengines.com.
+To unsubscribe, reply to this email or write to ${UNSUBSCRIBE_EMAIL} with
+"Unsubscribe" in the subject, and we will remove your address.`,
       html: `<div style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;line-height:1.6;color:#e5e7eb;background:#0b1020;padding:24px;border-radius:8px">
   <h1 style="font-size:22px;margin:0 0 12px;color:#fff">Welcome to QuantEngines</h1>
   <p>Hi${hi},</p>
@@ -105,6 +121,11 @@ Start here:
     <li><a href="${site}/courses/backtesting-101" style="color:#fbbf24">Free backtesting course</a></li>
   </ul>
   <p style="margin-top:24px">— The QuantEngines Team</p>
+  <p style="margin-top:24px;padding-top:16px;border-top:1px solid #1f2937;font-size:12px;color:#9ca3af">
+    You are receiving this because you subscribed at quantengines.com.
+    <a href="${UNSUBSCRIBE_MAILTO}" style="color:#9ca3af;text-decoration:underline">Unsubscribe</a>
+    and we will remove your address.
+  </p>
 </div>`,
     }),
   })

@@ -1,6 +1,10 @@
 /**
  * Backtest Result Detail Page
  * Full visualization of a saved backtest result
+ *
+ * Everything on this page is re-derived from the curves the run actually returned and
+ * stored. Nothing is filled in: a saved record with no usable equity curve says so, and a
+ * record with no completed trades reports that rather than showing zeroed statistics.
  */
 
 'use client'
@@ -10,75 +14,32 @@ import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { getBacktestResult, deleteBacktestResult, type BacktestResultRecord } from '@/lib/backtest-storage'
 import { BacktestResultView } from '@/components/backtesting'
+import { BacktestDataNotes, NoTradesPanel } from '@/components/BacktestDataNotes'
+import { normalizeBacktest, type NormalizedBacktest } from '@/lib/backtest-normalize'
 
-function computeChartData(record: BacktestResultRecord) {
-  const result = record.result
-  const equityData = result.equity_curve?.map((point: any, i: number) => ({
-    day: point.day || i + 1,
-    equity: point.equity || point.value || record.initialCapital,
-    drawdown: point.drawdown || 0,
-    benchmark: record.initialCapital * (1 + 0.10 * (i / (result.equity_curve.length || 252))),
-  })) || []
+const isRecord = (v: unknown): v is Record<string, unknown> =>
+  typeof v === 'object' && v !== null
 
-  const trades = result.trades?.map((t: any, i: number) => ({
-    day: t.day || i + 1,
-    returnPct: t.return_pct || t.returnPct || 0,
-    profit: t.profit || 0,
-    isWin: t.isWin ?? ((t.return_pct || t.returnPct || t.profit || 0) > 0),
-    equity: t.equity || record.initialCapital,
-  })) || []
+const num = (v: unknown): number | null =>
+  typeof v === 'number' && Number.isFinite(v) ? v : null
 
-  // Monthly returns
-  const monthlyReturns = []
-  if (equityData.length >= 12) {
-    const dpm = Math.floor(equityData.length / 12)
-    for (let m = 0; m < 12; m++) {
-      const si = m * dpm
-      const ei = Math.min((m + 1) * dpm, equityData.length - 1)
-      monthlyReturns.push({
-        month: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][m],
-        return: parseFloat((((equityData[ei].equity - equityData[si].equity) / equityData[si].equity) * 100).toFixed(2)),
-      })
-    }
-  }
+const text = (v: unknown, fallback: string): string =>
+  typeof v === 'string' && v.length > 0 ? v : fallback
 
-  // Trade distribution
-  const buckets: Record<string, number> = {}
-  for (let i = -15; i <= 25; i += 2) buckets[`${i}%`] = 0
-  trades.forEach((t: any) => {
-    const b = Math.round(t.returnPct / 2) * 2
-    const k = `${Math.max(-15, Math.min(25, b))}%`
-    if (buckets[k] !== undefined) buckets[k]++
-  })
-  const tradeDistribution = Object.entries(buckets).map(([r, c]) => ({ returnRange: r, count: c, value: parseInt(r) }))
+function normalizeRecord(record: BacktestResultRecord): NormalizedBacktest | null {
+  const result = isRecord(record.result) ? record.result : {}
+  // Older records were written before the capital was stored alongside them; without it
+  // no percentage is computable, and one invented from a default would be arbitrary.
+  const initialCapital = num(record.initialCapital) ?? num(result.initial_capital)
+  if (initialCapital === null || initialCapital <= 0) return null
 
-  // Rolling metrics
-  const rollingMetrics = []
-  for (let i = 20; i < equityData.length; i++) {
-    const w = equityData.slice(i - 20, i)
-    const rets = w.map((d: any, idx: number) => idx > 0 ? (d.equity - w[idx - 1].equity) / w[idx - 1].equity : 0).slice(1)
-    const ar = rets.reduce((a: number, b: number) => a + b, 0) / rets.length
-    const sd = Math.sqrt(rets.reduce((s: number, r: number) => s + Math.pow(r - ar, 2), 0) / rets.length)
-    rollingMetrics.push({
-      day: equityData[i].day,
-      sharpe: parseFloat((sd > 0 ? (ar * 252) / (sd * Math.sqrt(252)) : 0).toFixed(2)),
-      volatility: parseFloat((sd * Math.sqrt(252) * 100).toFixed(2)),
-    })
-  }
-
-  const metrics = {
-    finalEquity: result.final_capital || equityData[equityData.length - 1]?.equity || record.initialCapital,
-    totalReturn: record.totalReturn,
-    maxDrawdown: record.maxDrawdown,
-    sharpeRatio: record.sharpeRatio,
-    winRate: record.winRate,
-    avgWin: result.avg_win || 0,
-    avgLoss: result.avg_loss || 0,
-    profitFactor: result.profit_factor || 0,
-    totalTrades: result.total_trades || trades.length,
-  }
-
-  return { metrics, chartData: { equityData, trades, monthlyReturns, tradeDistribution, rollingMetrics } }
+  const normalized = normalizeBacktest(
+    result.equity_curve,
+    result.drawdown_curve,
+    result.trades,
+    initialCapital
+  )
+  return normalized.points.length > 0 ? normalized : null
 }
 
 export default function BacktestResultDetailPage() {
@@ -123,7 +84,12 @@ export default function BacktestResultDetailPage() {
     )
   }
 
-  const { metrics, chartData } = computeChartData(record)
+  const normalized = normalizeRecord(record)
+  const initialCapital = num(record.initialCapital) ?? 0
+  const symbol = text(record.symbol, 'this symbol')
+  const startDate = text(record.startDate, 'the start of the window')
+  const endDate = text(record.endDate, 'its end')
+  const hasTradeStats = (normalized?.trades.rows.length ?? 0) > 0
 
   return (
     <div className="space-y-8">
@@ -133,9 +99,10 @@ export default function BacktestResultDetailPage() {
           <div className="flex items-center gap-3 mb-2">
             <Link href="/backtesting/results" className="text-sm text-muted-foreground hover:text-white">← Back to History</Link>
           </div>
-          <h1 className="text-4xl font-bold mb-2 gradient-text">{record.strategyLabel}</h1>
+          <h1 className="text-4xl font-bold mb-2 gradient-text">{text(record.strategyLabel, text(record.name, 'Saved backtest'))}</h1>
           <p className="text-muted-foreground text-lg">
-            {record.symbol} | {record.startDate} → {record.endDate} | ${record.initialCapital.toLocaleString()} capital
+            {symbol} | {startDate} → {endDate}
+            {initialCapital > 0 ? ` | $${initialCapital.toLocaleString()} capital` : ''}
           </p>
           <p className="text-xs text-muted-foreground mt-1">
             Saved {new Date(record.createdAt).toLocaleString()}
@@ -143,7 +110,7 @@ export default function BacktestResultDetailPage() {
         </div>
         <div className="flex gap-3">
           <Link
-            href={`/backtesting?strategy=${record.strategy}&symbol=${record.symbol}`}
+            href={`/backtesting?strategy=${text(record.strategy, '')}&symbol=${text(record.symbol, '')}`}
             className="px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-colors"
           >
             Run Again
@@ -157,11 +124,40 @@ export default function BacktestResultDetailPage() {
         </div>
       </div>
 
-      <BacktestResultView
-        metrics={metrics}
-        data={chartData}
-        initialCapital={record.initialCapital}
-      />
+      {!normalized ? (
+        <div className="glass-strong rounded-xl p-12 text-center border border-amber-500/30">
+          <h3 className="text-2xl font-bold mb-3">This saved result cannot be redrawn</h3>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            The record holds no equity curve that can be read, so there is nothing measured
+            to chart. Charts are not drawn from a placeholder curve. Re-run the backtest to
+            produce a result that can be displayed.
+          </p>
+        </div>
+      ) : !hasTradeStats ? (
+        <NoTradesPanel
+          symbol={symbol}
+          startDate={startDate}
+          endDate={endDate}
+          equityPoints={normalized.points.length}
+          executions={normalized.trades.executions}
+        />
+      ) : (
+        <>
+          <BacktestDataNotes
+            returnUnit={normalized.trades.returnUnit}
+            drawdownSource={normalized.drawdownSource}
+            executions={normalized.trades.executions}
+            realizedTrades={normalized.trades.rows.length}
+            hasMonthlyReturns={normalized.chartData.monthlyReturns.length > 0}
+            initialCapital={initialCapital}
+          />
+          <BacktestResultView
+            metrics={normalized.metrics}
+            data={normalized.chartData}
+            initialCapital={initialCapital}
+          />
+        </>
+      )}
     </div>
   )
 }

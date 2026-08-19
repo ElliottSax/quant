@@ -14,7 +14,7 @@ const CHANNELS = [
     colour: 'text-blue-400',
     title: 'General questions',
     email: 'hello@quantengines.com',
-    body: 'Anything about the site, the tools, your account, or privacy and data-removal requests.',
+    body: 'Anything about the site, the tools, or privacy and data-removal requests.',
   },
   {
     icon: AlertCircle,
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 .
               </li>
               <li>
-                To have your email address or account removed, write to{' '}
+                To unsubscribe or have your email address deleted, write to{' '}
                 <a
                   href="mailto:hello@quantengines.com"
                   className="text-blue-400 underline"

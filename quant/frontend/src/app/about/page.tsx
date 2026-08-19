@@ -23,9 +23,9 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold text-white mb-3">What we do</h2>
             <p>
               QuantEngines publishes analytics tools for people who want to test an
-              idea before risking money on it. The site is open to read without an
-              account, and everything on it is currently free — no tiers, no paywall,
-              and no payment is taken anywhere on the site.
+              idea before risking money on it. There are no accounts and nothing to
+              sign in to, and everything on the site is currently free — no tiers, no
+              paywall, and no payment is taken anywhere on the site.
             </p>
           </section>
 
@@ -52,9 +52,6 @@ export default function AboutPage() {
                   charts
                 </Link>
                 , a{' '}
-                <Link href="/compare" className="text-blue-400 underline">
-                  comparison tool
-                </Link>{' '}
                 and a{' '}
                 <Link href="/network" className="text-blue-400 underline">
                   correlation network
@@ -86,10 +83,11 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold text-white mb-3">Where the data comes from</h2>
             <p>
               Congressional trading records are derived from public filings published at
-              house.gov and senate.gov. Market data comes from third-party providers
-              including Polygon. Neither source is perfect: filings are self-reported,
-              delayed and stated as ranges rather than exact amounts, and vendor market
-              data can be delayed or incomplete. We set out those limits plainly in the{' '}
+              house.gov and senate.gov. Market data — prices, quotes and historical bars
+              — is retrieved from Yahoo Finance. Neither source is perfect: filings are
+              self-reported, delayed and stated as ranges rather than exact amounts, and
+              the market data is delayed rather than real-time and can be incomplete. We
+              set out those limits plainly in the{' '}
               <Link href="/disclaimer" className="text-blue-400 underline">
                 Disclaimer
               </Link>

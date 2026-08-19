@@ -33,7 +33,10 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 export const metadata: Metadata = {
   title: 'QuantEngines - Congressional Trading Analytics & Free Trading Tools',
   description: 'Track and analyze congressional stock trades with ML-powered predictions, pattern detection, and backtesting tools. Free, no signup required. Academic-backed strategies validated against 14 years of historical data.',
-  keywords: ['congressional trading', 'stock trading analytics', 'backtesting', 'trading signals', 'stock screener', 'options calculator', 'portfolio tracker', 'quantitative analysis', 'politician trades', 'insider trading'],
+  // Keywords list only shipped tools. "trading signals" and "portfolio tracker"
+  // were removed: /signals and /portfolio are in-development pages carrying
+  // robots.index = false, so advertising them here claims a feature that is off.
+  keywords: ['congressional trading', 'stock trading analytics', 'backtesting', 'stock screener', 'options calculator', 'correlation network', 'quantitative analysis', 'politician trades', 'insider trading'],
   authors: [{ name: 'QuantEngines' }],
   creator: 'QuantEngines',
   publisher: 'QuantEngines',
@@ -220,7 +223,7 @@ export default function RootLayout({
               "@type": "WebApplication",
               "name": "QuantEngines Trading Tools",
               "url": "https://quantengines.com",
-              "description": "Professional-grade trading tools suite: live charts, stock screener, backtesting engine, options calculator, congressional trading tracker, and portfolio analyzer. 100% free, no signup required.",
+              "description": "Professional-grade trading tools suite: charts, stock screener, backtesting engine, options calculator, correlation network, and congressional trading tracker. 100% free, no signup required.",
               "applicationCategory": "FinanceApplication",
               "operatingSystem": "Web Browser",
               "offers": {
@@ -232,11 +235,9 @@ export default function RootLayout({
               "featureList": [
                 "Advanced Stock Charts",
                 "Stock Screener",
-                "Trading Signals",
                 "Strategy Backtesting",
                 "Options Calculator",
                 "Congressional Trading Tracker",
-                "Portfolio Analyzer",
                 "Correlation Network"
               ],
               "author": {
@@ -253,8 +254,12 @@ export default function RootLayout({
             <div className="bg-gradient-to-r from-[hsl(220,60%,3%)] via-[hsl(215,50%,5%)] to-[hsl(220,60%,3%)] border-b border-[hsl(215,40%,12%)] py-1">
               <div className="container mx-auto px-4 flex items-center justify-between text-xs font-mono">
                 <div className="flex items-center gap-6 text-[hsl(210,20%,55%)]">
-                  <span>Market Data</span>
-                  <span className="text-[hsl(142,71%,55%)]">LIVE</span>
+                  {/* A hardcoded green "Market Data LIVE" badge used to sit here. It
+                      rendered on every page regardless of whether any quote had been
+                      fetched, and it sat directly above a ticker that renders nothing
+                      when the market-data API returns no real quotes — a liveness claim
+                      the page could not substantiate. The feed is delayed/end-of-day, and
+                      MarketTicker already labels itself accordingly when it has data. */}
                   <Link href="/politicians" className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[hsl(210,100%,56%)]/10 border border-[hsl(210,100%,56%)]/30 hover:bg-[hsl(210,100%,56%)]/20 transition-colors">
                     <span className="text-[hsl(210,100%,70%)]">Congressional Trades</span>
                     <span className="text-[hsl(142,71%,55%)]">NEW</span>
@@ -310,9 +315,6 @@ export default function RootLayout({
                             </Link>
                             <Link href="/network" className="block px-3 py-2 text-sm text-[hsl(210,20%,75%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
                               Correlation Network
-                            </Link>
-                            <Link href="/compare" className="block px-3 py-2 text-sm text-[hsl(210,20%,75%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
-                              Stock Compare
                             </Link>
                             <div className="border-t border-[hsl(215,40%,16%)] my-1" />
                             <div className="px-3 py-1.5 text-[10px] font-semibold text-[hsl(210,100%,56%)] uppercase tracking-wider">
@@ -388,7 +390,7 @@ export default function RootLayout({
               <div className="container mx-auto px-4">
                 <div className="flex items-center gap-1 py-1 overflow-x-auto scrollbar-thin">
                   <Link href="/charts" className="px-3 py-1 text-xs font-medium text-[hsl(210,20%,55%)] hover:text-[hsl(45,96%,58%)] hover:bg-[hsl(215,50%,12%)] rounded transition-colors whitespace-nowrap">
-                    Live Charts
+                    Charts
                   </Link>
                   <Link href="/scanner" className="px-3 py-1 text-xs font-medium text-[hsl(210,20%,55%)] hover:text-[hsl(45,96%,58%)] hover:bg-[hsl(215,50%,12%)] rounded transition-colors whitespace-nowrap">
                     Stock Screener
@@ -445,7 +447,6 @@ export default function RootLayout({
                     <ul className="space-y-1.5 text-xs text-[hsl(210,20%,60%)]">
                       <li><Link href="/options" className="hover:text-[hsl(45,96%,58%)] transition-colors">Options Calculator</Link></li>
                       <li><Link href="/network" className="hover:text-[hsl(45,96%,58%)] transition-colors">Correlation Network</Link></li>
-                      <li><Link href="/compare" className="hover:text-[hsl(45,96%,58%)] transition-colors">Stock Compare</Link></li>
                     </ul>
                   </div>
 

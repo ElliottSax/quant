@@ -7,7 +7,7 @@
 
 'use client'
 
-import { Check, Zap, TrendingUp, ArrowRight } from 'lucide-react'
+import { Check, Clock, Zap, TrendingUp, ArrowRight } from 'lucide-react'
 
 export default function PricingPage() {
   const features = [
@@ -15,10 +15,16 @@ export default function PricingPage() {
     { name: 'All 10+ Strategies', included: true, description: 'Access to every professional trading strategy' },
     { name: 'Full Historical Data', included: true, description: '10+ years of real market OHLC data' },
     { name: 'Advanced Analytics', included: true, description: 'Detailed performance metrics and drawdown analysis' },
-    { name: 'Portfolio Tracking', included: true, description: 'Track multiple portfolios and positions' },
-    { name: 'Email Alerts', included: true, description: 'Alerts for strategy signals (coming soon)' },
+    // "Portfolio Tracking" was listed here as included. /portfolio is an
+    // in-development page carrying robots.index = false, so the feature is off —
+    // advertising it, even on a free plan, is a false claim. It goes back on the
+    // list when the page ships.
+    // `included: false` items are not built yet. They are rendered as "Planned",
+    // never with the green tick — a tick beside "coming soon" told visitors a
+    // feature was available and unavailable in the same row.
+    { name: 'Email Alerts', included: false, description: 'Alerts for strategy signals' },
     { name: 'CSV Export', included: true, description: 'Export backtest results for further analysis' },
-    { name: 'API Access', included: true, description: 'Programmatic backtesting (coming soon)' },
+    { name: 'API Access', included: false, description: 'Programmatic backtesting' },
     { name: 'Congressional Trading', included: true, description: 'Free access to politician trading analytics' },
   ]
 
@@ -43,8 +49,12 @@ export default function PricingPage() {
         </p>
 
         <div className="flex gap-4 justify-center">
+          {/* These buttons pointed at /auth/register. There is no account system —
+              the register page calls an api.register() that does not exist — so the
+              CTA invited visitors into a sign-up that cannot complete. Nothing here
+              needs an account, so they go straight to the tools. */}
           <a
-            href="/auth/register"
+            href="/backtesting/builder"
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-blue-500/25 inline-flex items-center gap-2 transition-all"
           >
             Start Backtesting Now
@@ -61,16 +71,31 @@ export default function PricingPage() {
 
       {/* Features Grid */}
       <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-white mb-12 text-center">Everything Included</h2>
+        <h2 className="text-3xl font-bold text-white mb-12 text-center">What You Get</h2>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {features.map((feature, idx) => (
             <div key={idx} className="flex items-start gap-4 bg-slate-800/30 rounded-xl p-6 border border-slate-700">
-              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mt-1">
-                <Check className="w-4 h-4 text-green-400" />
+              <div
+                className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-1 ${
+                  feature.included ? 'bg-green-500/20' : 'bg-slate-600/30'
+                }`}
+              >
+                {feature.included ? (
+                  <Check className="w-4 h-4 text-green-400" />
+                ) : (
+                  <Clock className="w-4 h-4 text-slate-400" />
+                )}
               </div>
               <div className="flex-1">
-                <h3 className="text-white font-semibold mb-1">{feature.name}</h3>
+                <h3 className="text-white font-semibold mb-1 flex items-center gap-2">
+                  {feature.name}
+                  {!feature.included && (
+                    <span className="text-[10px] uppercase tracking-wider font-semibold text-slate-400 border border-slate-600 rounded px-1.5 py-0.5">
+                      Planned
+                    </span>
+                  )}
+                </h3>
                 <p className="text-gray-400 text-sm">{feature.description}</p>
               </div>
             </div>
@@ -191,7 +216,7 @@ export default function PricingPage() {
             Join traders building their edge with free, professional-grade backtesting.
           </p>
           <a
-            href="/auth/register"
+            href="/backtesting"
             className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-green-500/25 inline-flex items-center gap-2 transition-all"
           >
             Start Free Now

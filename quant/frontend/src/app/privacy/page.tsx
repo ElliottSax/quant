@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Privacy Policy | QuantEngines',
   description:
-    'What QuantEngines collects: analytics, newsletter subscriptions and account data. What we do not do, and how to have your data removed.',
+    'What QuantEngines collects: analytics and newsletter subscriptions. What we do not do, and how to have your data removed.',
 }
 
 export default function PrivacyPolicyPage() {
@@ -21,10 +21,10 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl font-bold text-white mb-3">The short version</h2>
             <p>
               QuantEngines is a research and analytics site. We use Google Analytics
-              to see which pages get read, we store your email address if you
-              subscribe to updates, and we store account details if you create an
-              account. We do not sell your personal information and we run no
-              advertising networks.
+              to see which pages get read, and we store your email address if you
+              subscribe to updates. That is the whole of the personal data we hold.
+              We do not sell your personal information and we run no advertising
+              networks.
             </p>
           </section>
 
@@ -62,19 +62,24 @@ export default function PrivacyPolicyPage() {
               If you subscribe, we store the email address and first name you give
               us so we can send you updates. Delivery is handled by Resend, which
               processes the address on our behalf. We do not sell or rent subscriber
-              lists. Every email includes an unsubscribe link, and you can ask us to
-              delete your address at any time.
+              lists. Every email we send carries an unsubscribe link and an
+              unsubscribe header; both reach{' '}
+              <a href="mailto:hello@quantengines.com" className="text-blue-400 underline">
+                hello@quantengines.com
+              </a>
+              , and one message there is enough — we remove the address and confirm
+              it. You can ask us to delete it at any time, unsubscribed or not.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-white mb-3">Accounts</h2>
             <p>
-              Most of the site is readable without an account. If you register, sign-in
-              is handled by Supabase, which stores the credentials and profile details
-              you provide to it. We do not store your password. Any watchlist or
-              settings you save are held against your account so we can show them back
-              to you.
+              There are no user accounts. The whole site is readable without signing
+              in, we do not operate a sign-in or registration system, and we hold no
+              passwords, credentials or profile records for visitors. If we ever
+              introduce accounts, this page will say what they store before the first
+              one is created.
             </p>
           </section>
 
@@ -114,8 +119,8 @@ export default function PrivacyPolicyPage() {
               Depending on where you live — including under the UK GDPR, EU GDPR and
               the CCPA — you may have the right to ask what personal data we hold about
               you, to have it corrected or deleted, and to object to certain
-              processing. In practice the personal data we hold is a subscriber email
-              address and, if you registered, your account details. Write to{' '}
+              processing. In practice the only personal data we hold is a subscriber
+              email address and first name. Write to{' '}
               <a href="mailto:hello@quantengines.com" className="text-blue-400 underline">
                 hello@quantengines.com
               </a>{' '}

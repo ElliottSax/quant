@@ -409,12 +409,10 @@ export default function DashboardPage() {
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-        <QuickActionCard
-          href="/compare"
-          title="Compare Politicians"
-          description="Side-by-side trading analysis"
-          color="blue"
-        />
+        {/* "Compare Politicians" removed: /compare is now a noindexed in-development
+            page. Its comparison figures were generated in the browser and attributed to
+            named members of Congress, so promoting it here would send readers to a dead
+            end and make the nav disagree with the index signals. */}
         <QuickActionCard
           href="/network"
           title="Network Visualization"

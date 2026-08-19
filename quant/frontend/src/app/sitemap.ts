@@ -77,11 +77,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/charts',
     '/network',
     '/resources',
-    // Deliberately absent: /leaderboard, /signals, /portfolio, /showcase, /discoveries.
-    // Each was replaced with an in-development page carrying robots.index = false after
-    // its contents were found to be browser-generated rather than measured. A noindex
-    // page listed in the sitemap sends Google contradictory instructions, so they are
-    // added back here only when the real page ships.
+    // Deliberately absent: /leaderboard, /signals, /portfolio, /showcase, /discoveries,
+    // /compare. Each was replaced with an in-development page carrying
+    // robots.index = false after its contents were found to be browser-generated rather
+    // than measured. A noindex page listed in the sitemap sends Google contradictory
+    // instructions, so they are added back here only when the real page ships. Before
+    // adding any page below, check its `robots` metadata.
     '/courses',
     '/courses/backtesting-101',
   ]
@@ -91,6 +92,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: currentDate,
     changeFrequency: 'weekly' as const,
     priority: 0.9,
+  }))
+
+  // Trust and compliance pages. These change rarely and are not the reason anyone
+  // visits, hence the low priority and monthly frequency — but they must be
+  // crawlable and listed: affiliate networks and ad partners check that a site
+  // publishes its disclosure, privacy, terms and contact details, and an
+  // unlisted page is one they may not find. All are indexable (no `robots`
+  // override on any of them).
+  const legalPages = [
+    '/about',
+    '/contact',
+    '/disclaimer',
+    '/privacy',
+    '/terms',
+    '/affiliate-disclosure',
+  ]
+
+  const legalEntries = legalPages.map(page => ({
+    url: `${baseUrl}${page}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.4,
   }))
 
   // Dynamically generated blog post URLs
@@ -112,6 +135,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     // Tool pages
     ...toolEntries,
+    // Trust and compliance pages
+    ...legalEntries,
     // Per-ticker congressional-trade pages
     ...tickerEntries,
     // Blog articles

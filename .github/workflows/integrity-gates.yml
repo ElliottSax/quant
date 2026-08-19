@@ -29,12 +29,22 @@ jobs:
 
       - name: No fabricated market data in app pages
         run: |
-          # Matches CALLS (`Math.random(`), not the word. Comments explaining why a
-          # fabricated data path was removed are legitimate and must never fail a build —
-          # an unscoped grep here can only be satisfied by deleting the explanation.
+          # Matches CALLS, not the word. Comments explaining why a fabricated data path
+          # was removed are legitimate and must never fail a build — an unscoped grep can
+          # only be satisfied by deleting the explanation.
+          #
+          # This check originally looked for Math.random( alone, and a code review found
+          # three live pages it could not see: /compare seeded a PRNG from Math.sin to
+          # invent trading performance for named members of Congress, /market-dashboard
+          # did the same for index levels, and /scanner used literal hardcoded arrays.
+          # The gate passed green on all three, which is worse than having no gate —
+          # it reported assurance it could not provide. Deterministic PRNGs are now
+          # caught too. Literal fabricated arrays cannot be caught by grep at all; that
+          # is what the review step below exists to say out loud.
           # Allowlist: legitimate non-data randomness (shimmer widths, element ids).
           ALLOW='src/components/skeletons/ChartSkeleton.tsx|src/components/skeletons/TableSkeleton.tsx|src/lib/backtest-storage.ts'
-          HITS=$(grep -rn "Math\.random(" quant/frontend/src/app quant/frontend/src/components quant/frontend/src/lib \
+          HITS=$(grep -rnE "Math\.random\(|Math\.sin\([^)]*seed|seed\+\+|pseudoRandom|mulberry32|xorshift" \
+                   quant/frontend/src/app quant/frontend/src/components quant/frontend/src/lib \
                    --include="*.tsx" --include="*.ts" 2>/dev/null \
                  | grep -Ev "$ALLOW" || true)
           if [ -n "$HITS" ]; then
@@ -43,7 +53,22 @@ jobs:
             echo "$HITS"
             exit 1
           fi
-          echo "PASS: no Math.random outside the skeleton/id allowlist."
+          echo "PASS: no fabricated-data generator outside the allowlist."
+
+      - name: Fabrication the grep cannot see (advisory)
+        run: |
+          # Honest about its own limits. Hardcoded arrays of plausible market data are
+          # indistinguishable from configuration to a regex, so this step reports the
+          # surface area a human has to look at rather than pretending to certify it.
+          echo "Pages whose data path is worth re-checking by hand (no API call found):"
+          for f in $(find quant/frontend/src/app -name "page.tsx"); do
+            if ! grep -qE "use[A-Z][A-Za-z]*\(|api\.|fetch\(" "$f" 2>/dev/null; then
+              if grep -qE "price|return|ratio|volume|sharpe|yield|index" "$f" 2>/dev/null; then
+                echo "  - $f"
+              fi
+            fi
+          done
+          echo "(advisory only — this step never fails the build)"
 
       - name: No licence-incompatible dependencies
         run: |

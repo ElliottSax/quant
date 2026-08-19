@@ -73,8 +73,9 @@ export default function DisclaimerPage() {
             <p className="text-slate-300 leading-relaxed">
               Congressional trading data is derived from public periodic transaction
               reports filed with the House and Senate under the STOCK Act, published
-              at house.gov and senate.gov. Market data is sourced from third-party
-              providers including Polygon.
+              at house.gov and senate.gov. Market data — prices, quotes and historical
+              bars — is retrieved from Yahoo Finance. It is not a real-time exchange
+              feed: quotes are delayed and are best treated as end-of-day.
             </p>
             <ul className="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed mt-4">
               <li>
@@ -91,8 +92,9 @@ export default function DisclaimerPage() {
                 was filed; we cannot verify that a filing is accurate or complete.
               </li>
               <li>
-                Third-party market data may be delayed, incomplete or incorrect, and
-                we do not guarantee it.
+                Market data is delayed and may be incomplete or incorrect. We do not
+                guarantee it, and nothing on this site should be relied on as a live
+                or executable price.
               </li>
             </ul>
             <p className="text-slate-300 leading-relaxed mt-4">

@@ -8,7 +8,10 @@ const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false })
 interface EquityDataPoint {
   day: number
   equity: number
-  benchmark: number
+  // Optional: the backtest API does not return a benchmark series. It must never be
+  // synthesised (a "10% annual" line was previously drawn and labelled as one), and the
+  // tooltip must not assume it — dereferencing it unguarded crashed on every hover.
+  benchmark?: number | null
   drawdown: number
 }
 
@@ -34,7 +37,9 @@ export function EquityCurveChart({ equityData, initialCapital, finalEquity }: Eq
           <div style="padding: 8px;">
             <div style="font-weight: bold; margin-bottom: 4px;">Day ${data[0]}</div>
             <div>Strategy: <span style="color: #10b981; font-weight: bold;">$${data[1].toLocaleString()}</span></div>
-            <div>Benchmark: <span style="color: #6b7280;">$${point?.benchmark.toLocaleString()}</span></div>
+            ${typeof point?.benchmark === 'number'
+                ? `<div>Benchmark: <span style="color: #6b7280;">$${point.benchmark.toLocaleString()}</span></div>`
+                : ''}
             <div>Drawdown: <span style="color: #ef4444;">${point?.drawdown.toFixed(2)}%</span></div>
           </div>
         `

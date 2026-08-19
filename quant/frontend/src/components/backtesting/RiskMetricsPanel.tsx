@@ -40,12 +40,16 @@ export function RiskMetricsPanel({
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">Calmar Ratio</span>
             <span className="font-bold text-cyan-400">
-              {maxDrawdown !== 0 ? (totalReturn / Math.abs(maxDrawdown)).toFixed(2) : 'N/A'}
+              {maxDrawdown !== 0 ? (totalReturn / Math.abs(maxDrawdown)).toFixed(2) : '—'}
             </span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">Profit Factor</span>
-            <span className="font-bold text-green-400">{profitFactor.toFixed(2)}</span>
+            <span className="font-bold text-green-400">
+              {!Number.isFinite(profitFactor)
+                ? (profitFactor > 0 ? '∞ (no losing trades)' : '—')
+                : profitFactor.toFixed(2)}
+            </span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">Max Drawdown</span>
@@ -67,11 +71,11 @@ export function RiskMetricsPanel({
           </div>
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">Avg Win</span>
-            <span className="font-bold text-green-400">+{avgWin.toFixed(2)}%</span>
+            <span className="font-bold text-green-400">+{Number.isFinite(avgWin) && totalTrades > 0 ? `${avgWin.toFixed(2)}%` : '—'}</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">Avg Loss</span>
-            <span className="font-bold text-red-400">{avgLoss.toFixed(2)}%</span>
+            <span className="font-bold text-red-400">{Number.isFinite(avgLoss) && totalTrades > 0 ? `${avgLoss.toFixed(2)}%` : '—'}</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">Expectancy</span>
