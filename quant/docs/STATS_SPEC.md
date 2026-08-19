@@ -153,6 +153,29 @@ record that the boundary rule applied, so the reason is inspectable rather than 
 the two implementations disagreed on exactly one cell, MSFT April, whose p-value straddled
 0.05. One engine alone would have published that tier with full confidence.*
 
+**Adaptive precision near a decision threshold (added v0.4).** The boundary rule above is
+necessary but not sufficient, and the harness proved it: on the 36-year data the engines
+disagreed on WMT March, where one measured `|p − 0.05| = 0.0065` against a band of 0.0061
+(outside, so `Weak`) and the other `0.0036` against 0.0063 (inside, so `Folklore`). The
+rule had not removed the knife-edge; it had moved it from `p = 0.05` out to
+`p = 0.05 ± 3·SE`, where the same coin-flip recurs. **Any hard threshold applied to an
+estimate carries this instability at some radius.**
+
+The resolution is to spend computation exactly where a decision is close, rather than to
+keep relocating the cliff:
+
+> When a cell's p-value falls within **6 × SE** of a decision threshold, recompute it with
+> **B = 100,000** permutations (same deterministic seeding discipline, a distinct stream)
+> before assigning a tier. This shrinks SE by √10 ≈ 3.2×, so the ambiguous radius shrinks
+> with it. If the refined p is *still* inside the 3 × SE band at the higher precision, the
+> conservative tier stands and `boundary_rule_applied` records it — that cell is genuinely
+> indistinguishable from the threshold, and saying so is the honest outcome rather than a
+> defect to engineer away.
+
+Only cells near a threshold pay the cost, so the run stays affordable. The residual
+probability of two independent implementations disagreeing is not zero — it cannot be, for
+a Monte Carlo estimate — but it is bounded and small, and the harness remains the check.
+
 **Leave-one-year-out stability:** recompute `d_obs` with each single year removed in turn.
 If removing any one year flips the sign of the effect, the result is driven by one episode
 and cannot be Robust. The dropped-year sensitivity is displayed on the page.

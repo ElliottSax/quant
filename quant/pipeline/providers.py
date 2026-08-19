@@ -17,7 +17,7 @@ import os
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 from typing import Protocol
 
 
@@ -68,14 +68,16 @@ class FmpProvider:
     """Financial Modeling Prep, dividend-adjusted EOD series.
 
     Measured limits on the key in use (2026-08-18), which the vendor brief records:
-      * 5000-row cap per request => history begins 2006-10-02 (~19.9y)
-      * ETFs other than SPY return HTTP 402
+      * the 5000-row cap is PER REQUEST — windowed fetches reach inception (1993 for
+        SPY), so history is NOT vendor-limited; only an open-ended request is
+      * ETFs other than SPY return HTTP 402 (a genuine entitlement limit)
     Both are entitlement limits, not code limits; a higher tier lifts them without
     touching this class.
     """
 
     name = "fmp"
     BASE = "https://financialmodelingprep.com/stable"
+    WINDOW_YEARS = 5  # comfortably inside the ~5000-row response cap (~1260 rows/5y)
 
     def __init__(self, api_key: str | None = None):
         self.api_key = api_key or os.environ.get("FMP_API_KEY", "")
@@ -83,12 +85,49 @@ class FmpProvider:
             raise ProviderError("FMP_API_KEY is not set")
 
     def fetch(self, symbol: str, start: date) -> list[Bar]:
-        url = (
-            f"{self.BASE}/historical-price-eod/dividend-adjusted"
-            f"?symbol={symbol}&from={start.isoformat()}&apikey={self.api_key}"
-        )
-        payload = _get(url)
-        if not isinstance(payload, list) or not payload:
+        """Adjusted bars from `start` to today, paginated by date window.
+
+        The 5,000-row response cap is PER REQUEST, not per symbol: an open-ended
+        request silently truncates to the most recent ~20 years, while windowed
+        requests reach inception (verified to 1993 for SPY). Splicing is safe because
+        the adjustment is absolute, not relative to the requested range — 440
+        overlapping days across two windows matched to 1e-9, and windowed values match
+        the un-windowed series exactly. Both were checked before this was written,
+        because a per-request normalisation would have corrupted every spliced series
+        invisibly.
+        """
+        rows: dict[str, dict] = {}
+        today = date.today()
+        cursor = start
+        entitlement_error: EntitlementError | None = None
+
+        while cursor <= today:
+            window_end = min(date(cursor.year + self.WINDOW_YEARS, 1, 1) - timedelta(days=1), today)
+            url = (
+                f"{self.BASE}/historical-price-eod/dividend-adjusted"
+                f"?symbol={symbol}&from={cursor.isoformat()}&to={window_end.isoformat()}"
+                f"&apikey={self.api_key}"
+            )
+            try:
+                payload = _get(url)
+            except EntitlementError as e:
+                # The plan does not cover this symbol at all; no window will succeed.
+                raise e
+            except ProviderError as e:
+                # One bad window must not silently truncate the history. Surface it.
+                raise ProviderError(f"window {cursor}..{window_end}: {e}")
+
+            if isinstance(payload, list):
+                for row in payload:
+                    d = row.get("date")
+                    if d:
+                        rows[d] = row  # dedupe across overlapping window edges
+            cursor = window_end + timedelta(days=1)
+
+        if entitlement_error:
+            raise entitlement_error
+        payload = list(rows.values())
+        if not payload:
             raise ProviderError("empty response")
 
         bars: list[Bar] = []

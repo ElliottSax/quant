@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Seasonality verdict engine — implementation A (plan story 3.2).
 
-Implements docs/STATS_SPEC.md v0.1. A second, independently written implementation
+Implements docs/STATS_SPEC.md v0.4. A second, independently written implementation
 lives in stats_engine_b.py; `cross_check.py` requires them to agree on every tier and
 to within 1e-9 on every statistic. Two implementations exist because a single one that
 is subtly wrong is indistinguishable from a correct one — the agreement IS the test.
@@ -24,12 +24,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from pipeline import store  # noqa: E402
 
-SPEC_VERSION = "0.3"
+SPEC_VERSION = "0.4"
 GRADEABLE_N = 20
 ROBUST_N = 25
 Q_LEVEL = 0.10
 N_PERM = 10_000
 N_BOOT = 10_000
+N_PERM_REFINE = 100_000   # spec §6 v0.4: 10x precision for near-threshold cells
+REFINE_SIGMAS = 6         # recompute when |p - threshold| is within this many SE
 
 
 def _rng(symbol: str, month: int, purpose: str) -> np.random.Generator:
@@ -94,23 +96,24 @@ def welch_t(a: np.ndarray, b: np.ndarray) -> float:
     return float((a.mean() - b.mean()) / denom) if denom > 0 else float("nan")
 
 
-def permutation_p(month_vals: np.ndarray, other_vals: np.ndarray, symbol: str, month: int) -> float:
+def permutation_p(month_vals: np.ndarray, other_vals: np.ndarray, symbol: str, month: int,
+                  n_perm: int = N_PERM, stream: str = "perm") -> float:
     """Two-sided label-shuffling p-value, spec §3."""
     pooled = np.concatenate([month_vals, other_vals])
     n_m = len(month_vals)
     d_obs = abs(month_vals.mean() - other_vals.mean())
 
-    rng = _rng(symbol, month, "perm")
+    rng = _rng(symbol, month, stream)
     # Vectorised: one (N_PERM x len(pooled)) argsort would be large, so permute indices
     # per draw in a single call via random sampling of positions without replacement.
-    idx = np.argsort(rng.random((N_PERM, len(pooled))), axis=1)
+    idx = np.argsort(rng.random((n_perm, len(pooled))), axis=1)
     perm = pooled[idx]
     means_m = perm[:, :n_m].mean(axis=1)
     means_o = perm[:, n_m:].mean(axis=1)
     d_perm = np.abs(means_m - means_o)
 
     # +1 top and bottom: a finite resampling can never justify p = 0 (spec §3).
-    return float((1 + np.count_nonzero(d_perm >= d_obs)) / (N_PERM + 1))
+    return float((1 + np.count_nonzero(d_perm >= d_obs)) / (n_perm + 1))
 
 
 def bootstrap_ci(month_vals: np.ndarray, other_vals: np.ndarray, symbol: str, month: int) -> tuple[float, float]:
@@ -206,6 +209,17 @@ def compute_cells(db_path: str | None = None, symbols: list[str] | None = None) 
 
             t = welch_t(mv, ov)
             p = permutation_p(mv, ov, sym, month)
+
+            # Spec §6 (v0.4): spend computation where the decision is close, rather than
+            # relocating the knife-edge. The v0.3 band merely moved the coin-flip from
+            # p = 0.05 out to p = 0.05 +/- 3*SE, where two honest implementations still
+            # disagreed (WMT March). Refining shrinks the ambiguous radius instead.
+            se0 = math.sqrt(max(p * (1 - p), 1e-12) / N_PERM)
+            if abs(p - 0.05) < REFINE_SIGMAS * se0:
+                p = permutation_p(mv, ov, sym, month, n_perm=N_PERM_REFINE, stream="perm-refine")
+                refined = True
+            else:
+                refined = False
             lo, hi = bootstrap_ci(mv, ov, sym, month)
             stable = leave_one_year_out_stable(records, month, base["diff"])
             sign = np.sign(base["diff"])
@@ -214,7 +228,7 @@ def compute_cells(db_path: str | None = None, symbols: list[str] | None = None) 
             cells.append({**base, "t_stat": t, "p_perm": p, "ci_low": lo, "ci_high": hi,
                           "q_value": None, "tier": "", "stable": bool(stable),
                           "failure_years": failure_years,
-                          "boundary_rule_applied": False})
+                          "boundary_rule_applied": False, "_refined": refined})
 
     # Family-wide correction across every gradeable cell in the run (spec §5).
     gradeable_idx = [i for i, c in enumerate(cells) if c["tier"] != "Insufficient history"]
@@ -238,13 +252,16 @@ def compute_cells(db_path: str | None = None, symbols: list[str] | None = None) 
         # Spec §6 Monte Carlo boundary rule (v0.3): a p-value is an estimate. Within
         # 3 standard errors of the threshold the tier would be decided by sampling
         # noise, so take the conservative side rather than publish false precision.
-        se = math.sqrt(p * (1 - p) / N_PERM)
+        b_used = N_PERM_REFINE if c.get("_refined") else N_PERM
+        se = math.sqrt(max(p * (1 - p), 1e-12) / b_used)
         boundary = abs(p - 0.05) < 3 * se
         if boundary and tier == "Weak" and i not in rejected_global:
             tier = "Folklore"
         c["boundary_rule_applied"] = bool(boundary)
         c["tier"] = tier
 
+    for c in cells:
+        c.pop("_refined", None)   # internal only; the returned schema is the documented set
     cells.sort(key=lambda c: (c["symbol"], c["month"]))
     return cells
 

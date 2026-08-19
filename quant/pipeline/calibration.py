@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS calibration_log (
     engine        VARCHAR   NOT NULL,
     provider      VARCHAR,
     data_vintage  DATE,
+    data_start    DATE,
     universe_hash VARCHAR   NOT NULL,
     symbol        VARCHAR   NOT NULL,
     month         INTEGER   NOT NULL,
@@ -55,7 +56,7 @@ CREATE TABLE IF NOT EXISTS calibration_log (
 );
 """
 
-CHECKSUM_FIELDS = ["run_date", "spec_version", "engine", "universe_hash",
+CHECKSUM_FIELDS = ["run_date", "spec_version", "engine", "universe_hash", "data_start",
                    "symbol", "month", "tier", "n", "diff", "p_perm", "q_value"]
 
 
@@ -80,8 +81,8 @@ def record(engine_name: str = "a") -> int:
     con = store.connect()
     con.execute(SCHEMA)
 
-    vintage, provider = con.execute(
-        "SELECT MAX(day), any_value(provider) FROM eod_prices"
+    vintage, data_start, provider = con.execute(
+        "SELECT MAX(day), MIN(day), any_value(provider) FROM eod_prices"
     ).fetchone()
 
     cells = engine.compute_cells()
@@ -90,9 +91,14 @@ def record(engine_name: str = "a") -> int:
     now = datetime.now(timezone.utc)
     today = date.today()
 
+    # Keyed on the data span too, not just the day: two runs on the same date over
+    # materially different history are genuinely different conclusions, and the log
+    # must be able to hold both. Suppressing the second would hide the fact that the
+    # earlier verdict was reached on less evidence.
     already = con.execute(
-        "SELECT COUNT(*) FROM calibration_log WHERE run_date = ? AND engine = ? AND universe_hash = ?",
-        [today, engine_name, uhash],
+        "SELECT COUNT(*) FROM calibration_log WHERE run_date = ? AND engine = ? "
+        "AND universe_hash = ? AND data_start = ?",
+        [today, engine_name, uhash, data_start],
     ).fetchone()[0]
     if already:
         # Not an error: re-running the same day is normal. Appending again would inflate
@@ -105,6 +111,7 @@ def record(engine_name: str = "a") -> int:
         r = {
             "logged_at": now, "run_date": today, "spec_version": engine.SPEC_VERSION,
             "engine": engine_name, "provider": provider, "data_vintage": vintage,
+            "data_start": data_start,
             "universe_hash": uhash, "symbol": c["symbol"], "month": c["month"],
             "tier": c["tier"], "n": c["n"], "diff": c["diff"],
             "p_perm": None if c["p_perm"] != c["p_perm"] else c["p_perm"],  # NaN -> NULL
@@ -116,11 +123,11 @@ def record(engine_name: str = "a") -> int:
         r["row_checksum"] = _checksum(r)
         rows.append(tuple(r[k] for k in [
             "logged_at", "run_date", "spec_version", "engine", "provider", "data_vintage",
-            "universe_hash", "symbol", "month", "tier", "n", "diff", "p_perm", "q_value",
-            "ci_low", "ci_high", "boundary_rule", "row_checksum"]))
+            "data_start", "universe_hash", "symbol", "month", "tier", "n", "diff", "p_perm",
+            "q_value", "ci_low", "ci_high", "boundary_rule", "row_checksum"]))
 
     con.executemany(
-        "INSERT INTO calibration_log VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
+        "INSERT INTO calibration_log VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", rows)
     print(f"recorded {len(rows)} verdicts | spec {engine.SPEC_VERSION} | "
           f"universe {uhash} | vintage {vintage}")
     return 0
@@ -130,8 +137,8 @@ def verify() -> int:
     con = store.connect()
     con.execute(SCHEMA)
     rows = con.execute(
-        """SELECT run_date, spec_version, engine, universe_hash, symbol, month, tier,
-                  n, diff, p_perm, q_value, row_checksum FROM calibration_log"""
+        """SELECT run_date, spec_version, engine, universe_hash, data_start, symbol,
+                  month, tier, n, diff, p_perm, q_value, row_checksum FROM calibration_log"""
     ).fetchall()
     if not rows:
         print("calibration log is empty — nothing to verify")
@@ -139,8 +146,8 @@ def verify() -> int:
 
     bad = 0
     for r in rows:
-        d = dict(zip(CHECKSUM_FIELDS, r[:11]))
-        if _checksum(d) != r[11]:
+        d = dict(zip(CHECKSUM_FIELDS, r[:12]))
+        if _checksum(d) != r[12]:
             bad += 1
 
     run_dates = con.execute(

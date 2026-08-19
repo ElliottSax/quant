@@ -1,14 +1,50 @@
 # EOD data vendor — decision brief (plan story 1.1)
 
+> ## SUPERSEDED IN PART — 2026-08-18, later the same day
+>
+> **The history limit was not a vendor limit. It was ours.**
+>
+> The 5,000-row cap is **per request**, not per symbol. An open-ended request silently
+> truncates to the most recent ~20 years; the same key, asked in date windows, returns
+> data to inception — 1993 for SPY, 1990 for the equities. The pipeline now paginates,
+> the store holds **91,461 bars spanning 1990–2026**, and readiness went from
+> *0 of 120 cells Robust-eligible* to **120 of 120**.
+>
+> Splicing was verified before it was trusted: 440 overlapping days across two windows
+> matched to 1e-9, and windowed values match the un-windowed series exactly, so the
+> adjustment is absolute rather than per-request. A per-request normalisation would have
+> corrupted every spliced series invisibly.
+>
+> **Cost of the fix: nothing.** No tier upgrade, no new vendor, same API key.
+>
+> What this does NOT solve, and what the decision below is now only about:
+> * **ETF coverage** — every ETF except SPY still returns HTTP 402, including the
+>   commodity/sector seeds the plan wants for The Survivors.
+> * **Equity coverage** — 33% of a mainstream large-cap sample is still gated.
+> * **Survivorship** — FMP is not delisted-inclusive, and that is a validity condition
+>   for published verdicts, not a footnote.
+>
+> And the headline result did not change: with 36 years instead of 20, **still zero
+> Robust cells**. The lowest q-value improved from 0.61 to 0.216 against a 0.10
+> threshold. More history made the tests sharper and the answer stayed no — which is
+> the strongest evidence yet that the product's thesis is sound and that the earlier
+> "we just need more data" reading was wrong.
+>
+> Read the rest of this document with those corrections applied.
+
+
 **For Elliott. Prepared 2026-08-18 by measuring the current FMP key directly, not by
 reading vendor marketing.** The pipeline is built and proven; what it can be pointed at
 is now the only open question, and it decides whether the seasonality product is
 possible at all.
 
-## The finding in one line
+## The original finding (now corrected)
 
-On the current FMP entitlement, **zero (symbol, month) cells can ever reach `Robust`** —
-so The Survivors roster, the product's flagship object, would launch empty and stay empty.
+The brief originally concluded that zero cells could ever reach `Robust` on this
+entitlement. That was true of the *code as written*, not of the vendor: the request was
+open-ended and silently truncated. With windowed pagination all 120 cells are
+Robust-eligible. The corrected conclusion is narrower and still real: **coverage and
+survivorship are worth paying for; history is not.**
 
 ## Measured facts (all verified live today)
 
