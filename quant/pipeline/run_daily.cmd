@@ -45,5 +45,13 @@ if errorlevel 1 (
   exit /b 2
 )
 
+REM Publish only what the record contains: export_verdicts refuses unless the ingest was
+REM clean and every tier matches the calibration log.
+python -m pipeline.export_verdicts >> "%LOG%" 2>&1
+if errorlevel 1 (
+  echo EXPORT REFUSED - site data not updated >> "%LOG%"
+  exit /b 4
+)
+
 echo daily run OK >> "%LOG%"
 exit /b 0

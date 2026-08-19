@@ -360,3 +360,9 @@ quant/data/
 
 quant/pipeline/.env.local
 quant/logs/
+
+# The published seasonality artefact is the site data source: Vercel builds from git,
+# so if this stays ignored the rebuilt /scanner deploys as an empty state. The blanket
+# data/ rule above is for local stores (DuckDB, dumps); this one file is a build input.
+!quant/frontend/public/data/
+!quant/frontend/public/data/seasonality.json

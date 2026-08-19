@@ -49,10 +49,13 @@ export default function PricingPage() {
         </p>
 
         <div className="flex gap-4 justify-center">
-          {/* These buttons pointed at /auth/register. There is no account system —
-              the register page calls an api.register() that does not exist — so the
-              CTA invited visitors into a sign-up that cannot complete. Nothing here
-              needs an account, so they go straight to the tools. */}
+          {/* These buttons pointed at /auth/register, which cannot complete: the page
+              calls api.register(), and the frontend client never implemented it. The
+              ACCOUNT SYSTEM ITSELF IS REAL — the backend mounts 13 /auth endpoints and
+              stores bcrypt password hashes — so this is a half-finished integration, not
+              an absent feature, and the privacy policy correctly says accounts exist.
+              Until the client is wired up, sending visitors into a form that throws is
+              worse than sending them to the tools, which need no account. */}
           <a
             href="/backtesting/builder"
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-blue-500/25 inline-flex items-center gap-2 transition-all"
