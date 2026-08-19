@@ -366,3 +366,6 @@ quant/logs/
 # data/ rule above is for local stores (DuckDB, dumps); this one file is a build input.
 !quant/frontend/public/data/
 !quant/frontend/public/data/seasonality.json
+
+# Published site data artefacts (build inputs, not local stores)
+!quant/frontend/public/data/*.json
