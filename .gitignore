@@ -357,3 +357,6 @@ local_settings.py
 !quant/frontend/src/data/
 !quant/frontend/src/data/**
 quant/data/
+
+quant/pipeline/.env.local
+quant/logs/

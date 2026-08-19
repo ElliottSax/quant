@@ -1,5 +1,9 @@
 name: Google Search Console Daily Sitemap Submit
 
+# Relocated 2026-08-18 from quant/.github/workflows/, where GitHub never read it —
+# only the repository-root .github/workflows/ directory is scanned, so this job had
+# never run once despite existing. Requires the GCP_SERVICE_ACCOUNT secret.
+
 # Schedule: Run daily at 2 AM UTC (you can adjust this)
 on:
   schedule:
@@ -30,7 +34,7 @@ jobs:
         env:
           GCP_SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
         run: |
-          python gsc_auto_submit.py
+          cd quant && python gsc_auto_submit.py
 
       - name: Log success
         if: success()
