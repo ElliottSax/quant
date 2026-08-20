@@ -1,7 +1,7 @@
 ---
 title: "statsmodels ARIMA Import Error (Correct Import)"
 slug: "arima-models"
-description: "ARIMA moved: use `from statsmodels.tsa.arima.model import ARIMA`, not statsmodels.tsa.api. Working example, order selection and diagnostics below."
+description: "Use `from statsmodels.tsa.arima.model import ARIMA` — capital ARIMA. Lowercase `arima` imports a module, giving 'module object is not callable'. Measured on statsmodels 0.14.6."
 keywords: ["ARIMA python", "statsmodels ARIMA", "ARIMA import", "time series", "forecasting", "Box-Jenkins", "financial modeling"]
 author: "QuantEngines"
 category: "Algo Trading"
@@ -19,7 +19,7 @@ The Autoregressive Integrated Moving Average (ARIMA) model, formalized by Box an
 
 ## Quick Start: Fitting an ARIMA Model in Python
 
-The import that trips people up is this one -- `ARIMA` lives under `statsmodels.tsa.arima.model`, not `statsmodels.tsa.api`:
+Use this import:
 
 ```python
 from statsmodels.tsa.arima.model import ARIMA
@@ -32,7 +32,28 @@ print(result.summary())
 forecast = result.forecast(steps=5)
 ```
 
-That's enough to get a working fit and a forecast. The rest of this article covers how to choose the `(p, d, q)` order properly, diagnose the fit, and turn it into a trading strategy -- or skip the code entirely and try an ARIMA-based strategy with our free, no-signup [strategy backtester](/backtesting/builder).
+That's enough to get a working fit and a forecast.
+
+### Why your import "worked" and then failed anyway
+
+The confusing part is that several of these import statements succeed. They just give you
+different objects, and three of them fail later rather than at the import line. Every row
+below was produced by running the statement on **statsmodels 0.14.6**, not copied from
+documentation:
+
+| Statement | Imports? | What you actually get | Fails when |
+|---|---|---|---|
+| `from statsmodels.tsa.arima.model import ARIMA` | yes | the ARIMA class | never — this is the canonical path |
+| `from statsmodels.tsa.api import ARIMA` | yes | the same class, re-exported | never |
+| `from statsmodels.tsa.api import arima` | yes | the **module** `statsmodels.tsa.arima.api` | on call: `TypeError: 'module' object is not callable` |
+| `from statsmodels.tsa.arima_model import ARIMA` | yes | a removal shim | on instantiation: `NotImplementedError: ...have been removed in favor of statsmodels.tsa.arima.model.ARIMA` |
+
+Two things follow. First, **capitalisation is the whole bug** in the most common case:
+lowercase `arima` is a module and uppercase `ARIMA` is the class, so the import line
+succeeds and the traceback appears further down where nothing looks wrong. Second,
+contrary to a lot of advice on this error, `statsmodels.tsa.api` is *not* the problem —
+`from statsmodels.tsa.api import ARIMA` works fine. The legacy `tsa.arima_model` path is
+the one that is genuinely dead, and it tells you so itself when you try to use it. The rest of this article covers how to choose the `(p, d, q)` order properly, diagnose the fit, and turn it into a trading strategy -- or skip the code entirely and try an ARIMA-based strategy with our free, no-signup [strategy backtester](/backtesting/builder).
 
 ## Mathematical Formulation
 

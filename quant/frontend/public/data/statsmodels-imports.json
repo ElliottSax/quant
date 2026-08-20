@@ -1,0 +1,347 @@
+{
+ "generated_at": "2026-08-20T16:00:27+00:00",
+ "statsmodels_version": "0.14.6",
+ "python": "3.12.10",
+ "imports": [
+  {
+   "statement": "from statsmodels.tsa.api import ARIMA",
+   "module": "statsmodels.tsa.api",
+   "symbol": "ARIMA",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.tsa.arima.model.ARIMA",
+   "label": "ARIMA"
+  },
+  {
+   "statement": "from statsmodels.tsa.arima.model import ARIMA",
+   "module": "statsmodels.tsa.arima.model",
+   "symbol": "ARIMA",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.tsa.arima.model.ARIMA",
+   "label": "ARIMA"
+  },
+  {
+   "statement": "from statsmodels.tsa.arima_model import ARIMA",
+   "module": "statsmodels.tsa.arima_model",
+   "symbol": "ARIMA",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.tsa.arima_model.ARIMA",
+   "label": "ARIMA"
+  },
+  {
+   "statement": "from statsmodels.tsa.statespace.sarimax import SARIMAX",
+   "module": "statsmodels.tsa.statespace.sarimax",
+   "symbol": "SARIMAX",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.tsa.statespace.sarimax.SARIMAX",
+   "label": "SARIMAX"
+  },
+  {
+   "statement": "from statsmodels.tsa.api import SARIMAX",
+   "module": "statsmodels.tsa.api",
+   "symbol": "SARIMAX",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.tsa.statespace.sarimax.SARIMAX",
+   "label": "SARIMAX"
+  },
+  {
+   "statement": "from statsmodels.tsa.vector_ar.vecm import coint_johansen",
+   "module": "statsmodels.tsa.vector_ar.vecm",
+   "symbol": "coint_johansen",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.tsa.vector_ar.vecm.coint_johansen",
+   "label": "coint_johansen"
+  },
+  {
+   "statement": "from statsmodels.tsa.johansen import coint_johansen",
+   "module": "statsmodels.tsa.johansen",
+   "symbol": "coint_johansen",
+   "ok": false,
+   "error": "ModuleNotFoundError: No module named 'statsmodels.tsa.johansen'",
+   "label": "coint_johansen"
+  },
+  {
+   "statement": "from statsmodels.tsa.api import coint_johansen",
+   "module": "statsmodels.tsa.api",
+   "symbol": "coint_johansen",
+   "ok": false,
+   "error": "ImportError: cannot import name 'coint_johansen' from 'statsmodels.tsa.api'",
+   "label": "coint_johansen"
+  },
+  {
+   "statement": "from statsmodels.tsa.stattools import coint",
+   "module": "statsmodels.tsa.stattools",
+   "symbol": "coint",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.tsa.stattools.coint",
+   "label": "coint (Engle-Granger)"
+  },
+  {
+   "statement": "from statsmodels.tsa.stattools import adfuller",
+   "module": "statsmodels.tsa.stattools",
+   "symbol": "adfuller",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.tsa.stattools.adfuller",
+   "label": "adfuller"
+  },
+  {
+   "statement": "from statsmodels.tsa.stattools import kpss",
+   "module": "statsmodels.tsa.stattools",
+   "symbol": "kpss",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.tsa.stattools.kpss",
+   "label": "kpss"
+  },
+  {
+   "statement": "from statsmodels.tsa.stattools import acf",
+   "module": "statsmodels.tsa.stattools",
+   "symbol": "acf",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.tsa.stattools.acf",
+   "label": "acf / pacf"
+  },
+  {
+   "statement": "from statsmodels.tsa.stattools import grangercausalitytests",
+   "module": "statsmodels.tsa.stattools",
+   "symbol": "grangercausalitytests",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.tsa.stattools.grangercausalitytests",
+   "label": "grangercausalitytests"
+  },
+  {
+   "statement": "from statsmodels.tsa.vector_ar.vecm import VECM",
+   "module": "statsmodels.tsa.vector_ar.vecm",
+   "symbol": "VECM",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.tsa.vector_ar.vecm.VECM",
+   "label": "VECM"
+  },
+  {
+   "statement": "from statsmodels.tsa.api import VAR",
+   "module": "statsmodels.tsa.api",
+   "symbol": "VAR",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.tsa.vector_ar.var_model.VAR",
+   "label": "VAR"
+  },
+  {
+   "statement": "from statsmodels.tsa.seasonal import seasonal_decompose",
+   "module": "statsmodels.tsa.seasonal",
+   "symbol": "seasonal_decompose",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.tsa.seasonal.seasonal_decompose",
+   "label": "seasonal_decompose"
+  },
+  {
+   "statement": "from statsmodels.tsa.seasonal import STL",
+   "module": "statsmodels.tsa.seasonal",
+   "symbol": "STL",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.tsa.stl._stl.STL",
+   "label": "STL"
+  },
+  {
+   "statement": "from statsmodels.api import OLS",
+   "module": "statsmodels.api",
+   "symbol": "OLS",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.regression.linear_model.OLS",
+   "label": "OLS"
+  },
+  {
+   "statement": "from statsmodels.api import add_constant",
+   "module": "statsmodels.api",
+   "symbol": "add_constant",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.tools.tools.add_constant",
+   "label": "add_constant"
+  },
+  {
+   "statement": "from statsmodels.stats.diagnostic import het_breuschpagan",
+   "module": "statsmodels.stats.diagnostic",
+   "symbol": "het_breuschpagan",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.stats.diagnostic.het_breuschpagan",
+   "label": "het_breuschpagan"
+  },
+  {
+   "statement": "from statsmodels.stats.diagnostic import acorr_ljungbox",
+   "module": "statsmodels.stats.diagnostic",
+   "symbol": "acorr_ljungbox",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.stats.diagnostic.acorr_ljungbox",
+   "label": "acorr_ljungbox"
+  },
+  {
+   "statement": "from statsmodels.stats.outliers_influence import variance_inflation_factor",
+   "module": "statsmodels.stats.outliers_influence",
+   "symbol": "variance_inflation_factor",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.stats.outliers_influence.variance_inflation_factor",
+   "label": "variance_inflation_factor"
+  },
+  {
+   "statement": "from statsmodels.tsa.holtwinters import ExponentialSmoothing",
+   "module": "statsmodels.tsa.holtwinters",
+   "symbol": "ExponentialSmoothing",
+   "ok": true,
+   "kind": "type",
+   "qualname": "statsmodels.tsa.holtwinters.model.ExponentialSmoothing",
+   "label": "ExponentialSmoothing"
+  },
+  {
+   "statement": "from statsmodels.stats.multitest import multipletests",
+   "module": "statsmodels.stats.multitest",
+   "symbol": "multipletests",
+   "ok": true,
+   "kind": "function",
+   "qualname": "statsmodels.stats.multitest.multipletests",
+   "label": "multipletests (FDR)"
+  }
+ ],
+ "deferred_failures": [
+  {
+   "statement": "from statsmodels.tsa.arima.model import ARIMA",
+   "used_by": "instantiate",
+   "imports": true,
+   "object": "type statsmodels.tsa.arima.model.ARIMA",
+   "usable": true,
+   "error": null
+  },
+  {
+   "statement": "from statsmodels.tsa.api import ARIMA",
+   "used_by": "instantiate",
+   "imports": true,
+   "object": "type statsmodels.tsa.arima.model.ARIMA",
+   "usable": true,
+   "error": null
+  },
+  {
+   "statement": "from statsmodels.tsa.api import arima",
+   "used_by": "call",
+   "imports": true,
+   "object": "module",
+   "usable": false,
+   "error": "TypeError: 'module' object is not callable"
+  },
+  {
+   "statement": "from statsmodels.tsa.arima_model import ARIMA",
+   "used_by": "instantiate",
+   "imports": true,
+   "object": "type statsmodels.tsa.arima_model.ARIMA",
+   "usable": false,
+   "error": "NotImplementedError: statsmodels.tsa.arima_model.ARMA and statsmodels.tsa.arima_model.ARIMA have been removed in favor of statsmodels.tsa.arima.model.ARIMA (note the . between arima and model) and statsmodels.tsa.SARIMAX. statsmodels.tsa.arima.model.ARIMA makes use of the statespa"
+  }
+ ],
+ "measured": {
+  "coint_johansen": {
+   "ok": true,
+   "pair": [
+    "AAPL",
+    "MSFT"
+   ],
+   "observations": 1000,
+   "from": "2022-08-24",
+   "to": "2026-08-19",
+   "call": "coint_johansen(data, det_order=0, k_ar_diff=1)",
+   "returns_type": "JohansenTestResult",
+   "attributes": [
+    "cvm",
+    "cvt",
+    "eig",
+    "evec",
+    "ind",
+    "lr1",
+    "lr2",
+    "max_eig_stat",
+    "max_eig_stat_crit_vals",
+    "meth",
+    "r0t",
+    "rkt",
+    "trace_stat",
+    "trace_stat_crit_vals"
+   ],
+   "trace_stat_lr1": [
+    5.8538,
+    0.5445
+   ],
+   "trace_crit_cvt": [
+    [
+     13.4294,
+     15.4943,
+     19.9349
+    ],
+    [
+     2.7055,
+     3.8415,
+     6.6349
+    ]
+   ],
+   "max_eig_lr2": [
+    5.3093,
+    0.5445
+   ],
+   "max_eig_crit_cvm": [
+    [
+     12.2971,
+     14.2639,
+     18.52
+    ],
+    [
+     2.7055,
+     3.8415,
+     6.6349
+    ]
+   ],
+   "eigenvalues": [
+    0.005306,
+    0.000545
+   ],
+   "crit_columns": [
+    "90%",
+    "95%",
+    "99%"
+   ],
+   "reading": "lr1 holds the TRACE statistic for r=0, r<=1, ... and cvt the matching critical values at 90/95/99%. Reject the null of at most r cointegrating relations when lr1[r] exceeds cvt[r][1] for the 95% level. lr2/cvm are the maximum-eigenvalue form of the same test. There are no p-values -- only these critical values, which is the single most common source of confusion with this function."
+  },
+  "arima": {
+   "ok": true,
+   "symbol": "AAPL",
+   "observations": 300,
+   "call": "ARIMA(y, order=(1, 1, 1)).fit()",
+   "returns_type": "ARIMAResultsWrapper",
+   "aic": 1714.9898,
+   "bic": 1726.0912,
+   "params": {
+    "ar.L1": 0.173806,
+    "ma.L1": -0.072585,
+    "sigma2": 17.775282
+   },
+   "forecast_3": [
+    317.5508,
+    317.6761,
+    317.6978
+   ]
+  }
+ },
+ "method": "Each import statement was executed in this interpreter and its outcome recorded. Failing paths are kept with their real exception text so a reader can match the traceback they are looking at. Return shapes come from calling the function on real daily price data, not from documentation."
+}

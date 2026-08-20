@@ -80,6 +80,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/resources',
     '/data-vendors',
     '/pandas-ta-columns',
+    '/statsmodels-imports',
     '/fundamentals',
     '/yield-curve',
     // Deliberately absent: /leaderboard, /signals, /portfolio, /showcase, /discoveries,
