@@ -2,9 +2,27 @@ name: Autopublish
 
 # Self-publishing: every 2h a scheduled run moves one queued article from
 # article-queue/ into the site's content dir and pushes it (triggers Vercel).
+# PAUSED 2026-08-19. The schedule is commented out; `workflow_dispatch` still
+# works, so a manual run publishes exactly as before and nothing in the queue is
+# touched.
+#
+# Why: the generated batches are near-duplicates. On dividendengines, 1,903
+# published haiku-* articles share one filler sentence ("This article provides
+# valuable insights and information") in 93% of cases -- and that site's own
+# sitemap.ts excludes them while blog/[id]/page.tsx serves them noindex. We are
+# publishing, twelve times a day, pages we have already decided not to let Google
+# see. cardclassroom has 916 more queued, 799 of them sharing a filler opener:
+# about 76 days of it.
+#
+# Noindexed pages cannot bring traffic. They can only be read by a human browsing
+# the site -- which is precisely what an affiliate network reviewer does before
+# deciding on an application.
+#
+# Re-enable by uncommenting the schedule once the generator produces something
+# worth indexing. The queue is intact and nothing here has been deleted.
 on:
-  schedule:
-    - cron: '0 */2 * * *'   # every 2 hours = 12x/day
+  # schedule:
+  #   - cron: '0 */2 * * *'   # every 2 hours = 12x/day
   workflow_dispatch:
     inputs:
       count:
