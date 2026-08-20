@@ -62,6 +62,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tools',
     '/tools/position-size',
     '/tools/risk-reward',
+    '/tools/max-sharpe',
     '/congress-stock-trades',
     '/congress-stock-trades/weekly',
     '/blog',
