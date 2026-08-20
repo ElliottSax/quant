@@ -2,7 +2,7 @@
 title: 15 SEO-Optimized Technical Indicator Guide Articles for Quant Site
 slug: FINAL_MANIFEST
 description: 15 SEO-Optimized Technical Indicator Guide Articles for Quant Site This
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/FINAL_MANIFEST

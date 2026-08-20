@@ -2,7 +2,7 @@
 title: "High-Frequency Trading Explained: How HFT Actually Works"
 description: "Understand how high-frequency trading works, including market making, latency arbitrage, and statistical arbitrage at microsecond timescales."
 date: "2026-03-27"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["high-frequency trading", "HFT", "market making", "latency arbitrage"]
 keywords: ["high-frequency trading explained", "how HFT works", "high-frequency trading strategies"]

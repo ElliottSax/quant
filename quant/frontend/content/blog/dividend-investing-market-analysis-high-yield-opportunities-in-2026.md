@@ -2,7 +2,7 @@
 title: '''''''Dividend Investing Market Analysis: High-Yield Opportunities in 2026'''''''
 slug: dividend-investing-market-analysis-high-yield-opportunities-in-2026
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: Income Strategy

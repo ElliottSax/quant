@@ -2,7 +2,7 @@
 title: '''"Combining Moving Average and Money Flow Index for Commodities: Full Code"'''
 slug: combining-moving-average-and-money-flow-index-for-commodities-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

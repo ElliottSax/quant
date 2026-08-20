@@ -5,7 +5,7 @@ description: 'Comprehensive guide to congress insider selling signals: identifyi
   market tops. Expert analysis with actionable strategies and real-world examples.'
 keywords:
 - 'congress insider selling signals: identifying market tops'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

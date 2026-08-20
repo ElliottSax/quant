@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading epidemic response act 
   Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading epidemic response act trades
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

@@ -2,7 +2,7 @@
 title: '''"Combining Stochastic Oscillator and Money Flow Index for Crypto Markets:'
 slug: combining-stochastic-oscillator-and-money-flow-index-for-crypto-markets-full-cod
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

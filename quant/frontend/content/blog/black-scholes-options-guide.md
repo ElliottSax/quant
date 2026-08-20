@@ -2,7 +2,7 @@
 title: "Black-Scholes Model: Options Pricing for Quant Traders"
 description: "Master the Black-Scholes options pricing model. Derivation, implementation, Greeks calculation, and limitations for quantitative options trading."
 date: "2026-04-05"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Derivatives"
 tags: ["Black-Scholes", "options pricing", "derivatives", "quantitative finance", "volatility"]
 keywords: ["Black-Scholes model", "options pricing formula", "Black-Scholes python"]

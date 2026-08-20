@@ -3,7 +3,7 @@ title: '''''''Straddle Strategy for Options Trading 2026: Complete Guide'''''''
 slug: 08_straddle_options_strategy_earnings_volatility
 description: '''''''Straddle Strategy for Options Trading 2026: Complete Guide This
   article'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/08_straddle_options_strategy_earnings_volatility

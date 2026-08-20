@@ -2,7 +2,7 @@
 title: "Hierarchical Risk Parity: Machine Learning Portfolio Construction"
 description: "Learn Hierarchical Risk Parity (HRP) portfolio allocation using clustering and graph theory for robust, diversified portfolio construction."
 date: "2026-04-08"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Portfolio Management"
 tags: ["HRP", "risk parity", "machine learning", "portfolio construction", "clustering"]
 keywords: ["hierarchical risk parity", "HRP portfolio", "machine learning portfolio construction", "clustering portfolio allocation", "Lopez de Prado"]

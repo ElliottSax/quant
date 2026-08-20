@@ -2,7 +2,7 @@
 title: Improving Bollinger Bands with High Success Rate
 slug: improving-bollinger-bands-with-high-success-rate
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -2,7 +2,7 @@
 title: "Liquidity Risk Management: Position Sizing for Illiquid Markets"
 description: "Master liquidity risk management with market impact models, position sizing rules, and liquidation cost estimation for quantitative portfolios."
 date: "2026-04-16"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["liquidity risk", "market impact", "position sizing", "execution", "trading costs"]
 keywords: ["liquidity risk management", "market impact model", "position sizing illiquid", "liquidation cost", "liquidity risk quantification"]

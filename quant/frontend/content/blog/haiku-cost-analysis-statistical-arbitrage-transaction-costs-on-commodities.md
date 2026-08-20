@@ -2,7 +2,7 @@
 title: '''''''Cost Analysis: Statistical Arbitrage Transaction Costs on Commodities'''''''
 slug: cost-analysis-statistical-arbitrage-transaction-costs-on-commodities
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

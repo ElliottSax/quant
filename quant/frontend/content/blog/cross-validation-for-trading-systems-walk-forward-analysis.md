@@ -5,7 +5,7 @@ description: Comprehensive guide to cross validation for trading systems walk fo
   analysis. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - cross validation for trading systems walk forward analysis
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

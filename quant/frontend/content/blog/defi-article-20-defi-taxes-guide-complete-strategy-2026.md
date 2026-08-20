@@ -3,7 +3,7 @@ title: '''''''DeFi Taxes: Complete 2026 Tax Strategy & Compliance Guide'''''''
 slug: defi_article_20_defi_taxes_guide_complete_strategy_2026
 description: '''''''DeFi Taxes: Complete 2026 Tax Strategy & Compliance Guide This
   article'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_20_defi_taxes_guide_complete_strategy_2026

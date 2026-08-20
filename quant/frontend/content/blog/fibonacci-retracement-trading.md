@@ -2,7 +2,7 @@
 title: "Fibonacci Retracement Trading: Complete Technical Guide"
 description: "Master Fibonacci retracement levels for trading entries and exits. Learn the 23.6%, 38.2%, 50%, 61.8% levels with real chart examples."
 date: "2026-03-07"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["fibonacci", "retracement", "technical analysis", "support resistance", "trading strategy"]
 keywords: ["fibonacci retracement trading", "fibonacci levels", "technical analysis fibonacci"]

@@ -2,7 +2,7 @@
 title: "Portfolio Rebalancing Strategies: Calendar, Threshold, and Tactical"
 description: "Compare calendar, threshold, and tactical rebalancing approaches with quantitative analysis of costs, tracking error, and optimal frequency."
 date: "2026-04-11"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Portfolio Management"
 tags: ["rebalancing", "portfolio management", "transaction costs", "asset allocation", "tactical allocation"]
 keywords: ["portfolio rebalancing", "rebalancing strategies", "calendar rebalancing", "threshold rebalancing", "tactical rebalancing"]

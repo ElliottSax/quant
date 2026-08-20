@@ -2,7 +2,7 @@
 title: '''''''Donchian Channel Divergence Strategy for Small-Cap Stocks: 4-Hour Backtest'''''''
 slug: donchian-channel-divergence-strategy-for-small-cap-stocks-4-hour-backtest
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

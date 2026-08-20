@@ -3,7 +3,7 @@ title: '''''''Paper Trading Framework: Order Flow Imbalance with Maximum Sharpe 
   EUR/USD'''''''
 slug: paper-trading-framework-order-flow-imbalance-with-maximum-sharpe-on-eurusd
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

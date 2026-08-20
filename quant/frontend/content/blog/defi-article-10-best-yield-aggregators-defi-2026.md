@@ -3,7 +3,7 @@ title: '''''''Best DeFi Yield Aggregators 2026: Yearn vs Convex vs Beefy'''''''
 slug: defi_article_10_best_yield_aggregators_defi_2026
 description: '''''''Best DeFi Yield Aggregators 2026: Yearn vs Convex vs Beefy This
   article'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_10_best_yield_aggregators_defi_2026

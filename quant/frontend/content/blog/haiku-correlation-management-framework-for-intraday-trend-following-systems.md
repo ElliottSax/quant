@@ -2,7 +2,7 @@
 title: Correlation Management Framework for Intraday Trend Following Systems
 slug: correlation-management-framework-for-intraday-trend-following-systems
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

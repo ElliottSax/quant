@@ -2,7 +2,7 @@
 title: "API Trading Automation with Python: Broker Integration Guide"
 description: "Automate trading with Python broker APIs. Learn Interactive Brokers, Alpaca, and TD Ameritrade integration with order management and risk controls."
 date: "2026-03-26"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Python & Automation"
 tags: ["API trading", "python automation", "broker API", "algorithmic trading", "order management"]
 keywords: ["API trading automation python", "broker API integration", "python trading automation"]

@@ -2,7 +2,7 @@
 title: "Crypto Sentiment Analysis: Social Media Signal Trading"
 description: "Quantitative social media sentiment analysis for crypto trading. Learn Twitter/Reddit signal extraction, sentiment scoring, and contrarian indicators."
 date: "2026-05-11"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["sentiment-analysis", "social-trading", "alternative-data"]
 keywords: ["crypto sentiment", "social media trading", "Twitter sentiment", "Reddit signals"]

@@ -1,8 +1,8 @@
 ---
-title: "Mean Reversion Strategies: Statistical Foundations and Implementation Guide"
-description: "Deep dive into mean reversion trading strategies covering statistical tests, pair selection, entry/exit signals, and risk management frameworks."
+title: "Mean Reversion: Z-Score & Standard Deviation Bands"
+description: "How to trade mean reversion with z-scores and standard deviation bands: the entry/exit rule, ADF and Hurst tests for whether a series reverts at all, and Python."
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["mean reversion", "pairs trading", "statistical arbitrage", "quantitative strategies"]
 keywords: ["mean reversion trading", "pairs trading strategy", "statistical arbitrage guide"]
@@ -179,7 +179,7 @@ Pair selection is where most mean reversion strategies succeed or fail. The stan
 
 A concrete example: XOM and CVX, two major integrated oil companies, frequently cointegrate. Over the period January 2020 through December 2024, regressing XOM price on CVX price and testing the residual typically yields ADF p-value < 0.01, Hurst exponent near 0.38, and half-life of approximately 18 days.
 
-### Computing the Spread and Z-Score
+### Computing the Spread and Z-Score (Standard Deviation Bands)
 
 Once `beta` is estimated over a formation window (typically 252 trading days), the live spread is:
 

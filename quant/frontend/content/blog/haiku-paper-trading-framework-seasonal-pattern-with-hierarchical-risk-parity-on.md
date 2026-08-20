@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: Seasonal Pattern with Hierarchical Risk Parity'
 slug: paper-trading-framework-seasonal-pattern-with-hierarchical-risk-parity-on-nikkei
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

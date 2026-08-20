@@ -2,7 +2,7 @@
 title: "Mean-Variance Optimization: Modern Portfolio Theory in Practice"
 description: "Master Markowitz mean-variance optimization with efficient frontier construction, constraint handling, and practical implementation guidance."
 date: "2026-04-06"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Portfolio Management"
 tags: ["mean-variance optimization", "modern portfolio theory", "efficient frontier", "Markowitz", "portfolio construction"]
 keywords: ["mean-variance optimization", "efficient frontier", "Markowitz portfolio theory", "portfolio optimization", "optimal portfolio construction"]

@@ -2,7 +2,7 @@
 title: "MEV Strategies on Ethereum: Sandwich Attacks and Backrunning"
 description: "Maximal Extractable Value strategies on Ethereum. Learn sandwich attacks, backrunning, frontrunning detection, and MEV infrastructure requirements."
 date: "2026-05-06"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["mev", "ethereum", "trading-strategies"]
 keywords: ["MEV", "sandwich attacks", "backrunning", "Ethereum MEV", "flashbots"]

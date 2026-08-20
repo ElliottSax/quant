@@ -3,7 +3,7 @@ title: 'Congress Insider Trading vs S&P 500 Returns: Statistical Proof of Inform
   Advantage'
 description: Comparative performance analysis demonstrating congressional trading
   outperforms market by 287%, quantifying information advantage
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-insider-trading-vs-sp500-returns

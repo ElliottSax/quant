@@ -2,7 +2,7 @@
 title: "Volatility Surface Modeling: Skew, Term Structure, and Smile"
 description: "Model the implied volatility surface for options pricing. Skew dynamics, term structure, SVI parameterization, and local volatility with Python."
 date: "2026-04-10"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Derivatives"
 tags: ["volatility surface", "implied volatility", "skew", "SVI", "options pricing"]
 keywords: ["volatility surface modeling", "implied volatility skew", "SVI parameterization"]

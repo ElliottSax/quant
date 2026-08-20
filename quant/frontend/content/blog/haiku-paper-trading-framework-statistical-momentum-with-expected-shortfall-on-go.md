@@ -3,7 +3,7 @@ title: '''''''Paper Trading Framework: Statistical Momentum with Expected Shortf
   on'
 slug: paper-trading-framework-statistical-momentum-with-expected-shortfall-on-gold-fut
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -2,7 +2,7 @@
 title: "Measuring Algorithmic Execution Quality: Benchmarks and Metrics"
 description: "Evaluate algorithmic execution quality using VWAP, implementation shortfall, and market impact analysis with practical measurement frameworks."
 date: "2026-04-25"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading & Execution"
 tags: ["execution quality", "algorithmic trading", "VWAP", "implementation shortfall", "market impact"]
 keywords: ["algorithmic execution quality", "VWAP benchmark", "implementation shortfall", "market impact analysis", "transaction cost analysis"]

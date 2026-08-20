@@ -2,7 +2,7 @@
 title: "Stress Testing Portfolios: Historical and Hypothetical Scenarios"
 description: "Implement portfolio stress testing with historical replay, hypothetical scenarios, and reverse stress tests to identify hidden portfolio vulnerabilities."
 date: "2026-04-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["stress testing", "scenario analysis", "risk management", "portfolio risk", "tail risk"]
 keywords: ["portfolio stress testing", "scenario analysis", "historical stress test", "hypothetical scenarios", "reverse stress testing"]

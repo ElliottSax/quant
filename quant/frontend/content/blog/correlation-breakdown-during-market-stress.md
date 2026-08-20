@@ -1,7 +1,7 @@
 ---
 title: 'Correlation Breakdown During Market Stress: Crisis Dynamics and Portfolio
   Protection'
-author: Dr. James Chen
+author: "QuantEngines"
 date: '2026-03-16'
 category: Algo Trading
 tags:

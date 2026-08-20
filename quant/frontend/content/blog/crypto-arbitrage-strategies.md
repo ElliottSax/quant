@@ -2,7 +2,7 @@
 title: "Crypto Arbitrage Strategies: CEX, DEX, and Triangular Arb"
 description: "Master crypto arbitrage across centralized and decentralized exchanges. Learn CEX-DEX arbitrage, triangular strategies, and execution optimization."
 date: "2026-05-01"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["arbitrage", "crypto", "trading-strategies"]
 keywords: ["crypto arbitrage", "CEX DEX arbitrage", "triangular arbitrage", "cryptocurrency trading"]

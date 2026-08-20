@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Risk Management on Forex"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["forex", "risk management", "backtesting", "currency trading", "fx"]
 slug: "backtesting-risk-management-on-forex"

@@ -2,7 +2,7 @@
 title: '''"Combining Moving Average and Chaikin Oscillator for ETFs: Full Code"'''
 slug: combining-moving-average-and-chaikin-oscillator-for-etfs-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

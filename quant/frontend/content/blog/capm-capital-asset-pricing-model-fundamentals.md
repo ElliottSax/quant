@@ -5,7 +5,7 @@ description: Comprehensive guide to capm capital asset pricing model fundamental
   Expert analysis with actionable strategies and real-world examples.
 keywords:
 - capm capital asset pricing model fundamentals
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading senate vs house member
   performance. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading senate vs house member trading performance
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

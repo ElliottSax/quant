@@ -1,6 +1,6 @@
 ---
 title: 'Crypto Funding Rate Arbitrage: Profitable Perpetual Futures Strategy'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: crypto-funding-rate-arbitrage-guide

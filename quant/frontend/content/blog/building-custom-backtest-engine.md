@@ -1,7 +1,7 @@
 ---
 title: Building a Custom Backtesting Engine from Scratch
 slug: building-custom-backtest-engine
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

@@ -3,7 +3,7 @@ title: '''''''Energy Sector Market Analysis 2026: Transition to Renewables and O
   Market'''
 slug: energy-sector-market-analysis-2026-transition-to-renewables-and-oil-market-dynamics
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: Energy

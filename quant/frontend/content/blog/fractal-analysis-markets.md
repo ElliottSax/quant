@@ -2,7 +2,7 @@
 title: "Fractal Analysis: Market Self-Similarity and Hurst Exponent"
 description: "Apply fractal analysis and the Hurst exponent to measure market persistence, mean reversion, and self-similarity for better trading decisions."
 date: "2026-05-30"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["fractal-analysis", "hurst-exponent", "self-similarity"]
 keywords: ["fractal analysis", "Hurst exponent", "market fractals", "self-similarity", "persistence", "mean reversion"]

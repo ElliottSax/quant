@@ -3,7 +3,7 @@ title: '''''''Forex Ichimoku Cloud Trading Strategy: Comprehensive Technical Ana
 slug: 20-forex-ichimoku-cloud-trading
 description: '''''''Forex Ichimoku Cloud Trading Strategy: Comprehensive Technical
   Analysis'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/20-forex-ichimoku-cloud-trading

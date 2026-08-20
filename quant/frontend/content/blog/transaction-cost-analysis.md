@@ -2,7 +2,7 @@
 title: "Transaction Cost Analysis: Slippage, Commissions, and Market Impact"
 description: "Model realistic transaction costs for backtesting. Slippage estimation, market impact models, and commission structures for accurate strategy evaluation."
 date: "2026-03-25"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["transaction costs", "slippage", "market impact", "TCA", "execution"]
 keywords: ["transaction cost analysis", "trading slippage model", "market impact trading"]

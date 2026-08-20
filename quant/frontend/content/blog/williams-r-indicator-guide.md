@@ -2,7 +2,7 @@
 title: "Williams %R Indicator: Complete Trading Strategy Guide"
 description: "Master Williams %R for momentum trading. Learn calculation, overbought/oversold signals, failure swings, and divergence strategies with examples."
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["williams %R", "momentum indicator", "oscillator", "overbought oversold", "technical analysis"]
 keywords: ["williams %R indicator", "williams percent range", "williams %R trading strategy"]

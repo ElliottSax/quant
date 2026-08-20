@@ -3,7 +3,7 @@ title: '''''''LEAP Strategy Strategy for Options Trading 2026: Complete Guide'''
 slug: 20_leap_options_long-term_investing_strategy
 description: '''''''LEAP Strategy Strategy for Options Trading 2026: Complete Guide
   This'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/20_leap_options_long-term_investing_strategy

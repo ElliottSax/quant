@@ -2,7 +2,7 @@
 title: Guide to Mean Reversion Safely
 slug: guide-to-mean-reversion-safely
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

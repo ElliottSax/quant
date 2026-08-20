@@ -1,6 +1,6 @@
 ---
 title: 'Congress Tech Sector Trades Q1 2026: Insider Trading Patterns and Opportunities'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: congress-tech-sector-trades-q1-2026

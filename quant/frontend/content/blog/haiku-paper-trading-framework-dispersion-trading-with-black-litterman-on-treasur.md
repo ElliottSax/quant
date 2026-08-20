@@ -3,7 +3,7 @@ title: '''''''Paper Trading Framework: Dispersion Trading with Black-Litterman o
   Treasury'''
 slug: paper-trading-framework-dispersion-trading-with-black-litterman-on-treasury-yiel
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

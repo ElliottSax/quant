@@ -1,7 +1,7 @@
 ---
 title: 'Chaikin Money Flow: Volume-Based Price Prediction'
 date: '2026-03-15'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 tags:
 - chaikin money flow

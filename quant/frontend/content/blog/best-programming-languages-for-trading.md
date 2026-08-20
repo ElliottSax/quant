@@ -1,7 +1,7 @@
 ---
 title: 'Best Programming Languages for Trading: Choose Your Stack'
 slug: best-programming-languages-for-trading
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

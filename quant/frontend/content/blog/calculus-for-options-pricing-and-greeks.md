@@ -5,7 +5,7 @@ description: Comprehensive guide to calculus for options pricing and greeks. Exp
   analysis with actionable strategies and real-world examples.
 keywords:
 - calculus for options pricing and greeks
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 updated: '2026-03-16'

@@ -2,7 +2,7 @@
 title: '''''''Best Forex Elliott Wave Trading Strategy: Mastering Wave Patterns'''''''
 slug: 21-best-forex-elliott-wave
 description: '''''''Best Forex Elliott Wave Trading Strategy: Mastering Wave Patterns'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/21-best-forex-elliott-wave

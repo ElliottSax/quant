@@ -2,7 +2,7 @@
 title: "Breakout Trading Strategy: Identifying and Trading Breakouts"
 description: "Systematic breakout trading strategy with pattern recognition, volume confirmation, and false breakout filters backed by 15-year backtest data."
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["breakout trading", "range breakout", "volatility breakout", "technical analysis"]
 keywords: ["breakout trading strategy", "range breakout system", "volatility breakout trading"]

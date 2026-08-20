@@ -2,7 +2,7 @@
 title: '''''''Premium Selling Strategy for Options Trading 2026: Complete Guide'''''''
 slug: 19_best_options_selling_premium_strategy_2026
 description: '''''''Premium Selling Strategy for Options Trading 2026: Complete Guide'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/19_best_options_selling_premium_strategy_2026

@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Risk Management Efficiently"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["risk management", "backtesting", "python", "stop loss", "portfolio risk"]
 slug: "backtesting-risk-management-efficiently"

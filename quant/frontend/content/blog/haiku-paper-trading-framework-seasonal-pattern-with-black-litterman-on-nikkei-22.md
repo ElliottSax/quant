@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: Seasonal Pattern with Black-Litterman on Nikkei'
 slug: paper-trading-framework-seasonal-pattern-with-black-litterman-on-nikkei-225
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -1,7 +1,7 @@
 ---
 title: "Congress Signals Retail Weakness - Selling Consumer Stocks"
 slug: "congress-signals-retail-weakness---selling-consumer-stocks-2026-03-15"
-author: "Quant Desk"
+author: "QuantEngines"
 category: "congressional-trades"
 date: "2026-03-15"
 description: "Analysis of recent congressional stock trades in Consumer Discretionary - tracking what politicians are selling and why it matters."

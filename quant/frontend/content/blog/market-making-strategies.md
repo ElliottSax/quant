@@ -2,7 +2,7 @@
 title: "Market Making Strategies: Providing Liquidity for Profit"
 description: "Build quantitative market making strategies. Inventory management, quote optimization, adverse selection, and risk controls for automated market makers."
 date: "2026-04-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["market making", "liquidity provision", "bid-ask spread", "inventory management", "HFT"]
 keywords: ["market making strategies", "automated market maker", "liquidity provision trading"]

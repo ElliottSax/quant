@@ -2,7 +2,7 @@
 title: '''"Cost Analysis: Cross-Sectional Momentum Transaction Costs on Emerging Markets"'''
 slug: cost-analysis-cross-sectional-momentum-transaction-costs-on-emerging-markets
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

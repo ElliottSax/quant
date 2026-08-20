@@ -1,7 +1,7 @@
 ---
 title: Clustering Algorithms for Market Regime Detection
 date: '2026-03-15'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 tags:
 - clustering

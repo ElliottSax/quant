@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Intraday Reversal with Point and Fi
   on'''
 slug: order-flow-analysis-enhancing-intraday-reversal-with-point-and-figure-on-vix-der
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

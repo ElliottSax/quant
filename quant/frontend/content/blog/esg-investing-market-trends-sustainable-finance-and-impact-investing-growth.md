@@ -3,7 +3,7 @@ title: '''''''ESG Investing Market Trends: Sustainable Finance and Impact Invest
   Growth'''''''
 slug: esg-investing-market-trends-sustainable-finance-and-impact-investing-growth
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: Thematic

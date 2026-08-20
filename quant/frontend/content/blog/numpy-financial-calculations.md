@@ -2,7 +2,7 @@
 title: "NumPy for Financial Calculations: Portfolio Math Made Easy"
 description: "Learn NumPy for portfolio optimization, risk calculations, and financial math. Production-ready code for covariance matrices, Monte Carlo, and matrix operations."
 date: "2026-03-11"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Data Science"
 tags: ["numpy", "python", "portfolio math", "linear algebra", "quantitative finance"]
 keywords: ["numpy financial calculations", "portfolio math python", "numpy portfolio optimization"]

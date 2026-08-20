@@ -2,7 +2,7 @@
 title: '''"Algorithmic Trading Strategies for Retail Traders: Automate Your Trading"'''
 slug: '''"algorithmic-trading-strategies-retail"'''
 description: '''"Learn algorithmic trading strategies for retail traders. Python bots,'
-author: '''"Trading Mastery"'''
+author: "QuantEngines"
 category: '''"Trading Strategies"'''
 tags: []
 keyword: '''"Algorithmic trading strategies for retail traders"'''

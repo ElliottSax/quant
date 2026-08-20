@@ -3,7 +3,7 @@ title: '''''''Wheel Strategy Strategy for Options Trading 2026: Complete Guide''
 slug: 16_best_wheel_options_strategy_for_income_2026
 description: '''''''Wheel Strategy Strategy for Options Trading 2026: Complete Guide
   This'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/16_best_wheel_options_strategy_for_income_2026

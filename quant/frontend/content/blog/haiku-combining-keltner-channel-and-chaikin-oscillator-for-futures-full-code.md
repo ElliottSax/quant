@@ -2,7 +2,7 @@
 title: '''"Combining Keltner Channel and Chaikin Oscillator for Futures: Full Code"'''
 slug: combining-keltner-channel-and-chaikin-oscillator-for-futures-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

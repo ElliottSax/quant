@@ -2,7 +2,7 @@
 title: "Crypto Market Making: HFT Strategies for Digital Assets"
 description: "High-frequency market making strategies for cryptocurrency exchanges. Learn order placement, inventory management, and spread optimization techniques."
 date: "2026-05-05"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["market-making", "hft", "trading-strategies"]
 keywords: ["crypto market making", "high-frequency trading", "spread trading", "inventory management"]

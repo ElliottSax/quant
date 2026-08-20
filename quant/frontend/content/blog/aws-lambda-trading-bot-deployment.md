@@ -1,7 +1,7 @@
 ---
 title: 'AWS Lambda for Trading Bots: Serverless Deployment'
 slug: aws-lambda-trading-bot-deployment
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

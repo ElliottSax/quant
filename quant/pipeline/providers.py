@@ -173,15 +173,25 @@ class YFinanceProvider:
     (SPY: 8,446 rows back to 1993-01-29, measured) — so unlike the FMP adapter it needs
     no date-window pagination.
 
-    The trade-off is that Yahoo is an unofficial, unsupported endpoint with no terms of
-    service for programmatic use and no availability guarantee. It is included because
-    it is genuinely measurable and it is what the backend already relies on, not as a
-    recommendation to depend on it for anything published.
+    NOT FOR PUBLISHED DATA. Yahoo has no public API — this is an internal endpoint —
+    and Yahoo's terms prohibit automated collection and any commercial use outright.
+    They are also actively locking it down (/v7/finance/quote now returns 401). It is
+    kept for local development and for the vendor bench, where the point is to MEASURE
+    a source rather than to redistribute it.
+
+    Ingesting through it into the published store requires QUANT_ALLOW_YFINANCE_INGEST=1,
+    an explicit opt-in, so it cannot become a published data source by accident.
     """
 
     name = "yfinance"
 
     def fetch(self, symbol: str, start: date) -> list[Bar]:
+        if os.environ.get("QUANT_ALLOW_YFINANCE_INGEST") != "1":
+            raise ProviderError(
+                "yfinance is not licensed for published data (Yahoo prohibits automated "
+                "and commercial use). Set QUANT_ALLOW_YFINANCE_INGEST=1 only for local "
+                "development or bench measurement."
+            )
         try:
             import yfinance as yf
         except ImportError:

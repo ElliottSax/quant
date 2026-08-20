@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Position Sizing Efficiently"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["position sizing", "backtesting", "python", "risk management", "kelly criterion"]
 slug: "backtesting-position-sizing-efficiently"

@@ -2,7 +2,7 @@
 title: '''"Combining Keltner Channel and MACD for Commodities: Full Code"'''
 slug: combining-keltner-channel-and-macd-for-commodities-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

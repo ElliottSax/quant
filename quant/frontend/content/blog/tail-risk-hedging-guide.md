@@ -2,7 +2,7 @@
 title: "Tail Risk Hedging: Protecting Against Black Swan Events"
 description: "Comprehensive guide to tail risk hedging strategies including put options, volatility strategies, and systematic approaches to crisis protection."
 date: "2026-04-05"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["tail risk", "black swan", "hedging", "options strategies", "portfolio protection"]
 keywords: ["tail risk hedging", "black swan protection", "portfolio tail risk", "volatility hedging", "crisis alpha"]

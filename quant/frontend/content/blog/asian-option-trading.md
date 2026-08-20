@@ -3,7 +3,7 @@ title: "Asian Option Trading"
 slug: "asian-option-trading"
 description: "Pricing, hedging, and trading strategies for Asian options including arithmetic and geometric averaging, Monte Carlo methods, and practical applications in commodity markets."
 keywords: ["Asian options", "path-dependent options", "average price option", "Monte Carlo pricing", "exotic derivatives"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1830

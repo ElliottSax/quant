@@ -3,7 +3,7 @@ title: '''"Combining Heikin-Ashi and Bollinger Bands for Volatility Products: Fu
   Code"'''
 slug: combining-heikin-ashi-and-bollinger-bands-for-volatility-products-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

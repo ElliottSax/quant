@@ -2,7 +2,7 @@
 title: '''''''Impermanent Loss: Calculator, Strategies & 2026 Guide'''''''
 slug: defi_article_13_impermanent_loss_calculator_and_strategies
 description: '''''''Impermanent Loss: Calculator, Strategies & 2026 Guide This article'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_13_impermanent_loss_calculator_and_strategies

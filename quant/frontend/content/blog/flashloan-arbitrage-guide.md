@@ -2,7 +2,7 @@
 title: "Flash Loan Arbitrage: DeFi Atomic Profit Strategies"
 description: "Capital-free arbitrage using flash loans on DeFi protocols. Learn atomic transaction construction, multi-protocol routing, and risk-free profit strategies."
 date: "2026-05-07"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["flashloans", "arbitrage", "defi"]
 keywords: ["flash loans", "flash loan arbitrage", "DeFi arbitrage", "atomic transactions"]

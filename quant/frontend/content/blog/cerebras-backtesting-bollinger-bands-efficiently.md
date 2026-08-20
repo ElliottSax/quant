@@ -2,7 +2,7 @@
 title: Backtesting Bollinger Bands Efficiently
 slug: backtesting-bollinger-bands-efficiently
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

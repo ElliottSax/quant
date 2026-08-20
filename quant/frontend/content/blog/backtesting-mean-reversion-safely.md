@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Mean Reversion Safely"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["mean reversion", "backtesting", "validation", "safe"]
 slug: "backtesting-mean-reversion-safely"

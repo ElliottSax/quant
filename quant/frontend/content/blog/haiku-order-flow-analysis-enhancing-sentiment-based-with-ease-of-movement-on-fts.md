@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Sentiment-Based with Ease of Moveme
   on'
 slug: order-flow-analysis-enhancing-sentiment-based-with-ease-of-movement-on-ftse-100
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

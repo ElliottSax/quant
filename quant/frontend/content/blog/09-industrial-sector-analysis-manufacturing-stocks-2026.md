@@ -3,7 +3,7 @@ title: '''''''Industrial Sector Analysis: Manufacturing Stocks 2026'''''''
 slug: industrial-sector-analysis-manufacturing-stocks-2026
 description: '''''''Industrial stocks 2026: machinery, aerospace, defense analysis.
   Best'''
-author: Quant Research Team
+author: "QuantEngines"
 category: Industrials
 tags: []
 date: 2026-07-25

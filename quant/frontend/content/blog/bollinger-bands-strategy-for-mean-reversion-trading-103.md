@@ -1,7 +1,7 @@
 ---
 title: 'Bollinger Bands Mean Reversion Strategy: Practical Implementation'
 date: '2026-03-15'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 tags:
 - bollinger bands

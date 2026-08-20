@@ -2,7 +2,7 @@
 title: "Market Microstructure: Understanding Order Flow and Liquidity"
 description: "Deep dive into market microstructure covering order books, bid-ask spreads, market making, and how institutional order flow creates trading opportunities."
 date: "2026-03-21"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["market microstructure", "order flow", "liquidity", "bid-ask spread"]
 keywords: ["market microstructure trading", "order flow analysis", "liquidity trading"]

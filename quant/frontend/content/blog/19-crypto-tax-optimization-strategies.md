@@ -2,7 +2,7 @@
 title: Crypto Tax Optimization Strategies 2026 Guide
 slug: crypto-tax-optimization-strategies
 description: Optimize crypto taxes. Loss harvesting, timing strategies, and compliance.
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Crypto tax optimization strategies 2026

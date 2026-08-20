@@ -2,7 +2,7 @@
 title: "Crypto Volatility Trading: BTC Implied Vol Strategies"
 description: "Systematic volatility trading strategies for Bitcoin and altcoins. Learn volatility regime detection, vol swaps, and variance curve strategies."
 date: "2026-05-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["volatility", "options", "trading"]
 keywords: ["crypto volatility", "implied volatility", "volatility trading", "variance strategies"]

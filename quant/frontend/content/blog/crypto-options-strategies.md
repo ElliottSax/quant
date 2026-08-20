@@ -2,7 +2,7 @@
 title: "Crypto Options Strategies: Deribit and Binance Options"
 description: "Advanced options trading for crypto. Learn call/put spreads, calendar spreads, iron condors, and volatility arbitrage on crypto options exchanges."
 date: "2026-05-14"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["options", "derivatives", "volatility"]
 keywords: ["crypto options", "Deribit options", "options strategies", "volatility trading"]

@@ -2,7 +2,7 @@
 title: '''''''Energy Sector Outlook 2026: Oil, Gas, and Renewables'''''''
 slug: energy-sector-outlook-2026-oil-gas-renewables
 description: '''''''Energy sector 2026: oil, gas, and renewables analysis. Best energy'
-author: Quant Research Team
+author: "QuantEngines"
 category: Energy
 tags: []
 date: 2026-07-24

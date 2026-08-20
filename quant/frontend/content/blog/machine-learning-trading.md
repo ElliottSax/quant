@@ -2,7 +2,7 @@
 title: "Machine Learning for Trading: Practical Applications Guide"
 description: "Practical guide to machine learning in trading covering feature engineering, model selection, overfitting prevention, and production deployment."
 date: "2026-03-24"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["machine learning", "AI trading", "random forest", "feature engineering"]
 keywords: ["machine learning trading", "ML trading strategies", "AI quantitative trading"]

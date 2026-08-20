@@ -5,7 +5,7 @@ description: 'Comprehensive guide to cointegration analysis: identifying station
   spreads. Expert analysis with actionable strategies and real-world examples.'
 keywords:
 - 'cointegration analysis: identifying stationary spreads'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-15'
 updated: '2026-03-15'

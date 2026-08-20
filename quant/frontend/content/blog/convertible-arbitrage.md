@@ -5,7 +5,7 @@ description: Comprehensive guide to convertible arbitrage strategies. Expert ana
   with actionable strategies and real-world examples.
 keywords:
 - convertible arbitrage strategies
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-15'
 updated: '2026-03-15'

@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Overnight Returns with Ease of Move
   on'''
 slug: order-flow-analysis-enhancing-overnight-returns-with-ease-of-movement-on-gold-fu
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -3,7 +3,7 @@ title: '''''''Debit Spread Strategy for Options Trading 2026: Complete Guide''''
 slug: 15_debit_spread_options_directional_strategy
 description: '''''''Debit Spread Strategy for Options Trading 2026: Complete Guide
   This'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/15_debit_spread_options_directional_strategy

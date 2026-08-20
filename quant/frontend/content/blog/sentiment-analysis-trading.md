@@ -2,7 +2,7 @@
 title: "Sentiment Analysis for Trading: NLP-Based Market Signals"
 description: "Build NLP-based sentiment analysis trading signals from news, social media, and earnings calls with practical implementation and backtest results."
 date: "2026-04-02"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["sentiment analysis", "NLP", "alternative data", "natural language processing"]
 keywords: ["sentiment analysis trading", "NLP trading signals", "market sentiment analysis"]

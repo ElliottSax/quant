@@ -4,7 +4,7 @@ title: '''''''Poor Man''''''''s Covered Call Strategy for Options Trading 2026: 
 slug: 10_best_poor_mans_covered_call_strategy_2026
 description: '''''''Poor Man''''''''s Covered Call Strategy for Options Trading 2026:
   Complete'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/10_best_poor_mans_covered_call_strategy_2026

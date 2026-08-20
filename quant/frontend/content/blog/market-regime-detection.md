@@ -2,7 +2,7 @@
 title: "Market Regime Detection: Adapting Strategy to Market Conditions"
 description: "Detect market regimes to adapt trading strategies. Learn Hidden Markov Models, volatility clustering, trend/range classification, and regime-switching systems."
 date: "2026-03-30"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Python & Automation"
 tags: ["market regime", "regime detection", "Hidden Markov Model", "volatility", "adaptive strategy"]
 keywords: ["market regime detection", "regime switching trading", "market condition analysis"]

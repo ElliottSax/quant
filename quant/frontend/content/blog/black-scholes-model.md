@@ -1,7 +1,7 @@
 ---
 title: 'Black-Scholes Model: The Complete Guide to Options Pricing'
 date: '2026-03-15'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 tags:
 - black-scholes

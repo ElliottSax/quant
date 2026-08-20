@@ -10,6 +10,7 @@ import {
   readFrontmatterArray,
 } from '@/lib/frontmatter'
 import { isNoindexDraft } from '@/lib/noindex-drafts'
+import { ToolCTA } from '@/components/blog/ToolCTA'
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -502,6 +503,10 @@ export default async function BlogArticlePage({
             </div>
           </section>
         )}
+
+        {/* Route the reader to a working tool. Before this, no article linked to any
+            tool and every click dead-ended in the blog. */}
+        <ToolCTA category={frontmatter.category} title={frontmatter.title} />
 
         {/* Back link */}
         <div className="text-center pb-8">

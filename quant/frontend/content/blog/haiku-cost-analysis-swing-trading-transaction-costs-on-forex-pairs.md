@@ -2,7 +2,7 @@
 title: '''''''Cost Analysis: Swing Trading Transaction Costs on Forex Pairs'''''''
 slug: cost-analysis-swing-trading-transaction-costs-on-forex-pairs
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

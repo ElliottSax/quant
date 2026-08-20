@@ -2,7 +2,7 @@
 title: "Smart Beta Strategies: Factor-Based Index Construction"
 description: "Understand smart beta strategies including value, momentum, quality, and low-volatility factor indices with construction methods and performance analysis."
 date: "2026-04-21"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["smart beta", "factor investing", "index construction", "value factor", "momentum factor"]
 keywords: ["smart beta strategies", "factor-based index", "smart beta ETF", "factor investing guide", "alternative index construction"]

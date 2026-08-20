@@ -2,7 +2,7 @@
 title: '''''''Cost Analysis: Volatility Trading Transaction Costs on Options'''''''
 slug: cost-analysis-volatility-trading-transaction-costs-on-options
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

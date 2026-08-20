@@ -3,7 +3,7 @@ title: 'Congress International Stock Investments: Foreign Company Holdings and G
   Policy Correlation'
 description: Analysis of congressional members' international stock investments with
   timing correlated to US foreign policy
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-international-stock-investments

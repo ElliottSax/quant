@@ -2,7 +2,7 @@
 title: '''''''Order Flow Analysis: Enhancing Statistical Momentum with Point and Figure'''
 slug: order-flow-analysis-enhancing-statistical-momentum-with-point-and-figure-on-agri
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

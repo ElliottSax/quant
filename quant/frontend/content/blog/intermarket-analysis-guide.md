@@ -2,7 +2,7 @@
 title: "Intermarket Analysis: Bonds, Commodities, Currencies, Stocks"
 description: "Master intermarket analysis to understand cross-market relationships. Learn bond-stock rotation, commodity-currency links, and macro-driven trading signals."
 date: "2026-04-05"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["intermarket analysis", "cross-market", "bonds", "commodities", "currencies", "macro trading"]
 keywords: ["intermarket analysis", "cross-asset analysis", "intermarket relationships trading"]

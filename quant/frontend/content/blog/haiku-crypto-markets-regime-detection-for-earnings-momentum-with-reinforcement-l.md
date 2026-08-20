@@ -2,7 +2,7 @@
 title: Crypto Markets Regime Detection for Earnings Momentum with Reinforcement Learning
 slug: crypto-markets-regime-detection-for-earnings-momentum-with-reinforcement-learnin
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

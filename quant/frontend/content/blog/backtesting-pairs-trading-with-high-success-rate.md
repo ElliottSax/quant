@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Pairs Trading with High Success Rate"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["pairs trading", "backtesting", "success rate", "python", "quantitative"]
 slug: "backtesting-pairs-trading-with-high-success-rate"

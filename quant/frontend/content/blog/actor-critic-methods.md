@@ -3,7 +3,7 @@ title: "Actor Critic Methods"
 slug: "actor-critic-methods"
 description: "How actor-critic reinforcement learning architectures are applied to portfolio optimization, order execution, and dynamic hedging in quantitative finance."
 keywords: ["actor-critic", "reinforcement learning", "portfolio optimization", "deep RL", "quantitative trading"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1820

@@ -3,7 +3,7 @@ title: '''''''Best DeFi Governance Tokens to Stake 2026: Complete Guide'''''''
 slug: defi_article_16_best_defi_governance_tokens_to_stake
 description: '''''''Best DeFi Governance Tokens to Stake 2026: Complete Guide This
   article'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_16_best_defi_governance_tokens_to_stake

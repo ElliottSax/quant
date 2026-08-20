@@ -4,7 +4,7 @@ title: '''''''Best Forex Position Trading for Long-Term Profitability: Hold Trad
 slug: 24-best-forex-position-trading
 description: '''''''Best Forex Position Trading for Long-Term Profitability: Hold
   Trades'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/24-best-forex-position-trading

@@ -2,7 +2,7 @@
 title: '''"Combining Heikin-Ashi and ATR for Volatility Products: Full Code"'''
 slug: combining-heikin-ashi-and-atr-for-volatility-products-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

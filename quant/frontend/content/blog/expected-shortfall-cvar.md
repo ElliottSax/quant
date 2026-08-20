@@ -2,7 +2,7 @@
 title: "Expected Shortfall (CVaR): Beyond VaR Risk Measurement"
 description: "Learn Expected Shortfall (CVaR) calculation, why it supersedes VaR for tail risk, and how to implement it in quantitative portfolio management."
 date: "2026-04-02"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["CVaR", "expected shortfall", "tail risk", "risk metrics", "portfolio risk"]
 keywords: ["expected shortfall", "CVaR calculation", "conditional value at risk", "tail risk measurement", "coherent risk measures"]

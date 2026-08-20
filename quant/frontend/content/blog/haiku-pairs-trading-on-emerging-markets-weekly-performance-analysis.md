@@ -2,7 +2,7 @@
 title: '''''''Pairs Trading on Emerging Markets: Weekly Performance Analysis'''''''
 slug: pairs-trading-on-emerging-markets-weekly-performance-analysis
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

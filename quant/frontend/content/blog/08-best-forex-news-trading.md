@@ -3,7 +3,7 @@ title: '''''''Best Forex News Trading Strategies 2026: Profiting from Economic E
 slug: 08-best-forex-news-trading
 description: '''''''Best Forex News Trading Strategies 2026: Profiting from Economic
   Events'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/08-best-forex-news-trading

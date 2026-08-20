@@ -2,7 +2,7 @@
 title: "How to Backtest Trading Strategies: Complete Framework"
 description: "Master the art and science of backtesting trading strategies with proper methodology, bias prevention, and statistical validation techniques."
 date: "2026-03-19"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["backtesting", "strategy validation", "quantitative analysis", "walk-forward"]
 keywords: ["backtest trading strategies", "backtesting framework", "strategy validation"]

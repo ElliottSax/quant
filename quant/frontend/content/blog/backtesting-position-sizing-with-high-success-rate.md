@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Position Sizing with High Success Rate"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["position sizing", "high success rate", "winning trades", "profit maximization", "backtesting"]
 slug: "backtesting-position-sizing-with-high-success-rate"

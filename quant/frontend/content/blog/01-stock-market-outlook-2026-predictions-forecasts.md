@@ -2,7 +2,7 @@
 title: '''"Stock Market Outlook 2026: Predictions and Forecasts"'''
 slug: '''"stock-market-outlook-2026-predictions-forecasts"'''
 description: '''"2026 stock market outlook with expert predictions, economic forecasts,'
-author: '''"Quant Research Team"'''
+author: "QuantEngines"
 category: '''"Broad Market"'''
 tags: []
 date: 2026-07-22

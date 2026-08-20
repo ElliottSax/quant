@@ -3,7 +3,7 @@ title: '''''''Forex Hedging Strategies for Risk Management: Protecting Your Posi
 slug: 11-forex-hedging-strategies-risk
 description: '''''''Forex Hedging Strategies for Risk Management: Protecting Your
   Positions'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/11-forex-hedging-strategies-risk

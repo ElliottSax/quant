@@ -1,7 +1,7 @@
 ---
 title: 'Crypto Arbitrage Bot with Python: Profit from Price Discrepancies'
 slug: crypto-arbitrage-bot-python
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

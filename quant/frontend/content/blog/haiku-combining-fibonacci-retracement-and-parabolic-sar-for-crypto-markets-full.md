@@ -2,7 +2,7 @@
 title: '''"Combining Fibonacci Retracement and Parabolic SAR for Crypto Markets: Full'
 slug: combining-fibonacci-retracement-and-parabolic-sar-for-crypto-markets-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

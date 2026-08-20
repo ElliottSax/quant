@@ -3,7 +3,7 @@ title: '''''''Iron Condor Strategy for Options Trading 2026: Complete Guide'''''
 slug: 03_iron_condor_options_strategy_neutral_markets
 description: '''''''Iron Condor Strategy for Options Trading 2026: Complete Guide
   This'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/03_iron_condor_options_strategy_neutral_markets

@@ -3,7 +3,7 @@ title: 'Congress Green Energy Investment Trends: Clean Energy Policy Trading and
   Positioning'
 description: Analysis of congressional members' green energy and renewable investment
   trading with correlation to climate policy
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-green-energy-investment-trends

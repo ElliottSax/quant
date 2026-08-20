@@ -3,7 +3,7 @@ title: '''''''Paper Trading Framework: Dispersion Trading with Expected Shortfal
   on Gold'''
 slug: paper-trading-framework-dispersion-trading-with-expected-shortfall-on-gold-futur
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -2,7 +2,7 @@
 title: '''"Cost Analysis: Gap Trading Transaction Costs on US Treasuries"'''
 slug: cost-analysis-gap-trading-transaction-costs-on-us-treasuries
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

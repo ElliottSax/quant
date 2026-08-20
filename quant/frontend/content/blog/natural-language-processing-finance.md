@@ -2,7 +2,7 @@
 title: "NLP for Finance: Sentiment Analysis from News and Filings"
 description: "Apply NLP to financial data for sentiment analysis, news classification, and SEC filing analysis. FinBERT, topic modeling, and event detection with Python."
 date: "2026-03-21"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Machine Learning"
 tags: ["NLP", "sentiment analysis", "FinBERT", "text mining", "financial news"]
 keywords: ["NLP finance", "financial sentiment analysis", "FinBERT trading"]

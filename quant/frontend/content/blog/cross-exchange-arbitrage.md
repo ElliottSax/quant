@@ -2,7 +2,7 @@
 title: "Cross-Exchange Arbitrage: Latency and Execution Optimization"
 description: "Advanced cross-exchange crypto arbitrage strategies. Learn latency arbitrage, execution optimization, and operational infrastructure for multi-venue trading."
 date: "2026-05-16"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["arbitrage", "execution", "trading-infrastructure"]
 keywords: ["cross-exchange arbitrage", "latency arbitrage", "execution", "multi-venue trading"]

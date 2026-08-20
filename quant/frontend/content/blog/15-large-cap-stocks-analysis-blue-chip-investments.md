@@ -3,7 +3,7 @@ title: '''''''Large-Cap Stocks Analysis: Blue Chip Investments'''''''
 slug: large-cap-stocks-analysis-blue-chip-investments
 description: '''''''Large-cap stocks 2026: blue chip investments and stability. Best
   large-cap'''
-author: Quant Research Team
+author: "QuantEngines"
 category: Large-Cap
 tags: []
 date: 2026-07-27

@@ -2,7 +2,7 @@
 title: "Entropy-Based Trading: Information Theory Applications"
 description: "Apply Shannon entropy, mutual information, and transfer entropy to measure market uncertainty, information flow, and predictability for smarter trading."
 date: "2026-06-02"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["entropy", "information-theory", "market-uncertainty"]
 keywords: ["Shannon entropy", "information theory", "market entropy", "mutual information", "transfer entropy", "trading signals"]

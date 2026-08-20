@@ -2,7 +2,7 @@
 title: "Options Greeks Complete Guide: Delta, Gamma, Theta, Vega"
 description: "Master all options Greeks for trading and risk management. Delta hedging, gamma scalping, theta decay strategies, and vega exposure with Python examples."
 date: "2026-04-07"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Derivatives"
 tags: ["options Greeks", "delta hedging", "gamma", "theta decay", "vega"]
 keywords: ["options Greeks guide", "delta gamma theta vega", "options risk management"]

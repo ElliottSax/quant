@@ -2,7 +2,7 @@
 title: "Correlation Breakdown During Crises: What Quants Must Know"
 description: "Understand why asset correlations spike during market crises, how this breaks diversification, and quantitative methods to prepare portfolios."
 date: "2026-04-14"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["correlation", "crisis", "diversification", "tail dependence", "portfolio risk"]
 keywords: ["correlation breakdown crisis", "correlation spike", "diversification failure", "tail dependence", "crisis correlation"]

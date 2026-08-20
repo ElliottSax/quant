@@ -1,7 +1,7 @@
 ---
 title: "Average True Range for Dynamic Position Sizing"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["algo trading", "quantitative", "trading", "python"]
 slug: "average-true-range-for-dynamic-position-sizing"

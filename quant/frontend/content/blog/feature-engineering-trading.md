@@ -2,7 +2,7 @@
 title: "Feature Engineering for Trading Models: Creating Alpha Signals"
 description: "Master feature engineering for quantitative trading. Technical, fundamental, alternative data features with proper normalization and selection techniques."
 date: "2026-03-22"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Data Science"
 tags: ["feature engineering", "alpha signals", "machine learning", "quantitative trading", "data science"]
 keywords: ["feature engineering trading", "alpha signal generation", "trading features machine learning"]

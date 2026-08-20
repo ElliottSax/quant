@@ -2,7 +2,7 @@
 word_count: 1750
 title: "Automating Momentum Trading Safely"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["momentum trading", "risk management", "position sizing", "stop loss"]
 slug: "automating-momentum-trading-safely"

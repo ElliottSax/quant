@@ -2,7 +2,7 @@
 title: "Copula Analysis: Modeling Asset Dependence Structures"
 description: "Master copula theory to model complex dependencies between assets beyond correlation, improving portfolio risk management and pairs trading strategies."
 date: "2026-06-05"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["copulas", "dependence-modeling", "tail-risk"]
 keywords: ["copula analysis", "copula trading", "tail dependence", "Gaussian copula", "t-copula", "dependence structure"]

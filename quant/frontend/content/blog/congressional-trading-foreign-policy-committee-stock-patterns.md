@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading foreign policy committ
   stock patterns. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading foreign policy committee stock patterns
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

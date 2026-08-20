@@ -1,7 +1,7 @@
 ---
 title: 'Black-Litterman Model Tutorial: Incorporate Expert Views into Portfolios'
 slug: black-litterman-model-tutorial
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

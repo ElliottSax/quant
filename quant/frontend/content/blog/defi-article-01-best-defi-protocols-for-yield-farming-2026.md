@@ -3,7 +3,7 @@ title: '''''''Best DeFi Protocols for Yield Farming 2026: Complete Guide'''''''
 slug: defi_article_01_best_defi_protocols_for_yield_farming_2026
 description: '''''''Best DeFi Protocols for Yield Farming 2026: Complete Guide This
   article'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_01_best_defi_protocols_for_yield_farming_2026

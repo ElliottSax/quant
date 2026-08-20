@@ -2,7 +2,7 @@
 title: '''''''Emerging Markets Analysis 2026: Growth Opportunities'''''''
 slug: emerging-markets-analysis-2026-growth-opportunities
 description: '''''''Emerging markets 2026: growth opportunities in developing countries.'''
-author: Quant Research Team
+author: "QuantEngines"
 category: Emerging Markets
 tags: []
 date: 2026-07-26

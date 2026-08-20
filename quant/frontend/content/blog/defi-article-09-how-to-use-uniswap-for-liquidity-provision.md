@@ -3,7 +3,7 @@ title: '''''''How to Use Uniswap for Liquidity Provision: Complete Guide 2026'''
 slug: defi_article_09_how_to_use_uniswap_for_liquidity_provision
 description: '''''''How to Use Uniswap for Liquidity Provision: Complete Guide 2026
   This'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_09_how_to_use_uniswap_for_liquidity_provision

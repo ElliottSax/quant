@@ -2,7 +2,7 @@
 title: "Perpetual Futures Funding Rate Arbitrage"
 description: "Systematic funding rate arbitrage strategies on crypto perpetual futures. Learn cash-and-carry trades, cross-exchange arbitrage, and risk management."
 date: "2026-05-08"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["perpetuals", "arbitrage", "funding-rates"]
 keywords: ["funding rate arbitrage", "perpetual futures", "cash and carry", "crypto arbitrage"]

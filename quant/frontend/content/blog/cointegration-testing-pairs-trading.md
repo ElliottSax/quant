@@ -1,7 +1,7 @@
 ---
 title: 'Cointegration Testing for Pairs Trading: Statistical Arbitrage Foundations'
 slug: cointegration-testing-pairs-trading
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

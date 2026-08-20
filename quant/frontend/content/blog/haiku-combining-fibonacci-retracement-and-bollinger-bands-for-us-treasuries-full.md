@@ -3,7 +3,7 @@ title: '''"Combining Fibonacci Retracement and Bollinger Bands for US Treasuries
   Full'
 slug: combining-fibonacci-retracement-and-bollinger-bands-for-us-treasuries-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

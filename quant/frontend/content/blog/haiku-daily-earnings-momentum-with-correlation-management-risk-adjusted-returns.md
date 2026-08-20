@@ -2,7 +2,7 @@
 title: '''''''Daily Earnings Momentum with Correlation Management: Risk-Adjusted Returns'''''''
 slug: daily-earnings-momentum-with-correlation-management-risk-adjusted-returns
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

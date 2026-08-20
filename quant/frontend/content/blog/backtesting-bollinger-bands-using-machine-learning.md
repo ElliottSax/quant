@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Bollinger Bands using Machine Learning"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["bollinger bands", "machine learning", "neural networks", "python"]
 slug: "backtesting-bollinger-bands-using-machine-learning"

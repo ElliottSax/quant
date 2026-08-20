@@ -3,7 +3,7 @@ title: '''''''How to Stake Ethereum for Passive Income: Complete 2026 Guide'''''
 slug: defi_article_02_how_to_stake_ethereum_for_passive_income
 description: '''''''How to Stake Ethereum for Passive Income: Complete 2026 Guide
   This'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_02_how_to_stake_ethereum_for_passive_income

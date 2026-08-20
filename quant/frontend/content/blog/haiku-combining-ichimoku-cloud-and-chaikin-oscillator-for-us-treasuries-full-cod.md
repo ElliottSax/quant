@@ -3,7 +3,7 @@ title: '''"Combining Ichimoku Cloud and Chaikin Oscillator for US Treasuries: Fu
   Code"'''
 slug: combining-ichimoku-cloud-and-chaikin-oscillator-for-us-treasuries-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

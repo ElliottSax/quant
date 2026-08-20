@@ -2,7 +2,7 @@
 title: "PCA for Trading: Dimension Reduction and Factor Analysis"
 description: "Master Principal Component Analysis for trading—reduce dimensionality, identify latent factors, and build robust multi-asset strategies."
 date: "2026-05-18"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["pca", "dimension-reduction", "factor-analysis"]
 keywords: ["principal component analysis", "PCA trading", "dimension reduction", "factor models", "covariance analysis"]

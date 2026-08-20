@@ -2,7 +2,7 @@
 title: "Bayesian Inference for Trading: Probabilistic Modeling"
 description: "Apply Bayesian methods to update beliefs with new data, quantify uncertainty, and make probabilistic trading decisions with posterior distributions."
 date: "2026-06-11"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["bayesian-inference", "probabilistic-modeling", "uncertainty"]
 keywords: ["Bayesian inference", "Bayesian trading", "posterior distribution", "prior beliefs", "MCMC", "probabilistic forecasting"]

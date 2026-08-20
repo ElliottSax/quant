@@ -3,7 +3,7 @@ title: '''''''Paper Trading Framework: Dispersion Trading with Tail Risk Hedging
   EUR/USD'''''''
 slug: paper-trading-framework-dispersion-trading-with-tail-risk-hedging-on-eurusd
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

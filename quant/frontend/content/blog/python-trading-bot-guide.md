@@ -2,7 +2,7 @@
 title: "Building a Trading Bot with Python: Step-by-Step Guide"
 description: "Learn to build a complete trading bot with Python using live data feeds, signal generation, order execution, and risk management modules."
 date: "2026-03-18"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["trading bot", "Python", "automated trading", "API trading"]
 keywords: ["Python trading bot", "build trading bot Python", "automated trading system"]

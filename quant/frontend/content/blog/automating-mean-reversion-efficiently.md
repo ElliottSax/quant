@@ -2,7 +2,7 @@
 word_count: 1720
 title: "Automating Mean Reversion Efficiently"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["mean reversion", "algorithmic trading", "pairs trading", "statistical arbitrage"]
 slug: "automating-mean-reversion-efficiently"

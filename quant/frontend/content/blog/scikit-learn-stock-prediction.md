@@ -2,7 +2,7 @@
 title: "Scikit-Learn for Stock Prediction: Machine Learning Models"
 description: "Build stock prediction models with scikit-learn. Random forests, gradient boosting, and SVMs for price direction forecasting with proper validation techniques."
 date: "2026-03-13"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Machine Learning"
 tags: ["scikit-learn", "machine learning", "stock prediction", "random forest", "gradient boosting"]
 keywords: ["scikit-learn stock prediction", "machine learning stock market", "random forest trading"]

@@ -2,7 +2,7 @@
 title: Fibonacci Retracement Levels Trading Guide
 slug: fibonacci-retracement-levels-trading-guide
 description: Master Fibonacci retracement for identifying support/resistance, pullback
-author: Content Team
+author: "QuantEngines"
 category: Technical Indicators
 tags: []
 keyword: Fibonacci retracement levels trading guide

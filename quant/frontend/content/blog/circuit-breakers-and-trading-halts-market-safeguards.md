@@ -5,7 +5,7 @@ description: Comprehensive guide to circuit breakers and trading halts market sa
   Expert analysis with actionable strategies and real-world examples.
 keywords:
 - circuit breakers and trading halts market safeguards
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

@@ -5,7 +5,7 @@ description: Comprehensive guide to compliance and regulation algo trading. Expe
   analysis with actionable strategies and real-world examples.
 keywords:
 - compliance and regulation algo trading
-author: Dr. James Chen
+author: "QuantEngines"
 category: quant
 date: '2026-03-16'
 updated: '2026-03-16'

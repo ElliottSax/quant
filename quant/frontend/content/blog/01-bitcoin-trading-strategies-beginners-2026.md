@@ -2,7 +2,7 @@
 title: '''''''Bitcoin Trading Strategies for Beginners 2026: Complete Guide'''''''
 slug: 01-bitcoin-trading-strategies-beginners-2026
 description: Learn proven Bitcoin trading strategies for beginners. Entry/exit rules,
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Bitcoin trading strategies for beginners 2026

@@ -2,7 +2,7 @@
 title: Backtesting MACD Crossovers for Beginners
 slug: backtesting-macd-crossovers-for-beginners
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

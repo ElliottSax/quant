@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Risk Management Safely"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["risk management", "safety", "backtesting", "stop loss", "portfolio protection"]
 slug: "backtesting-risk-management-safely"

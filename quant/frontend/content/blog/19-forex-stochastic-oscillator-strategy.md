@@ -2,7 +2,7 @@
 title: Forex Stochastic Oscillator Strategy for Accurate Entry Points
 slug: 19-forex-stochastic-oscillator-strategy
 description: Forex Stochastic Oscillator Strategy for Accurate Entry Points This article
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/19-forex-stochastic-oscillator-strategy

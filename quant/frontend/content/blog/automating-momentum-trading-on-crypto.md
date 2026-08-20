@@ -2,7 +2,7 @@
 word_count: 1710
 title: "Automating Momentum Trading on Crypto"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["cryptocurrency", "momentum", "bitcoin", "altcoins", "algorithmic trading"]
 slug: "automating-momentum-trading-on-crypto"

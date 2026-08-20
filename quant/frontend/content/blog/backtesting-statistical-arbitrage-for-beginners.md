@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Statistical Arbitrage for Beginners"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["statistical arbitrage", "beginner", "pairs trading", "mean reversion", "python"]
 slug: "backtesting-statistical-arbitrage-for-beginners"

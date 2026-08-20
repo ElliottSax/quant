@@ -1,7 +1,7 @@
 ---
 title: 'Bayesian Deep Learning for Uncertainty: Probabilistic Neural Networks for
   Trading'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: bayesian-deep-learning-uncertainty

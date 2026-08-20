@@ -1,7 +1,7 @@
 ---
 title: 'Database Design for Trading Systems: Schema and Optimization'
 slug: database-design-for-trading-systems
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

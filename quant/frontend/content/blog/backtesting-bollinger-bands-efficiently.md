@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Bollinger Bands Efficiently"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["algo trading", "quantitative", "trading", "python"]
 slug: "backtesting-bollinger-bands-efficiently"

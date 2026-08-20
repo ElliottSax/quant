@@ -2,7 +2,7 @@
 title: '''''''Daily Swing Trading with Correlation Management: Risk-Adjusted Returns'''''''
 slug: daily-swing-trading-with-correlation-management-risk-adjusted-returns
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

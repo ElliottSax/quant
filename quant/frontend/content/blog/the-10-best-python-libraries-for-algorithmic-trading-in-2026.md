@@ -2,7 +2,7 @@
 title: "The 10 Best Python Libraries for Algorithmic Trading in 2026"
 description: "Python remains the undisputed language of choice for algorithmic traders, quants, and fintech developers. With the rise of AI-driven strategies and multi-asset automation, the ecosystem of Python libr"
 date: "2026-07-19"
-author: "Quant Platform"
+author: "QuantEngines"
 category: "guides"
 tags: ["quantitative trading", "algorithmic trading"]
 keywords: ["quantitative trading", "algorithmic trading"]

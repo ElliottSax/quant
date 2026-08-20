@@ -3,7 +3,7 @@ title: '''''''Paper Trading Framework: Event-Driven with Dynamic Hedging on Nasd
   100'''''''
 slug: paper-trading-framework-event-driven-with-dynamic-hedging-on-nasdaq-100
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

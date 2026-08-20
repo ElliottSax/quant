@@ -2,7 +2,7 @@
 title: '''''''Crypto Market Making Strategies: Liquidity Guide'''''''
 slug: crypto-market-making-strategies
 description: Market making strategies for crypto. Order book management, spreads,
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Crypto market making strategies liquidity

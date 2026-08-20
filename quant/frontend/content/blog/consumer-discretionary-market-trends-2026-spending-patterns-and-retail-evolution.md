@@ -2,7 +2,7 @@
 title: '''''''Consumer Discretionary Market Trends 2026: Spending Patterns and Retail'
 slug: consumer-discretionary-market-trends-2026-spending-patterns-and-retail-evolution
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: Consumer Discretionary

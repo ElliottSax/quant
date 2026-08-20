@@ -2,7 +2,7 @@
 title: Crypto Markets Regime Detection for Pairs Trading with Gradient Boosting
 slug: crypto-markets-regime-detection-for-pairs-trading-with-gradient-boosting
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

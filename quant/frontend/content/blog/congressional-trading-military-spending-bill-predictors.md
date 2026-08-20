@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading military spending bill
   Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading military spending bill predictors
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

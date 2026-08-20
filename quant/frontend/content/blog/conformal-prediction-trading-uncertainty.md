@@ -1,7 +1,7 @@
 ---
 title: 'Conformal Prediction for Trading Uncertainty: Distribution-Free Confidence
   Sets'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: conformal-prediction-trading-uncertainty

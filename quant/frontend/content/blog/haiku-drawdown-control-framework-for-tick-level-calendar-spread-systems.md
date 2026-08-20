@@ -2,7 +2,7 @@
 title: Drawdown Control Framework for Tick-Level Calendar Spread Systems
 slug: drawdown-control-framework-for-tick-level-calendar-spread-systems
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

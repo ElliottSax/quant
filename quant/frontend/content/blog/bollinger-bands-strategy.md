@@ -1,7 +1,7 @@
 ---
 title: 'Bollinger Bands Strategy: Complete Guide for Active Traders'
 date: '2026-03-16'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 tags:
 - bollinger bands

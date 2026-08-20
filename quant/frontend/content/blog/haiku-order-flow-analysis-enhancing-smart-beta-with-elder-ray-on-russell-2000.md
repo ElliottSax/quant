@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Smart Beta with Elder Ray on Russel
   2000'''''''
 slug: order-flow-analysis-enhancing-smart-beta-with-elder-ray-on-russell-2000
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

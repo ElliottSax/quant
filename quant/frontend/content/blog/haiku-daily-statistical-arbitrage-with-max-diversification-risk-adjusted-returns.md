@@ -3,7 +3,7 @@ title: '''''''Daily Statistical Arbitrage with Max Diversification: Risk-Adjuste
   Returns'''''''
 slug: daily-statistical-arbitrage-with-max-diversification-risk-adjusted-returns
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Position Sizing Safely"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["position sizing", "risk management", "backtesting", "safe trading", "drawdown control"]
 slug: "backtesting-position-sizing-safely"

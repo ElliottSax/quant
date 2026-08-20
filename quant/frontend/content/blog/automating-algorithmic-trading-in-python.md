@@ -3,7 +3,7 @@ title: "Automating Algorithmic Trading In Python"
 slug: "automating-algorithmic-trading-in-python"
 description: "End-to-end guide to building a complete automated trading system in Python, covering data pipelines, strategy engines, execution handlers, and production scheduling."
 keywords: ["Python trading", "automated trading system", "trading bot Python", "execution engine", "scheduling trades"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1900

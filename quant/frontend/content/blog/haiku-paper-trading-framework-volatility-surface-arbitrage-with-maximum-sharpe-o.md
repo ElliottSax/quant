@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: Volatility Surface Arbitrage with Maximum Sharpe'''
 slug: paper-trading-framework-volatility-surface-arbitrage-with-maximum-sharpe-on-nikk
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

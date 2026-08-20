@@ -2,7 +2,7 @@
 word_count: 1700
 title: "Automating Pairs Trading with High Success Rate"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["pairs trading", "success rate", "signal optimization", "backtesting"]
 slug: "automating-pairs-trading-with-high-success-rate"

@@ -2,7 +2,7 @@
 title: 'Congress Stock Trades Before Earnings: Timing Advantage Around Quarterly Reports'
 description: Analysis of congressional stock purchases preceding corporate earnings
   announcements with profit correlations
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-stock-trades-before-earnings

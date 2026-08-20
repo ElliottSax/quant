@@ -2,7 +2,7 @@
 title: "Wavelet Analysis for Trading: Multi-Scale Decomposition"
 description: "Master wavelet transforms for trading—decompose price data across time and frequency scales to identify trends, cycles, and trading opportunities."
 date: "2026-05-24"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["wavelets", "signal-processing", "multi-scale-analysis"]
 keywords: ["wavelet analysis", "wavelet transform", "multi-scale decomposition", "time-frequency analysis", "trading signals"]

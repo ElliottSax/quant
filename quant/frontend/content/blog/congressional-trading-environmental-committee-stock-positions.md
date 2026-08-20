@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading environmental committe
   stock positions. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading environmental committee stock positions
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 updated: '2026-03-16'

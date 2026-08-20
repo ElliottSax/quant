@@ -6,7 +6,7 @@ description: 'Comprehensive guide to congress energy sector trades 2026: renewab
   examples.'
 keywords:
 - 'congress energy sector trades 2026: renewable vs traditional power'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

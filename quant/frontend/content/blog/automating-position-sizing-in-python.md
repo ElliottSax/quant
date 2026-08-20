@@ -2,7 +2,7 @@
 word_count: 1720
 title: "Automating Position Sizing in Python"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["position sizing", "Python", "risk management", "portfolio management"]
 slug: "automating-position-sizing-in-python"

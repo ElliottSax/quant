@@ -2,7 +2,7 @@
 title: Quant Trading Strategies Articles - Delivery Report
 slug: DELIVERY_REPORT
 description: Quant Trading Strategies Articles - Delivery Report This article provides
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/DELIVERY_REPORT

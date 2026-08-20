@@ -2,7 +2,7 @@
 title: '''''''Bond Market Analysis 2026: Yield Curves, Credit Spreads, and Fixed Income'''
 slug: bond-market-analysis-2026-yield-curves-credit-spreads-and-fixed-income-strategy
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: Fixed Income

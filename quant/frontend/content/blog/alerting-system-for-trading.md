@@ -1,7 +1,7 @@
 ---
 title: 'Alerting System for Trading: Multi-Tier Notifications'
 slug: alerting-system-for-trading
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

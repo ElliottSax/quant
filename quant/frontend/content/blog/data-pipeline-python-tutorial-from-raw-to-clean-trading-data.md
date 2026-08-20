@@ -1,6 +1,6 @@
 ---
 title: data pipeline python tutorial from raw to clean trading data
-author: Dr. James Chen
+author: "QuantEngines"
 date: '2026-03-15'
 category: Algo Trading
 tags:

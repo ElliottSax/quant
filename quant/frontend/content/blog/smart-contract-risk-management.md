@@ -2,7 +2,7 @@
 title: "Smart Contract Risk Management: Audit and Exploit Prevention"
 description: "Managing smart contract risk in DeFi. Learn audit evaluation, vulnerability assessment, insurance strategies, and position sizing for contract risk."
 date: "2026-05-18"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["smart-contracts", "risk-management", "defi-security"]
 keywords: ["smart contract risk", "audit evaluation", "DeFi insurance", "contract vulnerabilities"]

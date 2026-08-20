@@ -2,7 +2,7 @@
 title: '''"Combining Williams %R and Parabolic SAR for US Treasuries: Full Code"'''
 slug: combining-williams-r-and-parabolic-sar-for-us-treasuries-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

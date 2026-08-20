@@ -3,7 +3,7 @@ title: '''''''Economic Indicators Explained: A Trader''''''''s Guide to Data-Dri
   Decisions'''''''
 slug: economic-indicators-explained-a-traders-guide-to-data-driven-decisions
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: Macroeconomic

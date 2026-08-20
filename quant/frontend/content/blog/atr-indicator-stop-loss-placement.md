@@ -2,7 +2,7 @@
 title: ATR Indicator for Stop Loss Placement
 slug: atr-indicator-stop-loss-placement
 description: Master ATR-based stop loss placement with position sizing, volatility
-author: Content Team
+author: "QuantEngines"
 category: Technical Indicators
 tags: []
 keyword: ATR indicator for stop loss placement

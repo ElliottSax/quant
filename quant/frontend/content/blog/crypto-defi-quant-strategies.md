@@ -2,7 +2,7 @@
 title: "DeFi Quantitative Strategies: Yield Farming and Arbitrage"
 description: "Build quantitative DeFi strategies for yield farming, DEX arbitrage, liquidation bots, and cross-chain arbitrage with Python and Web3."
 date: "2026-04-20"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["DeFi", "yield farming", "crypto arbitrage", "AMM", "blockchain"]
 keywords: ["DeFi quantitative strategies", "yield farming optimization", "DEX arbitrage"]

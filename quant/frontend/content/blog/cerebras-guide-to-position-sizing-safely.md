@@ -2,7 +2,7 @@
 title: Guide to Position Sizing Safely
 slug: guide-to-position-sizing-safely
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

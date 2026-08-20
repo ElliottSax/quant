@@ -2,7 +2,7 @@
 title: '''''''Cost Analysis: Trend Following Transaction Costs on S&P 500 Stocks'''''''
 slug: cost-analysis-trend-following-transaction-costs-on-sp-500-stocks
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

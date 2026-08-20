@@ -1,7 +1,7 @@
 ---
 title: 'Backtesting Framework Comparison in 2026: Choose the Right Tool'
 slug: backtest-framework-comparison-2026
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

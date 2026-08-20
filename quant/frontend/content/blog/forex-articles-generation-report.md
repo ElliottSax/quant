@@ -2,7 +2,7 @@
 title: Forex Trading Strategy Articles - Generation Report
 slug: FOREX_ARTICLES_GENERATION_REPORT
 description: Forex Trading Strategy Articles - Generation Report This article provides
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/FOREX_ARTICLES_GENERATION_REPORT

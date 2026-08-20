@@ -2,7 +2,7 @@
 word_count: 1650
 title: "Automating MACD Crossovers using Machine Learning"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["macd", "machine learning", "automated trading", "signal detection"]
 slug: "automating-macd-crossovers-using-machine-learning"

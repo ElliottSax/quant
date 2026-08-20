@@ -2,7 +2,7 @@
 title: "Stablecoin Yield Strategies: Low-Risk DeFi Income"
 description: "Safe stablecoin yield farming strategies. Learn liquidity provider yields, lending protocol selection, and risk-adjusted return optimization for conservative traders."
 date: "2026-05-13"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["stablecoins", "yield-farming", "risk-management"]
 keywords: ["stablecoin yield", "DeFi lending", "stable farming", "yield optimization"]

@@ -2,7 +2,7 @@
 title: "Time Series Analysis for Stock Markets: ARIMA and Beyond"
 description: "Master time series analysis for stocks with ARIMA, GARCH, and state-space models. Stationarity testing, forecasting, and volatility modeling with Python code."
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Data Science"
 tags: ["time series", "ARIMA", "GARCH", "forecasting", "volatility modeling"]
 keywords: ["time series analysis stocks", "ARIMA stock prediction", "GARCH volatility model"]

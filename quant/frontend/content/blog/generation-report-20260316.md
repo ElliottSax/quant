@@ -2,7 +2,7 @@
 title: Quant Trading Articles Generation Report
 slug: GENERATION_REPORT_20260316
 description: Quant Trading Articles Generation Report This article provides valuable
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/GENERATION_REPORT_20260316

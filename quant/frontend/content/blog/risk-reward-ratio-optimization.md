@@ -2,7 +2,7 @@
 title: "Risk-Reward Ratio Optimization: Finding Your Edge"
 description: "Optimize your risk-reward ratio for consistent trading profits. Learn expectancy calculation, minimum R:R by win rate, and practical optimization techniques."
 date: "2026-03-20"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["risk reward ratio", "expectancy", "trading edge", "risk management", "trade management"]
 keywords: ["risk reward ratio optimization", "trading risk reward", "risk reward ratio trading"]

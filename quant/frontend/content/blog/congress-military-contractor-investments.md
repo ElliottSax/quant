@@ -3,7 +3,7 @@ title: 'Congress Military Contractor Investments: Defense Spending Intelligence 
   Contractor Holdings'
 description: Analysis of congressional members' military contractor positions with
   correlation to defense appropriations
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-military-contractor-investments

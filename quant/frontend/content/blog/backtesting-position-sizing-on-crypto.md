@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Position Sizing on Crypto"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["position sizing", "crypto", "backtesting", "volatility", "bitcoin", "ethereum"]
 slug: "backtesting-position-sizing-on-crypto"

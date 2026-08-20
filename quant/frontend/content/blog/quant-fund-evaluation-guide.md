@@ -2,7 +2,7 @@
 title: "How to Evaluate Quant Funds: Due Diligence Framework"
 description: "A systematic due diligence framework for evaluating quantitative hedge funds, including strategy analysis, risk assessment, and operational review."
 date: "2026-04-23"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Fund Analysis"
 tags: ["quant funds", "due diligence", "hedge fund evaluation", "fund selection", "manager assessment"]
 keywords: ["evaluate quant funds", "quant fund due diligence", "hedge fund evaluation framework", "quantitative fund selection", "fund manager assessment"]

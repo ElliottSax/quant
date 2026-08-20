@@ -2,7 +2,7 @@
 title: "Black-Litterman Model: Combining Views with Market Equilibrium"
 description: "Master the Black-Litterman portfolio model to blend investor views with market equilibrium returns for stable, intuitive asset allocation."
 date: "2026-04-07"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Portfolio Management"
 tags: ["Black-Litterman", "portfolio optimization", "asset allocation", "Bayesian", "equilibrium returns"]
 keywords: ["Black-Litterman model", "portfolio optimization", "market equilibrium", "investor views", "Bayesian portfolio construction"]

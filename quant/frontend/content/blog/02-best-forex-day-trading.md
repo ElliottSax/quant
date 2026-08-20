@@ -3,7 +3,7 @@ title: '''''''Best Forex Day Trading Strategy for Beginners: Proven Methods with
 slug: 02-best-forex-day-trading
 description: '''''''Best Forex Day Trading Strategy for Beginners: Proven Methods
   with'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/02-best-forex-day-trading

@@ -2,7 +2,7 @@
 title: '''''''Best DeFi Portfolio Tracking Tools 2026: Zapper vs DefiLlama'''''''
 slug: defi_article_19_best_defi_portfolio_tracking_tools_2026
 description: '''''''Best DeFi Portfolio Tracking Tools 2026: Zapper vs DefiLlama This'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_19_best_defi_portfolio_tracking_tools_2026

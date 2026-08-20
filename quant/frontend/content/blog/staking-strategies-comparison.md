@@ -2,7 +2,7 @@
 title: "Staking Strategies: PoS Rewards vs Opportunity Cost"
 description: "Quantitative analysis of cryptocurrency staking strategies. Compare solo staking, pooled staking, liquid staking, and opportunity cost analysis."
 date: "2026-05-21"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["staking", "defi", "yield"]
 keywords: ["crypto staking", "proof of stake", "staking rewards", "liquid staking"]

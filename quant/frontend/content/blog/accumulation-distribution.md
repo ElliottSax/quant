@@ -3,7 +3,7 @@ title: "Accumulation Distribution"
 slug: "accumulation-distribution"
 description: "A deep dive into the Accumulation/Distribution indicator, its mathematical foundation, and how quantitative traders use it to confirm trends and detect divergences."
 keywords: ["accumulation distribution", "volume indicator", "money flow", "A/D line", "quantitative trading"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1850

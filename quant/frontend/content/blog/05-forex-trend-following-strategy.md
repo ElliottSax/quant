@@ -3,7 +3,7 @@ title: '''''''Forex Trend Following Strategy with Indicators: Riding Major Marke
   Moves'''''''
 slug: 05-forex-trend-following-strategy
 description: '''''''Forex Trend Following Strategy with Indicators: Riding Major Market'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/05-forex-trend-following-strategy

@@ -2,7 +2,7 @@
 title: "Options Trading Strategies: Quantitative Approach to Greeks"
 description: "Systematic options trading strategies using quantitative Greeks analysis, volatility surfaces, and delta-neutral portfolio construction."
 date: "2026-03-22"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["options trading", "Greeks", "volatility", "delta neutral", "options strategies"]
 keywords: ["options trading strategies", "options Greeks quantitative", "volatility trading options"]

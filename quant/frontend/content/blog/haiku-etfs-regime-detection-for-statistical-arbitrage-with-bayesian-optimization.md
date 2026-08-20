@@ -2,7 +2,7 @@
 title: ETFs Regime Detection for Statistical Arbitrage with Bayesian Optimization
 slug: etfs-regime-detection-for-statistical-arbitrage-with-bayesian-optimization
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

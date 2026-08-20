@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading sanctions impact on co
   portfolios. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading sanctions impact on congressional portfolios
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 updated: '2026-03-16'

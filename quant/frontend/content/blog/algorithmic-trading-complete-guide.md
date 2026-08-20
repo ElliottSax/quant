@@ -2,7 +2,7 @@
 title: "The Complete Guide to Algorithmic Trading in 2026"
 description: "Master algorithmic trading: strategy types, backtesting methodology, risk management, platform selection, and congressional trading analysis. Comprehensive 2026 guide for systematic traders."
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["algorithmic trading", "quantitative trading", "backtesting", "risk management", "systematic trading", "machine learning", "congressional trading"]
 keywords: ["algorithmic trading guide", "algo trading 2026", "quantitative trading strategies", "backtesting methodology", "systematic trading", "quant trading platform"]

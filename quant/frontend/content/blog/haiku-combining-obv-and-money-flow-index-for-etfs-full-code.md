@@ -2,7 +2,7 @@
 title: '''"Combining OBV and Money Flow Index for ETFs: Full Code"'''
 slug: combining-obv-and-money-flow-index-for-etfs-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

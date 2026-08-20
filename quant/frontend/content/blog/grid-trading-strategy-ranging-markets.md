@@ -2,7 +2,7 @@
 title: '''''''Grid Trading Strategy for Ranging Markets: Automate Your Range Trades'''''''
 slug: grid-trading-strategy-ranging-markets
 description: Master grid trading for ranging markets. Automate buy/sell orders in
-author: Trading Mastery
+author: "QuantEngines"
 category: Trading Strategies
 tags: []
 keyword: Grid trading strategy for ranging markets

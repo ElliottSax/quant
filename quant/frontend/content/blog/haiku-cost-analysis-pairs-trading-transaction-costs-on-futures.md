@@ -2,7 +2,7 @@
 title: '''''''Cost Analysis: Pairs Trading Transaction Costs on Futures'''''''
 slug: cost-analysis-pairs-trading-transaction-costs-on-futures
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

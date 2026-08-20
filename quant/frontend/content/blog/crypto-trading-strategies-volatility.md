@@ -2,7 +2,7 @@
 title: '''"Crypto Trading Strategies for Volatility: Profit from Price Swings in 2026"'''
 slug: '''"crypto-trading-strategies-volatility"'''
 description: '''"Master crypto trading strategies for volatile markets. Learn to profit'
-author: '''"Trading Mastery"'''
+author: "QuantEngines"
 category: '''"Trading Strategies"'''
 tags: []
 keyword: '''"Crypto trading strategies for volatility"'''

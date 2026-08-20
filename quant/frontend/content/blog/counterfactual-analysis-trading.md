@@ -6,7 +6,7 @@ description: 'Comprehensive guide to counterfactual analysis for trading: unders
   examples.'
 keywords:
 - 'counterfactual analysis for trading: understanding alternative scenarios'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

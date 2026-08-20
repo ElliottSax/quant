@@ -1,7 +1,7 @@
 ---
 title: "Backtesting RSI Strategies for Beginners"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["rsi", "relative strength index", "backtesting", "momentum", "python"]
 slug: "backtesting-rsi-strategies-for-beginners"

@@ -2,7 +2,7 @@
 title: "Value at Risk (VaR): Complete Risk Measurement Guide"
 description: "Master Value at Risk calculation methods including historical, parametric, and Monte Carlo VaR with practical Python implementation examples."
 date: "2026-04-01"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["VaR", "risk management", "portfolio risk", "quantitative finance", "risk metrics"]
 keywords: ["value at risk", "VaR calculation", "portfolio risk measurement", "parametric VaR", "Monte Carlo VaR"]

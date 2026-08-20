@@ -3,7 +3,7 @@ title: "Automating Algorithmic Trading With High Success Rate"
 slug: "automating-algorithmic-trading-with-high-success-rate"
 description: "Quantitative methods to maximize trading system win rates through signal filtering, optimal entry timing, position management, and statistical validation of success metrics."
 keywords: ["high win rate trading", "signal filtering", "trade success rate", "risk-reward optimization", "trading system validation"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1870

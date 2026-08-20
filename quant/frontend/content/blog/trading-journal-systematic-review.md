@@ -2,7 +2,7 @@
 title: "Trading Journal: Systematic Performance Review Framework"
 description: "Build a systematic trading journal for performance analysis. Learn trade logging, metric tracking, pattern identification, and continuous improvement frameworks."
 date: "2026-04-10"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["trading journal", "performance review", "trade analysis", "continuous improvement", "trading psychology"]
 keywords: ["trading journal systematic review", "trading performance analysis", "trade logging framework"]

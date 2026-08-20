@@ -3,7 +3,7 @@ title: '''''''Best Forex Moving Average Crossover Strategy: Trend-Following Made
 slug: 15-best-forex-moving-average
 description: '''''''Best Forex Moving Average Crossover Strategy: Trend-Following
   Made'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/15-best-forex-moving-average

@@ -2,7 +2,7 @@
 title: "Building a Quant Trading Desk: Infrastructure and Team Guide"
 description: "Complete guide to building a quantitative trading desk covering technology stack, team structure, data infrastructure, and operational requirements."
 date: "2026-04-28"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Infrastructure"
 tags: ["quant desk", "trading infrastructure", "team building", "technology stack", "trading systems"]
 keywords: ["building quant trading desk", "quant infrastructure", "trading desk technology", "quant team structure", "trading system architecture"]

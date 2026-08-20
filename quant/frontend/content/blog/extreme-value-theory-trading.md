@@ -2,7 +2,7 @@
 title: "Extreme Value Theory: Tail Risk in Trading"
 description: "Apply Extreme Value Theory to model tail risk, estimate Value-at-Risk beyond normal assumptions, and protect portfolios from rare but catastrophic events."
 date: "2026-06-08"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["extreme-value-theory", "tail-risk", "var"]
 keywords: ["extreme value theory", "EVT trading", "tail risk", "VaR", "CVaR", "black swan", "fat tails"]

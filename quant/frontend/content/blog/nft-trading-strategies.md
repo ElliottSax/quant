@@ -2,7 +2,7 @@
 title: "NFT Trading Strategies: Floor Price Arbitrage and Rarity"
 description: "Quantitative NFT trading strategies using floor price analysis, rarity scoring, and on-chain data. Learn systematic approaches to NFT alpha generation."
 date: "2026-05-12"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["nft", "trading-strategies", "arbitrage"]
 keywords: ["NFT trading", "floor price arbitrage", "rarity analysis", "NFT strategies"]

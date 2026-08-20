@@ -2,7 +2,7 @@
 title: "Walk-Forward Optimization: Avoiding Overfitting in Backtests"
 description: "Master walk-forward optimization to build robust trading strategies. Learn in-sample/out-of-sample splits, anchored vs rolling windows, and validation metrics."
 date: "2026-03-28"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Python & Automation"
 tags: ["walk-forward optimization", "overfitting", "backtesting", "strategy validation", "quantitative trading"]
 keywords: ["walk-forward optimization", "avoiding overfitting backtests", "walk forward analysis trading"]

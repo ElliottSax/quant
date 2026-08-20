@@ -2,7 +2,7 @@
 title: "RSI Trading Strategy: Relative Strength Index System"
 description: "Build a systematic RSI trading strategy with optimized thresholds, divergence signals, and multi-timeframe confirmation for consistent returns."
 date: "2026-03-12"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["RSI", "relative strength index", "oscillator", "overbought oversold"]
 keywords: ["RSI trading strategy", "relative strength index system", "RSI divergence trading"]

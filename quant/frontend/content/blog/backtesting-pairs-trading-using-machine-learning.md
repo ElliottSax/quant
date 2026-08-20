@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Pairs Trading using Machine Learning"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["pairs trading", "machine learning", "ensemble", "classification"]
 slug: "backtesting-pairs-trading-using-machine-learning"

@@ -3,7 +3,7 @@ title: '''''''Strangle Strategy for Options Trading 2026: Complete Guide'''''''
 slug: 09_strangle_options_strategy_unlimited_profit
 description: '''''''Strangle Strategy for Options Trading 2026: Complete Guide This
   article'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/09_strangle_options_strategy_unlimited_profit

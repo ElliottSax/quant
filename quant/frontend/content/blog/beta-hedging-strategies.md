@@ -2,7 +2,7 @@
 title: "Beta Hedging Strategies: Neutralizing Market Risk"
 description: "Learn how to construct beta-neutral portfolios using index futures, ETFs, and options to isolate alpha from systematic market exposure."
 date: "2026-04-04"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["beta hedging", "market neutral", "portfolio hedging", "risk management", "alpha isolation"]
 keywords: ["beta hedging", "market neutral portfolio", "beta neutralization", "systematic risk hedging", "portfolio beta management"]

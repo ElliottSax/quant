@@ -2,7 +2,7 @@
 title: Emerging Markets Regime Detection for Mean Reversion with Bayesian Optimization
 slug: emerging-markets-regime-detection-for-mean-reversion-with-bayesian-optimization
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

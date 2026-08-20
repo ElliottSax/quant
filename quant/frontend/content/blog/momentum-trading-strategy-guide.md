@@ -2,7 +2,7 @@
 title: "Momentum Trading Strategy: Systematic Approach for 2026"
 description: "Build a systematic momentum trading strategy with cross-sectional and time-series signals, backtest results, and portfolio construction rules."
 date: "2026-03-08"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["momentum trading", "trend following", "factor investing", "systematic trading"]
 keywords: ["momentum trading strategy", "momentum factor", "cross-sectional momentum"]

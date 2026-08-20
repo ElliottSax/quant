@@ -2,7 +2,7 @@
 title: '''''''Cryptocurrency Market Trends: Bitcoin, Ethereum, and Digital Asset Adoption'''''''
 slug: cryptocurrency-market-trends-bitcoin-ethereum-and-digital-asset-adoption
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: Digital Assets

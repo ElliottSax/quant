@@ -2,7 +2,7 @@
 title: "Elliott Wave Theory: Practical Trading Application Guide"
 description: "Apply Elliott Wave Theory to real trading. Learn the 5-3 wave structure, wave rules, Fibonacci relationships, and practical counting techniques."
 date: "2026-03-11"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["elliott wave", "wave theory", "market cycles", "technical analysis", "fibonacci"]
 keywords: ["elliott wave theory", "elliott wave trading", "wave analysis guide"]

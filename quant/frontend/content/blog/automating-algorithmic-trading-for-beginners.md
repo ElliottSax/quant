@@ -3,7 +3,7 @@ title: "Automating Algorithmic Trading For Beginners"
 slug: "automating-algorithmic-trading-for-beginners"
 description: "A step-by-step guide for beginners to build their first automated trading system, from data collection through backtesting to paper trading deployment."
 keywords: ["algorithmic trading beginners", "automated trading tutorial", "first trading bot", "backtesting basics", "paper trading"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1890

@@ -2,7 +2,7 @@
 title: 'Bipartisan Stock Picks: What Both Parties Buy and Why'
 description: Analysis of stocks purchased by both Republican and Democratic congressional
   members, revealing consensus insider positions
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: bipartisan-stock-picks-what-both-parties-buy

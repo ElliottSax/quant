@@ -2,7 +2,7 @@
 title: '''''''Order Flow Analysis: Enhancing Relative Value with Supertrend on Russell'
 slug: order-flow-analysis-enhancing-relative-value-with-supertrend-on-russell-2000
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

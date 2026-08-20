@@ -2,7 +2,7 @@
 title: "Bollinger Bands Trading Strategy: Complete System Guide"
 description: "Build a systematic Bollinger Bands trading strategy with squeeze detection, bandwidth signals, and backtest results across multiple markets."
 date: "2026-03-11"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["Bollinger Bands", "volatility", "technical analysis", "mean reversion"]
 keywords: ["Bollinger Bands trading strategy", "Bollinger squeeze", "bandwidth trading"]

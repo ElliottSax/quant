@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: Sentiment-Based with Risk Budgeting on Treasury'
 slug: paper-trading-framework-sentiment-based-with-risk-budgeting-on-treasury-yield-cu
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

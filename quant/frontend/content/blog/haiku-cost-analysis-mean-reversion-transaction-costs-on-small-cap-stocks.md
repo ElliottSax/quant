@@ -2,7 +2,7 @@
 title: '''''''Cost Analysis: Mean Reversion Transaction Costs on Small-Cap Stocks'''''''
 slug: cost-analysis-mean-reversion-transaction-costs-on-small-cap-stocks
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -1,6 +1,6 @@
 ---
 title: 'Calendar Spread Strategy Guide: Exploit Time Decay Differences'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: calendar-spread-strategy-guide

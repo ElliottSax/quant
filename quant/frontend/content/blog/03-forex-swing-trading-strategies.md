@@ -3,7 +3,7 @@ title: '''''''Forex Swing Trading Strategies 2026: Multi-Day Trend Capturing Met
 slug: 03-forex-swing-trading-strategies
 description: '''''''Forex Swing Trading Strategies 2026: Multi-Day Trend Capturing
   Methods'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/03-forex-swing-trading-strategies

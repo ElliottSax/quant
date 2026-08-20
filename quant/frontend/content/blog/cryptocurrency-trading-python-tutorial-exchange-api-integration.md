@@ -5,7 +5,7 @@ description: Comprehensive guide to cryptocurrency trading python tutorial excha
   api integration. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - cryptocurrency trading python tutorial exchange api integration
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-18'
 updated: '2026-03-18'

@@ -5,7 +5,7 @@ description: Comprehensive guide to deep itm and otm options liquidity and lever
   Expert analysis with actionable strategies and real-world examples.
 keywords:
 - deep itm and otm options liquidity and leverage
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

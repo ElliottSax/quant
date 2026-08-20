@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading pelosi portfolio perfo
   analysis. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading pelosi portfolio performance analysis
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

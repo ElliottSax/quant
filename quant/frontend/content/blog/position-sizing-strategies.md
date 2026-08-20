@@ -2,7 +2,7 @@
 title: "Position Sizing Strategies: Kelly Criterion and Fixed Fractional"
 description: "Master position sizing with Kelly Criterion, fixed fractional, and optimal f methods. Learn to size positions for maximum growth while controlling drawdowns."
 date: "2026-03-17"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["position sizing", "kelly criterion", "risk management", "money management", "portfolio sizing"]
 keywords: ["position sizing strategies", "kelly criterion trading", "fixed fractional position sizing"]

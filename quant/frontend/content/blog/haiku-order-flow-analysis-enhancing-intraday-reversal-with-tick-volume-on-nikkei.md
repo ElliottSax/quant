@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Intraday Reversal with Tick Volume 
   Nikkei'''
 slug: order-flow-analysis-enhancing-intraday-reversal-with-tick-volume-on-nikkei-225
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

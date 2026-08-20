@@ -1,7 +1,7 @@
 ---
 title: "Backtesting RSI Strategies on Crypto"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["rsi", "crypto", "bitcoin", "ethereum", "backtesting", "momentum"]
 slug: "backtesting-rsi-strategies-on-crypto"

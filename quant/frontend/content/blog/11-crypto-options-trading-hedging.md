@@ -2,7 +2,7 @@
 title: '''''''Crypto Options Trading Strategies: Hedging Guide'''''''
 slug: crypto-options-trading-hedging
 description: Options trading strategies for crypto. Calls, puts, spreads, and portfolio
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Crypto options trading strategies hedging guide

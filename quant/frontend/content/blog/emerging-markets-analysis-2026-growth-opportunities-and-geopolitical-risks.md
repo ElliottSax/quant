@@ -3,7 +3,7 @@ title: '''''''Emerging Markets Analysis 2026: Growth Opportunities and Geopoliti
   Risks'''''''
 slug: emerging-markets-analysis-2026-growth-opportunities-and-geopolitical-risks
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: International

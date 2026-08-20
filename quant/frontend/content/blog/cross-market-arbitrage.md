@@ -1,6 +1,6 @@
 ---
 title: cross market arbitrage
-author: Dr. James Chen
+author: "QuantEngines"
 date: '2026-03-15'
 category: Algo Trading
 tags:

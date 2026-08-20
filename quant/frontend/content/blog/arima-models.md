@@ -1,9 +1,9 @@
 ---
-title: "ARIMA Models"
+title: "statsmodels ARIMA Import Error (Correct Import)"
 slug: "arima-models"
-description: "Complete guide to ARIMA time series models for financial forecasting, covering identification, estimation, diagnostics, and trading strategy integration."
-keywords: ["ARIMA", "time series", "forecasting", "Box-Jenkins", "financial modeling"]
-author: "Dr. James Chen"
+description: "ARIMA moved: use `from statsmodels.tsa.arima.model import ARIMA`, not statsmodels.tsa.api. Working example, order selection and diagnostics below."
+keywords: ["ARIMA python", "statsmodels ARIMA", "ARIMA import", "time series", "forecasting", "Box-Jenkins", "financial modeling"]
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1870
@@ -11,11 +11,28 @@ quality_score: 90
 seo_optimized: true
 ---
 
-# ARIMA Models: Time Series Forecasting for Quantitative Trading
+# statsmodels ARIMA Import Error: the Correct Import
 
 ## Introduction
 
 The Autoregressive Integrated Moving Average (ARIMA) model, formalized by Box and Jenkins in 1970, remains a foundational tool in quantitative finance for modeling and forecasting time series data. While modern machine learning methods have gained prominence, ARIMA provides interpretable, statistically grounded forecasts with well-understood properties. For financial applications -- particularly volatility forecasting, spread modeling, and mean-reversion signal generation -- ARIMA and its extensions (SARIMA, ARIMAX, ARIMA-GARCH) offer a rigorous framework that every quantitative researcher should command.
+
+## Quick Start: Fitting an ARIMA Model in Python
+
+The import that trips people up is this one -- `ARIMA` lives under `statsmodels.tsa.arima.model`, not `statsmodels.tsa.api`:
+
+```python
+from statsmodels.tsa.arima.model import ARIMA
+
+# Fit an ARIMA(1,0,1) model to a pandas Series, e.g. daily returns
+model = ARIMA(returns, order=(1, 0, 1))
+result = model.fit()
+
+print(result.summary())
+forecast = result.forecast(steps=5)
+```
+
+That's enough to get a working fit and a forecast. The rest of this article covers how to choose the `(p, d, q)` order properly, diagnose the fit, and turn it into a trading strategy -- or skip the code entirely and try an ARIMA-based strategy with our free, no-signup [strategy backtester](/backtesting/builder).
 
 ## Mathematical Formulation
 

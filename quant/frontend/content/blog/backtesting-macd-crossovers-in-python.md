@@ -1,7 +1,7 @@
 ---
 title: "Backtesting MACD Crossovers in Python"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["MACD", "python", "backtesting", "ta-lib", "pandas"]
 slug: "backtesting-macd-crossovers-in-python"

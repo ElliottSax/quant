@@ -2,7 +2,7 @@
 title: "Quantitative Risk Management: Position Sizing and Drawdown Control"
 description: "Master quantitative risk management with position sizing models, drawdown analysis, Value at Risk, and portfolio-level risk controls."
 date: "2026-03-20"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["risk management", "position sizing", "drawdown", "VaR", "portfolio risk"]
 keywords: ["quantitative risk management", "position sizing strategies", "drawdown control"]

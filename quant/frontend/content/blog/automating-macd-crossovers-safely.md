@@ -3,7 +3,7 @@ title: "Automating MACD Crossovers Safely"
 slug: "automating-macd-crossovers-safely"
 description: "Risk management frameworks and safeguards for deploying automated MACD crossover strategies, covering position limits, drawdown controls, and system reliability."
 keywords: ["MACD safety", "trading risk management", "automated trading safeguards", "position limits", "drawdown control"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1870

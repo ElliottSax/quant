@@ -2,7 +2,7 @@
 title: "Quantitative Factor Models: Fama-French and Beyond"
 description: "Build factor models for portfolio construction and risk analysis. Fama-French, Carhart, quality, and custom factors with Python implementation."
 date: "2026-03-31"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["factor models", "Fama-French", "risk factors", "portfolio construction", "alpha generation"]
 keywords: ["quantitative factor models", "Fama-French model", "factor investing python"]

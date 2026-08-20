@@ -3,7 +3,7 @@ title: '''''''Production-Grade Cross-Asset Momentum System: DAX 40 with Footprin
   Charts'''
 slug: production-grade-cross-asset-momentum-system-dax-40-with-footprint-charts-2026
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

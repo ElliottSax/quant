@@ -2,7 +2,7 @@
 title: "Drawdown Management: Protecting Capital During Losing Streaks"
 description: "Learn drawdown management strategies to protect trading capital. Cover maximum drawdown limits, recovery math, and systematic risk reduction protocols."
 date: "2026-03-18"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["drawdown management", "risk management", "capital preservation", "losing streaks", "trading psychology"]
 keywords: ["drawdown management", "trading drawdown", "maximum drawdown strategy"]

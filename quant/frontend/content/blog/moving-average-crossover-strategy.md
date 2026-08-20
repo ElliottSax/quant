@@ -2,7 +2,7 @@
 title: "Moving Average Crossover Strategy: Golden Cross and Death Cross"
 description: "Systematic guide to moving average crossover strategies including golden cross, death cross, and triple MA systems with backtest data."
 date: "2026-03-10"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["moving average", "golden cross", "death cross", "technical analysis", "trend following"]
 keywords: ["moving average crossover strategy", "golden cross trading", "death cross signal"]

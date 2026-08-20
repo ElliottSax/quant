@@ -5,7 +5,7 @@ description: Comprehensive guide to currency arbitrage. Expert analysis with act
   strategies and real-world examples.
 keywords:
 - currency arbitrage
-author: Dr. James Chen
+author: "QuantEngines"
 category: quant
 date: '2026-03-15'
 updated: '2026-03-15'

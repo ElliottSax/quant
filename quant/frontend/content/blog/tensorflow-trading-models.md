@@ -2,7 +2,7 @@
 title: "TensorFlow for Trading: Neural Network Price Prediction"
 description: "Build neural network trading models with TensorFlow and Keras. LSTMs, CNNs, and transformer architectures for financial time series prediction."
 date: "2026-03-14"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Machine Learning"
 tags: ["tensorflow", "deep learning", "LSTM", "neural networks", "price prediction"]
 keywords: ["tensorflow trading", "LSTM stock prediction", "deep learning finance"]

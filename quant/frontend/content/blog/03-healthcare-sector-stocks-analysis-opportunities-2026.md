@@ -3,7 +3,7 @@ title: '''''''Healthcare Sector Stocks Analysis: Opportunities 2026'''''''
 slug: healthcare-sector-stocks-analysis-opportunities-2026
 description: '''''''Healthcare sector analysis 2026: pharmaceutical stocks, biotech
   opportunities,'''
-author: Quant Research Team
+author: "QuantEngines"
 category: Healthcare
 tags: []
 date: 2026-07-23

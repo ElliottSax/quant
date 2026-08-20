@@ -2,7 +2,7 @@
 title: "Order Types and Execution: Limit, Market, Stop, and Iceberg"
 description: "Master order types for optimal trade execution. Learn market, limit, stop, stop-limit, iceberg, and algorithmic order strategies with execution best practices."
 date: "2026-04-01"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["order types", "trade execution", "limit orders", "stop orders", "market microstructure"]
 keywords: ["order types execution", "limit order vs market order", "stop loss order types"]

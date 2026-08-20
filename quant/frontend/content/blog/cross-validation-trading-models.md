@@ -2,7 +2,7 @@
 title: "Cross-Validation for Trading Models: Avoiding Look-Ahead Bias"
 description: "Implement proper cross-validation for financial models. Walk-forward analysis, purged k-fold, combinatorial purged CV, and embargo techniques."
 date: "2026-03-23"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Data Science"
 tags: ["cross-validation", "backtesting", "look-ahead bias", "model validation", "walk-forward"]
 keywords: ["cross-validation trading", "walk-forward analysis", "purged cross-validation"]

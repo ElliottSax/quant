@@ -2,7 +2,7 @@
 title: "Pivot Point Trading Strategy: Daily, Weekly, Monthly Levels"
 description: "Master pivot point trading with Standard, Fibonacci, and Camarilla calculations. Learn intraday and swing strategies with pivot levels."
 date: "2026-03-12"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["pivot points", "intraday trading", "support resistance", "day trading", "technical analysis"]
 keywords: ["pivot point trading strategy", "pivot point calculator", "pivot point levels"]

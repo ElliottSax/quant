@@ -2,7 +2,7 @@
 title: "How to Track Congress Stock Trades in Real-Time: Complete 2026 Guide"
 description: "Step-by-step guide to tracking congressional stock trades in real-time using free tools, APIs, and alert systems. Learn where disclosures are filed and how to use the data."
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Congressional Trading"
 tags: ["congressional trading", "trade tracking", "disclosure data", "trading alerts", "political trades"]
 keywords: ["track congress stock trades", "congressional trading tracker", "politician trade alerts", "congress stock disclosure", "track politician trades"]

@@ -3,7 +3,7 @@ title: '''''''Flash Loan Arbitrage Strategies: Advanced DeFi 2026 Guide'''''''
 slug: defi_article_17_flash_loan_arbitrage_strategies_defi_2026
 description: '''''''Flash Loan Arbitrage Strategies: Advanced DeFi 2026 Guide This
   article'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_17_flash_loan_arbitrage_strategies_defi_2026

@@ -3,7 +3,7 @@ title: "Automating MACD Crossovers On Forex"
 slug: "automating-macd-crossovers-on-forex"
 description: "Building automated MACD crossover strategies for forex markets with session-aware signal generation, currency pair selection, and carry-adjusted backtesting."
 keywords: ["MACD forex", "forex automated trading", "currency trading strategy", "MACD crossover system", "FX algorithmic trading"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1860

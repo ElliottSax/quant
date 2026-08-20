@@ -2,7 +2,7 @@
 title: "Impermanent Loss Mitigation: Mathematical Hedging Strategies"
 description: "Quantitative techniques for mitigating impermanent loss in AMM positions. Learn delta hedging, options strategies, and correlation-based pair selection."
 date: "2026-05-04"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["impermanent-loss", "hedging", "risk-management"]
 keywords: ["impermanent loss", "IL mitigation", "delta hedging", "AMM risk management"]

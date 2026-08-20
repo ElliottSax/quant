@@ -2,7 +2,7 @@
 title: Commodities Regime Detection for Earnings Momentum with Bayesian Optimization
 slug: commodities-regime-detection-for-earnings-momentum-with-bayesian-optimization
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -2,7 +2,7 @@
 word_count: 1720
 title: "Automating Pairs Trading Efficiently"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["pairs trading", "statistical arbitrage", "cointegration", "relative value"]
 slug: "automating-pairs-trading-efficiently"

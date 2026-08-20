@@ -1,7 +1,7 @@
 ---
 title: 'Backtrader vs Zipline vs VectorBT: Comprehensive Framework Comparison'
 slug: backtrader-vs-zipline-vs-vectorbt
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90
@@ -15,6 +15,32 @@ last_updated: '2026-03-18'
 **Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
+
+
+## Backtrader vs Zipline vs VectorBT — at a glance
+
+| Feature | Backtrader | Zipline | VectorBT |
+|---|---|---|---|
+| Architecture | Event-driven | Event-driven | Vectorized |
+| Speed | Moderate | Slow | Very Fast |
+| Realism | High | Very High | Lower |
+| Learning Curve | Moderate | Steep | Steep |
+| Live Trading | Good | Minimal | No |
+| Data Handling | Pandas-based | In-memory | NumPy/Pandas |
+| Leverage Support | Yes (built-in) | Limited | Yes |
+| Options Support | Limited | No | Limited |
+| Community | Large | Medium | Growing |
+| Documentation | Excellent | Good | Good |
+| Price Feed Integration | Multiple | Yahoo Finance | Yahoo Finance, Custom |
+| Order Types | Market, Limit, Stop | Market, Limit | Limited |
+| Market Impact | Partial | Yes | Limited |
+| Slippage Modeling | Yes | Yes | Simple |
+| Multi-Asset | Yes | Yes | Yes |
+| Portfolio Rebalancing | Yes | Limited | Yes |
+| Monte Carlo | Yes | No | Yes |
+| Walk-Forward | Yes | No | Yes |
+
+*Capability comparison. The speed column is a qualitative summary of architecture, not a measured benchmark — a timed comparison on identical data is a separate piece of work and is not claimed here.*
 
 ## Introduction
 

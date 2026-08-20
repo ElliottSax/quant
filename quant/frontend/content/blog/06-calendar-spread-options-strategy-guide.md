@@ -2,7 +2,7 @@
 title: '''''''Calendar Spread Strategy for Options Trading 2026: Complete Guide'''''''
 slug: 06_calendar_spread_options_strategy_guide
 description: '''''''Calendar Spread Strategy for Options Trading 2026: Complete Guide'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/06_calendar_spread_options_strategy_guide

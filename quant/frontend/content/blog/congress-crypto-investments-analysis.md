@@ -3,7 +3,7 @@ title: 'Congress Crypto Investments Analysis: Cryptocurrency Holdings and Blockc
   Regulation Trading'
 description: Analysis of congressional members' cryptocurrency and blockchain investments
   with correlation to crypto regulation votes
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-crypto-investments-analysis

@@ -3,7 +3,7 @@ title: 'Congress Semiconductor Stock Trades: Chip Shortage Information and Techn
   Competition'
 description: Analysis of congressional members' semiconductor sector investments with
   correlation to chip supply policy
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-semiconductor-stock-trades

@@ -8,7 +8,7 @@ keywords:
 - reading
 - education
 - recommendations
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 updated: '2026-03-16'

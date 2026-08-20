@@ -3,7 +3,7 @@ title: '''''''Forex Harmonic Patterns Trading Strategy: Precise Entry with Geome
   Ratios'''''''
 slug: 22-forex-harmonic-patterns-trading
 description: '''''''Forex Harmonic Patterns Trading Strategy: Precise Entry with Geometric'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/22-forex-harmonic-patterns-trading

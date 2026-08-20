@@ -2,7 +2,7 @@
 title: "Crypto Statistical Arbitrage: Pair Trading on Exchanges"
 description: "Statistical arbitrage and pair trading strategies for cryptocurrency markets. Learn cointegration testing, mean reversion models, and execution systems."
 date: "2026-05-09"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["statistical-arbitrage", "pair-trading", "quantitative"]
 keywords: ["crypto statistical arbitrage", "pair trading", "cointegration", "mean reversion"]

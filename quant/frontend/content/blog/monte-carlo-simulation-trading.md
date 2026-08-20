@@ -2,7 +2,7 @@
 title: "Monte Carlo Simulation for Trading: Risk Assessment Guide"
 description: "Use Monte Carlo simulation to stress-test trading strategies, estimate drawdown probabilities, and build confidence intervals for performance metrics."
 date: "2026-03-30"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["Monte Carlo simulation", "risk assessment", "statistical analysis", "drawdown"]
 keywords: ["Monte Carlo simulation trading", "Monte Carlo risk assessment", "trading strategy simulation"]

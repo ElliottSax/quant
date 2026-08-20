@@ -3,7 +3,7 @@ title: 'Congress Big Tech Antitrust Trading: Regulatory Predictions and Strategi
   Positioning'
 description: Analysis of congressional members' Big Tech stock purchases preceding
   antitrust hearing and regulatory outcomes
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-big-tech-antitrust-trading

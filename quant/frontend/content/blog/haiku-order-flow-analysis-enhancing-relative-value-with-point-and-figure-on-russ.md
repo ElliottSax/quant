@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Relative Value with Point and Figur
   on Russell'''
 slug: order-flow-analysis-enhancing-relative-value-with-point-and-figure-on-russell-20
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

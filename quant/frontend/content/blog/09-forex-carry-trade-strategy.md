@@ -3,7 +3,7 @@ title: '''''''Forex Carry Trade Strategy Explained: Profiting from Interest Rate
 slug: 09-forex-carry-trade-strategy
 description: '''''''Forex Carry Trade Strategy Explained: Profiting from Interest
   Rate'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/09-forex-carry-trade-strategy

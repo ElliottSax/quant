@@ -2,7 +2,7 @@
 title: "Quantile Regression for Trading: Beyond Mean Predictions"
 description: "Learn how quantile regression provides superior risk insights for trading by modeling the entire distribution of returns, not just averages."
 date: "2026-05-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["quantile-regression", "risk-modeling", "statistical-methods"]
 keywords: ["quantile regression", "trading statistics", "risk modeling", "tail risk", "conditional quantiles"]

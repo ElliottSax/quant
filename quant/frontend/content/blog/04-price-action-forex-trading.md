@@ -2,7 +2,7 @@
 title: '''''''Price Action Forex Trading Strategy: Reading Charts Without Indicators'''''''
 slug: 04-price-action-forex-trading
 description: '''''''Price Action Forex Trading Strategy: Reading Charts Without Indicators'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/04-price-action-forex-trading

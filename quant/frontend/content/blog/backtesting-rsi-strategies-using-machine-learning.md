@@ -1,7 +1,7 @@
 ---
 title: "Backtesting RSI Strategies using Machine Learning"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["rsi", "machine learning", "python", "backtesting", "neural networks", "sklearn"]
 slug: "backtesting-rsi-strategies-using-machine-learning"

@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -40,6 +41,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from pipeline.providers import EntitlementError, ProviderError, get_provider  # noqa: E402
+
+# The bench MEASURES sources; it does not redistribute their data — the published
+# artefact holds row counts, date ranges and pass/fail flags, never price series. That
+# distinction is why the yfinance ingest guard is opted into here and nowhere else.
+os.environ.setdefault("QUANT_ALLOW_YFINANCE_INGEST", "1")
 
 DEFAULT_OUT = Path(__file__).resolve().parents[1] / "frontend" / "public" / "data" / "vendor-bench.json"
 

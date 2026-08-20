@@ -2,7 +2,7 @@
 title: "Overfitting in Trading Strategies: Detection and Prevention"
 description: "Detect and prevent overfitting in quantitative trading strategies. Statistical tests, deflated Sharpe ratios, and robust backtesting methodology."
 date: "2026-03-24"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["overfitting", "backtesting", "Sharpe ratio", "strategy validation", "statistical testing"]
 keywords: ["overfitting trading strategies", "backtest overfitting", "deflated Sharpe ratio"]

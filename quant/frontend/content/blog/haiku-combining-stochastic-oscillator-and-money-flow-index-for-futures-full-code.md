@@ -3,7 +3,7 @@ title: '''"Combining Stochastic Oscillator and Money Flow Index for Futures: Ful
   Code"'''
 slug: combining-stochastic-oscillator-and-money-flow-index-for-futures-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

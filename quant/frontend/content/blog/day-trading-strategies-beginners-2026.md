@@ -2,7 +2,7 @@
 title: '''"Day Trading Strategies for Beginners 2026: Complete Guide to Quick Profits"'''
 slug: '''"day-trading-strategies-beginners-2026"'''
 description: '''"Learn proven day trading strategies for beginners in 2026. Discover'
-author: '''"Trading Mastery"'''
+author: "QuantEngines"
 category: '''"Trading Strategies"'''
 tags: []
 keyword: '''"Day trading strategies for beginners 2026"'''

@@ -1,6 +1,6 @@
 ---
 title: 'Bitcoin Trading Bot: Complete Python Tutorial for Automated Trading'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: bitcoin-trading-bot-python-tutorial

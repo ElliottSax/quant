@@ -1,6 +1,6 @@
 ---
 title: 'Crypto Market Making Bot: Build High-Frequency Trading Systems'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: crypto-market-making-bot-tutorial

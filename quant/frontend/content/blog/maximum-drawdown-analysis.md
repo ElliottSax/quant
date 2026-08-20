@@ -2,7 +2,7 @@
 title: "Maximum Drawdown Analysis: Measuring and Managing Worst-Case Losses"
 description: "Understand maximum drawdown calculation, recovery analysis, and practical strategies to limit drawdown in quantitative trading portfolios."
 date: "2026-04-03"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["drawdown", "risk management", "portfolio risk", "performance metrics", "quantitative trading"]
 keywords: ["maximum drawdown", "drawdown analysis", "portfolio drawdown management", "worst case loss", "drawdown recovery"]

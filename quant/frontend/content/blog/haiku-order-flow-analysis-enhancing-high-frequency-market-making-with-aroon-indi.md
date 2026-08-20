@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing High-Frequency Market Making with A
   Indicator'''
 slug: order-flow-analysis-enhancing-high-frequency-market-making-with-aroon-indicator-
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

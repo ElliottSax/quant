@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: Sentiment-Based with Regime-Conditional Sizing'
 slug: paper-trading-framework-sentiment-based-with-regime-conditional-sizing-on-eurusd
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

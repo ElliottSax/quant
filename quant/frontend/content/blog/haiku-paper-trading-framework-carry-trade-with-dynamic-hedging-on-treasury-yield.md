@@ -3,7 +3,7 @@ title: '''''''Paper Trading Framework: Carry Trade with Dynamic Hedging on Treas
   Yield'''
 slug: paper-trading-framework-carry-trade-with-dynamic-hedging-on-treasury-yield-curve
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

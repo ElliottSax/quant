@@ -1,7 +1,7 @@
 ---
 title: "Backtesting MACD Crossovers for Beginners"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["MACD", "crossovers", "backtesting", "beginner", "tutorial"]
 slug: "backtesting-macd-crossovers-for-beginners"

@@ -2,7 +2,7 @@
 title: NFT Trading Strategies and Market Analysis 2026
 slug: nft-trading-strategies-market-analysis
 description: Advanced NFT trading strategies. Market analysis, collection evaluation,
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: NFT trading strategies and market analysis 2026

@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Mean Reversion on Forex"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["mean reversion", "forex", "currency pairs", "zscore"]
 slug: "backtesting-mean-reversion-on-forex"

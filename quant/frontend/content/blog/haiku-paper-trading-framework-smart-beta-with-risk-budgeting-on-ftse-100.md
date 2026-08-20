@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: Smart Beta with Risk Budgeting on FTSE 100'''''''
 slug: paper-trading-framework-smart-beta-with-risk-budgeting-on-ftse-100
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

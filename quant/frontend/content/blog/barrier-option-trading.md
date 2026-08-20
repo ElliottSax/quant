@@ -1,7 +1,7 @@
 ---
 title: 'Barrier Option Trading: Strategies and Pricing Models'
 date: '2026-03-15'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 tags:
 - barrier options

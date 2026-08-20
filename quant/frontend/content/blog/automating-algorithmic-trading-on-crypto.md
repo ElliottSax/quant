@@ -3,7 +3,7 @@ title: "Automating Algorithmic Trading On Crypto"
 slug: "automating-algorithmic-trading-on-crypto"
 description: "How to build and deploy automated trading strategies for cryptocurrency markets, covering exchange APIs, market microstructure, and crypto-specific alpha signals."
 keywords: ["crypto trading bot", "cryptocurrency algorithmic trading", "crypto market making", "DeFi trading", "exchange API"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1850

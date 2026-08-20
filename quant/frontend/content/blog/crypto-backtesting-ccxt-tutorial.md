@@ -1,7 +1,7 @@
 ---
 title: 'Cryptocurrency Backtesting with CCXT: Complete Tutorial'
 slug: crypto-backtesting-ccxt-tutorial
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

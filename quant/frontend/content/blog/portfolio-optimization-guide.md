@@ -2,7 +2,7 @@
 title: "Portfolio Optimization: Modern Portfolio Theory in Practice"
 description: "Implement portfolio optimization with mean-variance analysis, risk parity, Black-Litterman, and robust optimization techniques for real portfolios."
 date: "2026-03-25"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["portfolio optimization", "modern portfolio theory", "risk parity", "asset allocation"]
 keywords: ["portfolio optimization", "modern portfolio theory", "risk parity portfolio"]

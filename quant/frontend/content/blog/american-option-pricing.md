@@ -3,7 +3,7 @@ title: "American Option Pricing"
 slug: "american-option-pricing"
 description: "Quantitative methods for pricing American options including binomial trees, Longstaff-Schwartz Monte Carlo, and finite difference methods with implementation details."
 keywords: ["American options", "option pricing", "Longstaff-Schwartz", "binomial tree", "early exercise"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1880

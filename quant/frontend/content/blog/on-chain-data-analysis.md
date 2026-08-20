@@ -2,7 +2,7 @@
 title: "On-Chain Data Analysis: Whale Tracking and Smart Money"
 description: "Actionable on-chain analysis for crypto trading. Learn whale wallet tracking, smart money indicators, and blockchain data interpretation for alpha generation."
 date: "2026-05-10"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["on-chain-analysis", "whale-tracking", "blockchain-data"]
 keywords: ["on-chain analysis", "whale wallets", "smart money", "blockchain analytics"]

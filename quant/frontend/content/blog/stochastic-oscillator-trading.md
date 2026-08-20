@@ -2,7 +2,7 @@
 title: "Stochastic Oscillator: Overbought/Oversold Trading System"
 description: "Master the Stochastic Oscillator for identifying overbought and oversold conditions. Learn %K, %D crossovers, divergence, and multi-timeframe strategies."
 date: "2026-03-14"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["stochastic oscillator", "overbought oversold", "momentum", "oscillator", "technical analysis"]
 keywords: ["stochastic oscillator trading", "stochastic indicator", "overbought oversold indicator"]

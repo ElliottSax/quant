@@ -2,7 +2,7 @@
 title: "Factor Investing: Value, Momentum, Quality, Low Volatility"
 description: "Complete guide to factor investing covering the four major equity factors, multi-factor portfolio construction, and long-term backtest performance."
 date: "2026-03-23"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["factor investing", "smart beta", "value factor", "momentum factor", "quality factor"]
 keywords: ["factor investing strategy", "equity factors", "multi-factor portfolio"]

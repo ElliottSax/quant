@@ -3,7 +3,7 @@ title: "Automating Bollinger Bands In Python"
 slug: "automating-bollinger-bands-in-python"
 description: "Complete Python implementation of Bollinger Band trading systems covering calculation, signal generation, backtesting framework, and live deployment with broker APIs."
 keywords: ["Bollinger Bands Python", "Python trading strategy", "technical indicator code", "automated backtesting", "pandas trading"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1860

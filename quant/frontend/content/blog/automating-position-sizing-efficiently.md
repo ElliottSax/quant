@@ -2,7 +2,7 @@
 word_count: 1680
 title: "Automating Position Sizing Efficiently"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["position sizing", "risk management", "portfolio optimization", "algorithmic trading"]
 slug: "automating-position-sizing-efficiently"

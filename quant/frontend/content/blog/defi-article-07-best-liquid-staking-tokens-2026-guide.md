@@ -3,7 +3,7 @@ title: '''''''Best Liquid Staking Tokens 2026: Complete Comparison Guide'''''''
 slug: defi_article_07_best_liquid_staking_tokens_2026_guide
 description: '''''''Best Liquid Staking Tokens 2026: Complete Comparison Guide This
   article'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_07_best_liquid_staking_tokens_2026_guide

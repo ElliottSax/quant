@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading financial services com
   intel edges. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading financial services committee intel edges
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 updated: '2026-03-16'

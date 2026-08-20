@@ -2,7 +2,7 @@
 title: "Cointegration Trading: Finding Long-Term Pair Relationships"
 description: "Master cointegration analysis for trading with Engle-Granger and Johansen tests. Build mean-reversion strategies on statistically validated relationships."
 date: "2026-03-17"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["cointegration", "pairs trading", "mean reversion", "Engle-Granger", "Johansen test"]
 keywords: ["cointegration trading strategy", "Engle-Granger test trading", "Johansen cointegration"]

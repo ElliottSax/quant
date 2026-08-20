@@ -1,6 +1,6 @@
 ---
 title: Concentration Limits and Position Management in Quantitative Trading
-author: Dr. James Chen
+author: "QuantEngines"
 date: '2026-03-16'
 category: Algo Trading
 tags:

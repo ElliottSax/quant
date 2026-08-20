@@ -2,7 +2,7 @@
 title: "Volume-Weighted Trading Strategy: VWAP and Volume Profile"
 description: "Master volume-weighted trading with VWAP strategies, volume profile analysis, and institutional order flow techniques for systematic trading."
 date: "2026-03-14"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["VWAP", "volume profile", "order flow", "institutional trading"]
 keywords: ["volume-weighted trading strategy", "VWAP trading", "volume profile trading"]

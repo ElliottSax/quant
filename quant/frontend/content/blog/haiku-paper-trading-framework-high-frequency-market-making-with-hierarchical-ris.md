@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: High-Frequency Market Making with Hierarchical'
 slug: paper-trading-framework-high-frequency-market-making-with-hierarchical-risk-pari
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

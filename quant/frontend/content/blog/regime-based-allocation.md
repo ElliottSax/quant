@@ -2,7 +2,7 @@
 title: "Regime-Based Asset Allocation: Adapting to Market Conditions"
 description: "Implement regime-based allocation using Hidden Markov Models and macro indicators to dynamically adapt portfolios to changing market environments."
 date: "2026-04-12"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Portfolio Management"
 tags: ["regime detection", "asset allocation", "Hidden Markov Model", "macro investing", "dynamic allocation"]
 keywords: ["regime based allocation", "market regime detection", "Hidden Markov Model finance", "dynamic asset allocation", "macro regime investing"]

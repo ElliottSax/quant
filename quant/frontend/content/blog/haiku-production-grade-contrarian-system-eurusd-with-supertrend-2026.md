@@ -2,7 +2,7 @@
 title: '''''''Production-Grade Contrarian System: EUR/USD with Supertrend (2026)'''''''
 slug: production-grade-contrarian-system-eurusd-with-supertrend-2026
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

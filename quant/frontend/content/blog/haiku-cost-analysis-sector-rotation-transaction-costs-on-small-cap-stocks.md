@@ -2,7 +2,7 @@
 title: '''''''Cost Analysis: Sector Rotation Transaction Costs on Small-Cap Stocks'''''''
 slug: cost-analysis-sector-rotation-transaction-costs-on-small-cap-stocks
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -3,7 +3,7 @@ title: "Automating Bollinger Bands Using Machine Learning"
 slug: "automating-bollinger-bands-using-machine-learning"
 description: "Enhancing Bollinger Band strategies with machine learning for adaptive parameters, signal filtering, and regime detection to improve out-of-sample performance."
 keywords: ["Bollinger Bands ML", "adaptive indicators", "machine learning trading", "regime detection", "signal classification"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1870

@@ -2,7 +2,7 @@
 title: "Minimum Variance Portfolio: Lowest Risk for Your Returns"
 description: "Build minimum variance portfolios that minimize total risk without requiring return estimates. Complete guide with formulas and implementation."
 date: "2026-04-09"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Portfolio Management"
 tags: ["minimum variance", "portfolio optimization", "low volatility", "risk management", "portfolio construction"]
 keywords: ["minimum variance portfolio", "low volatility portfolio", "minimum risk portfolio", "portfolio variance minimization", "defensive portfolio construction"]

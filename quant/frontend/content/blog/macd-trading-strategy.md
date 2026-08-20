@@ -2,7 +2,7 @@
 title: "MACD Trading Strategy: Signal Line Crossover System"
 description: "Complete MACD trading strategy with signal line crossovers, histogram analysis, and divergence signals backed by systematic backtest results."
 date: "2026-03-13"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["MACD", "signal line crossover", "momentum", "technical analysis"]
 keywords: ["MACD trading strategy", "MACD signal crossover", "MACD histogram trading"]

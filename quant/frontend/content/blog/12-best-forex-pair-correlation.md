@@ -3,7 +3,7 @@ title: '''''''Best Forex Pair Correlation Strategies: Trading Related Currency P
 slug: 12-best-forex-pair-correlation
 description: '''''''Best Forex Pair Correlation Strategies: Trading Related Currency
   Pairs'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/12-best-forex-pair-correlation

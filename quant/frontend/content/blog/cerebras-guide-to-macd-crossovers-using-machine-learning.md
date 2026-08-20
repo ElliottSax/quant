@@ -2,7 +2,7 @@
 title: Guide to MACD Crossovers using Machine Learning
 slug: guide-to-macd-crossovers-using-machine-learning
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

@@ -2,7 +2,7 @@
 title: "Sharpe Ratio and Portfolio Analysis: Risk-Adjusted Returns"
 description: "Master the Sharpe ratio and risk-adjusted return metrics including Sortino, Calmar, and Information ratios for comprehensive portfolio analysis."
 date: "2026-03-28"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["Sharpe ratio", "risk-adjusted returns", "portfolio analysis", "performance metrics"]
 keywords: ["Sharpe ratio portfolio analysis", "risk-adjusted returns", "Sortino ratio Calmar ratio"]

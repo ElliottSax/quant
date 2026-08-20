@@ -2,7 +2,7 @@
 title: "Crypto Correlation Trading: BTC Dominance and Alt Season"
 description: "Trading cryptocurrency correlations and dominance metrics. Learn BTC dominance dynamics, correlation breakdowns, and relative value strategies."
 date: "2026-05-22"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["correlation", "relative-value", "trading"]
 keywords: ["bitcoin dominance", "crypto correlation", "alt season", "correlation trading"]

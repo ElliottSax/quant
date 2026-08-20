@@ -2,7 +2,7 @@
 title: "Alternative Data for Trading: Satellite, Social, and Web Data"
 description: "Leverage alternative data for trading alpha. Satellite imagery, social media sentiment, web scraping, credit card data, and geolocation analytics."
 date: "2026-03-29"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Data Science"
 tags: ["alternative data", "satellite data", "social media", "web scraping", "alpha generation"]
 keywords: ["alternative data trading", "satellite data trading", "social media trading signals"]

@@ -2,7 +2,7 @@
 title: "ATR (Average True Range): Volatility-Based Position Sizing"
 description: "Master ATR for volatility measurement, position sizing, and stop-loss placement. Learn the Keltner Channel and ATR trailing stop strategies."
 date: "2026-03-13"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["ATR", "average true range", "volatility", "position sizing", "risk management"]
 keywords: ["ATR average true range", "ATR position sizing", "ATR stop loss"]

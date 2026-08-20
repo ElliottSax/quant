@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Algorithmic Trading Safely"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["algo trading", "quantitative", "trading", "python"]
 slug: "backtesting-algorithmic-trading-safely"

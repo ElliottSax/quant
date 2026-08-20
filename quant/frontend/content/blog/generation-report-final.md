@@ -2,7 +2,7 @@
 title: SEO-Optimized Sector Analysis Articles - Final Generation Report
 slug: GENERATION_REPORT_FINAL
 description: SEO-Optimized Sector Analysis Articles - Final Generation Report This
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/GENERATION_REPORT_FINAL

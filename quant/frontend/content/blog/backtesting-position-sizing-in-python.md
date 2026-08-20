@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Position Sizing in Python"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["position sizing", "python", "backtesting", "algorithmic trading", "quantitative"]
 slug: "backtesting-position-sizing-in-python"

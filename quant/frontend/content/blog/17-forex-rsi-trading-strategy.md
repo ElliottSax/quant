@@ -2,7 +2,7 @@
 title: Forex RSI Trading Strategy for Overbought and Oversold Conditions
 slug: 17-forex-rsi-trading-strategy
 description: Forex RSI Trading Strategy for Overbought and Oversold Conditions This
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/17-forex-rsi-trading-strategy

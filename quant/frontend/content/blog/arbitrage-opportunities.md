@@ -3,7 +3,7 @@ title: "Arbitrage Opportunities"
 slug: "arbitrage-opportunities"
 description: "A quantitative guide to identifying, modeling, and exploiting arbitrage opportunities across asset classes including statistical arbitrage, triangular arbitrage, and convertible bond arbitrage."
 keywords: ["arbitrage", "statistical arbitrage", "pairs trading", "risk-free profit", "market efficiency"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1850

@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: Intraday Reversal with Risk Budgeting on Crude'
 slug: paper-trading-framework-intraday-reversal-with-risk-budgeting-on-crude-oil-futur
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

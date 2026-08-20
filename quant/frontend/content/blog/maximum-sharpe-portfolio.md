@@ -2,7 +2,7 @@
 title: "Maximum Sharpe Ratio Portfolio: Optimizing Risk-Adjusted Returns"
 description: "Construct the maximum Sharpe ratio portfolio using optimization techniques. Learn the tangency portfolio theory, estimation challenges, and practical solutions."
 date: "2026-04-10"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Portfolio Management"
 tags: ["Sharpe ratio", "tangency portfolio", "portfolio optimization", "risk-adjusted returns", "capital allocation"]
 keywords: ["maximum Sharpe ratio portfolio", "tangency portfolio", "optimal risky portfolio", "Sharpe ratio optimization", "risk-adjusted portfolio construction"]

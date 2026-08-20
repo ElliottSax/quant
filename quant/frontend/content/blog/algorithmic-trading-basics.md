@@ -3,7 +3,7 @@ title: "Algorithmic Trading Basics"
 slug: "algorithmic-trading-basics"
 description: "A comprehensive introduction to algorithmic trading covering architecture, strategy types, backtesting methodology, and production deployment for quantitative practitioners."
 keywords: ["algorithmic trading", "automated trading", "backtesting", "trading systems", "quantitative strategies"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1900

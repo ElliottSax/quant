@@ -2,7 +2,7 @@
 title: Web3/DeFi Articles Generation - Delivery Summary
 slug: DEFI_ARTICLES_DELIVERY_SUMMARY
 description: Web3/DeFi Articles Generation - Delivery Summary This article provides
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/DEFI_ARTICLES_DELIVERY_SUMMARY

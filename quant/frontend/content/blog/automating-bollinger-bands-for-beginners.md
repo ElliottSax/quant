@@ -3,7 +3,7 @@ title: "Automating Bollinger Bands For Beginners"
 slug: "automating-bollinger-bands-for-beginners"
 description: "A beginner-friendly guide to understanding Bollinger Bands, coding them in Python, and building your first mean-reversion trading strategy with proper backtesting."
 keywords: ["Bollinger Bands tutorial", "beginner trading strategy", "mean reversion basics", "Python indicators", "technical analysis"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1840

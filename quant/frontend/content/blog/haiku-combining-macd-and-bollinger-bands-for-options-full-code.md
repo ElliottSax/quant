@@ -2,7 +2,7 @@
 title: '''"Combining MACD and Bollinger Bands for Options: Full Code"'''
 slug: combining-macd-and-bollinger-bands-for-options-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

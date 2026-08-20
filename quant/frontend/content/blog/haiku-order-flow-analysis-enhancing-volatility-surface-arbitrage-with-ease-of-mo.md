@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Volatility Surface Arbitrage with E
   of'
 slug: order-flow-analysis-enhancing-volatility-surface-arbitrage-with-ease-of-movement
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

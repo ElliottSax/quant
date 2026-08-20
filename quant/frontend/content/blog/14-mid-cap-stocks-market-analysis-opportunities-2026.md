@@ -2,7 +2,7 @@
 title: '''''''Mid-Cap Stocks Market Analysis: Opportunities 2026'''''''
 slug: mid-cap-stocks-market-analysis-opportunities-2026
 description: '''''''Mid-cap stocks 2026: balanced growth analysis. Best mid-cap stocks'
-author: Quant Research Team
+author: "QuantEngines"
 category: Mid-Cap
 tags: []
 date: 2026-07-27

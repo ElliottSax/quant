@@ -2,7 +2,7 @@
 title: '''''''Daily Mean Reversion with CVaR Optimization: Risk-Adjusted Returns'''''''
 slug: daily-mean-reversion-with-cvar-optimization-risk-adjusted-returns
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

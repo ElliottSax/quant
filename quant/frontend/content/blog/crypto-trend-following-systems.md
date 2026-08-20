@@ -2,7 +2,7 @@
 title: "Crypto Trend Following: Moving Averages and Breakouts"
 description: "Systematic trend-following strategies for cryptocurrency. Learn moving average crossovers, breakout systems, and momentum indicators for quant trading."
 date: "2026-05-24"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["trend-following", "momentum", "technical-analysis"]
 keywords: ["trend following", "moving averages", "momentum trading", "cryptocurrency trends"]

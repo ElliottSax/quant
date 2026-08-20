@@ -3,7 +3,7 @@ title: '''''''How to Bridge Crypto Between Chains Safely: 2026 Complete Guide'''
 slug: defi_article_11_how_to_bridge_crypto_between_chains_safely
 description: '''''''How to Bridge Crypto Between Chains Safely: 2026 Complete Guide
   This'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_11_how_to_bridge_crypto_between_chains_safely

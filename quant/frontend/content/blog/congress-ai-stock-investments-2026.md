@@ -3,7 +3,7 @@ title: 'Congress AI Stock Investments 2026: Artificial Intelligence Boom and For
   Positioning'
 description: Analysis of congressional members' AI and machine learning company investments
   with growth predictions
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-ai-stock-investments-2026

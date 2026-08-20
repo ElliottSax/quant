@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: Contrarian with Dynamic Hedging on Bitcoin/Ethereum'''''''
 slug: paper-trading-framework-contrarian-with-dynamic-hedging-on-bitcoinethereum
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

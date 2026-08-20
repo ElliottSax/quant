@@ -2,7 +2,7 @@
 title: '''''''Liquidity Mining Strategies: Complete DeFi Guide 2026'''''''
 slug: defi_article_04_liquidity_mining_strategies_defi_complete_guide
 description: '''''''Liquidity Mining Strategies: Complete DeFi Guide 2026 This article'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_04_liquidity_mining_strategies_defi_complete_guide

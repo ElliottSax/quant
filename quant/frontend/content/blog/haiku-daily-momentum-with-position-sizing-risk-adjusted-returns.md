@@ -2,7 +2,7 @@
 title: '''''''Daily Momentum with Position Sizing: Risk-Adjusted Returns'''''''
 slug: daily-momentum-with-position-sizing-risk-adjusted-returns
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

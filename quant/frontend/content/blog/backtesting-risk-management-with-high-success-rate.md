@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Risk Management with High Success Rate"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["risk management", "high success rate", "winning trades", "performance", "backtesting"]
 slug: "backtesting-risk-management-with-high-success-rate"

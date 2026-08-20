@@ -5,7 +5,7 @@ description: 'Comprehensive guide to congress bipartisan stock consensus picks: 
   parties agree. Expert analysis with actionable strategies and real-world examples.'
 keywords:
 - 'congress bipartisan stock consensus picks: both parties agree'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

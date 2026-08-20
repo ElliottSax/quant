@@ -1,7 +1,7 @@
 ---
 title: 'Support and Resistance: Identifying Breakout Levels with Precision'
 date: '2026-03-15'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 tags:
 - support resistance

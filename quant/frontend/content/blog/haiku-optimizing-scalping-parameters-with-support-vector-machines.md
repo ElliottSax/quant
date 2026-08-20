@@ -2,7 +2,7 @@
 title: Optimizing Scalping Parameters with Support Vector Machines
 slug: optimizing-scalping-parameters-with-support-vector-machines
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

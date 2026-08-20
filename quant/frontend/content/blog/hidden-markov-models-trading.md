@@ -2,7 +2,7 @@
 title: "Hidden Markov Models for Market Regime Detection"
 description: "Detect market regimes with Hidden Markov Models in Python. Identify bull, bear, and sideways markets using HMMs for adaptive trading strategies."
 date: "2026-03-19"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Machine Learning"
 tags: ["hidden Markov model", "regime detection", "market regimes", "HMM", "state estimation"]
 keywords: ["hidden Markov model trading", "market regime detection", "HMM finance"]

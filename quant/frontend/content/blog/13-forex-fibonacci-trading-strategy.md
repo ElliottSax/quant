@@ -2,7 +2,7 @@
 title: '''''''Forex Fibonacci Trading Strategy Using Retracements: Mathematical Entry'
 slug: 13-forex-fibonacci-trading-strategy
 description: '''''''Forex Fibonacci Trading Strategy Using Retracements: Mathematical'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/13-forex-fibonacci-trading-strategy

@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading tax reform bill tradin
   intelligence. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading tax reform bill trading intelligence
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

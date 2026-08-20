@@ -2,7 +2,7 @@
 title: Dollar-Cost Averaging (DCA) Crypto Strategy Guide
 slug: dollar-cost-averaging-crypto-strategy
 description: Master DCA for crypto investing. Reduce volatility risk and build wealth
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Dollar-cost averaging crypto strategy guide

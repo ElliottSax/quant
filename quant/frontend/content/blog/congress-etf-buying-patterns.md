@@ -2,7 +2,7 @@
 title: 'Congress ETF Buying Patterns: Index Fund Positions and Passive Strategy Concentration'
 description: Analysis of congressional members' exchange-traded fund investments revealing
   sector-specific passive strategy concentration
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-etf-buying-patterns

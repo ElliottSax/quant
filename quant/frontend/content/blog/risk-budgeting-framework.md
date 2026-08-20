@@ -2,7 +2,7 @@
 title: "Risk Budgeting Framework: Allocating Risk Across Strategies"
 description: "Implement a risk budgeting framework to allocate portfolio risk across strategies, asset classes, and factors using quantitative methods."
 date: "2026-04-13"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["risk budgeting", "risk allocation", "portfolio construction", "risk parity", "strategy allocation"]
 keywords: ["risk budgeting", "risk allocation framework", "equal risk contribution", "risk budget portfolio", "strategy risk management"]

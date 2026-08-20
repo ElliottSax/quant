@@ -2,7 +2,7 @@
 title: Feature Engineering for Gradient Boosting in Scalping on Crypto Markets
 slug: feature-engineering-for-gradient-boosting-in-scalping-on-crypto-markets
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quantitative Trading
 tags: []
 published_date: '''''''2026-03-16'''''''

@@ -2,7 +2,7 @@
 title: "Currency Hedging Strategies for International Portfolios"
 description: "Implement systematic currency hedging using forward contracts, options, and dynamic hedge ratios to manage FX risk in global portfolios."
 date: "2026-04-17"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Portfolio Management"
 tags: ["currency hedging", "FX risk", "international portfolio", "forward contracts", "currency overlay"]
 keywords: ["currency hedging strategies", "FX hedging", "international portfolio currency risk", "currency overlay", "forward contract hedging"]

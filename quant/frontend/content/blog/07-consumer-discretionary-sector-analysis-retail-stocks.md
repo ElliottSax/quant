@@ -2,7 +2,7 @@
 title: '''''''Consumer Discretionary Sector Analysis: Retail Stocks'''''''
 slug: consumer-discretionary-sector-analysis-retail-stocks
 description: '''''''Consumer discretionary stocks 2026: retail, e-commerce, and automotive'''
-author: Quant Research Team
+author: "QuantEngines"
 category: Consumer Discretionary
 tags: []
 date: 2026-07-24

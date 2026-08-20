@@ -5,7 +5,7 @@ description: Comprehensive guide to crypto volatility harnessing high variance f
   profit. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - crypto volatility harnessing high variance for profit
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-18'
 updated: '2026-03-18'

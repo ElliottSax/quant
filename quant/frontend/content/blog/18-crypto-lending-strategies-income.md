@@ -2,7 +2,7 @@
 title: Best Crypto Lending Strategies for Income 2026
 slug: crypto-lending-strategies-income
 description: Crypto lending strategies for passive income. Platform comparison and
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Best crypto lending strategies for income

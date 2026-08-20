@@ -2,7 +2,7 @@
 title: "ICA for Trading: Signal Separation in Market Data"
 description: "Discover how Independent Component Analysis extracts independent signals from mixed market data, enabling advanced source separation strategies."
 date: "2026-05-21"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["ica", "signal-processing", "source-separation"]
 keywords: ["independent component analysis", "ICA trading", "signal separation", "blind source separation", "market signals"]

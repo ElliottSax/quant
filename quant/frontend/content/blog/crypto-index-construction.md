@@ -2,7 +2,7 @@
 title: "Crypto Index Construction: Market-Cap and Factor-Based"
 description: "Building cryptocurrency indices for portfolio diversification. Learn market-cap weighting, factor-based strategies, and index rebalancing mechanics."
 date: "2026-05-20"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["indices", "portfolio-construction", "diversification"]
 keywords: ["crypto index", "market cap weighting", "factor-based indices", "portfolio diversification"]

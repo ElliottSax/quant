@@ -3,7 +3,7 @@ title: 'Congress Tech Stock Buying Spree 2026: Artificial Intelligence Frenzy an
   Market Timing'
 description: Analysis of congressional members' aggressive tech stock purchases in
   2026, with focus on AI-related stocks and precise market timing
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-tech-stock-buying-spree-2026

@@ -2,7 +2,7 @@
 title: '''''''Crypto Futures Trading Strategies: Advanced Guide'''''''
 slug: crypto-futures-trading-strategies-advanced
 description: Advanced crypto futures trading. Leverage, hedging, and position management
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Crypto futures trading strategies advanced guide

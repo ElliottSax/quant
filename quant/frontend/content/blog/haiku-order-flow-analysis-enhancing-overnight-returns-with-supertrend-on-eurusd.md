@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Overnight Returns with Supertrend o
   EUR/USD'''''''
 slug: order-flow-analysis-enhancing-overnight-returns-with-supertrend-on-eurusd
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

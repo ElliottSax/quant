@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Microstructure Alpha with Anchored 
   on'''
 slug: order-flow-analysis-enhancing-microstructure-alpha-with-anchored-vwap-on-crude-o
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

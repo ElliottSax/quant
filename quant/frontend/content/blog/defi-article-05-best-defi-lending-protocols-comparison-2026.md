@@ -3,7 +3,7 @@ title: '''''''Best DeFi Lending Protocols Comparison 2026: Aave vs Compound'''''
 slug: defi_article_05_best_defi_lending_protocols_comparison_2026
 description: '''''''Best DeFi Lending Protocols Comparison 2026: Aave vs Compound
   This'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_05_best_defi_lending_protocols_comparison_2026

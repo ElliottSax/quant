@@ -3,7 +3,7 @@ title: 'Congress Healthcare Stock Trades Analysis: Pharmaceutical Profits and FD
   Timing'
 description: Comprehensive analysis of congressional healthcare and pharmaceutical
   stock trading with FDA approval correlations
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-healthcare-stock-trades-analysis

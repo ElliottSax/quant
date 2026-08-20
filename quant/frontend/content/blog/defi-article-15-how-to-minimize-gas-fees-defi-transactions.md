@@ -3,7 +3,7 @@ title: '''''''How to Minimize Gas Fees in DeFi: Complete 2026 Strategy Guide''''
 slug: defi_article_15_how_to_minimize_gas_fees_defi_transactions
 description: '''''''How to Minimize Gas Fees in DeFi: Complete 2026 Strategy Guide
   This'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_15_how_to_minimize_gas_fees_defi_transactions

@@ -2,7 +2,7 @@
 title: '''''''Commodity Market Analysis 2026: Gold, Oil, and Agricultural Trends'''''''
 slug: commodity-market-analysis-2026-gold-oil-and-agricultural-trends
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: Commodities

@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Mean Reversion using Machine Learning"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["mean reversion", "machine learning", "classification", "ensemble"]
 slug: "backtesting-mean-reversion-using-machine-learning"

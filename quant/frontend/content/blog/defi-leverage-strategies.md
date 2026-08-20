@@ -2,7 +2,7 @@
 title: "DeFi Leverage Strategies: Aave, Compound, and Recursive Lending"
 description: "Safe leverage strategies in DeFi lending protocols. Learn recursive lending, collateral management, and liquidation prevention techniques."
 date: "2026-05-23"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["leverage", "lending", "defi"]
 keywords: ["DeFi leverage", "recursive lending", "collateral management", "liquidation"]

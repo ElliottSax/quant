@@ -5,7 +5,7 @@ description: Comprehensive guide to calendar spreads theta and volatility decay.
   analysis with actionable strategies and real-world examples.
 keywords:
 - calendar spreads theta and volatility decay
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 updated: '2026-03-16'

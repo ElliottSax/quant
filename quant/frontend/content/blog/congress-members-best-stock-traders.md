@@ -2,7 +2,7 @@
 title: "Which Congress Members Are the Best Stock Traders? Performance Analysis"
 description: "Data-driven analysis of which Congress members generate the best stock trading returns, including performance rankings, methodology, sector concentration, and timing patterns."
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Congressional Trading"
 tags: ["congressional trading", "stock performance", "politician returns", "trading analysis", "congress investing"]
 keywords: ["best congress stock traders", "politician stock performance", "congress stock returns", "congressional trading performance", "best politician traders"]

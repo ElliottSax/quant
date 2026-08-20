@@ -1,6 +1,6 @@
 ---
 title: 'Covered Call Optimization: Algorithmic Income Generation'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: covered-call-optimization-algorithm

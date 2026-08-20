@@ -4,7 +4,7 @@ title: '''''''Forex Automated Trading Strategy and Bots 2026: Expert Advisors an
 slug: 25-forex-automated-trading-strategy
 description: '''''''Forex Automated Trading Strategy and Bots 2026: Expert Advisors
   and'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/25-forex-automated-trading-strategy

@@ -2,7 +2,7 @@
 title: "Matplotlib for Trading Charts: Visualization Best Practices"
 description: "Create professional trading charts with Matplotlib. Candlestick charts, equity curves, drawdown plots, and multi-panel dashboards with production-ready code."
 date: "2026-03-12"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Data Science"
 tags: ["matplotlib", "visualization", "trading charts", "python", "candlestick"]
 keywords: ["matplotlib trading charts", "python candlestick chart", "trading visualization"]

@@ -2,7 +2,7 @@
 word_count: 1720
 title: "Automating Mean Reversion with High Success Rate"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["mean reversion", "win rate", "signal optimization", "backtesting"]
 slug: "automating-mean-reversion-with-high-success-rate"

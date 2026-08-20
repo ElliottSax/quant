@@ -2,7 +2,7 @@
 title: '''''''Donchian Channel Signal Quality on Commodities: Statistical Analysis'''''''
 slug: donchian-channel-signal-quality-on-commodities-statistical-analysis
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

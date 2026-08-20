@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Bollinger Bands on Forex"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["bollinger bands", "forex", "backtesting", "python"]
 slug: "backtesting-bollinger-bands-on-forex"

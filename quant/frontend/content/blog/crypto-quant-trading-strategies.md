@@ -2,7 +2,7 @@
 title: "Crypto Quantitative Trading Strategies: Systematic Approach"
 description: "Systematic crypto trading strategies including momentum, mean reversion, cross-exchange arbitrage, and DeFi yield farming with backtest results."
 date: "2026-03-26"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["crypto trading", "Bitcoin", "cryptocurrency", "systematic trading", "DeFi"]
 keywords: ["crypto quantitative trading", "cryptocurrency trading strategies", "systematic crypto trading"]

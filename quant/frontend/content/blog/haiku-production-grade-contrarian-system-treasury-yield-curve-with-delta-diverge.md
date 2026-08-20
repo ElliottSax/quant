@@ -3,7 +3,7 @@ title: '''''''Production-Grade Contrarian System: Treasury Yield Curve with Delt
   Divergence'''
 slug: production-grade-contrarian-system-treasury-yield-curve-with-delta-divergence-20
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

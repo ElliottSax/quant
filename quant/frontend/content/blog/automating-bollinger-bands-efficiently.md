@@ -3,7 +3,7 @@ title: "Automating Bollinger Bands Efficiently"
 slug: "automating-bollinger-bands-efficiently"
 description: "Optimized implementations of Bollinger Band strategies with incremental computation, vectorized backtesting, and efficient signal generation for production trading systems."
 keywords: ["Bollinger Bands", "efficient computation", "incremental indicators", "vectorized backtesting", "trading optimization"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1830

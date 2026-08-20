@@ -2,7 +2,7 @@
 title: CCI Commodity Channel Index Strategy
 slug: cci-commodity-channel-index-strategy
 description: Complete CCI trading guide with overbought/oversold zones, divergence
-author: Content Team
+author: "QuantEngines"
 category: Technical Indicators
 tags: []
 keyword: CCI commodity channel index strategy

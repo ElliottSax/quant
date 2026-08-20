@@ -2,7 +2,7 @@
 title: '''''''Daily Sector Rotation with Risk Parity: Risk-Adjusted Returns'''''''
 slug: daily-sector-rotation-with-risk-parity-risk-adjusted-returns
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

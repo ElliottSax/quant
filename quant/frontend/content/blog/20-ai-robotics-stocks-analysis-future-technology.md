@@ -3,7 +3,7 @@ title: '''''''AI and Robotics Stocks Analysis: Future Technology'''''''
 slug: ai-robotics-stocks-analysis-future-technology
 description: '''''''AI and robotics stocks 2026: future technology analysis. Best
   AI stocks'''
-author: Quant Research Team
+author: "QuantEngines"
 category: Emerging Tech
 tags: []
 date: 2026-07-29

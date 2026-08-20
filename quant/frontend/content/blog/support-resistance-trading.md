@@ -2,7 +2,7 @@
 title: "Support and Resistance Trading: Identification and Strategy"
 description: "Learn to identify and trade support and resistance levels. Master horizontal levels, trendlines, and dynamic S/R with proven entry strategies."
 date: "2026-03-10"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["support resistance", "price levels", "technical analysis", "breakout trading", "price action"]
 keywords: ["support and resistance trading", "support resistance levels", "trading support resistance"]

@@ -1,7 +1,7 @@
 ---
 title: "Backtesting MACD Crossovers Efficiently"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["MACD", "crossovers", "backtesting", "python", "optimization"]
 slug: "backtesting-macd-crossovers-efficiently"

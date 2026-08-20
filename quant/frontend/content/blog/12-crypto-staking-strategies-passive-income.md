@@ -2,7 +2,7 @@
 title: '''''''Crypto Staking Strategies: Passive Income Guide 2026'''''''
 slug: crypto-staking-strategies-passive-income
 description: Maximize crypto staking rewards. Protocol comparison, delegation, and
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Staking strategies for crypto passive income 2026

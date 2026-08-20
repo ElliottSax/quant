@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading federal reserve board 
   portfolios. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading federal reserve board members portfolios
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

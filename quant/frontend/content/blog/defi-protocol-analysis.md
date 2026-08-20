@@ -2,7 +2,7 @@
 title: "DeFi Protocol Analysis: TVL, Volume, and Risk Metrics"
 description: "Quantitative framework for evaluating DeFi protocols. Learn TVL analysis, liquidity depth assessment, and protocol risk scoring for investment decisions."
 date: "2026-05-17"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["defi", "protocol-analysis", "risk-management"]
 keywords: ["DeFi analysis", "TVL metrics", "protocol risk", "DeFi valuation"]

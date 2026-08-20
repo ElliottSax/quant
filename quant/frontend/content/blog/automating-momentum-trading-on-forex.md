@@ -2,7 +2,7 @@
 word_count: 1680
 title: "Automating Momentum Trading on Forex"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["forex", "momentum", "currency", "FX trading", "algorithmic trading"]
 slug: "automating-momentum-trading-on-forex"

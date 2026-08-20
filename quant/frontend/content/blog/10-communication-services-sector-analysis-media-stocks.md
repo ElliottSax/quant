@@ -2,7 +2,7 @@
 title: '''''''Communication Services Sector Analysis: Media Stocks'''''''
 slug: communication-services-sector-analysis-media-stocks
 description: '''''''Communication services stocks 2026: telecom, media, entertainment'
-author: Quant Research Team
+author: "QuantEngines"
 category: Communication Services
 tags: []
 date: 2026-07-25

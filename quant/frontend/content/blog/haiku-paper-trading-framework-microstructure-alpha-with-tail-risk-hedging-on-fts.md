@@ -3,7 +3,7 @@ title: '''''''Paper Trading Framework: Microstructure Alpha with Tail Risk Hedgi
   on'
 slug: paper-trading-framework-microstructure-alpha-with-tail-risk-hedging-on-ftse-100
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

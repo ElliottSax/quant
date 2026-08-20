@@ -2,7 +2,7 @@
 title: "Jupyter Notebook for Trading Analysis: Setup and Workflows"
 description: "Set up Jupyter Notebook for trading research. Learn interactive analysis workflows, visualization, strategy development, and reproducible research practices."
 date: "2026-03-25"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Python & Automation"
 tags: ["jupyter notebook", "python", "trading analysis", "data visualization", "research workflow"]
 keywords: ["jupyter notebook trading", "jupyter trading analysis", "python notebook trading"]

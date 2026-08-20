@@ -3,7 +3,7 @@ title: "Automating Bollinger Bands With High Success Rate"
 slug: "automating-bollinger-bands-with-high-success-rate"
 description: "Advanced Bollinger Band configurations and multi-filter setups that achieve 65-75% win rates through volatility regime filtering, volume confirmation, and adaptive exits."
 keywords: ["Bollinger Bands high win rate", "mean reversion success", "trade filtering", "volatility bands", "profitable trading system"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1850

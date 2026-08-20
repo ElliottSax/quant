@@ -2,7 +2,7 @@
 title: "Layer 2 Arbitrage: Optimism, Arbitrum, and Base Strategies"
 description: "Arbitrage strategies across Layer 2 blockchains. Learn bridge arbitrage, cross-L2 strategies, and economic analysis of settlement costs."
 date: "2026-05-19"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["layer-2", "arbitrage", "scaling"]
 keywords: ["Layer 2 arbitrage", "Optimism", "Arbitrum", "cross-chain arbitrage"]

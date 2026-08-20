@@ -2,7 +2,7 @@
 title: "Commodity Trading Strategies: Trend, Carry, and Seasonal"
 description: "Explore systematic commodity trading strategies including trend following, carry/roll yield, and seasonal patterns with backtested performance data."
 date: "2026-04-18"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["commodities", "trend following", "carry trade", "seasonal trading", "futures trading"]
 keywords: ["commodity trading strategies", "commodity trend following", "carry trade commodities", "seasonal commodity patterns", "commodity futures strategies"]

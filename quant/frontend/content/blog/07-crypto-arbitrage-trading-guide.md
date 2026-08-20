@@ -2,7 +2,7 @@
 title: '''''''Crypto Arbitrage Trading Complete Guide: Low-Risk Profits'''''''
 slug: crypto-arbitrage-trading-guide
 description: Master arbitrage trading in cryptocurrency. Cross-exchange opportunities
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Crypto arbitrage trading complete guide

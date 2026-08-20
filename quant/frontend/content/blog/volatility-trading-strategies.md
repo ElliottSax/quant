@@ -2,7 +2,7 @@
 title: "Volatility Trading Strategies: VIX, Straddles, and Strangles"
 description: "Master volatility trading with VIX-based strategies, straddle/strangle systems, and volatility surface arbitrage backed by systematic backtest data."
 date: "2026-04-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["volatility trading", "VIX", "straddle", "strangle", "options volatility"]
 keywords: ["volatility trading strategies", "VIX trading", "straddle strangle strategies"]

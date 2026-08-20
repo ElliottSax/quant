@@ -2,7 +2,7 @@
 title: "Execution Algorithms: TWAP, VWAP, and Implementation Shortfall"
 description: "Master execution algorithms for quantitative trading. TWAP, VWAP, implementation shortfall, and adaptive algorithms with Python implementations."
 date: "2026-03-27"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["execution algorithms", "TWAP", "VWAP", "implementation shortfall", "order execution"]
 keywords: ["execution algorithms trading", "TWAP VWAP algorithm", "implementation shortfall"]

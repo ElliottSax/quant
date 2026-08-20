@@ -3,7 +3,7 @@ title: "Automating Algorithmic Trading Efficiently"
 slug: "automating-algorithmic-trading-efficiently"
 description: "Architecture patterns and optimization techniques for building low-latency, resource-efficient automated trading systems that maximize throughput while minimizing infrastructure costs."
 keywords: ["automated trading", "trading system architecture", "low latency", "efficiency optimization", "event-driven systems"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1860

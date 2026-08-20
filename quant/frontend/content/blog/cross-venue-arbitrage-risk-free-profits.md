@@ -5,7 +5,7 @@ description: Comprehensive guide to cross venue arbitrage risk free profits. Exp
   analysis with actionable strategies and real-world examples.
 keywords:
 - cross venue arbitrage risk free profits
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

@@ -3,7 +3,7 @@ title: '''''''Covered Call Strategy for Income Generation 2026: Complete Guide''
 slug: 01_covered_call_strategy_for_income_generation_2026
 description: '''''''Covered Call Strategy for Income Generation 2026: Complete Guide
   This'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/01_covered_call_strategy_for_income_generation_2026

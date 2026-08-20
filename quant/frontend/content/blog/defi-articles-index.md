@@ -2,7 +2,7 @@
 title: Web3 & DeFi Articles Index - Complete Collection
 slug: DEFI_ARTICLES_INDEX
 description: Web3 & DeFi Articles Index - Complete Collection This article provides
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/DEFI_ARTICLES_INDEX

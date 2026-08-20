@@ -3,7 +3,7 @@ title: '''''''DeFi Insurance Protocols: Complete 2026 Comparison Guide'''''''
 slug: defi_article_08_defi_insurance_protocols_complete_comparison
 description: '''''''DeFi Insurance Protocols: Complete 2026 Comparison Guide This
   article'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_08_defi_insurance_protocols_complete_comparison

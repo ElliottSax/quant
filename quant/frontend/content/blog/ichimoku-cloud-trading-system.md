@@ -2,7 +2,7 @@
 title: "Ichimoku Cloud Trading System: Complete Strategy Guide"
 description: "Learn the Ichimoku Cloud trading system with all five components explained. Master Tenkan-sen, Kijun-sen, Senkou Span, and Chikou Span signals."
 date: "2026-03-08"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["ichimoku cloud", "technical analysis", "trend following", "japanese indicators", "trading system"]
 keywords: ["ichimoku cloud trading system", "ichimoku strategy", "ichimoku cloud indicator"]

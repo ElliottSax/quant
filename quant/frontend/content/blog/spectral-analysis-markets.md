@@ -2,7 +2,7 @@
 title: "Spectral Analysis of Markets: Fourier Transform Trading"
 description: "Leverage Fourier analysis to identify dominant market cycles, extract periodicities, and build frequency-domain trading strategies."
 date: "2026-05-27"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Advanced Analytics"
 tags: ["spectral-analysis", "fourier-transform", "cycle-analysis"]
 keywords: ["spectral analysis", "Fourier transform", "market cycles", "periodicity", "frequency domain trading"]

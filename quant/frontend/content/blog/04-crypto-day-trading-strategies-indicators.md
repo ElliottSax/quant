@@ -2,7 +2,7 @@
 title: Best Crypto Day Trading Strategies and Indicators Guide
 slug: crypto-day-trading-strategies-indicators
 description: Master day trading crypto with proven strategies and indicators. Entry/exit
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Best crypto day trading strategies and indicators

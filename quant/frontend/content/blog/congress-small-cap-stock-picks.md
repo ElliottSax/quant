@@ -2,7 +2,7 @@
 title: 'Congress Small-Cap Stock Picks: Penny Stocks and Emerging Company Holdings'
 description: Analysis of congressional members' small-cap and emerging company investments
   with extreme return profiles
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-small-cap-stock-picks

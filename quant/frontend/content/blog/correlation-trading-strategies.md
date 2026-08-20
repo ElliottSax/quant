@@ -2,7 +2,7 @@
 title: "Correlation Trading: Cross-Asset Relationships and Strategy"
 description: "Master correlation trading with cross-asset analysis. Learn pair correlation, rolling windows, regime changes, and portfolio hedging strategies."
 date: "2026-03-19"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["correlation trading", "cross-asset", "pairs trading", "portfolio diversification", "risk management"]
 keywords: ["correlation trading strategies", "cross-asset correlation", "correlation analysis trading"]

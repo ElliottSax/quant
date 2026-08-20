@@ -2,7 +2,7 @@
 title: '''''''From Theory to Production: Scalping on Crypto Markets'''''''
 slug: from-theory-to-production-scalping-on-crypto-markets
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''''''2026-03-16'''''''

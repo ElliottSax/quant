@@ -2,7 +2,7 @@
 title: '''''''DeFi Yield Farming Strategies: Earn Passive Income 2026'''''''
 slug: defi-yield-farming-strategies-passive-income
 description: Learn DeFi yield farming strategies to generate passive income. Platform
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: DeFi yield farming strategies for passive income

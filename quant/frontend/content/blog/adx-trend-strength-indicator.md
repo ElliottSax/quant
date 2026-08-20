@@ -2,7 +2,7 @@
 title: "ADX Indicator: Measuring Trend Strength for Better Entries"
 description: "Master the ADX indicator to measure trend strength and filter trading signals. Learn +DI/-DI crossovers, ADX thresholds, and trend-following strategies."
 date: "2026-03-16"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["ADX", "trend strength", "directional movement", "DMI", "technical analysis"]
 keywords: ["ADX indicator", "average directional index", "ADX trend strength"]

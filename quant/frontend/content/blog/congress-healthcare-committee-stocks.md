@@ -6,7 +6,7 @@ description: 'Comprehensive guide to congress healthcare committee stocks: pharm
   examples.'
 keywords:
 - 'congress healthcare committee stocks: pharma and medical device picks'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 updated: '2026-03-16'

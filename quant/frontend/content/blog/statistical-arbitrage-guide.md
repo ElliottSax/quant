@@ -2,7 +2,7 @@
 title: "Statistical Arbitrage: Quantitative Pair Trading Systems"
 description: "Build statistical arbitrage systems with Python. Pair selection, spread modeling, entry/exit signals, and risk management for mean-reversion strategies."
 date: "2026-03-16"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["statistical arbitrage", "pairs trading", "mean reversion", "quantitative trading", "spread trading"]
 keywords: ["statistical arbitrage", "pairs trading strategy", "quantitative pair trading"]

@@ -1,7 +1,7 @@
 ---
 title: Commodity Channel Index Trading Strategy
 date: '2026-03-15'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 tags:
 - quant trading

@@ -2,7 +2,7 @@
 title: "Reinforcement Learning for Trading: Q-Learning and DQN"
 description: "Build RL trading agents with Q-Learning and Deep Q-Networks. Custom gym environments, reward shaping, and practical deployment for portfolio management."
 date: "2026-03-20"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Machine Learning"
 tags: ["reinforcement learning", "Q-learning", "DQN", "trading agents", "deep learning"]
 keywords: ["reinforcement learning trading", "Q-learning trading", "DQN trading agent"]

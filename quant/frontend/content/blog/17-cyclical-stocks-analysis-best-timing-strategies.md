@@ -2,7 +2,7 @@
 title: '''''''Cyclical Stocks Analysis: Best Timing Strategies'''''''
 slug: cyclical-stocks-analysis-best-timing-strategies
 description: '''''''Cyclical stocks 2026: timing strategies and economic cycle analysis.'''
-author: Quant Research Team
+author: "QuantEngines"
 category: Market Cycles
 tags: []
 date: 2026-07-28

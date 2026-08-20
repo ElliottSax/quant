@@ -3,7 +3,7 @@ title: '''''''Forex Breakout Trading Strategy: High-Probability Entry Points''''
 slug: 07-forex-breakout-trading-strategy
 description: '''''''Forex Breakout Trading Strategy: High-Probability Entry Points
   This'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/07-forex-breakout-trading-strategy

@@ -2,7 +2,7 @@
 title: "DeFi Yield Farming: Quantitative Risk-Return Analysis"
 description: "Quantitative approach to DeFi yield farming. Learn risk-adjusted return metrics, impermanent loss modeling, and protocol selection frameworks."
 date: "2026-05-02"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["defi", "yield-farming", "risk-management"]
 keywords: ["yield farming", "DeFi returns", "liquidity mining", "risk-adjusted yield"]

@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Position Sizing for Beginners"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["position sizing", "beginner", "backtesting", "python", "risk management"]
 slug: "backtesting-position-sizing-for-beginners"

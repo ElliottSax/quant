@@ -2,7 +2,7 @@
 title: "Algorithmic Trading for Beginners: Getting Started Guide"
 description: "Complete beginner's guide to algorithmic trading covering strategy development, platform selection, backtesting, and first strategy deployment."
 date: "2026-03-17"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["algorithmic trading", "beginners", "automated trading", "quant trading"]
 keywords: ["algorithmic trading for beginners", "getting started algorithmic trading", "automated trading guide"]

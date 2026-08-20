@@ -5,7 +5,7 @@ description: Comprehensive guide to crypto exchange api tutorial binance kraken 
   Expert analysis with actionable strategies and real-world examples.
 keywords:
 - crypto exchange api tutorial binance kraken coinbase
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

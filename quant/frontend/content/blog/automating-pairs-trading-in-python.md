@@ -2,7 +2,7 @@
 word_count: 1750
 title: "Automating Pairs Trading in Python"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["pairs trading", "Python", "statistical arbitrage", "implementation"]
 slug: "automating-pairs-trading-in-python"

@@ -3,7 +3,7 @@ title: 'Congress Bank Stock Trades During Crisis: Financial Stress Prediction an
   Crisis Positioning'
 description: Analysis of congressional members' bank stock trading during February
   2026 financial stress period
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-bank-stock-trades-during-crisis

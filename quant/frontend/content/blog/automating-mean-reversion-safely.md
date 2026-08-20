@@ -2,7 +2,7 @@
 word_count: 1750
 title: "Automating Mean Reversion Safely"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["mean reversion", "risk management", "position sizing", "automated trading"]
 slug: "automating-mean-reversion-safely"

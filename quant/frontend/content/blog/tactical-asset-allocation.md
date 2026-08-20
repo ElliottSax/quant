@@ -2,7 +2,7 @@
 title: "Tactical Asset Allocation: Systematic Market Timing Approaches"
 description: "Implement systematic tactical asset allocation using momentum, valuation, and macro signals to dynamically adjust portfolio weights across asset classes."
 date: "2026-04-22"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Portfolio Management"
 tags: ["tactical allocation", "market timing", "asset allocation", "systematic investing", "dynamic allocation"]
 keywords: ["tactical asset allocation", "systematic market timing", "dynamic asset allocation", "TAA strategies", "tactical portfolio management"]

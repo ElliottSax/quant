@@ -2,7 +2,7 @@
 title: '''''''Earnings Momentum Backtest: Forex Pairs Tick-Level Results (2026)'''''''
 slug: earnings-momentum-backtest-forex-pairs-tick-level-results-2026
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

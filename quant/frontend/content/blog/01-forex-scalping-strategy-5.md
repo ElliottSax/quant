@@ -3,7 +3,7 @@ title: '''''''Forex Scalping Strategy on 5-Minute Charts: High-Frequency Trading
   Quick'''
 slug: 01-forex-scalping-strategy-5
 description: '''''''Forex Scalping Strategy on 5-Minute Charts: High-Frequency Trading'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/01-forex-scalping-strategy-5

@@ -3,7 +3,7 @@ title: "Automating Algorithmic Trading Using Machine Learning"
 slug: "automating-algorithmic-trading-using-machine-learning"
 description: "How to integrate machine learning models into automated trading systems, from feature engineering through model training to live deployment with proper validation."
 keywords: ["machine learning trading", "ML alpha model", "feature engineering", "model deployment", "walk-forward optimization"]
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 date: "2026-03-15"
 word_count: 1880

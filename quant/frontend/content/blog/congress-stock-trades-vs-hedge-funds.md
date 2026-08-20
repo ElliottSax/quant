@@ -3,7 +3,7 @@ title: 'Congress Stock Trades vs Hedge Funds: Performance Comparison and Informa
   Advantage Quantification'
 description: Comparative analysis of congressional trading performance versus elite
   hedge fund performance metrics
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-stock-trades-vs-hedge-funds

@@ -3,7 +3,7 @@ title: '''''''Best Forex Bollinger Bands Strategy: Volatility-Based Trading Appr
 slug: 18-best-forex-bollinger-bands
 description: '''''''Best Forex Bollinger Bands Strategy: Volatility-Based Trading
   Approach'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/18-best-forex-bollinger-bands

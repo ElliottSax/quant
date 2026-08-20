@@ -2,7 +2,7 @@
 title: "Python Data Analysis for Trading: pandas and NumPy Guide"
 description: "Master pandas and NumPy for trading data analysis. Learn time series manipulation, return calculations, rolling statistics, and performance metrics."
 date: "2026-03-24"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Python & Automation"
 tags: ["python", "pandas", "numpy", "data analysis", "quantitative trading"]
 keywords: ["python data analysis trading", "pandas trading", "numpy financial analysis"]

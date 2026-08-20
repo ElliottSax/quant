@@ -2,7 +2,7 @@
 title: Emerging Markets Regime Detection for Swing Trading with Reinforcement Learning
 slug: emerging-markets-regime-detection-for-swing-trading-with-reinforcement-learning
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

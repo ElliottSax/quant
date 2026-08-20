@@ -2,7 +2,7 @@
 title: '''"Combining Ichimoku Cloud and MACD for Futures: Full Code"'''
 slug: combining-ichimoku-cloud-and-macd-for-futures-full-code
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

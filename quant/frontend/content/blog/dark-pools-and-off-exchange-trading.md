@@ -5,7 +5,7 @@ description: Comprehensive guide to dark pools and off exchange trading. Expert 
   with actionable strategies and real-world examples.
 keywords:
 - dark pools and off exchange trading
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-18'
 updated: '2026-03-18'

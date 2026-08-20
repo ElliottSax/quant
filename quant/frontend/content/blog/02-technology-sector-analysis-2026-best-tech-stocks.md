@@ -3,7 +3,7 @@ title: '''''''Technology Sector Analysis 2026: Best Tech Stocks'''''''
 slug: technology-sector-analysis-2026-best-tech-stocks
 description: '''''''Technology sector analysis 2026: best tech stocks, AI trends,
   cloud'''
-author: Quant Research Team
+author: "QuantEngines"
 category: Technology
 tags: []
 date: 2026-07-23

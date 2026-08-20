@@ -2,7 +2,7 @@
 title: 'Congress Options Trading Analysis: Leverage Strategies and Leveraged Returns'
 description: Analysis of congressional members' options trading strategies revealing
   leverage concentration and timing precision
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-options-trading-analysis

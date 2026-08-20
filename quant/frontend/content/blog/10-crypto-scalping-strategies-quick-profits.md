@@ -2,7 +2,7 @@
 title: Best Crypto Scalping Strategies for Quick Profits
 slug: crypto-scalping-strategies-quick-profits
 description: Master crypto scalping. Small positions, tight stops, and quick profits
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Best crypto scalping strategies for quick profits

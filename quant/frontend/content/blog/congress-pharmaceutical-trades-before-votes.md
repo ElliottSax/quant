@@ -3,7 +3,7 @@ title: 'Congress Pharmaceutical Trades Before Votes: Timing Correlations with Dr
   Policy Legislation'
 description: Analysis of congressional pharmaceutical stock purchases immediately
   preceding healthcare and drug pricing votes
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-pharmaceutical-trades-before-votes

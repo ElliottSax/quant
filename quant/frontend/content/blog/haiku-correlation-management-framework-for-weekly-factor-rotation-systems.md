@@ -2,7 +2,7 @@
 title: Correlation Management Framework for Weekly Factor Rotation Systems
 slug: correlation-management-framework-for-weekly-factor-rotation-systems
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

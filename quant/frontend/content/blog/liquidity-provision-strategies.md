@@ -2,7 +2,7 @@
 title: "Liquidity Provision Strategies: Uniswap V3 Range Optimization"
 description: "Master Uniswap V3 concentrated liquidity with quantitative range selection, fee optimization, and active management strategies for maximum returns."
 date: "2026-05-03"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["uniswap", "liquidity-provision", "amm"]
 keywords: ["Uniswap V3", "concentrated liquidity", "liquidity provision", "AMM strategies"]

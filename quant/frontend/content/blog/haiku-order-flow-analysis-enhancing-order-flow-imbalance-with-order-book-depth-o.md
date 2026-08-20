@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Order Flow Imbalance with Order Boo
   Depth'''
 slug: order-flow-analysis-enhancing-order-flow-imbalance-with-order-book-depth-on-bitc
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

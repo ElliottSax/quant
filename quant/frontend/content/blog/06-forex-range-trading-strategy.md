@@ -3,7 +3,7 @@ title: '''''''Forex Range Trading Strategy Using Support and Resistance: Scalpin
   Ranges'''''''
 slug: 06-forex-range-trading-strategy
 description: '''''''Forex Range Trading Strategy Using Support and Resistance: Scalping'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/06-forex-range-trading-strategy

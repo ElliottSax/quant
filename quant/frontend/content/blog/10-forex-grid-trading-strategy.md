@@ -3,7 +3,7 @@ title: '''''''Forex Grid Trading Strategy Automated: Set and Forget Trading Syst
 slug: 10-forex-grid-trading-strategy
 description: '''''''Forex Grid Trading Strategy Automated: Set and Forget Trading
   Systems'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/10-forex-grid-trading-strategy

@@ -2,7 +2,7 @@
 title: '''''''Risk Management for Crypto Trading: Complete Guide'''''''
 slug: risk-management-crypto-trading
 description: Master crypto trading risk management. Position sizing, stops, and portfolio
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Risk management for crypto trading complete guide

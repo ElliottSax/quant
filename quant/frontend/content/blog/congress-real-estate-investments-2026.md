@@ -2,7 +2,7 @@
 title: 'Congress Real Estate Investments 2026: Property Holdings and Zoning Vote Correlations'
 description: Analysis of congressional real estate holdings and correlation between
   property acquisitions and zoning/development votes
-author: Dr. James Chen
+author: "QuantEngines"
 category: Congressional Trading
 date: '2026-03-16'
 slug: congress-real-estate-investments-2026

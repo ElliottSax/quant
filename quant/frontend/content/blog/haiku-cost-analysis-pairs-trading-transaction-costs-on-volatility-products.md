@@ -2,7 +2,7 @@
 title: '''''''Cost Analysis: Pairs Trading Transaction Costs on Volatility Products'''''''
 slug: cost-analysis-pairs-trading-transaction-costs-on-volatility-products
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

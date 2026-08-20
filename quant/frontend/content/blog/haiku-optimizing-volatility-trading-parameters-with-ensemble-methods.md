@@ -2,7 +2,7 @@
 title: Optimizing Volatility Trading Parameters with Ensemble Methods
 slug: optimizing-volatility-trading-parameters-with-ensemble-methods
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

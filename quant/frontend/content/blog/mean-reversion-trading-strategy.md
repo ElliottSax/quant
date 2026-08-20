@@ -2,7 +2,7 @@
 title: "Mean Reversion Trading Strategy: Complete Backtest Guide"
 description: "Learn how to build and backtest a mean reversion trading strategy with statistical validation, entry/exit rules, and real performance data."
 date: "2026-03-07"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["mean reversion", "backtesting", "statistical trading", "quantitative strategies"]
 keywords: ["mean reversion trading strategy", "mean reversion backtest", "statistical arbitrage"]

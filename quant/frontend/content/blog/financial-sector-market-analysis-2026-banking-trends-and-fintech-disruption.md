@@ -2,7 +2,7 @@
 title: '''''''Financial Sector Market Analysis 2026: Banking Trends and Fintech Disruption'''''''
 slug: financial-sector-market-analysis-2026-banking-trends-and-fintech-disruption
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: Quant
 tags: []
 sector: Financial Services

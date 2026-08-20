@@ -3,7 +3,7 @@ title: '''''''Order Flow Analysis: Enhancing Volatility Surface Arbitrage with F
   Index'''
 slug: order-flow-analysis-enhancing-volatility-surface-arbitrage-with-force-index-on-c
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

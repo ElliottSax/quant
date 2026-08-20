@@ -3,7 +3,7 @@ title: '''''''Paper Trading Framework: Sentiment-Based with Maximum Sharpe on Go
   Futures'''''''
 slug: paper-trading-framework-sentiment-based-with-maximum-sharpe-on-gold-futures
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

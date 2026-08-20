@@ -2,7 +2,7 @@
 title: '''''''Best Crypto Wallets for DeFi 2026: MetaMask vs WalletConnect'''''''
 slug: defi_article_12_best_crypto_wallets_for_defi_2026_guide
 description: '''''''Best Crypto Wallets for DeFi 2026: MetaMask vs WalletConnect This'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_12_best_crypto_wallets_for_defi_2026_guide

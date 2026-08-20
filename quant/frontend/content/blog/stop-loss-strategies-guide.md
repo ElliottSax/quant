@@ -2,7 +2,7 @@
 title: "Stop-Loss Strategies: Trailing, ATR-Based, and Time Stops"
 description: "Master stop-loss strategies including trailing stops, ATR-based exits, time stops, and volatility stops. Learn placement techniques that protect capital."
 date: "2026-03-21"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Risk Management"
 tags: ["stop loss", "trailing stop", "ATR stop", "risk management", "exit strategy"]
 keywords: ["stop loss strategies", "trailing stop loss", "ATR based stop loss"]

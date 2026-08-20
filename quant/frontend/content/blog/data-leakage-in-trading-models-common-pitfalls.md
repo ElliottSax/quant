@@ -5,7 +5,7 @@ description: Comprehensive guide to data leakage in trading models common pitfal
   Expert analysis with actionable strategies and real-world examples.
 keywords:
 - data leakage in trading models common pitfalls
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-18'
 updated: '2026-03-18'

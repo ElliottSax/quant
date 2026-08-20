@@ -4,7 +4,7 @@ title: '''''''Forex MACD Trading Strategy Using Signals: Momentum-Based Entry an
 slug: 16-forex-macd-trading-strategy
 description: '''''''Forex MACD Trading Strategy Using Signals: Momentum-Based Entry
   and'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/16-forex-macd-trading-strategy

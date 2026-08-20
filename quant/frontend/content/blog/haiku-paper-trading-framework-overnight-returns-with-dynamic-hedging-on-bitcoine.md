@@ -2,7 +2,7 @@
 title: '''''''Paper Trading Framework: Overnight Returns with Dynamic Hedging on Bitcoin/Ethereum'''''''
 slug: paper-trading-framework-overnight-returns-with-dynamic-hedging-on-bitcoinethereu
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

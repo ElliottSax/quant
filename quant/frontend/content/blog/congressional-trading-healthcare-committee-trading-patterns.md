@@ -5,7 +5,7 @@ description: Comprehensive guide to congressional trading healthcare committee t
   patterns. Expert analysis with actionable strategies and real-world examples.
 keywords:
 - congressional trading healthcare committee trading patterns
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

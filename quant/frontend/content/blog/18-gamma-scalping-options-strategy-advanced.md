@@ -3,7 +3,7 @@ title: '''''''Gamma Scalping Strategy for Options Trading 2026: Complete Guide''
 slug: 18_gamma_scalping_options_strategy_advanced
 description: '''''''Gamma Scalping Strategy for Options Trading 2026: Complete Guide
   This'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/18_gamma_scalping_options_strategy_advanced

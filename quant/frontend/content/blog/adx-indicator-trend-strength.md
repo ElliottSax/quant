@@ -2,7 +2,7 @@
 title: ADX Indicator Trend Strength Analysis
 slug: adx-indicator-trend-strength
 description: Complete ADX guide with trend strength identification, directional movements
-author: Content Team
+author: "QuantEngines"
 category: Technical Indicators
 tags: []
 keyword: ADX indicator trend strength analysis

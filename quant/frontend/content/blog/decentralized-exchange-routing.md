@@ -2,7 +2,7 @@
 title: "DEX Routing Optimization: 1inch, Cow Swap, and Aggregators"
 description: "DEX aggregation and routing optimization for best execution. Learn swap path optimization, slippage minimization, and MEV protection strategies."
 date: "2026-05-25"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Crypto & DeFi"
 tags: ["dex", "aggregation", "execution"]
 keywords: ["DEX routing", "1inch", "Cow Swap", "swap aggregation", "execution optimization"]

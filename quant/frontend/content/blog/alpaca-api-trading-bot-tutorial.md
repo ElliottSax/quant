@@ -2,7 +2,7 @@
 title: 'Alpaca API Trading Bot Tutorial: Complete Guide to Building Your First Algorithmic
   Trader'
 slug: alpaca-api-trading-bot-tutorial
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 quality_score: 90

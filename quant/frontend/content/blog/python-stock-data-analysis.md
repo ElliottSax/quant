@@ -2,7 +2,7 @@
 title: "Python Stock Data Analysis: Complete Guide with pandas"
 description: "Master stock data analysis in Python using pandas. Learn data fetching, cleaning, technical indicators, and portfolio analytics with production code examples."
 date: "2026-03-10"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Data Science"
 tags: ["python", "pandas", "stock analysis", "data science", "financial data"]
 keywords: ["python stock data analysis", "pandas financial analysis", "stock market python"]

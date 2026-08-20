@@ -2,7 +2,7 @@
 title: '''''''How to Earn Yield on Stablecoins Safely: 2026 Complete Guide'''''''
 slug: defi_article_06_how_to_earn_yield_on_stablecoins_safely
 description: '''''''How to Earn Yield on Stablecoins Safely: 2026 Complete Guide This'
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/defi_article_06_how_to_earn_yield_on_stablecoins_safely

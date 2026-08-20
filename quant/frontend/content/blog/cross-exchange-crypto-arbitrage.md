@@ -1,6 +1,6 @@
 ---
 title: 'Cross-Exchange Crypto Arbitrage: Exploit Price Differences Across Venues'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: cross-exchange-crypto-arbitrage

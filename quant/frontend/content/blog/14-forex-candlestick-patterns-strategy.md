@@ -3,7 +3,7 @@ title: '''''''Forex Candlestick Patterns Strategy 2026: High-Probability Chart F
 slug: 14-forex-candlestick-patterns-strategy
 description: '''''''Forex Candlestick Patterns Strategy 2026: High-Probability Chart
   Formations'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/14-forex-candlestick-patterns-strategy

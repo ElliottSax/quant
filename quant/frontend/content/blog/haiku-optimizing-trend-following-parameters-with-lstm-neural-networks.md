@@ -2,7 +2,7 @@
 title: Optimizing Trend Following Parameters with LSTM Neural Networks
 slug: optimizing-trend-following-parameters-with-lstm-neural-networks
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

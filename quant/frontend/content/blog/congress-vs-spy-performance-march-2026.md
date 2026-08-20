@@ -5,7 +5,7 @@ description: 'Comprehensive guide to congress vs spy performance march 2026: tra
   congressional alpha. Expert analysis with actionable strategies and real-world examples.'
 keywords:
 - 'congress vs spy performance march 2026: tracking congressional alpha'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-17'
 updated: '2026-03-17'

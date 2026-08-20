@@ -3,7 +3,7 @@ title: '''''''Synthetic Positions Strategy for Options Trading 2026: Complete Gu
 slug: 17_synthetic_options_strategies_replication
 description: '''''''Synthetic Positions Strategy for Options Trading 2026: Complete
   Guide'''
-author: Editorial Team
+author: "QuantEngines"
 category: Articles
 tags: []
 canonical_url: https://example.com/17_synthetic_options_strategies_replication

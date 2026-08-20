@@ -2,7 +2,7 @@
 title: Best Crypto Technical Analysis Strategies 2026
 slug: crypto-technical-analysis-strategies
 description: Master technical analysis for crypto. Chart patterns, indicators, and
-author: Crypto Trading Expert
+author: "QuantEngines"
 category: crypto-trading
 tags: []
 keyword: Best crypto technical analysis strategies

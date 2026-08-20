@@ -2,7 +2,7 @@
 word_count: 1680
 title: "Automating Pairs Trading on Crypto"
 date: "2026-03-15"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Algo Trading"
 tags: ["crypto pairs", "cryptocurrency", "statistical arbitrage", "digital assets"]
 slug: "automating-pairs-trading-on-crypto"

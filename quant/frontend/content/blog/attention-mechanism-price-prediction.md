@@ -1,6 +1,6 @@
 ---
 title: 'Attention Mechanisms for Price Prediction: Focusing on Relevant Market Signals'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: attention-mechanism-price-prediction

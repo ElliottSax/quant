@@ -5,7 +5,7 @@ description: 'Comprehensive guide to congress stock trades before fed meeting: a
   rate decisions. Expert analysis with actionable strategies and real-world examples.'
 keywords:
 - 'congress stock trades before fed meeting: anticipating rate decisions'
-author: Dr. James Chen
+author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 updated: '2026-03-16'

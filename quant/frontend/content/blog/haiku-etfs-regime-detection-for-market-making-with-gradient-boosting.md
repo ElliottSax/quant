@@ -2,7 +2,7 @@
 title: ETFs Regime Detection for Market Making with Gradient Boosting
 slug: etfs-regime-detection-for-market-making-with-gradient-boosting
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

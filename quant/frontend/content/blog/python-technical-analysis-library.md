@@ -2,7 +2,7 @@
 title: "Python Technical Analysis: TA-Lib and pandas-ta Guide"
 description: "Build technical analysis systems with Python using TA-Lib and pandas-ta. Learn indicator calculation, signal generation, and custom indicator development."
 date: "2026-03-22"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Python & Automation"
 tags: ["python", "TA-Lib", "pandas-ta", "technical analysis", "quantitative trading"]
 keywords: ["python technical analysis", "TA-Lib python", "pandas-ta guide"]

@@ -2,7 +2,7 @@
 title: "Risk Parity Portfolio Construction: Equal Risk Contribution"
 description: "Build risk parity portfolios that equalize risk across assets. Implementation with Python, inverse-volatility, and full ERC optimization."
 date: "2026-04-02"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["risk parity", "portfolio construction", "equal risk contribution", "asset allocation", "risk management"]
 keywords: ["risk parity portfolio", "equal risk contribution", "risk parity python"]

@@ -2,7 +2,7 @@
 title: "Kalman Filter in Trading: Dynamic Signal Processing"
 description: "Apply Kalman filters to trading for adaptive hedge ratios, trend estimation, and noise filtering. Complete Python implementation with state-space models."
 date: "2026-03-18"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["Kalman filter", "signal processing", "adaptive trading", "state space", "dynamic estimation"]
 keywords: ["Kalman filter trading", "adaptive hedge ratio", "Kalman filter pairs trading"]

@@ -2,7 +2,7 @@
 title: Guide to Risk Management on Crypto
 slug: guide-to-risk-management-on-crypto
 description: This article provides valuable insights and information.
-author: Content Team
+author: "QuantEngines"
 category: guides
 tags: []
 published_date: '''2026-03-16'''

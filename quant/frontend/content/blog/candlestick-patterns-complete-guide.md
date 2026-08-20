@@ -2,7 +2,7 @@
 title: "Candlestick Patterns: Complete Guide to 20 Key Formations"
 description: "Master 20 essential candlestick patterns for trading. Learn reversal and continuation patterns with identification rules and trading strategies."
 date: "2026-03-09"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Technical Analysis"
 tags: ["candlestick patterns", "price action", "reversal patterns", "continuation patterns", "technical analysis"]
 keywords: ["candlestick patterns guide", "candlestick trading patterns", "japanese candlestick patterns"]

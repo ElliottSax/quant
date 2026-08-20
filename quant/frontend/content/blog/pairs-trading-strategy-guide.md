@@ -2,7 +2,7 @@
 title: "Pairs Trading Strategy: Statistical Arbitrage Made Simple"
 description: "Master pairs trading with cointegration analysis, spread construction, and systematic entry/exit rules backed by 15-year backtest data."
 date: "2026-03-09"
-author: "Dr. James Chen"
+author: "QuantEngines"
 category: "Trading Strategies"
 tags: ["pairs trading", "statistical arbitrage", "cointegration", "market neutral"]
 keywords: ["pairs trading strategy", "statistical arbitrage", "cointegration trading"]
