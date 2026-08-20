@@ -125,8 +125,14 @@ function markdownToHtml(md: string): string {
     (_match, tableBlock: string) => {
       const rows = tableBlock.trim().split('\n').filter((r) => r.trim())
       if (rows.length < 2) return tableBlock
-      // Check if row 2 is a separator
-      const isSep = /^\|[\s:-]+\|$/.test(rows[1].trim().replace(/\s+/g, ''))
+      // Check if row 2 is a separator.
+      //
+      // The previous test was /^\|[\s:-]+\|$/, which accepts only a SINGLE-column
+      // separator: `[\s:-]` does not include the pipe, so `|---|---|---|` failed and the
+      // whole block fell through as raw text. Every multi-column table on the site —
+      // 496 of 702 articles contain one — was therefore rendering as literal pipes.
+      // Each cell must be dashes with optional alignment colons.
+      const isSep = /^\|(?:\s*:?-+:?\s*\|)+$/.test(rows[1].trim())
       if (!isSep) return tableBlock
 
       const parseRow = (row: string) =>

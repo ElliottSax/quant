@@ -1,6 +1,7 @@
 ---
-title: 'Backtrader vs Zipline vs VectorBT: Comprehensive Framework Comparison'
+title: 'Backtrader vs Zipline vs VectorBT (Comparison)'
 slug: backtrader-vs-zipline-vs-vectorbt
+description: 'Side-by-side comparison of Backtrader, Zipline and VectorBT across 18 capabilities — architecture, speed, live trading, order types and walk-forward support.'
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
