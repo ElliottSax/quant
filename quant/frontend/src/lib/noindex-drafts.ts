@@ -345,6 +345,61 @@ export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
   'energy-sector-market-analysis-2026-transition-to-renewables-and-oil-market-dynam',
   'esg-investing-market-trends-sustainable-finance-and-impact-investing-growth',
   'financial-sector-market-analysis-2026-banking-trends-and-fintech-disruption',
+
+  // -- 43 near-duplicate articles (measured 2026-08-20). Nine clusters whose members
+  // are 0.98-0.995 identical line-for-line -- the same body with the H1 and opening
+  // sentence swapped. 'Average True Range for Dynamic Position Sizing' and
+  // 'Automating RSI Strategies Safely' are 382 lines each and differ on two of them,
+  // and neither body discusses its own subject. The LONGEST member of each cluster is
+  // deliberately left indexed so the topic still has a page and inbound links survive;
+  // only the copies are listed here.
+  //
+  // Clusters at 0.949 (the options-strategy family) are NOT listed: they share a
+  // template but each covers a genuinely different strategy and answers a different
+  // query, mentioning its own subject 20-33 times against 5-6 for the group below.
+  '09-crypto-futures-trading-strategies-advanced',
+  '10-crypto-scalping-strategies-quick-profits',
+  '11-crypto-options-trading-hedging',
+  '13-crypto-portfolio-diversification',
+  '14-crypto-technical-analysis-strategies',
+  '15-crypto-market-making-strategies',
+  '16-dollar-cost-averaging-crypto-strategy',
+  '19-crypto-tax-optimization-strategies',
+  '20-risk-management-crypto-trading',
+  'automating-risk-management-using-machine-learning',
+  'automating-risk-management-with-high-success-rate',
+  'automating-rsi-strategies-for-beginners',
+  'automating-rsi-strategies-in-python',
+  'automating-rsi-strategies-safely',
+  'automating-statistical-arbitrage-in-python',
+  'automating-statistical-arbitrage-on-crypto',
+  'automating-statistical-arbitrage-on-forex',
+  'automating-statistical-arbitrage-safely',
+  'average-directional-index',
+  'average-true-range',
+  'backtesting-algorithmic-trading-on-crypto',
+  'backtesting-algorithmic-trading-safely',
+  'backtesting-algorithmic-trading-using-machine-learning',
+  'backtesting-bollinger-bands-efficiently',
+  'backtesting-bollinger-bands-for-beginners',
+  'backtesting-bollinger-bands-in-python',
+  'defi-article-02-how-to-stake-ethereum-for-passive-income',
+  'defi-article-03-best-decentralized-exchanges-dex-guide-2026',
+  'defi-article-05-best-defi-lending-protocols-comparison-2026',
+  'defi-article-06-how-to-earn-yield-on-stablecoins-safely',
+  'defi-article-07-best-liquid-staking-tokens-2026-guide',
+  'defi-article-09-how-to-use-uniswap-for-liquidity-provision',
+  'defi-article-10-best-yield-aggregators-defi-2026',
+  'defi-article-11-how-to-bridge-crypto-between-chains-safely',
+  'defi-article-12-best-crypto-wallets-for-defi-2026-guide',
+  'defi-article-13-impermanent-loss-calculator-and-strategies',
+  'defi-article-14-best-layer-2-defi-protocols-2026',
+  'defi-article-15-how-to-minimize-gas-fees-defi-transactions',
+  'defi-article-16-best-defi-governance-tokens-to-stake',
+  'defi-article-17-flash-loan-arbitrage-strategies-defi-2026',
+  'defi-article-18-how-to-use-aave-lending-borrowing-protocol',
+  'defi-article-19-best-defi-portfolio-tracking-tools-2026',
+  'defi-article-20-defi-taxes-guide-complete-strategy-2026',
 ])
 
 /**
