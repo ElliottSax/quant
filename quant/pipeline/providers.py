@@ -166,10 +166,70 @@ class FmpProvider:
         return bars
 
 
+class YFinanceProvider:
+    """Yahoo Finance via the yfinance library.
+
+    Keyless, and returns split/dividend-adjusted bars to inception in a single request
+    (SPY: 8,446 rows back to 1993-01-29, measured) — so unlike the FMP adapter it needs
+    no date-window pagination.
+
+    The trade-off is that Yahoo is an unofficial, unsupported endpoint with no terms of
+    service for programmatic use and no availability guarantee. It is included because
+    it is genuinely measurable and it is what the backend already relies on, not as a
+    recommendation to depend on it for anything published.
+    """
+
+    name = "yfinance"
+
+    def fetch(self, symbol: str, start: date) -> list[Bar]:
+        try:
+            import yfinance as yf
+        except ImportError:
+            raise ProviderError("yfinance is not installed")
+
+        try:
+            # auto_adjust=True returns split- AND dividend-adjusted OHLC, matching the
+            # series every published statistic is computed from.
+            df = yf.Ticker(symbol).history(
+                start=start.isoformat(), interval="1d", auto_adjust=True
+            )
+        except Exception as e:  # noqa: BLE001
+            raise ProviderError(f"yfinance error: {e}")
+
+        if df is None or df.empty:
+            # Yahoo answers an unknown symbol with an empty frame rather than an error,
+            # so emptiness is the only signal that the ticker is not covered.
+            raise ProviderError("no rows returned (unknown symbol or no coverage)")
+
+        bars: list[Bar] = []
+        for ts, row in df.iterrows():
+            try:
+                bars.append(
+                    Bar(
+                        symbol=symbol,
+                        day=ts.date(),
+                        adj_open=float(row["Open"]),
+                        adj_high=float(row["High"]),
+                        adj_low=float(row["Low"]),
+                        adj_close=float(row["Close"]),
+                        volume=float(row.get("Volume") or 0),
+                    )
+                )
+            except (KeyError, TypeError, ValueError):
+                continue
+
+        if not bars:
+            raise ProviderError("no usable rows after validation")
+        bars.sort(key=lambda b: b.day)
+        return bars
+
+
 def get_provider(name: str | None = None) -> EodProvider:
     name = (name or os.environ.get("QUANT_EOD_PROVIDER") or "fmp").lower()
     if name == "fmp":
         return FmpProvider()
+    if name in ("yfinance", "yahoo"):
+        return YFinanceProvider()
     raise ProviderError(
         f"unknown provider '{name}'. Add an adapter here rather than special-casing callers."
     )

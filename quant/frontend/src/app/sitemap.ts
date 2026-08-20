@@ -77,6 +77,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/charts',
     '/network',
     '/resources',
+    '/data-vendors',
     // Deliberately absent: /leaderboard, /signals, /portfolio, /showcase, /discoveries,
     // /compare. Each was replaced with an in-development page carrying
     // robots.index = false after its contents were found to be browser-generated rather

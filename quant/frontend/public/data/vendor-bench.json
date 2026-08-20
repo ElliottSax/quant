@@ -1,0 +1,186 @@
+{
+ "generated_at": "2026-08-20T00:20:39+00:00",
+ "method": "Each provider is probed through the same adapter interface the production pipeline uses. Figures are what the requests actually returned, not what the vendor documents.",
+ "probes": {
+  "history": {
+   "symbol": "SPY",
+   "requested_from": "1990-01-01"
+  },
+  "coverage": [
+   {
+    "symbol": "AAPL",
+    "class": "US large-cap equity"
+   },
+   {
+    "symbol": "PG",
+    "class": "US large-cap equity (entitlement canary)"
+   },
+   {
+    "symbol": "SPY",
+    "class": "index ETF"
+   },
+   {
+    "symbol": "QQQ",
+    "class": "index ETF"
+   },
+   {
+    "symbol": "XLE",
+    "class": "sector ETF"
+   },
+   {
+    "symbol": "GLD",
+    "class": "commodity ETF"
+   }
+  ],
+  "adjustment": {
+   "symbol": "AAPL",
+   "corporate_action": "4:1 split 2020-08-31"
+  }
+ },
+ "results": [
+  {
+   "provider": "fmp",
+   "probes": {
+    "history": {
+     "symbol": "SPY",
+     "requested_from": "1990-01-01",
+     "earliest_returned": "1993-01-29",
+     "latest_returned": "2026-08-19",
+     "rows": 8446,
+     "span_years": 33.6,
+     "ok": true
+    },
+    "coverage": [
+     {
+      "symbol": "AAPL",
+      "class": "US large-cap equity",
+      "ok": true,
+      "rows": 408
+     },
+     {
+      "symbol": "PG",
+      "class": "US large-cap equity (entitlement canary)",
+      "ok": false,
+      "reason": "entitlement",
+      "error": "HTTP 402 \u2014 symbol not covered by the current plan"
+     },
+     {
+      "symbol": "SPY",
+      "class": "index ETF",
+      "ok": true,
+      "rows": 408
+     },
+     {
+      "symbol": "QQQ",
+      "class": "index ETF",
+      "ok": false,
+      "reason": "entitlement",
+      "error": "HTTP 402 \u2014 symbol not covered by the current plan"
+     },
+     {
+      "symbol": "XLE",
+      "class": "sector ETF",
+      "ok": false,
+      "reason": "entitlement",
+      "error": "HTTP 402 \u2014 symbol not covered by the current plan"
+     },
+     {
+      "symbol": "GLD",
+      "class": "commodity ETF",
+      "ok": false,
+      "reason": "entitlement",
+      "error": "HTTP 402 \u2014 symbol not covered by the current plan"
+     }
+    ],
+    "coverage_summary": {
+     "ok": 2,
+     "total": 6,
+     "entitlement_blocked": 4
+    },
+    "adjustment": {
+     "symbol": "AAPL",
+     "corporate_action": "4:1 split 2020-08-31",
+     "worst_daily_move_pct": -8.0,
+     "adjusted": true,
+     "ok": true
+    },
+    "freshness": {
+     "latest_bar": "2026-08-19",
+     "days_behind_today": 0
+    }
+   },
+   "notes": [],
+   "available": true
+  },
+  {
+   "provider": "yfinance",
+   "probes": {
+    "history": {
+     "symbol": "SPY",
+     "requested_from": "1990-01-01",
+     "earliest_returned": "1993-01-29",
+     "latest_returned": "2026-08-19",
+     "rows": 8446,
+     "span_years": 33.6,
+     "ok": true
+    },
+    "coverage": [
+     {
+      "symbol": "AAPL",
+      "class": "US large-cap equity",
+      "ok": true,
+      "rows": 408
+     },
+     {
+      "symbol": "PG",
+      "class": "US large-cap equity (entitlement canary)",
+      "ok": true,
+      "rows": 408
+     },
+     {
+      "symbol": "SPY",
+      "class": "index ETF",
+      "ok": true,
+      "rows": 408
+     },
+     {
+      "symbol": "QQQ",
+      "class": "index ETF",
+      "ok": true,
+      "rows": 408
+     },
+     {
+      "symbol": "XLE",
+      "class": "sector ETF",
+      "ok": true,
+      "rows": 408
+     },
+     {
+      "symbol": "GLD",
+      "class": "commodity ETF",
+      "ok": true,
+      "rows": 408
+     }
+    ],
+    "coverage_summary": {
+     "ok": 6,
+     "total": 6,
+     "entitlement_blocked": 0
+    },
+    "adjustment": {
+     "symbol": "AAPL",
+     "corporate_action": "4:1 split 2020-08-31",
+     "worst_daily_move_pct": -8.01,
+     "adjusted": true,
+     "ok": true
+    },
+    "freshness": {
+     "latest_bar": "2026-08-19",
+     "days_behind_today": 0
+    }
+   },
+   "notes": [],
+   "available": true
+  }
+ ]
+}

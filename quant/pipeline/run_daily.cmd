@@ -59,5 +59,9 @@ if errorlevel 1 (
   exit /b 5
 )
 
+REM Vendor bench: re-measured nightly so the published comparison cannot go stale.
+REM Not gated - a provider failing its probe IS the measurement, not a reason to abort.
+python -m pipeline.bench >> "%LOG%" 2>&1
+
 echo daily run OK >> "%LOG%"
 exit /b 0
