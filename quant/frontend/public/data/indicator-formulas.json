@@ -1,0 +1,409 @@
+{
+ "generated_at": "2026-08-20T16:22:25+00:00",
+ "pandas_ta_version": "0.4.71b0",
+ "measured_on": {
+  "symbol": "AAPL",
+  "bars": 750,
+  "from": "2023-08-23",
+  "to": "2026-08-19"
+ },
+ "method": "Each formula is implemented independently here in plain NumPy from its definition, then computed again with pandas_ta on the same real bars, and the two are compared over every point where both are defined. Agreement is evidence the published formula is the one the library implements; disagreement is published as a finding rather than hidden.",
+ "tolerance": "relative difference below 1e-6 against the series' own scale",
+ "bollinger_stdev_convention": {
+  "probe": {
+   "ddof_0": {
+    "max_abs_diff": 4.238989422248835,
+    "matches": false,
+    "label": "population (Bollinger's own definition)"
+   },
+   "ddof_1": {
+    "max_abs_diff": 2.5352164811920375e-11,
+    "matches": true,
+    "label": "sample (pandas .std default)"
+   }
+  },
+  "pandas_ta_uses_ddof": 1,
+  "finding": "pandas_ta computes the bands with pandas' .std(), which defaults to ddof=1 -- the SAMPLE standard deviation. Bollinger's own definition and most charting platforms use the population form (ddof=0). Both were computed against the same library output; the match is measured, not assumed."
+ },
+ "indicators": [
+  {
+   "key": "rsi",
+   "name": "RSI",
+   "full_name": "Relative Strength Index",
+   "params": "length = 14",
+   "formula": [
+    "gain_t = max(close_t - close_{t-1}, 0)",
+    "loss_t = max(close_{t-1} - close_t, 0)",
+    "avg_gain = Wilder(gain, 14),  avg_loss = Wilder(loss, 14)",
+    "RS = avg_gain / avg_loss",
+    "RSI = 100 - 100 / (1 + RS)"
+   ],
+   "gotcha": "The averages are WILDER's smoothing, not a simple or standard exponential average. Wilder's is an EMA with alpha = 1/n, while a standard EMA uses 2/(n+1) -- for n = 14 that is 0.0714 against 0.1333, nearly double. An RSI built on a plain EMA looks right, moves right, and disagrees with every charting platform. This is the single most common RSI implementation bug. Second, because Wilder's smoothing is recursive the SEED persists far longer than the 14-bar window suggests -- see the measured warm-up below.",
+   "series": [
+    {
+     "series": "RSI",
+     "pandas_ta_column": "RSI_14",
+     "bars_to_within": {
+      "0.1": 85,
+      "0.01": 117
+     },
+     "comparable_points": 736,
+     "max_abs_diff_overall": 23.57624979829357,
+     "max_rel_diff_overall": 0.29137805522698496,
+     "converged": true,
+     "converged_at_bar": 198,
+     "bars_before_convergence": 184,
+     "max_abs_diff_after_convergence": 7.479686701117316e-05,
+     "points_after_convergence": 552,
+     "first_valid_mine": 14,
+     "first_valid_theirs": 1,
+     "agrees": true,
+     "exact_throughout": false
+    }
+   ],
+   "all_agree": true,
+   "latest_values": {
+    "RSI": 53.99708
+   }
+  },
+  {
+   "key": "atr",
+   "name": "ATR",
+   "full_name": "Average True Range",
+   "params": "length = 14",
+   "formula": [
+    "TR_t = max(high_t - low_t, |high_t - close_{t-1}|, |low_t - close_{t-1}|)",
+    "ATR = Wilder(TR, 14)"
+   ],
+   "gotcha": "True range uses the PREVIOUS close, which is what makes it capture overnight gaps -- a high-minus-low range cannot. The smoothing is Wilder's again, not a simple moving average of TR.",
+   "series": [
+    {
+     "series": "ATR",
+     "pandas_ta_column": "ATRr_14",
+     "bars_to_within": {
+      "0.1": 0,
+      "0.01": 0
+     },
+     "comparable_points": 737,
+     "max_abs_diff_overall": 6.217248937900877e-15,
+     "max_rel_diff_overall": 5.392120279291363e-16,
+     "converged": true,
+     "converged_at_bar": 13,
+     "bars_before_convergence": 0,
+     "max_abs_diff_after_convergence": 6.217248937900877e-15,
+     "points_after_convergence": 737,
+     "first_valid_mine": 13,
+     "first_valid_theirs": 13,
+     "agrees": true,
+     "exact_throughout": true
+    }
+   ],
+   "all_agree": true,
+   "latest_values": {
+    "ATR": 7.652761
+   }
+  },
+  {
+   "key": "adx",
+   "name": "ADX",
+   "full_name": "Average Directional Index",
+   "params": "length = 14",
+   "formula": [
+    "up = high_t - high_{t-1},  down = low_{t-1} - low_t",
+    "+DM = up   if up > down and up > 0   else 0",
+    "-DM = down if down > up and down > 0 else 0",
+    "+DI = 100 * Wilder(+DM, 14) / ATR,  -DI = 100 * Wilder(-DM, 14) / ATR",
+    "DX  = 100 * |+DI - -DI| / (+DI + -DI)",
+    "ADX = Wilder(DX, 14)"
+   ],
+   "gotcha": "ADX is smoothed TWICE -- once into the DI values and again over DX -- so it needs roughly 2n bars before it means anything, and implementations differ in where they seed the second pass. Note also that only ONE of +DM and -DM can be non-zero on any bar; computing both from the raw moves without that exclusive rule is a frequent error.",
+   "series": [
+    {
+     "series": "ADX",
+     "pandas_ta_column": "ADX_14",
+     "bars_to_within": {
+      "0.1": 55,
+      "0.01": 116
+     },
+     "comparable_points": 724,
+     "max_abs_diff_overall": 29.623245715325407,
+     "max_rel_diff_overall": 0.5657166991235903,
+     "converged": true,
+     "converged_at_bar": 202,
+     "bars_before_convergence": 176,
+     "max_abs_diff_after_convergence": 4.923873817119784e-05,
+     "points_after_convergence": 548,
+     "first_valid_mine": 26,
+     "first_valid_theirs": 13,
+     "agrees": true,
+     "exact_throughout": false
+    },
+    {
+     "series": "DMP",
+     "pandas_ta_column": "DMP_14",
+     "bars_to_within": {
+      "0.1": 67,
+      "0.01": 96
+     },
+     "comparable_points": 737,
+     "max_abs_diff_overall": 9.355533161933753,
+     "max_rel_diff_overall": 0.18485379256072199,
+     "converged": true,
+     "converged_at_bar": 178,
+     "bars_before_convergence": 165,
+     "max_abs_diff_after_convergence": 4.931844703293109e-05,
+     "points_after_convergence": 572,
+     "first_valid_mine": 13,
+     "first_valid_theirs": 13,
+     "agrees": true,
+     "exact_throughout": false
+    },
+    {
+     "series": "DMN",
+     "pandas_ta_column": "DMN_14",
+     "bars_to_within": {
+      "0.1": 71,
+      "0.01": 99
+     },
+     "comparable_points": 737,
+     "max_abs_diff_overall": 12.326638000316045,
+     "max_rel_diff_overall": 0.2593080224362273,
+     "converged": true,
+     "converged_at_bar": 184,
+     "bars_before_convergence": 171,
+     "max_abs_diff_after_convergence": 4.721496162396477e-05,
+     "points_after_convergence": 566,
+     "first_valid_mine": 13,
+     "first_valid_theirs": 13,
+     "agrees": true,
+     "exact_throughout": false
+    }
+   ],
+   "all_agree": true,
+   "latest_values": {
+    "ADX": 19.930416,
+    "DMP": 27.763558,
+    "DMN": 25.434517
+   }
+  },
+  {
+   "key": "macd",
+   "name": "MACD",
+   "full_name": "Moving Average Convergence Divergence",
+   "params": "fast = 12, slow = 26, signal = 9",
+   "formula": [
+    "MACD  = EMA(close, 12) - EMA(close, 26)",
+    "signal = EMA(MACD, 9)",
+    "histogram = MACD - signal"
+   ],
+   "gotcha": "These are standard EMAs with alpha = 2/(n+1), NOT Wilder's -- the opposite of RSI and ATR. The signal line is an EMA of the MACD line, not of price, and how its warm-up is seeded is where implementations diverge slightly in the first few dozen bars.",
+   "series": [
+    {
+     "series": "MACD",
+     "pandas_ta_column": "MACD_12_26_9",
+     "bars_to_within": {
+      "0.1": 0,
+      "0.01": 0
+     },
+     "comparable_points": 725,
+     "max_abs_diff_overall": 0.0,
+     "max_rel_diff_overall": 0.0,
+     "converged": true,
+     "converged_at_bar": 25,
+     "bars_before_convergence": 0,
+     "max_abs_diff_after_convergence": 0.0,
+     "points_after_convergence": 725,
+     "first_valid_mine": 25,
+     "first_valid_theirs": 25,
+     "agrees": true,
+     "exact_throughout": true
+    },
+    {
+     "series": "MACDs",
+     "pandas_ta_column": "MACDs_12_26_9",
+     "bars_to_within": {
+      "0.1": 0,
+      "0.01": 0
+     },
+     "comparable_points": 717,
+     "max_abs_diff_overall": 0.0,
+     "max_rel_diff_overall": 0.0,
+     "converged": true,
+     "converged_at_bar": 33,
+     "bars_before_convergence": 0,
+     "max_abs_diff_after_convergence": 0.0,
+     "points_after_convergence": 717,
+     "first_valid_mine": 33,
+     "first_valid_theirs": 33,
+     "agrees": true,
+     "exact_throughout": true
+    },
+    {
+     "series": "MACDh",
+     "pandas_ta_column": "MACDh_12_26_9",
+     "bars_to_within": {
+      "0.1": 0,
+      "0.01": 0
+     },
+     "comparable_points": 717,
+     "max_abs_diff_overall": 0.0,
+     "max_rel_diff_overall": 0.0,
+     "converged": true,
+     "converged_at_bar": 33,
+     "bars_before_convergence": 0,
+     "max_abs_diff_after_convergence": 0.0,
+     "points_after_convergence": 717,
+     "first_valid_mine": 33,
+     "first_valid_theirs": 33,
+     "agrees": true,
+     "exact_throughout": true
+    }
+   ],
+   "all_agree": true,
+   "latest_values": {
+    "MACD": -1.642378,
+    "MACDs": -0.928841,
+    "MACDh": -0.713537
+   }
+  },
+  {
+   "key": "bbands",
+   "name": "Bollinger Bands",
+   "full_name": "Bollinger Bands",
+   "params": "length = 5, stdev = 2 (pandas_ta defaults)",
+   "formula": [
+    "middle = SMA(close, n)",
+    "upper  = middle + k * stdev(close, n)",
+    "lower  = middle - k * stdev(close, n)"
+   ],
+   "gotcha": "Which standard deviation? Bollinger's own definition and most charting platforms use the POPULATION form (ddof = 0); pandas_ta computes the bands with pandas' .std(), which defaults to the SAMPLE form (ddof = 1). That was measured here, not assumed -- the bands were computed both ways against the same library output, and only ddof = 1 matched. Because the sample form has the smaller divisor it gives a larger deviation, so pandas_ta's bands are slightly WIDER than the classical definition, and the gap grows as the window shrinks. NumPy's np.std defaults the other way (ddof = 0), so hand-rolled NumPy code and pandas_ta disagree by default. Note also that pandas_ta 0.4.x defaults to length 5, not the conventional 20.",
+   "series": [
+    {
+     "series": "BBL",
+     "pandas_ta_column": "BBL_5_2.0_2.0",
+     "bars_to_within": {
+      "0.1": 0,
+      "0.01": 0
+     },
+     "comparable_points": 746,
+     "max_abs_diff_overall": 2.9672264645341784e-11,
+     "max_rel_diff_overall": 8.993371948126815e-14,
+     "converged": true,
+     "converged_at_bar": 4,
+     "bars_before_convergence": 0,
+     "max_abs_diff_after_convergence": 2.9672264645341784e-11,
+     "points_after_convergence": 746,
+     "first_valid_mine": 4,
+     "first_valid_theirs": 4,
+     "agrees": true,
+     "exact_throughout": true
+    },
+    {
+     "series": "BBM",
+     "pandas_ta_column": "BBM_5_2.0_2.0",
+     "bars_to_within": {
+      "0.1": 0,
+      "0.01": 0
+     },
+     "comparable_points": 746,
+     "max_abs_diff_overall": 1.028865881380625e-11,
+     "max_rel_diff_overall": 3.061772790357655e-14,
+     "converged": true,
+     "converged_at_bar": 4,
+     "bars_before_convergence": 0,
+     "max_abs_diff_after_convergence": 1.028865881380625e-11,
+     "points_after_convergence": 746,
+     "first_valid_mine": 4,
+     "first_valid_theirs": 4,
+     "agrees": true,
+     "exact_throughout": true
+    },
+    {
+     "series": "BBU",
+     "pandas_ta_column": "BBU_5_2.0_2.0",
+     "bars_to_within": {
+      "0.1": 0,
+      "0.01": 0
+     },
+     "comparable_points": 746,
+     "max_abs_diff_overall": 2.5352164811920375e-11,
+     "max_rel_diff_overall": 7.060041761498098e-14,
+     "converged": true,
+     "converged_at_bar": 4,
+     "bars_before_convergence": 0,
+     "max_abs_diff_after_convergence": 2.5352164811920375e-11,
+     "points_after_convergence": 746,
+     "first_valid_mine": 4,
+     "first_valid_theirs": 4,
+     "agrees": true,
+     "exact_throughout": true
+    }
+   ],
+   "all_agree": true,
+   "latest_values": {
+    "BBL": 298.877087,
+    "BBM": 308.728,
+    "BBU": 318.578913
+   }
+  },
+  {
+   "key": "stoch",
+   "name": "Stochastic",
+   "full_name": "Stochastic Oscillator",
+   "params": "k = 14, d = 3, smooth_k = 3",
+   "formula": [
+    "raw %K = 100 * (close - lowest_low(n)) / (highest_high(n) - lowest_low(n))",
+    "%K = SMA(raw %K, smooth_k)",
+    "%D = SMA(%K, d)"
+   ],
+   "gotcha": "What most references call %K is already SMOOTHED -- the unsmoothed version is 'raw %K' or 'fast %K'. Reading the formula literally and comparing to a platform's %K compares two different series. The extremes also use the period's high and low, not closes.",
+   "series": [
+    {
+     "series": "STOCHk",
+     "pandas_ta_column": "STOCHk_14_3_3",
+     "bars_to_within": {
+      "0.1": 0,
+      "0.01": 0
+     },
+     "comparable_points": 735,
+     "max_abs_diff_overall": 4.263256414560601e-14,
+     "max_rel_diff_overall": 4.273246204761858e-16,
+     "converged": true,
+     "converged_at_bar": 15,
+     "bars_before_convergence": 0,
+     "max_abs_diff_after_convergence": 4.263256414560601e-14,
+     "points_after_convergence": 735,
+     "first_valid_mine": 15,
+     "first_valid_theirs": 15,
+     "agrees": true,
+     "exact_throughout": true
+    },
+    {
+     "series": "STOCHd",
+     "pandas_ta_column": "STOCHd_14_3_3",
+     "bars_to_within": {
+      "0.1": 0,
+      "0.01": 0
+     },
+     "comparable_points": 733,
+     "max_abs_diff_overall": 4.263256414560601e-14,
+     "max_rel_diff_overall": 4.2914266217677733e-16,
+     "converged": true,
+     "converged_at_bar": 17,
+     "bars_before_convergence": 0,
+     "max_abs_diff_after_convergence": 4.263256414560601e-14,
+     "points_after_convergence": 733,
+     "first_valid_mine": 17,
+     "first_valid_theirs": 17,
+     "agrees": true,
+     "exact_throughout": true
+    }
+   ],
+   "all_agree": true,
+   "latest_values": {
+    "STOCHk": 43.411975,
+    "STOCHd": 25.149451
+   }
+  }
+ ]
+}
