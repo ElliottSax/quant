@@ -8,24 +8,59 @@ import { isNoindexDraft } from '@/lib/noindex-drafts'
 // Get all publishable blog post slugs from content/blog/*.md.
 // Unfinished drafts -- placeholder-bearing bodies and articles declaring
 // `status: template` -- are excluded; see src/lib/noindex-drafts.ts.
-function getBlogSlugs(): string[] {
+/** A publishable slug plus the date it actually claims to have been updated. */
+interface BlogEntry {
+  slug: string
+  lastModified: Date
+}
+
+/**
+ * Every post's REAL last-modified date, not today's.
+ *
+ * Stamping `new Date()` on all 493 URLs tells Google the entire site changed this
+ * morning, every morning. Google discounts a lastmod that always says "now", so a
+ * uniformly-fresh sitemap is worth less than an honest one -- and it destroys the signal
+ * for the handful of pages that genuinely did change.
+ *
+ * The date is taken from the post's own frontmatter (`last_updated`, then `updated`, then
+ * `date`, then `published_date`), falling back to the file's mtime and only then to now.
+ */
+function getBlogEntries(): BlogEntry[] {
   try {
     const blogDir = path.join(process.cwd(), 'content', 'blog')
     const files = fs.readdirSync(blogDir)
     return files
       .filter(f => f.endsWith('.md') && f !== 'ARTICLES_COMPLETED.md')
-      .map(f => f.replace(/\.md$/, ''))
-      .filter(slug => {
+      .map(f => {
+        const slug = f.replace(/\.md$/, '')
+        const filePath = path.join(blogDir, f)
         let status = ''
+        let lastModified: Date | null = null
         try {
-          const raw = fs.readFileSync(path.join(blogDir, `${slug}.md`), 'utf-8')
+          const raw = fs.readFileSync(filePath, 'utf-8')
           const fm = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
-          if (fm) status = readFrontmatterValue(fm[1], 'status')
+          if (fm) {
+            status = readFrontmatterValue(fm[1], 'status')
+            for (const key of ['last_updated', 'updated', 'date', 'published_date']) {
+              const v = readFrontmatterValue(fm[1], key)
+              if (!v) continue
+              const d = new Date(v)
+              // A frontmatter date in the future is a generation artefact, not a real
+              // edit; using it would advertise a modification that has not happened.
+              if (!Number.isNaN(d.getTime()) && d.getTime() <= Date.now()) {
+                lastModified = d
+                break
+              }
+            }
+          }
+          if (!lastModified) lastModified = fs.statSync(filePath).mtime
         } catch {
-          // Unreadable file -- fall back to the slug list alone.
+          // Unreadable file -- keep the slug, fall back below.
         }
-        return !isNoindexDraft(slug, status)
+        return { slug, status, lastModified: lastModified ?? new Date() }
       })
+      .filter(e => !isNoindexDraft(e.slug, e.status))
+      .map(({ slug, lastModified }) => ({ slug, lastModified }))
   } catch {
     return []
   }
@@ -124,12 +159,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.4,
   }))
 
-  // Dynamically generated blog post URLs
-  const blogSlugs = getBlogSlugs()
-  const blogEntries = blogSlugs.map(slug => ({
+  // Dynamically generated blog post URLs, each carrying its own real date.
+  const blogEntries = getBlogEntries().map(({ slug, lastModified }) => ({
     url: `${baseUrl}/blog/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
+    lastModified,
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
 

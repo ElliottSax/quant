@@ -1,40 +1,95 @@
 # QuantEngines
 
-> A free congressional trading analytics platform and quantitative trading toolkit providing ML-powered predictions, pattern detection, and backtesting tools.
+> Free quantitative finance tools built on public data, where every published number is
+> either arithmetic on inputs you supply or traceable to a named government source. The
+> method and its limitations are stated on each page, including results that do not hold up.
 
 ## About
 
-QuantEngines (quantengines.com) tracks and analyzes stock trades made by U.S. Congress members, providing transparency into political insider trading. The platform uses machine learning models to detect patterns, predict trading signals, and help retail investors follow or analyze congressional trading activity. It also offers free backtesting tools, options analytics, and market research resources. All tools are free with no signup required.
+QuantEngines (quantengines.com) publishes calculators, screeners and reference data for
+quantitative finance. Everything is free and requires no signup.
 
-## Key Content Areas
+The distinguishing property is verification. Tools are cross-checked against an
+independent implementation before publication, data pages carry the source, the licence
+and the counts of what was excluded, and pages render an explicit empty state rather than
+a plausible-looking number when their data is unavailable. Findings that fail are
+published as failures.
 
-- **Congressional Trade Tracking**: Real-time monitoring of stock trades disclosed by U.S. Senators and Representatives, with filtering by politician, party, sector, and trade type
-- **ML-Powered Predictions**: Machine learning models that analyze congressional trading patterns and generate predictive signals
-- **Politician Profiles**: Detailed trading profiles for individual politicians including portfolio holdings, trade history, performance metrics, and sector exposure
-- **Backtesting Platform**: No-code strategy backtesting for stocks, options, crypto, and forex with customizable parameters
-- **Options Analytics**: Options flow analysis, GEX (Gamma Exposure) tracking, and unusual activity detection
-- **Market Scanner**: Stock screening tools with technical and fundamental filters
-- **Trading Signals**: Algorithmic signals derived from congressional trades, technical analysis, and sentiment data
-- **Blog & Research**: Articles on quantitative trading strategies, congressional trading analysis, and market research with academic references
+The site carries no affiliate links and earns no commissions as of August 2026; see
+/affiliate-disclosure, which is updated in the same change as any link that would make it
+untrue.
 
-## Pages
+## Data sources
 
-- /congressional-trades: Browse and filter all congressional stock trades
-- /politicians: Directory of politicians with trading activity
-- /politicians/[id]: Individual politician trading profiles and analytics
-- /backtesting: No-code strategy backtesting interface
-- /strategies: Pre-built trading strategy library
-- /strategy-validation: Academic validation of trading strategies
-- /options: Options analytics dashboard
-- /signals: Trading signal dashboard
-- /scanner: Stock market scanner with filters
-- /charts: Interactive charting tools
-- /compare: Compare politicians or strategies side-by-side
-- /blog: Articles on quant trading, congressional trades, and market analysis
-- /research-references: Academic papers and data sources
-- /tools: Free trading tools directory
-- /pricing: Premium feature tiers
+All published datasets come from sources that permit commercial redistribution:
+
+- SEC EDGAR XBRL company facts (US government work, public domain)
+- US Treasury daily par yield curve rates (US government work, public domain)
+- CFTC Commitments of Traders (US government work, public domain)
+- US House and Senate STOCK Act disclosures (public record)
+
+Free equity price APIs are deliberately not used for published price data: their terms
+uniformly restrict free tiers to personal, non-commercial use, and several prohibit
+display specifically. /data-vendors documents what was measured about each.
+
+## Tools
+
+- /tools: directory of every working tool
+- /fundamentals: cross-sectional screener over 3,057 US filers on three documented
+  accounting anomalies — accruals (Sloan 1996), asset growth (Cooper–Gulen–Schill 2008)
+  and net share issuance (Pontiff–Woodgate 2008), computed from SEC XBRL filings and
+  matched to each company's own fiscal year. Not point-in-time; unsuitable for backtesting.
+- /yield-curve: Treasury par yield curve plus every sustained 10y−2y inversion since 1990,
+  with start, end, duration and depth computed from the daily series rather than recalled
+- /cot-report: CFTC speculator and hedger net positioning for 11 futures markets,
+  normalised by open interest and z-scored against up to 21 years of each market's history
+- /scanner: seasonality screener with multiple-testing-corrected verdicts, including the
+  patterns that fail
+- /indicator-formulas: RSI, ADX, ATR, MACD, Bollinger and Stochastic formulas, each
+  implemented independently and cross-checked against pandas_ta on real bars
+- /statsmodels-imports: which statsmodels import paths work, measured by executing them
+- /pandas-ta-columns: which columns each pandas_ta indicator actually creates, measured by
+  running the library
+- /tools/max-sharpe: closed-form tangency portfolio weights, w ∝ Σ⁻¹(μ − rf·1)
+- /tools/position-size, /tools/risk-reward, /options: closed-form calculators over inputs
+  you provide; no market data is used
+- /congress-stock-trades: congressional trade filings from STOCK Act disclosures
+- /politicians: per-politician filing records
+- /backtesting: strategy backtesting against historical data
+- /data-vendors: measured comparison of market data APIs — coverage, adjustment
+  correctness and licence terms
+- /blog: 458 indexable articles on quantitative trading and market structure
+
+## Findings worth citing
+
+These were measured on this site and are not widely published elsewhere:
+
+- A correct RSI still needs roughly 117 bars before it matches a library implementation to
+  within 0.01, because Wilder's smoothing is recursive and the seed decays rather than
+  expiring with the window. ADX behaves the same way. This explains most reports of an
+  RSI disagreeing with a charting platform. (/indicator-formulas)
+- pandas_ta computes Bollinger bands with the sample standard deviation (ddof=1), while
+  Bollinger's own definition uses the population form, so its bands sit slightly wider
+  than the classical definition. NumPy defaults the other way. (/indicator-formulas)
+- All four common ways of importing ARIMA from statsmodels succeed, and three then fail
+  later: `from statsmodels.tsa.api import arima` returns a module, giving
+  "TypeError: 'module' object is not callable" at the call site rather than at the import.
+  Contrary to common advice, `statsmodels.tsa.api` is not the problem — capitalisation is.
+  (/statsmodels-imports)
+- The longest 10y−2y Treasury inversion on record ran 2022-07-06 to 2024-08-26, 783
+  calendar days, reaching −108bp on 2023-07-03. (/yield-curve)
+
+## Not available
+
+These are named because they are commonly assumed and are not offered:
+
+- No ML-generated trading predictions or signals. /signals and /compare are marked in
+  development and carry robots:noindex after their previous contents were found to be
+  browser-generated rather than measured.
+- No real-time or intraday market data.
+- No investment advice, recommendations, or forecasts of any security or sector.
 
 ## Contact
 
 Website: https://quantengines.com
+Disclosure: https://quantengines.com/affiliate-disclosure
