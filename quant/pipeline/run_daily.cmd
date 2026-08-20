@@ -63,5 +63,44 @@ REM Vendor bench: re-measured nightly so the published comparison cannot go stal
 REM Not gated - a provider failing its probe IS the measurement, not a reason to abort.
 python -m pipeline.bench >> "%LOG%" 2>&1
 
+REM ---------------------------------------------------------------------------
+REM Public-data refreshes. Each writes a dated, self-describing artefact and each
+REM page renders an honest empty state if its artefact is missing, so a failure
+REM here degrades one page rather than the site.
+REM
+REM Deliberately NOT gated on the equity ingest above: these come from entirely
+REM separate government sources (SEC, Treasury, CFTC) and have no dependency on
+REM the price store, so aborting them because FMP had a bad night would take down
+REM working pages for an unrelated reason.
+REM
+REM Each artefact carries generated_at and the source's own as-of date, so a
+REM silent failure surfaces as a visibly stale date on the page rather than as
+REM numbers presented as current. That is the intended failure mode.
+REM ---------------------------------------------------------------------------
+
+REM Treasury publishes each business day.
+python -m pipeline.treasury_curve --out frontend\public\data\treasury-curve.json >> "%LOG%" 2>&1
+if errorlevel 1 echo TREASURY CURVE REFRESH FAILED - /yield-curve serving previous artefact >> "%LOG%"
+
+REM CFTC publishes Fridays at 15:30 ET for the preceding Tuesday. Running daily is
+REM harmless and means the refresh is never more than a day behind the release.
+python -m pipeline.cftc_cot --out frontend\public\data\cot-positioning.json >> "%LOG%" 2>&1
+if errorlevel 1 echo COT REFRESH FAILED - /cot-report serving previous artefact >> "%LOG%"
+
+REM DELIBERATELY NOT REFRESHED NIGHTLY - these are not oversights:
+REM
+REM   pipeline.edgar_fundamentals   XBRL company facts change when companies FILE,
+REM                                 which is quarterly. A nightly run would make ~40
+REM                                 requests to data.sec.gov to rewrite an identical
+REM                                 0.8 MB artefact. Run it after each earnings season:
+REM                                 python -m pipeline.edgar_fundamentals --out ^
+REM                                   frontend\public\data\edgar-screener.json
+REM
+REM   pipeline.indicator_verify     Version-pinned reference. Its numbers only change
+REM   pipeline.pandas_ta_columns    when the library changes, and every figure is
+REM   pipeline.statsmodels_imports  tagged with the version that produced it, so it
+REM                                 goes visibly stale rather than quietly wrong.
+REM                                 Re-run after upgrading pandas_ta or statsmodels.
+
 echo daily run OK >> "%LOG%"
 exit /b 0
