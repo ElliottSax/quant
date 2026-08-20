@@ -11,7 +11,6 @@ keywords: ["cross-exchange arbitrage", "latency arbitrage", "execution", "multi-
 
 Cross-exchange arbitrage exploits temporary price discrepancies across venues, requiring sophisticated execution infrastructure minimizing latency and maximizing fill probability. Unlike risk-free true arbitrage where profit is guaranteed, practical cross-exchange trading involves execution risk, transfer delays, and competition from other arbitrageurs reducing theoretical profits to realistic 0.3-2% per trade after all costs.
 
-This comprehensive guide examines latency-aware execution strategies, infrastructure optimization, transfer efficiency, position rebalancing, and operational frameworks enabling consistent 15-35% annual returns from cross-exchange arbitrage.
 
 ## Execution Latency and Pricing Efficiency
 
@@ -69,7 +68,6 @@ The [drawdown management](/blog/drawdown-management-guide) policy: maximum daily
 
 ## Key Takeaways
 
-Cross-exchange arbitrage generates 15-35% annual returns through systematic spread capture, requiring sub-100ms execution latency, multi-venue infrastructure, and careful position management across exchanges.
 
 Maintaining funded accounts on 5-10 major exchanges eliminates transfer delays and enables rapid position turnover, with $100,000 distributed as $10,000 per venue balancing opportunity capture against counterparty risk concentration.
 
@@ -87,11 +85,11 @@ Minimum $50,000-$100,000 across exchanges ($10,000 per venue minimum spread 5-10
 
 **What are realistic monthly returns from cross-exchange arbitrage?**
 
-Conservative estimate: 200-300 profitable opportunities monthly, 0.2-0.4% net profit each = 40-120 basis points = 4-12% monthly = 48-144% annualized. Reality: after fees, execution challenges, transfer costs: 15-35% annualized achievable for professional operations. Reality check: if 100% monthly possible, everyone would do it. Difficulty increases as: more capital deployed (harder to move prices), more competitors (spread shrinking), lower fee opportunities (need higher capital/speed to compete). Professional arbitrageurs earning 25-40% annually with $1M+, demonstrating capital scarcity is real constraint.
+Conservative estimate: 200-300 profitable opportunities monthly, 0.2-0.4% net profit each = 40-120 basis points = 4-12% monthly = 48-144% annualized. Reality: after fees, execution challenges, transfer costs: 15-35% annualized achievable for professional operations. Reality check: if 100% monthly possible, everyone would do it. Difficulty increases as: more capital deployed (harder to move prices), more competitors (spread shrinking), lower fee opportunities (need higher capital/speed to compete).
 
 **What infrastructure costs are necessary for competitive arbitrage?**
 
-Minimal setup: $500-1,000 monthly ($200 VPS, $200 data feeds, $100 internet). Professional setup: $2,000-5,000 monthly ($1,000 colocated server, $2,000 dedicated feeds, $500-2,000 API access). Enterprise setup: $10,000-50,000 monthly (multiple colocation regions, proprietary feeds, specialized infrastructure). ROI calculation: $2,000 monthly costs require $4,000+ monthly profit to break even. With realistic 1-2% monthly returns on $500,000 ($5,000-10,000), professional infrastructure becomes profitable at scale.
+Minimal setup: $500-1,000 monthly ($200 VPS, $200 data feeds, $100 internet). Professional setup: $2,000-5,000 monthly ($1,000 colocated server, $2,000 dedicated feeds, $500-2,000 API access). Enterprise setup: $10,000-50,000 monthly (multiple colocation regions, proprietary feeds, specialized infrastructure). ROI calculation: $2,000 monthly costs require $4,000+ monthly profit to break even.
 
 **How do you handle withdrawal delays and transfer counterparty risk?**
 

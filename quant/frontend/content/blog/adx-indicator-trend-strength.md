@@ -12,7 +12,7 @@ readTime: 12-15 min read
 
 ## Quick Answer
 
-ADX (Average Directional Index) measures trend strength 0-100. ADX above 25 = strong trend (trade trend-following). ADX below 25 = weak/no trend (avoid or use mean reversion). +DI above -DI = uptrend. -DI above +DI = downtrend. Use ADX with MACD/MA for 60-70% win rate.
+ADX (Average Directional Index) measures trend strength 0-100. ADX above 25 = strong trend (trade trend-following). ADX below 25 = weak/no trend (avoid or use mean reversion). +DI above -DI = uptrend. -DI above +DI = downtrend.
 
 ## Introduction
 

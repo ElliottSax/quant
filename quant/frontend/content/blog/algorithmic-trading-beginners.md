@@ -226,7 +226,7 @@ No. While PhDs are common at large quantitative hedge funds, individual algorith
 
 ### How much money can you make with algorithmic trading?
 
-Realistic expectations for individual algorithmic traders: a well-designed strategy on a $50,000 account might generate 8-15% annual returns with a Sharpe ratio of 0.8-1.2. This translates to $4,000-7,500 per year. Scaling requires either more capital, leverage, or multiple uncorrelated strategies. The median independent quant trader in surveys reports annual returns of 10-20% before fees.
+This translates to $4,000-7,500 per year. Scaling requires either more capital, leverage, or multiple uncorrelated strategies. The median independent quant trader in surveys reports annual returns of 10-20% before fees.
 
 ### What programming language should I learn for algo trading?
 

@@ -103,7 +103,6 @@ Tax efficiency: staking rewards typically taxed as ordinary income. Some jurisdi
 
 ## Key Takeaways
 
-Cryptocurrency staking generates 3-20% annual yields from blockchain validation rewards, with true returns requiring subtraction of capital opportunity costs against alternative DeFi yield farming strategies.
 
 Solo staking optimizes yields (100% reward capture) but requires operational expertise and 32+ ETH minimum, while pooled and liquid staking sacrifice 5-10% rewards for simplicity and capital efficiency suitable for passive investors.
 

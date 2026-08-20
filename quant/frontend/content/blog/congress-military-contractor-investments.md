@@ -266,7 +266,6 @@ Military contractor trading shows remarkable consistency:
 - 2026 Q1: 76.8% win rate
 - Average: 76.1% win rate
 
-Consistent 76%+ win rates across multiple quarters indicates sustained information advantage.
 
 ## Wealth Accumulation from Military Contractor Trading
 

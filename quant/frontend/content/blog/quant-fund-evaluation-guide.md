@@ -155,4 +155,4 @@ Model degradation (alpha decay as strategies become crowded), technology failure
 
 ### How do I assess whether a quant fund's fees are justified?
 
-Compare the fund's net-of-fee Sharpe ratio to what is achievable through low-cost factor exposure. If the fund charges 2/20 and delivers a net Sharpe of 0.6, but a multi-factor smart beta ETF portfolio achieves a Sharpe of 0.5 for 0.30% fees, the incremental value of the quant fund is marginal. The fund must deliver genuine alpha (residual returns after controlling for common factors) to justify performance fees. As a rough guide, a quant fund should deliver net alpha of at least 3-5% annually to justify a 2/20 fee structure.
+Compare the fund's net-of-fee Sharpe ratio to what is achievable through low-cost factor exposure. If the fund charges 2/20 and delivers a net Sharpe of 0.6, but a multi-factor smart beta ETF portfolio achieves a Sharpe of 0.5 for 0.30% fees, the incremental value of the quant fund is marginal. The fund must deliver genuine alpha (residual returns after controlling for common factors) to justify performance fees.

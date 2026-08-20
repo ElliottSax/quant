@@ -11,17 +11,16 @@ keywords: ["crypto statistical arbitrage", "pair trading", "cointegration", "mea
 
 [Statistical arbitrage](/blog/statistical-arbitrage-guide) in cryptocurrency markets exploits temporary deviations from historical price relationships between correlated assets. Unlike pure arbitrage capturing risk-free spreads, statistical arbitrage (stat arb) trades mean-reverting price relationships with statistical confidence rather than certainty. When executed systematically across dozens of pairs, stat arb generates consistent returns through high win rates and favorable risk-reward ratios.
 
-This comprehensive guide examines pair trading fundamentals, cointegration testing, mean reversion modeling, portfolio construction, and execution infrastructure for crypto statistical arbitrage strategies generating 25-60% annual returns with Sharpe ratios exceeding 2.0.
 
 ## Statistical Arbitrage Fundamentals
 
 Statistical arbitrage trades temporary price dislocations between related assets, betting on mean reversion to historical norms. The core premise: if BTC and ETH maintain 0.85 correlation and their price ratio diverges 2+ standard deviations from average, the spread likely reverts, creating profit opportunities.
 
-The distinction from pure arbitrage: pure arbitrage locks in risk-free profits through simultaneous transactions (buying BTC at $42,000 on Binance, selling at $42,050 on Coinbase). Statistical arbitrage accepts timing risk and potential loss if relationships don't revert, compensated by higher expected returns and more frequent opportunities.
+Statistical arbitrage accepts timing risk and potential loss if relationships don't revert, compensated by higher expected returns and more frequent opportunities.
 
 Crypto markets offer excellent stat arb conditions: high volatility creating frequent dislocations, 24/7 trading enabling continuous monitoring, correlated asset pairs (BTC/ETH, ETH/altcoins, stablecoin crosses), fragmented liquidity across exchanges, and limited institutional arbitrage competition compared to traditional markets.
 
-The return profile: 55-65% win rate on individual trades, average winner 1.5-3% return, average loser 0.8-1.5% loss, 20-50 trades monthly per pair. These characteristics create positive expectancy: (0.60 × 2% winners) - (0.40 × 1% losers) = 0.8% expected return per trade. With 30 trades monthly, annualized returns approximate 25-35% on deployed capital.
+These characteristics create positive expectancy: (0.60 × 2% winners) - (0.40 × 1% losers) = 0.8% expected return per trade. With 30 trades monthly, annualized returns approximate 25-35% on deployed capital.
 
 Risk management distinguishes successful stat arb from curve-fitted strategies that fail in live trading. Robust strategies maintain profitability across multiple market regimes, asset pairs, and time periods. Overfitted strategies optimize to historical data but breakdown when correlations shift or volatility changes.
 
@@ -83,7 +82,7 @@ Multi-timeframe confirmation enhances signal quality. Require z-score > +2.0 on 
 
 Stat arb success depends on disciplined position sizing and risk management preventing large losses from failed mean reversions.
 
-The Kelly Criterion-based approach sizes positions using win rate and profit/loss ratios: Kelly% = (Win_Rate × Avg_Win - Loss_Rate × Avg_Loss) / Avg_Win. For 60% win rate, 2% average win, 1% average loss: Kelly = (0.60 × 2 - 0.40 × 1) / 2 = 40% of capital per trade. Conservative traders use 25-50% Kelly (10-20% position sizing) to reduce variance.
+The Kelly Criterion-based approach sizes positions using win rate and profit/loss ratios: Kelly% = (Win_Rate × Avg_Win - Loss_Rate × Avg_Loss) / Avg_Win. Conservative traders use 25-50% Kelly (10-20% position sizing) to reduce variance.
 
 Fixed fractional sizing allocates constant percentage per trade regardless of recent performance: 5-10% of total capital per pair position. With 10 pairs and 8% per position, maximum exposure = 80% capital, maintaining 20% cash buffer. This prevents over-concentration and maintains consistent risk.
 
@@ -131,7 +130,6 @@ Risk monitoring systems track real-time exposure, correlation shifts, and drawdo
 
 ## Key Takeaways
 
-Crypto statistical arbitrage generates 25-60% annual returns through systematic pair trading of mean-reverting price relationships, with Sharpe ratios of 2.0-3.0 from high win rates and favorable risk-reward ratios.
 
 Cointegration testing using Engle-Granger methodology identifies tradable pairs maintaining stationary relationships despite trending prices, with ADF p-values <0.05 indicating robust mean reversion suitable for statistical arbitrage.
 

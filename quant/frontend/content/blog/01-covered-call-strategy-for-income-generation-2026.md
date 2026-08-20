@@ -16,7 +16,7 @@ last_updated: '''''''2026-03-21'''''''
 
 **Meta Description**: Master the covered call strategy for consistent income. Learn entry/exit rules, Greeks impact, and real-world examples for 2026.
 
-**Quick Summary**: The covered call is the most beginner-friendly options strategy, combining stock ownership with call selling to generate monthly income. Generate 2-5% monthly returns by selling out-of-the-money calls against your long stock position.
+**Quick Summary**: The covered call is the most beginner-friendly options strategy, combining stock ownership with call selling to generate monthly income.
 
 ## What You'll Learn
 - Mechanics of covered calls and how they generate income
@@ -31,7 +31,7 @@ last_updated: '''''''2026-03-21'''''''
 
 ## Introduction
 
-If you own stocks and want to generate consistent income while waiting for price appreciation, the covered call strategy is your answer. In 2026, with market volatility averaging 18-22% annually, covered calls generate predictable 2-5% monthly returns for patient traders.
+If you own stocks and want to generate consistent income while waiting for price appreciation, the covered call strategy is your answer.
 
 Unlike passive stock holding, covered calls transform your portfolio into an income engine. You keep all upside to the strike price, collect call premium immediately, and get called away at profit if the stock appreciates.
 
@@ -508,7 +508,6 @@ DAY 45:   Expiration - Assignment or roll forward
 
 ## Key Takeaways
 
-1. **Income Engine**: Covered calls generate 12-26% annualized returns through systematic premium selling
 2. **Theta Is King**: Time decay (theta) is your primary profit source, with daily decay accelerating near expiration
 3. **Entry Matters**: Select high-quality stocks in technical uptrends, sell strikes 5-15% OTM
 4. **Exit Discipline**: Exit at 50% max profit or when technicals break to preserve capital

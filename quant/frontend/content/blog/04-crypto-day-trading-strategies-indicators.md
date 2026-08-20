@@ -27,7 +27,6 @@ Crypto day trading uses 15-minute to 1-hour charts to capture 1-3% daily moves. 
 
 Day trading cryptocurrency offers immediate profits with no overnight gap risk. The 24/7 markets generate constant trading opportunities through volatility spikes and technical patterns.
 
-Professional day traders in 2026 earn 1-3% daily compounding to 250-500%+ annual returns using proven indicator strategies and strict risk management.
 
 ## Why Day Trading Crypto Works
 
@@ -437,7 +436,6 @@ Successful day trading requires:
 3. **Tight stops** (1-2% maximum loss)
 4. **Consistent execution** (same plan every day)
 
-Day traders who follow a system earn 5-15% monthly with proper position sizing and discipline.
 
 ## Next Steps
 

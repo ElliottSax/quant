@@ -15,7 +15,6 @@ This guide covers the practical implementation of financial NLP pipelines, from 
 
 ## Key Takeaways
 
-- **FinBERT outperforms general-purpose models** on financial text by 10-15% accuracy due to domain-specific pre-training.
 - **News sentiment is a short-lived alpha source.** The predictive window is typically 1-3 days for news and 1-5 days for earnings calls.
 - **SEC filings contain structural alpha** in tone changes, unusual language patterns, and readability shifts between filings.
 - **Ensemble multiple text sources** for more robust signals: news + social + filings outperform any single source.
@@ -436,7 +435,7 @@ News sentiment has a half-life of approximately 1-4 hours for breaking news and 
 
 ### Is FinBERT better than general BERT or GPT models for financial sentiment?
 
-FinBERT significantly outperforms general-purpose models on financial text. In benchmarks on the Financial PhraseBank dataset, FinBERT achieves 85-88% accuracy compared to 75-80% for vanilla BERT. This is because financial language has domain-specific nuances: "liability" is negative in general text but neutral in finance, "volatile" is negative in general text but merely descriptive in finance. Always use domain-specific models when available.
+FinBERT significantly outperforms general-purpose models on financial text. This is because financial language has domain-specific nuances: "liability" is negative in general text but neutral in finance, "volatile" is negative in general text but merely descriptive in finance. Always use domain-specific models when available.
 
 ### How do I handle conflicting signals from different text sources?
 

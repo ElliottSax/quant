@@ -177,13 +177,8 @@ signals = trader.mean_reversion_signal(close_prices, bands, volume_data, volume_
 ## Critical Parameters for Optimization
 
 **Band Period**: 20 is optimal for daily timeframe
-- Shorter (10-15): More signals, higher volatility, 65% win rate
-- Longer (25-30): Fewer signals, higher conviction, 67% win rate
 
 **Standard Deviation**: 2.0 is optimal
-- 1.5: Too tight, 62% win rate, excessive signals
-- 2.0: Balanced, 68% win rate
-- 2.5: Conservative, 66% win rate
 
 **Volume Confirmation**: Increases accuracy by 4-6%
 - Require volume spike on band touch
@@ -192,7 +187,7 @@ signals = trader.mean_reversion_signal(close_prices, bands, volume_data, volume_
 ## Frequently Asked Questions
 
 **Q: Should I trade every Bollinger Band touch?**
-A: No. Best entries occur after high-volume moves followed by exhaustion. Random touches have only 45% win rate. Filter with RSI, MACD, or volume patterns.
+A: No. Best entries occur after high-volume moves followed by exhaustion. Filter with RSI, MACD, or volume patterns.
 
 **Q: What's the best timeframe for Bollinger Bands?**
 A: Daily (4-6% average moves), 4-hour (2-3% moves), 1-hour (0.5-1% scalps). Adjust band parameters for each timeframe.

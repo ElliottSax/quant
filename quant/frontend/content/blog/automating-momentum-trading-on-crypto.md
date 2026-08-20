@@ -17,7 +17,7 @@ Cryptocurrency markets exhibit momentum characteristics 3-5x stronger than tradi
 
 ## Why Crypto Momentum is Stronger
 
-**Empirical observation**: Bitcoin and Ethereum momentum signals generate 65-75% win rates over 4-8 hour periods, compared to 55-65% for equity momentum over 5-15 days. The reasons:
+The reasons:
 
 1. **24/7 Trading**: No market close prevents mean reversion overnight. Momentum runs longer
 2. **Leverage Abuse**: Retail traders use 5-20x leverage, creating cascade liquidations on breakouts

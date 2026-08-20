@@ -293,7 +293,6 @@ A: Not initially. Master MACD first. Too many indicators cause confusion and ove
 **Q: How much money do I need to start?**
 A: For forex, micro accounts allow trading with $100+. Start small while learning.
 
-**Q: Is a 50% win rate good?**
 A: Yes, if your average win is larger than average loss. Win rate matters less than profit factor.
 
 **Q: How long should I hold trades?**
@@ -304,4 +303,4 @@ A: No, markets don't trade weekends. Make sure your data excludes weekends.
 
 ## Conclusion
 
-MACD crossover backtesting is an excellent entry point into algorithmic trading. With just 40 lines of Python code, you can test a strategy across 3 years of data. The simple MACD strategy delivers 34% returns with 51% win rate, but realistic expectations drop this to 30% after transaction costs. Focus on proper data handling, avoiding overfitting, and understanding your risks before deploying capital.
+MACD crossover backtesting is an excellent entry point into algorithmic trading. With just 40 lines of Python code, you can test a strategy across 3 years of data. Focus on proper data handling, avoiding overfitting, and understanding your risks before deploying capital.

@@ -19,7 +19,7 @@ color: '''"secondary"'''
 
 ## Quick Answer
 
-Algorithmic trading automates trades based on rules (buy when 50 EMA > 200 EMA, sell when RSI > 80). Best platforms: TradingView (Pine Script), Python (ccxt), or no-code (3Commas). Average profit: 3-5% monthly on crypto, 1-2% on stocks. Key advantage: removes emotion, trades 24/7 even while you sleep.
+Algorithmic trading automates trades based on rules (buy when 50 EMA > 200 EMA, sell when RSI > 80). Best platforms: TradingView (Pine Script), Python (ccxt), or no-code (3Commas). Key advantage: removes emotion, trades 24/7 even while you sleep.
 
 
 ## Introduction
@@ -40,7 +40,7 @@ Code: if 50EMA > 200EMA: buy_signal = True. if 50EMA < 200EMA: sell_signal = Tru
 EMA 50/200, ATR for stop loss sizing
 
 **Real Example:**
-Bot monitors BTC/USD hourly. When 50 > 200 EMA: buys $1000 worth. When 50 < 200: sells all. Average profit: 2-3% monthly.
+Bot monitors BTC/USD hourly. When 50 > 200 EMA: buys $1000 worth. When 50 < 200: sells all.
 
 
 ### Strategy 2: Bollinger Bands Mean Reversion Bot

@@ -18,7 +18,7 @@ description: "The Chaikin Money Flow (CMF) indicator represents one of the most 
 
 # Chaikin Money Flow: Volume-Based Price Prediction
 
-The Chaikin Money Flow (CMF) indicator represents one of the most powerful volume-based tools for predicting directional moves. Developed by Marc Chaikin, this cumulative indicator measures the money flow into and out of a security by analyzing where prices close relative to their trading range, weighted by volume. For algorithmic traders, CMF provides leading signals for breakouts, reversals, and momentum shifts with 64-68% accuracy.
+The Chaikin Money Flow (CMF) indicator represents one of the most powerful volume-based tools for predicting directional moves. Developed by Marc Chaikin, this cumulative indicator measures the money flow into and out of a security by analyzing where prices close relative to their trading range, weighted by volume.
 
 ## Understanding Chaikin Money Flow Mechanics
 
@@ -162,10 +162,9 @@ def cmf_ml_signal(cmf_values, rsi_values, price_changes):
 ## Frequently Asked Questions
 
 **Q: What's the most profitable CMF threshold?**
-A: CMF > 0.15 or < -0.15 for highest conviction trades (61% win rate). CMF > 0.05 captures more trades (64% win rate) but with more noise.
 
 **Q: Should I use CMF alone or with confirmation?**
-A: Confirmation improves results dramatically. CMF alone: 62% win rate. CMF + RSI: 65% win rate. CMF + RSI + breakout: 68% win rate.
+A: Confirmation improves results dramatically.
 
 **Q: What period is optimal for CMF?**
 A: 20 periods (daily) is standard. Shorter (10-15) gives faster signals but noisier. Longer (25-30) filters noise but slower.
@@ -174,7 +173,7 @@ A: 20 periods (daily) is standard. Shorter (10-15) gives faster signals but nois
 A: Yes, with lower thresholds. Intraday CMF oscillates more; use ±0.05 threshold instead of ±0.1.
 
 **Q: How does CMF compare to other volume indicators?**
-A: CMF provides similar accuracy to On-Balance Volume but superior to Price Volume Trend for detecting money flow shifts. CMF: 64% accuracy vs OBV: 61% vs PVT: 58%.
+A: CMF provides similar accuracy to On-Balance Volume but superior to Price Volume Trend for detecting money flow shifts.
 
 ## Conclusion
 

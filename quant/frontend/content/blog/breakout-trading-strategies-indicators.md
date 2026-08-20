@@ -73,7 +73,7 @@ QQQ breaks $400 → Pulls back to $399 test → Bounces on RSI > 50 → Enter lo
 
 ## Risk Management & Position Sizing
 
-Risk 1-2% per trade. Place stop loss just below/above breakout level (or last swing low/high). Target: 1.5-3x the risk. Breakouts should have 60%+ win rate if properly confirmed.
+Risk 1-2% per trade. Place stop loss just below/above breakout level (or last swing low/high). Target: 1.5-3x the risk.
 
 **Critical Rules:**
 - Never risk more than your predetermined % per trade

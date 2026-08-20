@@ -345,7 +345,7 @@ A: Add histogram confirmation - only trade when histogram also crosses the zero 
 A: Yes, though 4-hour or daily works better than hourly due to volatility.
 
 **Q: What's the typical win rate?**
-A: Expect 45-55% win rate. Focus on profit factor (>1.5) and risk/reward ratio (>1.3).
+Focus on profit factor (>1.5) and risk/reward ratio (>1.3).
 
 **Q: Should I add filters?**
 A: Yes, filter signals with trend confirmation (ADX > 20) to improve quality.

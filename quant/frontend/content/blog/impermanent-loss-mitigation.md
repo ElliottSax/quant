@@ -55,7 +55,7 @@ Negative funding rates create profitable hedging opportunities. During bearish p
 
 Protective put strategies buy put options below the current price to limit IL from downward moves. For ETH/USDC liquidity at $2,500 ETH, purchasing a $2,250 put (10% below current) caps IL from ETH declining below $2,250. Cost: 2-4% of position value for 30-day protection.
 
-If ETH drops to $2,000, IL without protection equals approximately -6.7%. The put option gains $250 per ETH, offsetting IL and fee generation likely converts the position to positive. If ETH stays above $2,250, the put expires worthless but fees earned (2-3% monthly) offset the put premium cost.
+If ETH drops to $2,000, IL without protection equals approximately -6.7%. The put option gains $250 per ETH, offsetting IL and fee generation likely converts the position to positive.
 
 Covered call strategies sell call options above current price to generate premium income that offsets IL from upward moves. Selling $2,750 calls (10% above current $2,500) generates 2-3% premium. If ETH rises to $3,000, the calls lose money but premium collected + fees earned + capped upside participation creates acceptable returns. If ETH stays below $2,750, full premium + fees accrue as profit.
 

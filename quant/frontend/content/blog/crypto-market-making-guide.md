@@ -107,7 +107,6 @@ Monitoring and alerting systems track key metrics: profit per trade, fill rates,
 
 ## Key Takeaways
 
-Crypto market making generates consistent returns by capturing bid-ask spreads across thousands of trades, with professional firms earning 15-50% annualized returns on deployed capital through systematic liquidity provision.
 
 Order placement optimization balances spread width against fill probability using mid-price-relative strategies, order book imbalance signals, volatility-adjusted spreads, and dynamic inventory-aware quoting.
 
@@ -125,7 +124,7 @@ Minimum viable market making requires $25,000-$50,000 to maintain positions acro
 
 **What are realistic returns from crypto market making strategies?**
 
-Experienced market makers targeting 15-35% annual returns on deployed capital with daily active management. Highly competitive major pairs (BTC/USDT, ETH/USDT) earn 10-20% annually. Mid-tier pairs with less competition earn 25-50%. Small-cap altcoin pairs can generate 50-150% but face significant inventory risk and low volume. Returns compress as competition increases and must account for gas fees, exchange fees, and hedging costs.
+Mid-tier pairs with less competition earn 25-50%. Small-cap altcoin pairs can generate 50-150% but face significant inventory risk and low volume. Returns compress as competition increases and must account for gas fees, exchange fees, and hedging costs.
 
 **How do market makers avoid adverse selection in crypto markets?**
 

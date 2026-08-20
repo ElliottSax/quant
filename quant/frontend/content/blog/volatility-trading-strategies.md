@@ -230,7 +230,6 @@ The 10% tail hedge allocation costs approximately 0.4 Sharpe per year but provid
 
 - The volatility risk premium (IV > RV 85% of the time) is the foundation of systematic short volatility strategies
 - Delta-hedged straddle selling produced the highest Sharpe ratio (1.58) among individual volatility strategies
-- VIX [mean reversion](/blog/mean-reversion-strategies-guide) is highly profitable (78% win rate) but carries significant tail risk
 - Wider strangles (16-delta) produce better risk-adjusted returns (Sharpe 1.24) than tighter strangles
 - VIX term structure roll yield earns approximately 2.4% per month during contango periods
 - A 10% allocation to tail hedges costs 0.4 Sharpe/year but provides essential crash protection

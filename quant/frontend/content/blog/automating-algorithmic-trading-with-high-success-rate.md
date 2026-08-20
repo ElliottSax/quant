@@ -15,7 +15,7 @@ seo_optimized: true
 
 ## Introduction
 
-The pursuit of a high success rate in algorithmic trading is one of the most misunderstood objectives in quantitative finance. A 90% win rate means nothing if the average loss is 10x the average win. Conversely, a 40% win rate can generate excellent returns if winners are substantially larger than losers. The quantitative framework for understanding this relationship is the expectancy formula, and mastering it is the key to building systems that are genuinely profitable -- not just frequently correct.
+The pursuit of a high success rate in algorithmic trading is one of the most misunderstood objectives in quantitative finance. The quantitative framework for understanding this relationship is the expectancy formula, and mastering it is the key to building systems that are genuinely profitable -- not just frequently correct.
 
 This article presents rigorous methods to maximize the expectancy of automated trading systems, balancing win rate against payoff ratio to achieve optimal risk-adjusted returns.
 
@@ -146,8 +146,6 @@ class FilteredStrategy:
 ```
 
 **Typical results on SPY (2015-2025)**:
-- Unfiltered BB mean reversion: 58% win rate, 0.42% avg return
-- Filtered (3+ conditions): 72% win rate, 0.81% avg return, but 60% fewer trades
 
 The tradeoff: higher win rate comes with fewer opportunities.
 
@@ -322,11 +320,10 @@ def validate_win_rate(trades: pd.Series, claimed_win_rate: float,
     }
 ```
 
-**Rule of thumb**: You need at least 100 trades to claim statistical significance for a 60% win rate, and 400+ trades for a 55% win rate.
 
 ## The Win Rate Deception
 
-Many marketed trading systems claim 80-90% win rates. Here is why that is misleading:
+Here is why that is misleading:
 
 ```python
 # System A: High win rate, poor risk-reward
@@ -346,11 +343,11 @@ system_b = {
 }
 ```
 
-System A loses money despite an 85% win rate. System B makes money despite a 35% win rate. **Always evaluate expectancy, not win rate alone.**
+**Always evaluate expectancy, not win rate alone.**
 
 ## Conclusion
 
-Achieving a high success rate in automated trading requires a nuanced understanding of the relationship between win rate, payoff ratio, and expectancy. Multi-condition signal filtering demonstrably increases win rates from ~55% to ~70% at the cost of trade frequency. Optimal entry timing and adaptive exits further improve the average trade outcome. But the most important lesson is that win rate alone is a deceptive metric: a system with a 55% win rate and 2:1 payoff ratio vastly outperforms one with an 80% win rate and 0.3:1 payoff ratio. Focus on expectancy, validate with sufficient sample sizes, and never trust a claimed win rate without seeing the full distribution of trade outcomes.
+Achieving a high success rate in automated trading requires a nuanced understanding of the relationship between win rate, payoff ratio, and expectancy. Multi-condition signal filtering demonstrably increases win rates from ~55% to ~70% at the cost of trade frequency. Optimal entry timing and adaptive exits further improve the average trade outcome. Focus on expectancy, validate with sufficient sample sizes, and never trust a claimed win rate without seeing the full distribution of trade outcomes.
 
 ## Frequently Asked Questions
 

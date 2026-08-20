@@ -37,7 +37,7 @@ Execution speed determines profitability. Opportunities last 5-30 minutes before
 
 The floor sweeping strategy identifies underpriced floor NFTs during capitulation. When panic sellers list quality NFTs 20-40% below recent floors, systematic buyers "sweep the floor" (buy multiple cheapest listings quickly). If Azuki floor is 10 ETH but 15 NFTs list at 7-8 ETH, buying all 15 risks $150,000 betting floor recovers to 10+ ETH within 2-4 weeks.
 
-Risk management for sweeps includes: maximum position size (5-10% of portfolio per collection), quality filters (only sweep top 50 collections by volume), timeboxed holding (sell after 30 days regardless of outcome), and diversification (sweep 3-5 collections rather than concentrating). Historical analysis shows 60% success rate with 15% average gain versus 12% average loss.
+Risk management for sweeps includes: maximum position size (5-10% of portfolio per collection), quality filters (only sweep top 50 collections by volume), timeboxed holding (sell after 30 days regardless of outcome), and diversification (sweep 3-5 collections rather than concentrating).
 
 Liquidation opportunities arise when overleveraged NFT holders face margin calls. NFTfi and BendDAO enable borrowing against NFT collateral. When floor prices drop and borrowers can't add collateral, lenders liquidate NFTs at discounts. Monitoring liquidation queues and bidding 10-20% below floor captures these opportunities.
 
@@ -69,7 +69,7 @@ The whale accumulation signal: when 3+ whale addresses buy same collection withi
 
 Whale distribution warnings emerge when long-term holders (6+ months) suddenly list multiple NFTs. If an address holding 20 Azukis for 8 months lists 5 simultaneously, this suggests loss of conviction. When multiple whales distribute concurrently, floors often decline 30-50% over 2-4 weeks.
 
-Smart Money wallet copying involves monitoring Nansen-labeled profitable NFT traders. When Smart Money addresses mint new collections or buy floor NFTs, copying these trades (with risk management) achieves positive expected returns. Historical analysis shows Smart Money NFT traders achieve 65-70% profitable trade rate with 2.5× average gain versus loss.
+Smart Money wallet copying involves monitoring Nansen-labeled profitable NFT traders. When Smart Money addresses mint new collections or buy floor NFTs, copying these trades (with risk management) achieves positive expected returns.
 
 The celebrity wallet phenomenon creates temporary floor spikes. When high-profile individuals (Snoop Dogg, Steve Aoki, Gary Vee) buy NFTs, their followers often ape in, driving 50-100% floor increases within days. Monitoring celebrity wallet addresses (publicly known) enables front-running their purchases or quick-flipping after floor spikes before reversion.
 
@@ -109,7 +109,6 @@ Automated trading bots monitor multiple marketplaces 24/7, executing predefined 
 
 ## Key Takeaways
 
-NFT [trading strategies](/blog/backtesting-trading-strategies) generate 15-40% annual returns through systematic floor price arbitrage, rarity-based valuation, and whale wallet tracking, with quantitative approaches outperforming emotional hype-chasing retail trading.
 
 Floor price arbitrage across OpenSea, Blur, and LooksRare captures 1-5% spreads within 24 hours, requiring automated monitoring and sub-minute execution speed to compete with professional traders.
 

@@ -209,9 +209,6 @@ Social media sentiment works best as a contrarian indicator for popular stocks b
 A critical preprocessing step: accurately identifying which company a news article is about. An article mentioning "Apple" could be about Apple Inc. (AAPL) or the fruit. Use named entity recognition (NER) combined with ticker mapping.
 
 **Methods**:
-- Ticker and company name matching (simple, 85% accuracy)
-- SpaCy NER + custom financial entity model (92% accuracy)
-- FinBERT-NER (specialized financial entity model, 95% accuracy)
 
 ### Latency Requirements
 
@@ -240,12 +237,10 @@ A critical preprocessing step: accurately identifying which company a news artic
 
 ## Key Takeaways
 
-- FinBERT achieves 86% accuracy on financial sentiment classification, the best balance of accuracy, speed, and cost
 - News sentiment (Sharpe 1.18) and price momentum (Sharpe 0.84) have low correlation (0.22), making them excellent complements
 - Earnings call tone analysis produces 4.2% alpha over Fama-French factors, with tone change as the most predictive feature
 - Social media sentiment works best as a contrarian indicator for heavily discussed stocks
 - The Loughran-McDonald dictionary is essential for finance-specific sentiment (general dictionaries underperform by 10-15%)
-- Entity recognition accuracy directly impacts signal quality; use financial NER models for 95%+ accuracy
 - Combined sentiment + momentum strategies achieve Sharpe ratios of 1.52
 
 ## Frequently Asked Questions
@@ -256,7 +251,6 @@ Yes, when implemented correctly. Academic research (Heston and Sinha, 2017) demo
 
 ### What NLP model should I use for financial sentiment?
 
-For production trading systems, FinBERT is the recommended starting point: it is free, runs locally (no API costs), achieves 86% accuracy, and processes articles in 50ms. For research and exploration, GPT-based models provide 88% accuracy but at higher cost ($0.01/article) and latency (500ms). Dictionary-based approaches (Loughran-McDonald) are suitable as a baseline and for ultra-low-latency applications but sacrifice 15-20% accuracy compared to transformer models.
 
 ### How quickly does sentiment get priced into markets?
 

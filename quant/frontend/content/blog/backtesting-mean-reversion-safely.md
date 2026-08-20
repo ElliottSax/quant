@@ -304,4 +304,4 @@ A: Normal. Go back to simple parameters; complex parameters overfit.
 
 ## Conclusion
 
-Safe mean reversion backtesting demands walk-forward validation, stress testing across regimes, realistic cost modeling, and reality checks. Expected 10-15% annual returns with 1.3-1.4 Sharpe ratio. Out-of-sample degradation of 10-20% is normal and healthy.
+Safe mean reversion backtesting demands walk-forward validation, stress testing across regimes, realistic cost modeling, and reality checks. Out-of-sample degradation of 10-20% is normal and healthy.

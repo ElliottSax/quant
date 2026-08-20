@@ -259,7 +259,7 @@ A: 20 is standard, but 10-15 works better for mean reversion, 25-30 for trend fo
 A: Add confirmation: RSI extremes, MACD crossovers, volume increase, multi-timeframe alignment. Single indicator trading fails.
 
 **Q: Should I trade band touches or breakouts?**
-A: Band touches are mean reversion (55-60% win rate). Breakouts above/below bands are trend following (45-50% win rate). Both work but require different position management.
+Both work but require different position management.
 
 **Q: How does volatility affect Bollinger Bands profitability?**
 A: High volatility expands bands, reducing touch frequency but increasing profit per trade. Low volatility increases touches but smaller moves. Both environments are profitable with proper sizing.

@@ -201,4 +201,4 @@ A: Disable trading 15 min before/after high-impact news. Spreads widen, slippage
 
 ## Conclusion
 
-Mean reversion on forex delivers 9-10% annual outperformance over buy & hold with 1.38 Sharpe ratio. Optimal parameters: 20-period SMA, Z-score = 2.0 threshold on daily charts. Key success: regime detection (avoid trending markets), market hour selection (tight spreads), and news event avoidance. Average trade: 5-10 days; 150+ trades per year; 50%+ win rate.
+Optimal parameters: 20-period SMA, Z-score = 2.0 threshold on daily charts. Key success: regime detection (avoid trending markets), market hour selection (tight spreads), and news event avoidance.

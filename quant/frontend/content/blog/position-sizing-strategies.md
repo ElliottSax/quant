@@ -227,7 +227,7 @@ Use at least 100 trades of historical data (ideally 200+) to estimate win rate a
 
 ### Is 1% risk per trade really enough?
 
-For most traders, 1% risk per trade provides excellent compounding while keeping drawdowns manageable. At 1% risk with a 55% win rate and 1.5:1 reward ratio, an account doubles roughly every 250-300 trades. The compounding works because the position size grows with the account. The 2% "professional standard" is appropriate for experienced traders but produces drawdowns approximately twice as deep as 1%.
+For most traders, 1% risk per trade provides excellent compounding while keeping drawdowns manageable. The compounding works because the position size grows with the account. The 2% "professional standard" is appropriate for experienced traders but produces drawdowns approximately twice as deep as 1%.
 
 ### How should position sizing change during a losing streak?
 

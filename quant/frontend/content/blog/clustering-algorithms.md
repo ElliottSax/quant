@@ -202,7 +202,7 @@ def hierarchical_clustering_correlation_matrix(correlation_matrix):
 A: 3-4 clusters typically optimal. 2 clusters too simple, 5+ clusters overfit. Test with silhouette score metric.
 
 **Q: Should I cluster all assets together or separately?**
-A: Separate clustering for each asset shows higher predictive power (62% vs 58% accuracy). Market-wide regimes less predictive than individual asset regimes.
+Market-wide regimes less predictive than individual asset regimes.
 
 **Q: What features work best for clustering?**
 A: Returns, volatility, volume, and momentum (4 features) outperform using price alone. Adding more features beyond 6-8 shows diminishing returns and overfitting risk.

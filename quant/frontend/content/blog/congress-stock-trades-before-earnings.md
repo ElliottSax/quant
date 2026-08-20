@@ -64,7 +64,6 @@ Congressional pre-earnings trades predominantly result in stock appreciation (ea
 - Expected probability (50/50 beat/miss): 50%
 - Actual congressional beat correlation: 188% above expected
 
-Congressional pre-earnings purchases predict earnings beats with 94% accuracy—statistically impossible without advance earnings knowledge.
 
 ## Guidance Intelligence
 
@@ -197,7 +196,6 @@ Congressional members trade based on advance profit margin information:
 - Average margin expansion beat: 2.1 percentage points
 - Average return on margin beat trades: 18.2%
 
-Congressional members identify margin expansion (not reported in guidance) with 87% accuracy.
 
 ## Historical Earnings Season Performance
 
@@ -225,4 +223,4 @@ Tight risk management combined with high win rates indicates high-conviction pos
 
 ## Conclusion
 
-Congressional members achieve 78.2% win rate on pre-earnings stock trades executed 3.2 days (average) before earnings announcements, with 18.4% average returns. The 94% accuracy in identifying earnings beats vs 50% random expectation provides quantitative proof of advance earnings knowledge. Position sizing correlates with earnings surprise magnitude (r=0.84), suggesting foreknowledge of surprise size. Tight 3.2% average stop-losses combined with 78.2% win rate indicates high-conviction positions based on reliable information. The 156% buying surge 3-1 days before earnings corresponds to investment banking briefing windows, suggesting briefing recipients trade on advanced information. Options amplification through 4.2x leverage generates additional $67,300 average profit per options contract. The data demonstrates systematic congressional access to earnings information 3.2 days before public announcement, providing measurable trading advantage in quarterly earnings cycles.
+Congressional members achieve 78.2% win rate on pre-earnings stock trades executed 3.2 days (average) before earnings announcements, with 18.4% average returns. Position sizing correlates with earnings surprise magnitude (r=0.84), suggesting foreknowledge of surprise size. Tight 3.2% average stop-losses combined with 78.2% win rate indicates high-conviction positions based on reliable information. The 156% buying surge 3-1 days before earnings corresponds to investment banking briefing windows, suggesting briefing recipients trade on advanced information. Options amplification through 4.2x leverage generates additional $67,300 average profit per options contract. The data demonstrates systematic congressional access to earnings information 3.2 days before public announcement, providing measurable trading advantage in quarterly earnings cycles.

@@ -14,11 +14,11 @@ description: "Pairs trading's strength is its naturally high win rate due to mea
 
 # Automating Pairs Trading with High Success Rate
 
-Pairs trading's strength is its naturally high win rate due to mean reversion: historically correlated pairs diverge, then revert to their relationship. Professional implementations achieve 70%+ win rates by combining strict pair selection, dynamic spread targeting, and adaptive position management. This guide reveals institutional techniques to automate pairs trading systems that consistently deliver 70-75% win rates with 2.5+ profit factors.
+Pairs trading's strength is its naturally high win rate due to mean reversion: historically correlated pairs diverge, then revert to their relationship.
 
 ## Win Rate vs. Profit Factor: The Key Distinction
 
-Beginners focus on win rate; professionals focus on profit factor. A 60% win rate with 3.0 profit factor beats 75% with 1.5 profit factor.
+Beginners focus on win rate; professionals focus on profit factor.
 
 **Profit Factor = (Wins × Avg Win) / (Losses × Avg Loss)**
 
@@ -57,7 +57,6 @@ print(f"Strategy B (60% win): Profit Factor = {pf_b:.2f}")
 
 ## High-Win-Rate Pair Selection
 
-The 1st step to 70%+ win rates: select only the strongest cointegrated pairs.
 
 ```python
 from statsmodels.tsa.stattools import coint
@@ -356,17 +355,15 @@ class WinProbabilityPositionSizer:
 
 ## Frequently Asked Questions
 
-**Q: Is 75% win rate realistic or overfitting?**
 A: Realistic with ultra-strict pair selection (top 1% of cointegrated pairs) and multi-signal confirmation. On out-of-sample data, expect 70-73% (2-3% degradation from overfitting).
 
 **Q: How do I prevent overfitting while achieving high win rates?**
-A: Use walk-forward testing. Train thresholds on 2018-2022, test on 2023-2025. Train on 2019-2023, test on 2024-2026. If both periods show 70%+ win rate, it's real.
+A: Use walk-forward testing. Train thresholds on 2018-2022, test on 2023-2025. Train on 2019-2023, test on 2024-2026.
 
-**Q: Should I use higher leverage with 75% win rate?**
 A: No. Higher win rate means smaller average losses, but catastrophic losses still occur (25% losing trades). Use same leverage (1-2x) regardless of win rate. Leverage doesn't determine profitability; it determines ruin risk.
 
 **Q: How many signals should I require before trading?**
-A: 3-4 is optimal. More signals = fewer trades and diminishing returns. 2 signals = 60% win rate, 3 signals = 70% win rate, 4 signals = 75% win rate.
+A: 3-4 is optimal. More signals = fewer trades and diminishing returns.
 
 **Q: Can I trade lower-correlation pairs if I use more signals?**
 A: No. Weak pairs will reverse below 60% even with perfect signals. Start with 0.88+ correlation pairs; signals only boost good pairs.
@@ -376,6 +373,6 @@ A: Monthly. Track rolling 100-trade win rate. If it drops below 65%, pause tradi
 
 ## Conclusion
 
-Achieving 75%+ win rates in automated pairs trading requires three elements: ultra-strict pair selection (top 1% of cointegrated pairs), dynamic spread targeting (adapt to volatility), and multi-signal confirmation (volume + volatility + momentum). Together, these techniques create institutional-grade systems that consistently deliver 2.5+ Sharpe ratios with under 5% drawdowns.
+Together, these techniques create institutional-grade systems that consistently deliver 2.5+ Sharpe ratios with under 5% drawdowns.
 
-The key insight: win rate is a lagging indicator. Focus on pair quality, signal confluence, and probability-weighted position sizing. High win rate follows naturally from these practices, not vice versa. Professional traders who achieve 70%+ win rates use these frameworks systematically; amateurs chase win rate directly and fail.
+The key insight: win rate is a lagging indicator. Focus on pair quality, signal confluence, and probability-weighted position sizing. High win rate follows naturally from these practices, not vice versa.

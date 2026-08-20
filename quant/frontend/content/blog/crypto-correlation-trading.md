@@ -23,7 +23,7 @@ Dominance trends reflect market cycles: (1) Bull market starts: BTC dominance fa
 
 The seasonal pattern: dominance roughly declines Jan-May (alt season), peaks June-August, declines Sept-Nov (late alt season), peaks December-January. This seasonal pattern hasn't persisted reliably across cycles, but general trend observable.
 
-Dominance extremes signal opportunities: >65% dominance = alts undervalued (rotation imminent), <35% = alts overvalued (consolidation/correction likely). Mechanical mean-reversion strategies buying alts at high dominance, selling at low dominance, generate 15-25% annual returns with 60-70% success rate historically.
+Dominance extremes signal opportunities: >65% dominance = alts undervalued (rotation imminent), <35% = alts overvalued (consolidation/correction likely).
 
 ## Correlation Regimes and Breakdowns
 
@@ -43,7 +43,7 @@ Statistical arbitrage between BTC and alts exploits correlation changes and domi
 
 The dominance mean-reversion strategy: (1) Monitor BTC dominance, (2) when >60%, overweight alts expecting mean reversion, (3) when <40%, reduce alt exposure expecting consolidation. Position sizing: at 65% dominance, deploy 80% capital to alts/stablecoins, 20% BTC. At 30% dominance, reverse (20% alts, 80% BTC).
 
-Historical backtest (2018-2024): dominance >65% preceded 3-6 month alt rallies averaging 40-80% outperformance 75% of time. Dominance <35% preceded 4-8 week alt consolidations averaging 10-20% underperformance 70% of time. Strategy: mechanical rebalance when dominance crosses thresholds. Annual return: 18-25% with 55-60% win rate.
+Historical backtest (2018-2024): dominance >65% preceded 3-6 month alt rallies averaging 40-80% outperformance 75% of time. Dominance <35% preceded 4-8 week alt consolidations averaging 10-20% underperformance 70% of time. Strategy: mechanical rebalance when dominance crosses thresholds.
 
 Correlation pairs trading: pair BTC long with alt short when correlation extreme (>0.90). Example: buy 1 BTC, short 30 ETH (ratio-matched by volatility), maintain position until correlation normalizes. Profit if correlation compresses (alt outperforms BTC). Risk if one-directional crash (both falling together).
 
@@ -55,7 +55,7 @@ Execution mechanics: buy/sell altcoin indices rather than individual assets (red
 
 [Correlation trading](/blog/correlation-trading-strategies) performance depends on regime persistence and execution quality.
 
-Success rate analysis: dominance mean-reversion achieves 65-75% success rate in normal markets, 40-50% during extreme volatility (when regimes shift suddenly). Profit factor (average win / average loss): 2.0-2.5× typical for systematic approaches.
+Profit factor (average win / average loss): 2.0-2.5× typical for systematic approaches.
 
 Drawdown risk: periods when position against regime cause multi-month losses. If allocated heavy to alts during BTC dominance increase (wrong regime), position might suffer 20-30% loss over 2-3 months. Risk management prevents catastrophic loss through: (1) smaller position sizes during uncertain regimes, (2) faster mean-reversion exit thresholds, (3) hedge positions offsetting correlation risk.
 
@@ -71,7 +71,6 @@ Correlation regimes between BTC and alts (0.4-0.95 range) shift predictably acro
 
 Dominance acceleration (rapid shifts in dominance direction) precedes regime changes 70-80% of time, enabling early positioning in emerging alt seasons before crowd recognition and providing 4-8 week alpha advantage.
 
-Mechanical mean-[reversion strategies](/blog/mean-reversion-strategies-guide) rebalancing toward lower-correlation assets at high dominance and higher-correlation assets at low dominance generate 15-25% annual returns with 65-75% success rate in normal market regimes.
 
 Risk management through [position sizing](/blog/position-sizing-strategies) adjustments during uncertain regimes, hedge positions offsetting correlation risk, and portfolio construction maintaining both upside and downside protection prevents catastrophic losses from regime failures.
 

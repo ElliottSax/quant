@@ -267,7 +267,7 @@ With 25% fractional Kelly: position size = 2.1% of portfolio per trade
 A: Mathematically, they're identical. Both involve discrete outcomes with fixed payoffs. The key difference is regulatory oversight—legitimate binary options follow SEC regulations, while many online platforms are unregulated scams.
 
 **Q: Can I profit from binary options if I'm just slightly better than random?**
-A: Yes, with proper position sizing. A 52% win rate with 2:1 payoff ratio yields 4% expected return per trade. Scaled properly, this compounds significantly.
+A: Yes, with proper position sizing. Scaled properly, this compounds significantly.
 
 **Q: How much data do I need to validate a binary option strategy?**
 A: Minimum 200-300 trades to achieve statistical significance. Many traders fall victim to short-term variance.

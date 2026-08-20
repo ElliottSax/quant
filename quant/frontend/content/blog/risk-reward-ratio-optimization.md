@@ -27,11 +27,9 @@ Where Reward is the R:R ratio.
 
 ### Example Calculations
 
-**Strategy A:** 60% win rate, 1:1 R:R
 - Expectancy = (0.60 x $1) - (0.40 x $1) = $0.20 per dollar risked
 - Over 100 trades risking $100 each: Expected profit = $2,000
 
-**Strategy B:** 40% win rate, 1:3 R:R
 - Expectancy = (0.40 x $3) - (0.60 x $1) = $0.60 per dollar risked
 - Over 100 trades risking $100 each: Expected profit = $6,000
 
@@ -193,4 +191,4 @@ Not necessarily. If your analysis shows that specific setups (breakouts at major
 
 ### Does risk-reward ratio matter more than win rate?
 
-Neither dominates the other; they are interdependent components of expectancy. A strategy with an 80% win rate and 1:0.3 R:R has the same expectancy as a strategy with a 33% win rate and 1:2.5 R:R. The practical difference is psychological: high win rate systems are easier for most traders to follow consistently, while low win rate/high R:R systems require patience and tolerance for frequent small losses. Choose the combination that matches your temperament.
+Neither dominates the other; they are interdependent components of expectancy. The practical difference is psychological: high win rate systems are easier for most traders to follow consistently, while low win rate/high R:R systems require patience and tolerance for frequent small losses. Choose the combination that matches your temperament.

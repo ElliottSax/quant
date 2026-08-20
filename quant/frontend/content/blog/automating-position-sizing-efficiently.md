@@ -326,7 +326,7 @@ A: Yes, but carefully. After 3 consecutive wins, increase size by 20%. After 2 c
 A: Use simple max loss: "risk $500 per trade" or "risk 0.5% of account." Calculate position size to limit loss to this amount.
 
 **Q: Is 2% risk per trade safe?**
-A: Depends. With 60% win rate, 2% is safe. With 50% win rate, 2% causes account drawdowns >30%. Never exceed 2% unless win rate >65%.
+A: Depends. With 50% win rate, 2% causes account drawdowns >30%. Never exceed 2% unless win rate >65%.
 
 **Q: How should I adjust sizing if I'm on a losing streak?**
 A: Reduce sizing by 50% after 3 consecutive losses, 25% after 2. Resume normal after 3 consecutive wins. This "dynamic safety" prevents ruin.

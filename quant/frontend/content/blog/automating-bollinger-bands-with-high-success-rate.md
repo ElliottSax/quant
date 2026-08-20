@@ -254,7 +254,7 @@ On SPY daily data (2010-2025), comparing approaches:
 | + Trend | 62% | +0.55% | 0.79 | 9.1 | -7.4% |
 | All three | 72% | +0.83% | 1.15 | 5.6 | -6.2% |
 
-The all-filter configuration achieves 72% win rate with a Sharpe of 1.15, but at the cost of only 5.6 trades per year. This is the fundamental tradeoff: higher win rate means fewer opportunities.
+This is the fundamental tradeoff: higher win rate means fewer opportunities.
 
 ## Position Sizing by Conviction
 
@@ -309,7 +309,7 @@ def monitor_trade_health(trades: pd.Series, window: int = 20) -> dict:
 
 ## Conclusion
 
-Achieving a high success rate with Bollinger Bands requires selective entry through multiple independent filters: bandwidth regime (eliminate extreme volatility), volume capitulation (confirm selling exhaustion), and trend alignment (trade with the macro direction). Each filter independently raises the win rate by 5-7 percentage points, and their combination produces a 72% win rate with a Sharpe ratio of 1.15 on SPY. The cost is reduced trade frequency (5-6 trades per year vs. 18 unfiltered), which means this approach works best as part of a diversified system trading across multiple instruments and timeframes. Always evaluate expectancy rather than win rate alone, and maintain strict position sizing discipline regardless of recent results.
+Achieving a high success rate with Bollinger Bands requires selective entry through multiple independent filters: bandwidth regime (eliminate extreme volatility), volume capitulation (confirm selling exhaustion), and trend alignment (trade with the macro direction). The cost is reduced trade frequency (5-6 trades per year vs. 18 unfiltered), which means this approach works best as part of a diversified system trading across multiple instruments and timeframes. Always evaluate expectancy rather than win rate alone, and maintain strict position sizing discipline regardless of recent results.
 
 ## Frequently Asked Questions
 

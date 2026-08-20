@@ -73,7 +73,7 @@ Stock in uptrend, pulls back to 20 EMA, RSI bounces from 40 → Enter long
 
 ## Risk Management & Position Sizing
 
-Never risk more than 1-2% of your account per trade. Use hard stop losses on every position. Most successful day traders have 60% win rate with 1:2 risk/reward. Start with micro positions (1-2 shares) while learning.
+Never risk more than 1-2% of your account per trade. Use hard stop losses on every position. Start with micro positions (1-2 shares) while learning.
 
 **Critical Rules:**
 - Never risk more than your predetermined % per trade
@@ -138,7 +138,7 @@ Beginners should avoid leverage initially. Once experienced, use 2:1 leverage at
 
 ### What's the minimum account to day trade profitably?
 
-Professionals recommend starting with $2,000-5,000 minimum (below PDT limits). With 60% win rate on $5k account, realistic monthly returns are 2-5% ($100-250). Scale slowly as skills improve.
+Professionals recommend starting with $2,000-5,000 minimum (below PDT limits). Scale slowly as skills improve.
 
 
 ## Ready to Start Trading?

@@ -286,7 +286,7 @@ def analyze_feature_importance(
 
 ## Financial Evaluation
 
-Accuracy is a misleading metric for trading. A model with 52% accuracy can be highly profitable if its correct predictions have larger magnitude than its errors.
+Accuracy is a misleading metric for trading.
 
 ```python
 def financial_evaluation(

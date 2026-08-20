@@ -247,4 +247,4 @@ A: With proper validation, yes. Without validation, probably overfitting.
 
 ## Conclusion
 
-Machine learning improves pairs trading 30-40% through intelligent signal filtering and regime adaptation. ML removes ~50% of unprofitable trades while maintaining win rate. Key: rigorous cross-validation, monthly retraining, and conservative confidence thresholds. ML-enhanced pairs achieve 15-18% annual returns with 1.4+ Sharpe on out-of-sample data.
+Machine learning improves pairs trading 30-40% through intelligent signal filtering and regime adaptation. ML removes ~50% of unprofitable trades while maintaining win rate. Key: rigorous cross-validation, monthly retraining, and conservative confidence thresholds.

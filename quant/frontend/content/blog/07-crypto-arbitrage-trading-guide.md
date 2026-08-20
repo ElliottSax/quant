@@ -25,7 +25,7 @@ Crypto arbitrage exploits price differences across exchanges. Best strategies: t
 
 ## Introduction
 
-Arbitrage remains the holy grail of low-risk trading: buying at one price and immediately selling at a higher price for guaranteed profit. In 2026, automated arbitrage bots execute thousands of trades daily, but manual opportunities still exist.
+In 2026, automated arbitrage bots execute thousands of trades daily, but manual opportunities still exist.
 
 This guide covers practical arbitrage strategies you can implement today, either manually or with automation.
 

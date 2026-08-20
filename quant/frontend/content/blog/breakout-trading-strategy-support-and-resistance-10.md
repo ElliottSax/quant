@@ -241,7 +241,6 @@ False breakouts ("whipsaws") account for 20-35% of all breakout attempts:
 
 ## Advanced: Machine Learning Level Identification
 
-Modern quant traders use ML to identify levels with >75% accuracy:
 
 ```python
 from sklearn.ensemble import RandomForestRegressor
@@ -277,13 +276,13 @@ def ml_support_resistance_detector(price_data, lookback=100):
 ## Frequently Asked Questions
 
 **Q: What's the minimum price movement required for a valid breakout?**
-A: At least 0.5% close above resistance for large-cap stocks, 1-2% for small-cap/illiquid assets. Anything less has only 40% win rate.
+A: At least 0.5% close above resistance for large-cap stocks, 1-2% for small-cap/illiquid assets.
 
 **Q: How do I distinguish between resistance and support on different timeframes?**
 A: Weekly/monthly resistance is stronger than daily. Trade only when multiple timeframes align (e.g., daily above weekly resistance). This increases win rate 67% → 71%.
 
 **Q: Should I trade support/resistance breakdowns or breakouts?**
-A: Resistance breakouts outperform (67% win rate) vs support breakdowns (61% win rate). Asymmetry suggests trading breakouts preferentially over breakdowns.
+Asymmetry suggests trading breakouts preferentially over breakdowns.
 
 **Q: What's the optimal hold period for breakout trades?**
 A: 8-14 days for daily timeframe. Holding longer risks reversal to middle of previous consolidation. Use 2× risk trailing stop after 3% gain.
@@ -293,4 +292,4 @@ A: Yes, with 3-5% price proximity tolerance instead of 2% due to higher volatili
 
 ## Conclusion
 
-Support and resistance form the backbone of price action trading. By identifying valid levels (3+ touches), confirming with volume, and applying mechanical entry/exit rules, traders achieve 65-73% win rates with 2-3:1 risk-reward ratios. The key differentiator is patience—waiting for high-probability setups rather than trading every breakout attempt.
+Support and resistance form the backbone of price action trading. The key differentiator is patience—waiting for high-probability setups rather than trading every breakout attempt.

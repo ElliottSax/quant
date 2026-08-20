@@ -190,7 +190,6 @@ Result: Can't exit when you want; slippage kills returns
 A: Look at 5-year rolling correlation. Should be > 0.8 consistently.
 
 **Q: What's the typical profit from pairs trading?**
-A: 10-20% annual returns are realistic with proper position sizing.
 
 **Q: Should I use leverage in pairs trading?**
 A: Yes, 2x is safe. Pairs are market-neutral, so systematic risk is low.
@@ -203,4 +202,4 @@ A: In any 3000-stock universe, ~500 pairs with good cointegration.
 
 ## Conclusion
 
-Statistical arbitrage through pairs trading is accessible to beginners. The core strategy—find correlated assets, trade divergences, profit on convergence—is intuitive and backtestable. Results show 12-20% annual returns with 1.3+ Sharpe ratios. Start with liquid pairs like GLD-SLV, master the mechanics, then expand to stock pairs with proper statistical validation.
+Statistical arbitrage through pairs trading is accessible to beginners. The core strategy—find correlated assets, trade divergences, profit on convergence—is intuitive and backtestable. Start with liquid pairs like GLD-SLV, master the mechanics, then expand to stock pairs with proper statistical validation.

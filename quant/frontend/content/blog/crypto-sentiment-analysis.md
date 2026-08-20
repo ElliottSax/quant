@@ -23,7 +23,6 @@ Contrarian sentiment indicators like Crypto Fear & Greed Index extremes (>80 = d
 
 Influencer tracking and verified wallet analysis reveals high-conviction positioning 1-3 weeks before major moves, with successful crypto traders achieving 65-75% directional accuracy when combined with technical confirmation.
 
-Multi-source sentiment aggregation across Twitter, Reddit, Telegram, and Discord reduces noise and false signals, with 3+ platform confirmation providing 60-70% win rates versus 45-50% for single-source strategies.
 
 Automated NLP pipelines using transformer models and sentiment scoring enable real-time signal generation at scale, processing 100,000+ social posts daily to identify emerging narratives before mainstream awareness.
 

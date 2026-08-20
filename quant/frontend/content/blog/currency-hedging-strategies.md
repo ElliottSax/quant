@@ -53,7 +53,6 @@ Where F is the forward rate, S is the spot rate, r_domestic is the domestic inte
 
 **Hedging cost/benefit**: The forward points (F - S) represent the interest rate differential. When US rates exceed foreign rates, hedging foreign currencies produces a positive carry (you earn the interest rate differential). When US rates are lower, hedging has a negative carry.
 
-As of early 2026, with US rates higher than European and Japanese rates, hedging EUR and JPY exposure generates approximately 1.5-2.5% annualized positive carry for USD-based investors.
 
 **Rolling forwards**: Hedges are typically implemented as 1-month or 3-month forwards, rolled at expiration. The rolling process requires settling the expiring contract and entering a new one, creating settlement risk and operational overhead.
 
@@ -200,7 +199,7 @@ Almost always for fixed income portfolios (where currency volatility dominates b
 
 ### What is the cost of currency hedging?
 
-The direct cost is the interest rate differential (positive or negative), plus transaction costs (bid-ask spread on forwards, typically 1-5 bps for G10 currencies). In the current environment with higher US rates, hedging EUR and JPY generates a positive carry of 1.5-2.5% annually -- hedging actually pays you. When US rates are lower than foreign rates (as from 2010-2015 for AUD), hedging costs 2-4% annually. Options-based hedging costs 1-3% annually for at-the-money protection.
+The direct cost is the interest rate differential (positive or negative), plus transaction costs (bid-ask spread on forwards, typically 1-5 bps for G10 currencies). When US rates are lower than foreign rates (as from 2010-2015 for AUD), hedging costs 2-4% annually. Options-based hedging costs 1-3% annually for at-the-money protection.
 
 ### How do I handle currency hedging in a multi-currency portfolio?
 

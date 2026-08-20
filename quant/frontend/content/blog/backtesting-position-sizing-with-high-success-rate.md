@@ -52,7 +52,7 @@ f* = 0.75 / 1.5
 f* = 0.50 = 50% Kelly
 ```
 
-With 70% win rate, you can theoretically risk 50% per trade. Practically, use 25% of this = 12.5% per trade.
+Practically, use 25% of this = 12.5% per trade.
 
 ## Identifying Strategies with High Success Rates
 
@@ -358,12 +358,10 @@ class HighWinRateBacktest:
 
 **Applied to mean reversion strategy (2024-2026, 187 trades):**
 
-**Strategy with 58% win rate, 1.6 profit factor:**
 - Fixed 2% sizing: Total return 22.1%, Sharpe 1.15, Max DD -12.3%
 - Aggressive Kelly: Total return 48.7%, Sharpe 1.38, Max DD -18.2%
 - Growth-optimized: Total return 52.3%, Sharpe 1.42, Max DD -19.4%
 
-**Strategy with 72% win rate, 2.2 profit factor:**
 - Fixed 2% sizing: Total return 31.4%, Sharpe 1.62, Max DD -8.1%
 - Aggressive Kelly: Total return 78.9%, Sharpe 1.85, Max DD -14.3%
 - Growth-optimized: Total return 94.2%, Sharpe 1.92, Max DD -16.8%
@@ -385,7 +383,7 @@ A: Switch back to conservative 1% sizing immediately. Market regime change may h
 A: Yes. Shuffle trade sequence 1000x; 95% should remain profitable. If only 60% remain profitable, your edge is fragile.
 
 **Q: How do I know if my high win rate is real or luck?**
-A: Use binomial test. For 70% win rate to be significant, need ~25 trades. For 72% win rate, need ~20 trades.
+A: Use binomial test.
 
 ## Conclusion
 

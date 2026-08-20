@@ -12,7 +12,7 @@ readTime: 12-15 min read
 
 ## Quick Answer
 
-Fibonacci retracement plots key support/resistance levels at 23.6%, 38.2%, 50%, 61.8%, and 78.6% of a swing move. Use 61.8% (Golden Ratio) as primary entry level, 38.2% for aggressive entries, 78.6% for deep pullbacks. Combine with price action for 60-70% win rate on pullback trades.
+Fibonacci retracement plots key support/resistance levels at 23.6%, 38.2%, 50%, 61.8%, and 78.6% of a swing move. Use 61.8% (Golden Ratio) as primary entry level, 38.2% for aggressive entries, 78.6% for deep pullbacks.
 
 ## Introduction
 
@@ -38,7 +38,6 @@ Fibonacci retracements are based on the mathematical ratio found throughout natu
 4. Confirm with support + volume
 5. Enter on breakout above 38.2%
 
-**Performance:** 60-65% win rate
 
 **Example:**
 - Swing low: 1.0800
@@ -137,9 +136,6 @@ Draw trend channels using Fibonacci ratios for support/resistance.
 ## Fibonacci + Price Action
 
 **High-Probability Combinations:**
-- Fib 61.8% + support level + volume = 70% win rate
-- Fib confluence + trend confirmation = 65% win rate
-- Fib extension + resistance level = 60% win rate
 
 ## Fibonacci Settings by Timeframe
 

@@ -12,7 +12,7 @@ description: "High-success-rate strategies (70%+ win rate) require different ris
 
 # Backtesting Risk Management with High Success Rate
 
-High-success-rate strategies (70%+ win rate) require different risk management approaches than typical strategies. With most trades being winners, risk management shifts from preventing catastrophic losses to optimizing profit extraction while protecting against the rare losing streaks. This guide covers specialized risk management techniques that maximize returns for high-probability strategies without exposing capital to unacceptable drawdowns.
+With most trades being winners, risk management shifts from preventing catastrophic losses to optimizing profit extraction while protecting against the rare losing streaks. This guide covers specialized risk management techniques that maximize returns for high-probability strategies without exposing capital to unacceptable drawdowns.
 
 ## Understanding Risk in High-Probability Strategies
 

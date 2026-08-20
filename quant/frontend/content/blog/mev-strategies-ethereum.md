@@ -55,7 +55,7 @@ The detection system monitors pending transactions for large swaps, simulates th
 
 Flash loans enable capital-efficient backrunning. Instead of maintaining $500,000 inventory for arbitrage, borrow $500,000 from Aave [flash loan](/blog/flashloan-arbitrage-guide), execute arbitrage, repay loan plus 0.09% fee, and keep profit. A $10,000 arbitrage opportunity costs $450 in flash loan fees plus $200 gas, netting $9,350 with zero capital deployed.
 
-Liquidation backrunning targets undercollateralized lending positions. When ETH price drops and a borrower's collateral falls below liquidation threshold, backrun price update transactions with liquidation calls. Aave and Compound offer 5-10% liquidation bonuses, creating guaranteed profits for fast liquidators.
+Liquidation backrunning targets undercollateralized lending positions. When ETH price drops and a borrower's collateral falls below liquidation threshold, backrun price update transactions with liquidation calls.
 
 The liquidation detection flow: monitor price feeds for significant moves, query lending protocols for positions near liquidation thresholds, simulate price oracle updates, and submit liquidation bundles immediately after oracle updates confirm. Competition is intense - hundreds of bots monitor the same liquidations.
 
@@ -147,7 +147,7 @@ Minimum viable MEV operations require $25,000-$50,000 for gas costs, smart contr
 
 **What are realistic returns from MEV strategies?**
 
-Experienced MEV searchers target 50-200% annual returns on deployed capital, though competition compressed returns from 200-500% in 2020-2021. Arbitrage backrunning generates 0.3-2% per opportunity with dozens of daily opportunities. Sandwich attacks extract 5-15% per trade but face ethical concerns. Liquidations offer 5-10% bonuses but intense competition reduces actual profits to 1-3%. Top searchers earning $50,000-$500,000 monthly, while average operators earn $5,000-$25,000.
+Arbitrage backrunning generates 0.3-2% per opportunity with dozens of daily opportunities. Sandwich attacks extract 5-15% per trade but face ethical concerns. Liquidations offer 5-10% bonuses but intense competition reduces actual profits to 1-3%. Top searchers earning $50,000-$500,000 monthly, while average operators earn $5,000-$25,000.
 
 **How do I protect my transactions from MEV extraction?**
 

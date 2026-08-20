@@ -412,7 +412,6 @@ Swing trading crypto succeeds through:
 3. **Strict stop losses** (1.5-2% maximum)
 4. **Profitable exits** (predetermined levels)
 
-Successful swing traders average 5-8% per trade with 60%+ win rate, compounding to 150-300% annual returns.
 
 ## Next Steps
 

@@ -128,7 +128,7 @@ Beginners: 1x (no leverage). Intermediate: 2-3x maximum. Advanced: 5x maximum. M
 
 ### Is crypto trading profitable in 2026?
 
-Yes, volatility creates daily profits. With 60% win rate, 1:2 risk/reward, 10 trades/week, expect 5-10% monthly returns. Average trader: -5% (due to poor risk management). Smart trader: +10% month.
+Yes, volatility creates daily profits. Average trader: -5% (due to poor risk management). Smart trader: +10% month.
 
 
 ### What's the difference between spot and futures trading?

@@ -20,7 +20,6 @@ Momentum trading—buying assets with rising prices and selling those with falli
 
 Momentum in financial markets mirrors physics: objects in motion tend to continue in that direction until external forces intervene. In trading, this translates to: stocks with strong uptrends tend to continue rising, at least in the short term.
 
-**Historical Win Rate**: Momentum strategies achieve 55-65% win rates
 **Average Trade Duration**: 5-15 trading days
 **Sharpe Ratio**: 1.2-1.8 across different market conditions
 **Capital Requirement**: Minimum $25,000 USD

@@ -358,7 +358,7 @@ Safe approach reduced trades by 52% and returns by 36%, but improved Sharpe rati
 ## Frequently Asked Questions
 
 **Q: Are safety filters worth the reduced trade count?**
-A: Absolutely. 62 winning trades with 62% win rate beats 187 trades with 51% win rate.
+A: Absolutely.
 
 **Q: What's the minimum RSI for a safe signal?**
 A: For stocks, RSI < 30. For crypto, RSI < 25. Exact level depends on asset.

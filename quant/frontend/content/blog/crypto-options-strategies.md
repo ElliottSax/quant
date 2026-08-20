@@ -9,7 +9,7 @@ keywords: ["crypto options", "Deribit options", "options strategies", "volatilit
 ---
 # Crypto Options Strategies: Deribit and Binance Options
 
-Cryptocurrency options markets have evolved into sophisticated derivatives venues enabling institutional-grade strategies previously available only in traditional finance. Deribit, the dominant crypto options exchange, processes $5B+ weekly volume with tight spreads, deep liquidity, and diverse contract maturities. These conditions enable systematic options strategies generating 15-40% annual returns with careful risk management.
+Cryptocurrency options markets have evolved into sophisticated derivatives venues enabling institutional-grade strategies previously available only in traditional finance. Deribit, the dominant crypto options exchange, processes $5B+ weekly volume with tight spreads, deep liquidity, and diverse contract maturities.
 
 This comprehensive guide examines options strategies from basic calls/puts to advanced volatility arbitrage, Greeks-based hedging, and portfolio construction techniques specific to crypto's 60-120% annual volatility environment.
 
@@ -39,7 +39,7 @@ Iron condors (sell out-of-money call spread, sell out-of-money put spread) profi
 
 Theta decay strategies explicitly profit from time passing. Short straddles (sell call and put at same strike) collect premium from theta decay. If BTC stays near strike for 7 days, time decay profits $500-1,000. Risk: unlimited loss if BTC moves >2σ from strike. Generally requires active management to prevent losses from large moves.
 
-[Position sizing](/blog/position-sizing-strategies) limits exposure. Kelly criterion for options: Position_Size = (Win_Rate × Avg_Win - Loss_Rate × Avg_Loss) / Max_Loss. For call spreads showing 60% win rate, $2,000 avg win, $12,000 max loss: Kelly = (0.60×2,000 - 0.40×12,000) / 12,000 = -20% (don't trade). This strategy has negative expectancy despite 60% win rate due to asymmetric payoff.
+[Position sizing](/blog/position-sizing-strategies) limits exposure. Kelly criterion for options: Position_Size = (Win_Rate × Avg_Win - Loss_Rate × Avg_Loss) / Max_Loss.
 
 ## Volatility Arbitrage and IV Strategies
 
@@ -81,7 +81,7 @@ Calendar spreads (sell near-term options, buy far-term options at same strike) p
 
 If volatility stays constant, 1-month option decays faster than 6-month due to theta. After 30 days, 1-month expires and profit from theta differential. If volatility increases, far-month option gains more vega profit. If volatility decreases, near-month option loses less vega than far-month. Calendar spreads excel during flat-to-slightly-bullish, low-vol regimes.
 
-Volatility mean-[reversion strategies](/blog/mean-reversion-strategies-guide) assume extreme IV reverts to 60-80% normal levels. When IV spikes to 150% (volatility panic), sell vol (short straddles) betting IV compresses back to 80%. Opposite: when IV drops to 30%, buy vol expecting reversion to 70%. Historical backtests show 65-70% win rate with 2:1 payoff.
+Volatility mean-[reversion strategies](/blog/mean-reversion-strategies-guide) assume extreme IV reverts to 60-80% normal levels. When IV spikes to 150% (volatility panic), sell vol (short straddles) betting IV compresses back to 80%. Opposite: when IV drops to 30%, buy vol expecting reversion to 70%.
 
 Cross-exchange volatility arbitrage exploits IV differences between Deribit and Binance options. If BTC IV on Deribit = 60% while Binance = 65%, buy Deribit options (cheaper) and sell Binance options (expensive). Execute sufficient volume capturing spread before market adjusts.
 
@@ -89,7 +89,6 @@ Event volatility strategies prepare for known catalysts (Fed meetings, Bitcoin h
 
 ## Key Takeaways
 
-Cryptocurrency options strategies generate 15-40% annual returns through [volatility trading](/blog/volatility-trading-strategies), time decay capture, and directional positioning, with Greeks-based management enabling sophisticated risk control unavailable to simple option buyers.
 
 Call/put spreads and iron condors define maximum risk while maintaining profitable payoff ratios, suitable for systematic traders willing to actively manage positions rather than passively holding long options.
 
@@ -107,7 +106,7 @@ Deribit requires $50 minimum position size on BTC options. Minimum viable approa
 
 **How do you select strikes and expirations for options positions?**
 
-Strike selection depends on strategy: long calls target at-the-money (ATM) or slightly out-of-the-money (OTM) balancing premium cost against probability. Out-of-the-money (OTM) calls cheaper but less likely to profit. Call spreads target ±1-2 standard deviations for 70-80% probability of max profit. Iron condors place shorts at ±1.5-2σ for 70%+ success rates. Expiration selection: short-term (1-2 weeks) maximum theta decay for time value strategies, intermediate (1-3 months) balanced gamma-theta-vega, long-term (3-6 months) volatility term structure arbitrage. Avoid expiration Friday/settlement dates (high bid-ask spreads).
+Strike selection depends on strategy: long calls target at-the-money (ATM) or slightly out-of-the-money (OTM) balancing premium cost against probability. Out-of-the-money (OTM) calls cheaper but less likely to profit. Call spreads target ±1-2 standard deviations for 70-80% probability of max profit. Expiration selection: short-term (1-2 weeks) maximum theta decay for time value strategies, intermediate (1-3 months) balanced gamma-theta-vega, long-term (3-6 months) volatility term structure arbitrage. Avoid expiration Friday/settlement dates (high bid-ask spreads).
 
 **How do you manage assignment risk and exercise?**
 
@@ -115,7 +114,7 @@ Deribit perpetual options avoid assignment entirely (no expiration). Dated optio
 
 **What's a realistic success rate and profit factor for options strategies?**
 
-Long options (simple calls/puts): 35-45% win rate (cheap OTM frequently expires worthless), but 3-5× payoff when profitable = 1.5-2.0× profit factor. Call spreads: 60-70% win rate, 1-1.5× payoff = 2.0-2.5× profit factor. Iron condors: 70-75% win rate, 0.8-1.0× payoff (limited by credit spread width) = 2.0-2.5× profit factor. Volatility strategies: 55-65% win rate, 1.5-2.0× payoff = 2.0-2.5× profit factor. Professional traders target 2.0-2.5× profit factor minimum. Below 1.5× generally unprofitable after fees.
+Professional traders target 2.0-2.5× profit factor minimum. Below 1.5× generally unprofitable after fees.
 
 **How do you avoid volatility crush during earnings/events?**
 

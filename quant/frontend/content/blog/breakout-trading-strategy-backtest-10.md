@@ -56,7 +56,6 @@ A breakout occurs when price decisively closes above resistance or below support
 | 20-30 days | 73% | 8.4% | -3.3% | 127 |
 | 30+ days | 69% | 6.8% | -3.0% | 66 |
 
-Optimal consolidation length is 20-30 days, generating 73% win rate.
 
 ## Python Implementation: Automated Breakout Detection
 
@@ -239,7 +238,7 @@ The difference between breakout success and failure often comes down to precise 
 ## Frequently Asked Questions
 
 **Q: What's the minimum consolidation period for a valid breakout?**
-A: 15 days minimum (42 trades, 68% win rate). Shorter consolidations create false breakouts. Longer consolidations (20-30 days) show 73% win rate.
+Shorter consolidations create false breakouts.
 
 **Q: How do I distinguish real breakouts from false breakouts?**
 A: False breakouts lack follow-through volume and reverse within 1-3 days. Real breakouts show consistent volume and 3-5 day continuation. Always use trailing stops.
@@ -251,7 +250,7 @@ A: Selective approach outperforms. Trade only breakouts from 20-30 day consolida
 A: 8-12 days from entry to target. Holding longer invites reversal; exits should be mechanical based on targets or stops.
 
 **Q: Do breakout strategies work on crypto?**
-A: Yes, with 4-6 week consolidations instead of 2-4 weeks. Crypto volatility extends consolidation periods but maintains similar 70% win rate.
+A: Yes, with 4-6 week consolidations instead of 2-4 weeks.
 
 ## Conclusion
 

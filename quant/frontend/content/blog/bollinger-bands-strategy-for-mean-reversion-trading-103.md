@@ -18,7 +18,7 @@ description: "Bollinger Bands represent a complete trading system for mean rever
 
 # Bollinger Bands Mean Reversion Strategy: Practical Implementation
 
-Bollinger Bands represent a complete trading system for mean reversion strategies, identifying overbought/oversold conditions with remarkable accuracy. When combined with proper position sizing and risk management, Bollinger Band strategies consistently generate 5-10% gains per trade with 65-70% win rates. This comprehensive guide covers the mechanical trading rules, optimization parameters, and live trading execution protocols.
+Bollinger Bands represent a complete trading system for mean reversion strategies, identifying overbought/oversold conditions with remarkable accuracy. This comprehensive guide covers the mechanical trading rules, optimization parameters, and live trading execution protocols.
 
 ## The Indicator Formula and Components
 
@@ -235,15 +235,10 @@ class BollingerMeanReversionStrategy(bt.Strategy):
 ### Band Period Testing
 - **10-period**: Too tight, excessive false signals
 - **15-period**: Good for mean reversion, aggressive
-- **20-period**: Optimal, 68% win rate
 - **25-period**: Reliable but fewer setups
 - **30-period**: Conservative, slower signals
 
 ### Standard Deviation Testing
-- **1.5σ**: Too aggressive, 42% win rate
-- **2.0σ**: Optimal, 68% win rate
-- **2.5σ**: Conservative, 64% win rate
-- **3.0σ**: Very rare signals, 61% win rate
 
 ### Combining with Additional Indicators
 
@@ -263,7 +258,7 @@ Adding RSI confirmation improves accuracy to 72%:
 ## Frequently Asked Questions
 
 **Q: Should I trade every band touch?**
-A: No. Best results occur after high-volume moves followed by volume decrease (exhaustion). Random touches have only 35% win rate.
+A: No. Best results occur after high-volume moves followed by volume decrease (exhaustion).
 
 **Q: How do I adjust for market regime?**
 A: In trending markets, favor trade-following (above/below band breakouts). In ranging markets, stick with mean reversion. Use ADX > 25 to identify trends.
@@ -272,11 +267,11 @@ A: In trending markets, favor trade-following (above/below band breakouts). In r
 A: Daily is optimal for 4-6% moves. 4-hour for 2-3% moves. 1-hour for 0.5-1% scalps with tighter stops.
 
 **Q: Can I use Bollinger Bands on crypto?**
-A: Yes, excellent results with 3σ bands instead of 2σ due to higher volatility. 66% win rate on major cryptocurrencies.
+A: Yes, excellent results with 3σ bands instead of 2σ due to higher volatility.
 
 **Q: How often should I retrain parameters?**
 A: Quarterly reoptimization. Period and StDev remain constant; focus on volatility regime changes and volume thresholds.
 
 ## Conclusion
 
-Bollinger Bands provide a mechanical, rule-based framework for mean reversion trading with 65-70% win rates and 2:1 profit factors. Success requires strict discipline to follow rules without deviations, proper position sizing using Kelly criterion, and careful selection of high-quality entries with volume confirmation. This is not a get-rich-quick strategy but rather a sustainable, low-variance approach to consistent market alpha.
+Success requires strict discipline to follow rules without deviations, proper position sizing using Kelly criterion, and careful selection of high-quality entries with volume confirmation. This is not a get-rich-quick strategy but rather a sustainable, low-variance approach to consistent market alpha.

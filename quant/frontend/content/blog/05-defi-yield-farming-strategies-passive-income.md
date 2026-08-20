@@ -26,7 +26,7 @@ DeFi yield farming means locking crypto in smart contracts to earn token rewards
 
 ## Introduction
 
-DeFi yield farming has evolved from risky 1000%+ APY promises to sustainable strategies earning 8-25% annually on blue-chip assets. In 2026, professional farmers generate consistent passive income through careful protocol selection and risk management.
+In 2026, professional farmers generate consistent passive income through careful protocol selection and risk management.
 
 This guide covers proven strategies that balance yield with security for passive income that actually works.
 
@@ -324,7 +324,6 @@ A: Smart contract bugs in unaudited protocols. Use only established, audited pro
 
 ## Conclusion
 
-DeFi yield farming generates 5-15% annual passive income through:
 1. **Protocol selection** (audited, established)
 2. **Strategy choice** (single-asset vs LPs)
 3. **Risk management** (position sizing)

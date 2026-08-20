@@ -218,7 +218,6 @@ This trade earns the "roll yield" as front-month futures converge toward spot VI
 - Volatility skew trading (Sharpe 1.24) exploits the persistent overpricing of downside protection
 - Portfolio-level Greek management targets delta-neutral, theta-positive, vega-short positions
 - Trade only liquid options (SPY, QQQ, IWM) to minimize bid-ask spread impact
-- The VIX term structure trade offers 12-18% annual returns but requires strict position sizing due to tail risk
 
 ## Frequently Asked Questions
 

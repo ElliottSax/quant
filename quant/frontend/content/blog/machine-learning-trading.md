@@ -19,7 +19,7 @@ This guide covers the practical aspects of building ML trading models, from [fea
 
 In image classification, the signal-to-noise ratio is high: a cat picture clearly looks like a cat. In financial data, the signal is buried in noise. Daily stock returns have a [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) equivalent of approximately 0.05-0.10 per day, meaning the predictable component of returns is tiny relative to random variation.
 
-**Implication**: Models must be designed for high precision with moderate recall. A model that correctly predicts direction 53% of the time with good confidence calibration can be extremely profitable. Attempting 90%+ accuracy leads to overfitting.
+**Implication**: Models must be designed for high precision with moderate recall. A model that correctly predicts direction 53% of the time with good confidence calibration can be extremely profitable.
 
 ### Non-Stationarity
 
@@ -203,7 +203,6 @@ The LightGBM model achieved a Sharpe of 1.34 with 54.2% accuracy, confirming tha
 - Gradient boosted trees (LightGBM, XGBoost) are the most effective ML models for tabular financial data
 - Purged walk-forward cross-validation is essential to prevent data leakage and overfitting
 - Expect 30-50% performance degradation from backtest to live trading
-- A model with 54% accuracy and proper risk management can achieve a Sharpe of 1.34
 - Monitor feature drift, prediction drift, and performance decay in production
 - Retrain models monthly or quarterly to adapt to changing market regimes
 

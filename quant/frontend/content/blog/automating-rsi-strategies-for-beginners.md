@@ -37,7 +37,6 @@ The mathematical foundation for modern algorithmic trading rests on several key 
 For any trading system with probability p of winning w dollars and (1-p) of losing l dollars:
 - E(X) = p*w - (1-p)*l (Expected value per trade)
 - Minimum requirement: E(X) > transaction costs for exploitable edge existence
-- Example: 60% win rate, avg win $100, avg loss $80: E(X) = 0.6*100 - 0.4*80 = 28 per trade
 
 **Risk Metrics and Calculations:**
 - Variance: σ² = E[(R - μ)²] measures dispersion of returns around mean

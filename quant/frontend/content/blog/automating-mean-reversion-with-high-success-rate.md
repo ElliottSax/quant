@@ -13,11 +13,11 @@ reading_time_minutes: 8
 
 # Automating Mean Reversion with High Success Rate
 
-Most mean reversion strategies achieve 50-55% win rates, barely better than random. The difference between a 55% win rate strategy and a 65% win rate strategy is millions in profit over a decade. This guide reveals the signal refinement techniques, ensemble methods, and statistical frameworks that push mean reversion win rates from mediocre to institutional-grade (65%+).
+This guide reveals the signal refinement techniques, ensemble methods, and statistical frameworks that push mean reversion win rates from mediocre to institutional-grade (65%+).
 
 ## The Win Rate Paradox
 
-Beginners chase high win rates; professionals optimize Sharpe ratios. Yet paradoxically, the highest-performing automated mean reversion systems do achieve 65%+ win rates—not through complex mathematics, but through systematic signal filtering.
+Beginners chase high win rates; professionals optimize Sharpe ratios.
 
 **Traditional MACD Crossover**: 51.2% win rate
 **Z-Score Mean Reversion**: 56.8% win rate
@@ -295,14 +295,13 @@ confidence = filter.posterior_probability(signal_strength=-2.2,
 
 ## Frequently Asked Questions
 
-**Q: Is a 65% win rate realistic or is it overfitting?**
-A: 65%+ win rates are realistic when using ensemble methods with robust filtering. However, they typically require sacrificing trade frequency (taking only the highest-quality signals). On out-of-sample data, expect 2-3% degradation.
+However, they typically require sacrificing trade frequency (taking only the highest-quality signals). On out-of-sample data, expect 2-3% degradation.
 
 **Q: How do I prevent overfitting while optimizing win rate?**
 A: Use walk-forward testing: train on 2018-2022, test on 2023-2024, train on 2019-2023, test on 2025. Never optimize parameters on test data. Use k-fold cross-validation to confirm signal robustness.
 
 **Q: Should I optimize for win rate or profit factor?**
-A: Optimize profit factor (wins × avg_win) / (losses × avg_loss). Win rate alone is misleading. A 60% win rate with 1.5 profit factor (small wins) beats 55% win rate with 3.0 profit factor (large wins offsetting small win percentage).
+A: Optimize profit factor (wins × avg_win) / (losses × avg_loss). Win rate alone is misleading.
 
 **Q: How many signals should I combine in an ensemble?**
 A: 3-5 uncorrelated signals typically optimal. Adding signals beyond 5 yields diminishing returns and increases data requirements for training. Ensure signals are independent (not correlated input).
@@ -315,6 +314,6 @@ A: Significantly. Mean reversion win rates are 70%+ during calm markets but drop
 
 ## Conclusion
 
-Achieving 65%+ win rates in automated mean reversion trading requires systematic signal filtering, ensemble methods, and machine learning. The frameworks presented—from multi-signal confluence through Bayesian probability adjustments—represent institutional best practices. The key insight is that selectivity beats complexity: fewer, higher-quality signals generate better risk-adjusted returns than attempting to extract alpha from every market opportunity.
+The frameworks presented—from multi-signal confluence through Bayesian probability adjustments—represent institutional best practices. The key insight is that selectivity beats complexity: fewer, higher-quality signals generate better risk-adjusted returns than attempting to extract alpha from every market opportunity.
 
 The combination of statistical rigor, ensemble methods, and adaptive filtering can push mean reversion win rates from 55% (barely profitable) to 71% (institutionally competitive). Start with 3-signal ensembles, validate thoroughly on out-of-sample data, and scale to ML-filtered systems only after achieving consistent results.

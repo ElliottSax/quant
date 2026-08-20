@@ -476,4 +476,4 @@ Expanding windows use all available historical data, giving the model more train
 
 ### How do I know if my cross-validation results are statistically significant?
 
-Compare your model's performance to a null model that predicts randomly. Use the binomial test: if your model achieves 53% accuracy over 1,000 test predictions, the probability of achieving this by chance is computable. Additionally, check that performance is consistent across folds: a model with 80% accuracy on one fold and 45% on another is likely overfitting to a specific regime.
+Compare your model's performance to a null model that predicts randomly.

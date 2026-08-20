@@ -12,7 +12,7 @@ readTime: 12-15 min read
 
 ## Quick Answer
 
-CCI (Commodity Channel Index) measures price deviation from moving average (-100 to +100 typically). CCI above +100 = overbought/strong momentum. CCI below -100 = oversold/weak momentum. CCI +100/-100 crossover = entry signal. Zero-line cross = momentum shift. Best on 4H+ with 55-70% win rate.
+CCI (Commodity Channel Index) measures price deviation from moving average (-100 to +100 typically). CCI above +100 = overbought/strong momentum. CCI below -100 = oversold/weak momentum. CCI +100/-100 crossover = entry signal. Zero-line cross = momentum shift.
 
 ## Introduction
 
@@ -151,10 +151,6 @@ The Commodity Channel Index measures price deviation from its moving average. Or
 ## CCI + Price Action
 
 **High-Probability Setups:**
-- CCI +100 + resistance rejection = 70% win rate
-- CCI -100 + support bounce = 70% win rate
-- CCI divergence + trendline break = 70% win rate
-- CCI zero cross + MA alignment = 65% win rate
 
 ## Advanced CCI Techniques
 

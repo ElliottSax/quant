@@ -105,7 +105,7 @@ Compare valuations across asset classes to determine relative attractiveness:
 
 ### Economic Indicators
 
-**Yield curve slope**: The 10-year minus 2-year Treasury spread has predicted recessions with 100% accuracy since 1960 (every inversion preceded a recession). TAA rule: reduce equity allocation when yield curve inverts, increase when it steepens from inverted.
+TAA rule: reduce equity allocation when yield curve inverts, increase when it steepens from inverted.
 
 **PMI (Purchasing Managers' Index)**: PMI above 50 indicates economic expansion. TAA rule: overweight equities when PMI is above 50 and rising, underweight when below 50 and falling.
 

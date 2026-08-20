@@ -45,7 +45,7 @@ A typical CEX-DEX arbitrage opportunity occurs when Ethereum trades at $2,500 on
 
 Gas optimization becomes critical for CEX-DEX arbitrage profitability. A simple Uniswap swap costs 120,000-180,000 gas. At 50 gwei gas prices and $2,500 ETH, that translates to $15-27 per trade. The $30 gross profit shrinks to $3-15 net profit, requiring careful opportunity selection.
 
-Flash loan integration enables capital-efficient CEX-DEX arbitrage. Instead of using personal capital, traders borrow millions from Aave or dYdX within a single transaction, execute the arbitrage, repay the loan plus 0.09% fee, and keep the profit. A $1 million [flash loan arbitrage](/blog/flashloan-arbitrage-guide) with 0.5% spread generates $5,000 gross profit, minus $900 flash loan fee and $2,000 gas, netting $2,100 risk-free profit with zero capital deployed.
+Flash loan integration enables capital-efficient CEX-DEX arbitrage. Instead of using personal capital, traders borrow millions from Aave or dYdX within a single transaction, execute the arbitrage, repay the loan plus 0.09% fee, and keep the profit.
 
 Smart contract execution provides atomic guarantees: either the entire arbitrage transaction completes profitably, or it reverts with only gas fees lost. This eliminates the directional risk present in traditional arbitrage where one leg might execute while the other fails.
 
@@ -109,7 +109,7 @@ Effective crypto arbitrage requires $10,000-50,000 minimum across multiple excha
 
 **What are realistic returns from crypto arbitrage strategies?**
 
-Experienced arbitrageurs target 2-5% monthly returns on deployed capital with daily active management. Annual returns of 25-60% are achievable but require significant time investment, technology infrastructure, and operational expertise. Returns compress as more capital chases the same opportunities.
+Annual returns of 25-60% are achievable but require significant time investment, technology infrastructure, and operational expertise. Returns compress as more capital chases the same opportunities.
 
 **How do gas fees impact DEX arbitrage profitability?**
 

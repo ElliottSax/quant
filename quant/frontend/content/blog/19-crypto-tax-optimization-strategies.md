@@ -319,7 +319,7 @@ A: Most volume during 8 AM - 4 PM UTC. Best moves occur then.
 A: Start with 1x leverage (none) until you're consistently profitable. Then maximum 2x for this strategy.
 
 **Q: How much can I make monthly?**
-A: Realistic returns: 5-15% monthly with proper discipline. 1-2% per trade at 5-8 trades weekly.
+1-2% per trade at 5-8 trades weekly.
 
 ## Conclusion
 
@@ -329,7 +329,6 @@ Crypto tax optimization strategies 2026 succeeds through:
 3. **Consistent execution** following your plan
 4. **Regular review** improving over time
 
-Professional traders using these strategies earn 50-150% annually.
 
 ## Next Steps
 

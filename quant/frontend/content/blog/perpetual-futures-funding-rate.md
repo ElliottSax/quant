@@ -115,11 +115,9 @@ Backtesting frameworks validate strategies using historical funding rates and pr
 
 ## Key Takeaways
 
-Funding rate arbitrage generates 20-60% annual yields during normal markets and 80-150% during bull market extremes through delta-neutral positions collecting periodic payments between perp longs and shorts.
 
 Cash-and-carry arbitrage buying spot and shorting perps represents the foundational strategy, earning positive funding while maintaining zero directional exposure, though requiring careful margin management to avoid liquidations during volatile price moves.
 
-Cross-exchange spread capture exploits funding rate differentials across platforms, eliminating spot custody requirements through offsetting perp positions while earning 10-30% annualized spreads with reduced capital requirements.
 
 Multi-asset portfolios diversify funding sources across BTC, ETH, and altcoins with dynamic rebalancing toward highest funding opportunities, achieving 30-40% portfolio-level yields with lower single-asset concentration risk.
 
@@ -133,7 +131,7 @@ Minimum $10,000-$25,000 enables meaningful funding arbitrage on a single exchang
 
 **What are realistic returns from funding rate arbitrage?**
 
-Conservative strategies target 20-35% annual returns during normal markets, with 50-100%+ during sustained bull markets showing elevated funding. Historical analysis from 2020-2024 shows: 2020 average 35% (moderate funding), 2021 average 55% (bull market peak funding), 2022 average 15% (bear market with frequent negative funding), 2023 average 25% (recovery phase). Multi-year average approximately 30-35% accounting for market cycles, substantially exceeding traditional [fixed income](/blog/fixed-income-quant-strategies) with moderate risk.
+Historical analysis from 2020-2024 shows: 2020 average 35% (moderate funding), 2021 average 55% (bull market peak funding), 2022 average 15% (bear market with frequent negative funding), 2023 average 25% (recovery phase). Multi-year average approximately 30-35% accounting for market cycles, substantially exceeding traditional [fixed income](/blog/fixed-income-quant-strategies) with moderate risk.
 
 **How do you avoid liquidation during extreme volatility?**
 

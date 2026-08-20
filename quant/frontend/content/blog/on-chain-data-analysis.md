@@ -89,17 +89,17 @@ DEX volume versus CEX volume ratios reveal decentralization trends. Rising DEX s
 
 Gas price trends serve as activity proxy. When average Ethereum gas exceeds 150 gwei consistently (versus normal 30-50 gwei), high demand indicates speculative activity peaks. Conversely, prolonged <20 gwei periods suggest low activity and poor conditions for ecosystem tokens.
 
-Smart money wallet tracking on Nansen identifies profitable trader positioning. When labeled "Smart Money" addresses accumulate specific tokens 2-4 weeks before major announcements or events, copying their positions (with appropriate risk management) generates positive expected returns. Historical analysis shows Smart Money addresses achieve 60-70% win rates with 2:1 reward:risk ratios.
+Smart money wallet tracking on Nansen identifies profitable trader positioning. When labeled "Smart Money" addresses accumulate specific tokens 2-4 weeks before major announcements or events, copying their positions (with appropriate risk management) generates positive expected returns.
 
 ## Actionable Trading Frameworks
 
 Combining multiple on-chain metrics into systematic frameworks generates higher-probability trade setups than single indicators.
 
-The accumulation confirmation strategy: (1) Exchange net flow <-5,000 BTC for 7+ consecutive days, (2) Whale addresses accumulating (10+ large withdrawals from exchanges), (3) MVRV ratio <1.3 (cheap versus historical cost basis), (4) SOPR <0.95 (sellers capitulating). When all four confirm, initiate long positions. Historical analysis shows 70% success rate with average 25% gains over 45-90 days.
+The accumulation confirmation strategy: (1) Exchange net flow <-5,000 BTC for 7+ consecutive days, (2) Whale addresses accumulating (10+ large withdrawals from exchanges), (3) MVRV ratio <1.3 (cheap versus historical cost basis), (4) SOPR <0.95 (sellers capitulating). When all four confirm, initiate long positions.
 
 The distribution warning system: (1) Exchange net flow >+8,000 BTC for 5+ days, (2) Long-term holders reducing positions (LTH supply declining), (3) MVRV >3.0 (elevated versus cost basis), (4) SOPR >1.10 (profit-taking). When 3+ signals confirm, reduce exposure or establish hedges. Successfully avoided 40-60% drawdowns in 2018 and 2022.
 
-The smart money momentum strategy tracks Nansen Smart Money labels: (1) Identify tokens with 20+ Smart Money addresses accumulating past 14 days, (2) Verify rising TVL and positive news flow, (3) Enter positions sized 3-5% of portfolio, (4) Set 15% stop-loss and 40-60% profit targets. Backtest shows 55% win rate with 2.5:1 reward:risk ratio.
+The smart money momentum strategy tracks Nansen Smart Money labels: (1) Identify tokens with 20+ Smart Money addresses accumulating past 14 days, (2) Verify rising TVL and positive news flow, (3) Enter positions sized 3-5% of portfolio, (4) Set 15% stop-loss and 40-60% profit targets.
 
 The exchange flow [mean reversion](/blog/mean-reversion-strategies-guide): When 3-day exchange net flow exceeds ±2 standard deviations, trade [mean reversion](/blog/mean-reversion-trading-strategy). Extreme inflows (+2σ) often reverse within 5-7 days as sellers exhaust, creating bounce opportunities. Extreme outflows (-2σ) sometimes precede short squeezes. Use tight stops (5-8%) and quick profit-taking (10-15%).
 
@@ -111,11 +111,8 @@ On-chain analysis provides 3-7 day forward visibility into market participant be
 
 Exchange net flow analysis reveals supply/demand dynamics, with extreme inflows (+10,000 BTC) predicting 8-15% selloffs within 7 days at 65-75% probability and extreme outflows signaling accumulation preceding 10-20% rallies.
 
-SOPR and MVRV ratios identify market extremes, with SOPR <0.90 and MVRV <1.0 marking capitulation bottoms (80%+ success rate historically) and SOPR >1.15 with MVRV >3.5 signaling distribution tops preceding 40-60% corrections.
 
-Smart money wallet tracking through Nansen and similar platforms enables copying sophisticated trader positioning 2-4 weeks before major moves, achieving 60-70% win rates with 2:1 reward:risk ratios when combined with proper risk management.
 
-Multi-metric confirmation frameworks requiring 3-4 signals to align (exchange flows, whale behavior, profitability metrics, DeFi activity) generate highest-probability setups with 70%+ success rates versus 45-50% for single-indicator strategies.
 
 ## Frequently Asked Questions
 
@@ -137,7 +134,7 @@ Most predictive short-term metrics: (1) Exchange net flow extremes (±2σ deviat
 
 **How reliable are "Smart Money" wallet labels and how do you verify their accuracy?**
 
-Nansen Smart Money labels have ~60-70% accuracy based on backtesting. Verification methods: (1) Check wallet transaction history - should show consistent profits over 12+ months, (2) Examine timing - Smart Money often enters 2-4 weeks before major moves, (3) Compare against price action - successful calls should show positive returns when copying, (4) Diversify across 20+ Smart Money addresses rather than following single wallet, (5) Implement independent analysis confirming Smart Money direction before copying. Don't blindly copy - Smart Money sometimes makes losing trades or has different time horizons (3-6 months versus your 2-4 weeks). Use as confirmation signal alongside technical and fundamental analysis.
+Verification methods: (1) Check wallet transaction history - should show consistent profits over 12+ months, (2) Examine timing - Smart Money often enters 2-4 weeks before major moves, (3) Compare against price action - successful calls should show positive returns when copying, (4) Diversify across 20+ Smart Money addresses rather than following single wallet, (5) Implement independent analysis confirming Smart Money direction before copying. Don't blindly copy - Smart Money sometimes makes losing trades or has different time horizons (3-6 months versus your 2-4 weeks). Use as confirmation signal alongside technical and fundamental analysis.
 
 **How do you automate on-chain analysis and integrate it into trading systems?**
 

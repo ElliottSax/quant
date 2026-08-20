@@ -26,7 +26,6 @@ Consider a coin flip game where heads wins $100, tails loses $100. With 50/50 od
 
 The math: **Probability of ruin = e^(-2bp/s²)** where b = bankroll, p = win probability, s = standard deviation
 
-For a 55% win rate with equal wins/losses, betting more than 10% per trade approaches certain ruin.
 
 ## The Simplest Approach: Fixed Percentage Risk
 

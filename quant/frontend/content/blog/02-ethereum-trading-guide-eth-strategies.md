@@ -221,7 +221,6 @@ Ethereum trading succeeds by combining:
 3. **Ecosystem understanding** (layer 2, smart contracts)
 4. **Volatility management** (tighter stops, smaller positions)
 
-Professional Ethereum traders gain 50-150% monthly by exploiting these unique opportunities while managing the elevated risk profile.
 
 ## Next Steps
 

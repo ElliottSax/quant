@@ -345,7 +345,7 @@ else:
 ## Frequently Asked Questions
 
 **Q: What's the optimal timeframe for forex momentum trading?**
-A: Daily timeframes generate 10-15 day trends with 60%+ win rates. 4-hour timeframes work but generate 2-3 trades per trend. Intraday (1-hour) is viable but requires constant monitoring.
+4-hour timeframes work but generate 2-3 trades per trend. Intraday (1-hour) is viable but requires constant monitoring.
 
 **Q: Should I trade correlated pairs together or separately?**
 A: Trade separately, but size positions so total correlation risk doesn't exceed 3x leverage. EURUSD and GBPUSD are 95% correlated; EURUSD and USDJPY are -70% correlated. Use correlation diversification to reduce drawdown.

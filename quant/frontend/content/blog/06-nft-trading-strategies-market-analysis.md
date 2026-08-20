@@ -334,7 +334,6 @@ Successful NFT trading requires:
 3. **Momentum recognition** (ride catalyst waves)
 4. **Risk management** (stops, position sizing)
 
-Professional NFT traders earn 8-30% monthly through careful collection selection and disciplined exits.
 
 ## Next Steps
 

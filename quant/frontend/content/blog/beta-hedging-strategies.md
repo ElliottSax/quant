@@ -57,7 +57,7 @@ Since beta_short = 1.0 (we are shorting the market itself):
 
 **ETFs (e.g., SPY, IWM)**: Suitable for smaller portfolios or when futures are impractical. SPY shares can be borrowed and sold short, with the short sale proceeds earning rebate interest. Tracking error is minimal for SPY but can be significant for less liquid ETFs.
 
-**Index Options**: Put options provide downside protection without limiting upside, but at the cost of premium decay. A protective put strategy with 5% out-of-the-money puts costs approximately 2-4% annually, creating a drag on returns. Collar strategies (long puts, short calls) reduce or eliminate the premium cost but cap upside.
+**Index Options**: Put options provide downside protection without limiting upside, but at the cost of premium decay. Collar strategies (long puts, short calls) reduce or eliminate the premium cost but cap upside.
 
 **Sector ETFs**: When portfolio beta exposure is concentrated in specific sectors, hedging with sector ETFs reduces basis risk. A tech-heavy portfolio hedged with QQQ rather than SPY will have lower residual beta exposure.
 
