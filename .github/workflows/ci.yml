@@ -26,11 +26,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # `continue-on-error: true` was set here, so this job reported success even
+      # when the site would not compile. The sibling cardclassroom repo had the
+      # identical setting and a hard syntax error survived from 2026-08-12 to
+      # 2026-08-19 behind a green pipeline while every deploy failed and the live
+      # site stayed frozen for a week.
+      #
+      # A check that cannot fail is not a check. Lint below stays advisory; the
+      # build is the line that has to hold.
       - name: Build application
         run: npm run build
         env:
           SKIP_ENV_VALIDATION: true
-        continue-on-error: true
 
       - name: Lint (non-blocking)
         run: npm run lint || true

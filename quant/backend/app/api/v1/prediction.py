@@ -9,6 +9,7 @@ Provides:
 - /signals/daily - Get daily trading signals
 """
 
+import asyncio
 import logging
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, BackgroundTasks
@@ -206,16 +207,23 @@ async def scan_patterns(
         market_data = MarketDataClient(redis_client)
         pattern_detector = PatternDetector()
 
-        # Fetch data for all symbols
-        data_dict = {}
-        for symbol in request.symbols:
+        # Fetch data for all symbols concurrently instead of one-at-a-time
+        async def _fetch(symbol: str):
             try:
                 df = await market_data.get_historical_data(symbol, period="1mo", interval="1d")
-                if not df.empty:
-                    data_dict[symbol] = df
+                return symbol, df, None
             except Exception as e:
-                logger.warning(f"Failed to fetch data for {symbol}: {e}")
+                return symbol, None, e
+
+        fetch_results = await asyncio.gather(*[_fetch(symbol) for symbol in request.symbols])
+
+        data_dict = {}
+        for symbol, df, err in fetch_results:
+            if err is not None:
+                logger.warning(f"Failed to fetch data for {symbol}: {err}")
                 continue
+            if not df.empty:
+                data_dict[symbol] = df
 
         # Scan for patterns
         results = pattern_detector.scan_multiple_symbols(

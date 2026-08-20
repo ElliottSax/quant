@@ -4,6 +4,7 @@ Portfolio Optimization API Endpoints
 Optimize portfolio allocation using Modern Portfolio Theory.
 """
 
+import asyncio
 from fastapi import APIRouter, Depends, HTTPException, Query
 from typing import List, Dict, Optional
 from datetime import datetime, timedelta
@@ -89,14 +90,14 @@ async def optimize_portfolio(
         import pandas as pd
         returns_dict = {}
 
-        for symbol in request.symbols:
-            bars = await data_provider.get_historical_data(
-                symbol.upper(),
-                start_date,
-                end_date,
-                Interval.DAY_1
-            )
+        # Fetch all symbols concurrently instead of one-at-a-time
+        symbols_upper = [symbol.upper() for symbol in request.symbols]
+        bars_list = await asyncio.gather(*[
+            data_provider.get_historical_data(sym, start_date, end_date, Interval.DAY_1)
+            for sym in symbols_upper
+        ])
 
+        for symbol, bars in zip(symbols_upper, bars_list):
             if not bars:
                 raise HTTPException(
                     status_code=404,
@@ -106,7 +107,7 @@ async def optimize_portfolio(
             # Calculate returns
             prices = [bar.close for bar in bars]
             returns = [(prices[i] - prices[i-1]) / prices[i-1] for i in range(1, len(prices))]
-            returns_dict[symbol.upper()] = returns
+            returns_dict[symbol] = returns
 
         # Create DataFrame
         returns_df = pd.DataFrame(returns_dict)
@@ -157,17 +158,17 @@ async def generate_efficient_frontier(
         import pandas as pd
         returns_dict = {}
 
-        for symbol in request.symbols:
-            bars = await data_provider.get_historical_data(
-                symbol.upper(),
-                start_date,
-                end_date,
-                Interval.DAY_1
-            )
+        # Fetch all symbols concurrently instead of one-at-a-time
+        symbols_upper = [symbol.upper() for symbol in request.symbols]
+        bars_list = await asyncio.gather(*[
+            data_provider.get_historical_data(sym, start_date, end_date, Interval.DAY_1)
+            for sym in symbols_upper
+        ])
 
+        for symbol, bars in zip(symbols_upper, bars_list):
             prices = [bar.close for bar in bars]
             returns = [(prices[i] - prices[i-1]) / prices[i-1] for i in range(1, len(prices))]
-            returns_dict[symbol.upper()] = returns
+            returns_dict[symbol] = returns
 
         returns_df = pd.DataFrame(returns_dict)
 
@@ -223,17 +224,17 @@ async def run_monte_carlo(
         import pandas as pd
         returns_dict = {}
 
-        for symbol in request.portfolio.keys():
-            bars = await data_provider.get_historical_data(
-                symbol.upper(),
-                start_date,
-                end_date,
-                Interval.DAY_1
-            )
+        # Fetch all symbols concurrently instead of one-at-a-time
+        symbols_upper = [symbol.upper() for symbol in request.portfolio.keys()]
+        bars_list = await asyncio.gather(*[
+            data_provider.get_historical_data(sym, start_date, end_date, Interval.DAY_1)
+            for sym in symbols_upper
+        ])
 
+        for symbol, bars in zip(symbols_upper, bars_list):
             prices = [bar.close for bar in bars]
             returns = [(prices[i] - prices[i-1]) / prices[i-1] for i in range(1, len(prices))]
-            returns_dict[symbol.upper()] = returns
+            returns_dict[symbol] = returns
 
         returns_df = pd.DataFrame(returns_dict)
 
@@ -294,17 +295,17 @@ async def analyze_portfolio(
         import numpy as np
         returns_dict = {}
 
-        for symbol in symbols:
-            bars = await data_provider.get_historical_data(
-                symbol.upper(),
-                start_date,
-                end_date,
-                Interval.DAY_1
-            )
+        # Fetch all symbols concurrently instead of one-at-a-time
+        symbols_upper = [symbol.upper() for symbol in symbols]
+        bars_list = await asyncio.gather(*[
+            data_provider.get_historical_data(sym, start_date, end_date, Interval.DAY_1)
+            for sym in symbols_upper
+        ])
 
+        for symbol, bars in zip(symbols_upper, bars_list):
             prices = [bar.close for bar in bars]
             returns = [(prices[i] - prices[i-1]) / prices[i-1] for i in range(1, len(prices))]
-            returns_dict[symbol.upper()] = returns
+            returns_dict[symbol] = returns
 
         returns_df = pd.DataFrame(returns_dict)
 

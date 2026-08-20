@@ -136,6 +136,11 @@ class BacktestEngine:
         self.orders: List[Order] = []
         self.trades: List[Trade] = []
         self.equity_history: List[Tuple[datetime, float]] = []
+        # Orders still awaiting a fill/reject decision. Kept in sync with
+        # `self.orders` so _process_orders only scans live orders instead of
+        # rescanning every order ever placed on every bar (O(n^2) over a
+        # long backtest with many orders).
+        self._pending_orders: List[Order] = []
 
     def reset(self):
         """Reset backtest state"""
@@ -144,6 +149,7 @@ class BacktestEngine:
         self.orders = []
         self.trades = []
         self.equity_history = []
+        self._pending_orders = []
 
     async def run_backtest(
         self,
@@ -241,18 +247,27 @@ class BacktestEngine:
             timestamp=timestamp or datetime.utcnow()
         )
         self.orders.append(order)
+        self._pending_orders.append(order)
         return order
 
     def _process_orders(self, bar: pd.Series):
         """Process pending orders"""
-        for order in self.orders:
-            if order.status == OrderStatus.PENDING:
-                if order.order_type == OrderType.MARKET:
-                    self._execute_market_order(order, bar)
-                elif order.order_type == OrderType.LIMIT:
-                    self._execute_limit_order(order, bar)
-                elif order.order_type == OrderType.STOP:
-                    self._execute_stop_order(order, bar)
+        for order in self._pending_orders:
+            if order.order_type == OrderType.MARKET:
+                self._execute_market_order(order, bar)
+            elif order.order_type == OrderType.LIMIT:
+                self._execute_limit_order(order, bar)
+            elif order.order_type == OrderType.STOP:
+                self._execute_stop_order(order, bar)
+        # Drop anything that just resolved so future bars only rescan
+        # orders still actually awaiting a decision. A plain list
+        # comprehension (rather than repeated list.remove(order), which
+        # would do its own O(n) equality scan per removal and could match
+        # the wrong element for value-equal Order dataclass instances)
+        # keeps this an O(pending) pass with no ambiguity.
+        self._pending_orders = [
+            o for o in self._pending_orders if o.status == OrderStatus.PENDING
+        ]
 
     def _execute_market_order(self, order: Order, bar: pd.Series):
         """Execute market order"""
