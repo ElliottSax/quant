@@ -1,8 +1,7 @@
 ---
-title: congressional trading how congress trades before market moving votes
+title: "congressional trading how congress trades before market"
 slug: congressional-trading-how-congress-trades-before-market-moving-votes
-description: Comprehensive guide to congressional trading how congress trades before
-  market moving votes. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional trading, which involves the buying and selling of securities by members of Congress, has been a topic of interest in recent years."
 keywords:
 - congressional trading how congress trades before market moving votes
 author: "QuantEngines"

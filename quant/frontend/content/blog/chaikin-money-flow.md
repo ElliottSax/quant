@@ -13,6 +13,7 @@ quality_score: 95
 seo_optimized: true
 published_date: '2026-03-21'
 last_updated: '2026-03-21'
+description: "The Chaikin Money Flow (CMF) indicator represents one of the most powerful volume-based tools for predicting directional moves."
 ---
 
 # Chaikin Money Flow: Volume-Based Price Prediction

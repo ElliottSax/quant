@@ -1,5 +1,5 @@
 ---
-title: "Drawdown Management: Protecting Capital During Losing Streaks"
+title: "Drawdown Management: Protecting Capital During Losing"
 description: "Learn drawdown management strategies to protect trading capital. Cover maximum drawdown limits, recovery math, and systematic risk reduction protocols."
 date: "2026-03-18"
 author: "QuantEngines"

@@ -1,11 +1,12 @@
 ---
-title: 'Attention Mechanisms for Price Prediction: Focusing on Relevant Market Signals'
+title: "Attention Mechanisms for Price Prediction"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: attention-mechanism-price-prediction
 published_date: '2026-03-17'
 last_updated: '2026-03-17'
+description: "Attention mechanisms enable neural networks to selectively focus on the most important parts of input sequences."
 ---
 
 # Attention Mechanisms for Price Prediction: Focusing on Relevant Market Signals

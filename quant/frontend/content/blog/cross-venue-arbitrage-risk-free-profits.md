@@ -1,8 +1,7 @@
 ---
 title: cross venue arbitrage risk free profits
 slug: cross-venue-arbitrage-risk-free-profits
-description: Comprehensive guide to cross venue arbitrage risk free profits. Expert
-  analysis with actionable strategies and real-world examples.
+description: "Cross Venue Arbitrage Risk Free Profits is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - cross venue arbitrage risk free profits
 author: "QuantEngines"

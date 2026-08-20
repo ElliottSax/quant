@@ -1,11 +1,12 @@
 ---
-title: 'Calendar Spread Strategy Guide: Exploit Time Decay Differences'
+title: "Calendar Spread Strategy Guide"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: calendar-spread-strategy-guide
 published_date: '2026-03-21'
 last_updated: '2026-03-21'
+description: "Calendar spreads (also called time spreads) profit from differential time decay between options at different expirations."
 ---
 
 # Calendar Spread Strategy Guide: Exploit Time Decay Differences

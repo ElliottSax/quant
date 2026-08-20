@@ -1,5 +1,5 @@
 ---
-title: 'Currency Hedging Methods and Costs: A Quantitative Guide to FX Risk Management'
+title: "Currency Hedging Methods and Costs"
 author: "QuantEngines"
 date: '2026-03-16'
 category: Algo Trading

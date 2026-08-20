@@ -1,5 +1,5 @@
 ---
-title: "Python Backtesting Framework: Backtrader vs Zipline vs VectorBT"
+title: "Python Backtesting Framework: Backtrader vs Zipline vs"
 description: "Compare Python backtesting frameworks Backtrader, Zipline, and VectorBT. Learn setup, strategy implementation, and performance analysis for each."
 date: "2026-03-23"
 author: "QuantEngines"

@@ -9,6 +9,7 @@ slug: "automating-momentum-trading-on-forex"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Forex momentum trading leverages the $7.5 trillion daily FX market's trending characteristics to capture directional moves in currency pairs."
 ---
 
 # Automating Momentum Trading on Forex

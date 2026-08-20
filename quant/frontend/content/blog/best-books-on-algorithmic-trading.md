@@ -1,8 +1,7 @@
 ---
 title: Best Books on Algorithmic Trading
 slug: best-books-on-algorithmic-trading
-description: Comprehensive guide to best books on algorithmic trading. Expert analysis
-  with actionable strategies and real-world examples.
+description: "Algorithmic trading, also known as automated trading or black-box trading, has become a dominant force in the financial markets."
 keywords:
 - algorithmic trading
 - books

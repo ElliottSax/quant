@@ -13,6 +13,7 @@ quality_score: 95
 seo_optimized: true
 published_date: '2026-03-16'
 last_updated: '2026-03-16'
+description: "Bayesian networks represent a powerful probabilistic graphical model for understanding causal relationships in financial markets."
 ---
 
 # Bayesian Networks for Market Prediction and Risk Analysis

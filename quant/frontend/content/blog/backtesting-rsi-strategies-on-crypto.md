@@ -7,6 +7,7 @@ tags: ["rsi", "crypto", "bitcoin", "ethereum", "backtesting", "momentum"]
 slug: "backtesting-rsi-strategies-on-crypto"
 quality_score: 95
 seo_optimized: true
+description: "RSI strategies are particularly effective on cryptocurrency due to extreme volatility and sentiment-driven price swings."
 ---
 
 # Backtesting RSI Strategies on Crypto

@@ -1,5 +1,5 @@
 ---
-title: 'Convexity and Bond Portfolio Management: Advanced Duration Strategies'
+title: "Convexity and Bond Portfolio Management"
 author: "QuantEngines"
 date: '2026-03-16'
 category: Algo Trading

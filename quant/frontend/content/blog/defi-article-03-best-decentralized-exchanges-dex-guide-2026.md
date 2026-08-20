@@ -1,5 +1,5 @@
 ---
-title: '''''''Best Decentralized Exchanges (DEX) in 2026: Complete Trading Guide'''''''
+title: "Best Decentralized Exchanges (DEX) in 2026"
 slug: defi_article_03_best_decentralized_exchanges_dex_guide_2026
 description: '''''''Best Decentralized Exchanges (DEX) in 2026: Complete Trading Guide'
 author: "QuantEngines"

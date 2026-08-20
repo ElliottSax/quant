@@ -7,6 +7,7 @@ tags: ["rsi", "machine learning", "python", "backtesting", "neural networks", "s
 slug: "backtesting-rsi-strategies-using-machine-learning"
 quality_score: 95
 seo_optimized: true
+description: "Machine learning can dramatically improve RSI strategies by learning complex patterns in when RSI signals work best."
 ---
 
 # Backtesting RSI Strategies using Machine Learning

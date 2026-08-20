@@ -1,5 +1,5 @@
 ---
-title: "Quantitative Risk Management: Position Sizing and Drawdown Control"
+title: "Quantitative Risk Management: Position Sizing and Drawdown"
 description: "Master quantitative risk management with position sizing models, drawdown analysis, Value at Risk, and portfolio-level risk controls."
 date: "2026-03-20"
 author: "QuantEngines"

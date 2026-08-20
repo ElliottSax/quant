@@ -1,8 +1,7 @@
 ---
 title: congressional trading military spending bill predictors
 slug: congressional-trading-military-spending-bill-predictors
-description: Comprehensive guide to congressional trading military spending bill predictors.
-  Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Military Spending Bill Predictors is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading military spending bill predictors
 author: "QuantEngines"

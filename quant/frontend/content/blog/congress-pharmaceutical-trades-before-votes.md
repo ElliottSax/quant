@@ -1,6 +1,5 @@
 ---
-title: 'Congress Pharmaceutical Trades Before Votes: Timing Correlations with Drug
-  Policy Legislation'
+title: "Congress Pharmaceutical Trades Before Votes"
 description: Analysis of congressional pharmaceutical stock purchases immediately
   preceding healthcare and drug pricing votes
 author: "QuantEngines"

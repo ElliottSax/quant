@@ -13,7 +13,6 @@ last_updated: '2026-03-18'
 
 # Backtrader vs Zipline vs VectorBT: Comprehensive Framework Comparison
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

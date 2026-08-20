@@ -1,12 +1,12 @@
 ---
-title: 'Conformal Prediction for Trading Uncertainty: Distribution-Free Confidence
-  Sets'
+title: "Conformal Prediction for Trading Uncertainty"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: conformal-prediction-trading-uncertainty
 published_date: '2026-03-22'
 last_updated: '2026-03-22'
+description: "Conformal prediction provides distribution-free confidence sets for trading predictions without assuming underlying data distributions."
 ---
 
 # Conformal Prediction for Trading Uncertainty: Distribution-Free Confidence Sets

@@ -1,8 +1,7 @@
 ---
 title: capm capital asset pricing model fundamentals
 slug: capm-capital-asset-pricing-model-fundamentals
-description: Comprehensive guide to capm capital asset pricing model fundamentals.
-  Expert analysis with actionable strategies and real-world examples.
+description: "Capm Capital Asset Pricing Model Fundamentals is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - capm capital asset pricing model fundamentals
 author: "QuantEngines"

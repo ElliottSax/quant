@@ -1,5 +1,5 @@
 ---
-title: "Maximum Drawdown Analysis: Measuring and Managing Worst-Case Losses"
+title: "Maximum Drawdown Analysis: Measuring and Managing"
 description: "Understand maximum drawdown calculation, recovery analysis, and practical strategies to limit drawdown in quantitative trading portfolios."
 date: "2026-04-03"
 author: "QuantEngines"

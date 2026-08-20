@@ -1,5 +1,5 @@
 ---
-title: 'Congress Stock Trades Before Fed Meeting: Anticipating Rate Decisions'
+title: "Congress Stock Trades Before Fed Meeting"
 slug: congress-stock-trades-before-fed-meeting
 description: 'Comprehensive guide to congress stock trades before fed meeting: anticipating
   rate decisions. Expert analysis with actionable strategies and real-world examples.'

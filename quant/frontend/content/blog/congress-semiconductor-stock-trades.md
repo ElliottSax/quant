@@ -1,6 +1,5 @@
 ---
-title: 'Congress Semiconductor Stock Trades: Chip Shortage Information and Technology
-  Competition'
+title: "Congress Semiconductor Stock Trades"
 description: Analysis of congressional members' semiconductor sector investments with
   correlation to chip supply policy
 author: "QuantEngines"

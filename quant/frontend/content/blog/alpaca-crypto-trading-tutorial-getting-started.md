@@ -1,8 +1,7 @@
 ---
 title: 'Alpaca Crypto Trading Tutorial: Getting Started'
 slug: alpaca-crypto-trading-tutorial-getting-started
-description: 'Comprehensive guide to alpaca crypto trading tutorial: getting started.
-  Expert analysis with actionable strategies and real-world examples.'
+description: "The Alpaca API is a commission-free trading platform that provides access to a wide range of financial instruments, including cryptocurrencies."
 keywords:
 - Alpaca
 - crypto trading

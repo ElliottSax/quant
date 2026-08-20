@@ -1,5 +1,5 @@
 ---
-title: Concentration Limits and Position Management in Quantitative Trading
+title: "Concentration Limits and Position Management in"
 author: "QuantEngines"
 date: '2026-03-16'
 category: Algo Trading

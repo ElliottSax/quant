@@ -9,6 +9,7 @@ slug: "automating-mean-reversion-on-forex"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "The foreign exchange market operates 24/5 with $7.5 trillion in daily volume, making it the world's most liquid asset class."
 ---
 
 # Automating Mean Reversion on Forex

@@ -1,5 +1,5 @@
 ---
-title: "Multi-Asset Portfolio Construction: Stocks, Bonds, Commodities, Crypto"
+title: "Multi-Asset Portfolio Construction"
 description: "Build diversified multi-asset portfolios across stocks, bonds, commodities, and crypto with quantitative allocation frameworks and risk management."
 date: "2026-04-20"
 author: "QuantEngines"

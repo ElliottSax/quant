@@ -1,5 +1,5 @@
 ---
-title: "Transaction Cost Analysis: Slippage, Commissions, and Market Impact"
+title: "Transaction Cost Analysis: Slippage, Commissions, and"
 description: "Model realistic transaction costs for backtesting. Slippage estimation, market impact models, and commission structures for accurate strategy evaluation."
 date: "2026-03-25"
 author: "QuantEngines"

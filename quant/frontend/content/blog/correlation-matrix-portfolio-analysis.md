@@ -1,5 +1,5 @@
 ---
-title: 'Correlation Matrix and Portfolio Analysis: Understanding Asset Relationships'
+title: "Correlation Matrix and Portfolio Analysis"
 slug: correlation-matrix-portfolio-analysis
 author: "QuantEngines"
 category: Algo Trading
@@ -12,7 +12,6 @@ last_updated: '2026-04-14'
 
 # Correlation Matrix and Portfolio Analysis: Understanding Asset Relationships
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

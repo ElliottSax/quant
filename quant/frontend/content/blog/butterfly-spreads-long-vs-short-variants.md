@@ -1,8 +1,7 @@
 ---
 title: 'Butterfly Spreads: Long vs Short Variants'
 slug: butterfly-spreads-long-vs-short-variants
-description: 'Comprehensive guide to butterfly spreads: long vs short variants. Expert
-  analysis with actionable strategies and real-world examples.'
+description: "Butterfly spreads are a popular options strategy used by traders to manage risk and generate profits in various market conditions."
 keywords:
 - butterfly spread
 - options strategy

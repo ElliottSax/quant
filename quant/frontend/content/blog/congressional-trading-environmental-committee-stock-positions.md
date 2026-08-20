@@ -1,8 +1,7 @@
 ---
-title: congressional trading environmental committee stock positions
+title: "congressional trading environmental committee stock"
 slug: congressional-trading-environmental-committee-stock-positions
-description: Comprehensive guide to congressional trading environmental committee
-  stock positions. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Environmental Committee Stock Positions is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading environmental committee stock positions
 author: "QuantEngines"

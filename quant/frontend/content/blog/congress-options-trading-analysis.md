@@ -1,5 +1,5 @@
 ---
-title: 'Congress Options Trading Analysis: Leverage Strategies and Leveraged Returns'
+title: "Congress Options Trading Analysis"
 description: Analysis of congressional members' options trading strategies revealing
   leverage concentration and timing precision
 author: "QuantEngines"

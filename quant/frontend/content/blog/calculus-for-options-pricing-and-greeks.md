@@ -1,8 +1,7 @@
 ---
 title: calculus for options pricing and greeks
 slug: calculus-for-options-pricing-and-greeks
-description: Comprehensive guide to calculus for options pricing and greeks. Expert
-  analysis with actionable strategies and real-world examples.
+description: "Calculus For Options Pricing And Greeks is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - calculus for options pricing and greeks
 author: "QuantEngines"

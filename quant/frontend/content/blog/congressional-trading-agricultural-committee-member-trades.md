@@ -1,8 +1,7 @@
 ---
 title: congressional trading agricultural committee member trades
 slug: congressional-trading-agricultural-committee-member-trades
-description: Comprehensive guide to congressional trading agricultural committee member
-  trades. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Agricultural Committee Member Trades is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading agricultural committee member trades
 author: "QuantEngines"

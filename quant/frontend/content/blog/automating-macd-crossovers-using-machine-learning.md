@@ -9,6 +9,7 @@ slug: "automating-macd-crossovers-using-machine-learning"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "The Moving Average Convergence Divergence (MACD) indicator has been a cornerstone of technical analysis for decades."
 ---
 
 # Automating MACD Crossovers using Machine Learning

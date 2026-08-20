@@ -1,8 +1,7 @@
 ---
 title: congressional trading how to track house speaker trades
 slug: congressional-trading-how-to-track-house-speaker-trades
-description: Comprehensive guide to congressional trading how to track house speaker
-  trades. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading How To Track House Speaker Trades is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading how to track house speaker trades
 author: "QuantEngines"

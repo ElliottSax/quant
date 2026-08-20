@@ -7,6 +7,7 @@ tags: ["MACD", "backtesting", "safety", "risk", "validation"]
 slug: "backtesting-macd-crossovers-safely"
 quality_score: 98
 seo_optimized: true
+description: "Safe MACD backtesting requires rigorous methodology to avoid common pitfalls: look-ahead bias, overfitting, survivorship bias, and data quality issues."
 ---
 
 # Backtesting MACD Crossovers Safely: Avoiding Overfitting and False Positives

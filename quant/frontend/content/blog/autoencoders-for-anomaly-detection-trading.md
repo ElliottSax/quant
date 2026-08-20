@@ -1,11 +1,12 @@
 ---
-title: 'Autoencoders for Anomaly Detection in Trading: Unsupervised Deep Learning'
+title: "Autoencoders for Anomaly Detection in Trading"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: autoencoders-for-anomaly-detection-trading
 published_date: '2026-03-17'
 last_updated: '2026-03-17'
+description: "Autoencoders are unsupervised neural networks that compress data into a lower-dimensional representation, then reconstruct the original."
 ---
 
 # Autoencoders for Anomaly Detection in Trading: Unsupervised Deep Learning

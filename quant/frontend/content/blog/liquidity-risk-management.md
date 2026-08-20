@@ -1,5 +1,5 @@
 ---
-title: "Liquidity Risk Management: Position Sizing for Illiquid Markets"
+title: "Liquidity Risk Management: Position Sizing for Illiquid"
 description: "Master liquidity risk management with market impact models, position sizing rules, and liquidation cost estimation for quantitative portfolios."
 date: "2026-04-16"
 author: "QuantEngines"

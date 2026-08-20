@@ -1,5 +1,5 @@
 ---
-title: '''''''Covered Call Strategy for Income Generation 2026: Complete Guide'''''''
+title: "Covered Call Strategy for Income Generation 2026"
 slug: 01_covered_call_strategy_for_income_generation_2026
 description: '''''''Covered Call Strategy for Income Generation 2026: Complete Guide
   This'''

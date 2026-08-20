@@ -1,6 +1,5 @@
 ---
-title: '''''''Breakout Trading Strategies with Indicators: Trade Price Levels That
-  Matter'''''''
+title: "Breakout Trading Strategies with Indicators"
 slug: breakout-trading-strategies-indicators
 description: Master breakout trading strategies using powerful indicators. Learn to
 author: "QuantEngines"

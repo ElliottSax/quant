@@ -1,5 +1,5 @@
 ---
-title: '''''''Grid Trading Strategy for Ranging Markets: Automate Your Range Trades'''''''
+title: "Grid Trading Strategy for Ranging Markets"
 slug: grid-trading-strategy-ranging-markets
 description: Master grid trading for ranging markets. Automate buy/sell orders in
 author: "QuantEngines"

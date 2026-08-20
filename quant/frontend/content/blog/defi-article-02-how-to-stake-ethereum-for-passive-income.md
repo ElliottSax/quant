@@ -1,5 +1,5 @@
 ---
-title: '''''''How to Stake Ethereum for Passive Income: Complete 2026 Guide'''''''
+title: "How to Stake Ethereum for Passive Income"
 slug: defi_article_02_how_to_stake_ethereum_for_passive_income
 description: '''''''How to Stake Ethereum for Passive Income: Complete 2026 Guide
   This'

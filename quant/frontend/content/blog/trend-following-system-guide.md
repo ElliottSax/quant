@@ -1,5 +1,5 @@
 ---
-title: "Trend Following System: Complete Strategy and Backtest Results"
+title: "Trend Following System: Complete Strategy and Backtest"
 description: "Build a complete trend following system with multi-asset allocation, position sizing, and 40-year backtest results across commodities and equities."
 date: "2026-03-16"
 author: "QuantEngines"

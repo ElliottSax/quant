@@ -1,5 +1,5 @@
 ---
-title: 'Support and Resistance: Identifying Breakout Levels with Precision'
+title: "Support and Resistance: Identifying Breakout Levels with"
 date: '2026-03-15'
 author: "QuantEngines"
 category: Algo Trading

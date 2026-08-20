@@ -1,5 +1,5 @@
 ---
-title: "Measuring Algorithmic Execution Quality: Benchmarks and Metrics"
+title: "Measuring Algorithmic Execution Quality"
 description: "Evaluate algorithmic execution quality using VWAP, implementation shortfall, and market impact analysis with practical measurement frameworks."
 date: "2026-04-25"
 author: "QuantEngines"

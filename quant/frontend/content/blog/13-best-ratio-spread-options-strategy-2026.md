@@ -1,5 +1,5 @@
 ---
-title: '''''''Ratio Spread Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Ratio Spread Strategy for Options Trading 2026"
 slug: 13_best_ratio_spread_options_strategy_2026
 description: '''''''Ratio Spread Strategy for Options Trading 2026: Complete Guide
   This'''

@@ -1,8 +1,7 @@
 ---
 title: 'American vs European Options: Exercise Implications'
 slug: american-vs-european-options-exercise-implications
-description: 'Comprehensive guide to american vs european options: exercise implications.
-  Expert analysis with actionable strategies and real-world examples.'
+description: "American and European options are two primary types of options contracts that differ significantly in their exercise implications."
 keywords:
 - American options
 - European options

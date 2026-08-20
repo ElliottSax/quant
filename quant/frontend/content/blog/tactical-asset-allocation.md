@@ -1,5 +1,5 @@
 ---
-title: "Tactical Asset Allocation: Systematic Market Timing Approaches"
+title: "Tactical Asset Allocation: Systematic Market Timing"
 description: "Implement systematic tactical asset allocation using momentum, valuation, and macro signals to dynamically adjust portfolio weights across asset classes."
 date: "2026-04-22"
 author: "QuantEngines"

@@ -1,5 +1,5 @@
 ---
-title: 'Black-Litterman Model Tutorial: Incorporate Expert Views into Portfolios'
+title: "Black-Litterman Model Tutorial"
 slug: black-litterman-model-tutorial
 author: "QuantEngines"
 category: Algo Trading
@@ -8,11 +8,11 @@ quality_score: 90
 seo_optimized: true
 published_date: '2026-03-19'
 last_updated: '2026-03-19'
+description: "The Black-Litterman model combines market equilibrium returns with investor views to create robust portfolio allocations."
 ---
 
 # Black-Litterman Model Tutorial: Incorporate Expert Views into Portfolios
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

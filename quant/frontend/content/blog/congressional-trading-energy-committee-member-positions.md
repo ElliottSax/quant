@@ -1,8 +1,7 @@
 ---
 title: congressional trading energy committee member positions
 slug: congressional-trading-energy-committee-member-positions
-description: Comprehensive guide to congressional trading energy committee member
-  positions. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Energy Committee Member Positions is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading energy committee member positions
 author: "QuantEngines"

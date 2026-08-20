@@ -12,7 +12,6 @@ last_updated: '2026-04-17'
 
 # Database Design for Trading Systems: Schema and Optimization
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

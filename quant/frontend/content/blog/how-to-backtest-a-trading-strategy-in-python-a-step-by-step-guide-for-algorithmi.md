@@ -1,5 +1,5 @@
 ---
-title: "How to Backtest a Trading Strategy in Python: A Step-by-Step Guide for Algorithmic Traders"
+title: "How to Backtest a Trading Strategy in Python"
 description: "Backtesting is the process of testing a trading strategy against historical market data to evaluate its viability before risking real capital. Python has become the go-to language for backtesting than"
 date: "2026-07-18"
 author: "QuantEngines"

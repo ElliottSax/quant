@@ -1,8 +1,7 @@
 ---
 title: congressional trading healthcare committee trading patterns
 slug: congressional-trading-healthcare-committee-trading-patterns
-description: Comprehensive guide to congressional trading healthcare committee trading
-  patterns. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Healthcare Committee Trading Patterns is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading healthcare committee trading patterns
 author: "QuantEngines"

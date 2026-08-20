@@ -1,5 +1,5 @@
 ---
-title: 'Crypto Funding Rate Arbitrage: Profitable Perpetual Futures Strategy'
+title: "Crypto Funding Rate Arbitrage: Profitable Perpetual Futures"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'

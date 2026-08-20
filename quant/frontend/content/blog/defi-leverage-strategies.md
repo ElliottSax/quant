@@ -1,5 +1,5 @@
 ---
-title: "DeFi Leverage Strategies: Aave, Compound, and Recursive Lending"
+title: "DeFi Leverage Strategies: Aave, Compound, and Recursive"
 description: "Safe leverage strategies in DeFi lending protocols. Learn recursive lending, collateral management, and liquidation prevention techniques."
 date: "2026-05-23"
 author: "QuantEngines"

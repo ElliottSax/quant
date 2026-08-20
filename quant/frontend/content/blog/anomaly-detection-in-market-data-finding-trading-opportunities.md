@@ -1,5 +1,5 @@
 ---
-title: 'Anomaly Detection in Market Data: Finding Trading Opportunities'
+title: "Anomaly Detection in Market Data"
 slug: anomaly-detection-in-market-data-finding-trading-opportunities
 description: 'Comprehensive guide to anomaly detection in market data: finding trading
   opportunities. Expert analysis with actionable strategies and real-world examples.'

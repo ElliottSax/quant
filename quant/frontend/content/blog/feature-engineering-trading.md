@@ -1,5 +1,5 @@
 ---
-title: "Feature Engineering for Trading Models: Creating Alpha Signals"
+title: "Feature Engineering for Trading Models"
 description: "Master feature engineering for quantitative trading. Technical, fundamental, alternative data features with proper normalization and selection techniques."
 date: "2026-03-22"
 author: "QuantEngines"

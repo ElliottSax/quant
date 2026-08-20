@@ -1,5 +1,5 @@
 ---
-title: '''''''Debit Spread Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Debit Spread Strategy for Options Trading 2026"
 slug: 15_debit_spread_options_directional_strategy
 description: '''''''Debit Spread Strategy for Options Trading 2026: Complete Guide
   This'''

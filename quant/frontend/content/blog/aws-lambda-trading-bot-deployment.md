@@ -8,11 +8,11 @@ quality_score: 90
 seo_optimized: true
 published_date: '2026-03-17'
 last_updated: '2026-03-17'
+description: "AWS Lambda enables deploying trading bots without managing servers, scaling automatically with demand, and paying only for compute time used."
 ---
 
 # AWS Lambda for Trading Bots: Serverless Deployment
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

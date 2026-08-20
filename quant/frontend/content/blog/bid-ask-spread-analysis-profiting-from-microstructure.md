@@ -1,8 +1,7 @@
 ---
 title: 'Bid-Ask Spread Analysis: Profiting from Microstructure'
 slug: bid-ask-spread-analysis-profiting-from-microstructure
-description: 'Comprehensive guide to bid-ask spread analysis: profiting from microstructure.
-  Expert analysis with actionable strategies and real-world examples.'
+description: "Bid-ask spread analysis is a crucial aspect of quantitative trading, as it provides valuable insights into the microstructure of financial markets."
 keywords:
 - bid-ask spread
 - microstructure

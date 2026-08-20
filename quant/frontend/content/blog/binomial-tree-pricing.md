@@ -1,5 +1,5 @@
 ---
-title: 'Binomial Tree Pricing: Building Flexible Option Valuation Models'
+title: "Binomial Tree Pricing: Building Flexible Option Valuation"
 date: '2026-03-15'
 author: "QuantEngines"
 category: Algo Trading

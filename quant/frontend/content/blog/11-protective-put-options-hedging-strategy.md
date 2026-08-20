@@ -1,5 +1,5 @@
 ---
-title: '''''''Protective Put Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Protective Put Strategy for Options Trading 2026"
 slug: 11_protective_put_options_hedging_strategy
 description: '''''''Protective Put Strategy for Options Trading 2026: Complete Guide
   This'''

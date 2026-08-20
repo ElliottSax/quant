@@ -1,5 +1,5 @@
 ---
-title: "How to Track Congress Stock Trades in Real-Time: Complete 2026 Guide"
+title: "How to Track Congress Stock Trades in Real-Time"
 description: "Step-by-step guide to tracking congressional stock trades in real-time using free tools, APIs, and alert systems. Learn where disclosures are filed and how to use the data."
 date: "2026-03-15"
 author: "QuantEngines"

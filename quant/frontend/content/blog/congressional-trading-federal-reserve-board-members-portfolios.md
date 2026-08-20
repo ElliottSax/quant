@@ -1,8 +1,7 @@
 ---
-title: congressional trading federal reserve board members portfolios
+title: "congressional trading federal reserve board members"
 slug: congressional-trading-federal-reserve-board-members-portfolios
-description: Comprehensive guide to congressional trading federal reserve board members
-  portfolios. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Federal Reserve Board Members Portfolios is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading federal reserve board members portfolios
 author: "QuantEngines"

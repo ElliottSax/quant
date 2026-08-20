@@ -1,6 +1,5 @@
 ---
-title: 'Congress Healthcare Stock Trades Analysis: Pharmaceutical Profits and FDA
-  Timing'
+title: "Congress Healthcare Stock Trades Analysis"
 description: Comprehensive analysis of congressional healthcare and pharmaceutical
   stock trading with FDA approval correlations
 author: "QuantEngines"

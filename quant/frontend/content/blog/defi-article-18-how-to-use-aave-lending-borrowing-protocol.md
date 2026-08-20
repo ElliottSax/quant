@@ -1,5 +1,5 @@
 ---
-title: '''''''How to Use Aave Lending & Borrowing Protocol: Complete 2026 Guide'''''''
+title: "How to Use Aave Lending & Borrowing Protocol"
 slug: defi_article_18_how_to_use_aave_lending_borrowing_protocol
 description: '''''''How to Use Aave Lending & Borrowing Protocol: Complete 2026 Guide'
 author: "QuantEngines"

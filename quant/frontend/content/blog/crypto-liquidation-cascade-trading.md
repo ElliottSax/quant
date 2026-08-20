@@ -1,5 +1,5 @@
 ---
-title: 'Crypto Liquidation Cascade Trading: Profiting from Market Panics'
+title: "Crypto Liquidation Cascade Trading"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'

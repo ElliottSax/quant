@@ -1,5 +1,5 @@
 ---
-title: '''''''Butterfly Spread Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Butterfly Spread Strategy for Options Trading 2026"
 slug: 05_butterfly_spread_options_strategy_low_risk
 description: '''''''Butterfly Spread Strategy for Options Trading 2026: Complete Guide'
 author: "QuantEngines"

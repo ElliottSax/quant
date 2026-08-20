@@ -1,8 +1,7 @@
 ---
 title: circuit breakers and trading halts market safeguards
 slug: circuit-breakers-and-trading-halts-market-safeguards
-description: Comprehensive guide to circuit breakers and trading halts market safeguards.
-  Expert analysis with actionable strategies and real-world examples.
+description: "Circuit breakers and trading halts are crucial market safeguards that prevent excessive price movements and maintain market stability."
 keywords:
 - circuit breakers and trading halts market safeguards
 author: "QuantEngines"

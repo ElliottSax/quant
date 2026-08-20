@@ -7,6 +7,7 @@ tags: ["pairs trading", "beginner", "cointegration", "spread"]
 slug: "backtesting-pairs-trading-for-beginners"
 quality_score: 98
 seo_optimized: true
+description: "Pairs trading is simpler than single-asset trading because you're betting on relative value, not absolute direction."
 ---
 
 # Backtesting Pairs Trading for Beginners: Simple Spread-Based Strategies

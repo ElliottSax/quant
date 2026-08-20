@@ -1,8 +1,7 @@
 ---
 title: correlation vs causation in trading data
 slug: correlation-vs-causation-in-trading-data
-description: Comprehensive guide to correlation vs causation in trading data. Expert
-  analysis with actionable strategies and real-world examples.
+description: "Correlation Vs Causation In Trading Data is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - correlation vs causation in trading data
 author: "QuantEngines"

@@ -1,12 +1,12 @@
 ---
-title: 'Bayesian Deep Learning for Uncertainty: Probabilistic Neural Networks for
-  Trading'
+title: "Bayesian Deep Learning for Uncertainty"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: bayesian-deep-learning-uncertainty
 published_date: '2026-03-18'
 last_updated: '2026-03-18'
+description: "Bayesian deep learning quantifies uncertainty in predictions through probability distributions. This approach is crucial for risk-aware trading decisions."
 ---
 
 # Bayesian Deep Learning for Uncertainty: Probabilistic Neural Networks for Trading

@@ -7,6 +7,7 @@ tags: ["risk management", "backtesting", "python", "stop loss", "portfolio risk"
 slug: "backtesting-risk-management-efficiently"
 quality_score: 95
 seo_optimized: true
+description: "Efficient risk management in trading means controlling maximum loss while preserving capital for compound growth."
 ---
 
 # Backtesting Risk Management Efficiently

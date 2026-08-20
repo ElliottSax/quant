@@ -1,9 +1,7 @@
 ---
-title: 'Congress Healthcare Committee Stocks: Pharma and Medical Device Picks'
+title: "Congress Healthcare Committee Stocks"
 slug: congress-healthcare-committee-stocks
-description: 'Comprehensive guide to congress healthcare committee stocks: pharma
-  and medical device picks. Expert analysis with actionable strategies and real-world
-  examples.'
+description: "Members of Congressional healthcare committees provide signals about drug approvals, pricing policies, and regulatory direction through their stock purchases."
 keywords:
 - 'congress healthcare committee stocks: pharma and medical device picks'
 author: "QuantEngines"

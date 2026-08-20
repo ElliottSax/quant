@@ -1,8 +1,7 @@
 ---
 title: 'Asset Allocation: Top-Down Approach'
 slug: asset-allocation-top-down-approach
-description: 'Comprehensive guide to asset allocation: top-down approach. Expert analysis
-  with actionable strategies and real-world examples.'
+description: "Asset allocation is a critical component of investment management, as it determines the overall risk and return profile of a portfolio."
 keywords:
 - asset allocation
 - strategic allocation

@@ -1,5 +1,5 @@
 ---
-title: '''''''Iron Condor Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Iron Condor Strategy for Options Trading 2026"
 slug: 03_iron_condor_options_strategy_neutral_markets
 description: '''''''Iron Condor Strategy for Options Trading 2026: Complete Guide
   This'

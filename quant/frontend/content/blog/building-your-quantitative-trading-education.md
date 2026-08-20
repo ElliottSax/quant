@@ -1,8 +1,7 @@
 ---
 title: Building Your Quantitative Trading Education
 slug: building-your-quantitative-trading-education
-description: Comprehensive guide to building your quantitative trading education.
-  Expert analysis with actionable strategies and real-world examples.
+description: "Building a comprehensive quantitative trading education is a multifaceted pursuit that requires dedication, persistence, and a well-structured approach."
 keywords:
 - education
 - curriculum

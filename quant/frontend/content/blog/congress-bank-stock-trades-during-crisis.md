@@ -1,6 +1,5 @@
 ---
-title: 'Congress Bank Stock Trades During Crisis: Financial Stress Prediction and
-  Crisis Positioning'
+title: "Congress Bank Stock Trades During Crisis"
 description: Analysis of congressional members' bank stock trading during February
   2026 financial stress period
 author: "QuantEngines"

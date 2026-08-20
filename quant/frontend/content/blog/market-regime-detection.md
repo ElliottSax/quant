@@ -1,5 +1,5 @@
 ---
-title: "Market Regime Detection: Adapting Strategy to Market Conditions"
+title: "Market Regime Detection: Adapting Strategy to Market"
 description: "Detect market regimes to adapt trading strategies. Learn Hidden Markov Models, volatility clustering, trend/range classification, and regime-switching systems."
 date: "2026-03-30"
 author: "QuantEngines"

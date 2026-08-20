@@ -1,5 +1,5 @@
 ---
-title: '''''''How to Bridge Crypto Between Chains Safely: 2026 Complete Guide'''''''
+title: "How to Bridge Crypto Between Chains Safely"
 slug: defi_article_11_how_to_bridge_crypto_between_chains_safely
 description: '''''''How to Bridge Crypto Between Chains Safely: 2026 Complete Guide
   This'''

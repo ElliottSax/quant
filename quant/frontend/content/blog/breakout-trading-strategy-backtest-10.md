@@ -1,5 +1,5 @@
 ---
-title: 'Breakout Trading Strategy: Complete Backtest and Performance Analysis'
+title: "Breakout Trading Strategy: Complete Backtest and"
 date: '2026-03-15'
 author: "QuantEngines"
 category: Algo Trading

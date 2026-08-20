@@ -1,5 +1,5 @@
 ---
-title: "Position Sizing Strategies: Kelly Criterion and Fixed Fractional"
+title: "Position Sizing Strategies: Kelly Criterion and Fixed"
 description: "Master position sizing with Kelly Criterion, fixed fractional, and optimal f methods. Learn to size positions for maximum growth while controlling drawdowns."
 date: "2026-03-17"
 author: "QuantEngines"

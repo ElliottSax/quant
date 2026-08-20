@@ -12,7 +12,6 @@ last_updated: '2026-04-16'
 
 # Cryptocurrency Backtesting with CCXT: Complete Tutorial
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

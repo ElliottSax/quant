@@ -1,6 +1,5 @@
 ---
-title: 'Congress Energy Sector Trades 2026: Oil, Gas, and Green Energy Investment
-  Patterns'
+title: "Congress Energy Sector Trades 2026"
 description: Analysis of congressional energy sector trading including traditional
   energy and renewable investments with policy timing correlations
 author: "QuantEngines"

@@ -1,6 +1,5 @@
 ---
-title: 'Congress AI Stock Investments 2026: Artificial Intelligence Boom and Forward-Looking
-  Positioning'
+title: "Congress AI Stock Investments 2026"
 description: Analysis of congressional members' AI and machine learning company investments
   with growth predictions
 author: "QuantEngines"

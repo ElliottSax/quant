@@ -7,6 +7,7 @@ tags: ["forex", "risk management", "backtesting", "currency trading", "fx"]
 slug: "backtesting-risk-management-on-forex"
 quality_score: 95
 seo_optimized: true
+description: "Forex markets present unique risk management challenges: 24/5 trading, massive leverage availability, tight spreads, and significant overnight gap risk."
 ---
 
 # Backtesting Risk Management on Forex

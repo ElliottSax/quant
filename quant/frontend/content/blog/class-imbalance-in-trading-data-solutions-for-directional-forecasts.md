@@ -1,5 +1,5 @@
 ---
-title: 'Class Imbalance in Trading Data: Solutions for Directional Forecasts'
+title: "Class Imbalance in Trading Data"
 slug: class-imbalance-in-trading-data-solutions-for-directional-forecasts
 description: 'Comprehensive guide to class imbalance in trading data: solutions for
   directional forecasts. Expert analysis with actionable strategies and real-world

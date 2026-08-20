@@ -1,5 +1,5 @@
 ---
-title: '''"Algorithmic Trading Strategies for Retail Traders: Automate Your Trading"'''
+title: "Algorithmic Trading Strategies for Retail Traders"
 slug: '''"algorithmic-trading-strategies-retail"'''
 description: '''"Learn algorithmic trading strategies for retail traders. Python bots,'
 author: "QuantEngines"

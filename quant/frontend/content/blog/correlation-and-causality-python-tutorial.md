@@ -1,5 +1,5 @@
 ---
-title: 'Correlation and Causality in Trading: A Python Tutorial for Quantitative Traders'
+title: "Correlation and Causality in Trading"
 author: "QuantEngines"
 date: '2026-03-16'
 category: Algo Trading

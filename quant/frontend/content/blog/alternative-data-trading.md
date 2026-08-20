@@ -1,5 +1,5 @@
 ---
-title: "Alternative Data for Trading: Satellite, Social, and Web Data"
+title: "Alternative Data for Trading: Satellite, Social, and Web"
 description: "Leverage alternative data for trading alpha. Satellite imagery, social media sentiment, web scraping, credit card data, and geolocation analytics."
 date: "2026-03-29"
 author: "QuantEngines"

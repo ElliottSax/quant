@@ -1,5 +1,5 @@
 ---
-title: '''''''Wheel Strategy Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Wheel Strategy Strategy for Options Trading 2026"
 slug: 16_best_wheel_options_strategy_for_income_2026
 description: '''''''Wheel Strategy Strategy for Options Trading 2026: Complete Guide
   This'''

@@ -1,8 +1,7 @@
 ---
 title: congressional trading pelosi portfolio performance analysis
 slug: congressional-trading-pelosi-portfolio-performance-analysis
-description: Comprehensive guide to congressional trading pelosi portfolio performance
-  analysis. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Pelosi Portfolio Performance Analysis is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading pelosi portfolio performance analysis
 author: "QuantEngines"

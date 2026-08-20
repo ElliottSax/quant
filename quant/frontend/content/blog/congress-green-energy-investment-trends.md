@@ -1,6 +1,5 @@
 ---
-title: 'Congress Green Energy Investment Trends: Clean Energy Policy Trading and Renewable
-  Positioning'
+title: "Congress Green Energy Investment Trends"
 description: Analysis of congressional members' green energy and renewable investment
   trading with correlation to climate policy
 author: "QuantEngines"

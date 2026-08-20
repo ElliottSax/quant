@@ -1,9 +1,7 @@
 ---
-title: congressional trading leveraging congressional trades for sector rotation
+title: "congressional trading leveraging congressional trades for"
 slug: congressional-trading-leveraging-congressional-trades-for-sector-rotation
-description: Comprehensive guide to congressional trading leveraging congressional
-  trades for sector rotation. Expert analysis with actionable strategies and real-world
-  examples.
+description: "Congressional Trading Leveraging Congressional Trades For Sector Rotation is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading leveraging congressional trades for sector rotation
 author: "QuantEngines"

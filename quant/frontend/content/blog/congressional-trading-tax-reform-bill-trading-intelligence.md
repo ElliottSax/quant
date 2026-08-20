@@ -1,8 +1,7 @@
 ---
 title: congressional trading tax reform bill trading intelligence
 slug: congressional-trading-tax-reform-bill-trading-intelligence
-description: Comprehensive guide to congressional trading tax reform bill trading
-  intelligence. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Tax Reform Bill Trading Intelligence is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading tax reform bill trading intelligence
 author: "QuantEngines"

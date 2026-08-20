@@ -1,5 +1,5 @@
 ---
-title: '''''''Diagonal Spread Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Diagonal Spread Strategy for Options Trading 2026"
 slug: 07_best_diagonal_spread_options_strategy_2026
 description: '''''''Diagonal Spread Strategy for Options Trading 2026: Complete Guide'
 author: "QuantEngines"

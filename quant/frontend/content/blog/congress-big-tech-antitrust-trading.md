@@ -1,6 +1,5 @@
 ---
-title: 'Congress Big Tech Antitrust Trading: Regulatory Predictions and Strategic
-  Positioning'
+title: "Congress Big Tech Antitrust Trading"
 description: Analysis of congressional members' Big Tech stock purchases preceding
   antitrust hearing and regulatory outcomes
 author: "QuantEngines"

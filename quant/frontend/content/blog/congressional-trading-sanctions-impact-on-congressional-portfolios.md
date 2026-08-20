@@ -1,8 +1,7 @@
 ---
-title: congressional trading sanctions impact on congressional portfolios
+title: "congressional trading sanctions impact on congressional"
 slug: congressional-trading-sanctions-impact-on-congressional-portfolios
-description: Comprehensive guide to congressional trading sanctions impact on congressional
-  portfolios. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Sanctions Impact On Congressional Portfolios is a critical area of study in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading sanctions impact on congressional portfolios
 author: "QuantEngines"

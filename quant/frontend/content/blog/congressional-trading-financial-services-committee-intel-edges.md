@@ -1,8 +1,7 @@
 ---
-title: congressional trading financial services committee intel edges
+title: "congressional trading financial services committee intel"
 slug: congressional-trading-financial-services-committee-intel-edges
-description: Comprehensive guide to congressional trading financial services committee
-  intel edges. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Financial Services Committee Intel Edges is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading financial services committee intel edges
 author: "QuantEngines"

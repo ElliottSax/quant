@@ -13,6 +13,7 @@ quality_score: 95
 seo_optimized: true
 published_date: '2026-03-15'
 last_updated: '2026-03-15'
+description: "BackTrader is the gold standard for retail and institutional traders building algorithmic trading systems in Python."
 ---
 
 # BackTrader Tutorial: Build Professional Trading Algorithms

@@ -7,6 +7,7 @@ tags: ["position sizing", "high success rate", "winning trades", "profit maximiz
 slug: "backtesting-position-sizing-with-high-success-rate"
 quality_score: 95
 seo_optimized: true
+description: "Strategies with high win rates (65%+) allow aggressive position sizing while maintaining acceptable drawdowns."
 ---
 
 # Backtesting Position Sizing with High Success Rate

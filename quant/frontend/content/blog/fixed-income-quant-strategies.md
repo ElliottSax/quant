@@ -1,5 +1,5 @@
 ---
-title: "Fixed Income Quantitative Strategies: Duration, Curve, and Spread"
+title: "Fixed Income Quantitative Strategies"
 description: "Explore systematic fixed income strategies including duration timing, yield curve positioning, and credit spread trading with quantitative frameworks."
 date: "2026-04-19"
 author: "QuantEngines"

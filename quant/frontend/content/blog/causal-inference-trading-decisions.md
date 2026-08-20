@@ -1,11 +1,12 @@
 ---
-title: 'Causal Inference for Trading Decisions: Understanding Market Mechanisms'
+title: "Causal Inference for Trading Decisions"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: causal-inference-trading-decisions
 published_date: '2026-03-21'
 last_updated: '2026-03-21'
+description: "Causal inference distinguishes correlation from causation, enabling traders to understand true market mechanisms rather than spurious patterns."
 ---
 
 # Causal Inference for Trading Decisions: Understanding Market Mechanisms

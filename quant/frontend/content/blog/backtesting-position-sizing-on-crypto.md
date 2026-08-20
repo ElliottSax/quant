@@ -7,6 +7,7 @@ tags: ["position sizing", "crypto", "backtesting", "volatility", "bitcoin", "eth
 slug: "backtesting-position-sizing-on-crypto"
 quality_score: 95
 seo_optimized: true
+description: "Cryptocurrency markets operate 24/7 with volatility that dwarfs traditional markets. This requires specialized position sizing approaches."
 ---
 
 # Backtesting Position Sizing on Crypto

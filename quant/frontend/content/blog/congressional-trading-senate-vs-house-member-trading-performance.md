@@ -1,8 +1,7 @@
 ---
-title: congressional trading senate vs house member trading performance
+title: "congressional trading senate vs house member trading"
 slug: congressional-trading-senate-vs-house-member-trading-performance
-description: Comprehensive guide to congressional trading senate vs house member trading
-  performance. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Senate Vs House Member Trading Performance is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading senate vs house member trading performance
 author: "QuantEngines"

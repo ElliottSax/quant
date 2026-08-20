@@ -7,6 +7,7 @@ tags: ["risk management", "high success rate", "winning trades", "performance", 
 slug: "backtesting-risk-management-with-high-success-rate"
 quality_score: 95
 seo_optimized: true
+description: "High-success-rate strategies (70%+ win rate) require different risk management approaches than typical strategies."
 ---
 
 # Backtesting Risk Management with High Success Rate

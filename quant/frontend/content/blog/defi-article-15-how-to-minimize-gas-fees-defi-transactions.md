@@ -1,5 +1,5 @@
 ---
-title: '''''''How to Minimize Gas Fees in DeFi: Complete 2026 Strategy Guide'''''''
+title: "How to Minimize Gas Fees in DeFi"
 slug: defi_article_15_how_to_minimize_gas_fees_defi_transactions
 description: '''''''How to Minimize Gas Fees in DeFi: Complete 2026 Strategy Guide
   This'''

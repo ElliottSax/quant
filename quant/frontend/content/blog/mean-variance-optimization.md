@@ -1,5 +1,5 @@
 ---
-title: "Mean-Variance Optimization: Modern Portfolio Theory in Practice"
+title: "Mean-Variance Optimization: Modern Portfolio Theory in"
 description: "Master Markowitz mean-variance optimization with efficient frontier construction, constraint handling, and practical implementation guidance."
 date: "2026-04-06"
 author: "QuantEngines"

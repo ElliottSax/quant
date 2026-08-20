@@ -1,5 +1,5 @@
 ---
-title: 'Congress Small-Cap Stock Picks: Penny Stocks and Emerging Company Holdings'
+title: "Congress Small-Cap Stock Picks"
 description: Analysis of congressional members' small-cap and emerging company investments
   with extreme return profiles
 author: "QuantEngines"

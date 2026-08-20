@@ -1,5 +1,5 @@
 ---
-title: 'Counterfactual Analysis for Trading: Understanding Alternative Scenarios'
+title: "Counterfactual Analysis for Trading"
 slug: counterfactual-analysis-trading
 description: 'Comprehensive guide to counterfactual analysis for trading: understanding
   alternative scenarios. Expert analysis with actionable strategies and real-world

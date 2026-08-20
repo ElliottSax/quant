@@ -1,5 +1,5 @@
 ---
-title: "Black-Litterman Model: Combining Views with Market Equilibrium"
+title: "Black-Litterman Model: Combining Views with Market"
 description: "Master the Black-Litterman portfolio model to blend investor views with market equilibrium returns for stable, intuitive asset allocation."
 date: "2026-04-07"
 author: "QuantEngines"

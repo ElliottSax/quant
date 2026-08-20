@@ -9,6 +9,7 @@ slug: "automating-momentum-trading-for-beginners"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Momentum trading—buying assets with rising prices and selling those with falling prices—is the foundation of successful algorithmic trading."
 ---
 
 # Automating Momentum Trading for Beginners

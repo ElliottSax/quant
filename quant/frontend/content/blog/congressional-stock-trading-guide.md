@@ -1,5 +1,5 @@
 ---
-title: "Congressional Stock Trading: How Politicians Trade Stocks and What It Means for You"
+title: "Congressional Stock Trading: How Politicians Trade Stocks"
 description: "Deep dive into congressional stock trading: how politicians trade, STOCK Act requirements, notable examples from Pelosi to Tuberville, and how retail investors can use disclosure data."
 date: "2026-03-15"
 author: "QuantEngines"

@@ -1,5 +1,5 @@
 ---
-title: 'Building a Trading Bot from Scratch: A Complete Step-by-Step Guide'
+title: "Building a Trading Bot from Scratch"
 slug: building-a-trading-bot-from-scratch
 author: "QuantEngines"
 category: Algo Trading
@@ -8,11 +8,11 @@ quality_score: 90
 seo_optimized: true
 published_date: '2026-03-20'
 last_updated: '2026-03-20'
+description: "Building a trading bot from scratch allows you to understand every component of your trading system and customize it exactly to your needs."
 ---
 
 # Building a Trading Bot from Scratch: A Complete Step-by-Step Guide
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

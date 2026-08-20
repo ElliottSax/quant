@@ -12,7 +12,6 @@ last_updated: '2026-03-20'
 
 # Building a Custom Backtesting Engine from Scratch
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

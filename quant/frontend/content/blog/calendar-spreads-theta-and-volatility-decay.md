@@ -1,8 +1,7 @@
 ---
 title: calendar spreads theta and volatility decay
 slug: calendar-spreads-theta-and-volatility-decay
-description: Comprehensive guide to calendar spreads theta and volatility decay. Expert
-  analysis with actionable strategies and real-world examples.
+description: "Calendar Spreads Theta And Volatility Decay is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - calendar spreads theta and volatility decay
 author: "QuantEngines"

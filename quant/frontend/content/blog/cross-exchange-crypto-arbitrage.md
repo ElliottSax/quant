@@ -1,11 +1,12 @@
 ---
-title: 'Cross-Exchange Crypto Arbitrage: Exploit Price Differences Across Venues'
+title: "Cross-Exchange Crypto Arbitrage"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: cross-exchange-crypto-arbitrage
 published_date: '2026-04-15'
 last_updated: '2026-04-15'
+description: "Price discrepancies across centralized exchanges create arbitrage opportunities. Different exchanges maintain different orderbooks for the same trading pair."
 ---
 
 # Cross-Exchange Crypto Arbitrage: Exploit Price Differences Across Venues

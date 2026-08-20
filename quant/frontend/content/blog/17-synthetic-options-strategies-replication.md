@@ -1,5 +1,5 @@
 ---
-title: '''''''Synthetic Positions Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Synthetic Positions Strategy for Options Trading 2026"
 slug: 17_synthetic_options_strategies_replication
 description: '''''''Synthetic Positions Strategy for Options Trading 2026: Complete
   Guide'''

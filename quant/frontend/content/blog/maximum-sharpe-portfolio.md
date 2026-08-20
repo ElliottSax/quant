@@ -1,5 +1,5 @@
 ---
-title: "Maximum Sharpe Ratio Portfolio: Optimizing Risk-Adjusted Returns"
+title: "Maximum Sharpe Ratio Portfolio"
 description: "Construct the maximum Sharpe ratio portfolio using optimization techniques. Learn the tangency portfolio theory, estimation challenges, and practical solutions."
 date: "2026-04-10"
 author: "QuantEngines"

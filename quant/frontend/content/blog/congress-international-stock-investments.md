@@ -1,6 +1,5 @@
 ---
-title: 'Congress International Stock Investments: Foreign Company Holdings and Global
-  Policy Correlation'
+title: "Congress International Stock Investments"
 description: Analysis of congressional members' international stock investments with
   timing correlated to US foreign policy
 author: "QuantEngines"

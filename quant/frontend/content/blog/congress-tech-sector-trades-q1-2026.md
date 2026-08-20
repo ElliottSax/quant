@@ -1,11 +1,12 @@
 ---
-title: 'Congress Tech Sector Trades Q1 2026: Insider Trading Patterns and Opportunities'
+title: "Congress Tech Sector Trades Q1 2026"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'
 slug: congress-tech-sector-trades-q1-2026
 published_date: '2026-03-25'
 last_updated: '2026-03-25'
+description: "Congressional members' stock transactions provide insight into legislative direction and sector opportunities."
 ---
 
 # Congress Tech Sector Trades Q1 2026: Insider Trading Patterns and Opportunities

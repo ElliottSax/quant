@@ -1,8 +1,7 @@
 ---
-title: congressional trading foreign policy committee stock patterns
+title: "congressional trading foreign policy committee stock"
 slug: congressional-trading-foreign-policy-committee-stock-patterns
-description: Comprehensive guide to congressional trading foreign policy committee
-  stock patterns. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Foreign Policy Committee Stock Patterns is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading foreign policy committee stock patterns
 author: "QuantEngines"

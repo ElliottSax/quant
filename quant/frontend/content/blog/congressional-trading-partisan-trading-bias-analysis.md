@@ -1,8 +1,7 @@
 ---
 title: congressional trading partisan trading bias analysis
 slug: congressional-trading-partisan-trading-bias-analysis
-description: Comprehensive guide to congressional trading partisan trading bias analysis.
-  Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Partisan Trading Bias Analysis is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading partisan trading bias analysis
 author: "QuantEngines"

@@ -1,8 +1,7 @@
 ---
 title: congressional trading epidemic response act trades
 slug: congressional-trading-epidemic-response-act-trades
-description: Comprehensive guide to congressional trading epidemic response act trades.
-  Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Epidemic Response Act Trades is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading epidemic response act trades
 author: "QuantEngines"

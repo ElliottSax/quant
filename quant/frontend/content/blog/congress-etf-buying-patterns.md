@@ -1,5 +1,5 @@
 ---
-title: 'Congress ETF Buying Patterns: Index Fund Positions and Passive Strategy Concentration'
+title: "Congress ETF Buying Patterns: Index Fund Positions and"
 description: Analysis of congressional members' exchange-traded fund investments revealing
   sector-specific passive strategy concentration
 author: "QuantEngines"

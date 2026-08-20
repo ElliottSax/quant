@@ -7,6 +7,7 @@ tags: ["rsi", "safe trading", "risk management", "backtesting", "stop loss"]
 slug: "backtesting-rsi-strategies-safely"
 quality_score: 95
 seo_optimized: true
+description: "RSI strategies can generate consistent alpha, but without proper safeguards, they lead to account destruction."
 ---
 
 # Backtesting RSI Strategies Safely

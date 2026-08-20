@@ -1,5 +1,5 @@
 ---
-title: "Execution Algorithms: TWAP, VWAP, and Implementation Shortfall"
+title: "Execution Algorithms: TWAP, VWAP, and Implementation"
 description: "Master execution algorithms for quantitative trading. TWAP, VWAP, implementation shortfall, and adaptive algorithms with Python implementations."
 date: "2026-03-27"
 author: "QuantEngines"

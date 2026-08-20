@@ -1,5 +1,5 @@
 ---
-title: "Moving Average Crossover Strategy: Golden Cross and Death Cross"
+title: "Moving Average Crossover Strategy"
 description: "Systematic guide to moving average crossover strategies including golden cross, death cross, and triple MA systems with backtest data."
 date: "2026-03-10"
 author: "QuantEngines"

@@ -12,7 +12,6 @@ last_updated: '2026-03-16'
 
 # Alerting System for Trading: Multi-Tier Notifications
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

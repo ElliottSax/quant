@@ -1,5 +1,5 @@
 ---
-title: '''''''Credit Spread Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Credit Spread Strategy for Options Trading 2026"
 slug: 14_credit_spread_options_income_strategy_guide
 description: '''''''Credit Spread Strategy for Options Trading 2026: Complete Guide
   This'''

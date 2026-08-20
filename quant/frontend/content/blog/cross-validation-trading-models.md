@@ -1,5 +1,5 @@
 ---
-title: "Cross-Validation for Trading Models: Avoiding Look-Ahead Bias"
+title: "Cross-Validation for Trading Models"
 description: "Implement proper cross-validation for financial models. Walk-forward analysis, purged k-fold, combinatorial purged CV, and embargo techniques."
 date: "2026-03-23"
 author: "QuantEngines"

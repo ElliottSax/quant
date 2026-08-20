@@ -1,5 +1,5 @@
 ---
-title: "Portfolio Rebalancing Strategies: Calendar, Threshold, and Tactical"
+title: "Portfolio Rebalancing Strategies"
 description: "Compare calendar, threshold, and tactical rebalancing approaches with quantitative analysis of costs, tracking error, and optimal frequency."
 date: "2026-04-11"
 author: "QuantEngines"

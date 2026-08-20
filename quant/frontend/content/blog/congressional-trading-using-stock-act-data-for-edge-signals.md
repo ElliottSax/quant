@@ -1,8 +1,7 @@
 ---
 title: congressional trading using stock act data for edge signals
 slug: congressional-trading-using-stock-act-data-for-edge-signals
-description: Comprehensive guide to congressional trading using stock act data for
-  edge signals. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Using Stock Act Data For Edge Signals is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading using stock act data for edge signals
 author: "QuantEngines"

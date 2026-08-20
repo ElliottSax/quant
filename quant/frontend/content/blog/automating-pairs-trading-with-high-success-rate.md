@@ -9,6 +9,7 @@ slug: "automating-pairs-trading-with-high-success-rate"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Pairs trading's strength is its naturally high win rate due to mean reversion: historically correlated pairs diverge, then revert to their relationship."
 ---
 
 # Automating Pairs Trading with High Success Rate

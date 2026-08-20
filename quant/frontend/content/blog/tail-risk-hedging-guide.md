@@ -1,6 +1,6 @@
 ---
 title: "Tail Risk Hedging: Protecting Against Black Swan Events"
-description: "Comprehensive guide to tail risk hedging strategies including put options, volatility strategies, and systematic approaches to crisis protection."
+description: "The paradox of tail risk hedging is that it requires paying insurance premiums during precisely the periods when insurance seems unnecessary."
 date: "2026-04-05"
 author: "QuantEngines"
 category: "Risk Management"

@@ -12,7 +12,6 @@ last_updated: '2026-03-18'
 
 # Best Programming Languages for Trading: Choose Your Stack
 
-**Author:** Dr. James Chen
 **Category:** Algo Trading
 **Date:** 2026-03-16
 

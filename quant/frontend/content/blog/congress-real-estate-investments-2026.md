@@ -1,5 +1,5 @@
 ---
-title: 'Congress Real Estate Investments 2026: Property Holdings and Zoning Vote Correlations'
+title: "Congress Real Estate Investments 2026"
 description: Analysis of congressional real estate holdings and correlation between
   property acquisitions and zoning/development votes
 author: "QuantEngines"

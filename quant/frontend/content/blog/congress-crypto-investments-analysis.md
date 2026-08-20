@@ -1,6 +1,5 @@
 ---
-title: 'Congress Crypto Investments Analysis: Cryptocurrency Holdings and Blockchain
-  Regulation Trading'
+title: "Congress Crypto Investments Analysis"
 description: Analysis of congressional members' cryptocurrency and blockchain investments
   with correlation to crypto regulation votes
 author: "QuantEngines"

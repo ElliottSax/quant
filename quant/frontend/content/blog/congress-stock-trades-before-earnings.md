@@ -1,5 +1,5 @@
 ---
-title: 'Congress Stock Trades Before Earnings: Timing Advantage Around Quarterly Reports'
+title: "Congress Stock Trades Before Earnings"
 description: Analysis of congressional stock purchases preceding corporate earnings
   announcements with profit correlations
 author: "QuantEngines"

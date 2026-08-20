@@ -1,5 +1,5 @@
 ---
-title: '''''''Best Layer 2 DeFi Protocols 2026: Arbitrum vs Optimism vs zkSync'''''''
+title: "Best Layer 2 DeFi Protocols 2026"
 slug: defi_article_14_best_layer_2_defi_protocols_2026
 description: '''''''Best Layer 2 DeFi Protocols 2026: Arbitrum vs Optimism vs zkSync
   This'''

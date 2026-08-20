@@ -1,5 +1,5 @@
 ---
-title: 'Avoiding Overfitting in Trading Models: The Complete Playbook'
+title: "Avoiding Overfitting in Trading Models"
 slug: avoiding-overfitting-in-trading-models-the-complete-playbook
 description: 'Comprehensive guide to avoiding overfitting in trading models: the complete
   playbook. Expert analysis with actionable strategies and real-world examples.'

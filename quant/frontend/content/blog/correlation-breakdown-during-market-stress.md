@@ -1,6 +1,5 @@
 ---
-title: 'Correlation Breakdown During Market Stress: Crisis Dynamics and Portfolio
-  Protection'
+title: "Correlation Breakdown During Market Stress"
 author: "QuantEngines"
 date: '2026-03-16'
 category: Algo Trading

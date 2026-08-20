@@ -1,5 +1,5 @@
 ---
-title: "Stress Testing Portfolios: Historical and Hypothetical Scenarios"
+title: "Stress Testing Portfolios: Historical and Hypothetical"
 description: "Implement portfolio stress testing with historical replay, hypothetical scenarios, and reverse stress tests to identify hidden portfolio vulnerabilities."
 date: "2026-04-15"
 author: "QuantEngines"

@@ -1,8 +1,7 @@
 ---
-title: 'Congress vs SPY Performance March 2026: Tracking Congressional Alpha'
+title: "Congress vs SPY Performance March 2026"
 slug: congress-vs-spy-performance-march-2026
-description: 'Comprehensive guide to congress vs spy performance march 2026: tracking
-  congressional alpha. Expert analysis with actionable strategies and real-world examples.'
+description: "Comparing congressional portfolios to SPY index reveals whether Congress members generate alpha or underperform the market on average."
 keywords:
 - 'congress vs spy performance march 2026: tracking congressional alpha'
 author: "QuantEngines"

@@ -9,6 +9,7 @@ slug: "automating-mean-reversion-safely"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Mean reversion strategies offer compelling risk-adjusted returns, but they carry hidden risks that claim 70% of algorithmic traders."
 ---
 
 # Automating Mean Reversion Safely

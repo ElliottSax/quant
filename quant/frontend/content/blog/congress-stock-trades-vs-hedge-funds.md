@@ -1,6 +1,5 @@
 ---
-title: 'Congress Stock Trades vs Hedge Funds: Performance Comparison and Information
-  Advantage Quantification'
+title: "Congress Stock Trades vs Hedge Funds"
 description: Comparative analysis of congressional trading performance versus elite
   hedge fund performance metrics
 author: "QuantEngines"

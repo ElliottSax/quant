@@ -1,8 +1,7 @@
 ---
 title: Bitcoin Futures Basis Trading
 slug: bitcoin-futures-basis-trading
-description: Comprehensive guide to bitcoin futures basis trading. Expert analysis
-  with actionable strategies and real-world examples.
+description: "Bitcoin futures basis trading is a quantitative strategy that involves exploiting the price differences between the spot market and the futures market."
 keywords:
 - basis trading
 - futures

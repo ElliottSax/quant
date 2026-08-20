@@ -1,5 +1,5 @@
 ---
-title: 'Crypto Market Making Bot: Build High-Frequency Trading Systems'
+title: "Crypto Market Making Bot: Build High-Frequency Trading"
 author: "QuantEngines"
 category: Algo Trading
 date: '2026-03-16'

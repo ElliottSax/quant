@@ -1,8 +1,7 @@
 ---
 title: congressional trading technology committee insider moves
 slug: congressional-trading-technology-committee-insider-moves
-description: Comprehensive guide to congressional trading technology committee insider
-  moves. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Technology Committee Insider Moves is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading technology committee insider moves
 author: "QuantEngines"

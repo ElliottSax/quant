@@ -1,5 +1,5 @@
 ---
-title: '''''''Gamma Scalping Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Gamma Scalping Strategy for Options Trading 2026"
 slug: 18_gamma_scalping_options_strategy_advanced
 description: '''''''Gamma Scalping Strategy for Options Trading 2026: Complete Guide
   This'''

@@ -1,6 +1,5 @@
 ---
-title: 'Congress Military Contractor Investments: Defense Spending Intelligence and
-  Contractor Holdings'
+title: "Congress Military Contractor Investments"
 description: Analysis of congressional members' military contractor positions with
   correlation to defense appropriations
 author: "QuantEngines"

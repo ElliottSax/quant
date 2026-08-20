@@ -1,6 +1,5 @@
 ---
-title: 'Congress Insider Trading vs S&P 500 Returns: Statistical Proof of Information
-  Advantage'
+title: "Congress Insider Trading vs S&P 500 Returns"
 description: Comparative performance analysis demonstrating congressional trading
   outperforms market by 287%, quantifying information advantage
 author: "QuantEngines"

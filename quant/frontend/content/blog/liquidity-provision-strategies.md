@@ -1,5 +1,5 @@
 ---
-title: "Liquidity Provision Strategies: Uniswap V3 Range Optimization"
+title: "Liquidity Provision Strategies"
 description: "Master Uniswap V3 concentrated liquidity with quantitative range selection, fee optimization, and active management strategies for maximum returns."
 date: "2026-05-03"
 author: "QuantEngines"

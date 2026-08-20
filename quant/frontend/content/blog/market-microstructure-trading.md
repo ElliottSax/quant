@@ -1,5 +1,5 @@
 ---
-title: "Market Microstructure: Understanding Order Flow and Liquidity"
+title: "Market Microstructure: Understanding Order Flow and"
 description: "Deep dive into market microstructure covering order books, bid-ask spreads, market making, and how institutional order flow creates trading opportunities."
 date: "2026-03-21"
 author: "QuantEngines"

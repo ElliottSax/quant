@@ -1,5 +1,5 @@
 ---
-title: '''''''How to Use Uniswap for Liquidity Provision: Complete Guide 2026'''''''
+title: "How to Use Uniswap for Liquidity Provision"
 slug: defi_article_09_how_to_use_uniswap_for_liquidity_provision
 description: '''''''How to Use Uniswap for Liquidity Provision: Complete Guide 2026
   This'''

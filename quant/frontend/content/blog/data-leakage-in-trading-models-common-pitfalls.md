@@ -1,8 +1,7 @@
 ---
 title: data leakage in trading models common pitfalls
 slug: data-leakage-in-trading-models-common-pitfalls
-description: Comprehensive guide to data leakage in trading models common pitfalls.
-  Expert analysis with actionable strategies and real-world examples.
+description: "Data leakage in trading models is a critical issue that can significantly impact the performance and reliability of quantitative trading strategies."
 keywords:
 - data leakage in trading models common pitfalls
 author: "QuantEngines"

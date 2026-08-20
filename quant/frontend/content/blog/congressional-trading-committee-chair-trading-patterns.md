@@ -1,8 +1,7 @@
 ---
 title: congressional trading committee chair trading patterns
 slug: congressional-trading-committee-chair-trading-patterns
-description: Comprehensive guide to congressional trading committee chair trading
-  patterns. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Committee Chair Trading Patterns is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading committee chair trading patterns
 author: "QuantEngines"

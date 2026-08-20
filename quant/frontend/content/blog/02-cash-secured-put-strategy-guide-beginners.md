@@ -1,5 +1,5 @@
 ---
-title: '''''''Cash-Secured Put Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Cash-Secured Put Strategy for Options Trading 2026"
 slug: 02_cash_secured_put_strategy_guide_beginners
 description: '''''''Cash-Secured Put Strategy for Options Trading 2026: Complete Guide'
 author: "QuantEngines"

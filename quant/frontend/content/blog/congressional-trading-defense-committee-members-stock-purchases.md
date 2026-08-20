@@ -1,8 +1,7 @@
 ---
-title: congressional trading defense committee members stock purchases
+title: "congressional trading defense committee members stock"
 slug: congressional-trading-defense-committee-members-stock-purchases
-description: Comprehensive guide to congressional trading defense committee members
-  stock purchases. Expert analysis with actionable strategies and real-world examples.
+description: "Congressional Trading Defense Committee Members Stock Purchases is a fundamental concept in quantitative trading and algorithmic finance."
 keywords:
 - congressional trading defense committee members stock purchases
 author: "QuantEngines"

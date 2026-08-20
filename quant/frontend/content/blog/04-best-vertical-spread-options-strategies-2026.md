@@ -1,5 +1,5 @@
 ---
-title: '''''''Vertical Spreads Strategy for Options Trading 2026: Complete Guide'''''''
+title: "Vertical Spreads Strategy for Options Trading 2026"
 slug: 04_best_vertical_spread_options_strategies_2026
 description: '''''''Vertical Spreads Strategy for Options Trading 2026: Complete Guide'
 author: "QuantEngines"

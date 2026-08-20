@@ -9,6 +9,7 @@ slug: "automating-pairs-trading-on-crypto"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Cryptocurrency pairs trading combines the market-neutral alpha generation of traditional pairs with crypto's 24/7 liquidity and extreme volatility."
 ---
 
 # Automating Pairs Trading on Crypto
