@@ -57,15 +57,55 @@ const TOOLS: Record<string, Tool> = {
     title: 'Position Size Calculator',
     blurb: 'Risk-based sizing from account, risk percentage, entry and stop.',
   },
+  indicators: {
+    href: '/indicator-formulas',
+    title: 'Indicator Formulas, Cross-Checked',
+    blurb: 'RSI, ADX, ATR, MACD and Bollinger implemented independently and verified against pandas_ta on real bars — including where they disagree.',
+  },
+  imports: {
+    href: '/statsmodels-imports',
+    title: 'statsmodels Import Reference',
+    blurb: 'Which import paths work, measured by executing every statement — including the three that import fine and fail later.',
+  },
+  fundamentals: {
+    href: '/fundamentals',
+    title: 'Fundamental Screener',
+    blurb: 'Accruals, asset growth and net issuance for 3,000+ US filers, computed straight from SEC XBRL filings.',
+  },
+  rates: {
+    href: '/yield-curve',
+    title: 'Treasury Yield Curve',
+    blurb: "Today's curve plus every sustained inversion since 1990, computed from Treasury's daily series.",
+  },
+  portfolio: {
+    href: '/tools/max-sharpe',
+    title: 'Max Sharpe Portfolio',
+    blurb: 'Closed-form tangency weights from expected returns, volatilities and correlations.',
+  },
 }
 
-/** Longest match wins, so "crypto-trading" is not caught by a bare "trading" rule. */
+/** First match wins, so the most specific rules must come first: an article about the
+ *  RSI formula should reach the indicator reference, not the generic "python" rule. */
 const RULES: Array<[RegExp, string[]]> = [
   [/congress|politician|insider/i, ['congress', 'scanner']],
+  [/\b(rsi|adx|atr|macd|bollinger|stochastic|indicator|oscillator|moving average)\b/i,
+    ['indicators', 'charts']],
+  [/statsmodels|arima|cointegrat|johansen|adfuller|import error/i, ['imports', 'indicators']],
+  [/fundamental|accrual|earnings|balance sheet|valuation|screener|xbrl|edgar|10-?k/i,
+    ['fundamentals', 'scanner']],
+  [/yield curve|treasury|interest rate|inversion|bond|fixed income|fed\b/i, ['rates', 'fundamentals']],
+  [/portfolio|allocation|sharpe|diversif|efficient frontier|markowitz|correlation/i,
+    ['portfolio', 'risk']],
   [/option|greek|volatility|black.?scholes/i, ['options', 'charts']],
-  [/backtest|framework|vectorbt|backtrader|zipline|python|library|pandas|statsmodels|arima/i, ['backtesting', 'vendors']],
+  // Fund/manager due diligence is about judging performance claims, so it belongs with
+  // the screener that publishes its failures and multiple-testing corrections, not with
+  // the strategy builder. Matched before the backtest rule, which otherwise catches
+  // these on the bare word "framework".
+  [/fund (analysis|evaluation|selection)|due diligence|manager|track record|performance attribution/i,
+    ['scanner', 'vendors']],
+  [/backtest|vectorbt|backtrader|zipline|python|library|pandas/i, ['backtesting', 'vendors']],
   [/data|api|vendor|feed/i, ['vendors', 'charts']],
-  [/risk|position siz|kelly|drawdown|money manage/i, ['risk', 'options']],
+  [/risk|position siz|kelly|drawdown|money manage/i, ['risk', 'portfolio']],
   [/seasonal|mean reversion|momentum|factor|strategy|signal/i, ['scanner', 'backtesting']],
 ]
 
