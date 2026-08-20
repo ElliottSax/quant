@@ -7,6 +7,7 @@ tags: ["position sizing", "beginner", "backtesting", "python", "risk management"
 slug: "backtesting-position-sizing-for-beginners"
 quality_score: 95
 seo_optimized: true
+description: "Position sizing is the most critical skill in quantitative trading for beginners. Consider a coin flip game where heads wins $100, tails loses $100."
 ---
 
 # Backtesting Position Sizing for Beginners

@@ -7,6 +7,7 @@ tags: ["mean reversion", "machine learning", "classification", "ensemble"]
 slug: "backtesting-mean-reversion-using-machine-learning"
 quality_score: 98
 seo_optimized: true
+description: "ML can improve mean reversion Sharpe ratios by 25-40% through intelligent signal filtering."
 ---
 
 # Backtesting Mean Reversion using Machine Learning: Adaptive Strategies

@@ -7,6 +7,7 @@ tags: ["pairs trading", "backtesting", "success rate", "python", "quantitative"]
 slug: "backtesting-pairs-trading-with-high-success-rate"
 quality_score: 95
 seo_optimized: true
+description: "Pairs trading is a market-neutral strategy that exploits temporary pricing divergences between two correlated securities."
 ---
 
 # Backtesting Pairs Trading with High Success Rate

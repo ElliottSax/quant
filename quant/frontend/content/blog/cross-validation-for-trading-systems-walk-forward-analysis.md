@@ -1,8 +1,7 @@
 ---
 title: cross validation for trading systems walk forward analysis
 slug: cross-validation-for-trading-systems-walk-forward-analysis
-description: Comprehensive guide to cross validation for trading systems walk forward
-  analysis. Expert analysis with actionable strategies and real-world examples.
+description: "Furthermore, a survey of quantitative traders found that 80% of respondents use cross validation and walk forward analysis in their trading strategies."
 keywords:
 - cross validation for trading systems walk forward analysis
 author: "QuantEngines"

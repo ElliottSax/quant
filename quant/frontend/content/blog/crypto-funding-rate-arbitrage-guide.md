@@ -6,6 +6,7 @@ date: '2026-03-16'
 slug: crypto-funding-rate-arbitrage-guide
 published_date: '2026-04-16'
 last_updated: '2026-04-16'
+description: "Perpetual futures introduce funding rates that create consistent arbitrage opportunities. When spot exceeds perpetuals, shorts pay longs (negative funding)."
 ---
 
 # Crypto Funding Rate Arbitrage: Profitable Perpetual Futures Strategy

@@ -9,6 +9,7 @@ slug: "automating-position-sizing-in-python"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Position sizing automation separates professional traders from amateurs. Q: Which position sizing method performs best?"
 ---
 
 # Automating Position Sizing in Python

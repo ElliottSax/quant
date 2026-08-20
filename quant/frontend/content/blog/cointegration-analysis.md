@@ -1,8 +1,7 @@
 ---
 title: 'Cointegration Analysis: Identifying Stationary Spreads'
 slug: cointegration-analysis
-description: 'Comprehensive guide to cointegration analysis: identifying stationary
-  spreads. Expert analysis with actionable strategies and real-world examples.'
+description: "This knowledge can be used to develop profitable trading strategies, such as statistical arbitrage and pairs trading."
 keywords:
 - 'cointegration analysis: identifying stationary spreads'
 author: "QuantEngines"

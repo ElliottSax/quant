@@ -7,6 +7,7 @@ tags: ["risk management", "safety", "backtesting", "stop loss", "portfolio prote
 slug: "backtesting-risk-management-safely"
 quality_score: 95
 seo_optimized: true
+description: "Safe risk management isn't about maximizing returns—it's about preventing account destruction."
 ---
 
 # Backtesting Risk Management Safely

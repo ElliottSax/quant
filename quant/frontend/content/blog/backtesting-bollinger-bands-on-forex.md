@@ -7,6 +7,7 @@ tags: ["bollinger bands", "forex", "backtesting", "python"]
 slug: "backtesting-bollinger-bands-on-forex"
 quality_score: 98
 seo_optimized: true
+description: "Bollinger Bands remain one of the most powerful technical indicators for forex traders. Q: Can I trade Bollinger Bands on all timeframes?"
 ---
 
 # Backtesting Bollinger Bands on Forex: A Comprehensive Trading Strategy Guide

@@ -1,9 +1,7 @@
 ---
 title: "Class Imbalance in Trading Data"
 slug: class-imbalance-in-trading-data-solutions-for-directional-forecasts
-description: 'Comprehensive guide to class imbalance in trading data: solutions for
-  directional forecasts. Expert analysis with actionable strategies and real-world
-  examples.'
+description: "In directional forecasting, where the goal is to predict the direction of a stock's price movement, class imbalance can be particularly problematic."
 keywords:
 - class imbalance
 - resampling

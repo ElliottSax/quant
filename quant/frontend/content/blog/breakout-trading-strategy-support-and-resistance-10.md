@@ -13,6 +13,7 @@ quality_score: 95
 seo_optimized: true
 published_date: '2026-03-20'
 last_updated: '2026-03-20'
+description: "Support and resistance represent the foundational pillars of technical price action analysis."
 ---
 
 # Support and Resistance: Identifying Breakout Levels with Precision

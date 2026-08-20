@@ -219,11 +219,11 @@ Congressional healthcare traders show compliance timing patterns:
 
 - 84% of profitable pharmaceutical trades disclosed in final 30-45 day window
 - Only 26% of losing trades delayed to final window
-- This asymmetry suggests intentional timing
+- This asymmetry is present in the sample; disclosure data alone cannot establish whether it reflects intent, incentives around reporting deadlines, or chance
 
-## FDA Insider Information Indicators
+## Timing Relative to FDA Announcements
 
-Trading timing patterns indicate potential FDA information:
+The counts below describe when trades were filed relative to FDA announcements. They are timing statistics only: a trade preceding an announcement is consistent with advance knowledge, with an unrelated position taken for other reasons, and with coincidence, and disclosure data cannot separate those:
 
 - Advance purchases preceding FDA announcements: 9 of 12 major approvals
 - Average advance purchase timing: 2.3 days before announcement

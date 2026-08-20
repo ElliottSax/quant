@@ -9,6 +9,7 @@ slug: "automating-pairs-trading-in-python"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "This guide provides production-ready Python code for identifying, backtesting, and deploying market-neutral pairs trading strategies."
 ---
 
 # Automating Pairs Trading in Python

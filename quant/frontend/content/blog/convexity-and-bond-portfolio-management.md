@@ -11,6 +11,7 @@ tags:
 slug: convexity-and-bond-portfolio-management
 published_date: '2026-04-14'
 last_updated: '2026-04-14'
+description: "Bond portfolio management depends critically on understanding duration and convexity. This asymmetry creates profitable opportunities."
 ---
 
 # Convexity and Bond Portfolio Management

@@ -7,6 +7,7 @@ tags: ["position sizing", "python", "backtesting", "algorithmic trading", "quant
 slug: "backtesting-position-sizing-in-python"
 quality_score: 95
 seo_optimized: true
+description: "Python has become the lingua franca of quantitative finance. Vectorize Calculations: Use NumPy for position sizing math, not loops 2."
 ---
 
 # Backtesting Position Sizing in Python

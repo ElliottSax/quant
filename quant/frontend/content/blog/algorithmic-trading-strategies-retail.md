@@ -1,7 +1,7 @@
 ---
 title: "Algorithmic Trading Strategies for Retail Traders"
 slug: '''"algorithmic-trading-strategies-retail"'''
-description: '''"Learn algorithmic trading strategies for retail traders. Python bots,'
+description: "Algorithmic trading automates trades based on rules (buy when 50 EMA > 200 EMA, sell when RSI > 80)."
 author: "QuantEngines"
 category: '''"Trading Strategies"'''
 tags: []

@@ -8,6 +8,7 @@ quality_score: 90
 seo_optimized: true
 published_date: '2026-03-20'
 last_updated: '2026-03-20'
+description: "Building a custom backtesting engine provides complete control over trading system behavior."
 ---
 
 # Building a Custom Backtesting Engine from Scratch

@@ -11,6 +11,7 @@ tags:
 slug: correlation-trading
 published_date: '2026-04-15'
 last_updated: '2026-04-15'
+description: "Correlation Trading is a fundamental concept in quantitative trading and algorithmic finance."
 ---
 
 # Correlation Trading

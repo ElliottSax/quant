@@ -7,6 +7,7 @@ tags: ["algo trading", "quantitative", "trading", "python"]
 slug: "automating-rsi-strategies-safely"
 quality_score: 92
 seo_optimized: true
+description: "The modern financial landscape demands sophisticated approaches to portfolio construction and risk management."
 ---
 
 # Automating RSI Strategies Safely

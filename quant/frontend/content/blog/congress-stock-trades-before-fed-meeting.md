@@ -1,8 +1,7 @@
 ---
 title: "Congress Stock Trades Before Fed Meeting"
 slug: congress-stock-trades-before-fed-meeting
-description: 'Comprehensive guide to congress stock trades before fed meeting: anticipating
-  rate decisions. Expert analysis with actionable strategies and real-world examples.'
+description: "Congressional members, with their unique access to information, often adjust their investment portfolios in anticipation of these meetings."
 keywords:
 - 'congress stock trades before fed meeting: anticipating rate decisions'
 author: "QuantEngines"

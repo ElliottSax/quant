@@ -7,6 +7,7 @@ tags: ["algo trading", "quantitative", "trading", "python"]
 slug: "backtesting-algorithmic-trading-safely"
 quality_score: 92
 seo_optimized: true
+description: "The modern financial landscape demands sophisticated approaches to portfolio construction and risk management."
 ---
 
 # Backtesting Algorithmic Trading Safely

@@ -7,6 +7,7 @@ tags: ["algo trading", "quantitative", "trading", "python"]
 slug: "backtesting-bollinger-bands-for-beginners"
 quality_score: 92
 seo_optimized: true
+description: "The modern financial landscape demands sophisticated approaches to portfolio construction and risk management."
 ---
 
 # Backtesting Bollinger Bands For Beginners

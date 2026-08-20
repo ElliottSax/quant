@@ -7,6 +7,7 @@ tags: ["rsi", "relative strength index", "backtesting", "momentum", "python"]
 slug: "backtesting-rsi-strategies-for-beginners"
 quality_score: 95
 seo_optimized: true
+description: "The Relative Strength Index (RSI) is one of the most popular momentum indicators for beginners."
 ---
 
 # Backtesting RSI Strategies for Beginners

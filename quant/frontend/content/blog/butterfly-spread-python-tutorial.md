@@ -6,6 +6,7 @@ date: '2026-03-16'
 slug: butterfly-spread-python-tutorial
 published_date: '2026-03-20'
 last_updated: '2026-03-20'
+description: "The butterfly spread is a limited-risk, defined-profit strategy perfect for neutral markets."
 ---
 
 # Butterfly Spread Python Tutorial: Neutral Options Strategy

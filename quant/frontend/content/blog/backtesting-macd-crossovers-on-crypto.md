@@ -7,6 +7,7 @@ tags: ["MACD", "crypto", "bitcoin", "ethereum", "backtesting"]
 slug: "backtesting-macd-crossovers-on-crypto"
 quality_score: 98
 seo_optimized: true
+description: "MACD strategies perform differently on cryptocurrencies compared to traditional markets. Strategy value is in avoiding crashes, not in outperformance."
 ---
 
 # Backtesting MACD Crossovers on Crypto: Bitcoin, Ethereum, and Altcoins

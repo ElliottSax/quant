@@ -1,7 +1,7 @@
 ---
 title: "Breakout Trading Strategies with Indicators"
 slug: breakout-trading-strategies-indicators
-description: Master breakout trading strategies using powerful indicators. Learn to
+description: "Breakout trading buys/sells when price breaks above resistance or below support with confirmation."
 author: "QuantEngines"
 category: Trading Strategies
 tags: []

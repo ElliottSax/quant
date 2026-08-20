@@ -9,6 +9,7 @@ slug: "automating-pairs-trading-efficiently"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Unlike directional trading, pairs trading profits from relative mispricings regardless of market direction."
 ---
 
 # Automating Pairs Trading Efficiently

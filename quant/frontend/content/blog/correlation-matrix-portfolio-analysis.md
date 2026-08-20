@@ -8,6 +8,7 @@ quality_score: 90
 seo_optimized: true
 published_date: '2026-04-14'
 last_updated: '2026-04-14'
+description: "Asset correlations are fundamental to portfolio construction and risk management. Diversification's power comes from assets that don't move in lockstep."
 ---
 
 # Correlation Matrix and Portfolio Analysis: Understanding Asset Relationships

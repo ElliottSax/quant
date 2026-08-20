@@ -6,6 +6,7 @@ date: '2026-03-16'
 slug: crypto-market-making-bot-tutorial
 published_date: '2026-04-16'
 last_updated: '2026-04-16'
+description: "Market making provides liquidity to exchanges while generating profits from the bid-ask spread."
 ---
 
 # Crypto Market Making Bot: Build High-Frequency Trading Systems

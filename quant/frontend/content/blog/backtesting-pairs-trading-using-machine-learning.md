@@ -7,6 +7,7 @@ tags: ["pairs trading", "machine learning", "ensemble", "classification"]
 slug: "backtesting-pairs-trading-using-machine-learning"
 quality_score: 98
 seo_optimized: true
+description: "ML-enhanced pairs strategies show 30-40% improvement in Sharpe ratio over traditional Z-score methods."
 ---
 
 # Backtesting Pairs Trading using Machine Learning: Signal Enhancement

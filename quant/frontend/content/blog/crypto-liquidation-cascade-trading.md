@@ -6,6 +6,7 @@ date: '2026-03-16'
 slug: crypto-liquidation-cascade-trading
 published_date: '2026-04-16'
 last_updated: '2026-04-16'
+description: "Liquidation cascades create extreme price movements and volatility spikes. Large liquidations create opportunities for prepared traders."
 ---
 
 # Crypto Liquidation Cascade Trading: Profiting from Market Panics

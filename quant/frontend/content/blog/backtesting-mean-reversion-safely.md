@@ -7,6 +7,7 @@ tags: ["mean reversion", "backtesting", "validation", "safe"]
 slug: "backtesting-mean-reversion-safely"
 quality_score: 98
 seo_optimized: true
+description: "Mean reversion strategies are prone to overfitting and regime failure. This guide ensures your mean reversion backtest results are reliable."
 ---
 
 # Backtesting Mean Reversion Safely: Validation and Risk Assessment

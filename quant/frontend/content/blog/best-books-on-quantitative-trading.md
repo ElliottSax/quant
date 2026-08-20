@@ -1,8 +1,7 @@
 ---
 title: Best Books on Quantitative Trading
 slug: best-books-on-quantitative-trading
-description: Comprehensive guide to best books on quantitative trading. Expert analysis
-  with actionable strategies and real-world examples.
+description: "One of the best ways to develop this foundation is through reading books written by experienced practitioners and academics."
 keywords:
 - books
 - reading

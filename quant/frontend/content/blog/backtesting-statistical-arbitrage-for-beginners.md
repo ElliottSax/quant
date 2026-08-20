@@ -7,6 +7,7 @@ tags: ["statistical arbitrage", "beginner", "pairs trading", "mean reversion", "
 slug: "backtesting-statistical-arbitrage-for-beginners"
 quality_score: 95
 seo_optimized: true
+description: "Pairs trading is statistical arbitrage's simplest form. Buy the underperformer, short the overperformer, profit when prices reconverge."
 ---
 
 # Backtesting Statistical Arbitrage for Beginners

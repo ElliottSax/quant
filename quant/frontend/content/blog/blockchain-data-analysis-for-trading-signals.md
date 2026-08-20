@@ -1,8 +1,7 @@
 ---
 title: Blockchain Data Analysis for Trading Signals
 slug: blockchain-data-analysis-for-trading-signals
-description: Comprehensive guide to blockchain data analysis for trading signals.
-  Expert analysis with actionable strategies and real-world examples.
+description: "By analyzing on-chain metrics, traders can uncover valuable insights into market trends, sentiment, and potential trading opportunities."
 keywords:
 - on-chain metrics
 - blockchain data

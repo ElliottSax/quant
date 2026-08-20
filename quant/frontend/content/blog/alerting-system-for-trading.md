@@ -8,6 +8,7 @@ quality_score: 90
 seo_optimized: true
 published_date: '2026-03-16'
 last_updated: '2026-03-16'
+description: "A well-designed alerting system ensures critical trading issues are communicated effectively while avoiding alert fatigue from non-critical notifications."
 ---
 
 # Alerting System for Trading: Multi-Tier Notifications

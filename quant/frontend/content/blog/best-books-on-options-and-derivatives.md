@@ -1,8 +1,7 @@
 ---
 title: Best Books on Options and Derivatives
 slug: best-books-on-options-and-derivatives
-description: Comprehensive guide to best books on options and derivatives. Expert
-  analysis with actionable strategies and real-world examples.
+description: "As a quantitative researcher, I have always been fascinated by the complex world of options and derivatives."
 keywords:
 - options books
 - derivatives

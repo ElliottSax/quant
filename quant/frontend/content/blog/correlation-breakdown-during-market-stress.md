@@ -11,6 +11,7 @@ tags:
 slug: correlation-breakdown-during-market-stress
 published_date: '2026-04-14'
 last_updated: '2026-04-14'
+description: "During calm markets, asset correlations remain predictable and manageable. Tail correlation > Normal correlation indicates crisis vulnerability."
 ---
 
 # Correlation Breakdown During Market Stress

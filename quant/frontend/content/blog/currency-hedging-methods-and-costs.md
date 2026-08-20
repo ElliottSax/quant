@@ -11,6 +11,7 @@ tags:
 slug: currency-hedging-methods-and-costs
 published_date: '2026-04-17'
 last_updated: '2026-04-17'
+description: "International portfolio managers face an unavoidable challenge: currency exposure. A: No. Full hedging locks in all FX costs and eliminates upside."
 ---
 
 # Currency Hedging Methods and Costs

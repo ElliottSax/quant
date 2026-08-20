@@ -9,6 +9,7 @@ slug: "automating-momentum-trading-on-crypto"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "This creates extraordinary opportunities for automated momentum strategies. 1x wastes the opportunity; 10x+ creates liquidation risk."
 ---
 
 # Automating Momentum Trading on Crypto

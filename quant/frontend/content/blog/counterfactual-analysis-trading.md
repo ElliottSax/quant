@@ -1,9 +1,7 @@
 ---
 title: "Counterfactual Analysis for Trading"
 slug: counterfactual-analysis-trading
-description: 'Comprehensive guide to counterfactual analysis for trading: understanding
-  alternative scenarios. Expert analysis with actionable strategies and real-world
-  examples.'
+description: "Counterfactual analysis answers 'what if' questions by estimating outcomes under hypothetical conditions."
 keywords:
 - 'counterfactual analysis for trading: understanding alternative scenarios'
 author: "QuantEngines"

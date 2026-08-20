@@ -7,6 +7,7 @@ tags: ["MACD", "machine learning", "neural networks", "classification"]
 slug: "backtesting-macd-crossovers-using-machine-learning"
 quality_score: 98
 seo_optimized: true
+description: "This guide combines MACD with random forests, gradient boosting, and neural networks for superior risk-adjusted returns."
 ---
 
 # Backtesting MACD Crossovers using Machine Learning: Signal Enhancement

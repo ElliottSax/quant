@@ -1,8 +1,7 @@
 ---
 title: 'Congressional Trading: Election Year Congressional Trading'
 slug: congressional-trading-election-year-congressional-trading
-description: 'Comprehensive guide to congressional trading: election year congressional
-  trading. Expert analysis with actionable strategies and real-world examples.'
+description: "The relationship between political cycles and market patterns is a multifaceted one, with various factors at play."
 keywords:
 - election trading
 - political cycles

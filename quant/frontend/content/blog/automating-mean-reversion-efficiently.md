@@ -9,6 +9,7 @@ slug: "automating-mean-reversion-efficiently"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "This guide reveals institutional-grade approaches to capturing mean reversion opportunities."
 ---
 
 # Automating Mean Reversion Efficiently

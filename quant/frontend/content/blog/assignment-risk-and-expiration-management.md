@@ -1,8 +1,7 @@
 ---
 title: Assignment Risk and Expiration Management
 slug: assignment-risk-and-expiration-management
-description: Comprehensive guide to assignment risk and expiration management. Expert
-  analysis with actionable strategies and real-world examples.
+description: "Effective management of these risks is essential to minimize potential losses and maximize returns."
 keywords:
 - assignment
 - expiration

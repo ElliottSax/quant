@@ -1,8 +1,7 @@
 ---
 title: 'Black-Litterman Model: Incorporating Market Views'
 slug: black-litterman-model-incorporating-market-views
-description: 'Comprehensive guide to black-litterman model: incorporating market views.
-  Expert analysis with actionable strategies and real-world examples.'
+description: "We will also discuss the benefits and limitations of the model, as well as provide examples of its application in real-world scenarios."
 keywords:
 - Black-Litterman
 - portfolio theory

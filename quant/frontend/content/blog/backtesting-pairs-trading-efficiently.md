@@ -7,6 +7,7 @@ tags: ["pairs trading", "cointegration", "spread", "optimization"]
 slug: "backtesting-pairs-trading-efficiently"
 quality_score: 98
 seo_optimized: true
+description: "Pairs trading exploits mean-reverting spreads between correlated assets. Capitalizes on temporary relative mispricing."
 ---
 
 # Backtesting Pairs Trading Efficiently: Vectorized Cointegration Strategies

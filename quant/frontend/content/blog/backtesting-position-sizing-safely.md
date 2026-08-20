@@ -7,6 +7,7 @@ tags: ["position sizing", "risk management", "backtesting", "safe trading", "dra
 slug: "backtesting-position-sizing-safely"
 quality_score: 95
 seo_optimized: true
+description: "Tragedy in quantitative trading often stems from position sizing mistakes, not strategy failures."
 ---
 
 # Backtesting Position Sizing Safely

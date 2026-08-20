@@ -9,6 +9,7 @@ slug: "automating-momentum-trading-safely"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Momentum trading's primary risk: catching falling knives. The trade is favorable for sustainable trading."
 ---
 
 # Automating Momentum Trading Safely

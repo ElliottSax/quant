@@ -1,8 +1,7 @@
 ---
 title: 'Alpaca API Tutorial: Stock Trading with Python'
 slug: alpaca-api-tutorial-stock-trading-with-python
-description: 'Comprehensive guide to alpaca api tutorial: stock trading with python.
-  Expert analysis with actionable strategies and real-world examples.'
+description: "As a quantitative researcher, I have worked extensively with the Alpaca API and have developed a range of trading models that leverage its capabilities."
 keywords:
 - Alpaca
 - API tutorial

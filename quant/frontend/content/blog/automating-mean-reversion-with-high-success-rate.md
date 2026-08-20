@@ -9,6 +9,7 @@ slug: "automating-mean-reversion-with-high-success-rate"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Beginners chase high win rates; professionals optimize Sharpe ratios. Trade count drops 52% but profits increase 49% because winners are larger than losers."
 ---
 
 # Automating Mean Reversion with High Success Rate

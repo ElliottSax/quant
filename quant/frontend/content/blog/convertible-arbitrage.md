@@ -1,8 +1,7 @@
 ---
 title: Convertible Arbitrage Strategies
 slug: convertible-arbitrage
-description: Comprehensive guide to convertible arbitrage strategies. Expert analysis
-  with actionable strategies and real-world examples.
+description: "Understanding these principles is critical for developing robust quantitative trading systems."
 keywords:
 - convertible arbitrage strategies
 author: "QuantEngines"

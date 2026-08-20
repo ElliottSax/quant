@@ -15,6 +15,7 @@ quality_score: 99
 seo_optimized: true
 published_date: '2026-03-19'
 last_updated: '2026-03-19'
+description: "If touching them 20%+ of the time, either market is very volatile or parameters need adjustment."
 ---
 
 # Bollinger Bands Strategy: Complete Guide for Active Traders

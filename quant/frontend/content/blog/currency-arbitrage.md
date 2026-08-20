@@ -1,8 +1,7 @@
 ---
 title: Currency arbitrage
 slug: currency-arbitrage
-description: Comprehensive guide to currency arbitrage. Expert analysis with actionable
-  strategies and real-world examples.
+description: "The goal of currency arbitrage is to identify mispricings in the market and take advantage of them before they are corrected."
 keywords:
 - currency arbitrage
 author: "QuantEngines"

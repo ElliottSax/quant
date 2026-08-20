@@ -11,6 +11,7 @@ tags:
 slug: cross-market-arbitrage
 published_date: '2026-04-15'
 last_updated: '2026-04-15'
+description: "Cross Market Arbitrage is a fundamental concept in quantitative trading and algorithmic finance."
 ---
 
 # Cross Market Arbitrage

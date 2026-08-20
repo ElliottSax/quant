@@ -1,8 +1,7 @@
 ---
 title: '''''''ESG Stocks Analysis: Sustainable Investing 2026'''''''
 slug: esg-stocks-analysis-sustainable-investing-2026
-description: '''''''ESG stocks 2026: sustainable investing analysis. Best ESG stocks
-  and'''
+description: "ESG and sustainable investing analysis covering environmental, social, and governance criteria."
 author: "QuantEngines"
 category: ESG/Sustainable
 tags: []

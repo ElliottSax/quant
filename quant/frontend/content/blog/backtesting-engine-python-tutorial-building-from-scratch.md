@@ -1,8 +1,7 @@
 ---
 title: 'Backtesting Engine Python Tutorial: Building from Scratch'
 slug: backtesting-engine-python-tutorial-building-from-scratch
-description: 'Comprehensive guide to backtesting engine python tutorial: building
-  from scratch. Expert analysis with actionable strategies and real-world examples.'
+description: "We will also discuss the importance of statistical analysis and financial modeling in the development of a robust backtesting framework."
 keywords:
 - backtesting
 - Python tutorial

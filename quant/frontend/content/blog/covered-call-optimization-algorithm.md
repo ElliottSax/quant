@@ -6,6 +6,7 @@ date: '2026-03-16'
 slug: covered-call-optimization-algorithm
 published_date: '2026-04-15'
 last_updated: '2026-04-15'
+description: "Covered calls generate income from stock holdings by selling call options. Success depends on strike selection and assignment probability."
 ---
 
 # Covered Call Optimization: Algorithmic Income Generation

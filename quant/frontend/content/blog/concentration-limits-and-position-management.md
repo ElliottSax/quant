@@ -11,6 +11,7 @@ tags:
 slug: concentration-limits-and-position-management
 published_date: '2026-03-22'
 last_updated: '2026-03-22'
+description: "Concentration limits and position management form the backbone of professional algorithmic trading."
 ---
 
 # Concentration Limits and Position Management in Quantitative Trading

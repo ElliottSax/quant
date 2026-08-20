@@ -1,7 +1,7 @@
 ---
 title: '''''''Crypto Portfolio Diversification Strategies: Build Wealth'''''''
 slug: crypto-portfolio-diversification
-description: Smart portfolio diversification in crypto. Asset allocation, rebalancing,
+description: "Smart portfolio diversification in crypto. Asset allocation, rebalancing, and risk management."
 author: "QuantEngines"
 category: crypto-trading
 tags: []

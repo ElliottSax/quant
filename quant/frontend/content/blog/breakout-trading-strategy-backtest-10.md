@@ -13,6 +13,7 @@ quality_score: 95
 seo_optimized: true
 published_date: '2026-03-20'
 last_updated: '2026-03-20'
+description: "Breakout trading represents one of the most intuitive and profitable approaches for algorithmic traders."
 ---
 
 # Breakout Trading Strategy: Complete Backtest and Performance Analysis

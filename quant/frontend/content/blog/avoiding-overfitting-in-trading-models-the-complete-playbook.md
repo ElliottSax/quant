@@ -1,8 +1,7 @@
 ---
 title: "Avoiding Overfitting in Trading Models"
 slug: avoiding-overfitting-in-trading-models-the-complete-playbook
-description: 'Comprehensive guide to avoiding overfitting in trading models: the complete
-  playbook. Expert analysis with actionable strategies and real-world examples.'
+description: "This phenomenon can result in significant losses for traders who deploy such models in live markets."
 keywords:
 - overfitting
 - validation

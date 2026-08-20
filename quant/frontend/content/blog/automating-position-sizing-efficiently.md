@@ -9,6 +9,7 @@ slug: "automating-position-sizing-efficiently"
 quality_score: 92
 seo_optimized: true
 reading_time_minutes: 8
+description: "Position sizing is the primary determinant of trading success, not signal quality. Most traders focus on signals; professionals focus on sizing."
 ---
 
 # Automating Position Sizing Efficiently

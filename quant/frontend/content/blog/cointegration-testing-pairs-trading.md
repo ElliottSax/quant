@@ -8,6 +8,7 @@ quality_score: 90
 seo_optimized: true
 published_date: '2026-03-22'
 last_updated: '2026-03-22'
+description: "Cointegration reveals long-term equilibrium relationships between assets. This principle forms the basis of profitable pairs trading."
 ---
 
 # Cointegration Testing for Pairs Trading: Statistical Arbitrage Foundations

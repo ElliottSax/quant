@@ -8,6 +8,7 @@ quality_score: 90
 seo_optimized: true
 published_date: '2026-04-16'
 last_updated: '2026-04-16'
+description: "CCXT (CryptoCurrency eXchange Trading) is the de facto standard library for accessing crypto exchange APIs."
 ---
 
 # Cryptocurrency Backtesting with CCXT: Complete Tutorial

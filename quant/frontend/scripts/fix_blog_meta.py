@@ -44,7 +44,10 @@ ROOT = Path(__file__).resolve().parents[1]
 BLOG = ROOT / "content" / "blog"
 NOINDEX_TS = ROOT / "src" / "lib" / "noindex-drafts.ts"
 
-MIN_DESC, MAX_DESC = 110, 158
+# Google renders roughly 155-160 characters. 90 is comfortably a useful snippet; the
+# earlier 110 floor rejected perfectly good two-sentence openings and left 111 posts
+# with no description at all, which is strictly worse than a slightly short one.
+MIN_DESC, MAX_DESC = 90, 158
 TITLE_SUFFIX = len(" | QuantEngines")
 MAX_TITLE_RENDERED = 75
 MIN_TITLE = 30
@@ -137,28 +140,47 @@ def sentences(prose: str) -> list[str]:
     return [p.replace("\x00", ".").strip() for p in parts if p.strip()]
 
 
+def usable_sentence(s: str) -> bool:
+    if not (25 <= len(s) <= 300):
+        return False
+    if FILLER_SENTENCE.match(s) or FILLER_DESC.search(s):
+        return False
+    if not s[0].isalnum():
+        return False
+    if s.count("(") != s.count(")"):
+        return False
+    return bool(re.search(r"[a-z]", s))       # an all-caps fragment is a label
+
+
 def build_description(prose: str) -> str | None:
-    out: list[str] = []
-    total = 0
-    for s in sentences(prose)[:10]:
-        if not (25 <= len(s) <= 300):
-            continue
-        if FILLER_SENTENCE.match(s) or FILLER_DESC.search(s):
-            continue
-        if not s[0].isalnum():
-            continue
-        if s.count("(") != s.count(")"):
-            continue
-        if not re.search(r"[a-z]", s):        # an all-caps fragment is a label
-            continue
-        candidate = total + (1 if out else 0) + len(s)
-        if candidate > MAX_DESC:
-            break
-        out.append(s)
-        total = candidate
-        if total >= MIN_DESC:
-            break
-    return " ".join(out) if out and total >= MIN_DESC else None
+    """Join the article's own leading sentences until the snippet is long enough.
+
+    Two passes. The first takes strictly consecutive sentences, which reads best. Only
+    if that cannot reach the minimum does the second pass skip a sentence that is merely
+    too long to fit -- an earlier version stopped dead at the first oversized sentence,
+    which is why 111 posts ended up with no description despite having perfectly good
+    prose one sentence further down.
+    """
+    candidates = [s for s in sentences(prose)[:10] if usable_sentence(s)]
+
+    for allow_skip in (False, True):
+        out: list[str] = []
+        total = 0
+        for s in candidates:
+            projected = total + (1 if out else 0) + len(s)
+            if projected > MAX_DESC:
+                if allow_skip and not out:
+                    continue          # nothing started yet; try a later sentence
+                if allow_skip:
+                    continue          # keep looking for one that fits
+                break
+            out.append(s)
+            total = projected
+            if total >= MIN_DESC:
+                break
+        if out and total >= MIN_DESC:
+            return " ".join(out)
+    return None
 
 
 def shorten_title(title: str) -> str | None:

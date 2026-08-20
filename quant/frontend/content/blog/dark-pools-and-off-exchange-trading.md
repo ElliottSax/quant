@@ -1,8 +1,7 @@
 ---
 title: dark pools and off exchange trading
 slug: dark-pools-and-off-exchange-trading
-description: Comprehensive guide to dark pools and off exchange trading. Expert analysis
-  with actionable strategies and real-world examples.
+description: "This disparity highlights the significant role that dark pools play in facilitating large trades and providing liquidity to the market."
 keywords:
 - dark pools and off exchange trading
 author: "QuantEngines"

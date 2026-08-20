@@ -11,6 +11,7 @@ tags:
 slug: correlation-and-causality-python-tutorial
 published_date: '2026-04-14'
 last_updated: '2026-04-14'
+description: "Many profitable-looking trading strategies exploit spurious correlations that disappear during live trading."
 ---
 
 # Correlation and Causality in Trading: A Python Tutorial

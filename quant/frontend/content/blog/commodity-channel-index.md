@@ -12,6 +12,7 @@ quality_score: 95
 seo_optimized: true
 published_date: '2026-03-22'
 last_updated: '2026-03-22'
+description: "Understanding these principles is critical for developing robust quantitative trading systems."
 ---
 
 # Commodity Channel Index Trading Strategy

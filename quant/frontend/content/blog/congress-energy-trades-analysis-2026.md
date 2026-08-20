@@ -1,9 +1,7 @@
 ---
 title: "Congress Energy Sector Trades 2026"
 slug: congress-energy-trades-analysis-2026
-description: 'Comprehensive guide to congress energy sector trades 2026: renewable
-  vs traditional power. Expert analysis with actionable strategies and real-world
-  examples.'
+description: "Energy sector trades in Congress reveal legislative priorities and long-term sector views."
 keywords:
 - 'congress energy sector trades 2026: renewable vs traditional power'
 author: "QuantEngines"

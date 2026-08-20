@@ -7,6 +7,7 @@ tags: ["mean reversion", "forex", "currency pairs", "zscore"]
 slug: "backtesting-mean-reversion-on-forex"
 quality_score: 98
 seo_optimized: true
+description: "Mean reversion strategies excel on forex pairs, which tend to oscillate within ranges. Optimal: 20-period SMA with Z-score = 2.0 threshold."
 ---
 
 # Backtesting Mean Reversion on Forex: Currency Pair Trading

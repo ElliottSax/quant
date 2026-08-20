@@ -7,6 +7,7 @@ tags: ["MACD", "crossovers", "backtesting", "beginner", "tutorial"]
 slug: "backtesting-macd-crossovers-for-beginners"
 quality_score: 98
 seo_optimized: true
+description: "If you're new to algorithmic trading, MACD crossover strategies offer an excellent starting point."
 ---
 
 # Backtesting MACD Crossovers for Beginners: Step-by-Step Guide

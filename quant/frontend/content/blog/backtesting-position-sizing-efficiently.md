@@ -7,6 +7,7 @@ tags: ["position sizing", "backtesting", "python", "risk management", "kelly cri
 slug: "backtesting-position-sizing-efficiently"
 quality_score: 95
 seo_optimized: true
+description: "Position sizing is the cornerstone of successful quantitative trading. The optimal position size maximizes return per unit of risk."
 ---
 
 # Backtesting Position Sizing Efficiently
