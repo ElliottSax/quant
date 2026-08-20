@@ -1,0 +1,88 @@
+{
+ "generated_at": "2026-08-20T20:01:53+00:00",
+ "versions": {
+  "vectorbt": "1.1.0",
+  "backtrader": "1.9.78.123",
+  "pandas": "3.0.5",
+  "numpy": "2.4.6"
+ },
+ "setup": {
+  "symbol": "AAPL",
+  "bars": 2000,
+  "from": "2018-09-04",
+  "to": "2026-08-19",
+  "strategy": "SMA(20) crosses SMA(50), long only",
+  "size_shares": 100,
+  "initial_cash": 100000.0,
+  "commission": 0.0,
+  "repeats": 5
+ },
+ "pinned": {
+  "signal_definition": "Both libraries receive the SAME entry/exit boolean arrays, computed once from a shared pandas rolling mean. Letting each compute its own indicator would make an indicator difference look like a backtest difference.",
+  "fill_timing": "backtrader defaults to filling at the NEXT bar's open; vectorbt fills at the signal bar's close. backtrader is set to cheat-on-close so both fill at the same bar's close. Without this the two are structurally one bar apart and nothing else reconciles them.",
+  "sizing": "Fixed at 100 shares in both. backtrader's default stake is 1 share and vectorbt's default invests all available cash, so an unpinned comparison compares two different strategies.",
+  "commission": "Pinned to zero in both; each applies its model at a different point."
+ },
+ "results": {
+  "vectorbt": {
+   "final_value": 115017.0,
+   "total_return_pct": 15.017,
+   "n_trades_total": 22,
+   "n_trades_closed": 21,
+   "n_trades_open": 1,
+   "seconds_median": 0.003520799975376576,
+   "seconds_min": 0.00345509999897331
+  },
+  "backtrader": {
+   "final_value": 115017.0,
+   "total_return_pct": 15.016999999999992,
+   "n_trades_closed": 21,
+   "n_trades_open": 1,
+   "seconds_median": 0.4462082000100054,
+   "seconds_min": 0.44319640001049265
+  }
+ },
+ "decomposition": {
+  "steps": {
+   "defaults": {
+    "size": 1,
+    "fill": "next bar open",
+    "final_value": 100147.58000000007,
+    "total_return_pct": 0.14758000000008042,
+    "n_trades_closed": 21
+   },
+   "size_pinned_only": {
+    "size": 100,
+    "fill": "next bar open",
+    "final_value": 114758.0,
+    "total_return_pct": 14.758000000000004,
+    "n_trades_closed": 21
+   },
+   "fully_pinned": {
+    "size": 100,
+    "fill": "signal bar close",
+    "final_value": 115017.0,
+    "total_return_pct": 15.016999999999992,
+    "n_trades_closed": 21
+   }
+  },
+  "sizing_effect_pp": 14.6104,
+  "fill_timing_effect_pp": 0.259,
+  "sizing_share_of_gap": 0.9826,
+  "explanation": "Same strategy and same bars, changing one default at a time. Sizing accounts for the overwhelming majority of the divergence and fill timing for a small remainder. Reporting the end-to-end gap as though it were a fill-timing result would be technically true and materially misleading, which is why it is decomposed rather than quoted whole."
+ },
+ "comparison": {
+  "final_value_diff": 0.0,
+  "final_value_rel_diff": 0.0,
+  "closed_trade_count_match": true,
+  "raw_trade_count_differs_only_by_open_position": true,
+  "agree": true,
+  "speed_ratio_backtrader_over_vectorbt": 126.73489068696101
+ },
+ "caveats": {
+  "one_strategy_one_symbol": "This is a single long-only crossover on one symbol. It exercises fill timing, sizing and equity accounting; it does not exercise short selling, stops, multi-asset portfolios or intrabar order types, where the libraries diverge further.",
+  "speed_is_secondary": "vectorbt is vectorised and backtrader is event-driven, so vectorbt is expected to be far faster. That is a property of the architecture, not a verdict: an event-driven loop can express order types a vectorised engine cannot, and a fast number that disagrees with a slow one is not obviously the better number.",
+  "trade_count_definition": "The two libraries count trades differently at the boundary. vectorbt's trade table includes a position still open at the end of the sample; backtrader's notify_trade fires only on isclosed and never counts it. Comparing the raw counts makes an identical backtest look like a disagreement, which is why closed round-trips are compared here.",
+  "defaults_are_the_real_finding": "The configuration above is what makes the two comparable. Run either library with its own defaults and the results will NOT match, which is the practical lesson: a backtest result is a property of the harness as much as of the strategy."
+ }
+}

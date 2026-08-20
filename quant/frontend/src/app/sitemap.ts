@@ -117,6 +117,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/pandas-ta-columns',
     '/statsmodels-imports',
     '/indicator-formulas',
+    '/backtrader-vs-vectorbt',
     '/fundamentals',
     '/yield-curve',
     '/cot-report',

@@ -38,6 +38,7 @@ const GROUPS: Group[] = [
       { href: '/signals', name: 'Trade Signals', desc: 'Data-driven signals surfaced from market and trade data.' },
       { href: '/charts', name: 'Advanced Charts', desc: 'Interactive price charts with technical overlays.' },
       { href: '/market-dashboard', name: 'Market Dashboard', desc: 'Free live market data at a glance.' },
+      { href: '/backtrader-vs-vectorbt', name: 'backtrader vs vectorbt', desc: 'The same strategy through both libraries on the same bars — they agree to the cent, but only after pinning three defaults. With the divergence decomposed.' },
       { href: '/indicator-formulas', name: 'Indicator Formulas (Verified)', desc: 'RSI, ADX, ATR, MACD, Bollinger and Stochastic — each implemented independently and cross-checked against pandas_ta on real bars.' },
       { href: '/statsmodels-imports', name: 'statsmodels Import Reference', desc: 'Which import paths work, measured by executing every statement — including the three that succeed and fail later.' },
       { href: '/cot-report', name: 'COT Report Positioning', desc: 'Speculator and hedger net positioning for 11 futures markets, normalised by open interest and z-scored against up to 21 years of each market’s own history.' },
