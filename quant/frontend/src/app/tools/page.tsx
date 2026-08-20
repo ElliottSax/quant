@@ -40,6 +40,7 @@ const GROUPS: Group[] = [
       { href: '/market-dashboard', name: 'Market Dashboard', desc: 'Free live market data at a glance.' },
       { href: '/indicator-formulas', name: 'Indicator Formulas (Verified)', desc: 'RSI, ADX, ATR, MACD, Bollinger and Stochastic — each implemented independently and cross-checked against pandas_ta on real bars.' },
       { href: '/statsmodels-imports', name: 'statsmodels Import Reference', desc: 'Which import paths work, measured by executing every statement — including the three that succeed and fail later.' },
+      { href: '/cot-report', name: 'COT Report Positioning', desc: 'Speculator and hedger net positioning for 11 futures markets, normalised by open interest and z-scored against up to 21 years of each market’s own history.' },
       { href: '/yield-curve', name: 'Treasury Yield Curve', desc: 'Today’s par curve plus every sustained 10y−2y inversion since 1990 — dates, durations and depths computed from Treasury’s daily series.' },
       { href: '/fundamentals', name: 'Fundamental Screener', desc: 'Accruals, asset growth and net share issuance for 3,000+ US filers, computed straight from SEC XBRL filings and matched to each company’s own fiscal year.' },
     ],
