@@ -96,6 +96,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const toolPages = [
     '/tools',
     '/tools/position-size',
+    '/tools/kelly-criterion',
     '/tools/risk-reward',
     '/tools/max-sharpe',
     '/congress-stock-trades',

@@ -52,6 +52,7 @@ const GROUPS: Group[] = [
       'Closed-form math over the numbers you type in. These use no market data at all, so every figure they show can be checked by hand.',
     tools: [
       { href: '/tools/position-size', name: 'Position Size Calculator', desc: 'Share count implied by your account size, risk per trade, entry, and stop-loss. Handles longs and shorts.' },
+      { href: '/tools/kelly-criterion', name: 'Kelly Criterion Calculator', desc: 'Edge-optimal stake from your win rate and win/loss ratio, with a half/quarter-Kelly comparison and growth-rate chart.' },
       { href: '/tools/risk-reward', name: 'Risk/Reward Ratio Calculator', desc: 'Reward-to-risk ratio, each distance as a percentage of entry, and the breakeven win rate the ratio implies.' },
       { href: '/options', name: 'Black-Scholes Options Calculator', desc: 'Theoretical value and all five Greeks for a European call or put, from spot, strike, expiry, volatility, and rate.' },
       { href: '/tools/max-sharpe', name: 'Max Sharpe Ratio Portfolio', desc: 'Tangency portfolio weights from the closed form w ∝ Σ⁻¹(μ − rf·1), for up to five assets, with the derivation and a worked example.' },

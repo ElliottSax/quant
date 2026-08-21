@@ -156,6 +156,10 @@ export default function PositionSizePage() {
       <section className="max-w-3xl mt-14">
         <h2 className="text-2xl font-bold text-white mb-6">Related tools</h2>
         <div className="grid gap-4 sm:grid-cols-2">
+          <Link href="/tools/kelly-criterion" className="group rounded-xl border border-[hsl(215,40%,18%)] bg-[hsl(220,55%,9%)] p-5 transition-all hover:border-indigo-500/60 hover:bg-[hsl(220,55%,11%)]">
+            <h3 className="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Kelly Criterion Calculator</h3>
+            <p className="mt-1.5 text-sm text-slate-400">Find the edge-optimal risk percentage to feed into this calculator.</p>
+          </Link>
           <Link href="/tools/risk-reward" className="group rounded-xl border border-[hsl(215,40%,18%)] bg-[hsl(220,55%,9%)] p-5 transition-all hover:border-indigo-500/60 hover:bg-[hsl(220,55%,11%)]">
             <h3 className="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Risk/Reward Ratio Calculator</h3>
             <p className="mt-1.5 text-sm text-slate-400">Check the R:R and breakeven win rate of a trade before you take it.</p>

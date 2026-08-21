@@ -156,6 +156,10 @@ export default function RiskRewardPage() {
             <h3 className="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Position Size Calculator</h3>
             <p className="mt-1.5 text-sm text-slate-400">Find how many shares to buy based on your risk per trade.</p>
           </Link>
+          <Link href="/tools/kelly-criterion" className="group rounded-xl border border-[hsl(215,40%,18%)] bg-[hsl(220,55%,9%)] p-5 transition-all hover:border-indigo-500/60 hover:bg-[hsl(220,55%,11%)]">
+            <h3 className="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Kelly Criterion Calculator</h3>
+            <p className="mt-1.5 text-sm text-slate-400">Turn your win rate and win/loss ratio into an edge-optimal stake.</p>
+          </Link>
           <Link href="/options" className="group rounded-xl border border-[hsl(215,40%,18%)] bg-[hsl(220,55%,9%)] p-5 transition-all hover:border-indigo-500/60 hover:bg-[hsl(220,55%,11%)]">
             <h3 className="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Options Calculator</h3>
             <p className="mt-1.5 text-sm text-slate-400">Price options and analyze the Greeks with Black-Scholes.</p>
