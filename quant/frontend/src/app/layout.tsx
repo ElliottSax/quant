@@ -418,7 +418,9 @@ export default function RootLayout({
             {/* Footer */}
             <footer className="border-t border-[hsl(215,40%,14%)] mt-auto bg-[hsl(220,60%,3%)]">
               <div className="container mx-auto px-4 py-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-6">
+                {/* Seven columns now, so the large breakpoint moves 5 -> 7 rather than
+                    leaving two orphans on a second row. */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6 mb-6">
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-6 h-6 rounded bg-gradient-to-br from-[hsl(45,96%,58%)] to-[hsl(38,92%,45%)] flex items-center justify-center text-[hsl(220,60%,8%)] font-bold text-xs">
@@ -442,11 +444,35 @@ export default function RootLayout({
                     </ul>
                   </div>
 
+                  {/* Public-data tools. These were reachable only from /tools and blog
+                      CTAs, which is how the earlier tool pages ended up orphaned -- a page
+                      linked from one hub gets very little internal link equity. */}
+                  <div>
+                    <h3 className="text-[10px] font-semibold uppercase tracking-wider text-[hsl(45,96%,58%)] mb-3">Market Data</h3>
+                    <ul className="space-y-1.5 text-xs text-[hsl(210,20%,60%)]">
+                      <li><Link href="/fundamentals" className="hover:text-[hsl(45,96%,58%)] transition-colors">Fundamental Screener</Link></li>
+                      <li><Link href="/yield-curve" className="hover:text-[hsl(45,96%,58%)] transition-colors">Treasury Yield Curve</Link></li>
+                      <li><Link href="/cot-report" className="hover:text-[hsl(45,96%,58%)] transition-colors">COT Positioning</Link></li>
+                      <li><Link href="/data-vendors" className="hover:text-[hsl(45,96%,58%)] transition-colors">Data API Benchmark</Link></li>
+                    </ul>
+                  </div>
+
                   <div>
                     <h3 className="text-[10px] font-semibold uppercase tracking-wider text-[hsl(45,96%,58%)] mb-3">More Tools</h3>
                     <ul className="space-y-1.5 text-xs text-[hsl(210,20%,60%)]">
                       <li><Link href="/options" className="hover:text-[hsl(45,96%,58%)] transition-colors">Options Calculator</Link></li>
+                      <li><Link href="/tools/max-sharpe" className="hover:text-[hsl(45,96%,58%)] transition-colors">Max Sharpe Portfolio</Link></li>
                       <li><Link href="/network" className="hover:text-[hsl(45,96%,58%)] transition-colors">Correlation Network</Link></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="text-[10px] font-semibold uppercase tracking-wider text-[hsl(210,100%,56%)] mb-3">Measured References</h3>
+                    <ul className="space-y-1.5 text-xs text-[hsl(210,20%,60%)]">
+                      <li><Link href="/indicator-formulas" className="hover:text-[hsl(45,96%,58%)] transition-colors">Indicator Formulas</Link></li>
+                      <li><Link href="/statsmodels-imports" className="hover:text-[hsl(45,96%,58%)] transition-colors">statsmodels Imports</Link></li>
+                      <li><Link href="/pandas-ta-columns" className="hover:text-[hsl(45,96%,58%)] transition-colors">pandas_ta Columns</Link></li>
+                      <li><Link href="/backtrader-vs-vectorbt" className="hover:text-[hsl(45,96%,58%)] transition-colors">backtrader vs vectorbt</Link></li>
                     </ul>
                   </div>
 

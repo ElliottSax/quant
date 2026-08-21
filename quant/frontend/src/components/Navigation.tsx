@@ -26,11 +26,16 @@ export function Navigation() {
     router.push('/')
   }
 
+  // Every entry must be a page that is live AND indexable. /leaderboard sat here while
+  // serving robots:noindex and an "in development" message -- a main-nav slot pointing at
+  // a placeholder. It is replaced by /scanner, which is the site's best-converting page
+  // (7.1% CTR against 0.12% for the blog) and was reachable only from /tools and the
+  // footer. Before adding a link here, check the target's `robots` metadata.
   const navLinks = [
     { href: '/tools', label: 'Tools' },
+    { href: '/scanner', label: 'Screener' },
     { href: '/congress-stock-trades', label: 'Congress Trades' },
     { href: '/backtesting', label: 'Backtesting' },
-    { href: '/leaderboard', label: 'Leaderboard' },
     { href: '/charts', label: 'Charts' },
     { href: '/landing', label: 'About' },
   ]
