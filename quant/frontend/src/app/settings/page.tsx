@@ -108,16 +108,13 @@ export default function SettingsPage() {
           <p className="text-gray-300 mb-4">
             Can't find what you're looking for? Our support team is here to help.
           </p>
+          {/* 2026-08-21: "Read FAQ" pointed at /docs/faq, which returns a live 404 --
+              no FAQ page exists anywhere on this site to link to. Removed rather than
+              invented a destination; Contact Support already works and stays. */}
           <div className="flex gap-4">
             <a
-              href="/docs/faq"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-            >
-              Read FAQ
-            </a>
-            <a
               href="/contact"
-              className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors"
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
             >
               Contact Support
             </a>

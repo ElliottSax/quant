@@ -101,6 +101,8 @@ export default function RiskAdjustedReturnCalculator() {
             <p>Sharpe = mean(excess) / stdev(excess) × √periods/yr</p>
             <p>Sortino = mean(excess) / downside-dev × √periods/yr</p>
             <p>Calmar = CAGR / max drawdown</p>
+            <p>Ulcer Index = √mean(drawdown²) -- Pain Index = mean(|drawdown|)</p>
+            <p>PSR = Φ[(SR&minus;SR*)√(n&minus;1) / √(1&minus;skew·SR+((kurt&minus;1)/4)SR²)]</p>
           </div>
         </div>
       </div>
@@ -122,6 +124,13 @@ export default function RiskAdjustedReturnCalculator() {
               <Stat label="Annualized return" value={pct(result.annualizedReturn)} />
               <Stat label="Annualized volatility" value={pct(result.annualizedVolatility)} />
               <Stat label="Max drawdown" value={pct(-result.maxDrawdown)} />
+              <Stat label="Ulcer Index" value={result.ulcerIndex.toFixed(2)} sub="RMS of drawdown path" />
+              <Stat label="Pain Index" value={result.painIndex.toFixed(2)} sub="mean of drawdown path" />
+              <Stat
+                label="Probabilistic Sharpe Ratio"
+                value={result.probabilisticSharpeRatio === null ? 'undefined (zero volatility)' : pct(result.probabilisticSharpeRatio, 1)}
+                sub="confidence true Sharpe > 0"
+              />
             </dl>
 
             <h3 className="text-xs font-semibold text-[hsl(215,20%,60%)] uppercase tracking-wide mb-2">Equity curve (starting at 1.00)</h3>
@@ -144,6 +153,15 @@ export default function RiskAdjustedReturnCalculator() {
               periods, which some calculators use and which inflates the ratio. A "Sharpe ratio
               calculator" showing a different number than this one on the same data most likely
               differs on exactly one of these two conventions.
+            </p>
+            <p className="mt-3 text-xs text-[hsl(215,20%,45%)] leading-relaxed">
+              The Probabilistic Sharpe Ratio (Bailey &amp; Lopez de Prado, 2012) answers a different
+              question than Sharpe itself: given only {result.n} observations and this return series'
+              actual skewness ({result.skewness.toFixed(2)}) and kurtosis ({result.kurtosis.toFixed(2)}
+              , a normal distribution scores 0 and 3), how confident can you be that the TRUE Sharpe
+              ratio is really above zero, rather than this track record just getting lucky? A short or
+              fat-tailed track record can post an impressive Sharpe ratio and still score a low PSR —
+              most free Sharpe calculators skip this entirely.
             </p>
           </>
         )}

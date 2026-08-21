@@ -171,82 +171,101 @@ export default function RootLayout({
             });
           `}
         </Script>
-        <Script id="organization-schema" type="application/ld+json" strategy="afterInteractive">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "QuantEngines",
-              "url": "https://quantengines.com",
-              "description": "Free professional-grade trading tools: backtesting, strategy validation, congressional trading analytics",
-              "sameAs": [
-                "https://twitter.com/quantengines"
+        {/* 2026-08-21: these three were `next/script` with strategy="afterInteractive"
+            -- correct for the Google Analytics tags below (a tracker has no reason to
+            block or be present in the initial HTML), wrong for JSON-LD structured data
+            copy-pasted next to them with the same strategy. "afterInteractive" scripts
+            are injected client-side after hydration; curling the page directly (what a
+            crawler's initial pass, most backlink tools, and any JS-less fetcher see)
+            showed React Server Component streaming placeholders instead of the actual
+            <script type="application/ld+json"> tags -- confirmed live against the
+            deployed page, not just the source. Plain <script> tags below are part of
+            the server-rendered HTML from the first response, the standard Next.js
+            pattern for JSON-LD. Also switched from hand-typed JSON-in-a-template-string
+            to a real object + JSON.stringify, so a stray syntax error can't silently
+            ship invalid JSON-LD -- the object literal is checked by the TypeScript
+            compiler, the string never was. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'QuantEngines',
+              url: 'https://quantengines.com',
+              description:
+                'Free professional-grade trading tools: backtesting, strategy validation, congressional trading analytics',
+              sameAs: ['https://twitter.com/quantengines'],
+              knowsAbout: [
+                'Quantitative Trading',
+                'Backtesting',
+                'Technical Analysis',
+                'Congressional Trading',
+                'Trading Strategies',
               ],
-              "knowsAbout": [
-                "Quantitative Trading",
-                "Backtesting",
-                "Technical Analysis",
-                "Congressional Trading",
-                "Trading Strategies"
-              ],
-              "expertise": "Trading strategy validation, backtesting, quantitative analysis, congressional stock trade tracking"
-            }
-          `}
-        </Script>
-        <Script id="website-schema" type="application/ld+json" strategy="afterInteractive">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "QuantEngines",
-              "url": "https://quantengines.com",
-              "description": "Free professional-grade trading tools for everyone. Charts, screeners, backtesting, congressional trading analytics, and more.",
-              "publisher": {
-                "@type": "Organization",
-                "name": "QuantEngines"
+              expertise:
+                'Trading strategy validation, backtesting, quantitative analysis, congressional stock trade tracking',
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'QuantEngines',
+              url: 'https://quantengines.com',
+              description:
+                'Free professional-grade trading tools for everyone. Charts, screeners, backtesting, congressional trading analytics, and more.',
+              publisher: {
+                '@type': 'Organization',
+                name: 'QuantEngines',
               },
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": {
-                  "@type": "EntryPoint",
-                  "urlTemplate": "https://quantengines.com/search?q={search_term_string}"
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://quantengines.com/search?q={search_term_string}',
                 },
-                "query-input": "required name=search_term_string"
-              }
-            }
-          `}
-        </Script>
-        <Script id="webapp-schema" type="application/ld+json" strategy="afterInteractive">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              "name": "QuantEngines Trading Tools",
-              "url": "https://quantengines.com",
-              "description": "Professional-grade trading tools suite: charts, stock screener, backtesting engine, options calculator, correlation network, and congressional trading tracker. 100% free, no signup required.",
-              "applicationCategory": "FinanceApplication",
-              "operatingSystem": "Web Browser",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-                "availability": "https://schema.org/InStock"
+                'query-input': 'required name=search_term_string',
               },
-              "featureList": [
-                "Advanced Stock Charts",
-                "Stock Screener",
-                "Strategy Backtesting",
-                "Options Calculator",
-                "Congressional Trading Tracker",
-                "Correlation Network"
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebApplication',
+              name: 'QuantEngines Trading Tools',
+              url: 'https://quantengines.com',
+              description:
+                'Professional-grade trading tools suite: charts, stock screener, backtesting engine, options calculator, correlation network, and congressional trading tracker. 100% free, no signup required.',
+              applicationCategory: 'FinanceApplication',
+              operatingSystem: 'Web Browser',
+              offers: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: 'USD',
+                availability: 'https://schema.org/InStock',
+              },
+              featureList: [
+                'Advanced Stock Charts',
+                'Stock Screener',
+                'Strategy Backtesting',
+                'Options Calculator',
+                'Congressional Trading Tracker',
+                'Correlation Network',
               ],
-              "author": {
-                "@type": "Organization",
-                "name": "QuantEngines"
-              }
-            }
-          `}
-        </Script>
+              author: {
+                '@type': 'Organization',
+                name: 'QuantEngines',
+              },
+            }),
+          }}
+        />
         <ErrorBoundary>
           <Providers>
           <div className="min-h-screen bg-[hsl(220,60%,4%)]">

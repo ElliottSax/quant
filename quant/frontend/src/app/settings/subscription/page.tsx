@@ -201,15 +201,14 @@ export default function SubscriptionSettingsPage() {
             {/* Help */}
             <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
               <h3 className="text-lg font-bold text-white mb-4">Need Help?</h3>
+              {/* 2026-08-21: "read the FAQ" pointed at /docs/faq, a live 404 -- no FAQ
+                  page exists on this site. Removed rather than invented a destination. */}
               <p className="text-gray-400 mb-4">
                 Have questions about your subscription?{' '}
                 <Link href="/contact" className="text-blue-400 hover:text-blue-300">
                   Contact support
                 </Link>
-                {' or '}
-                <Link href="/docs/faq" className="text-blue-400 hover:text-blue-300">
-                  read the FAQ
-                </Link>
+                .
               </p>
             </div>
           </div>
