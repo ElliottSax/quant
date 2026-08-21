@@ -20,14 +20,28 @@ name: Autopublish
 #
 # Re-enable by uncommenting the schedule once the generator produces something
 # worth indexing. The queue is intact and nothing here has been deleted.
-on:
+# FULLY DISABLED 2026-08-21. Commenting out the schedule was not enough:
+# something is calling `workflow_dispatch` on this workflow every two hours at
+# :15, as ElliottSax's own authenticated actor (not github-actions[bot], so it
+# holds a personal token). An exhaustive search in the cardclassroom repo --
+# repo scripts, BingeFlow task history, GitHub Apps and webhooks, code search,
+# Windows Task Scheduler, PowerShell scheduled jobs, OpenClaw -- did not find
+# it, and neither did a further check here of cross-repo dispatchers, the
+# OpenClaw config (which explicitly excludes sites that have their own
+# autopublisher), and WSL cron (no distributions installed).
+#
+# `gh run list` confirms the dispatches were still arriving after the pause:
+# 03:15, 01:15, 23:15, 21:15... So the trigger has to go, not just the cron.
+#
+# Re-enable by uncommenting whichever block is wanted. The queue is intact.
+on: {}
   # schedule:
   #   - cron: '0 */2 * * *'   # every 2 hours = 12x/day
-  workflow_dispatch:
-    inputs:
-      count:
-        description: 'articles to publish this run'
-        default: '1'
+  # workflow_dispatch:
+  #   inputs:
+  #     count:
+  #       description: 'articles to publish this run'
+  #       default: '1'
 
 permissions:
   contents: write
@@ -42,11 +56,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # No npm cache here. There is no quant/frontend/package-lock.json: line 288
+      # of .gitignore is a bare `*.json`, so the lockfile was never committed.
+      # setup-node's cache step failed every run with "Some specified paths were
+      # not resolved", which is what turned these runs red.
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: quant/frontend/package-lock.json
 
       - name: Publish next article(s) from queue
         run: node scripts/queue-publish.mjs
@@ -68,7 +84,9 @@ jobs:
       - name: Install dependencies
         if: steps.changes.outputs.has_changes == 'true'
         working-directory: quant/frontend
-        run: npm ci
+        # `npm ci` requires a lockfile and there is none committed (see the
+        # setup-node note above), so it would fail here too.
+        run: npm install --no-audit --no-fund
 
       # THE GATE. These commits trigger a Vercel deploy and the articles are
       # compiled at build time, so one malformed file breaks the entire site
