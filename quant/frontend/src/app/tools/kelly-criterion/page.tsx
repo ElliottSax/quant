@@ -159,6 +159,10 @@ export default function KellyCriterionPage() {
             <h3 className="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Risk/Reward Ratio Calculator</h3>
             <p className="mt-1.5 text-sm text-slate-400">Check a single trade's reward-to-risk ratio and breakeven win rate.</p>
           </Link>
+          <Link href="/tools/win-rate-significance" className="group rounded-xl border border-[hsl(215,40%,18%)] bg-[hsl(220,55%,9%)] p-5 transition-all hover:border-indigo-500/60 hover:bg-[hsl(220,55%,11%)]">
+            <h3 className="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Win Rate Significance Calculator</h3>
+            <p className="mt-1.5 text-sm text-slate-400">Check your win rate is real edge, not noise, before sizing a position on it.</p>
+          </Link>
           <Link href="/backtesting" className="group rounded-xl border border-[hsl(215,40%,18%)] bg-[hsl(220,55%,9%)] p-5 transition-all hover:border-indigo-500/60 hover:bg-[hsl(220,55%,11%)]">
             <h3 className="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Backtesting Engine</h3>
             <p className="mt-1.5 text-sm text-slate-400">Measure your actual win rate and win/loss ratio from historical data instead of guessing.</p>

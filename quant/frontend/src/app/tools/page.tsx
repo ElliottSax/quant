@@ -54,8 +54,11 @@ const GROUPS: Group[] = [
       { href: '/tools/position-size', name: 'Position Size Calculator', desc: 'Share count implied by your account size, risk per trade, entry, and stop-loss. Handles longs and shorts.' },
       { href: '/tools/kelly-criterion', name: 'Kelly Criterion Calculator', desc: 'Edge-optimal stake from your win rate and win/loss ratio, with a half/quarter-Kelly comparison and growth-rate chart.' },
       { href: '/tools/risk-reward', name: 'Risk/Reward Ratio Calculator', desc: 'Reward-to-risk ratio, each distance as a percentage of entry, and the breakeven win rate the ratio implies.' },
+      { href: '/tools/win-rate-significance', name: 'Win Rate Significance Calculator', desc: 'Wilson score confidence interval and exact binomial test — is your win rate distinguishable from chance?' },
       { href: '/options', name: 'Black-Scholes Options Calculator', desc: 'Theoretical value and all five Greeks for a European call or put, from spot, strike, expiry, volatility, and rate.' },
+      { href: '/tools/options-payoff', name: 'Multi-Leg Options Payoff Calculator', desc: 'Model spreads, straddles, and iron condors up to 6 legs — exact max profit, max loss, and breakevens.' },
       { href: '/tools/max-sharpe', name: 'Max Sharpe Ratio Portfolio', desc: 'Tangency portfolio weights from the closed form w ∝ Σ⁻¹(μ − rf·1), for up to five assets, with the derivation and a worked example.' },
+      { href: '/tools/risk-adjusted-return', name: 'Sharpe / Sortino / Calmar Calculator', desc: 'Paste a return series and get all three risk-adjusted ratios, annualized volatility, and max drawdown.' },
     ],
   },
 ]

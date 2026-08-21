@@ -122,6 +122,10 @@ export default function OptionsPage() {
             <h3 className="text-lg font-semibold group-hover:text-indigo-400 transition-colors">Risk/Reward Ratio Calculator</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">Reward-to-risk ratio and the breakeven win rate it implies.</p>
           </Link>
+          <Link href="/tools/options-payoff" className="group glass-strong rounded-xl p-5 transition-all hover:border-indigo-500/60">
+            <h3 className="text-lg font-semibold group-hover:text-indigo-400 transition-colors">Multi-Leg Options Payoff Calculator</h3>
+            <p className="mt-1.5 text-sm text-muted-foreground">Combine this leg with others — spreads, straddles, iron condors — and see max profit/loss.</p>
+          </Link>
           <Link href="/backtesting" className="group glass-strong rounded-xl p-5 transition-all hover:border-indigo-500/60">
             <h3 className="text-lg font-semibold group-hover:text-indigo-400 transition-colors">Backtesting Engine</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">Test a strategy against historical market data.</p>
