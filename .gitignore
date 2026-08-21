@@ -285,9 +285,17 @@ junit.xml
 
 *.csv
 *.xlsx
+# Data files are ignored wholesale, with named exceptions. The exception list was
+# missing package-lock.json, so the frontend lockfile was never committed --
+# which broke CI twice: setup-node's npm cache failed with "Some specified paths
+# were not resolved" on every autopublish run, and `npm ci` cannot work without
+# one. Anything the toolchain needs belongs on this list.
 *.json
 !package.json
+!package-lock.json
 !tsconfig.json
+!components.json
+!.eslintrc.json
 !*config*.json
 *.parquet
 data/
