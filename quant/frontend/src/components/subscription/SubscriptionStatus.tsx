@@ -33,6 +33,7 @@ export function SubscriptionStatus({
       badge: 'Free Tier',
       description: 'Ad-supported, unlimited backtests',
       features: ['Unlimited backtests', 'All strategies', 'Basic analytics'],
+      price: undefined,
     },
     starter: {
       name: 'Starter',
@@ -56,6 +57,7 @@ export function SubscriptionStatus({
       badge: 'Custom',
       description: 'Everything with dedicated support',
       features: ['All Professional features', 'White label', 'Dedicated support'],
+      price: undefined,
     },
   }
 
