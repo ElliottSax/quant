@@ -52,7 +52,7 @@ For example, a trader can use a mean reversion strategy to identify overbought a
 
 ## Section 3: Implementation and Trade Execution
 
-The implementation of cross-venue arbitrage strategies requires careful consideration of trade execution protocols, risk management, and position sizing. Traders must also ensure that their trading systems and infrastructure can handle high-frequency trading and large trade volumes. The following step-by-step instructions outline the key steps involved in implementing a cross-venue arbitrage strategy:
+The implementation of cross-venue arbitrage strategies requires careful consideration of trade execution protocols, risk management, and position sizing. Our [Position Size Calculator](/tools/position-size) can help size these trades from your account size, risk tolerance, and stop distance before you automate it. Traders must also ensure that their trading systems and infrastructure can handle high-frequency trading and large trade volumes. The following step-by-step instructions outline the key steps involved in implementing a cross-venue arbitrage strategy:
 
 1. **Data collection**: Gather historical and real-time market data from various sources, including exchanges, brokers, and data vendors.
 2. **Data analysis**: Employ quantitative strategies and statistical techniques to analyze the data and identify potential arbitrage opportunities.

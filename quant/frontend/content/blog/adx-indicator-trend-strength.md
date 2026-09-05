@@ -16,7 +16,7 @@ ADX (Average Directional Index) measures trend strength 0-100. ADX above 25 = st
 
 ## Introduction
 
-ADX (Average Directional Index) measures the strength of a trend rather than its direction. Developed by Welles Wilder, ADX helps traders identify whether markets are trending strongly or moving sideways. This comprehensive guide covers everything from trend strength interpretation to advanced DI crossover strategies and multi-indicator confirmation.
+ADX (Average Directional Index) measures the strength of a trend rather than its direction. Developed by Welles Wilder, ADX helps traders identify whether markets are trending strongly or moving sideways. This comprehensive guide covers everything from trend strength interpretation to advanced DI crossover strategies and multi-indicator confirmation. You can check the ADX calculation against pandas_ta on real market bars using our [indicator formulas reference](/indicator-formulas).
 
 ## ADX Components
 

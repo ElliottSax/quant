@@ -342,7 +342,7 @@ def trailing_stop(entry_price, current_price, trailing_pct=0.05):
 
 ## Performance Benchmarks and Realistic Expectations
 
-Backtesting results across various strategy types (2020-2024 historical data):
+Backtesting results across various strategy types (2020-2024 historical data). If you want to check whether a strategy's realized win rate is statistically meaningful rather than noise, our [Win Rate Significance Calculator](/tools/win-rate-significance) runs the binomial test directly:
 
 | Strategy | Annual Return | Sharpe Ratio | Max Drawdown | Win Rate | Profit Factor |
 |---|---|---|---|---|---|

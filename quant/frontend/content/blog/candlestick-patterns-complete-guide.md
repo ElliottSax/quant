@@ -23,7 +23,7 @@ Before examining specific patterns, a clear understanding of candle construction
 
 **Lower Shadow (Wick)**: The thin line extending below the body, representing the distance between the body bottom and the session low. Long lower shadows indicate buying pressure at lower prices.
 
-**Body-to-Shadow Ratio**: This ratio provides insight into conviction. A large body with short shadows indicates strong directional commitment. A small body with long shadows indicates indecision.
+**Body-to-Shadow Ratio**: This ratio provides insight into conviction. A large body with short shadows indicates strong directional commitment. A small body with long shadows indicates indecision. You can inspect these formations on real end-of-day candles with our [Charts tool](/charts) as you work through the patterns below.
 
 ## Single-Candle Reversal Patterns
 

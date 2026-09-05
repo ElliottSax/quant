@@ -85,6 +85,8 @@ Before deploying any strategy, it should pass these tests:
 - **Paper trade**: 30+ days of paper trading with realistic execution
 - **Edge case tests**: Market holidays, gaps, halts, splits
 
+Our [Strategy Builder](/backtesting/builder) lets you run that initial backtest without wiring up a full framework, useful before you invest time building out the rest of the bot.
+
 ## Step 3: Risk Module
 
 ### Pre-Trade Risk Checks

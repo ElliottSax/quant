@@ -127,7 +127,7 @@ print(np.sqrt(np.diag(shrunk_cov) * 252).round(4))
 
 ## Efficient Frontier Computation
 
-The efficient frontier is computed by solving a series of optimization problems. With NumPy, we can use the analytical solution for the mean-variance case without inequality constraints.
+The efficient frontier is computed by solving a series of optimization problems. With NumPy, we can use the analytical solution for the mean-variance case without inequality constraints. If you'd rather skip re-deriving these matrix formulas, our [Max Sharpe Portfolio tool](/tools/max-sharpe) computes the tangency weights directly from your expected returns, volatilities, and correlations.
 
 ```python
 def efficient_frontier(

@@ -18,7 +18,7 @@ description: "The Black-Scholes model revolutionized derivatives trading by prov
 
 # Black-Scholes Model: The Complete Guide to Options Pricing
 
-The Black-Scholes model revolutionized derivatives trading by providing the first practical closed-form solution for European option pricing. Published in 1973, this mathematical framework has become the foundation of modern finance, earning its creators the Nobel Prize. For algorithmic traders, understanding Black-Scholes extends far beyond pricing—it's the key to volatility trading, hedging strategies, and risk management.
+The Black-Scholes model revolutionized derivatives trading by providing the first practical closed-form solution for European option pricing. Published in 1973, this mathematical framework has become the foundation of modern finance, earning its creators the Nobel Prize. For algorithmic traders, understanding Black-Scholes extends far beyond pricing—it's the key to volatility trading, hedging strategies, and risk management. You can price options and see the full set of Greeks instantly with our [Options Calculator](/options) before working through the formulas below by hand.
 
 ## The Black-Scholes Formula
 

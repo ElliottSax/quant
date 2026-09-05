@@ -40,7 +40,7 @@ Theta measures the daily loss in option value due to time passing, all else equa
 
 Vega measures the sensitivity of option price to a 1% change in implied volatility. Long options positions profit from volatility increases; short positions profit from decreases.
 
-**Quantitative application**: Trading the spread between implied and realized volatility by constructing vega-neutral, theta-positive portfolios.
+**Quantitative application**: Trading the spread between implied and realized volatility by constructing vega-neutral, theta-positive portfolios. Our [Options Calculator](/options) computes Black-Scholes pricing and the full Greek set directly, handy for sanity-checking these values before building a hedging model.
 
 ## Strategy 1: Systematic Covered Calls (Overwriting)
 

@@ -180,6 +180,8 @@ More trades provide stronger statistical evidence.
 | QuantConnect | Cloud-based, multi-asset, live deployment | Learning curve, monthly costs | Free-$50/mo |
 | Quantopian (archived) | Reference for methodology | No longer active | N/A |
 
+If you want to test a hypothesis before committing to any of these frameworks, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup or code required.
+
 ## Key Takeaways
 
 - Every backtest must begin with an economic hypothesis, not a data mining exercise

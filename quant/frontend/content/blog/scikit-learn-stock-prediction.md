@@ -286,7 +286,7 @@ def analyze_feature_importance(
 
 ## Financial Evaluation
 
-Accuracy is a misleading metric for trading.
+Accuracy is a misleading metric for trading. Once you have a win rate from your test set, our [win-rate significance calculator](/tools/win-rate-significance) tells you whether that edge is statistically distinguishable from chance given your sample size.
 
 ```python
 def financial_evaluation(

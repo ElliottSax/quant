@@ -83,7 +83,7 @@ Bounce trading involves entering positions when price reaches a support or resis
 **Stop-Loss:** Below the support zone (longs) or above the resistance zone (shorts). This should be placed outside the zone, not at the level itself, to avoid stop hunting.
 **Target:** The nearest opposing support/resistance level, or a measured move based on the distance from the entry to the stop.
 
-**Risk Management:** Bounce trades at well-established levels offer favorable risk/reward because the stop-loss is tightly defined (just beyond the level), while the target is the next major level which may be significantly distant.
+**Risk Management:** Bounce trades at well-established levels offer favorable risk/reward because the stop-loss is tightly defined (just beyond the level), while the target is the next major level which may be significantly distant. Our [risk/reward ratio calculator](/tools/risk-reward) lets you check that ratio numerically once you've marked your stop and target levels.
 
 ## Trading Strategy 2: Breakout Trading
 

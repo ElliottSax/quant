@@ -173,6 +173,8 @@ Seasonal patterns must be tested for statistical robustness:
 - **Out-of-sample stability**: Verify that the pattern persists across different sub-periods (e.g., 2000-2012 vs. 2013-2025).
 - **Multiple testing correction**: When testing 12 months x 25 commodities = 300 patterns, some will appear significant by chance. Apply Bonferroni or FDR correction.
 
+Our [Seasonality Screener](/scanner) runs this kind of multiple-testing-corrected monthly analysis across a fixed universe automatically, with sample sizes included, if you want to skip building it from scratch.
+
 ## Combining Strategies
 
 The three strategies (trend, carry, seasonal) have low pairwise correlations:

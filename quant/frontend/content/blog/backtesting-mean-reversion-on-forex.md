@@ -12,7 +12,7 @@ description: "Mean reversion strategies excel on forex pairs, which tend to osci
 
 # Backtesting Mean Reversion on Forex: Currency Pair Trading
 
-Mean reversion strategies excel on forex pairs, which tend to oscillate within ranges. Currency pairs rarely trend as strongly as equities, making mean reversion ideal for capturing swings between support/resistance levels.
+Mean reversion strategies excel on forex pairs, which tend to oscillate within ranges. Currency pairs rarely trend as strongly as equities, making mean reversion ideal for capturing swings between support/resistance levels. If you want to test a similar setup before building this backtester yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## Why Mean Reversion Works on Forex
 

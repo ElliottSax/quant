@@ -11,7 +11,7 @@ keywords: ["moving average crossover strategy", "golden cross trading", "death c
 
 The moving average crossover strategy is one of the most widely used systematic trading approaches in both retail and institutional settings. By comparing a fast moving average to a slow moving average, traders generate objective, rule-based signals that eliminate emotional decision-making. The most famous variant, the golden cross (50-day MA crossing above the 200-day MA), has been cited in financial literature since the 1970s and continues to generate significant media attention during major market transitions.
 
-Despite its simplicity, the moving average crossover strategy remains effective when implemented with proper [position sizing](/blog/position-sizing-strategies), filters, and risk management. This guide covers the mechanics, variations, backtest results, and practical implementation of moving average crossover systems.
+Despite its simplicity, the moving average crossover strategy remains effective when implemented with proper [position sizing](/blog/position-sizing-strategies), filters, and risk management. This guide covers the mechanics, variations, backtest results, and practical implementation of moving average crossover systems. If you want to test your own fast/slow MA combination before committing capital, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no code required.
 
 ## How Moving Average Crossovers Work
 

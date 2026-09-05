@@ -26,6 +26,8 @@ Key characteristics:
 - Benefits from rising implied volatility
 - Losses from large underlying moves
 
+Our [Options Calculator](/options) prices the near-term and far-term legs with Black-Scholes and their Greeks if you want a quick check before building the full spread yourself.
+
 ## Calendar Spread Implementation
 
 ```python

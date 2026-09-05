@@ -82,7 +82,11 @@ export default function ScannerPage() {
               were run together here. The q-value corrects for that. At a false-discovery
               threshold of {(data.fdr_q * 100).toFixed(0)}%, roughly one in ten entries that
               cleared it would still be expected to be a false positive — which is why we
-              state the threshold rather than just the winners.
+              state the threshold rather than just the winners. See our{' '}
+              <Link href="/blog/overfitting-trading-strategies" className="underline hover:text-slate-200">
+                guide to multiple-testing correction and the deflated Sharpe ratio
+              </Link>{' '}
+              for the statistics behind why this matters.
             </p>
             <p>
               <strong className="text-slate-200">Years against</strong> counts the years in

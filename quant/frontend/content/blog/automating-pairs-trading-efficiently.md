@@ -363,7 +363,7 @@ class PairsRiskManager:
 ## Frequently Asked Questions
 
 **Q: How do I find cointegrated pairs?**
-A: Screen all stock combinations using Augmented Dickey-Fuller test on price spread. p-value <0.05 indicates cointegration. R² >0.85 indicates tight relationship. Sector pairs (e.g., tech companies) cointegrate more reliably.
+A: Screen all stock combinations using Augmented Dickey-Fuller test on price spread. p-value <0.05 indicates cointegration. R² >0.85 indicates tight relationship. Sector pairs (e.g., tech companies) cointegrate more reliably. If you hit import errors wiring up statsmodels for the ADF or cointegration test, our [statsmodels import reference](/statsmodels-imports) documents which import paths actually work.
 
 **Q: What's the minimum holding period for pairs trades?**
 A: Average 5-10 days. Some revert in 1-2 days, others take 15-20 days. Use Z-score targets (exit at ±0.5 std devs) instead of fixed holding periods.

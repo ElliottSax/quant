@@ -540,7 +540,7 @@ if __name__ == "__main__":
 
 ## Conclusion
 
-Crypto arbitrage requires monitoring multiple exchanges, fast execution, and strict risk management. The fragmented nature of cryptocurrency markets creates regular opportunities for profitable trading. Key success factors:
+Crypto arbitrage requires monitoring multiple exchanges, fast execution, and strict risk management. The fragmented nature of cryptocurrency markets creates regular opportunities for profitable trading. Before risking capital, our [Strategy Builder](/backtesting/builder) lets you backtest a rules-based version of this approach directly, no signup required. Key success factors:
 
 1. Real-time price monitoring across exchanges
 2. Rapid execution to minimize slippage

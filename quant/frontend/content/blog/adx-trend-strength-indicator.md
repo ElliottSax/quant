@@ -11,7 +11,7 @@ keywords: ["ADX indicator", "average directional index", "ADX trend strength"]
 
 The Average Directional Index (ADX), developed by J. Welles Wilder Jr. in 1978, answers a fundamental question that most indicators ignore: how strong is the current trend? While momentum oscillators like RSI and the stochastic measure price direction and overbought/oversold conditions, the ADX exclusively measures trend strength regardless of direction. An ADX reading of 30 indicates a strong trend whether the market is going up or down. This unique property makes the ADX an essential filter for any [trading strategy](/blog/breakout-trading-strategy), as the strength of a trend directly determines whether trend-following or mean-reversion approaches are more appropriate.
 
-This guide covers the complete ADX system, including the Directional Movement Index (+DI/-DI) crossovers, ADX thresholds, and practical strategies for integrating ADX into your trading.
+This guide covers the complete ADX system, including the Directional Movement Index (+DI/-DI) crossovers, ADX thresholds, and practical strategies for integrating ADX into your trading. If you want to verify the calculation yourself, our [indicator formulas reference](/indicator-formulas) cross-checks ADX against pandas_ta on real market bars.
 
 ## The Directional Movement System
 

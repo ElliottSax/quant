@@ -354,7 +354,7 @@ A: Trade separately, but size positions so total correlation risk doesn't exceed
 A: Don't trade 1 hour before high-impact events. Exit profitable positions 30 minutes before major announcements. Use tighter stops (1.5x ATR) immediately after major announcements until volatility normalizes.
 
 **Q: What position size should I use for forex momentum?**
-A: Start with 0.5-1.0 standard lots per $10,000 of capital. This equals 5-10 pips = 1% account risk per trade. Never exceed 3 open positions simultaneously.
+A: Start with 0.5-1.0 standard lots per $10,000 of capital. This equals 5-10 pips = 1% account risk per trade. Never exceed 3 open positions simultaneously. For a quick sanity check on any setup, our [Position Size Calculator](/tools/position-size) computes size directly from account risk, entry, and stop.
 
 **Q: Is forex momentum better during certain times of day?**
 A: European session (8am-12pm UTC) and US session (1pm-5pm UTC) offer best liquidity and momentum. Asian session (7pm-5am UTC) has lower volume and whipsaws. Avoid very early morning (2am-5am UTC).

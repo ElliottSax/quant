@@ -51,7 +51,7 @@ The most direct form of tail protection. A 10% out-of-the-money (OTM) SPX put pr
 
 **Cost structure**: OTM puts carry a volatility premium (implied volatility exceeds realized volatility by 3-5 points on average for index puts). The annual cost of maintaining 10% OTM puts with 3-month tenors (rolled quarterly) is approximately 1.5-3.0% of portfolio value, depending on the volatility environment.
 
-**Put spread**: Buying a 10% OTM put and selling a 25% OTM put reduces the cost by approximately 40-60% while providing protection for the most probable tail scenarios. The trade-off is capped protection: losses beyond 25% are unhedged.
+**Put spread**: Buying a 10% OTM put and selling a 25% OTM put reduces the cost by approximately 40-60% while providing protection for the most probable tail scenarios. The trade-off is capped protection: losses beyond 25% are unhedged. Our [options payoff diagram builder](/tools/options-payoff) lets you visualize this spread's P&L profile before committing capital to the hedge.
 
 **Optimal tenor**: 3-month puts offer the best balance between cost efficiency and protection. Shorter tenors (1-month) decay faster and require more frequent rolling. Longer tenors (6-12 months) have higher absolute cost and more exposure to time decay.
 

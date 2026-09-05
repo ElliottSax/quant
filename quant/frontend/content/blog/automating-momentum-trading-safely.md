@@ -328,7 +328,7 @@ def trailing_stop_for_momentum(entry_price, current_price, atr, trail_distance=2
 ## Frequently Asked Questions
 
 **Q: How tight should I set stop losses?**
-A: 2x ATR for normal volatility, 2.5-3x for elevated volatility. Never tighter than 1.5x ATR (too much whipsaw) or wider than 4x ATR (too much risk). ATR adapts naturally to market conditions.
+A: 2x ATR for normal volatility, 2.5-3x for elevated volatility. Never tighter than 1.5x ATR (too much whipsaw) or wider than 4x ATR (too much risk). ATR adapts naturally to market conditions. Once you've set a stop and target, our [risk/reward calculator](/tools/risk-reward) checks whether the resulting ratio meets your minimum before you enter.
 
 **Q: Should I scale into momentum trades?**
 A: Yes, but carefully. Buy 50% at breakout, add 25% on 1x ATR move in your favor, add final 25% on 2x ATR move. This reduces risk of catching exhaustion right at entry.

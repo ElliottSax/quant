@@ -18,7 +18,7 @@ Position sizing is the primary determinant of trading success, not signal qualit
 
 ## The Position Sizing Imperative
 
-Research by Edwin de Bondt and others shows that position sizing accounts for 80-90% of portfolio performance variance, while signal quality accounts for only 10-20%. Most traders focus on signals; professionals focus on sizing.
+Research by Edwin de Bondt and others shows that position sizing accounts for 80-90% of portfolio performance variance, while signal quality accounts for only 10-20%. Most traders focus on signals; professionals focus on sizing. If you want to compute your own Kelly fraction from win rate and average win/loss without doing the algebra by hand, our [Kelly criterion calculator](/tools/kelly-criterion) does it directly.
 
 **Kelly Criterion Example:**
 - Win rate: 60%, Average win: +2%, Average loss: -1%
@@ -318,7 +318,7 @@ class ProfessionalPositionSizer:
 ## Frequently Asked Questions
 
 **Q: What's the safest position sizing method for beginners?**
-A: Fixed fractional at 1% per trade. Guarantees you survive 100 consecutive losses. Move to 2% after 100 profitable trades.
+A: Fixed fractional at 1% per trade. Guarantees you survive 100 consecutive losses. Move to 2% after 100 profitable trades. You can compute this size instantly with our [Position Size Calculator](/tools/position-size), which converts account risk, entry, and stop into a share count.
 
 **Q: Should I scale position size up after winning trades?**
 A: Yes, but carefully. After 3 consecutive wins, increase size by 20%. After 2 consecutive losses, decrease by 50%. This "confidence-based" sizing performs well empirically.

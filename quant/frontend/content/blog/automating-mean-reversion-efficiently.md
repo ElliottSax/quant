@@ -31,7 +31,7 @@ The efficiency advantage comes from reducing human emotion and latency from the 
 
 ### Identifying Mean-Reverting Instruments
 
-Not all assets revert to the mean equally. Use the Hurst Exponent and Augmented Dickey-Fuller (ADF) test to identify suitable candidates:
+Not all assets revert to the mean equally. Use the Hurst Exponent and Augmented Dickey-Fuller (ADF) test to identify suitable candidates. If you've hit import errors wiring up statsmodels for the ADF test or cointegration checks, our [statsmodels import reference](/statsmodels-imports) documents which import paths actually work.
 
 ```python
 import numpy as np

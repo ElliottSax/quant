@@ -16,7 +16,7 @@ Safe risk management isn't about maximizing returns—it's about preventing acco
 
 ## The Rule of Safe Risk Management
 
-**Never risk more than 1-2% of your account on any single trade.**
+**Never risk more than 1-2% of your account on any single trade.** Our [Position Size Calculator](/tools/position-size) converts that percentage directly into a share count from your entry and stop.
 
 This simple rule, universally accepted among professional traders, has saved more accounts than any sophisticated strategy. The mathematics:
 

@@ -101,7 +101,7 @@ Latency optimization places execution servers in cloud regions closest to exchan
 
 Risk management systems enforce hard limits on inventory, position sizes, daily loss limits, and order sizes. If daily loss exceeds -2% of capital, automatic shutdown halts trading until manual review. Maximum order sizes prevent fat-finger errors and ensure ability to quickly liquidate positions if needed.
 
-Backtesting frameworks validate strategies using historical order book data before risking capital. Unlike traditional markets where microsecond-level data costs thousands monthly, crypto exchange APIs often provide free historical L2 order book snapshots and trades. Custom backtest engines replay order books tick-by-tick, simulating order placement and fills under realistic conditions.
+Backtesting frameworks validate strategies using historical order book data before risking capital. Unlike traditional markets where microsecond-level data costs thousands monthly, crypto exchange APIs often provide free historical L2 order book snapshots and trades. Custom backtest engines replay order books tick-by-tick, simulating order placement and fills under realistic conditions. If you want to test a rules-based quoting strategy without building this replay engine, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 Monitoring and alerting systems track key metrics: profit per trade, fill rates, adverse selection rates, inventory levels, and connection health. Anomaly detection identifies issues like API failures, exchange connectivity problems, or unusual profitability changes requiring investigation. Dashboards provide real-time visibility into strategy performance.
 

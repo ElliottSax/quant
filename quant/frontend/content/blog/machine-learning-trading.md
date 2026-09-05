@@ -79,7 +79,7 @@ Raw features should be transformed for ML models:
 
 3. **Entropy-based encoding**: Convert continuous features to entropy-based bins for tree models.
 
-4. **Triple barrier labeling** (de Prado): Label data points based on which barrier (profit target, stop-loss, or time limit) is hit first, rather than binary up/down classification.
+4. **Triple barrier labeling** (de Prado): Label data points based on which barrier (profit target, stop-loss, or time limit) is hit first, rather than binary up/down classification. See our [triple-barrier and meta-labeling guide](/blog/triple-barrier-labeling-meta-labeling) for a full working implementation, including the secondary model that turns these labels into a bet-sizing filter.
 
 ## Model Selection
 
@@ -151,7 +151,7 @@ Convert ML predictions into trading signals:
 - **High confidence short**: Predicted probability < 0.45
 - **No trade**: Predicted probability between 0.45 and 0.55
 
-This threshold approach trades only on high-confidence predictions, improving the Sharpe ratio at the cost of lower trade frequency.
+This threshold approach trades only on high-confidence predictions, improving the Sharpe ratio at the cost of lower trade frequency. If you want to compare that thresholding logic against a simpler rules-based strategy on the same data, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it without building this pipeline yourself.
 
 ## Production ML Pipeline
 

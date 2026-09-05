@@ -325,7 +325,7 @@ def train_model(
 
 ## Model Evaluation and Backtesting
 
-Evaluate neural network predictions with both ML metrics and financial performance.
+Evaluate neural network predictions with both ML metrics and financial performance. If you want a quick baseline to compare against, our [Strategy Builder](/backtesting/builder) lets you backtest a simple rules-based strategy on the same data without writing this evaluation pipeline yourself.
 
 ```python
 def evaluate_nn_predictions(

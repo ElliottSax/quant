@@ -14,7 +14,7 @@ description: "Momentum trading—buying assets with rising prices and selling th
 
 # Automating Momentum Trading for Beginners
 
-Momentum trading—buying assets with rising prices and selling those with falling prices—is the foundation of successful algorithmic trading. While simple in concept, automating momentum strategies profitably requires understanding mathematical frameworks, risk management, and systematic implementation. This beginner-friendly guide reveals how professional traders implement momentum strategies from first principles.
+Momentum trading—buying assets with rising prices and selling those with falling prices—is the foundation of successful algorithmic trading. While simple in concept, automating momentum strategies profitably requires understanding mathematical frameworks, risk management, and systematic implementation. This beginner-friendly guide reveals how professional traders implement momentum strategies from first principles. If you want to verify the RSI, MACD, and ADX formulas below against real market data, our [indicator formulas reference](/indicator-formulas) cross-checks them against pandas_ta on real bars.
 
 ## Understanding Momentum: The Physics of Markets
 

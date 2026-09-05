@@ -37,7 +37,7 @@ Where:
 P(ruin) = e^(-2 × 1 × 0.55 / 1²) = e^(-1.1) = 0.333 = 33.3% chance of ruin
 ```
 
-This is unacceptable! Even Kelly should be fractional.
+This is unacceptable! Even Kelly should be fractional. Our [Kelly criterion calculator](/tools/kelly-criterion) computes the full and fractional Kelly fraction directly from your win rate and win/loss ratio, so you can see the ruin math before sizing a real position.
 
 ### Conservative Sizing Bounds
 

@@ -34,7 +34,7 @@ For beginners, fixed percentage risk is the safest starting point. The concept i
 
 ### The 2% Rule
 
-The industry standard "2% rule" means risking 2% of your trading account on any single trade. This conservative approach prevents catastrophic losses while allowing compound growth.
+The industry standard "2% rule" means risking 2% of your trading account on any single trade. This conservative approach prevents catastrophic losses while allowing compound growth. Our [Position Size Calculator](/tools/position-size) automates this formula directly from your account size, risk percentage, entry, and stop.
 
 **Formula:**
 ```

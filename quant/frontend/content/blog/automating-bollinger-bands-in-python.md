@@ -15,7 +15,7 @@ seo_optimized: true
 
 ## Introduction
 
-Python's data science stack -- pandas for time series manipulation, numpy for vectorized computation, and matplotlib for visualization -- makes it the ideal language for implementing Bollinger Band trading systems. This article provides production-quality Python code for the complete workflow: computing Bollinger Bands, generating trading signals, running rigorous backtests, and connecting to a broker API for live execution. Every function includes type hints, docstrings, and edge-case handling suitable for real trading.
+Python's data science stack -- pandas for time series manipulation, numpy for vectorized computation, and matplotlib for visualization -- makes it the ideal language for implementing Bollinger Band trading systems. This article provides production-quality Python code for the complete workflow: computing Bollinger Bands, generating trading signals, running rigorous backtests, and connecting to a broker API for live execution. Before building this pipeline yourself, our [Strategy Builder](/backtesting/builder) lets you prototype the same Bollinger Band signal logic and backtest it directly, no code required. Every function includes type hints, docstrings, and edge-case handling suitable for real trading.
 
 ## Core Implementation
 

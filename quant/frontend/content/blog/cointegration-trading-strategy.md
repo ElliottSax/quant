@@ -11,7 +11,7 @@ keywords: ["cointegration trading strategy", "Engle-Granger test trading", "Joha
 
 Cointegration is the statistical concept that underpins the most rigorous forms of [pairs trading](/blog/pairs-trading-strategy-guide) and [statistical arbitrage](/blog/crypto-statistical-arbitrage). Two price series are cointegrated when their linear combination is stationary, even though each individual series is non-stationary. In practical terms, this means the spread between the two securities tends to revert to a stable long-run equilibrium, creating a tradable signal whenever it deviates too far.
 
-Unlike simple correlation, cointegration provides a theoretically grounded reason to expect [mean reversion](/blog/mean-reversion-strategies-guide). This guide covers the testing methodologies, implementation details, and strategy construction for cointegration-[based trading](/blog/entropy-based-trading).
+Unlike simple correlation, cointegration provides a theoretically grounded reason to expect [mean reversion](/blog/mean-reversion-strategies-guide). This guide covers the testing methodologies, implementation details, and strategy construction for cointegration-[based trading](/blog/entropy-based-trading). If the correct `statsmodels` import paths for ADF and cointegration tests aren't obvious, our [statsmodels import reference](/statsmodels-imports) documents which ones actually work.
 
 ## Key Takeaways
 

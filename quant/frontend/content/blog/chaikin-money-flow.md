@@ -27,7 +27,7 @@ The Chaikin Money Flow formula:
 - **Money Flow Volume** = Money Flow Multiplier × Volume
 - **CMF (20-period)** = Sum of Money Flow Volume / Sum of Volume over 20 periods
 
-CMF ranges from -1.0 (all selling) to +1.0 (all buying). Positive CMF indicates buyers in control; negative CMF indicates sellers dominating.
+CMF ranges from -1.0 (all selling) to +1.0 (all buying). Positive CMF indicates buyers in control; negative CMF indicates sellers dominating. Our [indicator formulas reference](/indicator-formulas) cross-checks calculations like this against pandas_ta on real bars if you want to verify your own implementation.
 
 ## Python Implementation and Backtesting
 

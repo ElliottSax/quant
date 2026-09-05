@@ -81,6 +81,8 @@ Building a production trading system requires:
 4. **Order Management**: Reliable trade execution
 5. **Performance Analytics**: Comprehensive reporting
 
+If you want to validate a CCI-based signal before building this pipeline yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
+
 ### Data Handling
 
 ```python

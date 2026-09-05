@@ -118,7 +118,7 @@ class DualMACrossover:
 
 ## Step 4: Backtest Properly
 
-A backtest must include transaction costs, slippage, and realistic execution assumptions:
+A backtest must include transaction costs, slippage, and realistic execution assumptions. If you'd rather validate your entry logic before writing this harness yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest a strategy directly, no signup required.
 
 ```python
 class SimpleBacktester:

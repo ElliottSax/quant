@@ -36,7 +36,7 @@ The same strategy produced Sharpe ratios ranging from 0.4 to 1.2 depending on th
 
 ## Method 1: ADX + Volatility Classification
 
-The simplest and most robust regime detection method uses two readily available indicators.
+The simplest and most robust regime detection method uses two readily available indicators. Our [indicator formulas reference](/indicator-formulas) shows exactly how ADX and historical volatility are computed against real bars before you wire up this classifier.
 
 ```python
 import pandas as pd

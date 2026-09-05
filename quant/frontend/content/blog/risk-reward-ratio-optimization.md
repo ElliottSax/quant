@@ -11,7 +11,7 @@ keywords: ["risk reward ratio optimization", "trading risk reward", "risk reward
 
 The risk-reward ratio (R:R) quantifies how much potential profit a trade offers relative to its potential loss. A trade risking $100 to make $200 has a 1:2 risk-reward ratio. While the concept is simple, optimizing the risk-reward ratio for a specific [trading strategy](/blog/breakout-trading-strategy) requires understanding the mathematical relationship between R:R, win rate, and expectancy, the true measure of trading edge.
 
-This guide provides the quantitative framework for evaluating, optimizing, and implementing risk-reward ratios that produce positive expectancy across different trading approaches.
+This guide provides the quantitative framework for evaluating, optimizing, and implementing risk-reward ratios that produce positive expectancy across different trading approaches. Our [risk/reward ratio calculator](/tools/risk-reward) computes this ratio directly from your entry, stop, and target, useful for a quick check before committing to a trade.
 
 ## Expectancy: The True Measure of Edge
 

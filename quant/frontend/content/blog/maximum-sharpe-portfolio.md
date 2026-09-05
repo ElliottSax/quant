@@ -32,7 +32,7 @@ The analytical solution (unconstrained):
 
 **w* = Sigma^(-1) * (mu - R_f * 1) / (1^T * Sigma^(-1) * (mu - R_f * 1))**
 
-This differs from the minimum variance portfolio by incorporating the excess return vector (mu - R_f). Assets with higher expected excess returns per unit of marginal risk contribution receive larger weights.
+This differs from the minimum variance portfolio by incorporating the excess return vector (mu - R_f). Assets with higher expected excess returns per unit of marginal risk contribution receive larger weights. Our [Max Sharpe Portfolio tool](/tools/max-sharpe) computes these closed-form tangency weights directly from your expected returns, volatilities, and correlations, without requiring you to code the matrix algebra yourself.
 
 ### Two-Fund Separation
 

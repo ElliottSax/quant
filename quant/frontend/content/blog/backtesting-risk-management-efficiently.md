@@ -12,7 +12,7 @@ description: "Efficient risk management in trading means controlling maximum los
 
 # Backtesting Risk Management Efficiently
 
-Efficient risk management in trading means controlling maximum loss while preserving capital for compound growth. This isn't about eliminating risk—impossible in trading—but about quantifying, measuring, and controlling it. This comprehensive guide covers Python implementations of sophisticated risk management techniques, their mathematical foundations, and backtesting frameworks that validate risk management effectiveness.
+Efficient risk management in trading means controlling maximum loss while preserving capital for compound growth. This isn't about eliminating risk—impossible in trading—but about quantifying, measuring, and controlling it. This comprehensive guide covers Python implementations of sophisticated risk management techniques, their mathematical foundations, and backtesting frameworks that validate risk management effectiveness. Our [Position Size Calculator](/tools/position-size) handles the underlying per-trade risk math directly from your account size, risk percentage, entry, and stop.
 
 ## Core Risk Management Metrics
 

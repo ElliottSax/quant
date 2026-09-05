@@ -229,7 +229,7 @@ Python with the `ccxt` library provides a unified API across 100+ exchanges, mak
 
 ### How do you backtest crypto strategies with limited historical data?
 
-Crypto data is limited compared to equities (BTC since 2013, most altcoins since 2017-2020). Strategies include: (1) use hourly or minute data to increase sample size, (2) test across multiple assets to increase observation count, (3) use walk-forward validation with shorter windows (3-month train, 1-month test), (4) apply [Monte Carlo simulation](/blog/monte-carlo-simulation-trading) to assess robustness with limited data, (5) validate against known factor premia (momentum, value) that have been documented across multiple asset classes and time periods.
+Crypto data is limited compared to equities (BTC since 2013, most altcoins since 2017-2020). Strategies include: (1) use hourly or minute data to increase sample size, (2) test across multiple assets to increase observation count, (3) use walk-forward validation with shorter windows (3-month train, 1-month test), (4) apply [Monte Carlo simulation](/blog/monte-carlo-simulation-trading) to assess robustness with limited data, (5) validate against known factor premia (momentum, value) that have been documented across multiple asset classes and time periods. If you want to test a rules-based version of one of these strategies without building this walk-forward pipeline yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ---
 

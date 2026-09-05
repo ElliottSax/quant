@@ -226,6 +226,7 @@ The difference between breakout success and failure often comes down to precise 
 - Risk per trade = 2% of portfolio
 - Risk distance = ATR × 2.0
 - Position size = (Portfolio × 0.02) / Risk Distance
+- Our [Position Size Calculator](/tools/position-size) will do this arithmetic for you from account size, risk %, entry, and stop
 
 **Profit Targets**:
 - Target 1: 1.5 × Risk (3:1 reward/risk) - close 50% position

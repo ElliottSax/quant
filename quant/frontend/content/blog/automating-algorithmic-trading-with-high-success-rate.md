@@ -285,7 +285,7 @@ class AdaptiveExit:
 
 ## Statistical Validation
 
-A high win rate on a backtest means nothing without statistical validation:
+A high win rate on a backtest means nothing without statistical validation. You can run this same check on your own trade log using our [Win Rate Significance Calculator](/tools/win-rate-significance), which handles the sample-size and binomial-test math for you.
 
 ```python
 def validate_win_rate(trades: pd.Series, claimed_win_rate: float,

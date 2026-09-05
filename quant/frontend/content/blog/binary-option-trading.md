@@ -259,7 +259,7 @@ For a binary option trade:
 
 Kelly fraction = (0.58 × (100/55 - 1) - 0.42) / (100/55 - 1) = 0.084 = 8.4%
 
-With 25% fractional Kelly: position size = 2.1% of portfolio per trade
+With 25% fractional Kelly: position size = 2.1% of portfolio per trade. You can run your own edge and payout through our [Kelly Criterion Calculator](/tools/kelly-criterion) to size positions without doing this math by hand.
 
 ## Frequently Asked Questions
 

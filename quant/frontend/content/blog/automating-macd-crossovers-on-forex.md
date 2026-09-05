@@ -49,7 +49,7 @@ $$
 EMA_t = \alpha \cdot Close_t + (1 - \alpha) \cdot EMA_{t-1}
 $$
 
-where $\alpha = 2 / (period + 1)$.
+where $\alpha = 2 / (period + 1)$. If you want to verify these formulas against real market data rather than re-deriving them, our [indicator formulas reference](/indicator-formulas) cross-checks MACD, RSI, ATR, and Bollinger Bands against pandas_ta on real bars.
 
 ## Implementation for Forex
 

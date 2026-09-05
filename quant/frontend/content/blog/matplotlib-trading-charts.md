@@ -11,7 +11,7 @@ keywords: ["matplotlib trading charts", "python candlestick chart", "trading vis
 
 Effective visualization is not optional in [quantitative trading](/blog/crypto-quant-trading-strategies). Charts reveal patterns that raw numbers obscure: regime changes in equity curves, clustering in drawdown periods, divergence between price and indicators. A well-structured charting library accelerates research, debugging, and communication with stakeholders.
 
-This guide covers the chart types that matter most for quant traders, built with Matplotlib and mplfinance. Every example produces publication-quality output suitable for research reports and dashboards.
+This guide covers the chart types that matter most for quant traders, built with Matplotlib and mplfinance. Every example produces publication-quality output suitable for research reports and dashboards. If you'd rather skip the setup and just view adjusted candles with SMA, EMA, and Bollinger overlays, our [Charts tool](/charts) renders them directly from real data.
 
 ## Key Takeaways
 

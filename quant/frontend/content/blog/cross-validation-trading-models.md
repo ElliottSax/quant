@@ -11,7 +11,7 @@ keywords: ["cross-validation trading", "walk-forward analysis", "purged cross-va
 
 Cross-validation is the cornerstone of honest model evaluation. In finance, standard k-fold cross-validation produces wildly overoptimistic results because it ignores the temporal ordering of data, allowing the model to "peek" at future information during training. A single mis-applied cross-validation can make a worthless model appear to generate 20% annual alpha.
 
-This guide covers the cross-validation techniques designed specifically for financial [time series](/blog/time-series-analysis-stocks), including walk-forward analysis, purged k-fold, and combinatorial purged cross-validation. Each method addresses different forms of data leakage while providing reliable estimates of out-of-sample performance.
+This guide covers the cross-validation techniques designed specifically for financial [time series](/blog/time-series-analysis-stocks), including walk-forward analysis, purged k-fold, and combinatorial purged cross-validation. Each method addresses different forms of data leakage while providing reliable estimates of out-of-sample performance. If your labels come from a [triple-barrier or meta-labeling](/blog/triple-barrier-labeling-meta-labeling) scheme, the overlap between adjacent label windows is exactly the kind of leakage purging and embargo periods are designed to remove.
 
 ## Key Takeaways
 
@@ -77,7 +77,7 @@ def demonstrate_cv_bias(
 
 ## Walk-Forward Analysis
 
-Walk-forward analysis simulates how the model would perform in production by training on expanding or rolling windows and evaluating on subsequent out-of-sample periods.
+Walk-forward analysis simulates how the model would perform in production by training on expanding or rolling windows and evaluating on subsequent out-of-sample periods. If you'd rather not hand-roll this walk-forward loop, our [Strategy Builder](/backtesting/builder) runs out-of-sample backtests directly, no signup required.
 
 ```python
 class WalkForwardAnalysis:

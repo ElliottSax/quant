@@ -170,7 +170,7 @@ Key metrics to evaluate your trading strategy:
 
 ## Conclusion
 
-Data Pipeline Python Tutorial From Raw To Clean Trading Data requires combining mathematical rigor with practical implementation skills. Success depends on thorough testing, robust risk management, and continuous adaptation to changing market conditions. Use the Python frameworks and techniques outlined here as a foundation for building profitable trading systems.
+Data Pipeline Python Tutorial From Raw To Clean Trading Data requires combining mathematical rigor with practical implementation skills. Success depends on thorough testing, robust risk management, and continuous adaptation to changing market conditions. Use the Python frameworks and techniques outlined here as a foundation for building profitable trading systems. If you want to validate a strategy idea before writing this pipeline yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## Resources
 

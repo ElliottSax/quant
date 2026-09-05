@@ -70,7 +70,7 @@ Short VIX trades are significantly more profitable than long VIX trades because 
 
 ### Concept
 
-A straddle consists of a call and a put at the same strike price and expiration. Selling a straddle profits if the underlying stays near the strike, collecting the time decay premium.
+A straddle consists of a call and a put at the same strike price and expiration. Selling a straddle profits if the underlying stays near the strike, collecting the time decay premium. Our [options payoff diagram builder](/tools/options-payoff) lets you visualize this straddle's P&L profile across a range of underlying prices before selling it.
 
 ### Rules
 

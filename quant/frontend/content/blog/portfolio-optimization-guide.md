@@ -37,6 +37,8 @@ The set of all optimal portfolios (one for each target return level) forms the e
 - **Maximum Sharpe portfolio**: Highest risk-adjusted return (tangent portfolio)
 - **Maximum return portfolio**: 100% allocation to the highest-return asset
 
+Our [Max Sharpe Portfolio tool](/tools/max-sharpe) computes the tangent portfolio directly from your own expected returns, volatilities, and correlations, without needing to code the optimization yourself.
+
 ### Implementation Example: 7-Asset Portfolio
 
 We optimized a portfolio of 7 asset class ETFs using 10 years of historical data:

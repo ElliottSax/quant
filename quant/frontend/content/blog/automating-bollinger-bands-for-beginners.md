@@ -111,7 +111,7 @@ The z-score is the most useful derivative of Bollinger Bands for trading. It tel
 | -2.0 to -1.0 | Moderately oversold | ~13.5% |
 | < -2.0 | Strongly oversold | ~2.5% |
 
-For mean-reversion trading, we buy when z < -2 (oversold) and sell when z > +2 (overbought), expecting price to return to the middle band.
+For mean-reversion trading, we buy when z < -2 (oversold) and sell when z > +2 (overbought), expecting price to return to the middle band. You can watch this play out on live data using our [Charts tool](/charts), which plots adjusted candles with Bollinger Bands computed from real data.
 
 ## Step 3: Building the Trading Strategy
 

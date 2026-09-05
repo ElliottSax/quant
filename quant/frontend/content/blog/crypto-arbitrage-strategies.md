@@ -85,7 +85,7 @@ WebSocket implementations for real-time price feeds from 10+ exchanges require c
 
 Order management systems track positions, pending orders, and fills across multiple venues. When executing arbitrage across three pairs and two exchanges simultaneously, coordinating execution and handling partial fills becomes complex. Modern systems use state machines to manage multi-leg arbitrage workflows.
 
-Backtesting frameworks validate strategies using historical order book data before risking capital. Unlike traditional markets where millisecond-level data costs thousands monthly, crypto exchange APIs often provide free historical trades and order book snapshots. Custom backtest engines account for realistic fees, slippage, and latency.
+Backtesting frameworks validate strategies using historical order book data before risking capital. Unlike traditional markets where millisecond-level data costs thousands monthly, crypto exchange APIs often provide free historical trades and order book snapshots. Custom backtest engines account for realistic fees, slippage, and latency. If you want to prototype a rules-based arbitrage strategy without building this custom engine, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 Monitoring and alerting systems track key metrics: profitable opportunities found, trades executed, success rate, average profit per trade, and cumulative P&L. Anomaly detection identifies issues like API failures, exchange connectivity problems, or unusual profitability changes requiring investigation.
 

@@ -9,7 +9,7 @@ keywords: ["stop loss strategies", "trailing stop loss", "ATR based stop loss"]
 ---
 # Stop-Loss Strategies: Trailing, ATR-Based, and Time Stops
 
-Stop-loss strategies define the maximum loss you will accept on any trade before exiting. While most trading education focuses on entries, the exit strategy, and specifically the stop-loss methodology, has a disproportionate impact on both individual trade outcomes and long-term portfolio performance. A well-placed stop protects capital during adverse moves while allowing profitable trades the room they need to develop. A poorly placed stop either triggers on normal market noise (too tight) or allows unacceptable losses (too wide).
+Stop-loss strategies define the maximum loss you will accept on any trade before exiting. While most trading education focuses on entries, the exit strategy, and specifically the stop-loss methodology, has a disproportionate impact on both individual trade outcomes and long-term portfolio performance. A well-placed stop protects capital during adverse moves while allowing profitable trades the room they need to develop. Our [risk/reward ratio calculator](/tools/risk-reward) lets you quickly check whether a candidate stop-and-target pair still makes sense before committing to a trade. A poorly placed stop either triggers on normal market noise (too tight) or allows unacceptable losses (too wide).
 
 This guide covers six distinct stop-loss methodologies, their appropriate use cases, and the specific placement rules that professional traders employ.
 

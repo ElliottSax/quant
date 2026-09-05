@@ -369,7 +369,7 @@ A: 3-4 is optimal. More signals = fewer trades and diminishing returns.
 A: No. Weak pairs will reverse below 60% even with perfect signals. Start with 0.88+ correlation pairs; signals only boost good pairs.
 
 **Q: How often should I retest my win rate targets?**
-A: Monthly. Track rolling 100-trade win rate. If it drops below 65%, pause trading and research degradation. Market regimes shift; strategies must adapt.
+A: Monthly. Track rolling 100-trade win rate. If it drops below 65%, pause trading and research degradation. Market regimes shift; strategies must adapt. Our [Win Rate Significance Calculator](/tools/win-rate-significance) can tell you whether that rolling win rate is still statistically distinguishable from chance at your current sample size.
 
 ## Conclusion
 

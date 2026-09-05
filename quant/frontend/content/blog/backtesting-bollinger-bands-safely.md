@@ -12,7 +12,7 @@ description: "This guide provides production-ready code and frameworks to backte
 
 # Backtesting Bollinger Bands Safely: Best Practices and Pitfall Avoidance
 
-Backtesting Bollinger Bands is essential for validating trading strategies, but improper implementation leads to overfitting, look-ahead bias, and severely distorted performance metrics. This guide provides production-ready code and frameworks to backtest Bollinger Bands safely and accurately.
+Backtesting Bollinger Bands is essential for validating trading strategies, but improper implementation leads to overfitting, look-ahead bias, and severely distorted performance metrics. This guide provides production-ready code and frameworks to backtest Bollinger Bands safely and accurately. If you want to sanity-check a Bollinger Band setup before investing in this infrastructure, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## Common Backtesting Pitfalls and How to Avoid Them
 

@@ -12,7 +12,7 @@ description: "The Relative Strength Index (RSI) is one of the most popular momen
 
 # Backtesting RSI Strategies for Beginners
 
-The Relative Strength Index (RSI) is one of the most popular momentum indicators for beginners. It's intuitive, versatile, and has proven profitable across multiple asset classes. This beginner's guide covers RSI fundamentals, simple backtesting frameworks, and real-world backtesting results with Python implementations.
+The Relative Strength Index (RSI) is one of the most popular momentum indicators for beginners. It's intuitive, versatile, and has proven profitable across multiple asset classes. If you want to verify the RSI formula below against real market data rather than re-deriving it, our [indicator formulas reference](/indicator-formulas) cross-checks RSI, MACD, ATR, and Bollinger Bands against pandas_ta on real bars. This beginner's guide covers RSI fundamentals, simple backtesting frameworks, and real-world backtesting results with Python implementations.
 
 ## What is RSI?
 

@@ -489,4 +489,4 @@ class CryptoRiskManager:
 
 ## Conclusion
 
-CCXT-based cryptocurrency backtesting enables testing strategies across multiple exchanges and trading pairs. The framework handles crypto-specific considerations like variable fees, 24/7 trading, and extreme volatility, making it suitable for developing robust algorithmic trading systems.
+CCXT-based cryptocurrency backtesting enables testing strategies across multiple exchanges and trading pairs. The framework handles crypto-specific considerations like variable fees, 24/7 trading, and extreme volatility, making it suitable for developing robust algorithmic trading systems. If you'd rather not build this pipeline from scratch, our [Strategy Builder](/backtesting/builder) lets you configure and backtest a strategy directly, no signup required.

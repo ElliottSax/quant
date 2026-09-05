@@ -116,7 +116,7 @@ An OCO order links two orders so that when one fills, the other is automatically
 
 ### Bracket Orders
 
-A bracket order is an entry order with both a profit target and stop-loss attached. When the entry fills, the profit target and stop-loss are automatically submitted as an OCO pair.
+A bracket order is an entry order with both a profit target and stop-loss attached. When the entry fills, the profit target and stop-loss are automatically submitted as an OCO pair. Our [risk/reward ratio calculator](/tools/risk-reward) helps you check whether the chosen target and stop levels are actually attractive before you submit the order.
 
 ```
 Entry: Buy 100 SPY at $450 (limit)

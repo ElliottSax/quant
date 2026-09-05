@@ -302,7 +302,7 @@ However, they typically require sacrificing trade frequency (taking only the hig
 A: Use walk-forward testing: train on 2018-2022, test on 2023-2024, train on 2019-2023, test on 2025. Never optimize parameters on test data. Use k-fold cross-validation to confirm signal robustness.
 
 **Q: Should I optimize for win rate or profit factor?**
-A: Optimize profit factor (wins × avg_win) / (losses × avg_loss). Win rate alone is misleading.
+A: Optimize profit factor (wins × avg_win) / (losses × avg_loss). Win rate alone is misleading. If you want to check whether an observed win rate is statistically meaningful given your sample size, our [Win Rate Significance Calculator](/tools/win-rate-significance) runs the binomial test for you.
 
 **Q: How many signals should I combine in an ensemble?**
 A: 3-5 uncorrelated signals typically optimal. Adding signals beyond 5 yields diminishing returns and increases data requirements for training. Ensure signals are independent (not correlated input).

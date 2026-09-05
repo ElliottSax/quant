@@ -73,7 +73,7 @@ BTC at $45,000. Bot places: buy at $44,950, $44,900, $44,850 and sell at $45,050
 
 ## Risk Management & Position Sizing
 
-Cap daily loss at 2% of bot's capital. Use position sizing rules (risk 0.5-1% per trade). Add circuit breakers (pause bot if losing streak). Monitor logs daily for bugs.
+Cap daily loss at 2% of bot's capital. Use position sizing rules (risk 0.5-1% per trade) - our [Position Size Calculator](/tools/position-size) automates this math from your account size, risk percentage, entry, and stop. Add circuit breakers (pause bot if losing streak). Monitor logs daily for bugs.
 
 **Critical Rules:**
 - Never risk more than your predetermined % per trade

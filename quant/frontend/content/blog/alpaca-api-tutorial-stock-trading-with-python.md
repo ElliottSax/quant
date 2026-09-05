@@ -50,7 +50,7 @@ The next step is to install the necessary libraries, including the Alpaca API li
 
 ## Best Practices
 
-To get the most out of the Alpaca API, it is essential to follow best practices, including using robust error handling, implementing risk management strategies, and optimizing trading performance. Robust error handling is critical, as it ensures that trades are executed correctly and that errors are handled promptly. Risk management strategies, such as position sizing and stop-loss orders, are also essential, as they help to limit losses and lock in profits. Trading performance can be optimized by using techniques such as backtesting, which involves testing trading strategies on historical data.
+To get the most out of the Alpaca API, it is essential to follow best practices, including using robust error handling, implementing risk management strategies, and optimizing trading performance. Robust error handling is critical, as it ensures that trades are executed correctly and that errors are handled promptly. Risk management strategies, such as position sizing and stop-loss orders, are also essential, as they help to limit losses and lock in profits. Trading performance can be optimized by using techniques such as backtesting, which involves testing trading strategies on historical data. Our [Strategy Builder](/backtesting/builder) lets you configure and backtest a strategy directly, no signup or code required, before wiring it up to the API.
 
 The following step-by-step instructions demonstrate how to use the Alpaca API to place a trade:
 1. Import the necessary libraries, including the Alpaca API library, pandas, and numpy.

@@ -206,7 +206,7 @@ def multi_timeframe_confirm(symbol, data_dict):
 
 ## Risk Management Integration
 
-Position sizing scales with model confidence:
+Position sizing scales with model confidence. For the baseline calculation before applying confidence scaling, our [Position Size Calculator](/tools/position-size) computes share size directly from account risk, entry, and stop.
 
 ```python
 def calculate_position_size(account_balance, risk_per_trade, model_confidence):

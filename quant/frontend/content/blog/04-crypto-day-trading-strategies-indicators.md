@@ -399,7 +399,7 @@ Day trading requires smaller positions than swing trading:
 Position Size = (Account × 1%) / (Entry - Stop)
 ```
 
-Use 1% risk (not 2%) due to more frequent trades and intraday volatility.
+Use 1% risk (not 2%) due to more frequent trades and intraday volatility. Our [Position Size Calculator](/tools/position-size) computes this instantly from account size, risk percentage, entry, and stop.
 
 ### Stop Loss Rules
 - **Maximum distance**: 2% from entry

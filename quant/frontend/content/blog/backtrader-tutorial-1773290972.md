@@ -29,7 +29,7 @@ BackTrader is a Python-based backtesting and live-trading framework that provide
 - Live trading integration with brokers
 - Strategy optimization using genetic algorithms
 
-The framework processes data in chronological order, triggering strategy signals and managing positions exactly as they would execute in production, making backtest results highly predictive of live performance.
+The framework processes data in chronological order, triggering strategy signals and managing positions exactly as they would execute in production, making backtest results highly predictive of live performance. If you want to validate a moving-average crossover idea before installing anything or writing Python, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## Installation and Setup
 

@@ -21,7 +21,7 @@ Standard mean-variance optimization suffers from three interrelated problems:
 
 3. **No natural starting point**: Without a principled baseline for expected returns, every optimization is built on shaky foundations.
 
-Black-Litterman addresses all three by establishing market equilibrium as the starting point and using [Bayesian inference](/blog/bayesian-inference-trading) to blend investor views with this equilibrium. When the investor has no views, the model recommends the market portfolio. Views shift allocations away from market weights proportionally to the strength and confidence of the view.
+Black-Litterman addresses all three by establishing market equilibrium as the starting point and using [Bayesian inference](/blog/bayesian-inference-trading) to blend investor views with this equilibrium. When the investor has no views, the model recommends the market portfolio. Views shift allocations away from market weights proportionally to the strength and confidence of the view. If you have no views to express and just want the closed-form tangency weights from your expected returns, vols, and correlations, our [Max Sharpe Portfolio](/tools/max-sharpe) tool computes them directly.
 
 ## The Model in Detail
 

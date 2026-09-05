@@ -215,7 +215,7 @@ DAY 45:   Expiration - Assignment or roll forward
 
 ### Delta (△) - Direction and Movement
 
-**What it means**: Delta measures how much the option price changes when stock moves $1.
+**What it means**: Delta measures how much the option price changes when stock moves $1. You can model delta, gamma, theta, and vega for any strike and expiration with our [Options Calculator](/options) before placing the trade.
 
 **Covered Call Delta Impact**:
 - Long stock: Delta +1.0 (moves $1 per $1 stock move)

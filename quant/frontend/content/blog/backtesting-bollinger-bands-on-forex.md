@@ -233,7 +233,7 @@ A: Use confluences: combine with support/resistance, volume analysis, or momentu
 A: For most forex pairs, yes. However, volatile pairs like GBP/JPY may benefit from 2.5-3.0.
 
 **Q: What's the typical win rate?**
-A: Expect 45-55% with proper risk management. Focus on risk/reward ratio (1:1.5 or better).
+A: Expect 45-55% with proper risk management. Focus on risk/reward ratio (1:1.5 or better). Our [risk/reward calculator](/tools/risk-reward) checks whether a given entry, stop, and target actually clears that ratio before you commit to the trade.
 
 **Q: Should I trade during news releases?**
 A: No. Disable signals 15 minutes before and 15 minutes after high-impact news.

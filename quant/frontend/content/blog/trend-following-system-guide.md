@@ -29,7 +29,7 @@ Trends persist in financial markets due to several well-documented mechanisms:
 
 ### Trend Identification
 
-We use a dual [moving average crossover](/blog/moving-average-crossover-strategy) as the primary trend signal:
+We use a dual [moving average crossover](/blog/moving-average-crossover-strategy) as the primary trend signal (our [Strategy Builder](/backtesting/builder) lets you test fast/slow MA combinations like this one directly without coding the crossover logic yourself):
 
 - **Fast MA**: 50-day Exponential Moving Average
 - **Slow MA**: 200-day Exponential Moving Average

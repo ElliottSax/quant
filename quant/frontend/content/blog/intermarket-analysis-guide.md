@@ -45,7 +45,7 @@ The bond-stock relationship is the most important intermarket dynamic for equity
 
 **The Yield Signal:** When 10-year Treasury yields rise from low levels (e.g., below 3%), it often reflects economic optimism and is positive for stocks. When yields rise from already elevated levels (e.g., above 4.5%), it reflects tightening financial conditions and becomes negative for stocks.
 
-**The Yield Curve:** The spread between 10-year and 2-year Treasury yields has historically been one of the most reliable recession indicators:
+**The Yield Curve:** The spread between 10-year and 2-year Treasury yields has historically been one of the most reliable recession indicators. You can check today's actual curve shape and historical inversions using our [Yield Curve](/yield-curve) tool before running this kind of signal yourself:
 - **Inverted curve (10Y - 2Y < 0):** Preceded every US recession since 1960
 - **Steepening after inversion:** Often the strongest warning signal (recession typically starts 6-18 months after inversion)
 

@@ -20,7 +20,7 @@ Average True Range (ATR) is a volatility indicator that helps traders properly s
 
 ## What is Average True Range (ATR)?
 
-ATR measures average volatility over the last 14 periods (default). Expanding ATR indicates increasing volatility; contracting ATR indicates decreasing volatility.
+ATR measures average volatility over the last 14 periods (default). Expanding ATR indicates increasing volatility; contracting ATR indicates decreasing volatility. Once you have an ATR-based stop distance, our [Position Size Calculator](/tools/position-size) converts it directly into a share count from your account size and risk percentage.
 
 ### ATR Values and Interpretation
 

@@ -35,7 +35,7 @@ Call spreads (buy call, sell higher strike call) define both max loss and max pr
 
 Put spreads (buy put, sell lower strike put) create similar defined risk-reward. Buy put at $40,000, sell at $38,000 for net premium of 0.3 BTC cost. Max profit: $2,000 if BTC <$38,000. Max loss: $12,000 if BTC >$40,000. Useful for directional bearish positions.
 
-Iron condors (sell out-of-money call spread, sell out-of-money put spread) profit from price staying within defined range. Sell 1 call spread ($42,000-$44,000) for 0.2 BTC, sell 1 put spread ($38,000-$40,000) for 0.2 BTC. Total credit: 0.4 BTC, max profit $16,000. Max loss: $4,000 (range width - net credit) if price exceeds range. Profitable 70%+ of the time but limited max profit.
+Iron condors (sell out-of-money call spread, sell out-of-money put spread) profit from price staying within defined range. Sell 1 call spread ($42,000-$44,000) for 0.2 BTC, sell 1 put spread ($38,000-$40,000) for 0.2 BTC. Total credit: 0.4 BTC, max profit $16,000. Max loss: $4,000 (range width - net credit) if price exceeds range. Profitable 70%+ of the time but limited max profit. You can map out this payoff structure visually using our [Options Payoff](/tools/options-payoff) builder before sizing the position.
 
 Theta decay strategies explicitly profit from time passing. Short straddles (sell call and put at same strike) collect premium from theta decay. If BTC stays near strike for 7 days, time decay profits $500-1,000. Risk: unlimited loss if BTC moves >2σ from strike. Generally requires active management to prevent losses from large moves.
 

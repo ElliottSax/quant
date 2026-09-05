@@ -25,7 +25,7 @@ Skipping backtesting is one of the most common mistakes new algorithmic traders 
 
 ## Essential Python Libraries for Backtesting
 
-You do not need to build everything from scratch. The Python ecosystem offers several mature libraries designed specifically for backtesting and quantitative analysis:
+You do not need to build everything from scratch. If you'd rather not manage any Python libraries at all, our [Strategy Builder](/backtesting/builder) lets you configure and backtest a strategy directly in the browser, no signup required. Otherwise, the Python ecosystem offers several mature libraries designed specifically for backtesting and quantitative analysis:
 
 - **Backtesting.py** — A lightweight, beginner-friendly library with built-in visualization and optimization tools. Great for simple strategies.
 - **Backtrader** — A highly flexible framework that supports live trading integration, multiple data feeds, and complex order types.

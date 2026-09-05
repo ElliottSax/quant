@@ -383,7 +383,7 @@ A: Switch back to conservative 1% sizing immediately. Market regime change may h
 A: Yes. Shuffle trade sequence 1000x; 95% should remain profitable. If only 60% remain profitable, your edge is fragile.
 
 **Q: How do I know if my high win rate is real or luck?**
-A: Use binomial test.
+A: Use binomial test. Our [Win Rate Significance Calculator](/tools/win-rate-significance) runs this test for you directly from your win count and sample size.
 
 ## Conclusion
 

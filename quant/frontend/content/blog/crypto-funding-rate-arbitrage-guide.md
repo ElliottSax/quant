@@ -501,6 +501,6 @@ class FundingRateRiskManager:
 
 ## Conclusion
 
-Funding rate arbitrage provides some of the most consistent returns in crypto trading because it's backed by systematic economic incentives. The key to success is identifying when rates are most attractive, executing trades efficiently, and managing the operational risks of maintaining positions across multiple venues.
+Funding rate arbitrage provides some of the most consistent returns in crypto trading because it's backed by systematic economic incentives. The key to success is identifying when rates are most attractive, executing trades efficiently, and managing the operational risks of maintaining positions across multiple venues. Before committing capital, our [Strategy Builder](/backtesting/builder) lets you backtest a rules-based version of this basis trade directly, no signup required.
 
 Monitor basis movements carefully, maintain adequate capital for margin requirements, and always have automated stop-losses in place.

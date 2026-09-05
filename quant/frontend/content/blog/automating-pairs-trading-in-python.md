@@ -14,7 +14,7 @@ description: "This guide provides production-ready Python code for identifying, 
 
 # Automating Pairs Trading in Python
 
-Python has become the language of quantitative finance, with libraries like pandas, numpy, and statsmodels enabling professional pairs trading implementations in <500 lines of code. This guide provides production-ready Python code for identifying, backtesting, and deploying market-neutral pairs trading strategies. By the end, you'll have a complete pairs trading system from data ingestion through execution.
+Python has become the language of quantitative finance, with libraries like pandas, numpy, and statsmodels enabling professional pairs trading implementations in <500 lines of code. If you hit import errors wiring up statsmodels for cointegration or ADF tests, our [statsmodels import reference](/statsmodels-imports) documents which import paths actually work. This guide provides production-ready Python code for identifying, backtesting, and deploying market-neutral pairs trading strategies. By the end, you'll have a complete pairs trading system from data ingestion through execution.
 
 ## Python Libraries for Pairs Trading
 

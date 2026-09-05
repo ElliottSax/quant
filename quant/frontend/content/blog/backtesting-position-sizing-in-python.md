@@ -12,7 +12,7 @@ description: "Python has become the lingua franca of quantitative finance. Vecto
 
 # Backtesting Position Sizing in Python
 
-Python has become the lingua franca of quantitative finance. Combined with libraries like NumPy, Pandas, and Backtrader, Python enables sophisticated position sizing implementations that rival institutional trading systems. This comprehensive guide covers building production-grade position sizing engines in Python with complete backtesting integration.
+Python has become the lingua franca of quantitative finance. Combined with libraries like NumPy, Pandas, and Backtrader, Python enables sophisticated position sizing implementations that rival institutional trading systems. This comprehensive guide covers building production-grade position sizing engines in Python with complete backtesting integration. For a quick one-off calculation without writing code, our [Position Size Calculator](/tools/position-size) computes share size directly from account risk, entry, and stop.
 
 ## Python Libraries for Position Sizing
 

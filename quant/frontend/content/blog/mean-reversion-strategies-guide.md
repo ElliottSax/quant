@@ -75,7 +75,7 @@ The ADF test checks the null hypothesis that a unit root is present (i.e., the s
 delta_X(t) = a + b*t + gamma*X(t-1) + sum(delta_i * delta_X(t-i)) + epsilon(t)
 ```
 
-The test statistic is the t-statistic on `gamma`. If `gamma < 0` and statistically significant, the null of a unit root is rejected. We require p-value < 0.05 at minimum; many practitioners use p < 0.01 for live trading.
+The test statistic is the t-statistic on `gamma`. If `gamma < 0` and statistically significant, the null of a unit root is rejected. We require p-value < 0.05 at minimum; many practitioners use p < 0.01 for live trading. If you've hit import errors wiring up `adfuller` or the OLS regression below, our [statsmodels import reference](/statsmodels-imports) confirms which paths actually work against the current package version.
 
 ```python
 from statsmodels.tsa.stattools import adfuller

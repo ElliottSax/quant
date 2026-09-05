@@ -12,7 +12,7 @@ description: "This comprehensive guide covers building production-grade MACD cro
 
 # Backtesting MACD Crossovers in Python: Production Framework
 
-This comprehensive guide covers building production-grade MACD crossover backtesting systems in Python using industry-standard libraries. Learn how to structure code for maintainability, scalability, and reliable results.
+This comprehensive guide covers building production-grade MACD crossover backtesting systems in Python using industry-standard libraries. If you want to validate a MACD crossover idea before building this framework yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required. Learn how to structure code for maintainability, scalability, and reliable results.
 
 ## Setting Up the Python Environment
 

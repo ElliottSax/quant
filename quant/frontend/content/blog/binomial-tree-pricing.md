@@ -300,7 +300,7 @@ def delta_hedge_portfolio():
 ## Frequently Asked Questions
 
 **Q: Should I use binomial or Black-Scholes?**
-A: Use Black-Scholes for European vanilla options (faster). Use binomial for American options or when you need to price exotic payoffs.
+A: Use Black-Scholes for European vanilla options (faster). Use binomial for American options or when you need to price exotic payoffs. Our [Options Calculator](/options) prices European vanilla options and Greeks with Black-Scholes if you just want a quick comparison point.
 
 **Q: How many periods do I need in the binomial tree?**
 A: 50-100 periods balances accuracy and computation speed. Beyond 200 periods shows diminishing returns.

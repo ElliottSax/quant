@@ -32,7 +32,7 @@ Cointegration testing determines if two assets maintain a stationary (mean-rever
 
 The Engle-Granger two-step procedure tests cointegration: (1) Regress ETH price on BTC price to find β coefficient (hedge ratio), (2) Calculate residuals (spread) = ETH - β × BTC, (3) Test if residuals are stationary using Augmented Dickey-Fuller (ADF) test. If ADF p-value <0.05, reject non-stationarity hypothesis - the spread is stationary and tradable.
 
-Python implementation using statsmodels:
+Python implementation using statsmodels (check our [statsmodels import reference](/statsmodels-imports) if you hit import errors with your installed version):
 
 ```python
 import statsmodels.api as sm

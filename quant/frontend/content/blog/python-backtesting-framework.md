@@ -9,7 +9,7 @@ keywords: ["python backtesting framework", "backtrader vs zipline", "vectorbt ba
 ---
 # Python Backtesting Framework: Backtrader vs Zipline vs VectorBT
 
-Backtesting is the process of evaluating a [trading strategy](/blog/breakout-trading-strategy) against historical data to assess its viability before risking real capital. Python offers several mature backtesting frameworks, each with different design philosophies, performance characteristics, and use cases. The three most prominent are Backtrader (event-driven, flexible), Zipline (event-driven, institutional-grade), and VectorBT (vectorized, high-performance). Choosing the right framework for your project depends on your strategy complexity, performance requirements, and development speed priorities.
+Backtesting is the process of evaluating a [trading strategy](/blog/breakout-trading-strategy) against historical data to assess its viability before risking real capital. Python offers several mature backtesting frameworks, each with different design philosophies, performance characteristics, and use cases. The three most prominent are Backtrader (event-driven, flexible), Zipline (event-driven, institutional-grade), and VectorBT (vectorized, high-performance). Choosing the right framework for your project depends on your strategy complexity, performance requirements, and development speed priorities. If you just want to validate a strategy idea before installing any of these frameworks, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no code required.
 
 This guide provides a detailed comparison, implementation examples for each framework, and guidance on which to choose for different trading scenarios.
 

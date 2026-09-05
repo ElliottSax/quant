@@ -11,7 +11,7 @@ keywords: ["transaction cost analysis", "trading slippage model", "market impact
 
 Transaction costs are the gap between theoretical backtests and real-world trading performance. A strategy that generates 15% annual alpha in a frictionless backtest may produce 5% or even negative returns once commissions, bid-ask spreads, slippage, and market impact are properly accounted for. Transaction cost analysis (TCA) quantifies these costs and integrates them into strategy evaluation, [position sizing](/blog/position-sizing-strategies), and execution planning.
 
-This guide builds a complete TCA framework from individual cost components through portfolio-level impact assessment.
+This guide builds a complete TCA framework from individual cost components through portfolio-level impact assessment. If you want to see the net-of-cost impact on a simple strategy without building this cost model yourself, our [Strategy Builder](/backtesting/builder) lets you backtest and inspect the results directly.
 
 ## Key Takeaways
 

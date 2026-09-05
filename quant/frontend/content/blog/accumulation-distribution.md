@@ -144,7 +144,7 @@ The most powerful application of the A/D line is divergence detection. When pric
 - Stop loss: 1.5 ATR(14) above entry
 - Target: 2.0 ATR(14) below entry
 
-In backtests on SPY daily data from 2015-2025, this divergence strategy generated a Sharpe ratio of 0.82 with a maximum drawdown of -11.3%, compared to a buy-and-hold Sharpe of 0.61.
+In backtests on SPY daily data from 2015-2025, this divergence strategy generated a Sharpe ratio of 0.82 with a maximum drawdown of -11.3%, compared to a buy-and-hold Sharpe of 0.61. You can backtest a divergence-based strategy like this yourself using our [Strategy Builder](/backtesting/builder), no code required.
 
 ### Strategy 2: A/D Trend Confirmation Filter
 

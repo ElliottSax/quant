@@ -9,7 +9,7 @@ keywords: ["hierarchical risk parity", "HRP portfolio", "machine learning portfo
 ---
 # Hierarchical Risk Parity: Machine Learning Portfolio Construction
 
-Hierarchical Risk Parity (HRP), introduced by Marcos Lopez de Prado in 2016, represents a fundamental departure from traditional [portfolio optimization](/blog/portfolio-optimization-guide). Rather than inverting a covariance matrix (which amplifies estimation errors), HRP uses [machine learning](/blog/machine-learning-trading) techniques -- hierarchical clustering and graph theory -- to build portfolios from the correlation structure of asset returns. The result is a portfolio construction method that is more stable, better diversified, and more robust to estimation error than both mean-variance optimization and standard risk parity.
+Hierarchical Risk Parity (HRP), introduced by Marcos Lopez de Prado in 2016, represents a fundamental departure from traditional [portfolio optimization](/blog/portfolio-optimization-guide). Rather than inverting a covariance matrix (which amplifies estimation errors), HRP uses [machine learning](/blog/machine-learning-trading) techniques -- hierarchical clustering and graph theory -- to build portfolios from the correlation structure of asset returns. The result is a portfolio construction method that is more stable, better diversified, and more robust to estimation error than both mean-variance optimization and standard risk parity. If you want to see the standard mean-variance tangency weights for comparison, our [Max Sharpe Portfolio](/tools/max-sharpe) tool computes them directly from expected returns, volatilities, and correlations.
 
 ## Why Traditional Methods Fail
 

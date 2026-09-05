@@ -12,7 +12,7 @@ description: "Forex markets present unique risk management challenges: 24/5 trad
 
 # Backtesting Risk Management on Forex
 
-Forex markets present unique risk management challenges: 24/5 trading, massive leverage availability, tight spreads, and significant overnight gap risk. This guide covers specialized risk management techniques for foreign exchange backtesting, accounting for currency-specific risks, leverage management, and correlation-based hedging strategies implemented in Python.
+Forex markets present unique risk management challenges: 24/5 trading, massive leverage availability, tight spreads, and significant overnight gap risk. This guide covers specialized risk management techniques for foreign exchange backtesting, accounting for currency-specific risks, leverage management, and correlation-based hedging strategies implemented in Python. Our [Position Size Calculator](/tools/position-size) handles the base risk-based sizing math directly from your account size, risk percentage, entry, and stop.
 
 ## Forex-Specific Risk Factors
 

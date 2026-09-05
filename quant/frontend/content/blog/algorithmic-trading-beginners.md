@@ -79,7 +79,7 @@ Start with free data sources (yfinance, Alpha Vantage) for daily data. Upgrade t
 
 ### What Is Backtesting?
 
-Backtesting simulates how a trading strategy would have performed on historical data. It is the primary tool for evaluating strategy viability before risking real capital.
+Backtesting simulates how a trading strategy would have performed on historical data. It is the primary tool for evaluating strategy viability before risking real capital. Our [Strategy Builder](/backtesting/builder) lets you configure and backtest a rules-based strategy directly in the browser, no signup or code required.
 
 ### Backtesting Frameworks
 

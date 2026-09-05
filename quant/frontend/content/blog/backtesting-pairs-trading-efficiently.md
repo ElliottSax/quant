@@ -12,7 +12,7 @@ description: "Pairs trading exploits mean-reverting spreads between correlated a
 
 # Backtesting Pairs Trading Efficiently: Vectorized Cointegration Strategies
 
-Pairs trading exploits mean-reverting spreads between correlated assets. This guide covers efficient vectorized implementation using cointegration testing, spread calculation, and parallel backtesting across asset pairs.
+Pairs trading exploits mean-reverting spreads between correlated assets. This guide covers efficient vectorized implementation using cointegration testing, spread calculation, and parallel backtesting across asset pairs. If you hit import errors wiring up statsmodels for the cointegration test, our [statsmodels import reference](/statsmodels-imports) documents which import paths actually work.
 
 ## Pairs Trading Theory
 

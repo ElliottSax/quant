@@ -18,7 +18,7 @@ description: "Backtesting is the foundation of algorithmic trading—validating 
 
 ## Introduction
 
-Backtesting is the foundation of algorithmic trading—validating strategies against historical data before risking real capital. Choosing the right backtesting framework determines whether your research is efficient and whether results are reliable. This comprehensive guide compares major backtesting platforms available in 2026, covering features, performance, cost, and practical applications.
+Backtesting is the foundation of algorithmic trading—validating strategies against historical data before risking real capital. Choosing the right backtesting framework determines whether your research is efficient and whether results are reliable. If you'd rather skip the framework setup entirely, our [Strategy Builder](/backtesting/builder) lets you configure and backtest a strategy directly in the browser, no signup or code required. This comprehensive guide compares major backtesting platforms available in 2026, covering features, performance, cost, and practical applications.
 
 ## The Critical Role of Backtesting
 

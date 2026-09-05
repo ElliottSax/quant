@@ -495,7 +495,7 @@ Implied volatility is the Black-Scholes input that matches market prices, produc
 
 ### How do I trade the volatility skew?
 
-Common skew trades include: (1) risk reversals (buy OTM put, sell OTM call) to express a view on skew steepening, (2) put spreads or call spreads that benefit from skew normalization, (3) ratio spreads that are vega-neutral but skew-exposed. The key insight is that skew tends to mean-revert: when it becomes unusually steep (expensive puts), selling the skew and hedging with delta often profits. Monitor skew z-scores relative to 6-12 month history.
+Common skew trades include: (1) risk reversals (buy OTM put, sell OTM call) to express a view on skew steepening, (2) put spreads or call spreads that benefit from skew normalization, (3) ratio spreads that are vega-neutral but skew-exposed. Our [options payoff diagram builder](/tools/options-payoff) lets you visualize these structures before putting on the position. The key insight is that skew tends to mean-revert: when it becomes unusually steep (expensive puts), selling the skew and hedging with delta often profits. Monitor skew z-scores relative to 6-12 month history.
 
 ### What is the SVI model and why is it popular?
 

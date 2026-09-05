@@ -231,7 +231,7 @@ False breakouts ("whipsaws") account for 20-35% of all breakout attempts:
 - Entry: $425.70 (next bar open after confirmation)
 - Stop Loss: $415.50 (2% below resistance at $425)
 - Risk: $10.20 per share
-- Portfolio Risk: 2% = $2,000 per 196 shares = 196 shares
+- Portfolio Risk: 2% = $2,000 per 196 shares = 196 shares (our [Position Size Calculator](/tools/position-size) computes this directly from your account size, risk %, entry, and stop)
 
 - Target 1: $438.90 (2× risk = $20.40 gain)
 - Target 2: $453.20 (3× risk = $30.60 gain)

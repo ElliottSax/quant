@@ -18,7 +18,7 @@ description: "Cointegration reveals long-term equilibrium relationships between 
 
 ## Introduction
 
-Cointegration reveals long-term equilibrium relationships between assets. Two assets can move independently in the short term but revert to a stable relationship over time. This principle forms the basis of profitable pairs trading. This guide explores cointegration testing and application.
+Cointegration reveals long-term equilibrium relationships between assets. Two assets can move independently in the short term but revert to a stable relationship over time. This principle forms the basis of profitable pairs trading. This guide explores cointegration testing and application. If you're not sure which `statsmodels` import path actually works for `coint_johansen`, `adfuller`, or `coint`, our [statsmodels import reference](/statsmodels-imports) saves the trial and error.
 
 ## Cointegration vs Correlation
 

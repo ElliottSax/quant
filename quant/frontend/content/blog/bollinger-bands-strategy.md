@@ -33,6 +33,8 @@ The bands automatically adjust to market volatility:
 - **High volatility**: Bands widen (wider moves expected)
 - **Low volatility**: Bands tighten (smaller moves likely, then expansion follows)
 
+You can plot Bollinger Bands over real price data yourself using our [Charts tool](/charts) before committing to a lookback period.
+
 The math:
 ```
 Upper = SMA(20) + 2 × StdDev(20)

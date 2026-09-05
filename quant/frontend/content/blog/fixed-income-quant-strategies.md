@@ -9,7 +9,7 @@ keywords: ["fixed income quantitative strategies", "duration trading", "yield cu
 ---
 # Fixed Income Quantitative Strategies: Duration, Curve, and Spread
 
-Fixed income markets, with over $130 trillion in global outstanding debt, offer a rich landscape for systematic [quantitative strategies](/blog/crypto-defi-quant-strategies). Unlike equities, where price discovery is primarily driven by earnings expectations and sentiment, fixed income pricing is grounded in measurable quantities: interest rates, credit quality, prepayment behavior, and the term structure of risk. This mathematical tractability makes bonds particularly suited to quantitative approaches. The three primary systematic strategies -- duration timing, yield curve positioning, and credit spread trading -- each exploit a different dimension of fixed income risk and return.
+Fixed income markets, with over $130 trillion in global outstanding debt, offer a rich landscape for systematic [quantitative strategies](/blog/crypto-defi-quant-strategies). Unlike equities, where price discovery is primarily driven by earnings expectations and sentiment, fixed income pricing is grounded in measurable quantities: interest rates, credit quality, prepayment behavior, and the term structure of risk. This mathematical tractability makes bonds particularly suited to quantitative approaches. The three primary systematic strategies -- duration timing, yield curve positioning, and credit spread trading -- each exploit a different dimension of fixed income risk and return. You can check today's real Treasury yield curve, along with historical inversions, with our [Yield Curve](/yield-curve) tool before building out any of these systematic overlays.
 
 ## Duration Strategies
 

@@ -22,7 +22,7 @@ Mean reversion seems logical: prices deviate from average, then revert. But real
 - Suffer black swan events (flash crashes don't revert)
 - Include changing cost structures (spreads, volume)
 
-Backtests showing 20%+ annual returns with low drawdowns are usually overfitted.
+Backtests showing 20%+ annual returns with low drawdowns are usually overfitted. The same logic applies to an unusually high win rate — our [Win Rate Significance Calculator](/tools/win-rate-significance) checks whether it's statistically real or just a small sample.
 
 ## Safe Validation Framework
 

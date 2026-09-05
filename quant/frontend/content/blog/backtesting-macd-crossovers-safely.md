@@ -135,7 +135,7 @@ def apply_realistic_costs(df, broker_type='retail_forex'):
 ```
 
 ### 5. Curve Fitting Bias
-When results look "too good to be true," they probably are.
+When results look "too good to be true," they probably are. One data point worth checking directly: our [Win Rate Significance Calculator](/tools/win-rate-significance) tells you whether a reported win rate is statistically distinguishable from chance given the sample size, rather than just eyeballing a 65% threshold.
 
 **Indicators of overfitting:**
 - Sharpe ratio > 2.0 on backtest (real-world rarely exceeds 1.5)

@@ -14,7 +14,7 @@ description: "The foreign exchange market operates 24/5 with $7.5 trillion in da
 
 # Automating Mean Reversion on Forex
 
-The foreign exchange market operates 24/5 with $7.5 trillion in daily volume, making it the world's most liquid asset class. These characteristics create unique opportunities for mean reversion trading, but also present challenges distinct from equity markets. This guide explores sophisticated approaches to automating mean reversion strategies specifically for currency pairs.
+The foreign exchange market operates 24/5 with $7.5 trillion in daily volume, making it the world's most liquid asset class. These characteristics create unique opportunities for mean reversion trading, but also present challenges distinct from equity markets. This guide explores sophisticated approaches to automating mean reversion strategies specifically for currency pairs. If you want to prototype a similar setup before committing to a full build, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## Forex-Specific Advantages for Mean Reversion
 

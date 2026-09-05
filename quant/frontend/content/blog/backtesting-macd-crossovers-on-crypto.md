@@ -353,7 +353,7 @@ A: 4-hour and daily for swing trading. 1-hour for day trading generates too many
 A: Yes. Bitcoin needs slower periods (10, 30, 9). Altcoins work better with 8, 17, 9.
 
 **Q: How do I handle crypto market volatility?**
-A: Use ATR-based stop losses, reduce position size during high volatility, and add RSI filters.
+A: Use ATR-based stop losses, reduce position size during high volatility, and add RSI filters. Our [Position Size Calculator](/tools/position-size) converts an ATR-based stop distance directly into a position size.
 
 **Q: Is MACD profitable on crypto?**
 A: Bitcoin/Ethereum show minimal outperformance over buy & hold. Altcoins show 15-25% excess returns.

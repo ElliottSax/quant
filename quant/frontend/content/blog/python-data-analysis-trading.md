@@ -11,7 +11,7 @@ keywords: ["python data analysis trading", "pandas trading", "numpy financial an
 
 Every [quantitative trading](/blog/crypto-quant-trading-strategies) workflow begins with data. Before indicators are calculated, strategies are backtested, or signals are generated, raw market data must be loaded, cleaned, transformed, and analyzed. pandas and NumPy form the computational foundation for this work in Python, providing the data structures and operations that handle [time series](/blog/time-series-analysis-stocks) manipulation, return calculations, statistical analysis, and performance measurement.
 
-This guide covers the essential pandas and NumPy operations for trading analysis, from loading and cleaning data through computing the performance metrics that evaluate strategy viability.
+This guide covers the essential pandas and NumPy operations for trading analysis, from loading and cleaning data through computing the performance metrics that evaluate strategy viability. If you'd rather see those performance metrics computed automatically, our [Strategy Builder](/backtesting/builder) backtests a strategy directly without requiring you to write this pipeline yourself.
 
 ## Setting Up the Environment
 

@@ -41,7 +41,7 @@ $$
 \sigma_n = \sqrt{\frac{1}{n}\sum_{i=0}^{n-1}(P_{t-i} - SMA_n)^2} = \sqrt{\frac{1}{n}\sum_{i=0}^{n-1}P_{t-i}^2 - SMA_n^2}
 $$
 
-This second form is key to efficient computation because it separates into two running sums.
+This second form is key to efficient computation because it separates into two running sums. If you want to verify these formulas against real market data rather than re-deriving them, our [indicator formulas reference](/indicator-formulas) cross-checks Bollinger Bands, RSI, ATR, and more against pandas_ta on real bars.
 
 ## O(1) Incremental Bollinger Bands
 

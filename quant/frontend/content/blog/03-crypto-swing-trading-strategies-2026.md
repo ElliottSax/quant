@@ -190,7 +190,7 @@ This ensures consistent position sizes:
 - Position: $1,500 / $1,000 = 1.5 BTC
 - Monthly at 5 trades: $375-750 profit
 
-The psychological edge: Proper position sizing lets you take losses without emotional damage.
+The psychological edge: Proper position sizing lets you take losses without emotional damage. Our [Position Size Calculator](/tools/position-size) automates this math from your account size, risk percentage, entry, and stop.
 
 
 ## Swing Trading Strategy #1: Trend Following with Confirmation

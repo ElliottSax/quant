@@ -358,7 +358,7 @@ Backtesting results across various strategy types (2020-2024 historical data):
 A: Minimum 2-3 years for daily/swing strategies, 5+ years strongly preferred. Include at least one major market correction (>20% drawdown). For intraday strategies, 6-12 months of continuous tick data provides adequate statistical sample.
 
 **Q: How do I avoid overfitting when optimizing strategy parameters?**
-A: Use walk-forward analysis with non-overlapping test sets, limit parameter combinations tested, maintain separate validation dataset, test across multiple uncorrelated assets. Over-optimized parameters often fail catastrophically on new data.
+A: Use walk-forward analysis with non-overlapping test sets, limit parameter combinations tested, maintain separate validation dataset, test across multiple uncorrelated assets. Over-optimized parameters often fail catastrophically on new data. If you want to run this kind of validation without building the harness yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest a strategy directly, no signup required.
 
 **Q: What Sharpe ratio should I target for live trading?**
 A: Backtested Sharpe >1.5 indicates healthy edge. Expect 30-40% degradation in live trading. Backtest Sharpe of 2.0 might achieve 1.2-1.4 live. Below 0.5 live indicates insufficient edge.

@@ -511,4 +511,4 @@ class MarketMakerAnalytics:
 
 Successful market making requires careful balance between aggressive quoting to capture volume and defensive quoting to manage inventory and risk. The key metrics to monitor are spread width relative to volatility, inventory turnover, and profit per unit of time exposed.
 
-Start with small position sizes and gradually increase as your bot demonstrates consistent profitability.
+Start with small position sizes and gradually increase as your bot demonstrates consistent profitability. Our [Position Size Calculator](/tools/position-size) can help you size that initial allocation from your account balance and risk tolerance.

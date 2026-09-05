@@ -48,6 +48,8 @@ Dollar risk per share: $2.00
 
 Position Size = $1,000 / $2.00 = 500 shares ($25,000 position)
 
+Our [Position Size Calculator](/tools/position-size) runs this exact calculation from your account size, risk %, entry, and stop, so you don't need to redo the arithmetic by hand.
+
 ### Advantages
 - Simple to calculate and implement
 - Automatically scales position size with account growth (compounding)
@@ -102,7 +104,7 @@ W/L ratio: 1.5
 
 f* = 0.55 - (0.45 / 1.5) = 0.55 - 0.30 = 0.25 (25%)
 
-The Kelly Criterion suggests risking 25% of capital per trade. In theory, this maximizes long-term growth.
+The Kelly Criterion suggests risking 25% of capital per trade. In theory, this maximizes long-term growth. Our [Kelly criterion calculator](/tools/kelly-criterion) computes this fraction directly from your win rate and win/loss ratio.
 
 ### The Problem with Full Kelly
 

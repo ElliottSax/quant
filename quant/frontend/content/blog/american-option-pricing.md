@@ -15,7 +15,7 @@ seo_optimized: true
 
 ## Introduction
 
-American options, which permit exercise at any time before expiration, present one of the classic challenges in quantitative finance. Unlike European options with their elegant Black-Scholes closed-form solution, American options require numerical methods because the early exercise boundary is a free boundary that must be solved simultaneously with the option price. This article covers three production-grade approaches: the Cox-Ross-Rubinstein binomial tree, the Longstaff-Schwartz least-squares Monte Carlo, and the finite difference method for the Black-Scholes PDE.
+American options, which permit exercise at any time before expiration, present one of the classic challenges in quantitative finance. Unlike European options with their elegant Black-Scholes closed-form solution, American options require numerical methods because the early exercise boundary is a free boundary that must be solved simultaneously with the option price. For the closed-form European case, our [Options Calculator](/options) computes Black-Scholes pricing and Greeks directly for a given strike and expiration. This article covers three production-grade approaches: the Cox-Ross-Rubinstein binomial tree, the Longstaff-Schwartz least-squares Monte Carlo, and the finite difference method for the Black-Scholes PDE.
 
 ## The Early Exercise Problem
 

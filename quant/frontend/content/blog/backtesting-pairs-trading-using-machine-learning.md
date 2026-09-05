@@ -168,7 +168,7 @@ class MLPairsTrader:
 | Win Rate | 51.23% | 56.45% | +10.1% |
 | Trades | 156 | 78 | -50.0% |
 
-ML filters out 50% of unprofitable trades while improving Sharpe 32%.
+ML filters out 50% of unprofitable trades while improving Sharpe 32%. If you want to check whether a resulting win rate is statistically meaningful rather than luck, our [Win Rate Significance Calculator](/tools/win-rate-significance) runs the binomial test directly.
 
 ## Feature Importance
 

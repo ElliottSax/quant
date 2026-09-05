@@ -18,7 +18,7 @@ description: "The Black-Litterman model combines market equilibrium returns with
 
 ## Introduction
 
-The Black-Litterman model combines market equilibrium returns with investor views to create robust portfolio allocations. This tutorial covers the complete implementation with Python.
+The Black-Litterman model combines market equilibrium returns with investor views to create robust portfolio allocations. This tutorial covers the complete implementation with Python. If you just need closed-form tangency weights from a set of expected returns, vols, and correlations without implementing any of this, our [Max Sharpe Portfolio](/tools/max-sharpe) tool computes them directly.
 
 ## Black-Litterman Framework
 

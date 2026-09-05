@@ -198,7 +198,7 @@ Dark pools execute approximately 15-20% of US equity volume off-exchange. Resear
 
 ### Why do bid-ask spreads widen during volatility spikes?
 
-During high volatility, market makers face two increased risks: (1) inventory risk increases because positions can move against them faster, and (2) adverse selection risk increases because informed traders are more active during information events. Both risks require wider spreads for compensation. Empirically, spreads widen 3-5x during events like earnings announcements, FOMC meetings, and market crashes. For systematic traders, this means execution costs increase precisely when strategies generate the most signals, making volatility-adjusted [position sizing](/blog/position-sizing-strategies) essential.
+During high volatility, market makers face two increased risks: (1) inventory risk increases because positions can move against them faster, and (2) adverse selection risk increases because informed traders are more active during information events. Both risks require wider spreads for compensation. Empirically, spreads widen 3-5x during events like earnings announcements, FOMC meetings, and market crashes. For systematic traders, this means execution costs increase precisely when strategies generate the most signals, making volatility-adjusted [position sizing](/blog/position-sizing-strategies) essential. Our [Position Size Calculator](/tools/position-size) translates that volatility adjustment into concrete share counts from your account size, risk %, entry, and stop.
 
 ### How can retail traders use market microstructure insights?
 

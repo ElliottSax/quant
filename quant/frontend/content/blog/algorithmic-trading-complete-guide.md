@@ -140,7 +140,7 @@ See [machine learning trading guide](/blog/machine-learning-trading) and [featur
 
 ## Backtesting Methodology
 
-Backtesting is where most algorithmic traders spend the majority of their time — and where the most dangerous mistakes are made. A flawed backtest can make a losing strategy look profitable.
+Backtesting is where most algorithmic traders spend the majority of their time — and where the most dangerous mistakes are made. A flawed backtest can make a losing strategy look profitable. If you want to validate a rules-based idea before writing this scaffolding yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ### The Backtesting Process
 

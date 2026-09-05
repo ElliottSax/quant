@@ -23,7 +23,7 @@ Bollinger Bands consist of three lines:
 - **Upper Band**: Middle Band + (2 * 20-period Standard Deviation)
 - **Lower Band**: Middle Band - (2 * 20-period Standard Deviation)
 
-Statistically, approximately 95% of price action falls within 2 standard deviations of the mean, so touches of the outer bands represent statistically extreme price levels.
+Statistically, approximately 95% of price action falls within 2 standard deviations of the mean, so touches of the outer bands represent statistically extreme price levels. Our [indicator formulas reference](/indicator-formulas) cross-checks this calculation against pandas_ta on real bars if you want to verify your own implementation.
 
 ### Key Metrics
 

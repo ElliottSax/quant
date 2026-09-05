@@ -192,7 +192,7 @@ print(f"Volatility: {min_var_vol:.2%}")
 print(f"Sharpe Ratio: {min_var_return / min_var_vol:.2f}")
 ```
 
-Minimum variance portfolios typically overweight bonds and underweight equities, reducing return but achieving ~40-50% volatility reduction.
+Minimum variance portfolios typically overweight bonds and underweight equities, reducing return but achieving ~40-50% volatility reduction. If you want the closed-form tangency weights instead of running this optimizer yourself, our [Max Sharpe Portfolio](/tools/max-sharpe) tool computes them directly from expected returns, vols, and correlations.
 
 ### Equal Risk Contribution Portfolio
 

@@ -14,7 +14,7 @@ description: "Position sizing automation separates professional traders from ama
 
 # Automating Position Sizing in Python
 
-Position sizing automation separates professional traders from amateurs. Manually calculating position sizes for 20+ positions introduces errors; automated systems execute consistently. This guide provides production-ready Python implementations of position sizing algorithms used by institutional traders managing billions in assets.
+Position sizing automation separates professional traders from amateurs. Manually calculating position sizes for 20+ positions introduces errors; automated systems execute consistently. For a quick one-off calculation without writing code, our [Position Size Calculator](/tools/position-size) computes share size directly from account risk, entry, and stop. This guide provides production-ready Python implementations of position sizing algorithms used by institutional traders managing billions in assets.
 
 ## Python Implementation: Core Position Sizing Engine
 

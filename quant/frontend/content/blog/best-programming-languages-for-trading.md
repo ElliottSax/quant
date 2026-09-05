@@ -17,7 +17,7 @@ last_updated: '2026-03-18'
 
 ## Introduction
 
-Different programming languages excel for different trading tasks. This guide covers the strengths and weaknesses of popular choices for quantitative trading systems.
+Different programming languages excel for different trading tasks. This guide covers the strengths and weaknesses of popular choices for quantitative trading systems. If you want to validate a strategy idea before picking a language and writing any code, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## Language Comparison
 

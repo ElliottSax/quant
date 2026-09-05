@@ -11,7 +11,7 @@ keywords: ["Monte Carlo simulation trading", "Monte Carlo risk assessment", "tra
 
 Monte Carlo simulation for trading is one of the most powerful tools available for understanding the range of outcomes a strategy might produce. While a single backtest shows one possible path through historical data, Monte Carlo simulation generates thousands of possible paths, revealing the probability distribution of returns, drawdowns, and other critical metrics. Named after the famous casino district in Monaco, Monte Carlo methods use random sampling to approximate solutions to problems that are analytically intractable.
 
-For [trading strategies](/blog/backtesting-trading-strategies), Monte Carlo simulation answers the essential question: "Given what I know about this strategy's characteristics, what is the range of outcomes I should expect in the future?"
+For [trading strategies](/blog/backtesting-trading-strategies), Monte Carlo simulation answers the essential question: "Given what I know about this strategy's characteristics, what is the range of outcomes I should expect in the future?" Before you get to randomizing outcomes, our [Strategy Builder](/backtesting/builder) lets you generate that baseline backtest itself without writing the equity-curve code from scratch.
 
 ## Why Monte Carlo Simulation Matters
 

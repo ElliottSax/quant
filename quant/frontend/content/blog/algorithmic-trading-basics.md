@@ -171,7 +171,7 @@ class MomentumStrategy(Strategy):
 
 ## Backtesting: The Scientific Method of Trading
 
-Backtesting is hypothesis testing applied to trading strategies. The goal is to estimate how a strategy would have performed historically while avoiding statistical biases.
+Backtesting is hypothesis testing applied to trading strategies. The goal is to estimate how a strategy would have performed historically while avoiding statistical biases. If you want to test a rules-based idea before writing this scaffolding yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ### Event-Driven Backtester
 

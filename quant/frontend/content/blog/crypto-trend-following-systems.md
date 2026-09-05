@@ -71,7 +71,7 @@ Multi-indicator confirmation improves win rates: (1) 20/50 SMA bullish, (2) MACD
 
 Trend-following requires sizing and psychological discipline to capture full trends while preventing drawdowns.
 
-Position sizing uses fixed fractional approach: risk 1-2% of portfolio per trade. If stop-loss 5% from entry and risking $1,000 (2% of $50k portfolio), position size = $1,000 / 5% = $20,000. This ensures any single loss remains manageable.
+Position sizing uses fixed fractional approach: risk 1-2% of portfolio per trade. If stop-loss 5% from entry and risking $1,000 (2% of $50k portfolio), position size = $1,000 / 5% = $20,000. This ensures any single loss remains manageable, and our [Position Size Calculator](/tools/position-size) can run this math for you directly from account size, risk percentage, entry, and stop.
 
 The equity curve monitoring tracks system performance over time. If 5 consecutive losing trades, reduce position size by 50% pending regime assessment. If 5 consecutive winning trades, increase size 10-20% capturing momentum confidence.
 

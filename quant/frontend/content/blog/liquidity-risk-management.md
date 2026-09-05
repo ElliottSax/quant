@@ -113,7 +113,7 @@ Where LC_i is the estimated round-trip liquidation cost and expected_alpha_i is 
 For a stock with expected alpha of 2% per month and round-trip liquidation cost of 0.5%:
 **Adjustment factor = 1 - 0.5/2.0 = 0.75**
 
-The position is sized at 75% of the unconstrained optimum, reflecting the liquidity drag on expected returns.
+The position is sized at 75% of the unconstrained optimum, reflecting the liquidity drag on expected returns. For the unconstrained position itself, our [Position Size Calculator](/tools/position-size) computes risk-based sizing from account size, risk %, entry, and stop before you apply this liquidity haircut.
 
 ### Crowding-Adjusted Sizing
 

@@ -119,7 +119,7 @@ This setup offers excellent risk/reward because the stop is defined by the cardi
 Identifying the end of Wave 5 allows traders to position for the corrective phase:
 
 1. Count five waves from the start of the impulse
-2. Look for momentum divergence between Wave 3 and Wave 5 peaks (RSI, MACD)
+2. Look for momentum divergence between Wave 3 and Wave 5 peaks (RSI, MACD); our [indicator formulas](/indicator-formulas) reference confirms these are computed the same way as pandas_ta before you trust the signal
 3. Calculate the Wave 5 target using Fibonacci (often equals Wave 1 in length)
 4. Look for bearish [candlestick patterns](/blog/candlestick-patterns-complete-guide) at the projected Wave 5 terminus
 5. Enter short with a stop above the Wave 5 high

@@ -221,7 +221,7 @@ January 2026:
 ## Risk Management Framework
 
 ### Position Sizing
-Calculate position size based on account and risk tolerance:
+Calculate position size based on account and risk tolerance. Our [Position Size Calculator](/tools/position-size) does this math for you from account size, risk percentage, entry, and stop loss.
 
 ```
 Position Size = (Account Size × Risk %) / (Entry Price - Stop Loss)

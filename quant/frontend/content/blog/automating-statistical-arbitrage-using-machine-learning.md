@@ -22,7 +22,7 @@ The modern financial landscape demands sophisticated approaches to portfolio con
 
 ### Fundamental Principles
 
-Algorithmic trading systems require deep understanding of market microstructure, statistical properties of asset returns, and behavioral patterns that create trading opportunities. The intersection of quantitative analysis and automated execution creates unprecedented possibilities for systematic profit generation across global markets.
+Algorithmic trading systems require deep understanding of market microstructure, statistical properties of asset returns, and behavioral patterns that create trading opportunities. The intersection of quantitative analysis and automated execution creates unprecedented possibilities for systematic profit generation across global markets. If you want to verify the RSI, MACD, ATR, and Bollinger Band formulas used throughout this guide against real market data, our [indicator formulas reference](/indicator-formulas) cross-checks them against pandas_ta on real bars.
 
 The mathematical foundation for modern algorithmic trading rests on several key principles:
 

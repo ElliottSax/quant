@@ -16,7 +16,7 @@ Fibonacci retracement plots key support/resistance levels at 23.6%, 38.2%, 50%, 
 
 ## Introduction
 
-Fibonacci retracements are horizontal support and resistance levels based on the mathematical Fibonacci sequence. They identify where pullbacks are likely to stop before the trend continues. This complete guide covers everything from basic retracement plotting to advanced extension strategies and multi-timeframe confluence.
+Fibonacci retracements are horizontal support and resistance levels based on the mathematical Fibonacci sequence. They identify where pullbacks are likely to stop before the trend continues. You can plot these levels over real price data using our [Charts tool](/charts) to see how they line up on your own charts before trading them. This complete guide covers everything from basic retracement plotting to advanced extension strategies and multi-timeframe confluence.
 
 ## What are Fibonacci Retracement Levels?
 

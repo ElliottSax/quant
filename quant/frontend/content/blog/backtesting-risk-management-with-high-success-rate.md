@@ -72,7 +72,7 @@ print(f"Duration: {dd_length} trades")
 
 ### 1. Profit Target Optimization
 
-Instead of fixed stop losses, use profit targets that are proportional to risk:
+Instead of fixed stop losses, use profit targets that are proportional to risk. Our [risk/reward calculator](/tools/risk-reward) checks a given entry, stop, and target against your minimum ratio directly:
 
 ```python
 def calculate_risk_reward_ratio(

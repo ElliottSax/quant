@@ -14,7 +14,7 @@ description: "This creates extraordinary opportunities for automated momentum st
 
 # Automating Momentum Trading on Crypto
 
-Cryptocurrency markets exhibit momentum characteristics 3-5x stronger than traditional equities due to 24/7 trading, retail-dominated participation, and lower circuit breaker constraints. This creates extraordinary opportunities for automated momentum strategies. However, crypto's extreme volatility and leverage availability present amplified risks. This guide reveals how professional traders automate momentum trading on crypto with risk controls suited to 24-hour, high-volatility markets.
+Cryptocurrency markets exhibit momentum characteristics 3-5x stronger than traditional equities due to 24/7 trading, retail-dominated participation, and lower circuit breaker constraints. This creates extraordinary opportunities for automated momentum strategies. However, crypto's extreme volatility and leverage availability present amplified risks. This guide reveals how professional traders automate momentum trading on crypto with risk controls suited to 24-hour, high-volatility markets. Whatever leverage you settle on, our [Position Size Calculator](/tools/position-size) converts your account risk and stop distance into a concrete position size before you place the trade.
 
 ## Why Crypto Momentum is Stronger
 

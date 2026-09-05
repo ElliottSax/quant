@@ -39,7 +39,7 @@ This is Wilder's smoothing method, which is equivalent to an exponential moving 
 
 ## ATR for Position Sizing
 
-Position sizing is arguably the most important application of ATR. By sizing positions based on current volatility, traders ensure that each trade carries a consistent level of risk in dollar terms, regardless of the underlying asset's price or volatility.
+Position sizing is arguably the most important application of ATR. By sizing positions based on current volatility, traders ensure that each trade carries a consistent level of risk in dollar terms, regardless of the underlying asset's price or volatility. Our [Position Size Calculator](/tools/position-size) automates this calculation from your account size, risk percentage, entry, and stop.
 
 ### The ATR Position Sizing Formula
 

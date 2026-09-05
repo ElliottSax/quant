@@ -26,6 +26,8 @@ The most common approach: risk a fixed percentage of equity on each trade.
 - Risk per share = $50 - $48 = $2
 - Position size = $1,000 / $2 = 500 shares
 
+Our [Position Size Calculator](/tools/position-size) runs this calculation directly from your account size, risk %, entry, and stop.
+
 **Advantages**: Automatically adjusts to account size, limits maximum loss per trade
 **Disadvantages**: Treats all trades equally regardless of conviction or edge
 
@@ -54,6 +56,8 @@ Where W = win rate and R = average win / average loss ratio.
 
 **Example**: Win rate = 55%, average win/loss = 1.5:
 - Kelly% = (0.55 * 1.5 - 0.45) / 1.5 = 0.25 = 25%
+
+Our [Kelly criterion calculator](/tools/kelly-criterion) computes this percentage directly from your win rate and win/loss ratio.
 
 Full Kelly is extremely aggressive and produces severe drawdowns. Most practitioners use fractional Kelly:
 

@@ -9,7 +9,7 @@ keywords: ["crypto index", "market cap weighting", "factor-based indices", "port
 ---
 # Crypto Index Construction: Market-Cap and Factor-Based
 
-Cryptocurrency indices provide systematic diversification exposures across assets with varying characteristics. Market-cap weighted indices (most common approach) provide representative exposure proportional to network sizes. Factor-based indices enable thematic investing in specific crypto sectors (DeFi, Layer 1 platforms, privacy coins). This comprehensive guide develops frameworks for index construction, rebalancing mechanics, and performance evaluation.
+Cryptocurrency indices provide systematic diversification exposures across assets with varying characteristics. Market-cap weighted indices (most common approach) provide representative exposure proportional to network sizes. Factor-based indices enable thematic investing in specific crypto sectors (DeFi, Layer 1 platforms, privacy coins). This comprehensive guide develops frameworks for index construction, rebalancing mechanics, and performance evaluation. If you want closed-form optimal weights instead of simple market-cap or factor weighting, our [Max Sharpe Portfolio](/tools/max-sharpe) tool derives tangency weights directly from expected returns, volatilities, and correlations.
 
 ## Market-Capitalization Weighted Indices
 

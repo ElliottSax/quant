@@ -18,7 +18,7 @@ description: "Bond portfolio management depends critically on understanding dura
 
 ## Introduction
 
-Bond portfolio management depends critically on understanding duration and convexity. While duration measures a bond's interest rate sensitivity linearly, convexity captures the curvature of this relationship. For quantitative traders managing fixed-income portfolios, exploiting the nonlinear relationship between bond prices and yields creates alpha opportunities. This guide explores the mathematical foundations, Python implementations, and practical strategies for managing convexity risk.
+Bond portfolio management depends critically on understanding duration and convexity. While duration measures a bond's interest rate sensitivity linearly, convexity captures the curvature of this relationship. For quantitative traders managing fixed-income portfolios, exploiting the nonlinear relationship between bond prices and yields creates alpha opportunities. This guide explores the mathematical foundations, Python implementations, and practical strategies for managing convexity risk. You can check today's actual Treasury curve and past inversions with our [yield curve tool](/yield-curve) before modeling how a given portfolio's duration and convexity would respond to a shift.
 
 ## Understanding Duration and Convexity
 

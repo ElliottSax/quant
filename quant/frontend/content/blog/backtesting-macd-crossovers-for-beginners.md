@@ -153,7 +153,7 @@ Win Rate: 51.23%
 **Win Rate**: 51.23%
 - 51% of your trades were profitable
 - 49% were losses
-- Above 50% is good - you need only slightly better than coin flip odds with proper risk management
+- Above 50% is good - you need only slightly better than coin flip odds with proper risk management. Our [Win Rate Significance Calculator](/tools/win-rate-significance) can tell you whether a given win rate and trade count are actually distinguishable from a coin flip
 
 **Total Trades**: 84
 - 42 buy signals and 42 sell signals

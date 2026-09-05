@@ -12,6 +12,7 @@
  */
 
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Suspense } from 'react'
 import { ChartsClient } from './ChartsClient'
 
@@ -46,6 +47,26 @@ export default function ChartsPage() {
       <Suspense fallback={<ChartsLoadingFallback />}>
         <ChartsClient />
       </Suspense>
+
+      <div className="glass-card p-6 space-y-2 text-sm text-slate-400 max-w-4xl">
+        <h2 className="text-lg font-bold text-white">New to these overlays?</h2>
+        <p>
+          If you're deciding which moving average to watch, our{' '}
+          <Link href="/blog/moving-average-crossover-strategy" className="underline hover:text-slate-200">
+            moving-average crossover guide
+          </Link>{' '}
+          walks through the 50/200-day setup shown here. For the Bollinger Band overlay,
+          see the{' '}
+          <Link href="/blog/bollinger-bands-strategy" className="underline hover:text-slate-200">
+            Bollinger Bands strategy breakdown
+          </Link>
+          , and for how each formula is actually computed, check the{' '}
+          <Link href="/indicator-formulas" className="underline hover:text-slate-200">
+            indicator formula reference
+          </Link>
+          .
+        </p>
+      </div>
     </div>
   )
 }

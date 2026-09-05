@@ -22,7 +22,7 @@ This is one of the oldest and most robust [quantitative strategies](/blog/crypto
 
 ## Pair Selection: Finding Tradable Pairs
 
-The universe of potential pairs grows quadratically with the number of stocks. Screen efficiently by starting with sector/industry constraints.
+The universe of potential pairs grows quadratically with the number of stocks. Screen efficiently by starting with sector/industry constraints. Our [statsmodels import reference](/statsmodels-imports) confirms which import paths work for `coint` and related cointegration tests across statsmodels versions, useful if the import below throws an error on your setup.
 
 ```python
 import numpy as np

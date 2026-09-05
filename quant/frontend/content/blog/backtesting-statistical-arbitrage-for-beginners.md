@@ -12,7 +12,7 @@ description: "Pairs trading is statistical arbitrage's simplest form. Buy the un
 
 # Backtesting Statistical Arbitrage for Beginners
 
-Statistical arbitrage sounds complex, but the core concept is simple: find two similar securities that move together, wait for them to diverge, then bet on them reconverging. This beginner's guide demystifies stat arb, provides simple Python implementations, and shows real backtesting results that prove beginners can generate consistent returns with these strategies.
+Statistical arbitrage sounds complex, but the core concept is simple: find two similar securities that move together, wait for them to diverge, then bet on them reconverging. This beginner's guide demystifies stat arb, provides simple Python implementations, and shows real backtesting results that prove beginners can generate consistent returns with these strategies. If you'd rather test a pairs idea before writing any of this code yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## The Pairs Trading Concept
 

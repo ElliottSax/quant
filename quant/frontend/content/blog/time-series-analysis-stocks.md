@@ -22,7 +22,7 @@ This guide covers the full time series modeling pipeline for stocks, from statio
 
 ## Stationarity Testing
 
-Stationarity means the statistical properties of a time series do not change over time. The Augmented Dickey-Fuller (ADF) and KPSS tests provide complementary perspectives.
+Stationarity means the statistical properties of a time series do not change over time. The Augmented Dickey-Fuller (ADF) and KPSS tests provide complementary perspectives. Our [statsmodels import reference](/statsmodels-imports) confirms which import paths work for `adfuller`, `kpss`, and the `ARIMA` class across statsmodels versions, handy if the imports below error out on your setup.
 
 ```python
 import numpy as np

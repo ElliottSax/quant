@@ -184,7 +184,7 @@ ETH volatility is 30% higher, so reduce position size:
 Position Size = (Account × 1.5%) / (Entry - Stop)
 ```
 
-Use 1.5% instead of 2% per trade due to higher swings.
+Use 1.5% instead of 2% per trade due to higher swings. Our [Position Size Calculator](/tools/position-size) runs this math instantly from your account size, risk percentage, entry, and stop.
 
 ### Stop Loss Placement
 - **Volatile consolidation**: 2% below entry

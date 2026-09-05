@@ -273,7 +273,7 @@ $$
 \text{Position Size} = \frac{\text{Max Loss Budget}}{\text{Stop Loss} \times \text{Dollar Volatility per Unit}}
 $$
 
-A conservative rule: no single arbitrage trade should risk more than 0.5% of total portfolio capital.
+A conservative rule: no single arbitrage trade should risk more than 0.5% of total portfolio capital. For directional legs, our [Position Size Calculator](/tools/position-size) automates this math from account size, risk percentage, entry, and stop.
 
 ## Detection at Scale
 

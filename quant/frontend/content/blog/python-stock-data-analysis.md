@@ -147,7 +147,7 @@ print(f"Sharpe Ratio: {sharpe:.2f}")
 
 ## Technical Indicators with pandas
 
-Rolling window operations in pandas map directly to most technical indicators. Here is a reusable indicator library.
+Rolling window operations in pandas map directly to most technical indicators. Here is a reusable indicator library. Our [indicator formulas reference](/indicator-formulas) cross-checks these same RSI, ATR, and Bollinger calculations against pandas_ta on real market data, handy for validating your implementation.
 
 ```python
 class TechnicalIndicators:

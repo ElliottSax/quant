@@ -280,6 +280,26 @@ export default function StrategyBuilderPage() {
         </div>
       </div>
 
+      {/* Learn more: point first-time visitors at the methodology behind what this
+          page runs, rather than leaving the builder as a dead end for someone who
+          doesn't yet know what a walk-forward split or a look-ahead bias is. */}
+      <div className="glass-card p-4 text-sm text-slate-400">
+        New to backtesting? Start with{' '}
+        <Link href="/blog/how-to-backtest-trading-strategies" className="underline hover:text-slate-200">
+          how to backtest a strategy
+        </Link>{' '}
+        and{' '}
+        <Link href="/blog/walk-forward-optimization" className="underline hover:text-slate-200">
+          walk-forward optimization
+        </Link>{' '}
+        to understand why a single in-sample run like the one below isn't enough on its own,
+        or see a real strategy worked through end to end in the{' '}
+        <Link href="/blog/mean-reversion-strategies-guide" className="underline hover:text-slate-200">
+          mean-reversion strategy guide
+        </Link>
+        .
+      </div>
+
       {/* Template Selection */}
       <div className="glass-strong rounded-xl p-6">
         <h2 className="text-xl font-bold mb-4">Start from a Template</h2>

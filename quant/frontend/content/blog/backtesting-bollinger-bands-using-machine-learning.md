@@ -12,7 +12,7 @@ description: "Machine learning enhances traditional Bollinger Band strategies by
 
 # Backtesting Bollinger Bands using Machine Learning: AI-Enhanced Trading Strategies
 
-Machine learning enhances traditional Bollinger Band strategies by learning non-linear patterns and adapting to changing market conditions. This comprehensive guide combines Bollinger Bands with neural networks and ensemble methods to create adaptive trading strategies with superior risk-adjusted returns.
+Machine learning enhances traditional Bollinger Band strategies by learning non-linear patterns and adapting to changing market conditions. This comprehensive guide combines Bollinger Bands with neural networks and ensemble methods to create adaptive trading strategies with superior risk-adjusted returns. If you want to verify the Bollinger Band, RSI, MACD, and ATR formulas used as model features against real market data, our [indicator formulas reference](/indicator-formulas) cross-checks them against pandas_ta on real bars.
 
 ## The Case for ML-Enhanced Bollinger Bands
 

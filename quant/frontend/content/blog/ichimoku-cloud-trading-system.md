@@ -11,7 +11,7 @@ keywords: ["ichimoku cloud trading system", "ichimoku strategy", "ichimoku cloud
 
 The Ichimoku Cloud trading system, formally known as Ichimoku Kinko Hyo ("one glance equilibrium chart"), is a comprehensive [technical analysis](/blog/python-technical-analysis-library) framework developed by Japanese journalist Goichi Hosoda in the late 1930s and published in 1969 after three decades of refinement. Unlike most Western indicators that measure a single dimension of price behavior, the Ichimoku system simultaneously displays support and resistance levels, trend direction, momentum, and trading signals in a single chart overlay.
 
-This guide breaks down each of the five components, explains how they interact, and provides concrete [trading strategies](/blog/backtesting-trading-strategies) used by professionals in equity, forex, and cryptocurrency markets.
+This guide breaks down each of the five components, explains how they interact, and provides concrete [trading strategies](/blog/backtesting-trading-strategies) used by professionals in equity, forex, and cryptocurrency markets. You can plot the cloud and each component over live price data using our [Charts tool](/charts) before committing to a set of Ichimoku parameters.
 
 ## The Five Components of Ichimoku Cloud
 

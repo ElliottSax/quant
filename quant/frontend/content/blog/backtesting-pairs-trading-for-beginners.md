@@ -12,7 +12,7 @@ description: "Pairs trading is simpler than single-asset trading because you're 
 
 # Backtesting Pairs Trading for Beginners: Simple Spread-Based Strategies
 
-Pairs trading is simpler than single-asset trading because you're betting on relative value, not absolute direction. This beginner-friendly guide walks through finding correlated assets, calculating spreads, and backtesting simple pairs strategies in Python.
+Pairs trading is simpler than single-asset trading because you're betting on relative value, not absolute direction. This beginner-friendly guide walks through finding correlated assets, calculating spreads, and backtesting simple pairs strategies in Python. If you'd rather test a pair's spread strategy without writing this code yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## What is Pairs Trading?
 

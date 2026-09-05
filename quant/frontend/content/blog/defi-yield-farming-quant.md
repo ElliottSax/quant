@@ -83,7 +83,7 @@ A sample $100,000 DeFi yield portfolio might allocate: 40% to stablecoin lending
 
 This allocation generates blended portfolio yield of approximately 12-18% APY with substantially lower risk than concentrating 100% in the highest-yield opportunity. Correlation analysis ensures stablecoin allocations use different underlying assets (USDC, USDT, DAI) to avoid single-stablecoin risk.
 
-Position sizing within allocations uses Kelly Criterion modifications. For each opportunity, we estimate probability of profit (P), average profit magnitude (W), and average loss magnitude (L). Kelly allocation = (P × W - (1-P) × L) / W. For a high-confidence Tier 1 protocol opportunity with 90% probability of 6% profit and 10% probability of -2% loss: (0.9 × 6 - 0.1 × 2) / 6 = 87% of allocated capital to that protocol tier.
+Position sizing within allocations uses Kelly Criterion modifications. For each opportunity, we estimate probability of profit (P), average profit magnitude (W), and average loss magnitude (L). Kelly allocation = (P × W - (1-P) × L) / W. Our [Kelly Criterion calculator](/tools/kelly-criterion) runs this sizing math for you directly from your estimated win probability and payoff ratio. For a high-confidence Tier 1 protocol opportunity with 90% probability of 6% profit and 10% probability of -2% loss: (0.9 × 6 - 0.1 × 2) / 6 = 87% of allocated capital to that protocol tier.
 
 Rebalancing triggers occur quarterly or when allocations drift >10% from targets. If stablecoin lending grows to 52% of portfolio (from 40% target due to yield accumulation), excess profits redeploy to underweight categories.
 

@@ -14,7 +14,7 @@ description: "Cryptocurrency pairs trading combines the market-neutral alpha gen
 
 # Automating Pairs Trading on Crypto
 
-Cryptocurrency pairs trading combines the market-neutral alpha generation of traditional pairs with crypto's 24/7 liquidity and extreme volatility. Bitcoin/Ethereum pairs, exchange token pairs, and cross-chain asset pairs offer exceptional cointegration strengths and mean-reversion speeds. This guide reveals how to automate pairs trading specifically for digital assets, navigating unique challenges including exchange risks, custody issues, and blockchain-specific dynamics.
+Cryptocurrency pairs trading combines the market-neutral alpha generation of traditional pairs with crypto's 24/7 liquidity and extreme volatility. Bitcoin/Ethereum pairs, exchange token pairs, and cross-chain asset pairs offer exceptional cointegration strengths and mean-reversion speeds. This guide reveals how to automate pairs trading specifically for digital assets, navigating unique challenges including exchange risks, custody issues, and blockchain-specific dynamics. If you want to prototype a similar spread strategy before committing to a full build, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## Crypto-Specific Pairs Characteristics
 

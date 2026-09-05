@@ -45,7 +45,7 @@ f* = 0.375 / 1.5
 f* = 0.25 = 25%
 ```
 
-This means risking 25% of capital per trade is mathematically optimal for long-term wealth accumulation.
+This means risking 25% of capital per trade is mathematically optimal for long-term wealth accumulation. Our [Kelly criterion calculator](/tools/kelly-criterion) computes this fraction directly from your own win rate, average win, and average loss.
 
 ### Practical Considerations: Fractional Kelly
 
@@ -61,7 +61,7 @@ For the above example: 0.25 × 0.35 = 0.0875 (8.75% per trade is practical)
 
 ### 1. Fixed Fractional Sizing
 
-Risk a fixed percentage of current account equity per trade:
+Risk a fixed percentage of current account equity per trade. Our [Position Size Calculator](/tools/position-size) does this calculation directly from your account size, risk percentage, entry, and stop:
 
 ```python
 def calculate_fixed_fractional_position(

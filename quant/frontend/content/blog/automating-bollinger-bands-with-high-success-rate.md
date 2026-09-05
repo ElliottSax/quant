@@ -315,7 +315,7 @@ Achieving a high success rate with Bollinger Bands requires selective entry thro
 
 ### Is a 72% win rate realistic or am I overfitting?
 
-The 72% figure comes from walk-forward testing on 15 years of SPY data, not a single optimized backtest. In-sample win rates are typically 75-78%, so the 72% out-of-sample figure represents a reasonable ~5% degradation. The key validation: the filters are based on well-documented market microstructure effects (capitulation selling, regime persistence), not data-mined patterns.
+The 72% figure comes from walk-forward testing on 15 years of SPY data, not a single optimized backtest. In-sample win rates are typically 75-78%, so the 72% out-of-sample figure represents a reasonable ~5% degradation. The key validation: the filters are based on well-documented market microstructure effects (capitulation selling, regime persistence), not data-mined patterns. If you want to check whether your own strategy's win rate is statistically distinguishable from chance, our [Win Rate Significance Calculator](/tools/win-rate-significance) runs the sample-size and binomial-test math directly.
 
 ### Can I apply these filters to stocks other than SPY?
 

@@ -28,7 +28,7 @@ Bollinger Bands consist of three lines calculated from a moving average and stan
 - **Upper Band**: Middle Band + (2 × 20-period standard deviation)
 - **Lower Band**: Middle Band - (2 × 20-period standard deviation)
 
-The bands expand during high volatility and contract during calm periods, creating a natural support/resistance framework. When price touches the bands, mean reversion typically occurs within 3-5 bars for medium-term charts.
+The bands expand during high volatility and contract during calm periods, creating a natural support/resistance framework. When price touches the bands, mean reversion typically occurs within 3-5 bars for medium-term charts. You can check this formula against real bar data with our [indicator formulas reference](/indicator-formulas) before implementing it yourself.
 
 ## Advanced Bollinger Bands Implementation
 

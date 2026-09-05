@@ -390,6 +390,6 @@ A production bot should include circuit breakers that pause trading if losses ex
 
 ## Conclusion
 
-Building a Bitcoin trading bot combines market knowledge, programming skills, and risk management discipline. Start with paper trading to validate your strategies before deploying real capital. The framework above provides a solid foundation that you can extend with additional indicators, more sophisticated position management, and machine learning predictions.
+Building a Bitcoin trading bot combines market knowledge, programming skills, and risk management discipline. Start with paper trading to validate your strategies before deploying real capital. The framework above provides a solid foundation that you can extend with additional indicators, more sophisticated position management, and machine learning predictions. If you want to sanity-check the mean reversion logic itself before wiring up an exchange API, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 Remember that past performance doesn't guarantee future results. Continuous monitoring and adjustment of your bot's parameters based on market conditions is essential for long-term success.

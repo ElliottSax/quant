@@ -357,7 +357,7 @@ class KalmanRegimeDetector:
 
 ## Parameter Tuning
 
-The key challenge with Kalman filters is selecting the noise parameters Q and R. These control the filter's behavior.
+The key challenge with Kalman filters is selecting the noise parameters Q and R. These control the filter's behavior. Once you've settled on candidate values, our [Strategy Builder](/backtesting/builder) lets you backtest the resulting z-score signal directly, no need to write your own out-of-sample evaluation loop.
 
 ```python
 def tune_kalman_parameters(

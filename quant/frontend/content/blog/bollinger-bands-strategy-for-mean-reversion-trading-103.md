@@ -42,7 +42,7 @@ The two-standard-deviation framework captures approximately 95% of normal price 
 
 **Position Management:**
 - Entry: Next bar open after signal completion
-- Position Size: 2% risk per trade using Kelly criterion
+- Position Size: 2% risk per trade using Kelly criterion (our [Kelly Criterion Calculator](/tools/kelly-criterion) will size this for you from your own win rate and payoff ratio)
 - Stop Loss: 1.5% below signal low (hard stop)
 - Target 1: Middle band (typically 4-6% gain)
 - Target 2: Upper band for extended moves (8-10% gain)

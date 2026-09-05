@@ -35,7 +35,7 @@ Proper placement of Fibonacci retracement levels is the single most important fa
 
 1. **Identify the trend**: Determine whether you are analyzing an uptrend (drawing from swing low to swing high) or a downtrend (drawing from swing high to swing low).
 2. **Select significant swing points**: Use swing highs and lows that are clearly visible on the timeframe you are trading. Avoid minor fluctuations.
-3. **Apply the tool**: Most charting platforms (TradingView, MetaTrader, thinkorswim) include a Fibonacci retracement tool. Click the starting point and drag to the ending point.
+3. **Apply the tool**: Most charting platforms (TradingView, MetaTrader, thinkorswim) include a Fibonacci retracement tool. Click the starting point and drag to the ending point. Our [Charts tool](/charts) also lets you plot swing highs and lows over adjusted end-of-day data if you want to double-check a level away from your main platform.
 4. **Read the levels**: In an uptrend, the 38.2% and 61.8% levels act as potential support zones during pullbacks. In a downtrend, they act as resistance during bounces.
 
 ### Multi-Timeframe Application

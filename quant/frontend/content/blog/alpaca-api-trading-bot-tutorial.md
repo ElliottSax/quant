@@ -418,7 +418,7 @@ if __name__ == "__main__":
 
 ## Backtesting Your Strategy
 
-Before deploying to live trading, thoroughly backtest your strategy using historical data.
+Before deploying to live trading, thoroughly backtest your strategy using historical data. If you want to validate the rules before writing this scaffolding yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest a strategy directly, no signup required.
 
 ```python
 class BacktestEngine:

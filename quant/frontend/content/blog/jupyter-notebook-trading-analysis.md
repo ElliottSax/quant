@@ -11,7 +11,7 @@ keywords: ["jupyter notebook trading", "jupyter trading analysis", "python noteb
 
 Jupyter Notebook is the standard interactive computing environment for [quantitative trading](/blog/crypto-quant-trading-strategies) research. Its combination of executable code, rich text, mathematical notation, and inline visualizations makes it ideal for exploring market data, prototyping strategies, and documenting research findings in a single reproducible document. Professional quant teams at hedge funds and proprietary trading firms routinely use Jupyter for everything from initial data exploration to formal strategy presentations.
 
-This guide covers environment setup, essential configuration for trading analysis, visualization best practices, and workflow patterns that maximize research productivity.
+This guide covers environment setup, essential configuration for trading analysis, visualization best practices, and workflow patterns that maximize research productivity. If you just want to eyeball adjusted price action with SMA, EMA, or Bollinger overlays before writing any notebook code, our [Charts tool](/charts) plots it directly from real data.
 
 ## Environment Setup
 

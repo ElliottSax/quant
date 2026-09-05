@@ -31,7 +31,7 @@ A barrier option is a derivative contract where the option's value depends on wh
 3. **Up-and-In**: Inactive; activates if spot price rises above barrier
 4. **Down-and-In**: Inactive; activates if spot price falls below barrier
 
-Barrier options trade at significant premiums relative to vanilla options due to their reduced probability of exercise (knock-out) or higher activation requirements (knock-in). A trader selling a knock-out call collects a higher premium than a vanilla call but risks early termination.
+Barrier options trade at significant premiums relative to vanilla options due to their reduced probability of exercise (knock-out) or higher activation requirements (knock-in). A trader selling a knock-out call collects a higher premium than a vanilla call but risks early termination. You can price the underlying vanilla call or put and check its Greeks with our [Options Calculator](/options) before layering a barrier on top.
 
 ## Barrier Option Pricing: The Continuous Monitoring Case
 

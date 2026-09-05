@@ -55,7 +55,7 @@ Where:
 - q = Probability of losing (1-p)
 - b = Odds (profit on win / loss on loss)
 
-**Important**: Use fractional Kelly (f*/2 or f*/4) in practice to reduce volatility and drawdowns.
+**Important**: Use fractional Kelly (f*/2 or f*/4) in practice to reduce volatility and drawdowns. Our [Kelly Criterion Calculator](/tools/kelly-criterion) computes this fraction directly from your own win rate and payoff ratio if you'd rather skip the arithmetic.
 
 ### The 1-2-3 Rule
 

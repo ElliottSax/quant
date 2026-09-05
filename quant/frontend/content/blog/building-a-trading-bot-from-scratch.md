@@ -715,7 +715,7 @@ if __name__ == "__main__":
 
 ## Backtesting Framework
 
-Test your bot thoroughly before deploying real capital.
+Test your bot thoroughly before deploying real capital. If you want to validate the moving-average or RSI signal logic itself before building any of this infrastructure, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ```python
 class Backtester:

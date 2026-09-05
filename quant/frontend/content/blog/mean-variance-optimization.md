@@ -40,7 +40,7 @@ When a risk-free asset is available (with return R_f), the optimal risky portfol
 
 **w_tangency = Sigma^(-1) * (mu - R_f * 1) / (1^T * Sigma^(-1) * (mu - R_f * 1))**
 
-The capital market line (CML) connects the risk-free asset to the tangency portfolio, and every optimal complete portfolio (combining risk-free and risky assets) lies on this line.
+The capital market line (CML) connects the risk-free asset to the tangency portfolio, and every optimal complete portfolio (combining risk-free and risky assets) lies on this line. Our [Max Sharpe Portfolio tool](/tools/max-sharpe) computes this tangency portfolio's closed-form weights directly from your expected returns, volatilities, and correlations.
 
 ## Practical Implementation
 

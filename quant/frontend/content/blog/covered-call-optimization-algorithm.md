@@ -19,7 +19,7 @@ A covered call combines:
 - Long 100 shares of stock
 - Short 1 call option per 100 shares
 
-The strategy limits upside while generating income from call premium. Success depends on strike selection and assignment probability.
+The strategy limits upside while generating income from call premium. Success depends on strike selection and assignment probability. You can price the call and check its Greeks using our [Options Calculator](/options) before committing to a specific strike.
 
 ## Covered Call Selection Algorithm
 

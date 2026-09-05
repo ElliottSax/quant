@@ -362,7 +362,7 @@ Notable dividend characteristics:
 
 ### Q1: What is the best entry point for Industrials sector investments in 2026?
 
-**Answer**: Current valuations at 17.6 P/E offer attractive entry points for long-term investors. Consider dollar-cost averaging into positions over 3-6 months to optimize entry prices. Watch for pullbacks to support levels near $145 for XLI as tactical entry opportunities. Monitor earnings announcements and economic data for volatility-driven opportunities.
+**Answer**: Current valuations at 17.6 P/E offer attractive entry points for long-term investors. Consider dollar-cost averaging into positions over 3-6 months to optimize entry prices. Watch for pullbacks to support levels near $145 for XLI as tactical entry opportunities. You can track these support and resistance levels yourself with our [Charts tool](/charts), which plots adjusted price data with moving averages and Bollinger bands. Monitor earnings announcements and economic data for volatility-driven opportunities.
 
 ### Q2: Which Industrials sector stocks are best for dividend income?
 

@@ -17,7 +17,7 @@ seo_optimized: true
 
 Asian options, also called average-rate options, determine their payoff based on the average price of the underlying asset over a specified period rather than the spot price at expiration. This path-dependent feature makes them cheaper than vanilla options (averaging reduces volatility), harder to manipulate (no single fixing date), and widely used in commodity markets where corporations hedge against average commodity prices over a quarter or year.
 
-For quantitative traders, Asian options present unique challenges and opportunities: pricing requires simulation (no closed-form for arithmetic averages), delta hedging requires tracking the running average, and the reduced premium creates favorable risk-reward profiles for structured trades.
+For quantitative traders, Asian options present unique challenges and opportunities: pricing requires simulation (no closed-form for arithmetic averages), delta hedging requires tracking the running average, and the reduced premium creates favorable risk-reward profiles for structured trades. For the vanilla European case, which does have a closed-form solution, our [Options Calculator](/options) computes Black-Scholes pricing and Greeks directly.
 
 ## Types of Asian Options
 

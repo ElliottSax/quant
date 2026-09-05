@@ -12,7 +12,7 @@ description: "Cryptocurrency markets operate 24/7 with volatility that dwarfs tr
 
 # Backtesting Position Sizing on Crypto
 
-Cryptocurrency markets operate 24/7 with volatility that dwarfs traditional markets. This requires specialized position sizing approaches. Bitcoin can swing 10% in hours; equities typically move 1-2% daily. This guide covers position sizing strategies specifically optimized for cryptocurrency backtesting with Python implementations and real backtesting results.
+Cryptocurrency markets operate 24/7 with volatility that dwarfs traditional markets. This requires specialized position sizing approaches. Bitcoin can swing 10% in hours; equities typically move 1-2% daily. This guide covers position sizing strategies specifically optimized for cryptocurrency backtesting with Python implementations and real backtesting results. Our [Position Size Calculator](/tools/position-size) handles the underlying risk-based sizing math directly from your account size, risk percentage, entry, and stop.
 
 ## Why Crypto Position Sizing Differs
 

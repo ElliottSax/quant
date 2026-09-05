@@ -26,7 +26,7 @@ The success of pairs trading depends on identifying cointegrated asset pairs. Tw
 Z(t) = X(t) - β·Y(t) ~ I(0)
 ```
 
-Where β is the hedge ratio, calculated using Ordinary Least Squares (OLS) regression. The spread Z(t) should oscillate around zero, creating trading opportunities at extremes.
+Where β is the hedge ratio, calculated using Ordinary Least Squares (OLS) regression. The spread Z(t) should oscillate around zero, creating trading opportunities at extremes. If you hit import errors wiring up statsmodels for the ADF or Johansen cointegration tests below, our [statsmodels import reference](/statsmodels-imports) documents which import paths actually work.
 
 **Key Statistical Tests:**
 - Augmented Dickey-Fuller (ADF) test: Validates stationarity (p-value < 0.05)
@@ -273,7 +273,7 @@ The strategy exhibits consistent performance across market conditions with low c
 ```
 f = (p × b - q) / b × 0.25
 ```
-Where p = win rate, b = profit/loss ratio, q = loss rate
+Where p = win rate, b = profit/loss ratio, q = loss rate. Our [Kelly criterion calculator](/tools/kelly-criterion) computes this fraction directly from your own win rate and win/loss ratio.
 
 **Stop-Loss Implementation:** Exit if spread exceeds 3.5σ or 15% loss on position
 

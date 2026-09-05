@@ -364,7 +364,7 @@ A: Absolutely.
 A: For stocks, RSI < 30. For crypto, RSI < 25. Exact level depends on asset.
 
 **Q: Should I use stops when RSI is the signal?**
-A: Always. Stops at swing low or volatility-adjusted distance minimum.
+A: Always. Stops at swing low or volatility-adjusted distance minimum. Once you have a stop distance, our [Position Size Calculator](/tools/position-size) converts it directly into a share count from your account risk.
 
 **Q: Does trend filtering reduce profitable opportunities?**
 A: Yes, but it prevents catastrophic trades. The tradeoff is worth it.

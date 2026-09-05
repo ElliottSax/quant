@@ -25,6 +25,8 @@ The resulting position has:
 - Limited max loss (net debit paid)
 - Highest profit when underlying stays near middle strike
 
+You can lay out these strikes and see the resulting payoff shape visually with our [Options Payoff Diagram tool](/tools/options-payoff) before writing any of the code below.
+
 ## Building Butterfly Spread Bots
 
 ```python

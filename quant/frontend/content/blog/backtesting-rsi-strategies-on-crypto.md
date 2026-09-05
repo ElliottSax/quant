@@ -12,7 +12,7 @@ description: "RSI strategies are particularly effective on cryptocurrency due to
 
 # Backtesting RSI Strategies on Crypto
 
-RSI strategies are particularly effective on cryptocurrency due to extreme volatility and sentiment-driven price swings. This guide covers crypto-specific RSI implementations, parameter optimization for Bitcoin/Ethereum, handling 24/7 trading in backtests, and real backtest results with Python code.
+RSI strategies are particularly effective on cryptocurrency due to extreme volatility and sentiment-driven price swings. This guide covers crypto-specific RSI implementations, parameter optimization for Bitcoin/Ethereum, handling 24/7 trading in backtests, and real backtest results with Python code. If you want to verify the RSI formula against real market data before tuning thresholds, our [indicator formulas reference](/indicator-formulas) cross-checks RSI and other indicators against pandas_ta on real bars.
 
 ## Why RSI Works Exceptionally Well on Crypto
 
