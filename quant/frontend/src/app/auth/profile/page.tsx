@@ -21,12 +21,12 @@ export default function ProfilePage() {
     const fetchProfile = async () => {
       try {
         const { api } = await import('@/lib/api')
-        if (!api.getToken()) {
+        if (!api.auth.getToken()) {
           router.push('/auth/login')
           return
         }
 
-        const data = await api.getProfile() as any
+        const data = await api.auth.getProfile() as any
         setUser(data)
         setFormData({
           name: data.name,
@@ -45,7 +45,7 @@ export default function ProfilePage() {
 
   const handleLogout = async () => {
     const { api } = await import('@/lib/api')
-    api.logout()
+    api.auth.logout()
     router.push('/')
   }
 

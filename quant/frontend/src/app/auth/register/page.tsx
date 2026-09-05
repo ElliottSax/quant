@@ -38,7 +38,7 @@ export default function RegisterPage() {
 
     try {
       const { api } = await import('@/lib/api')
-      await api.register(formData.name, formData.email, formData.password)
+      await api.auth.register(formData.email, formData.password, formData.name)
       router.push('/dashboard')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')

@@ -169,6 +169,43 @@ async function fetchAPI<T>(
 }
 
 export const api = {
+  // Top-level auth conveniences (Navigation.tsx calls api.getToken / api.logout)
+  getToken: getAuthToken,
+  logout: () => setAuthToken(null),
+
+  // Auth
+  auth: {
+    login: async (email: string, password: string) => {
+      const data = await fetchAPI<{ access_token: string; user: any }>('/auth/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+      })
+      setAuthToken(data.access_token)
+      return data
+    },
+    register: async (email: string, password: string, name: string) => {
+      // Backend's User model has no `name` column -- only email/username -- so
+      // there's nowhere for the display name to go. Derive a username instead
+      // of adding a new form field; backend enforces uniqueness and alphanumeric
+      // (+ underscore) 3-50 chars, so this is a best-effort default, not a
+      // guaranteed-unique one -- a collision surfaces as a normal fetchAPI error.
+      const base = (name || email.split('@')[0])
+        .toLowerCase()
+        .replace(/[^a-z0-9_]/g, '_')
+        .slice(0, 42) || 'user'
+      const username = `${base}_${Math.random().toString(36).slice(2, 8)}`
+      return fetchAPI<{ message: string }>('/auth/register', {
+        method: 'POST',
+        body: JSON.stringify({ email, password, username }),
+      })
+    },
+    logout: () => {
+      setAuthToken(null)
+    },
+    getToken: () => getAuthToken(),
+    getProfile: () => fetchAPI<any>('/auth/profile'),
+  },
+
   // Politicians
   politicians: {
     list: (minTrades: number = 10) =>

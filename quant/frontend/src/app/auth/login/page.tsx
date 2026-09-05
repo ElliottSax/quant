@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     try {
       const { api } = await import('@/lib/api')
-      await api.login(email, password)
+      await api.auth.login(email, password)
       router.push('/dashboard')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
