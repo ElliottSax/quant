@@ -4,14 +4,23 @@
  * SSR-safe: on the server (no window) reads return empty and writes are no-ops.
  */
 
+import { BacktestResult } from './types';
+
 export interface BacktestResultRecord {
   id: string;
   name: string;
   symbol: string;
-  strategyId?: string;
+  strategy?: string;
+  strategyLabel?: string;
+  startDate: string;
+  endDate: string;
+  initialCapital: number;
   totalReturn: number;
+  sharpeRatio: number;
+  winRate: number;
+  maxDrawdown: number;
   equity?: number[];
-  result?: unknown;
+  result?: BacktestResult;
   createdAt: string;
   [key: string]: unknown;
 }
@@ -50,7 +59,13 @@ export function saveBacktestResult(record: Partial<BacktestResultRecord>): strin
   const full: BacktestResultRecord = {
     name: 'Untitled backtest',
     symbol: '',
+    startDate: '',
+    endDate: '',
+    initialCapital: 0,
     totalReturn: 0,
+    sharpeRatio: 0,
+    winRate: 0,
+    maxDrawdown: 0,
     createdAt: new Date().toISOString(),
     ...record,
     id,

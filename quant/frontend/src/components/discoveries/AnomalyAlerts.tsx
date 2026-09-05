@@ -36,7 +36,7 @@ function AnomalyCard({ anomaly }: { anomaly: CriticalAnomaly }) {
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xl">{severityConfig.icon}</span>
             <div>
-              <h4 className="font-semibold">{getAnomalyTitle(anomaly.anomaly_type)}</h4>
+              <h4 className="font-semibold">{getAnomalyTitle(anomaly.anomaly_type || 'Unknown')}</h4>
               <Link
                 href={`/politicians/${anomaly.politician_id}`}
                 className="text-sm text-primary hover:underline"
@@ -51,7 +51,7 @@ function AnomalyCard({ anomaly }: { anomaly: CriticalAnomaly }) {
 
           {/* Evidence Summary */}
           <div className="space-y-2">
-            {Object.entries(anomaly.evidence).slice(0, 3).map(([key, value]) => (
+            {Object.entries(anomaly.evidence || {}).slice(0, 3).map(([key, value]) => (
               <div key={key} className="flex items-center gap-2 text-xs">
                 <span className="text-muted-foreground">{formatEvidenceKey(key)}:</span>
                 <span className="font-medium">{formatEvidenceValue(value)}</span>
@@ -69,7 +69,7 @@ function AnomalyCard({ anomaly }: { anomaly: CriticalAnomaly }) {
             {(anomaly.severity * 100).toFixed(0)}% Severity
           </div>
           <div className="text-xs text-muted-foreground mt-2">
-            {formatDistanceToNow(new Date(anomaly.detection_date), { addSuffix: true })}
+            {anomaly.detection_date ? formatDistanceToNow(new Date(anomaly.detection_date), { addSuffix: true }) : 'Recently'}
           </div>
         </div>
       </div>

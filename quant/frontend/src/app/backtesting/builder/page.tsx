@@ -48,7 +48,7 @@ function newCondition(): Condition {
     // React key only — never used as data.
     id: `c${++conditionSeq}`,
     indicator: 'sma',
-    operator: 'crosses_above',
+    operator: 'cross_above',
     referenceType: 'indicator',
     referenceIndicator: 'sma',
     referenceValue: 50,
@@ -98,7 +98,7 @@ export default function StrategyBuilderPage() {
       conditions.push({
         ...newCondition(),
         indicator: 'sma',
-        operator: 'crosses_above',
+        operator: 'cross_above',
         referenceType: 'indicator',
         referenceIndicator: 'sma',
         params: { period: strategy.parameters[0]?.default || 20 },
@@ -107,7 +107,7 @@ export default function StrategyBuilderPage() {
       conditions.push({
         ...newCondition(),
         indicator: 'rsi',
-        operator: 'less_than',
+        operator: 'lt',
         referenceType: 'value',
         referenceValue: strategy.parameters.find(p => p.name === 'oversold')?.default || 30,
         params: { period: strategy.parameters[0]?.default || 14 },
@@ -116,7 +116,7 @@ export default function StrategyBuilderPage() {
       conditions.push({
         ...newCondition(),
         indicator: 'macd',
-        operator: 'crosses_above',
+        operator: 'cross_above',
         referenceType: 'value',
         referenceValue: 0,
         params: { fast_period: 12, slow_period: 26, signal_period: 9 },
@@ -125,7 +125,7 @@ export default function StrategyBuilderPage() {
       conditions.push({
         ...newCondition(),
         indicator: 'sma',
-        operator: 'crosses_above',
+        operator: 'cross_above',
         referenceType: 'indicator',
         referenceIndicator: 'sma',
         params: { period: strategy.parameters[0]?.default || 20 },
@@ -152,7 +152,7 @@ export default function StrategyBuilderPage() {
   const getPreviewText = () => {
     const entries = entryConditions.map(c => {
       const ind = INDICATORS.find(i => i.id === c.indicator)
-      const op = CONDITION_OPERATORS.find(o => o.value === c.operator)
+      const op = CONDITION_OPERATORS.find(o => o.operator === c.operator)
       const ref = c.referenceType === 'value'
         ? c.referenceValue.toString()
         : INDICATORS.find(i => i.id === c.referenceIndicator)?.name || c.referenceIndicator
@@ -372,7 +372,7 @@ export default function StrategyBuilderPage() {
                     <div>
                       <label className="text-xs text-muted-foreground mb-1 block">Operator</label>
                       <select value={cond.operator} onChange={(e) => updateCondition('entry', cond.id, { operator: e.target.value as ConditionOperator })} className="input-field text-sm">
-                        {CONDITION_OPERATORS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                        {CONDITION_OPERATORS.map(o => <option key={o.operator} value={o.operator}>{o.label}</option>)}
                       </select>
                     </div>
                     <div>
@@ -425,7 +425,7 @@ export default function StrategyBuilderPage() {
                     <div>
                       <label className="text-xs text-muted-foreground mb-1 block">Operator</label>
                       <select value={cond.operator} onChange={(e) => updateCondition('exit', cond.id, { operator: e.target.value as ConditionOperator })} className="input-field text-sm">
-                        {CONDITION_OPERATORS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                        {CONDITION_OPERATORS.map(o => <option key={o.operator} value={o.operator}>{o.label}</option>)}
                       </select>
                     </div>
                     <div>

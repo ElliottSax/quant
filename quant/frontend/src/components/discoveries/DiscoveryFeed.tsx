@@ -60,13 +60,13 @@ function DiscoveryCard({ discovery }: { discovery: Discovery }) {
     },
   }
 
-  const config = patternTypeConfig[discovery.pattern_type] || {
+  const config = (discovery.pattern_type && patternTypeConfig[discovery.pattern_type]) || {
     icon: '🔍',
-    label: discovery.pattern_type,
+    label: discovery.pattern_type || 'Unknown',
     color: 'gray',
   }
 
-  const isNew = new Date(discovery.discovery_date) > new Date(Date.now() - 24 * 60 * 60 * 1000)
+  const isNew = discovery.discovery_date ? new Date(discovery.discovery_date) > new Date(Date.now() - 24 * 60 * 60 * 1000) : false
 
   return (
     <div className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all">
@@ -99,7 +99,9 @@ function DiscoveryCard({ discovery }: { discovery: Discovery }) {
 
         <div className="text-right">
           <div className="text-xs text-muted-foreground">
-            {formatDistanceToNow(new Date(discovery.discovery_date), { addSuffix: true })}
+            {discovery.discovery_date
+              ? formatDistanceToNow(new Date(discovery.discovery_date), { addSuffix: true })
+              : 'Recently'}
           </div>
         </div>
       </div>

@@ -46,6 +46,7 @@ function Blocks({ blocks }: { blocks: Block[] }) {
         if (b.type === 'h2') return <h3 key={i} className="text-2xl font-bold mt-8 mb-3 text-white"><Inline text={b.text} /></h3>
         if (b.type === 'h3') return <h4 key={i} className="text-lg font-semibold mt-6 mb-2 text-white"><Inline text={b.text} /></h4>
         if (b.type === 'p') return <p key={i} className="mb-4 leading-7 text-gray-300"><Inline text={b.text} /></p>
+        if (b.type !== 'ul' && b.type !== 'ol') return null
         const items = b.items.map((it, j) => (
           <li key={j} className="leading-7 text-gray-300"><Inline text={it} /></li>
         ))

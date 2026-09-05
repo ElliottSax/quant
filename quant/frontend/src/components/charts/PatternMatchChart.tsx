@@ -30,7 +30,7 @@ export function PatternMatchChart({
   height = 300,
 }: PatternMatchChartProps) {
   const data = matches.map(match => ({
-    date: new Date(match.match_date).toLocaleDateString(),
+    date: match.match_date ? new Date(match.match_date).toLocaleDateString() : '',
     similarity: match.similarity_score * 100,
     confidence: match.confidence * 100,
     outcome30d: match.outcome_30d_trades,

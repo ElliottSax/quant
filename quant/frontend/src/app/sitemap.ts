@@ -79,11 +79,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const tickers = new Set(trades.map((t) => t.ticker.toUpperCase()))
     const members = new Set(trades.map((t) => memberSlug(t.member)).filter(Boolean))
     tickerEntries = [
-      ...[...tickers].map((tk) => ({
+      ...Array.from(tickers).map((tk) => ({
         url: `${baseUrl}/congress-stock-trades/${tk}`,
         lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
       })),
-      ...[...members].map((m) => ({
+      ...Array.from(members).map((m) => ({
         url: `${baseUrl}/congress-stock-trades/member/${m}`,
         lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
       })),

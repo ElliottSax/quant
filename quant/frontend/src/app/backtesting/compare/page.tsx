@@ -17,7 +17,7 @@ const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444']
 
 function computeEquityData(record: BacktestResultRecord) {
   const result = record.result
-  return result.equity_curve?.map((point: any, i: number) => ({
+  return result?.equity_curve?.map((point: any, i: number) => ({
     day: point.day || i + 1,
     equity: point.equity || point.value || record.initialCapital,
   })) || []

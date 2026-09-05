@@ -21,6 +21,8 @@ export interface StrategyDefinition {
   category: StrategyCategory;
   tier: StrategyTier;
   parameters: StrategyParameter[];
+  color?: string;
+  lastBacktestedDate?: string;
 }
 
 export interface Indicator {

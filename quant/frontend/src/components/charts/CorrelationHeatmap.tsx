@@ -13,14 +13,17 @@ interface CorrelationHeatmapProps {
 }
 
 export function CorrelationHeatmap({ correlations, title }: CorrelationHeatmapProps) {
-  // Build unique list of politicians
+  // Build unique list of politicians (drop any missing a name)
   const politicians = Array.from(
-    new Set(
-      correlations.flatMap(c => [
-        { id: c.politician1_id, name: c.politician1_name },
-        { id: c.politician2_id, name: c.politician2_name },
-      ])
-    )
+    new Map(
+      correlations
+        .flatMap(c => [
+          { id: c.politician1_id, name: c.politician1_name },
+          { id: c.politician2_id, name: c.politician2_name },
+        ])
+        .filter((p): p is { id: string; name: string } => Boolean(p.id) && Boolean(p.name))
+        .map(p => [p.id, p] as const)
+    ).values()
   )
 
   // Build correlation matrix

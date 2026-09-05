@@ -114,11 +114,11 @@ export async function getCongressTrades(): Promise<CongressData | null> {
     tickerMap.set(t.ticker, k)
   }
 
-  const topMembers = [...memberMap.entries()]
+  const topMembers = Array.from(memberMap.entries())
     .map(([name, v]) => ({ name, ...v }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 10)
-  const topTickers = [...tickerMap.entries()]
+  const topTickers = Array.from(tickerMap.entries())
     .map(([ticker, v]) => ({ ticker, ...v }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 10)
