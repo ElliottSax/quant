@@ -54,7 +54,7 @@ We use Z-scores as our primary signal. The Z-score measures how many standard de
 
 **Z = (Price - Moving_Average) / Standard_Deviation**
 
-For our backtest, we use a 20-day simple moving average and 20-day standard deviation as the lookback window. This balance was selected after optimizing across 50, 100, and 200-day alternatives on out-of-sample data from 2010-2018.
+For our backtest, we use a 20-day simple moving average and 20-day standard deviation as the lookback window. This balance was selected after optimizing across 50, 100, and 200-day alternatives on out-of-sample data from 2010-2018. You can plot these moving averages against live price data yourself using our [Charts tool](/charts) before committing to a lookback window.
 
 **Entry Rules:**
 - **Long entry**: Z-score falls below -2.0
@@ -72,7 +72,7 @@ A standard allocation is 1% risk per trade, with a 2x ATR multiplier for the sto
 
 ## Backtest Results: S&P 500 Components (2010-2025)
 
-We backtested this mean reversion strategy on all S&P 500 components with the following parameters:
+We backtested this mean reversion strategy on all S&P 500 components with the following parameters. You can configure this same Z-score entry/exit logic against your own ticker list using our [Strategy Builder](/backtesting/builder) — no code required:
 
 | Metric | Value |
 |--------|-------|

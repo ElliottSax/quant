@@ -11,7 +11,7 @@ keywords: ["walk-forward optimization", "avoiding overfitting backtests", "walk 
 
 Walk-forward optimization (WFO) is the gold standard methodology for validating [trading strategies](/blog/backtesting-trading-strategies) against overfitting. Overfitting occurs when a strategy's parameters are tuned so precisely to historical data that they capture noise rather than genuine market patterns, producing impressive backtested results that collapse in live trading. Walk-forward optimization addresses this by repeatedly optimizing on past data and testing on unseen future data, simulating the actual experience of a trader who periodically re-optimizes their strategy.
 
-This guide covers the mechanics of walk-forward optimization, implementation in Python, interpretation of results, and the practical decisions involved in configuring the analysis.
+This guide covers the mechanics of walk-forward optimization, implementation in Python, interpretation of results, and the practical decisions involved in configuring the analysis. Before scripting the full loop below, you can sanity-check an individual in-sample/out-of-sample split using our [Strategy Builder](/backtesting/builder) to see how a given parameter set behaves on each window.
 
 ## The Overfitting Problem
 

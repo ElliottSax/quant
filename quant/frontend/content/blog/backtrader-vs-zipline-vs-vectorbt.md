@@ -516,4 +516,4 @@ Choose frameworks based on your specific needs:
 - **Research**: Zipline for academic-grade accuracy
 - **Production**: Combination approach using multiple frameworks
 
-Each framework excels in different domains, and many successful traders use multiple tools in their workflow.
+Each framework excels in different domains, and many successful traders use multiple tools in their workflow. If you want to validate a strategy idea before picking a framework and writing any code, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.

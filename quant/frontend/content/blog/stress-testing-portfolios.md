@@ -42,7 +42,7 @@ Construct plausible but unprecedented scenarios that test specific portfolio vul
 
 **Common hypothetical scenarios:**
 
-**Interest rate shock**: Parallel shift of +200 bps across the yield curve over 2 weeks. Estimate impact using duration and convexity:
+**Interest rate shock**: Parallel shift of +200 bps across the yield curve over 2 weeks. You can check today's actual [Treasury yield curve](/yield-curve) as your starting point before applying the shock. Estimate impact using duration and convexity:
 
 **P&L = -Duration * delta_y + 0.5 * Convexity * (delta_y)^2**
 
@@ -163,4 +163,4 @@ Beyond portfolio-level stress testing, ML models require model-specific stress t
 
 ### Should stress test results affect position sizing?
 
-Yes. If a stress test reveals that a particular position or concentration would produce losses exceeding the portfolio's risk tolerance under a plausible scenario, [position sizing](/blog/position-sizing-strategies) should be adjusted. The standard approach is to calculate the "stressed risk budget" -- the position size that would keep stressed losses within acceptable limits -- and use the minimum of the standard risk budget and the stressed risk budget for actual sizing.
+Yes. If a stress test reveals that a particular position or concentration would produce losses exceeding the portfolio's risk tolerance under a plausible scenario, [position sizing](/blog/position-sizing-strategies) should be adjusted. The standard approach is to calculate the "stressed risk budget" -- the position size that would keep stressed losses within acceptable limits -- and use the minimum of the standard risk budget and the stressed risk budget for actual sizing. Our [Position Size Calculator](/tools/position-size) turns that stressed risk budget into an actual share count from your account size, risk percentage, entry and stop.

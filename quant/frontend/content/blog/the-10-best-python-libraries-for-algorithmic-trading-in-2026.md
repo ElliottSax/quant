@@ -46,7 +46,7 @@ Every algorithmic trading workflow is built on Pandas and NumPy. Pandas handles 
 
 ## TA-Lib
 
-TA-Lib is the industry standard for technical analysis computations. It provides over 150 indicators—including RSI, MACD, Bollinger Bands, and ADX—implemented in C for maximum performance. The Python wrapper (`TA-Lib`) makes these functions accessible in just a few lines of code. If your strategies rely on technical indicators, TA-Lib is significantly faster than pure-Pandas implementations and is widely used in production trading systems.
+TA-Lib is the industry standard for technical analysis computations. It provides over 150 indicators—including RSI, MACD, Bollinger Bands, and ADX—implemented in C for maximum performance. The Python wrapper (`TA-Lib`) makes these functions accessible in just a few lines of code. If your strategies rely on technical indicators, TA-Lib is significantly faster than pure-Pandas implementations and is widely used in production trading systems. Worth checking: our [Indicator Formulas reference](/indicator-formulas) cross-checks RSI, MACD, ADX and Bollinger outputs against independent implementations on real bars, including where they disagree.
 
 ## QuantLib-Python
 
@@ -66,4 +66,4 @@ Jesse is a Python framework designed specifically for crypto algorithmic trading
 
 ## Bottom Line
 
-The best Python library for algorithmic trading depends on your asset class, trading frequency, and technical experience. For fast research and optimization, **VectorBT** is the clear winner. For production-grade backtesting with live trading support, **Backtrader** and **Zipline Reloaded** remain reliable workhorses. Crypto traders should start with **CCXT** and **Jesse**, while derivatives-focused quants need **QuantLib**. Whatever your approach, the combination of **Pandas**, **NumPy**, and **TA-Lib** will form the backbone of your stack. Start with one framework, master its conventions, and expand from there—the 2026 Python ecosystem has never been more powerful for automated trading.
+The best Python library for algorithmic trading depends on your asset class, trading frequency, and technical experience. For fast research and optimization, **VectorBT** is the clear winner. For production-grade backtesting with live trading support, **Backtrader** and **Zipline Reloaded** remain reliable workhorses. If you'd rather test an idea before installing any of these, our [Strategy Builder](/backtesting/builder) runs a no-code backtest directly in the browser. Crypto traders should start with **CCXT** and **Jesse**, while derivatives-focused quants need **QuantLib**. Whatever your approach, the combination of **Pandas**, **NumPy**, and **TA-Lib** will form the backbone of your stack. Start with one framework, master its conventions, and expand from there—the 2026 Python ecosystem has never been more powerful for automated trading.
