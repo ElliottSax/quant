@@ -104,6 +104,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tools/risk-adjusted-return',
     '/congress-stock-trades',
     '/congress-stock-trades/weekly',
+    '/congress-stock-trades/late-filers',
     '/blog',
     '/politicians',
     '/dashboard',

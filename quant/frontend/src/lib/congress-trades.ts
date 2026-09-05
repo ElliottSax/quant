@@ -27,6 +27,11 @@ export interface Trade {
   chamber: 'House' | 'Senate'
   date: Date | null
   transactionDate: string
+  disclosureDate: string
+  // Calendar days between the transaction and its disclosure, when both dates
+  // parse cleanly. Null if either date is missing/malformed. Used to surface
+  // STOCK Act disclosure-timeliness (the Act requires filing within 45 days).
+  daysToDisclose: number | null
   assetDescription: string
   type: string
   amount: string
@@ -55,6 +60,15 @@ function parseDate(s: string): Date | null {
   return isNaN(d.getTime()) ? null : d
 }
 
+const MS_PER_DAY = 24 * 60 * 60 * 1000
+function daysBetween(from: Date | null, to: Date | null): number | null {
+  if (!from || !to) return null
+  const days = Math.round((to.getTime() - from.getTime()) / MS_PER_DAY)
+  // Negative gaps mean a data/parsing anomaly (disclosure can't predate the
+  // transaction) — treat as unknown rather than a real "early" filing.
+  return days >= 0 ? days : null
+}
+
 export interface CongressData {
   trades: Trade[]
   lastUpdated: string
@@ -76,6 +90,8 @@ async function fetchChamber(path: string, chamber: 'House' | 'Senate', key: stri
         chamber,
         date: parseDate(t.transactionDate),
         transactionDate: t.transactionDate,
+        disclosureDate: t.disclosureDate,
+        daysToDisclose: daysBetween(parseDate(t.transactionDate), parseDate(t.disclosureDate)),
         assetDescription: t.assetDescription,
         type: t.type,
         amount: t.amount,
