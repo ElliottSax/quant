@@ -5,6 +5,7 @@ import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
 import { extractFaqs } from '@/lib/faq-extract'
+import { extractHowTo } from '@/lib/howto-extract'
 import {
   readFrontmatterValue,
   readFrontmatterArray,
@@ -352,9 +353,11 @@ export default async function BlogArticlePage({
       })
 
   // Rich-result markup: Article + BreadcrumbList always, plus FAQPage when the
-  // article actually contains a Q&A section (markup must match visible content).
+  // article actually contains a Q&A section, and HowTo when it's a numbered
+  // "Step 1 / Step 2 / ..." walkthrough (markup must match visible content).
   const url = `https://quantengines.com/blog/${slug}`
   const faqs = extractFaqs(body)
+  const howToSteps = extractHowTo(body)
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -386,6 +389,19 @@ export default async function BlogArticlePage({
                 '@type': 'Question',
                 name: f.question,
                 acceptedAnswer: { '@type': 'Answer', text: f.answer },
+              })),
+            },
+          ]
+        : []),
+      ...(howToSteps.length
+        ? [
+            {
+              '@type': 'HowTo',
+              name: frontmatter.title,
+              step: howToSteps.map((s) => ({
+                '@type': 'HowToStep',
+                name: s.name,
+                text: s.text,
               })),
             },
           ]
