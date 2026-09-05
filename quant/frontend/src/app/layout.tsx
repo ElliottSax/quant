@@ -19,6 +19,12 @@ export const dynamic = 'force-dynamic'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
+// Google Analytics (GA4). Reads NEXT_PUBLIC_GA_MEASUREMENT_ID (set in Vercel),
+// matching the other sites in this portfolio. Renders nothing if the id is
+// absent, so local/dev builds stay untracked instead of shipping telemetry
+// under a hardcoded, portfolio-wide-visible measurement ID.
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
+
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link
@@ -105,8 +111,10 @@ export default function RootLayout({
         {/* Sends pageviews on client-side route changes (initial view comes from
             gtag config below, so this skips its first run). */}
         <GaRouteTracker />
+        {GA_ID && (
+        <>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-PHX6T0R1Y1"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -114,7 +122,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-PHX6T0R1Y1', {
+            gtag('config', '${GA_ID}', {
               send_page_view: true,
               anonymize_ip: false
             });
@@ -171,6 +179,8 @@ export default function RootLayout({
             });
           `}
         </Script>
+        </>
+        )}
         {/* 2026-08-21: these three were `next/script` with strategy="afterInteractive"
             -- correct for the Google Analytics tags below (a tracker has no reason to
             block or be present in the initial HTML), wrong for JSON-LD structured data
