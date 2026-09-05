@@ -63,6 +63,8 @@ The concatenated out-of-sample results represent a more realistic estimate of li
 
 ## Python Implementation
 
+A grid search across even a few parameters, repeated over many walk-forward windows, adds up to a very large number of backtest calls -- see our [benchmark of vectorized vs. loop-based backtesting](/blog/vectorized-vs-loop-backtesting-numba) for how much the per-call implementation speed matters at that scale before you build the optimizer below around a slow strategy function.
+
 ```python
 import pandas as pd
 import numpy as np

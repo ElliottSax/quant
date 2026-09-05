@@ -504,9 +504,11 @@ if __name__ == "__main__":
 
 ## Performance Characteristics
 
-- **VectorBT**: 10-100x faster for parameter optimization
+- **VectorBT**: 10-100x faster for parameter optimization. See our [measured benchmark of vectorized vs. loop-based backtesting](/blog/vectorized-vs-loop-backtesting-numba) for exactly where that speedup comes from, and why a Numba-compiled loop can beat vectorized pandas too.
 - **Backtrader**: Moderate speed, realistic execution
 - **Zipline**: Slower but most accurate institutional-grade
+
+Before adopting VectorBT for anything beyond a quick prototype, read through our [VectorBT `from_signals` vs. `from_orders` pitfalls guide](/blog/vectorbt-portfolio-from-signals-vs-from-orders) -- the direction, fees, and signal-timing defaults shown there change results by double-digit percentages if left unchecked, independent of which framework you ultimately choose.
 
 ## Conclusion
 
