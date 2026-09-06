@@ -1,3 +1,38 @@
+# ⚠️ FOLLOW-UP — 2026-09-06 — content-engine's quant output batch investigated
+# and DELETED (never connected to production) ⚠️
+# ============================================================
+# content-engine (C:\projects\content-engine, a separate repo -- the shared
+# article-generation pipeline for all 4 portfolio sites) has/had a generated-
+# article batch targeting this site sitting in its gitignored
+# output/articles/quant/ directory: 1,653 files (1,614 .md + manifests/
+# reports), produced across 3 batches on 2026-03-16/03-21. It was NEVER wired
+# into this site's production content system -- zero rows/references from
+# this pipeline exist in content/blog/ or anywhere quant's frontend reads
+# from. Do not assume any future discovery of that directory (or its
+# manifests: HAIKU_ARTICLES_MANIFEST.txt, GENERATION_SUMMARY.txt) means
+# there's untapped content ready to publish.
+#
+# A quality investigation sampled 18 of the 1,614 articles: 16 were severe
+# template junk, only 2 were genuinely non-templated. Verdict:
+# confirmed-unsafe-delete -- same combinatorial-mill pattern that caused
+# dividendengines.com's real Google scaled-content penalty. Two concrete
+# examples: (1) 87.7% of the corpus (1,415/1,614 files) share the identical
+# content-free meta description "This article provides valuable insights and
+# information," alongside broken YAML frontmatter with unbalanced/stacked
+# quote characters; (2) at least 10 unrelated "haiku-market-making-on-
+# [asset]-*.md" stub files across totally different asset classes (crypto,
+# emerging markets, futures, options, S&P 500) share the byte-identical
+# fabricated stat line "Sharpe: 1.45, Drawdown: -14.3%, Return: 11.2%" --
+# proof the numbers were a hardcoded placeholder, never computed.
+#
+# Raw output was DELETED from content-engine's output directory (not left
+# pending review) -- 11.27 MB / 1,653 files removed. This closes the loop:
+# nobody needs to re-discover or re-investigate this batch. If content-
+# engine's pipeline produces a fresh quant batch in the future, it needs a
+# from-scratch quality check -- this investigation does not vouch for
+# anything regenerated later.
+# ============================================================
+
 # ⚠️ FOLLOW-UP — 2026-09-06 — 4 congress-* posts noindexed for fabricated
 # named-legislator dollar figures — HUMAN ACTION NEEDED ⚠️
 # ============================================================
