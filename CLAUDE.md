@@ -1,3 +1,42 @@
+# ⚠️ SESSION CHECKPOINT — 2026-09-06 — dead-code/bloat cleanup ⚠️
+# ============================================================
+# Independently re-verified a prior audit's dead-code/bloat findings (did not
+# trust it blindly), then acted only on what I could personally confirm:
+#
+# Deleted (confirmed zero references anywhere, git rm -r, commit e1b5d15):
+# app/blog/ (185 root-level orphan files), generated-articles/ (128 templated
+# files), posts/ (25 BookCLI-generated files), marketing/ (358 files incl.
+# marketing/blog + an orphaned sitemap.xml), and 110 loose .md files sitting
+# inside quant/frontend/src/app/blog/ itself (inert next to page.tsx/
+# [slug]/page.tsx, which read content/blog/ one level up, not this folder).
+#
+# Renamed + flagged dormant, NOT deleted (naming-collision clusters that
+# could be unfinished-but-wanted work; each has a DORMANT.md explaining the
+# open decision): content/articles/ -> content/_dormant-articles/ (sits
+# beside the live content/blog/, one file is real non-templated content),
+# and root quant-backend/ -> _dormant-quant-backend-stub/ (one-character
+# collision with the real quant/backend/, contains only a stale
+# orchestration CLAUDE.md, no code).
+#
+# Explicitly left alone: quant/backend/app/api/v1/subscription.py -- also
+# confirmed dead (never imported by api/v1/__init__.py; only the plural
+# subscriptions.py is registered) and confirmed to be the literal cause of
+# frontend calls to /api/v1/subscription/* 404ing in production today
+# (settings/subscription/page.tsx and settings/referral/page.tsx both call
+# the singular path). Not touched because it sits inside the paused
+# free-forever-vs-paid pricing decision below -- Elliott said hold off
+# without his sign-off, and fixing this audit pass didn't require touching it.
+# Also left the 203 root *.md status/report files alone (too many to verify
+# individually this pass).
+#
+# Verified: npx tsc --noEmit clean (node_modules reinstalled -- had been
+# cleared repo-wide during the disk-space emergency). Pushed straight to
+# main (autopublish branch was main + 2 commits, fast-forwarded); new
+# production deploy confirmed Ready and aliased to quantengines.com; curled
+# homepage, /blog, a live post, and /congress-stock-trades/late-filers, all
+# HTTP 200.
+# ============================================================
+
 # ⚠️ SESSION CHECKPOINT — 2026-09-05 — READ THIS FIRST, IT SUPERSEDES BELOW ⚠️
 # ============================================================
 # A long session today audited + fixed this site and 3 siblings
