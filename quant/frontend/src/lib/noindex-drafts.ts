@@ -457,19 +457,29 @@ export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
   //
   // Same defect class as 'mean-reversion-trading-strategy' above (a number
   // presented as measured/disclosed when nothing measured or disclosed it)
-  // but with real, named, identifiable people as the subject in 3 of the 4
-  // -- noindexed rather than deleted so the underlying analysis survives
-  // for a human fact-check/rewrite pass. The identical pattern (named
-  // legislators + fabricated P&L) also appears in
-  // 'congress-semiconductor-stock-trades' (Rep. Greg Walden, Rep. Tom
-  // Emmer, Sen. Ron Johnson) and 'congress-big-tech-antitrust-trading'
-  // (Rep. Ken Buck, Rep. Jerry Nadler) -- both OUTSIDE the three topical
-  // angles (bank-crisis, healthcare/FDA, AI-investment) this pass was
-  // scoped to. Left indexed; flagged in CLAUDE.md as a follow-up.
+  // but with real, named, identifiable people as the subject in 3 of the 4.
+  //
+  // Follow-up (same day): the identical pattern also confirmed in two more
+  // posts outside the original three topical angles --
+  // 'congress-semiconductor-stock-trades' attributes exact profit/win-rate
+  // figures to Rep. Greg Walden (R-OR: "$389,000... 76.4%"), Rep. Tom Emmer
+  // (R-MN: "$347,000... 81.2%"), and Sen. Ron Johnson (R-WI: "$234,000"),
+  // plus an aggregate "$467 million" congress-wide semiconductor-purchase
+  // claim with per-event "Congressional member profit" figures ($5.77M,
+  // $3.13M, $6.05M) that no aggregate PTR data could ever produce.
+  // 'congress-big-tech-antitrust-trading' attributes exact per-trade profit
+  // to Rep. Ken Buck (R-CO: "$64.8K", "$38.4K", "Q1 2026 ... $187,400") and
+  // Rep. Jerry Nadler (D-NY: "$51K"), plus an aggregate "$2.1 billion"
+  // congress-wide Big Tech holdings claim. Same defect, same fix.
+  //
+  // Noindexed rather than deleted so the underlying analysis survives for a
+  // human fact-check/rewrite pass.
   'congress-bank-stock-trades-during-crisis',
   'congress-healthcare-stock-trades-analysis',
   'congress-pharmaceutical-trades-before-votes',
   'congress-ai-stock-investments-2026',
+  'congress-semiconductor-stock-trades',
+  'congress-big-tech-antitrust-trading',
 ])
 
 /**
