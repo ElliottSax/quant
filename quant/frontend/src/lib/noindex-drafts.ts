@@ -399,6 +399,77 @@ export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
   'defi-article-18-how-to-use-aave-lending-borrowing-protocol',
   'defi-article-19-best-defi-portfolio-tracking-tools-2026',
   'defi-article-20-defi-taxes-guide-complete-strategy-2026',
+
+  // ---------------------------------------------------------------------------
+  // 4 congress-* posts: FABRICATED DOLLAR FIGURES ATTRIBUTED TO REAL, NAMED
+  // SITTING LEGISLATORS (measured 2026-09-06)
+  // ---------------------------------------------------------------------------
+  //
+  // Found during a second pass over the 25 congress-* posts kept after the
+  // 2026-09-05/06 template-duplication prune -- that pass checked for
+  // templating, not factual accuracy. These four present hyper-precise
+  // dollar amounts, realized-gain figures, and "confidential briefing"
+  // timelines as fact. Checked against this site's own real STOCK Act data
+  // source (src/lib/congress-trades.ts, FMP API parsing
+  // efdsearch.senate.gov + disclosures-clerk.house.gov, the same feed
+  // powering /congress-stock-trades/late-filers): actual Periodic
+  // Transaction Reports disclose amounts only as broad ranges (e.g.
+  // "$1,001 - $15,000", "$1,000,001 - $5,000,000", see AMOUNT_RE in that
+  // file) and never report realized gains, win rates, or briefing dates.
+  // None of that data -- or any other checkable public record -- supports
+  // the specific figures below. This is a more serious problem than
+  // templating: false, specific financial/insider-trading claims about
+  // real, identifiable people, published as fact on a commercial site.
+  //
+  // 'congress-bank-stock-trades-during-crisis': attributes exact trade and
+  // P&L figures to Sen. Tim Scott (R-SC) -- "$8.2M in JPMorgan, BAC, GS",
+  // "Sold $1.98M in regional banks", "Sidestepped $1.8M+ in losses" -- and
+  // Rep. Patrick McHenry (R-NC) -- "$3.4M in major banks", "$847K in
+  // regional banks", sold "$806K" -- plus an invented "Fed confidential
+  // briefings to Banking Committee: February 1 (morning)" timeline with no
+  // source.
+  //
+  // 'congress-healthcare-stock-trades-analysis': attributes exact realized
+  // gains to Rep. John Boozman (R-AR) ("$412,000 ... win rate 81.6%") and
+  // Sen. Patty Murray (D-WA) ("$348,000 ... win rate 73.8%"). PTRs do not
+  // report realized gains or win rates at all -- these numbers have no
+  // source.
+  //
+  // 'congress-pharmaceutical-trades-before-votes': attributes exact
+  // purchase and profit figures to Rep. J. French Hill (R-AR) ("$1.2
+  // million in Eli Lilly", "$800K in Merck", "$600K in Pfizer", "Total
+  // pharmaceutical profit Q1 2026: $187,400") and Rep. Greg Walden (R-OR)
+  // ("$1.8 million ... $1.4 million ... $1.1 million", profit "$234,100"),
+  // plus an unsourced "Trial data briefing: January 6 (before public
+  // release)" claim.
+  //
+  // 'congress-ai-stock-investments-2026': presents invented private-
+  // placement allocations as fact -- "Congressional members allocated: $67
+  // million in preferred stock" in an OpenAI Series C round and "$43
+  // million" in an Anthropic Series D round -- plus per-event profit
+  // figures ("$37.2 million", "$9.98 million", "$10.45 million") tied to
+  // specific hearing dates. No disclosed mechanism gives members of
+  // Congress private funding-round allocations, and no PTR data supports
+  // any of these totals. (No single legislator is named here, unlike the
+  // other three, but the fabrication pattern and factual-risk are
+  // identical, and the post was flagged alongside the others as the
+  // "AI-investment angle" case.)
+  //
+  // Same defect class as 'mean-reversion-trading-strategy' above (a number
+  // presented as measured/disclosed when nothing measured or disclosed it)
+  // but with real, named, identifiable people as the subject in 3 of the 4
+  // -- noindexed rather than deleted so the underlying analysis survives
+  // for a human fact-check/rewrite pass. The identical pattern (named
+  // legislators + fabricated P&L) also appears in
+  // 'congress-semiconductor-stock-trades' (Rep. Greg Walden, Rep. Tom
+  // Emmer, Sen. Ron Johnson) and 'congress-big-tech-antitrust-trading'
+  // (Rep. Ken Buck, Rep. Jerry Nadler) -- both OUTSIDE the three topical
+  // angles (bank-crisis, healthcare/FDA, AI-investment) this pass was
+  // scoped to. Left indexed; flagged in CLAUDE.md as a follow-up.
+  'congress-bank-stock-trades-during-crisis',
+  'congress-healthcare-stock-trades-analysis',
+  'congress-pharmaceutical-trades-before-votes',
+  'congress-ai-stock-investments-2026',
 ])
 
 /**
