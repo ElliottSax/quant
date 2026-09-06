@@ -204,12 +204,36 @@ export function PriceChart({ symbol, bars, overlays, height = 620 }: PriceChartP
     }
   }, [bars, overlays, symbol])
 
+  // The chart renders to a <canvas>, which exposes nothing to a screen reader. This
+  // summary is the only accessible description of what the candlestick/volume chart
+  // shows; the exact numbers it reports (last close, range, overlays) are also visible
+  // on-screen in the stat tiles and provenance text below the chart on this page.
+  const summary = useMemo(() => {
+    if (!bars.length) return `${symbol}: no price data in this range.`
+    const first = bars[0]
+    const last = bars[bars.length - 1]
+    const change = last[4] - first[4]
+    const changePct = first[4] === 0 ? null : (change / first[4]) * 100
+    const activeOverlays = overlays.length
+      ? ` Overlays shown: ${overlays.map((o) => o.name).join(', ')}.`
+      : ''
+    return (
+      `Candlestick and volume chart for ${symbol}, ${first[0]} to ${last[0]}, ${bars.length} daily bars. ` +
+      `Close moved from ${first[4].toFixed(2)} to ${last[4].toFixed(2)} ` +
+      `(${change >= 0 ? '+' : ''}${change.toFixed(2)}${changePct === null ? '' : `, ${changePct >= 0 ? '+' : ''}${changePct.toFixed(2)}%`}) ` +
+      `over this window.${activeOverlays}`
+    )
+  }, [bars, overlays, symbol])
+
   return (
-    <ReactECharts
-      option={option as any}
-      style={{ height, width: '100%' }}
-      notMerge
-      opts={{ renderer: 'canvas' }}
-    />
+    <div role="img" aria-label={summary}>
+      <ReactECharts
+        option={option as any}
+        style={{ height, width: '100%' }}
+        notMerge
+        opts={{ renderer: 'canvas' }}
+        aria-hidden="true"
+      />
+    </div>
   )
 }

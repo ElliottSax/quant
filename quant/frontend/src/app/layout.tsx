@@ -328,13 +328,21 @@ export default function RootLayout({
 
                       {/* More Tools Dropdown */}
                       <div className="relative group">
-                        <button className="px-3 py-1.5 text-sm font-medium text-[hsl(210,20%,65%)] hover:text-[hsl(45,96%,58%)] transition-colors duration-150 flex items-center gap-1">
+                        <button
+                          className="px-3 py-1.5 text-sm font-medium text-[hsl(210,20%,65%)] hover:text-[hsl(45,96%,58%)] focus:text-[hsl(45,96%,58%)] transition-colors duration-150 flex items-center gap-1"
+                          aria-haspopup="true"
+                        >
                           More
                           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                           </svg>
                         </button>
-                        <div className="absolute top-full left-0 mt-1 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                        {/* Revealed on hover for mouse users and on focus-within for keyboard
+                            users tabbing through the links inside -- without focus-within this
+                            entire submenu (Options Calculator, Correlation Network, Strategy
+                            Builder, API Docs, etc.) was visually hidden and untabbable, a
+                            keyboard trap on every page that renders this nav. */}
+                        <div className="absolute top-full left-0 mt-1 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50">
                           <div className="bg-[hsl(220,55%,7%)] rounded border border-[hsl(215,40%,18%)] shadow-xl shadow-black/50 py-1">
                             <div className="px-3 py-1.5 text-[10px] font-semibold text-[hsl(45,96%,58%)] uppercase tracking-wider border-b border-[hsl(215,40%,16%)] mb-1">
                               Analysis Tools

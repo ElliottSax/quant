@@ -50,7 +50,7 @@ function tierClass(tier: string) {
     case 'Robust': return 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30'
     case 'Weak': return 'text-amber-400 bg-amber-500/10 border-amber-500/30'
     case 'Folklore': return 'text-slate-400 bg-slate-500/10 border-slate-500/30'
-    default: return 'text-slate-500 bg-slate-700/20 border-slate-600/30'
+    default: return 'text-slate-400 bg-slate-700/20 border-slate-600/30'
   }
 }
 

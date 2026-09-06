@@ -416,7 +416,13 @@ export default function StrategyBuilderPage() {
                     </div>
                   </div>
                   {entryConditions.length > 1 && (
-                    <button onClick={() => removeCondition('entry', cond.id)} className="text-red-400 hover:text-red-300 mt-6 text-lg">×</button>
+                    <button
+                      onClick={() => removeCondition('entry', cond.id)}
+                      aria-label={`Remove entry condition ${idx + 1}`}
+                      className="text-red-400 hover:text-red-300 mt-6 text-lg"
+                    >
+                      ×
+                    </button>
                   )}
                 </div>
               ))}
@@ -469,7 +475,13 @@ export default function StrategyBuilderPage() {
                     </div>
                   </div>
                   {exitConditions.length > 1 && (
-                    <button onClick={() => removeCondition('exit', cond.id)} className="text-red-400 hover:text-red-300 mt-6 text-lg">×</button>
+                    <button
+                      onClick={() => removeCondition('exit', cond.id)}
+                      aria-label={`Remove exit condition ${idx + 1}`}
+                      className="text-red-400 hover:text-red-300 mt-6 text-lg"
+                    >
+                      ×
+                    </button>
                   )}
                 </div>
               ))}

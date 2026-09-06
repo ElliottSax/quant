@@ -61,9 +61,9 @@ function StatTile({
 }) {
   return (
     <div className="terminal-panel p-4">
-      <p className="text-[11px] text-slate-500 uppercase tracking-wider mb-1">{label}</p>
+      <p className="text-[11px] text-slate-400 uppercase tracking-wider mb-1">{label}</p>
       <p className={`text-lg font-bold font-mono ${tone}`}>{value}</p>
-      {sub && <p className="text-[11px] text-slate-500 mt-1">{sub}</p>}
+      {sub && <p className="text-[11px] text-slate-400 mt-1">{sub}</p>}
     </div>
   )
 }
@@ -246,7 +246,7 @@ export function ChartsClient() {
       {/* Controls */}
       <div className="glass-card p-5 space-y-5">
         <div>
-          <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+          <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
             Symbol — {artefact.symbols.length} covered by the artefact
           </label>
           <div className="flex flex-wrap gap-2">
@@ -268,7 +268,7 @@ export function ChartsClient() {
 
         <div className="flex flex-col md:flex-row md:items-end gap-5">
           <div>
-            <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+            <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
               Range
             </label>
             <div className="flex gap-2">
@@ -300,7 +300,7 @@ export function ChartsClient() {
           </div>
 
           <div className="flex-1">
-            <label className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+            <label className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
               Overlays — computed from these closes
             </label>
             <div className="flex flex-wrap gap-2">
@@ -321,7 +321,7 @@ export function ChartsClient() {
                       on
                         ? 'bg-slate-800 text-white border-slate-600'
                         : usable
-                          ? 'bg-slate-900/40 text-slate-500 border-slate-800 hover:text-slate-300'
+                          ? 'bg-slate-900/40 text-slate-400 border-slate-800 hover:text-slate-300'
                           : 'bg-slate-900/40 text-slate-700 border-slate-800 cursor-not-allowed'
                     }`}
                   >
@@ -346,7 +346,7 @@ export function ChartsClient() {
               {symbol} · daily OHLC &amp; volume · {visible.length} bars · {rangeStats?.from} →{' '}
               {rangeStats?.to}
             </span>
-            <span className="text-slate-500 normal-case tracking-normal">
+            <span className="text-slate-400 normal-case tracking-normal">
               {artefact.adjusted ? 'Adjusted' : 'Unadjusted'} end-of-day
             </span>
           </div>
