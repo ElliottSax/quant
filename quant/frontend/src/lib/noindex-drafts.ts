@@ -299,7 +299,6 @@ export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
   'cerebras-improving-algorithmic-trading-efficiently',
   'cerebras-improving-bollinger-bands-on-forex',
   'cerebras-improving-rsi-strategies-on-forex',
-  'congress-insider-selling-signals',
   'macd-trading-strategy',
   'mean-reversion-trading-strategy',
   'momentum-trading-strategy-guide',
