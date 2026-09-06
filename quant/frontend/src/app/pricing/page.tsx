@@ -3,6 +3,15 @@
  *
  * No paywalls. No tiers. No charges.
  * Everything is free during open beta.
+ *
+ * ⚠️ SESSION CHECKPOINT 2026-09-05: this public commitment conflicts with a
+ * fully-built (but disconnected) Stripe backend at
+ * quant/backend/app/api/v1/subscriptions.py. Do NOT wire a checkout flow into
+ * this page without Elliott's explicit sign-off -- it would contradict this
+ * page's own public promise. If the decision is made to reverse course,
+ * change this copy FIRST, then fix the 3-way mismatched API contract between
+ * this frontend, the backend router, and HYBRID_MODEL_SETUP.md before
+ * touching checkout. See CLAUDE.md checkpoint at repo root.
  */
 
 'use client'
