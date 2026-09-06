@@ -1,3 +1,34 @@
+# ⚠️ FOLLOW-UP — 2026-09-06 — both dormant clusters resolved: DELETED ⚠️
+# ============================================================
+# Revisited the two dormant clusters flagged below. Read both DORMANT.md
+# files and every file inside before deciding.
+#
+# _dormant-quant-backend-stub/: confirmed it was exactly what its DORMANT.md
+# said -- one 372-byte stale orchestration CLAUDE.md, zero code, a one-char
+# collision with the real quant/backend/. git rm -r'd. Easy call.
+#
+# content/_dormant-articles/ (8 files): the original audit's claim that
+# algorithmic-execution-system-v2.md "reads as real, non-templated content"
+# did NOT hold up on an actual read. All 8 files -- that one included --
+# open with the identical boilerplate sentence ("...is a systematic
+# quantitative trading approach based on statistical analysis, historical
+# backtesting, and algorithmic execution...") with only the strategy name
+# swapped in, carry the same spammy clickbait meta_description pattern
+# ("Act now", "Discover. Discover", "Limited time"), and present specific,
+# clearly-fabricated backtest numbers (exact trade counts, per-trade P&L,
+# a fictional October 2025 sample month) as if they were real results --
+# the same pattern already caught and noindexed elsewhere on this site
+# (mean-reversion-trading-strategy.md, flagged 2026-09-05 for "invented
+# numbers" presented as a real backtest). This is the same generator output
+# as the already-deleted generated-articles/ and posts/, just missed by the
+# first pass. Nothing in the directory cleared the bar for content/blog/;
+# publishing any of it would add to, not fix, the site's known
+# scaled-content risk (the 50+ templated congress-* posts already flagged
+# for pruning). git rm -r'd the whole directory -- no file moved.
+#
+# tsc --noEmit clean afterward. Pushed as a fast-forward (no divergence).
+# ============================================================
+
 # ⚠️ SESSION CHECKPOINT — 2026-09-06 — dead-code/bloat cleanup ⚠️
 # ============================================================
 # Independently re-verified a prior audit's dead-code/bloat findings (did not
@@ -10,13 +41,11 @@
 # inside quant/frontend/src/app/blog/ itself (inert next to page.tsx/
 # [slug]/page.tsx, which read content/blog/ one level up, not this folder).
 #
-# Renamed + flagged dormant, NOT deleted (naming-collision clusters that
-# could be unfinished-but-wanted work; each has a DORMANT.md explaining the
-# open decision): content/articles/ -> content/_dormant-articles/ (sits
-# beside the live content/blog/, one file is real non-templated content),
-# and root quant-backend/ -> _dormant-quant-backend-stub/ (one-character
-# collision with the real quant/backend/, contains only a stale
-# orchestration CLAUDE.md, no code).
+# Renamed + flagged dormant at the time (naming-collision clusters that
+# could have been unfinished-but-wanted work): content/articles/ ->
+# content/_dormant-articles/, and root quant-backend/ ->
+# _dormant-quant-backend-stub/. Both later reviewed and DELETED -- see the
+# follow-up checkpoint above for the reasoning.
 #
 # Explicitly left alone: quant/backend/app/api/v1/subscription.py -- also
 # confirmed dead (never imported by api/v1/__init__.py; only the plural
