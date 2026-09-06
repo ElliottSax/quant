@@ -107,6 +107,18 @@ try:
 except ImportError as e:
     logger.warning(f"ML-dependent features disabled due to missing dependencies: {e}")
 
+# Referral endpoints (split out of the dormant subscription.py, 2026-09-06 --
+# frontend calls to /api/v1/subscription/referral/* were 404ing since
+# subscription.py was never mounted. Only referral is wired up here; the
+# tier/upgrade/downgrade/trial endpoints in subscription.py stay unmounted,
+# still tangled in the paused free-forever pricing decision -- see CLAUDE.md.)
+try:
+    from app.api.v1 import referral
+    api_router.include_router(referral.router, tags=["referral"])
+    logger.info("Referral endpoints loaded successfully")
+except ImportError as e:
+    logger.warning(f"Referral endpoints disabled: {e}")
+
 # Advanced Analytics (Task #14)
 try:
     from app.api.v1 import advanced_analytics
