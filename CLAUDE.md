@@ -46,16 +46,18 @@
 #     Congress members private funding-round allocations and no PTR data
 #     supports any of it.
 #
-# NOT fixed, flagged for a follow-up pass (same defect, same "named
-# legislator + fabricated P&L" pattern, but outside the 3 topical angles
-# this pass was scoped to — still live and indexed):
+# Also found the identical defect (same "named legislator + fabricated P&L"
+# pattern) in 2 more posts outside this pass's 3 topical angles, and
+# noindexed those too in a follow-up commit rather than leaving them live:
 #   - congress-semiconductor-stock-trades.md — Rep. Greg Walden, Rep. Tom
 #     Emmer, Sen. Ron Johnson, each with fabricated holdings/profit figures.
 #   - congress-big-tech-antitrust-trading.md — Rep. Ken Buck, Rep. Jerry
 #     Nadler, each with fabricated purchase/profit figures.
 #
-# tsc --noEmit clean. Pushed as a fast-forward. See git log for the commit
-# with the full per-post breakdown.
+# tsc --noEmit clean. Pushed as a fast-forward. Verified live: both original
+# 4 posts and these 2 additional posts render 200 with `noindex, follow`,
+# are absent from /blog's listing, and /blog + quantengines.com both 200.
+# See git log (56bd846, da2e1ef) for the full per-post breakdown.
 # ============================================================
 
 # ⚠️ FOLLOW-UP — 2026-09-06 — both dormant clusters resolved: DELETED ⚠️
