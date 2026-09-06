@@ -36,7 +36,7 @@ async def test_finnhub():
 
     if api_key == "PASTE_YOUR_KEY_HERE":
         print("❌ ERROR: Please replace 'PASTE_YOUR_KEY_HERE' with your actual Finnhub API key")
-        print("\nEdit /mnt/e/projects/quant/quant/backend/.env")
+        print(f"\nEdit {Path(__file__).parent / '.env'}")
         print("Replace: FINNHUB_API_KEY=PASTE_YOUR_KEY_HERE")
         print("With:    FINNHUB_API_KEY=your_actual_key")
         return False

@@ -217,7 +217,8 @@ This strategy performs best during specific market conditions and requires disci
     return filename
 
 def main():
-    base_path = "/mnt/e/projects/quant/app/blog"
+    # Repo-relative output dir (this machine has no E: drive)
+    base_path = str(Path(__file__).parent / "app" / "blog")
     Path(base_path).mkdir(parents=True, exist_ok=True)
 
     created_files = []

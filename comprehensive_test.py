@@ -221,15 +221,18 @@ class PlatformTester:
         print("\n📁 Testing File Structure...")
 
         import os
+        from pathlib import Path
 
+        # Repo-relative (this machine has no E: drive)
+        _repo_root = Path(__file__).parent
         critical_files = [
-            "/mnt/e/projects/quant/quant/backend/app/main.py",
-            "/mnt/e/projects/quant/quant/backend/app/api/v1/__init__.py",
-            "/mnt/e/projects/quant/quant/backend/app/services/signal_generator.py",
-            "/mnt/e/projects/quant/quant/backend/app/services/backtesting.py",
-            "/mnt/e/projects/quant/quant/backend/app/services/email_service.py",
-            "/mnt/e/projects/quant/quant/frontend/src/app/page.tsx",
-            "/mnt/e/projects/quant/quant/frontend/src/components/charts/PriceChart.tsx",
+            str(_repo_root / "quant" / "backend" / "app" / "main.py"),
+            str(_repo_root / "quant" / "backend" / "app" / "api" / "v1" / "__init__.py"),
+            str(_repo_root / "quant" / "backend" / "app" / "services" / "signal_generator.py"),
+            str(_repo_root / "quant" / "backend" / "app" / "services" / "backtesting.py"),
+            str(_repo_root / "quant" / "backend" / "app" / "services" / "email_service.py"),
+            str(_repo_root / "quant" / "frontend" / "src" / "app" / "page.tsx"),
+            str(_repo_root / "quant" / "frontend" / "src" / "components" / "charts" / "PriceChart.tsx"),
         ]
 
         for file_path in critical_files:

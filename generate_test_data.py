@@ -8,12 +8,13 @@ Creates realistic trading patterns for politicians to test advanced analytics.
 import asyncio
 import sys
 import os
+from pathlib import Path
 from datetime import datetime, timedelta
 import random
 import numpy as np
 
-# Add backend to path
-sys.path.insert(0, '/mnt/e/projects/quant/quant/backend')
+# Add backend to path (repo-relative; this machine has no E: drive)
+sys.path.insert(0, str((Path(__file__).parent / "quant" / "backend").resolve()))
 
 from sqlalchemy import select, delete, text
 from decimal import Decimal

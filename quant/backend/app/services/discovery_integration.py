@@ -14,7 +14,13 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# Path to discovery project (relative to quant)
+# Path to discovery project (relative to quant).
+# NOTE: this machine has no E: drive, and there is no "discovery" project
+# anywhere under C:\projects either -- this sibling project (if it still
+# exists) lives elsewhere or was never migrated here. Left as-is rather than
+# guessing a replacement path: every method below already checks
+# is_available()/.exists() first and degrades to empty results/logged
+# warnings, so this is a silent feature-gap, not a crash risk.
 DISCOVERY_BASE_PATH = Path("/mnt/e/projects/discovery")
 DISCOVERY_DATA_PATH = DISCOVERY_BASE_PATH / "data"
 
