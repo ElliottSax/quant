@@ -277,8 +277,8 @@ Start with small positions, practice on a simulator first, and scale only after 
 ## Next Steps
 
 - Open a practice account on [Kraken](https://www.kraken.com)
-- Study [Technical Analysis Strategies](/crypto-technical-analysis-strategies)
-- Learn [Risk Management for Crypto Trading](/risk-management-crypto-trading)
+- Study [Technical Analysis Strategies](/blog/14-crypto-technical-analysis-strategies)
+- Learn [Risk Management for Crypto Trading](/blog/20-risk-management-crypto-trading)
 - Read about [Moving Average Indicators](internal link)
 - Track your trades in a journal
 

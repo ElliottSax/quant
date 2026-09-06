@@ -441,8 +441,8 @@ Successful day trading requires:
 
 - Set up TradingView with 1-hour and 15-minute charts
 - Paper trade for 1 week before using real money
-- Learn [Crypto Technical Analysis Strategies](/crypto-technical-analysis-strategies)
-- Read [Risk Management for Crypto Trading](/risk-management-crypto-trading)
+- Learn [Crypto Technical Analysis Strategies](/blog/14-crypto-technical-analysis-strategies)
+- Read [Risk Management for Crypto Trading](/blog/20-risk-management-crypto-trading)
 - Join day trading chat groups for accountability
 
 **Ready to day trade crypto?** [Open Binance](https://www.binance.com) and start with $5,000-10,000.

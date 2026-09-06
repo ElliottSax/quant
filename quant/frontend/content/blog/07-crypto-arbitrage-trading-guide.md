@@ -485,8 +485,8 @@ With $10,000-20,000 capital and proper automation, traders generate $500-2,000 m
 
 - Set up accounts on Binance, Kraken, and Coinbase
 - Download and configure 3Commas
-- Study [Crypto Futures Strategies](/crypto-futures-strategies) for additional income
-- Read [Risk Management](/risk-management-crypto-trading)
+- Study [Crypto Futures Strategies](/blog/09-crypto-futures-trading-strategies-advanced) for additional income
+- Read [Risk Management](/blog/20-risk-management-crypto-trading)
 - Join arbitrage trading communities
 
 **Start arbitrage trading:** Fund your [Binance](https://www.binance.com) and [Kraken](https://www.kraken.com) accounts today with $10,000 each.

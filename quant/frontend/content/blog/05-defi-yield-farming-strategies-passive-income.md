@@ -334,8 +334,8 @@ Conservative farmers earn $500-2,000 monthly on $100,000 capital through reliabl
 ## Next Steps
 
 - Deposit $100 into Lido (simplest entry)
-- Study [Yearn Finance strategies](/defi-yield-farming) for automation
-- Monitor [DeFi protocols](/category/defi)
+- Study Yearn Finance strategies for automation
+- Monitor DeFi protocols
 - Calculate your tax obligations quarterly
 - Join DeFi Farmer Discord for community support
 

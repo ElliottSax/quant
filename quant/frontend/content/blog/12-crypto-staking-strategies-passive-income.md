@@ -334,8 +334,8 @@ Staking strategies for crypto passive income 2026 succeeds through:
 
 - Open account on [Kraken](https://www.kraken.com) or [Binance](https://www.binance.com)
 - Download [TradingView](https://www.tradingview.com) for charting
-- Study [Crypto Technical Analysis Strategies](/crypto-technical-analysis-strategies)
-- Read [Risk Management for Crypto Trading](/risk-management-crypto-trading)
+- Study [Crypto Technical Analysis Strategies](/blog/14-crypto-technical-analysis-strategies)
+- Read [Risk Management for Crypto Trading](/blog/20-risk-management-crypto-trading)
 - Start with paper trading first
 
 **Ready to trade?** Fund your account with $5,000-10,000 and begin implementing these strategies today.

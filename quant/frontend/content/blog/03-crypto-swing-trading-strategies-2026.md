@@ -417,8 +417,8 @@ Swing trading crypto succeeds through:
 
 - Set up TradingView with daily and 4-hour charts
 - Identify three current consolidation patterns
-- Study [Crypto Technical Analysis Strategies](/crypto-technical-analysis-strategies)
-- Read about [Risk Management for Crypto Trading](/risk-management-crypto-trading)
+- Study [Crypto Technical Analysis Strategies](/blog/14-crypto-technical-analysis-strategies)
+- Read about [Risk Management for Crypto Trading](/blog/20-risk-management-crypto-trading)
 - Track your trades in a detailed journal
 
 **Ready to start swing trading?** [Open a Kraken account](https://www.kraken.com) today and start with $5,000.

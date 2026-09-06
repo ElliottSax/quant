@@ -227,7 +227,7 @@ Ethereum trading succeeds by combining:
 - Set up TradingView with ETH/USDT
 - Follow [@glassnode](https://www.glassnode.com) for onchain metrics
 - Monitor [@LlamaFi_app](https://www.llama.fi) for DeFi trends
-- Study [Crypto Technical Analysis Strategies](/crypto-technical-analysis-strategies)
+- Study [Crypto Technical Analysis Strategies](/blog/14-crypto-technical-analysis-strategies)
 - Join Ethereum trading communities on Discord
 
 **Start trading Ethereum today:** Open [Kraken](https://www.kraken.com) or [Binance](https://www.binance.com) and deposit $1,000 to begin.

@@ -339,8 +339,8 @@ Successful NFT trading requires:
 
 - Download Rarity.tools and familiarize yourself
 - Monitor 3-5 blue-chip collections daily
-- Learn [NFT Market Analysis Strategies](/nft-market-analysis)
-- Read [Risk Management for NFT Traders](/risk-management-nft)
+- Learn NFT market analysis strategies
+- Read risk management for NFT traders
 - Track positions in spreadsheet
 
 **Start trading NFTs:** Open [Blur](https://blur.io) or [OpenSea](https://opensea.io) and purchase your first collection today.
