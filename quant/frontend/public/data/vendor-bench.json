@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-04T23:33:39+00:00",
+ "generated_at": "2026-09-05T23:32:18+00:00",
  "method": "Each provider is probed through the same adapter interface the production pipeline uses. Figures are what the requests actually returned, not what the vendor documents.",
  "probes": {
   "history": {
@@ -106,7 +106,7 @@
     },
     "freshness": {
      "latest_bar": "2026-09-04",
-     "days_behind_today": 0
+     "days_behind_today": 1
     }
    },
    "notes": [],
@@ -176,7 +176,7 @@
     },
     "freshness": {
      "latest_bar": "2026-09-04",
-     "days_behind_today": 0
+     "days_behind_today": 1
     }
    },
    "notes": [],
