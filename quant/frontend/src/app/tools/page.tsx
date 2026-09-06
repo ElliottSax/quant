@@ -59,6 +59,7 @@ const GROUPS: Group[] = [
       { href: '/tools/options-payoff', name: 'Multi-Leg Options Payoff Calculator', desc: 'Model spreads, straddles, and iron condors up to 6 legs — exact max profit, max loss, and breakevens.' },
       { href: '/tools/max-sharpe', name: 'Max Sharpe Ratio Portfolio', desc: 'Tangency portfolio weights from the closed form w ∝ Σ⁻¹(μ − rf·1), for up to five assets, with the derivation and a worked example.' },
       { href: '/tools/risk-adjusted-return', name: 'Sharpe / Sortino / Calmar Calculator', desc: 'Paste a return series and get all three risk-adjusted ratios, annualized volatility, and max drawdown.' },
+      { href: '/tools/value-at-risk', name: 'VaR & CVaR Calculator', desc: 'Parametric and historical Value at Risk and Expected Shortfall, computed side by side from a pasted return series.' },
     ],
   },
 ]
