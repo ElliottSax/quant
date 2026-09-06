@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
@@ -304,21 +305,14 @@ export default async function BlogArticlePage({
   const { slug } = await params
   const article = getArticle(slug)
 
+  // A missing/deleted slug must render Next's real 404 (status 404, not 200)
+  // -- this used to render an inline "Article Not Found" card while still
+  // returning 200 OK, a soft-404 that both misleads crawlers and hides real
+  // breakage from anything that checks status codes. Confirmed live on the
+  // 30 congress-*/congressional-trading-* posts pruned today: every one of
+  // them was serving 200 instead of 404 before this fix.
   if (!article) {
-    return (
-      <div className="max-w-3xl mx-auto py-20 text-center">
-        <h1 className="text-2xl font-bold text-white mb-4">Article Not Found</h1>
-        <p className="text-[hsl(210,20%,55%)] mb-6">
-          The article you are looking for does not exist or has been moved.
-        </p>
-        <Link
-          href="/blog"
-          className="inline-block px-4 py-2 bg-[hsl(45,96%,58%)]/10 border border-[hsl(45,96%,58%)]/30 text-[hsl(45,96%,58%)] rounded hover:bg-[hsl(45,96%,58%)]/20 transition-colors text-sm font-medium"
-        >
-          Back to Blog
-        </Link>
-      </div>
-    )
+    notFound()
   }
 
   const { frontmatter, body } = article
