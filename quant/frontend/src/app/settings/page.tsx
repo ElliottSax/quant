@@ -11,8 +11,8 @@ export default function SettingsPage() {
 
   const settings = [
     {
-      title: 'Subscription',
-      description: 'Manage your subscription tier and billing',
+      title: 'Plan',
+      description: 'Free forever, no paywalls',
       icon: CreditCard,
       href: '/settings/subscription',
       color: 'from-blue-500 to-cyan-500',
