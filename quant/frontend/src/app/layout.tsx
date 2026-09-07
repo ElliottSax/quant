@@ -363,6 +363,9 @@ export default function RootLayout({
                             <Link href="/dashboard" className="block px-3 py-2 text-sm text-[hsl(210,20%,75%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
                               Insider Dashboard
                             </Link>
+                            <Link href="/congress-alerts" className="block px-3 py-2 text-sm text-[hsl(210,20%,75%)] hover:bg-[hsl(215,50%,14%)] hover:text-white transition-colors">
+                              Trade Alert Digests <span className="text-[hsl(45,96%,58%)] text-[10px] align-middle ml-1">from $0</span>
+                            </Link>
                             <div className="border-t border-[hsl(215,40%,16%)] my-1" />
                             <div className="border-t border-[hsl(215,40%,16%)] my-1" />
                             <div className="px-3 py-1.5 text-[10px] font-semibold text-[hsl(142,71%,55%)] uppercase tracking-wider">
@@ -491,6 +494,7 @@ export default function RootLayout({
                       <li><Link href="/yield-curve" className="hover:text-[hsl(45,96%,58%)] transition-colors">Treasury Yield Curve</Link></li>
                       <li><Link href="/cot-report" className="hover:text-[hsl(45,96%,58%)] transition-colors">COT Positioning</Link></li>
                       <li><Link href="/data-vendors" className="hover:text-[hsl(45,96%,58%)] transition-colors">Data API Benchmark</Link></li>
+                      <li><Link href="/congress-alerts" className="hover:text-[hsl(45,96%,58%)] transition-colors">Congress Trade Alerts</Link></li>
                     </ul>
                   </div>
 

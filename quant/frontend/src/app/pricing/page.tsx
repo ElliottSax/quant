@@ -220,6 +220,32 @@ export default function PricingPage() {
         </div>
       </div>
 
+      {/* Congress Trading Alerts -- a separate, optional premium add-on. This
+          section does not change anything above: the core backtesting suite
+          stays free forever, as promised throughout this page. This is a
+          different product (email digests for the congress-trades feature),
+          sold alongside it, not a reversal of it. */}
+      <div className="container mx-auto px-4 py-16 border-t border-slate-800">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-block mb-4 px-4 py-2 bg-indigo-500/10 rounded-full border border-indigo-500/20">
+            <span className="text-indigo-400 text-sm font-medium">Optional add-on</span>
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-4">Want a Congress Trade Alert in Your Inbox?</h2>
+          <p className="text-gray-400 mb-8">
+            The congress-trades browser above is, and stays, free. If you&apos;d rather get an email than check the page,
+            Congress Trading Alerts is a separate paid add-on: save filters by ticker, member, or chamber and get a
+            digest when something new is disclosed. Free weekly digest available too — no card required.
+          </p>
+          <a
+            href="/congress-alerts"
+            className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold px-6 py-3 rounded-xl transition-all"
+          >
+            See Congress Trading Alerts
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
       {/* Final CTA */}
       <div className="container mx-auto px-4 py-20 border-t border-slate-800">
         <div className="max-w-4xl mx-auto text-center">

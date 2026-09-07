@@ -79,6 +79,10 @@ export default async function CongressTradesPage() {
           → See this week&apos;s biggest trades digest
         </Link>
         <br />
+        <Link href="/congress-alerts" className="inline-block mt-2 text-[hsl(45,96%,58%)] hover:underline font-medium">
+          → Get this feed as an email alert (free weekly, or $9/mo daily)
+        </Link>
+        <br />
         <Link href="/congress-stock-trades/late-filers" className="inline-block mt-2 text-indigo-400 hover:underline font-medium">
           → Who&apos;s filing their trades the latest? (STOCK Act 45-day check)
         </Link>

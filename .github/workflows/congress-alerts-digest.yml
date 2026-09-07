@@ -1,0 +1,54 @@
+name: Congress Alerts Daily Digest
+
+# Digest-email cron for the congress trading alerts add-on (quant/frontend/src/app/congress-alerts/).
+# Lives at the REPO ROOT .github/workflows/ on purpose -- GitHub only scans this directory, not
+# quant/.github/workflows/ (see gsc-daily-submit.yml's header comment and quant/CLAUDE.md, which
+# document a real job that silently never ran for months because it sat one level too deep).
+#
+# Runs once daily. Pro subscribers are checked every run; free subscribers are only mailed once
+# >=7 days have passed since their last digest (see quant/scripts/congress_alerts_digest.py). A
+# quiet run with zero new matching disclosures for a subscriber sends no email -- expected, not
+# a failure.
+#
+# Requires these repo secrets (none are set yet -- see the delivery report's human setup steps):
+#   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY  -- the congress_alert_subscribers/_filters tables
+#   FMP_API_KEY                              -- same key frontend/src/lib/congress-trades.ts uses
+#   RESEND_API_KEY                           -- digest delivery (same provider as the newsletter route)
+# Optional: RESEND_FROM, EMAIL_DOMAIN (see the script for defaults).
+
+on:
+  schedule:
+    - cron: '0 13 * * *'  # 13:00 UTC daily
+  workflow_dispatch:
+
+jobs:
+  send-digests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Send congress alert digests
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          cd quant && python scripts/congress_alerts_digest.py
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Congress alerts digest run failed -- check the step log above."
+          exit 1
