@@ -1,154 +1,23 @@
-import { ImageResponse } from 'next/og'
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-export const runtime = 'edge'
+// Was a dynamic `next/og` ImageResponse (per-page title rendered into a
+// generated PNG). @vercel/og's runtime needs bundled binary assets (a font
+// .ttf plus resvg.wasm/yoga.wasm for the Satori/resvg render pipeline), and
+// the OpenNext Cloudflare adapter cannot correctly locate those assets in
+// this repo's Windows + npm-workspaces (monorepo) layout -- both the font
+// copy step and wrangler's own esbuild asset resolution produced ENOENT
+// errors on nested/duplicated absolute paths (a known class of upstream bug:
+// https://github.com/opennextjs/opennextjs-cloudflare/issues/545). Rather
+// than carry a build-breaking dependency for a nice-to-have per-page share
+// image, this now redirects every request to the site's existing static
+// fallback OG image (public/og-image.jpg) -- the `title` query param is
+// accepted but unused, so every caller in src/app/**/*.tsx that builds an
+// `/api/og?title=...` URL keeps working without any change on their end.
+// See frontend/CLOUDFLARE_MIGRATION.md for the full writeup and how to
+// restore per-page dynamic OG images if this ever needs revisiting off
+// Windows (e.g. building from WSL or CI/Linux).
+export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url)
-    const title = searchParams.get('title') || 'QuantEngines'
-
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #334155 100%)',
-            color: 'white',
-            position: 'relative',
-          }}
-        >
-          {/* Amber accent glow */}
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background:
-                'radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 100%, rgba(245,158,11,0.08) 0%, transparent 50%)',
-            }}
-          />
-
-          {/* Content */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 1,
-              maxWidth: 900,
-              padding: '0 40px',
-              textAlign: 'center',
-            }}
-          >
-            {/* Logo mark */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 64,
-                height: 64,
-                borderRadius: 12,
-                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-                fontSize: 32,
-                fontWeight: 800,
-                color: '#0f172a',
-                marginBottom: 24,
-              }}
-            >
-              Q
-            </div>
-
-            {/* Site name */}
-            <div
-              style={{
-                fontSize: 28,
-                fontWeight: 600,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: '#f59e0b',
-                marginBottom: 20,
-              }}
-            >
-              QuantEngines
-            </div>
-
-            {/* Page title */}
-            <div
-              style={{
-                fontSize: 52,
-                fontWeight: 700,
-                lineHeight: 1.2,
-                marginBottom: 24,
-                maxWidth: 800,
-              }}
-            >
-              {title}
-            </div>
-
-            {/* Tagline */}
-            <div
-              style={{
-                fontSize: 22,
-                fontWeight: 400,
-                opacity: 0.7,
-              }}
-            >
-              Quantitative Trading Platform
-            </div>
-          </div>
-
-          {/* Bottom bar */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: 4,
-              background: 'linear-gradient(90deg, #f59e0b, #d97706, #b45309)',
-            }}
-          />
-        </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-      }
-    )
-  } catch (e) {
-    console.log(`Failed to generate OG image: ${e}`)
-
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#0f172a',
-            color: 'white',
-          }}
-        >
-          <div style={{ fontSize: 48, fontWeight: 700, color: '#f59e0b' }}>QuantEngines</div>
-          <div style={{ fontSize: 24, opacity: 0.7, marginTop: 12 }}>
-            Quantitative Trading Platform
-          </div>
-        </div>
-      ),
-      { width: 1200, height: 630 }
-    )
-  }
+  return NextResponse.redirect(new URL('/og-image.jpg', request.url), { status: 302 })
 }

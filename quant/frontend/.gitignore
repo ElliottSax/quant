@@ -1,1 +1,7 @@
 .vercel
+.open-next
+.wrangler
+.dev.vars
+.dev.vars.*
+src/data/blog-manifest.generated.json
+public/blog-content/

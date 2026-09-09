@@ -1,24 +1,29 @@
-export const dynamic = 'force-dynamic';
+// content/blog/*.md used to be read via `fs` at REQUEST time (force-dynamic).
+// That works on Vercel (serverless functions ship the repo's files) but not
+// on Cloudflare Workers, which has no runtime filesystem -- this was the
+// actual cause of a live 404 on every /blog/<slug> URL on the first
+// Cloudflare deploy. See frontend/CLOUDFLARE_MIGRATION.md for the full
+// writeup. Fix: per-post frontmatter now comes from a build-time-generated
+// manifest (plain JS import, no fs/fetch needed at all), and a post's full
+// body is fetched at runtime through src/lib/blog-content.ts, which uses the
+// Cloudflare ASSETS binding (falling back to fs outside Cloudflare). Left as
+// the default (not force-static/force-dynamic) -- the root layout's
+// force-dynamic still applies, which is fine now that nothing here touches fs.
 
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import fs from 'fs'
-import path from 'path'
 import { extractFaqs } from '@/lib/faq-extract'
 import { extractHowTo } from '@/lib/howto-extract'
-import {
-  readFrontmatterValue,
-  readFrontmatterArray,
-} from '@/lib/frontmatter'
+import { readFrontmatterValue, readFrontmatterArray } from '@/lib/frontmatter'
+import { getArticleRaw } from '@/lib/blog-content'
 import { isNoindexDraft } from '@/lib/noindex-drafts'
 import { ToolCTA } from '@/components/blog/ToolCTA'
+import blogManifest from '@/data/blog-manifest.generated.json'
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog')
 
 interface Frontmatter {
   title: string
@@ -31,11 +36,16 @@ interface Frontmatter {
   status: string
 }
 
-interface Article {
+interface ManifestEntry {
   slug: string
   frontmatter: Frontmatter
+}
+
+interface Article extends ManifestEntry {
   body: string
 }
+
+const MANIFEST = blogManifest as ManifestEntry[]
 
 const EMPTY_FRONTMATTER: Frontmatter = {
   title: '', description: '', date: '', author: '', category: '', tags: [], keywords: [], status: '',
@@ -72,30 +82,16 @@ function parseFrontmatter(raw: string): { frontmatter: Frontmatter; body: string
   }
 }
 
-function getAllArticles(): Article[] {
-  if (!fs.existsSync(CONTENT_DIR)) return []
-  return fs
-    .readdirSync(CONTENT_DIR)
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => {
-      const slug = f.replace(/\.md$/, '')
-      const raw = fs.readFileSync(path.join(CONTENT_DIR, f), 'utf-8')
-      const { frontmatter, body } = parseFrontmatter(raw)
-      return { slug, frontmatter, body }
-    })
-    .filter((a) => a.frontmatter.title)
-    // Unfinished drafts are never surfaced as "related" links and are kept out
-    // of generateStaticParams -- see src/lib/noindex-drafts.ts. Their own URLs
-    // still resolve (getArticle below is deliberately unfiltered), so no
-    // already-indexed link 404s; they are just noindex'd.
-    .filter((a) => !isNoindexDraft(a.slug, a.frontmatter.status))
-    .sort((a, b) => (b.frontmatter.date > a.frontmatter.date ? 1 : -1))
+// The manifest already has the noindex-draft filter and sort order applied
+// (scripts/generate-blog-manifest.mjs mirrors src/lib/noindex-drafts.ts) --
+// no fs, no re-filtering needed here.
+function getAllArticles(): ManifestEntry[] {
+  return MANIFEST
 }
 
-function getArticle(slug: string): Article | null {
-  const filePath = path.join(CONTENT_DIR, `${slug}.md`)
-  if (!fs.existsSync(filePath)) return null
-  const raw = fs.readFileSync(filePath, 'utf-8')
+async function getArticle(slug: string): Promise<Article | null> {
+  const raw = await getArticleRaw(slug)
+  if (raw === null) return null
   const { frontmatter, body } = parseFrontmatter(raw)
   if (!frontmatter.title) return null
   return { slug, frontmatter, body }
@@ -247,7 +243,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const article = getArticle(slug)
+  const article = await getArticle(slug)
   if (!article) {
     return { title: 'Article Not Found | QuantEngines' }
   }
@@ -303,7 +299,7 @@ export default async function BlogArticlePage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const article = getArticle(slug)
+  const article = await getArticle(slug)
 
   // A missing/deleted slug must render Next's real 404 (status 404, not 200)
   // -- this used to render an inline "Article Not Found" card while still

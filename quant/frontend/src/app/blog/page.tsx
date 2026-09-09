@@ -1,20 +1,22 @@
-export const dynamic = 'force-dynamic';
+// This page used to read content/blog/*.md via `fs` at request time, which
+// only works where a real filesystem exists -- Cloudflare Workers has none
+// (see frontend/CLOUDFLARE_MIGRATION.md). It now imports a build-time-
+// generated manifest instead (scripts/generate-blog-manifest.mjs), which
+// needs no fs/fetch at runtime at all -- it's just bundled JSON. Kept as
+// 'force-static': the root layout (src/app/layout.tsx) sets 'force-dynamic'
+// for the whole app by default (live-API pages crash prerendering with empty
+// data), so this leaf explicitly opts back into static generation to
+// override that default. It has no real per-request dynamic behavior of its
+// own (no searchParams are actually read; filtering happens client-side).
+export const dynamic = 'force-static'
 
 import { Metadata } from 'next'
 import Link from 'next/link'
-import fs from 'fs'
-import path from 'path'
-import {
-  readFrontmatterValue,
-  readFrontmatterArray,
-} from '@/lib/frontmatter'
-import { isNoindexDraft } from '@/lib/noindex-drafts'
+import blogManifest from '@/data/blog-manifest.generated.json'
 
 // ---------------------------------------------------------------------------
 // Helpers (frontmatter parsing shared with [slug]/page.tsx via @/lib/frontmatter)
 // ---------------------------------------------------------------------------
-
-const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog')
 
 interface Frontmatter {
   title: string
@@ -32,49 +34,11 @@ interface Article {
   frontmatter: Frontmatter
 }
 
-const EMPTY_FRONTMATTER: Frontmatter = {
-  title: '', description: '', date: '', author: '', category: '', tags: [], keywords: [], status: '',
-}
-
-function parseFrontmatter(raw: string): Frontmatter {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
-  if (!match) return { ...EMPTY_FRONTMATTER }
-  const yamlBlock = match[1]
-
-  // Values are sanitised (stray quote runs collapsed, YAML line folding
-  // honoured) -- see src/lib/frontmatter.ts for the full rationale.
-  const get = (key: string) => readFrontmatterValue(yamlBlock, key)
-
-  return {
-    title: get('title'),
-    description: get('description'),
-    // 155 articles carry `published_date` instead of `date`; without this
-    // fallback they sorted as if dateless and rendered "Invalid Date".
-    date: get('date') || get('published_date'),
-    author: get('author'),
-    category: get('category'),
-    tags: readFrontmatterArray(yamlBlock, 'tags'),
-    keywords: readFrontmatterArray(yamlBlock, 'keywords'),
-    status: get('status'),
-  }
-}
-
+// The manifest already has the noindex-draft filter and sort order applied
+// (scripts/generate-blog-manifest.mjs mirrors src/lib/noindex-drafts.ts) --
+// no fs, no re-filtering needed here.
 function getAllArticles(): Article[] {
-  if (!fs.existsSync(CONTENT_DIR)) return []
-  return fs
-    .readdirSync(CONTENT_DIR)
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => {
-      const slug = f.replace(/\.md$/, '')
-      const raw = fs.readFileSync(path.join(CONTENT_DIR, f), 'utf-8')
-      const frontmatter = parseFrontmatter(raw)
-      return { slug, frontmatter }
-    })
-    .filter((a) => a.frontmatter.title)
-    // Unfinished drafts (placeholder-bearing bodies and `status: template`)
-    // are not listed -- see src/lib/noindex-drafts.ts.
-    .filter((a) => !isNoindexDraft(a.slug, a.frontmatter.status))
-    .sort((a, b) => (b.frontmatter.date > a.frontmatter.date ? 1 : -1))
+  return blogManifest as Article[]
 }
 
 // ---------------------------------------------------------------------------
@@ -100,14 +64,13 @@ export const metadata: Metadata = {
 // Page
 // ---------------------------------------------------------------------------
 
-export default function BlogIndexPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ category?: string; tag?: string }>
-}) {
-  // Note: searchParams used synchronously in server component for filtering
-  // We read them as a workaround since Next 15 makes searchParams a promise
-  // but we can still access the underlying object in server render.
+export default function BlogIndexPage() {
+  // A `searchParams` prop used to be declared here for category/tag
+  // filtering, but its value was never actually read (filtering happens
+  // client-side) -- and merely declaring that prop is enough for Next.js to
+  // treat the whole page as dynamically rendered, which defeats the static
+  // prerendering this page needs for Cloudflare (see the file-top comment).
+  // Removed as dead code.
   const allArticles = getAllArticles()
 
   // Collect unique categories & tags for sidebar

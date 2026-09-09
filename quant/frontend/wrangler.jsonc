@@ -1,0 +1,31 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Deploys as a Cloudflare Worker (via the OpenNext adapter) rather than a
+  // classic Pages project -- see CLOUDFLARE_MIGRATION.md. Cloudflare's own
+  // Next.js docs no longer recommend @cloudflare/next-on-pages (deprecated,
+  // pointed at this adapter instead), and next-on-pages is what actually
+  // produces a Pages project; OpenNext's Worker output is the direct
+  // replacement and gets a *.workers.dev preview URL instead of *.pages.dev.
+  "name": "quant-analytics-frontend",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2024-12-30",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  // Non-secret production values. Secrets (RESEND_API_KEY, FMP_API_KEY) are
+  // pushed separately via `wrangler secret put` -- see CLOUDFLARE_MIGRATION.md
+  // -- so they never sit in this file, which is committed to git.
+  "vars": {
+    "NEXT_PUBLIC_API_URL": "https://elliottsax-quant-backend.hf.space/api/v1",
+    "NEXT_PUBLIC_GA_MEASUREMENT_ID": "G-PHX6T0R1Y1",
+    "EMAIL_FROM": "QuantEngines <hello@quantengines.com>"
+  }
+}
