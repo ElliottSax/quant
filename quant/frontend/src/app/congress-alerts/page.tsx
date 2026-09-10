@@ -55,7 +55,7 @@ export default function CongressAlertsPage() {
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">{title}</h1>
         <p className="text-lg text-slate-400">
           The free <Link href="/congress-stock-trades" className="text-indigo-400 hover:underline">congress trades browser</Link> and{' '}
-          <Link href="/backtesting" className="text-indigo-400 hover:underline">backtesting tool</Link> stay free forever — this is a
+          <Link href="/backtesting" className="text-indigo-400 hover:underline">backtesting tool</Link> stay free with no paywall -- this is a
           separate, optional product for people who&apos;d rather get an email than check the page. Save filters once, get a digest
           when something new matching them is disclosed.
         </p>
@@ -118,8 +118,8 @@ export default function CongressAlertsPage() {
           <div>
             <h3 className="font-semibold text-white mb-1">Does this replace the free backtesting tool?</h3>
             <p className="text-slate-400">
-              No. Backtesting, the strategy library, and the congress-trades browser all stay free forever — that commitment hasn&apos;t
-              changed. This is a separate, optional product for people who want a push instead of a pull.
+              No. Backtesting, the strategy library, and the congress-trades browser stay free, no paywall. This is a
+              separate, optional product for people who want a push instead of a pull.
             </p>
           </div>
           <div>

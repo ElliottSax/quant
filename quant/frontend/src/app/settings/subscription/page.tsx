@@ -7,11 +7,12 @@ import { ArrowLeft, Sparkles } from 'lucide-react'
 // -- all handlers in the never-mounted app/api/v1/subscription.py (see this
 // repo's CLAUDE.md), so every load 404'd in production. Those tier/upgrade/
 // downgrade/trial endpoints stayed unmounted on purpose: quant's pricing page
-// commits to "Open Beta - Free Forever / No paywalls", so there is no tier to
-// manage or bill. Replaced the broken dashboard with what's actually true,
-// rather than fixing calls to a feature that shouldn't exist. The backend's
-// dead subscription.py/subscription_deps.py aren't touched here -- quota
-// logic elsewhere in the backend still depends on adjacent service code, and
+// commits to "Open Beta - No paywalls" (permanence dropped 2026-09-10, see
+// pricing/page.tsx header comment), so there is no tier to manage or bill.
+// Replaced the broken dashboard with what's actually true, rather than
+// fixing calls to a feature that shouldn't exist. The backend's dead
+// subscription.py/subscription_deps.py aren't touched here -- quota logic
+// elsewhere in the backend still depends on adjacent service code, and
 // untangling that is a separate task, not a UI fix.
 export default function SubscriptionSettingsPage() {
   return (
@@ -33,7 +34,7 @@ export default function SubscriptionSettingsPage() {
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-white mb-2">Free forever</h2>
+              <h2 className="text-2xl font-bold text-white mb-2">Free, no paywalls</h2>
               <p className="text-gray-400 mb-4">
                 Quant is in open beta with no paywalls -- every feature is free while we
                 build. There's no tier to manage and nothing to bill.
@@ -42,6 +43,10 @@ export default function SubscriptionSettingsPage() {
                 Want to help support future work? See the{' '}
                 <Link href="/settings/referral" className="text-blue-400 hover:text-blue-300">
                   Referral Program
+                </Link>{' '}
+                or{' '}
+                <Link href="/support" className="text-blue-400 hover:text-blue-300">
+                  make a one-time contribution
                 </Link>
                 .
               </p>

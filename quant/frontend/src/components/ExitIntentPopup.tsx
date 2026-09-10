@@ -249,8 +249,6 @@ export function ExitIntentPopup() {
                   <span>no spam</span>
                   <span className="text-[hsl(215,40%,25%)]">|</span>
                   <span>unsubscribe anytime</span>
-                  <span className="text-[hsl(215,40%,25%)]">|</span>
-                  <span>free forever</span>
                 </div>
               </div>
             </>

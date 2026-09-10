@@ -12,7 +12,7 @@ export default function SettingsPage() {
   const settings = [
     {
       title: 'Plan',
-      description: 'Free forever, no paywalls',
+      description: 'Free, no paywalls',
       icon: CreditCard,
       href: '/settings/subscription',
       color: 'from-blue-500 to-cyan-500',

@@ -4,7 +4,7 @@
 // This is a separate, additive premium product sold alongside quant's free
 // backtesting tool and free congress-trades browser (frontend/src/lib/
 // congress-trades.ts) -- it does not gate or replace either of those. See
-// /pricing's "Free forever" commitment, which this does not touch.
+// /pricing's "no paywalls" commitment, which this does not touch.
 
 export type AlertTier = 'free' | 'pro'
 export type BillingCycle = 'monthly' | 'yearly'

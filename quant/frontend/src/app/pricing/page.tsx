@@ -1,17 +1,19 @@
 /**
- * Open Beta - Free Forever
+ * Open Beta - Free, No Paywall
  *
- * No paywalls. No tiers. No charges.
- * Everything is free during open beta.
+ * No paywalls. No tiers. No charges. Everything is free to use.
  *
- * ⚠️ SESSION CHECKPOINT 2026-09-05: this public commitment conflicts with a
- * fully-built (but disconnected) Stripe backend at
- * quant/backend/app/api/v1/subscriptions.py. Do NOT wire a checkout flow into
- * this page without Elliott's explicit sign-off -- it would contradict this
- * page's own public promise. If the decision is made to reverse course,
- * change this copy FIRST, then fix the 3-way mismatched API contract between
- * this frontend, the backend router, and HYBRID_MODEL_SETUP.md before
- * touching checkout. See CLAUDE.md checkpoint at repo root.
+ * RESOLVED 2026-09-10: the prior "free forever" commitment (see git history)
+ * is gone -- Elliott's explicit call, in response to running costs not being
+ * sustainable as an unconditional permanent promise. The product itself is
+ * unchanged: still no paywalls, no tiers, nothing gated. Only the *permanence
+ * claim* was removed, replaced with an honest ask for optional support (see
+ * "Support This Project" section below, links to /support). The 3-way
+ * mismatched checkout API contract (frontend singular /subscription/* vs
+ * backend plural /subscriptions/* vs HYBRID_MODEL_SETUP.md) is still
+ * unresolved and still out of scope here -- /support uses a standalone
+ * Stripe Payment Link, not this broken checkout plumbing, specifically so
+ * that reconciling that mess isn't a prerequisite for shipping this.
  */
 
 'use client'
@@ -42,7 +44,7 @@ export default function PricingPage() {
       {/* Header */}
       <div className="container mx-auto px-4 py-20 text-center">
         <div className="inline-block mb-4 px-4 py-2 bg-green-500/10 rounded-full border border-green-500/20">
-          <span className="text-green-400 text-sm font-medium">🎉 Open Beta - Completely Free</span>
+          <span className="text-green-400 text-sm font-medium">🎉 Open Beta - Free, No Paywall</span>
         </div>
 
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
@@ -53,8 +55,9 @@ export default function PricingPage() {
         </h1>
 
         <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
-          Everything is free forever. No paywalls, no tiers, no hidden charges. We're building the most accessible
-          quantitative trading platform on the internet.
+          No paywalls, no tiers, no hidden charges. We're building the most accessible quantitative trading
+          platform on the internet -- and running it costs real money, so if it's useful to you,{' '}
+          <a href="/support" className="text-green-400 hover:underline">optional support</a> keeps it that way.
         </p>
 
         <div className="flex gap-4 justify-center">
@@ -186,10 +189,12 @@ export default function PricingPage() {
 
           <div className="space-y-6">
             <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700">
-              <h3 className="text-lg font-semibold text-white mb-2">Will you always be free?</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Will this stay free?</h3>
               <p className="text-gray-400">
-                Yes! Our commitment is to keep the core platform free forever. If we add premium features, the core
-                backtesting suite stays free.
+                Right now, yes -- no paywalls, no tiers, nothing gated. Running the servers and data feeds behind it
+                costs real money though, so "free forever, no matter what" isn't a promise we can honestly make. If
+                you find it useful, <a href="/support" className="text-blue-400 hover:underline">optional support</a>{' '}
+                is what keeps it free for everyone else too.
               </p>
             </div>
 
@@ -222,9 +227,9 @@ export default function PricingPage() {
 
       {/* Congress Trading Alerts -- a separate, optional premium add-on. This
           section does not change anything above: the core backtesting suite
-          stays free forever, as promised throughout this page. This is a
-          different product (email digests for the congress-trades feature),
-          sold alongside it, not a reversal of it. */}
+          stays free with no paywall. This is a different product (email
+          digests for the congress-trades feature), sold alongside it, not a
+          reversal of it. */}
       <div className="container mx-auto px-4 py-16 border-t border-slate-800">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-block mb-4 px-4 py-2 bg-indigo-500/10 rounded-full border border-indigo-500/20">
@@ -241,6 +246,30 @@ export default function PricingPage() {
             className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold px-6 py-3 rounded-xl transition-all"
           >
             See Congress Trading Alerts
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      {/* Support This Project -- a standalone, optional Stripe Payment Link,
+          deliberately not the broken /subscription checkout plumbing. See the
+          file-header comment for why. */}
+      <div className="container mx-auto px-4 py-16 border-t border-slate-800">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-block mb-4 px-4 py-2 bg-pink-500/10 rounded-full border border-pink-500/20">
+            <span className="text-pink-400 text-sm font-medium">No pressure, no gate</span>
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-4">Support This Project</h2>
+          <p className="text-gray-400 mb-8">
+            Servers, market data, and the time to keep this maintained all cost real money. Everything above stays
+            free either way -- but if this has saved you time or made you money, a small optional contribution
+            helps keep it running and free for the next trader too.
+          </p>
+          <a
+            href="/support"
+            className="inline-flex items-center gap-2 bg-pink-600 hover:bg-pink-500 text-white font-semibold px-6 py-3 rounded-xl transition-all"
+          >
+            Support the Project
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
