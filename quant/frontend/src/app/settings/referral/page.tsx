@@ -1,66 +1,31 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-import { ReferralCode } from '@/components/referral/ReferralCode'
+import { ArrowLeft, Gift } from 'lucide-react'
 
-interface ReferralData {
-  referral_code: string
-  referral_credit: number
-  referral_url: string
-}
-
+// This used to fetch /api/v1/subscription/referral/code on load. That endpoint's handler
+// (referral.py) is correctly written and correctly mounted in this repo's own
+// app/api/v1/__init__.py -- but the backend actually live at
+// https://elliottsax-quant-backend.hf.space (production's NEXT_PUBLIC_API_URL) is stale and
+// doesn't have it: its real /api/v1/openapi.json (checked 2026-09-13) lists only the plural
+// /subscriptions/* routes, not /subscription/referral/*. This repo's only deploy workflow
+// (.github/workflows/deploy-production.yml) pushes the backend to Railway, not to that HF
+// Space, so nothing here currently redeploys what's actually live -- a real infrastructure
+// gap, not a code bug, and not something to paper over by guessing at HF Space credentials.
+//
+// Also: the referral program as designed promises credit "applied to subscription upgrades" --
+// which assumes a paid tier that doesn't exist under the current Open Beta / free-forever
+// stance (see settings/subscription/page.tsx). Showing a working-looking referral flow whose
+// payoff depends on a tier that may never launch would be its own honesty problem, independent
+// of the backend being stale.
+//
+// Stopgap per Elliott (2026-09-13): put off the backend-redeploy + pricing questions, replace
+// the broken fetch-driven page with an honest "not live yet" state -- same treatment already
+// used on the subscription page -- rather than show a raw fetch error.
 export default function ReferralSettingsPage() {
-  const [referralData, setReferralData] = useState<ReferralData | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    const fetchReferralData = async () => {
-      try {
-        const token = localStorage.getItem('token')
-        if (!token) {
-          window.location.href = '/auth/login'
-          return
-        }
-
-        const response = await fetch('/api/v1/subscription/referral/code', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch referral data')
-        }
-
-        const data = await response.json()
-        setReferralData(data)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchReferralData()
-  }, [])
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 to-slate-900">
-        <div className="container mx-auto px-4 py-16">
-          <div className="text-center text-white">Loading...</div>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 to-slate-900">
       <div className="container mx-auto px-4 py-8">
-        {/* Header */}
         <div className="flex items-center gap-4 mb-8">
           <Link
             href="/settings"
@@ -71,162 +36,29 @@ export default function ReferralSettingsPage() {
           <h1 className="text-4xl font-bold text-white">Referral Program</h1>
         </div>
 
-        {error && (
-          <div className="mb-8 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-200">
-            {error}
-          </div>
-        )}
-
-        {referralData && (
-          <div className="space-y-8">
-            {/* Referral Code Component */}
+        <div className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 max-w-2xl">
+          <div className="flex items-start gap-4">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex-shrink-0">
+              <Gift className="w-6 h-6 text-white" />
+            </div>
             <div>
-              <ReferralCode
-                code={referralData.referral_code}
-                creditBalance={referralData.referral_credit}
-              />
-            </div>
-
-            {/* How It Works */}
-            <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
-              <h3 className="text-2xl font-bold text-white mb-4">How It Works</h3>
-              <ol className="space-y-4 text-gray-300">
-                <li className="flex gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                    1
-                  </span>
-                  <div>
-                    <p className="font-semibold text-white">Share Your Code</p>
-                    <p className="text-sm">
-                      Copy your unique referral code and share it with friends, family, or your trading community.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                    2
-                  </span>
-                  <div>
-                    <p className="font-semibold text-white">They Sign Up</p>
-                    <p className="text-sm">
-                      Your friend creates an account using your referral code or link.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                    3
-                  </span>
-                  <div>
-                    <p className="font-semibold text-white">They Verify Email</p>
-                    <p className="text-sm">
-                      Once they verify their email address, the referral is complete.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">
-                    4
-                  </span>
-                  <div>
-                    <p className="font-semibold text-white">You Get $10 Credit</p>
-                    <p className="text-sm">
-                      Instantly receive $10 in account credits that can be applied to any subscription tier.
-                    </p>
-                  </div>
-                </li>
-              </ol>
-            </div>
-
-            {/* Benefits */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-blue-500/10 rounded-lg p-6 border border-blue-500/30">
-                <h4 className="text-lg font-bold text-blue-200 mb-3">For You</h4>
-                <ul className="space-y-2 text-blue-100/80 text-sm">
-                  <li>✓ Earn $10 per successful referral</li>
-                  <li>✓ Unlimited earning potential</li>
-                  <li>✓ Credits apply to any tier upgrade</li>
-                  <li>✓ Track your earnings in real-time</li>
-                </ul>
-              </div>
-              <div className="bg-green-500/10 rounded-lg p-6 border border-green-500/30">
-                <h4 className="text-lg font-bold text-green-200 mb-3">For Your Friends</h4>
-                <ul className="space-y-2 text-green-100/80 text-sm">
-                  <li>✓ No risk - try free tier first</li>
-                  <li>✓ Full access to all backtesting features</li>
-                  <li>✓ Unlimited historical data</li>
-                  <li>✓ Join a growing trading community</li>
-                </ul>
-              </div>
-            </div>
-
-            {/* FAQ */}
-            <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
-              <h3 className="text-xl font-bold text-white mb-4">Frequently Asked Questions</h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-semibold text-white mb-2">When do I get my credit?</p>
-                  <p className="text-gray-400 text-sm">
-                    You'll receive your $10 credit immediately after your referred friend verifies their email address.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-white mb-2">Can I use credits on any tier?</p>
-                  <p className="text-gray-400 text-sm">
-                    Yes! Your referral credits can be applied to any paid subscription tier upgrade.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-white mb-2">Is there a limit to referrals?</p>
-                  <p className="text-gray-400 text-sm">
-                    No! You can refer as many people as you'd like and earn unlimited credits.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-white mb-2">Can my credits expire?</p>
-                  <p className="text-gray-400 text-sm">
-                    Credits don't expire, so feel free to save them up and use them whenever you want.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Share Buttons */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-8 text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">Start Sharing!</h3>
-              <p className="text-white/90 mb-6">
-                Your referral code is ready to share. Every person who signs up through your link helps you earn credits.
+              <h2 className="text-2xl font-bold text-white mb-2">Not live yet</h2>
+              <p className="text-gray-400 mb-4">
+                The referral program isn&apos;t turned on yet. Quant is in open beta with no
+                paywalls right now, so there&apos;s no subscription tier for referral credit to
+                apply to -- we&apos;d rather wait until that&apos;s settled than show you a
+                reward that doesn&apos;t go anywhere.
               </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <a
-                  href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20backtesting%20platform!%20Get%20started%20free:%20${referralData.referral_url}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-2 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-                >
-                  Share on Twitter
-                </a>
-                <a
-                  href={`https://reddit.com/r/algotrading`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-2 bg-white text-orange-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-                >
-                  Post on Reddit
-                </a>
-                <button
-                  onClick={() => {
-                    navigator.clipboard.writeText(referralData.referral_url)
-                    alert('Referral link copied to clipboard!')
-                  }}
-                  className="px-6 py-2 bg-white text-purple-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-                >
-                  Copy Link
-                </button>
-              </div>
+              <p className="text-gray-500 text-sm">
+                Want to help in the meantime? Share Quant directly with other traders, or see{' '}
+                <Link href="/support" className="text-blue-400 hover:text-blue-300">
+                  make a one-time contribution
+                </Link>
+                .
+              </p>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   )
