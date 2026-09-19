@@ -136,6 +136,16 @@ class BacktestEngine:
         self.orders: List[Order] = []
         self.trades: List[Trade] = []
         self.equity_history: List[Tuple[datetime, float]] = []
+        # Symbol of the run currently in progress. Set by run_backtest and used to
+        # key orders/positions. Without it _process_signal fell back to `bar.name`,
+        # which after `reset_index(drop=True)` is the integer ROW NUMBER, so every
+        # order got a different "symbol" and a sell could never find the position
+        # its matching buy had opened.
+        self._symbol: Optional[str] = None
+        # Orders rejected for insufficient cash / missing position, kept so the
+        # caller can tell "the strategy never fired" from "it fired and we could
+        # not afford it" instead of both surfacing as an empty, flat equity curve.
+        self.rejected_orders: List[Tuple[Order, str]] = []
         # Orders still awaiting a fill/reject decision. Kept in sync with
         # `self.orders` so _process_orders only scans live orders instead of
         # rescanning every order ever placed on every bar (O(n^2) over a
@@ -150,6 +160,8 @@ class BacktestEngine:
         self.trades = []
         self.equity_history = []
         self._pending_orders = []
+        self._symbol = None
+        self.rejected_orders = []
 
     async def run_backtest(
         self,
@@ -171,6 +183,7 @@ class BacktestEngine:
             BacktestResult with comprehensive metrics
         """
         self.reset()
+        self._symbol = symbol
 
         # Ensure data is sorted by timestamp
         price_data = price_data.sort_values('timestamp').reset_index(drop=True)
@@ -205,7 +218,11 @@ class BacktestEngine:
 
     def _process_signal(self, signal: Dict, bar: pd.Series):
         """Process trading signal"""
-        symbol = bar.name if hasattr(bar, 'name') else signal.get('symbol', 'UNKNOWN')
+        # `bar.name` is the row's index label, i.e. an integer row number once
+        # run_backtest has reset the index -- never the ticker. Use the symbol the
+        # run was started with; fall back to the signal's own symbol only if a
+        # caller drove the engine without one.
+        symbol = self._symbol or signal.get('symbol', 'UNKNOWN')
         signal_type = signal.get('type')  # 'buy' or 'sell'
         quantity = signal.get('quantity', 0)
 
@@ -286,15 +303,28 @@ class BacktestEngine:
             total_cost = execution_price * order.quantity + commission
             if total_cost > self.cash:
                 order.status = OrderStatus.REJECTED
+                self.rejected_orders.append((
+                    order,
+                    f"insufficient cash: {order.quantity:g} @ {execution_price:.2f} "
+                    f"costs {total_cost:.2f}, cash is {self.cash:.2f}",
+                ))
                 return
             self.cash -= total_cost
         else:
             # Sell order
             if order.symbol not in self.positions:
                 order.status = OrderStatus.REJECTED
+                self.rejected_orders.append(
+                    (order, f"no open position in {order.symbol} to sell")
+                )
                 return
             if self.positions[order.symbol].quantity < order.quantity:
                 order.status = OrderStatus.REJECTED
+                self.rejected_orders.append((
+                    order,
+                    f"position in {order.symbol} is "
+                    f"{self.positions[order.symbol].quantity:g}, cannot sell {order.quantity:g}",
+                ))
                 return
             proceeds = execution_price * order.quantity - commission
             self.cash += proceeds
@@ -428,14 +458,27 @@ class BacktestEngine:
         # Annual return
         annual_return = ((final_equity / self.initial_capital) ** (1 / duration_years) - 1) * 100 if duration_years > 0 else 0
 
-        # Sharpe ratio
+        # Sharpe ratio.
+        # The guard is a tolerance, not `> 0`: when no trade ever fills the equity
+        # curve is flat, every return is exactly 0.0, and np.std of that constant
+        # array is floating-point noise (~1e-18) rather than a clean zero. That
+        # passed a `> 0` check and divided a nonzero mean by ~1e-18, which is how a
+        # do-nothing backtest reported a Sharpe ratio of -9.3e16 in production.
+        _STD_TOL = 1e-12
         excess_returns = returns - (self.risk_free_rate / 252)  # Daily risk-free rate
-        sharpe_ratio = (np.mean(excess_returns) / np.std(excess_returns)) * np.sqrt(252) if np.std(excess_returns) > 0 else 0
+        excess_std = np.std(excess_returns)
+        sharpe_ratio = (
+            (np.mean(excess_returns) / excess_std) * np.sqrt(252)
+            if excess_std > _STD_TOL else 0.0
+        )
 
-        # Sortino ratio (downside deviation)
+        # Sortino ratio (downside deviation) -- same tolerance, same reason.
         downside_returns = returns[returns < 0]
-        downside_std = np.std(downside_returns) if len(downside_returns) > 0 else 0
-        sortino_ratio = (np.mean(excess_returns) / downside_std) * np.sqrt(252) if downside_std > 0 else 0
+        downside_std = np.std(downside_returns) if len(downside_returns) > 0 else 0.0
+        sortino_ratio = (
+            (np.mean(excess_returns) / downside_std) * np.sqrt(252)
+            if downside_std > _STD_TOL else 0.0
+        )
 
         # Max drawdown
         peak = equity_values[0]

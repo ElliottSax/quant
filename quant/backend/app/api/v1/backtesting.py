@@ -193,11 +193,20 @@ async def run_demo_backtest(request: BacktestRequest):
             detail=f"Unknown strategy: {request.strategy}"
         )
 
-    # Demo mode: only allow free-tier strategies
+    # Demo mode: only allow free-tier strategies.
+    # The free list is derived from the registry, never hardcoded: the old literal
+    # said "ma_crossover, rsi, momentum", but `momentum` is a PREMIUM strategy and
+    # `bollinger_breakout` is free. So the 403 told users to retry with the one
+    # name guaranteed to 403 again, and never named the free strategy they could
+    # actually have run.
     if strategy_info.get('tier') != 'free':
+        free_names = ", ".join(sorted(get_strategies_by_tier('free')))
         raise HTTPException(
             status_code=403,
-            detail=f"Strategy '{request.strategy}' requires premium subscription. Available in demo: ma_crossover, rsi, momentum"
+            detail=(
+                f"Strategy '{request.strategy}' requires a premium subscription. "
+                f"Available in demo: {free_names}"
+            )
         )
 
     strategy_func = strategy_info['function']
