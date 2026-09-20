@@ -253,7 +253,7 @@ class AffiliateService:
         return base_url
 
     @staticmethod
-    def track_affiliate_click(
+    async def track_affiliate_click(
         session: AsyncSession,
         broker: str,
         user_id: Optional[str],
