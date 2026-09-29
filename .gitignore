@@ -349,6 +349,12 @@ local_settings.py
 *_secret.txt
 
 # ============================================================================
+# Syndication drafts (Elliott reviews/posts manually, never committed)
+# ============================================================================
+
+syndication-drafts/
+
+# ============================================================================
 # Keep These Files
 # ============================================================================
 
@@ -377,3 +383,4 @@ quant/logs/
 
 # Published site data artefacts (build inputs, not local stores)
 !quant/frontend/public/data/*.json
+.env*.local

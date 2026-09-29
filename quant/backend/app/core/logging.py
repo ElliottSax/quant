@@ -62,6 +62,9 @@ def setup_logging() -> None:
     logging.getLogger("uvicorn").setLevel(logging.INFO)
     logging.getLogger("sqlalchemy.engine").setLevel(logging.WARNING)
     logging.getLogger("httpx").setLevel(logging.WARNING)
+    # aiosqlite logs every cursor/connection open+close at DEBUG (this was the entire content of the 14MB unrotated debug.log); asyncio is equally chatty.
+    logging.getLogger("aiosqlite").setLevel(logging.WARNING)
+    logging.getLogger("asyncio").setLevel(logging.WARNING)
 
 
 def get_logger(name: str) -> logging.Logger:

@@ -38,6 +38,9 @@ explicitly (see build_digest_email()).
 
 from __future__ import annotations
 
+import html as html_lib  # aliased -- build_digest_email() below has a local
+# variable named `html` (the rendered email body), which would otherwise
+# shadow this module for the rest of that function's scope.
 import os
 import sys
 import time
@@ -187,13 +190,22 @@ def build_digest_email(trades: list[dict[str, Any]], manage_token: str, tier: st
     for t in shown:
         type_lower = (t["type"] or "").lower()
         action = "Bought" if "purchase" in type_lower or "buy" in type_lower else "Sold" if "sale" in type_lower else (t["type"] or "Trade")
+        # FMP is a third-party feed -- escape every field before it lands in
+        # the HTML email. Nothing here is attacker-controlled today, but a
+        # member/office name or asset description containing `<`/`&` would
+        # otherwise be interpreted as markup by the recipient's mail client.
+        ticker = html_lib.escape(str(t["ticker"]))
+        member = html_lib.escape(str(t["member"]))
+        chamber = html_lib.escape(str(t["chamber"]))
+        amount = html_lib.escape(str(t["amount"]))
+        tx_date = html_lib.escape(str(t["transactionDate"]))
         rows_html.append(
             f"""<tr style="border-bottom:1px solid #1f2937">
-  <td style="padding:8px 6px;color:#fff;font-weight:600">{t['ticker']}</td>
-  <td style="padding:8px 6px;color:#e5e7eb">{t['member']} <span style="color:#9ca3af;font-size:12px">({t['chamber']})</span></td>
-  <td style="padding:8px 6px;color:#e5e7eb">{action}</td>
-  <td style="padding:8px 6px;color:#9ca3af">{t['amount']}</td>
-  <td style="padding:8px 6px;color:#9ca3af;white-space:nowrap">{t['transactionDate']}</td>
+  <td style="padding:8px 6px;color:#fff;font-weight:600">{ticker}</td>
+  <td style="padding:8px 6px;color:#e5e7eb">{member} <span style="color:#9ca3af;font-size:12px">({chamber})</span></td>
+  <td style="padding:8px 6px;color:#e5e7eb">{html_lib.escape(action)}</td>
+  <td style="padding:8px 6px;color:#9ca3af">{amount}</td>
+  <td style="padding:8px 6px;color:#9ca3af;white-space:nowrap">{tx_date}</td>
 </tr>"""
         )
         lines_text.append(
@@ -305,6 +317,21 @@ def main() -> None:
             # the underlying FMP feed -- see the schema comment in
             # frontend/supabase/congress_alerts.sql for why a finer-grained
             # timestamp comparison wouldn't buy any real freshness.
+            #
+            # Inclusive (>=) on purpose, not strictly-greater: the cursor is
+            # reset to "now" (today's date) after every run, including runs
+            # where nothing matched. A strictly-greater comparison would mean
+            # any disclosure FMP adds under today's date AFTER today's cron
+            # fires -- a real possibility, since FMP posts a daily feed that
+            # can fill in throughout the day -- compares today > today ->
+            # false, and is then silently, permanently unrecoverable once
+            # tomorrow's cursor moves past today. >= trades that risk for a
+            # bounded one-day resend: a disclosure already mailed on day D can
+            # be re-included on day D+1's run if the cursor is still dated D.
+            # A subscriber occasionally seeing yesterday's trade repeated in
+            # today's digest is a minor annoyance; silently dropping a real
+            # disclosure forever is not an acceptable trade for an alerts
+            # product whose entire value is "don't miss one of these."
             cursor_date = last_sent.astimezone(timezone.utc).date()
             subscriber_filters = filters_by_subscriber.get(sub["id"], [])
 
@@ -312,7 +339,7 @@ def main() -> None:
                 t
                 for t in trades
                 if (d := parse_date(t["disclosureDate"])) is not None
-                and d > cursor_date
+                and d >= cursor_date
                 and trade_matches(t, subscriber_filters)
             ]
             matches.sort(key=lambda t: t["transactionDate"], reverse=True)

@@ -15,7 +15,7 @@ class TestTradeModel:
     """Test cases for Trade model."""
 
     @pytest.fixture
-    def politician(self, db_session):
+    async def politician(self, db_session):
         """Create a test politician."""
         pol = Politician(
             name="John Doe",
