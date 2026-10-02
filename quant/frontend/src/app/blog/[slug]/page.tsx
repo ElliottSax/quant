@@ -19,6 +19,7 @@ import { readFrontmatterValue, readFrontmatterArray } from '@/lib/frontmatter'
 import { getArticleRaw } from '@/lib/blog-content'
 import { isNoindexDraft } from '@/lib/noindex-drafts'
 import { ToolCTA } from '@/components/blog/ToolCTA'
+import { BlogEmailCapture } from '@/components/blog/BlogEmailCapture'
 import blogManifest from '@/data/blog-manifest.generated.json'
 
 // ---------------------------------------------------------------------------
@@ -519,6 +520,9 @@ export default async function BlogArticlePage({
         {/* Route the reader to a working tool. Before this, no article linked to any
             tool and every click dead-ended in the blog. */}
         <ToolCTA category={frontmatter.category} title={frontmatter.title} />
+
+        {/* Email capture for readers who land straight on a post (the homepage was the only place to subscribe). */}
+        <BlogEmailCapture />
 
         {/* Back link */}
         <div className="text-center pb-8">

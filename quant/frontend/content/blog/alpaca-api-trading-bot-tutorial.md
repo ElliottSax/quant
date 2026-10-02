@@ -8,7 +8,7 @@ quality_score: 90
 seo_optimized: true
 published_date: '2026-03-16'
 last_updated: '2026-03-16'
-description: "The Alpaca API has democratized algorithmic trading by providing commission-free trading with simple REST and WebSocket APIs."
+description: "Build an Alpaca trading bot in Python: connect to the paper-trading API, place orders, add stop-losses and position sizing, backtest, and log every trade."
 ---
 
 # Alpaca API Trading Bot Tutorial: Complete Guide to Building Your First Algorithmic Trader
