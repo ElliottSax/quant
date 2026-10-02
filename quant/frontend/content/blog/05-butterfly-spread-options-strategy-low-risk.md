@@ -1,7 +1,7 @@
 ---
 title: "Butterfly Spread Strategy for Options Trading 2026"
 slug: 05_butterfly_spread_options_strategy_low_risk
-description: '''''''Butterfly Spread Strategy for Options Trading 2026: Complete Guide'
+description: 'Master the butterfly spread strategy. Learn entry/exit rules, Greeks impact, real-world examples, P&L diagrams, and FAQ.'
 author: "QuantEngines"
 category: Articles
 tags: []

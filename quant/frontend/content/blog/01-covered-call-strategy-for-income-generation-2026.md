@@ -1,8 +1,7 @@
 ---
 title: "Covered Call Strategy for Income Generation 2026"
 slug: 01_covered_call_strategy_for_income_generation_2026
-description: '''''''Covered Call Strategy for Income Generation 2026: Complete Guide
-  This'''
+description: 'The covered call is the most beginner-friendly options strategy, combining stock ownership with call selling to generate monthly income. Entry and exit rules, Greeks impact and examples.'
 author: "QuantEngines"
 category: Articles
 tags: []
