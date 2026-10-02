@@ -66,6 +66,9 @@ export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
   'forex-articles-generation-report',
   'generation-report-20260316',
   'generation-report-final',
+  // -- 2 more process artifacts found 2026-10-02 (final-manifest also exposes a local file path)
+  'delivery-report',
+  'final-manifest',
   // -- 177 haiku-* permutation matrix
   'haiku-combining-fibonacci-retracement-and-bollinger-bands-for-us-treasuries-full',
   'haiku-combining-fibonacci-retracement-and-money-flow-index-for-commodities-full',
