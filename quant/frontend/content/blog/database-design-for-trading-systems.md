@@ -1,5 +1,6 @@
 ---
 title: 'Database Design for Trading Systems: Schema and Optimization'
+description: "Effective database design is fundamental to high-performance trading systems. How to design the schema and optimize databases for trading workloads."
 slug: database-design-for-trading-systems
 author: "QuantEngines"
 category: Algo Trading

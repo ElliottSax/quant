@@ -1,8 +1,7 @@
 ---
 title: 'Cointegration Testing Python Tutorial: Johansen Method'
 slug: cointegration-testing-python-tutorial-johansen-method
-description: 'Comprehensive guide to cointegration testing python tutorial: johansen
-  method. Expert analysis with actionable strategies and real-world examples.'
+description: "Cointegration testing checks whether time series share a long-run equilibrium. A Python tutorial on the Johansen method and its common mistakes."
 keywords:
 - cointegration
 - Johansen

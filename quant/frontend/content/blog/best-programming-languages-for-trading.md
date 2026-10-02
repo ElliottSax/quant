@@ -1,5 +1,6 @@
 ---
 title: 'Best Programming Languages for Trading: Choose Your Stack'
+description: "Different programming languages excel for different trading tasks. The strengths and weaknesses of popular choices for quantitative trading systems."
 slug: best-programming-languages-for-trading
 author: "QuantEngines"
 category: Algo Trading
