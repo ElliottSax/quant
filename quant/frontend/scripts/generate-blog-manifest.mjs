@@ -57,7 +57,11 @@ function readFrontmatterArray(yamlBlock, key) {
 
 // --- Minimal reimplementation of src/lib/noindex-drafts.ts's slug set -----
 // Imported as JSON so this script and the real TS module can't drift.
+// Comments are stripped first: they contain apostrophes ("this site's", "doesn't") that the slug regex below
+// would otherwise pair up as quote delimiters, silently dropping ~200 of the 293 slugs (found 2026-10-02).
 const noindexDraftsSrc = fs.readFileSync(path.join(ROOT, 'src', 'lib', 'noindex-drafts.ts'), 'utf-8')
+  .replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/^\s*\/\/.*$/gm, '')
 const slugListMatch = noindexDraftsSrc.match(/NOINDEX_DRAFT_SLUGS[\s\S]*?Set\(\[([\s\S]*?)\]\)/)
 const NOINDEX_DRAFT_SLUGS = new Set(
   slugListMatch
