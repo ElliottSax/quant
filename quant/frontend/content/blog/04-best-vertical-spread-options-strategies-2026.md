@@ -1,7 +1,7 @@
 ---
 title: "Vertical Spreads Strategy for Options Trading 2026"
 slug: 04_best_vertical_spread_options_strategies_2026
-description: '''''''Vertical Spreads Strategy for Options Trading 2026: Complete Guide'
+description: 'Vertical spreads explained: how bull call and bear put spreads cap risk and reward, with worked max-profit, max-loss and breakeven math and a payoff table.'
 author: "QuantEngines"
 category: Articles
 tags: []
@@ -21,7 +21,7 @@ last_updated: '''''''2026-03-21'''''''
 - Complete mechanics of the Vertical Spreads strategy
 - Entry signals and exit rules for consistent profits
 - Greeks impact: Delta, Gamma, Theta, Vega analysis
-- Real-world examples with current market prices
+- A worked example with the max-profit, max-loss and breakeven math (hypothetical prices)
 - Position sizing and risk management frameworks
 - Common mistakes and how to avoid them
 - FAQ addressing trader concerns and edge cases
@@ -69,6 +69,33 @@ VERTICAL SPREADS PROFIT/LOSS DIAGRAM
 3. **Expiration Selection**: Select DTE (days to expiration) balancing theta vs gamma
 4. **Order Execution**: Enter multi-leg order simultaneously
 5. **Risk Verification**: Confirm Greeks and risk/reward ratios
+
+### Worked Example: Bull Call Spread (hypothetical prices)
+
+Prices below are illustrative, not a live quote or a recommendation. Say a stock trades at $100 and you are moderately bullish over the next 30 days:
+
+- Buy 1 call, $100 strike, for $3.20
+- Sell 1 call, $105 strike, for $1.10
+- **Net debit:** $3.20 - $1.10 = $2.10 per share, or **$210 per contract** (100 shares)
+
+The three numbers that define any vertical spread:
+
+- **Max loss** = net debit = **$210** (both calls expire worthless, stock at or below $100)
+- **Max profit** = strike width - net debit = ($5.00 - $2.10) x 100 = **$290** (stock at or above $105)
+- **Breakeven** = long strike + net debit = $100 + $2.10 = **$102.10**
+
+| Stock at expiration | Spread value | Profit / loss per contract |
+|---|---|---|
+| $98 | $0.00 | -$210 |
+| $100 | $0.00 | -$210 |
+| $102.10 | $2.10 | $0 (breakeven) |
+| $103 | $3.00 | +$90 |
+| $105 | $5.00 | +$290 |
+| $110 | $5.00 | +$290 |
+
+The reward-to-risk ratio is $290 / $210, about 1.38 to 1. A bear put spread is the mirror image: you buy the higher-strike put and sell the lower-strike put for a net debit, and profit if the stock falls. Selling the spread for a credit instead (a bull put or bear call spread) flips the math: max profit is the credit received, and max loss is the strike width minus the credit.
+
+Commissions, assignment risk on the short leg, and early-exercise risk around dividends are not included here. Check them with your broker before trading.
 
 ---
 
