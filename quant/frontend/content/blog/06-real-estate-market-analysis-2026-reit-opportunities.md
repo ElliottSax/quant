@@ -1,7 +1,7 @@
 ---
-title: '''''''Real Estate Market Analysis 2026: REIT Opportunities'''''''
+title: "Real Estate Market Analysis 2026: REIT Opportunities"
 slug: real-estate-market-analysis-2026-reit-opportunities
-description: '''''''Real estate analysis 2026: best REITs, property markets, dividend'
+description: "Real estate analysis 2026: best REITs, property markets, dividend"
 author: "QuantEngines"
 category: Real Estate
 tags: []

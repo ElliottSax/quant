@@ -1,14 +1,14 @@
 ---
-title: '''''''Liquidity Mining Strategies: Complete DeFi Guide 2026'''''''
+title: "Liquidity Mining Strategies: Complete DeFi Guide 2026"
 slug: defi_article_04_liquidity_mining_strategies_defi_complete_guide
-description: '''''''Liquidity Mining Strategies: Complete DeFi Guide 2026 This article'
+description: "Liquidity Mining Strategies: Complete DeFi Guide 2026 This article"
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/defi_article_04_liquidity_mining_strategies_defi_complete_guide
-reading_time: '''11'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/defi-article-04-liquidity-mining-strategies-defi-complete-guide"
+reading_time: "11"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # Liquidity Mining Strategies: Complete DeFi Guide 2026

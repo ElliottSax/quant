@@ -1,5 +1,5 @@
 ---
-title: '''''''Crypto Grid Trading Bot Strategies: Automation Guide'''''''
+title: "Crypto Grid Trading Bot Strategies: Automation Guide"
 slug: crypto-grid-trading-bot-strategies
 description: "Automate profits with grid trading bots. Configuration, backtesting, and optimization. Different market environments reward different approaches."
 author: "QuantEngines"

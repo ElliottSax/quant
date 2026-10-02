@@ -5,10 +5,10 @@ description: 'The covered call is the most beginner-friendly options strategy, c
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/01_covered_call_strategy_for_income_generation_2026
-reading_time: '''16'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/01-covered-call-strategy-for-income-generation-2026"
+reading_time: "16"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # Covered Call Strategy for Income Generation 2026: Complete Guide

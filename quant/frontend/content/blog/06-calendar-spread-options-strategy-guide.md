@@ -1,14 +1,14 @@
 ---
 title: "Calendar Spread Strategy for Options Trading 2026"
 slug: 06_calendar_spread_options_strategy_guide
-description: '''''''Calendar Spread Strategy for Options Trading 2026: Complete Guide'
+description: "Master the calendar spread strategy. Learn entry/exit rules, Greeks impact, real-world examples, P&L diagrams, and FAQ."
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/06_calendar_spread_options_strategy_guide
-reading_time: '''6'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/06-calendar-spread-options-strategy-guide"
+reading_time: "6"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # Calendar Spread Strategy for Options Trading 2026: Complete Guide

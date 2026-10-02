@@ -5,10 +5,10 @@ description: 'Master the butterfly spread strategy. Learn entry/exit rules, Gree
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/05_butterfly_spread_options_strategy_low_risk
-reading_time: '''6'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/05-butterfly-spread-options-strategy-low-risk"
+reading_time: "6"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # Butterfly Spread Strategy for Options Trading 2026: Complete Guide

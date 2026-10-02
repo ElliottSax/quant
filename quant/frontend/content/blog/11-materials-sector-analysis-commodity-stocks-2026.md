@@ -1,8 +1,7 @@
 ---
-title: '''''''Materials Sector Analysis: Commodity Stocks 2026'''''''
+title: "Materials Sector Analysis: Commodity Stocks 2026"
 slug: materials-sector-analysis-commodity-stocks-2026
-description: '''''''Materials stocks 2026: metals, mining, chemicals analysis. Best
-  commodity'''
+description: "Materials stocks 2026: metals, mining, chemicals analysis. Best commodity"
 author: "QuantEngines"
 category: Materials
 tags: []

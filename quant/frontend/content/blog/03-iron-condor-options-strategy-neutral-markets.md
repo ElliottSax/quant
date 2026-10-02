@@ -5,10 +5,10 @@ description: 'Master the iron condor strategy. Learn entry/exit rules, Greeks im
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/03_iron_condor_options_strategy_neutral_markets
-reading_time: '''6'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/03-iron-condor-options-strategy-neutral-markets"
+reading_time: "6"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # Iron Condor Strategy for Options Trading 2026: Complete Guide

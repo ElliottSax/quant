@@ -1,7 +1,7 @@
 ---
-title: '''''''Small-Cap Stocks Analysis 2026: High Growth Potential'''''''
+title: "Small-Cap Stocks Analysis 2026: High Growth Potential"
 slug: small-cap-stocks-analysis-2026-high-growth-potential
-description: '''''''Small-cap stocks 2026: high growth potential analysis. Best small-cap'''
+description: "Small-cap stocks 2026: high growth potential analysis. Best small-cap"
 author: "QuantEngines"
 category: Small-Cap
 tags: []

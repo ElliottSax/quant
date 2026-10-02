@@ -1,15 +1,14 @@
 ---
-title: '''''''DeFi Insurance Protocols: Complete 2026 Comparison Guide'''''''
+title: "DeFi Insurance Protocols: Complete 2026 Comparison Guide"
 slug: defi_article_08_defi_insurance_protocols_complete_comparison
-description: '''''''DeFi Insurance Protocols: Complete 2026 Comparison Guide This
-  article'''
+description: "DeFi Insurance Protocols: Complete 2026 Comparison Guide This article"
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/defi_article_08_defi_insurance_protocols_complete_comparison
-reading_time: '''11'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/defi-article-08-defi-insurance-protocols-complete-comparison"
+reading_time: "11"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # DeFi Insurance Protocols: Complete 2026 Comparison Guide

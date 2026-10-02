@@ -5,10 +5,10 @@ description: 'Master the cash-secured put strategy. Learn entry/exit rules, Gree
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/02_cash_secured_put_strategy_guide_beginners
-reading_time: '''6'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/02-cash-secured-put-strategy-guide-beginners"
+reading_time: "6"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # Cash-Secured Put Strategy for Options Trading 2026: Complete Guide

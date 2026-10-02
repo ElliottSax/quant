@@ -5,10 +5,10 @@ description: Quant Trading Strategies Articles - Delivery Report This article pr
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/DELIVERY_REPORT
-reading_time: '''7'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/delivery-report"
+reading_time: "7"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # Quant Trading Strategies Articles - Delivery Report

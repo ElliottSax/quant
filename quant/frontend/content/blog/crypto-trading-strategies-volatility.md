@@ -1,7 +1,7 @@
 ---
 title: "Crypto Trading Strategies for Volatility"
 slug: '''"crypto-trading-strategies-volatility"'''
-description: '''"Master crypto trading strategies for volatile markets. Learn to profit'
+description: "Master crypto trading strategies for volatile markets. Learn to profit"
 author: "QuantEngines"
 category: '''"Trading Strategies"'''
 tags: []

@@ -1,8 +1,7 @@
 ---
-title: '''''''Defensive Stocks Analysis: Recession Protection 2026'''''''
+title: "Defensive Stocks Analysis: Recession Protection 2026"
 slug: defensive-stocks-analysis-recession-protection-2026
-description: '''''''Defensive stocks 2026: recession protection and stability. Best
-  defensive'''
+description: "Defensive stocks 2026: recession protection and stability. Best defensive"
 author: "QuantEngines"
 category: Defensive Investing
 tags: []

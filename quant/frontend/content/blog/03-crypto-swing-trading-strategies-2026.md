@@ -1,5 +1,5 @@
 ---
-title: '''''''Crypto Swing Trading Strategies That Work: 2026 Edition'''''''
+title: "Crypto Swing Trading Strategies That Work: 2026 Edition"
 slug: crypto-swing-trading-strategies-2026
 description: Discover effective swing trading strategies for cryptocurrency. Hold
 author: "QuantEngines"

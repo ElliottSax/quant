@@ -1,5 +1,5 @@
 ---
-title: '''"Stock Market Outlook 2026: Predictions and Forecasts"'''
+title: "Stock Market Outlook 2026: Predictions and Forecasts"
 slug: '''"stock-market-outlook-2026-predictions-forecasts"'''
 description: "Comprehensive analysis of stock market trends, economic indicators, and investor sentiment for 2026."
 author: "QuantEngines"

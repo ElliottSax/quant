@@ -1,8 +1,7 @@
 ---
 title: Growth Stocks vs Value Stocks Analysis 2026
 slug: growth-stocks-vs-value-stocks-analysis-2026
-description: '''''''Growth vs value stocks 2026: comparative analysis and strategy.
-  Best'''
+description: "Growth vs value stocks 2026: comparative analysis and strategy. Best"
 author: "QuantEngines"
 category: Investment Styles
 tags: []

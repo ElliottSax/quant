@@ -1,15 +1,14 @@
 ---
 title: "Credit Spread Strategy for Options Trading 2026"
 slug: 14_credit_spread_options_income_strategy_guide
-description: '''''''Credit Spread Strategy for Options Trading 2026: Complete Guide
-  This'''
+description: "Master the credit spread strategy. Learn entry/exit rules, Greeks impact, real-world examples, P&L diagrams, and FAQ."
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/14_credit_spread_options_income_strategy_guide
-reading_time: '''6'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/14-credit-spread-options-income-strategy-guide"
+reading_time: "6"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # Credit Spread Strategy for Options Trading 2026: Complete Guide

@@ -5,10 +5,10 @@ description: 15 SEO-Optimized Technical Indicator Guide Articles for Quant Site 
 author: "QuantEngines"
 category: Articles
 tags: []
-canonical_url: https://example.com/FINAL_MANIFEST
-reading_time: '''4'''
-published_date: '''''''2026-03-21'''''''
-last_updated: '''''''2026-03-21'''''''
+canonical_url: "https://quantengines.com/blog/final-manifest"
+reading_time: "4"
+published_date: "2026-03-21"
+last_updated: "2026-03-21"
 ---
 
 # 15 SEO-Optimized Technical Indicator Guide Articles for Quant Site
