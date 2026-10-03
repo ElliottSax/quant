@@ -7,6 +7,9 @@ category: "Crypto & DeFi"
 tags: ["arbitrage", "crypto", "trading-strategies"]
 keywords: ["crypto arbitrage", "CEX DEX arbitrage", "triangular arbitrage", "cryptocurrency trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Crypto Arbitrage Strategies: CEX, DEX, and Triangular Arb
 
 Cryptocurrency markets present unique arbitrage opportunities due to fragmented liquidity across hundreds of exchanges, protocols, and trading pairs. Unlike traditional markets with centralized price discovery, crypto assets trade at different prices simultaneously across centralized exchanges (CEX), decentralized exchanges (DEX), and various blockchain networks.
@@ -91,7 +94,7 @@ Monitoring and alerting systems track key metrics: profitable opportunities foun
 
 ## Key Takeaways
 
-Crypto arbitrage strategies leverage market fragmentation and inefficiencies across centralized exchanges, decentralized protocols, and trading pairs to generate consistent profits with limited directional risk.
+Crypto arbitrage strategies leverage market fragmentation and inefficiencies across centralized exchanges, decentralized protocols, and trading pairs to try to earn profits with limited directional risk.
 
 Cross-exchange arbitrage requires maintaining funded accounts on multiple platforms and careful position rebalancing to avoid withdrawal fees eroding profits. Spreads of 0.3-0.5% typically provide sufficient buffer against fees and execution risk.
 

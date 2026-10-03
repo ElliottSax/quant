@@ -234,7 +234,7 @@ class FundingRateArbitrage:
         }
 ```
 
-In 2024-2025, BTC perpetual funding rates averaged +0.01% per 8 hours during bull markets (annualized ~13.7%), making this a consistently profitable strategy with careful execution.
+In 2024-2025, BTC perpetual funding rates averaged +0.01% per 8 hours during bull markets (annualized ~13.7%), which makes it a strategy worth testing carefully.
 
 ### Strategy 3: Volatility Breakout on Altcoins
 
@@ -343,7 +343,7 @@ Deploy your system on a cloud server (AWS, GCP) rather than a personal computer.
 
 ### Is crypto algorithmic trading profitable in 2026?
 
-Funding rate arbitrage and market making remain consistently profitable for well-capitalized operators. Cross-exchange arbitrage has tightened significantly as more participants enter. Momentum and mean-reversion strategies work well on altcoins due to retail-driven price dynamics. Overall, edges are larger but less persistent than in traditional markets.
+Funding rate arbitrage and market making can be profitable for well-capitalized operators but carry real risks. Cross-exchange arbitrage has tightened significantly as more participants enter. Momentum and mean-reversion strategies work well on altcoins due to retail-driven price dynamics. Overall, edges are larger but less persistent than in traditional markets.
 
 ### How do I backtest crypto strategies with limited historical data?
 

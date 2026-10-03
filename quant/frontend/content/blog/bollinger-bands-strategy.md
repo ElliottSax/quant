@@ -18,6 +18,9 @@ last_updated: '2026-03-19'
 description: "If touching them 20%+ of the time, either market is very volatile or parameters need adjustment."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Bollinger Bands Strategy: Complete Guide for Active Traders
 
 Bollinger Bands rank among the most versatile technical indicators available, serving simultaneously as support/resistance, volatility measure, and overbought/oversold detector. For algorithmic traders, understanding the full spectrum of Bollinger Band applications unlocks multiple profitable trading methodologies across all asset classes and timeframes. This comprehensive guide covers the complete implementation, includes production-ready Python code, real backtesting results across 10+ assets, and specific parameter tuning for different market conditions and timeframes.
@@ -150,32 +153,11 @@ signals = trader.mean_reversion_signal(close_prices, bands, volume_data, volume_
 
 ## Backtesting Results Across Multiple Assets (2020-2025)
 
-### SPY (S&P 500 ETF)
-- Mean Reversion Win Rate: 68.2%
-- Trend Breakout Win Rate: 51.8%
-- Sharpe Ratio: 1.76
-- Max Drawdown: -9.3%
-
-### QQQ (Nasdaq 100)
-- Mean Reversion Win Rate: 67.9%
-- Trend Breakout Win Rate: 52.1%
-- Sharpe Ratio: 1.82
-- Max Drawdown: -12.1%
-
-### IWM (Russell 2000)
-- Mean Reversion Win Rate: 69.1%
-- Trend Breakout Win Rate: 50.2%
-- Sharpe Ratio: 1.64
-- Max Drawdown: -11.7%
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Key Performance Metrics Table
 
-| Strategy | Win Rate | Avg Win | Avg Loss | Profit Factor | Sharpe |
-|----------|----------|---------|----------|---------------|--------|
-| Mean Reversion | 68% | 5.8% | -2.9% | 2.08 | 1.76 |
-| Trend Breakout | 52% | 6.2% | -3.1% | 1.75 | 1.42 |
-| Band Squeeze | 61% | 5.4% | -2.8% | 1.91 | 1.68 |
-| Combined System | 64% | 5.9% | -2.95% | 1.95 | 1.72 |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Critical Parameters for Optimization
 

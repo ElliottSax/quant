@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["factor investing", "smart beta", "value factor", "momentum factor", "quality factor"]
 keywords: ["factor investing strategy", "equity factors", "multi-factor portfolio"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Factor Investing: Value, Momentum, Quality, Low Volatility
 
 Factor investing is the systematic practice of targeting specific, well-documented drivers of returns across asset classes. The concept began with Fama and French's three-factor model (1993), which demonstrated that market risk alone could not explain stock returns and that size and value factors captured additional, persistent sources of alpha. The framework has since expanded to include momentum (Carhart, 1997), quality (Novy-Marx, 2013), and low volatility (Baker, Bradley, and Wurgler, 2011), creating a comprehensive toolkit for systematic portfolio construction.
@@ -104,17 +107,7 @@ The strongest diversification benefit comes from combining value and momentum (c
 
 ### Multi-Factor Backtest Results (Russell 1000, 2000-2025)
 
-| Portfolio | CAGR | Sharpe | Max DD | Turnover |
-|-----------|------|--------|--------|----------|
-| Value only | 8.4% | 0.42 | -42.8% | 80% |
-| Momentum only | 12.1% | 0.58 | -48.2% | 340% |
-| Quality only | 10.2% | 0.52 | -28.4% | 60% |
-| Low Vol only | 9.1% | 0.72 | -18.4% | 50% |
-| Equal-weight 4-factor | 11.8% | 0.92 | -22.1% | 120% |
-| Composite score | 13.4% | 1.12 | -18.8% | 100% |
-| Russell 1000 Index | 7.8% | 0.38 | -50.2% | N/A |
-
-The composite scoring approach produced the best results (Sharpe 1.12) by selecting stocks with high combined factor exposure, effectively concentrating in stocks that are simultaneously cheap, trending, profitable, and stable.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Factor Timing
 

@@ -289,31 +289,7 @@ class ForexMomentumTrader:
 
 ## Backtest Results: EUR/USD Momentum (Daily Timeframe)
 
-**Test Period: 2019-2026 (7 years)**
-
-### Strategy Performance
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 68.3% |
-| Annualized Return | 8.2% |
-| Sharpe Ratio | 1.78 |
-| Maximum Drawdown | -9.2% |
-| Win Rate | 61.4% |
-| Profit Factor | 2.34 |
-| Average Trade Duration | 12.1 days |
-| Total Trades | 284 |
-
-### Multi-Pair Portfolio (5 major pairs)
-
-| Metric | Value |
-|--------|-------|
-| Portfolio Return | 127.5% |
-| Annualized Return | 14.8% |
-| Sharpe Ratio | 2.14 |
-| Maximum Drawdown | -6.1% |
-| Correlation Benefit | -0.32 |
-| Diversification Gain | +38% |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Economic Calendar Integration
 

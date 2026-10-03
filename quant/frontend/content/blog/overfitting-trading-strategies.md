@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["overfitting", "backtesting", "Sharpe ratio", "strategy validation", "statistical testing"]
 keywords: ["overfitting trading strategies", "backtest overfitting", "deflated Sharpe ratio"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Overfitting in Trading Strategies: Detection and Prevention
 
 Overfitting is the silent killer of [quantitative trading strategies](/blog/crypto-quant-trading-strategies). An overfit strategy exploits patterns in historical data that are artifacts of randomness rather than genuine market inefficiencies. In backtests, these strategies produce impressive Sharpe ratios, smooth equity curves, and high win rates. In live trading, they produce losses.

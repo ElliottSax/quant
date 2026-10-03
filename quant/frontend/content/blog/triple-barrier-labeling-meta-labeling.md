@@ -7,6 +7,9 @@ category: "Data Science"
 tags: ["meta-labeling", "triple-barrier method", "machine learning", "labeling", "financial ML"]
 keywords: ["triple barrier labeling", "meta-labeling trading", "triple barrier method python", "de prado labeling"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Triple-Barrier Labeling and Meta-Labeling: A Practical Implementation Guide
 
 Most introductions to [machine learning for trading](/blog/machine-learning-trading) label price data the way a generic classification tutorial would: did the price go up or down N bars later? That labeling scheme ignores path -- a trade that is up 0.1% at bar N but touched a -5% stop-loss at bar 3 is not a winning trade, no matter what the fixed-horizon label says. The triple-barrier method, introduced by Marcos Lopez de Prado in *Advances in Financial Machine Learning*, labels each observation by whichever of three barriers is touched first: a profit-take, a stop-loss, or a time limit. Meta-labeling then adds a second model on top that answers a narrower, more tractable question than "which direction will price move" -- it answers "should I act on the signal my primary model already gave me."

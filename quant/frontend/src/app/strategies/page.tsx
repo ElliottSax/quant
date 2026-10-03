@@ -429,33 +429,9 @@ export default function StrategiesPage() {
                   {strategy.description}
                 </p>
 
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  <div className="bg-slate-900/50 rounded-lg p-2 text-center">
-                    <div className="text-xs text-gray-500 mb-1">Win Rate</div>
-                    <div className="text-sm font-semibold text-green-400">{strategy.winRate}%</div>
-                  </div>
-                  <div className="bg-slate-900/50 rounded-lg p-2 text-center">
-                    <div className="text-xs text-gray-500 mb-1">Avg Return</div>
-                    <div className="text-sm font-semibold text-blue-400">+{strategy.avgReturn}%</div>
-                  </div>
-                  <div className="bg-slate-900/50 rounded-lg p-2 text-center">
-                    <div className="text-xs text-gray-500 mb-1">Sharpe</div>
-                    <div className="text-sm font-semibold text-purple-400">{strategy.sharpeRatio}</div>
-                  </div>
-                </div>
-
                 {/* Use Case */}
                 <div className="text-xs text-gray-500 mb-1">Best For</div>
                 <div className="text-sm text-gray-300 mb-4">{strategy.useCase}</div>
-
-                {/* Drawdown & Backtest Info */}
-                {strategy.maxDrawdown && (
-                  <div className="text-xs text-gray-500 mb-1">Max Drawdown</div>
-                )}
-                {strategy.maxDrawdown && (
-                  <div className="text-sm text-red-400 mb-4">{strategy.maxDrawdown}% (Backtest: {strategy.backtestPeriod})</div>
-                )}
 
                 {/* Research Reference */}
                 {strategy.researchPaper && (

@@ -10,6 +10,9 @@ published_date: '2026-03-24'
 last_updated: '2026-03-24'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Stock Trades Before Earnings: Timing Advantage Around Quarterly Reports
 
 Congressional members execute coordinated stock purchases in advance of quarterly earnings announcements, achieving 78.2% win rate on pre-earnings trades. Analysis reveals systematic access to earnings guidance before public announcement.

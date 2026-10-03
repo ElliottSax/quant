@@ -12,7 +12,7 @@ description: "Pairs trading is statistical arbitrage's simplest form. Buy the un
 
 # Backtesting Statistical Arbitrage for Beginners
 
-Statistical arbitrage sounds complex, but the core concept is simple: find two similar securities that move together, wait for them to diverge, then bet on them reconverging. This beginner's guide demystifies stat arb, provides simple Python implementations, and shows real backtesting results that prove beginners can generate consistent returns with these strategies. If you'd rather test a pairs idea before writing any of this code yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
+Statistical arbitrage sounds complex, but the core concept is simple: find two similar securities that move together, wait for them to diverge, then bet on them reconverging. This beginner's guide demystifies stat arb, provides simple Python implementations, and shows backtesting examples for beginners (illustrative, not proof of future returns). If you'd rather test a pairs idea before writing any of this code yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required.
 
 ## The Pairs Trading Concept
 
@@ -164,12 +164,7 @@ print(f"Return: {results['total_return']:.2%}")
 
 ## Backtesting Results: Beginner Pairs Strategy
 
-**GLD-SLV (Gold-Silver Spread) 2024-2026:**
-- Annual return: 12.4%
-- Win rate: 58.3%
-- Max drawdown: -7.2%
-- Trades per year: 28
-- Sharpe ratio: 1.38
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Common Beginner Mistakes
 

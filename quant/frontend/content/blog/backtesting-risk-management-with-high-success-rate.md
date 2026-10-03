@@ -10,6 +10,9 @@ seo_optimized: true
 description: "High-success-rate strategies (70%+ win rate) require different risk management approaches than typical strategies."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting Risk Management: A Practical Guide
 
 With most trades being winners, risk management shifts from preventing catastrophic losses to optimizing profit extraction while protecting against the rare losing streaks. This guide covers specialized risk management techniques that maximize returns for high-probability strategies without exposing capital to unacceptable drawdowns.
@@ -371,16 +374,7 @@ class HighWinRateRiskManagement:
 
 ## Backtesting Results: Risk Management for High Win Rates
 
-**Applied to mean reversion strategy with 73% historical win rate (187 trades):**
-
-| Approach | Return | Sharpe | Max DD | Avg Trade |
-|----------|--------|--------|--------|-----------|
-| Fixed 2% | 35.4% | 1.62 | -12.1% | +$189 |
-| Streak-aware | 42.1% | 1.75 | -14.3% | +$225 |
-| Partial profit-taking | 38.7% | 1.88 | -8.9% | +$207 |
-| Combined approach | 45.8% | 1.92 | -11.4% | +$245 |
-
-The combined approach (streak-aware sizing + partial profit-taking) achieved highest Sharpe ratio while maintaining lower maximum drawdown than fixed sizing.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

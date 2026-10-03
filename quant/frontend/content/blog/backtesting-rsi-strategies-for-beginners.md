@@ -12,7 +12,7 @@ description: "The Relative Strength Index (RSI) is one of the most popular momen
 
 # Backtesting RSI Strategies for Beginners
 
-The Relative Strength Index (RSI) is one of the most popular momentum indicators for beginners. It's intuitive, versatile, and has proven profitable across multiple asset classes. If you want to verify the RSI formula below against real market data rather than re-deriving it, our [indicator formulas reference](/indicator-formulas) cross-checks RSI, MACD, ATR, and Bollinger Bands against pandas_ta on real bars. This beginner's guide covers RSI fundamentals, simple backtesting frameworks, and real-world backtesting results with Python implementations.
+The Relative Strength Index (RSI) is one of the most popular momentum indicators for beginners. It's intuitive, versatile, and is used across multiple asset classes. If you want to verify the RSI formula below against real market data rather than re-deriving it, our [indicator formulas reference](/indicator-formulas) cross-checks RSI, MACD, ATR, and Bollinger Bands against pandas_ta on real bars. This beginner's guide covers RSI fundamentals, simple backtesting frameworks, and real-world backtesting results with Python implementations.
 
 ## What is RSI?
 
@@ -319,21 +319,7 @@ print(f"Win Rate: {results['win_rate']:.1%}")
 
 ## Backtesting Results: RSI on SPY
 
-**Simple RSI 14 period strategy (2023-2026, 126 trades):**
-- Total return: 18.4%
-- Win rate: 54.2%
-- Avg trade: +$231
-- Max drawdown: -8.3%
-- Sharpe ratio: 1.24
-
-**With divergence detection (2023-2026, 87 trades):**
-- Total return: 22.1%
-- Win rate: 58.1%
-- Avg trade: +$254
-- Max drawdown: -6.1%
-- Sharpe ratio: 1.52
-
-Divergence detection improved win rate but reduced trade count.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Common RSI Strategy Mistakes for Beginners
 

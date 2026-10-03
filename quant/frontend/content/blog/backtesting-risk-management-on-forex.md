@@ -342,16 +342,7 @@ class ForexRiskManagedBacktest:
 
 ## Backtesting Results: Forex-Specific Approach
 
-**EUR/USD Mean Reversion Strategy (2024-2026, 283 trades):**
-
-| Control | Total Return | Sharpe | Max DD | Pips/Trade |
-|---------|--------------|--------|--------|------------|
-| No risk mgmt | 34.2% | 1.15 | -31.4% | +18.3 |
-| Leverage limit | 28.1% | 1.52 | -14.2% | +18.3 |
-| Correlation control | 25.7% | 1.68 | -11.8% | +18.3 |
-| Full framework | 22.4% | 1.81 | -9.1% | +18.3 |
-
-Risk management reduced returns but dramatically improved Sharpe ratio and prevented leverage-induced catastrophic losses.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

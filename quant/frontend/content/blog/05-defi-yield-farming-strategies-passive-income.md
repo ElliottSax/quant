@@ -28,7 +28,7 @@ DeFi yield farming means locking crypto in smart contracts to earn token rewards
 
 In 2026, professional farmers generate consistent passive income through careful protocol selection and risk management.
 
-This guide covers proven strategies that balance yield with security for passive income that actually works.
+This guide covers strategies that try to balance yield with security for passive income that actually works.
 
 ## Why DeFi Yield Farming in 2026?
 

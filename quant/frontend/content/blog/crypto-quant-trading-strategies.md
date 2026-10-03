@@ -52,15 +52,7 @@ Cryptocurrency markets exhibit strong momentum effects, likely due to the retail
 
 ### Backtest Results (2019-2025)
 
-| Metric | Long Only | Long/Short | BTC Buy & Hold |
-|--------|-----------|------------|----------------|
-| CAGR | 82.4% | 38.2% | 54.8% |
-| Sharpe Ratio | 0.94 | 1.42 | 0.72 |
-| Max Drawdown | -58.4% | -24.8% | -74.2% |
-| Win Rate (weekly) | 56.2% | 54.8% | 55.4% |
-| Annual Volatility | 84.2% | 26.4% | 72.8% |
-
-The long/short momentum strategy captures directional alpha while dramatically reducing drawdowns (from -74.2% for BTC buy-and-hold to -24.8%) and volatility.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ### Momentum Lookback Optimization
 
@@ -96,16 +88,7 @@ This is market-neutral: the spot and futures positions offset each other, and yo
 
 ### Backtest Results (BTC, 2020-2025)
 
-| Metric | Value |
-|--------|-------|
-| CAGR | 18.4% |
-| Sharpe Ratio | 2.42 |
-| Max Drawdown | -4.2% |
-| Win Rate (daily) | 78.4% |
-| Avg Daily Return | 0.05% |
-| Correlation to BTC | 0.02 |
-
-Funding rate arbitrage produces remarkably stable returns with near-zero correlation to BTC. The Sharpe of 2.42 is among the highest for any systematic crypto strategy.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ### Risks
 
@@ -132,15 +115,7 @@ Price differences between exchanges for the same asset create risk-free (or low-
 
 ### Backtest Results: BTC Cross-Exchange (Binance/Coinbase, 2021-2025)
 
-| Metric | Spatial Arb | Triangular Arb | Statistical Arb |
-|--------|------------|----------------|-----------------|
-| CAGR | 8.4% | 12.2% | 22.4% |
-| Sharpe Ratio | 3.18 | 2.84 | 1.28 |
-| Max Drawdown | -1.8% | -2.4% | -12.8% |
-| Avg Trade Duration | 12 min | 3 min | 4.2 hours |
-| Latency Sensitivity | Very High | Very High | Low |
-
-Spatial and triangular arbitrage produce the highest Sharpe ratios but require low latency infrastructure. [Statistical arbitrage](/blog/crypto-statistical-arbitrage) is more accessible to retail traders.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 4: On-Chain Momentum
 
@@ -162,13 +137,7 @@ On-chain data provides unique fundamental insights unavailable in traditional ma
 
 ### Backtest Results (BTC, 2018-2025)
 
-| Metric | On-Chain Enhanced | Price-Only Momentum | BTC Buy & Hold |
-|--------|------------------|--------------------|--------------|
-| CAGR | 62.4% | 48.2% | 54.8% |
-| Sharpe Ratio | 1.08 | 0.84 | 0.72 |
-| Max Drawdown | -42.8% | -52.4% | -74.2% |
-
-Adding on-chain features improved the Sharpe by 29% and reduced max drawdown by 18% compared to price-only momentum, demonstrating the informational value of blockchain data.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Risk Management for Crypto
 

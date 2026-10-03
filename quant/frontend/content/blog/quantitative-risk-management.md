@@ -7,6 +7,9 @@ category: "Algo Trading"
 tags: ["risk management", "position sizing", "drawdown", "VaR", "portfolio risk"]
 keywords: ["quantitative risk management", "position sizing strategies", "drawdown control"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Quantitative Risk Management: Position Sizing and Drawdown Control
 
 Quantitative risk management is the discipline that separates surviving traders from failed ones. While entry and exit signals receive the most attention, [position sizing](/blog/position-sizing-strategies) and risk management determine whether a strategy produces consistent returns or catastrophic losses. As Ed Seykota famously stated, "There are old traders and there are bold traders, but there are very few old, bold traders." Research by Balsara (1992) demonstrated that optimal position sizing can transform a modestly profitable strategy into a significantly profitable one, while poor sizing can make any strategy unprofitable.
@@ -199,17 +202,7 @@ If any scenario produces losses exceeding tolerance, adjust portfolio constructi
 
 ## Risk-Adjusted Performance Metrics
 
-### Beyond Sharpe Ratio
-
-| Metric | Formula | Advantage |
-|--------|---------|-----------|
-| Sharpe Ratio | (Return - Rf) / StdDev | Universal standard |
-| Sortino Ratio | (Return - Rf) / Downside StdDev | Only penalizes downside vol |
-| Calmar Ratio | CAGR / Max Drawdown | Focuses on worst case |
-| Omega Ratio | Prob(Gain) weighted / Prob(Loss) weighted | Considers full distribution |
-| Tail Ratio | 95th percentile / abs(5th percentile) | Measures gain/loss asymmetry |
-
-Use multiple metrics to get a complete picture. A strategy with a high Sharpe but low Calmar has hidden tail risk.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Key Takeaways
 

@@ -10,6 +10,9 @@ seo_optimized: true
 description: "ML-enhanced pairs strategies show 30-40% improvement in Sharpe ratio over traditional Z-score methods."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting Pairs Trading using Machine Learning: Signal Enhancement
 
 Machine learning improves pairs trading by learning which spread deviations are most profitable, predicting mean-reversion speed, and adapting to regime changes. ML-enhanced pairs strategies show 30-40% improvement in Sharpe ratio over traditional Z-score methods.

@@ -9,13 +9,16 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Automating Mean Reversion on Forex
 
 ## Introduction
 
 Mean reversion is a financial theory suggesting that asset prices and historical returns eventually revert to their long-term mean or average level over time. In the context of foreign exchange (Forex) markets, this principle can be applied systematically to identify overbought or oversold currency pairs and execute trades based on statistical deviations from equilibrium levels.
 
-Unlike trend-following strategies that capitalize on momentum, mean reversion strategies assume that extreme price movements are temporary and that prices will eventually return to their average behavior. When properly automated, such strategies can offer consistent returns with controlled risk, especially in range-bound or moderately volatile market conditions.
+Unlike trend-following strategies that capitalize on momentum, mean reversion strategies assume that extreme price movements are temporary and that prices will eventually return to their average behavior. When properly automated, such strategies may offer steadier behavior with controlled risk, especially in range-bound or moderately volatile market conditions.
 
 This article explores the practical implementation of an automated mean reversion strategy in the Forex market. It covers theoretical foundations, indicator selection, backtesting methodology, performance metrics, and real-world trading examples with specific numerical results.
 
@@ -97,40 +100,7 @@ Trading is simulated on a daily basis, with entries executed at the close of the
 
 ## Backtesting Results: EUR/USD (2015–2023)
 
-| Metric                        | Value                  |
-|------------------------------|------------------------|
-| Total Trades                 | 87                     |
-| Win Rate                     | 61.5%                  |
-| Average Profit per Trade     | +0.38%                 |
-| Largest Winning Trade        | +1.24%                 |
-| Largest Losing Trade         | -0.91%                 |
-| Profit Factor                | 1.42                   |
-| Maximum Drawdown (MDD)       | -12.3%                 |
-| Annualized Return            | 6.7%                   |
-| Annualized Volatility        | 9.1%                   |
-| Sharpe Ratio (annualized)    | 0.74                   |
-| Number of Losing Streaks ≥3  | 4                      |
-
-### Trade Distribution by Year
-
-| Year | Number of Trades | Win Rate | Annual Return |
-|------|------------------|----------|---------------|
-| 2015 | 9                | 55.6%    | +2.1%         |
-| 2016 | 11               | 63.6%    | +3.8%         |
-| 2017 | 14               | 71.4%    | +5.2%         |
-| 2018 | 10               | 50.0%    | -1.3%         |
-| 2019 | 12               | 66.7%    | +4.9%         |
-| 2020 | 8                | 50.0%    | +0.8%         |
-| 2021 | 9                | 66.7%    | +3.1%         |
-| 2022 | 7                | 42.9%    | -2.4%         |
-| 2023 | 7                | 71.4%    | +4.5%         |
-
-**Observations**:
-- The strategy performed best in stable, range-bound years (e.g., 2017, 2023).
-- 2018 and 2022 were poor due to strong trending markets (USD strength).
-- No trades were triggered during low-volatility periods (e.g., mid-2020), which protected capital.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Real Example: EUR/USD Trade in Q1 2023
 
@@ -325,7 +295,7 @@ A: A minimum of 5 years of daily data is required to capture multiple market cyc
 
 ## Conclusion
 
-Automating mean reversion on Forex offers a disciplined, rules-based approach to capturing short-term mispricings in currency pairs. When applied to liquid, range-bound markets like EUR/USD, the strategy can generate consistent returns with manageable drawdowns.
+Automating mean reversion on Forex offers a disciplined, rules-based approach to capturing short-term mispricings in currency pairs. When applied to liquid, range-bound markets like EUR/USD, the strategy can behave differently across market conditions.
 
 Our backtest over 2015–2023 shows an annualized return of 6.7% and a Sharpe ratio of 0.74, with a win rate of 61.5%. Performance varies significantly across currency pairs and market regimes, underscoring the need for robust risk management and regime filters.
 

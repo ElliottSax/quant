@@ -185,22 +185,7 @@ signals = zscore_mean_reversion(spy_prices)
 
 ## Backtest Results: Multi-Strategy Mean Reversion Portfolio
 
-**Test Period: 2021-2026 across 50 stocks**
-
-### Strategy Performance
-
-| Strategy | Annual Return | Sharpe Ratio | Max Drawdown | Win Rate |
-|----------|---------------|--------------|--------------|----------|
-| Bollinger Band MR | 18.4% | 1.67 | -6.2% | 58.3% |
-| Z-Score MR | 16.9% | 1.52 | -7.1% | 56.8% |
-| Pairs Trading | 22.1% | 1.89 | -5.3% | 61.2% |
-| Combined Ensemble | 24.7% | 2.14 | -4.8% | 63.5% |
-| S&P 500 Buy-Hold | 12.3% | 0.98 | -16.4% | N/A |
-
-**Key findings:**
-- Pairs trading outperformed single-stock mean reversion by 3.2%
-- Combined ensemble approach reduced drawdown to 4.8% while achieving 2x Buy-Hold return
-- Win rate improved to 63.5% by combining multiple signals
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Efficient Implementation in Production
 

@@ -9,9 +9,12 @@ tags: []
 published_date: '''2026-03-16'''
 provider: haiku
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 ## Introduction
 
-Order Flow Analysis represents a sophisticated approach to capturing market microstructure inefficiencies. This analysis examines the integration of advanced technical indicators with order flow dynamics to enhance alpha generation on Crude Oil Futures. The strategy combines price action analysis with volume-weighted metrics to identify high-probability trading opportunities across intraday and multi-timeframe horizons.
+Order Flow Analysis represents a sophisticated approach to capturing market microstructure inefficiencies. This analysis examines the integration of advanced technical indicators with order flow dynamics to enhance alpha generation on Crude Oil Futures. The strategy combines price action analysis with volume-weighted metrics to look for trading setups across intraday and multi-timeframe horizons.
 
 ## Market Microstructure Framework
 
@@ -23,32 +26,7 @@ Order flow analysis operates at the intersection of market microstructure theory
 
 ## Backtesting Results
 
-The strategy was backtested across 750 trades over 7 years of historical data on Crude Oil Futures.
-
-### Performance Metrics
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 31.9% annual |
-| Sharpe Ratio | 0.76 |
-| Maximum Drawdown | -6.0% |
-| Win Rate | 60.4% |
-| Profit Factor | 1.47 |
-| Number of Trades | 750 |
-| Average Trade Duration | 4.2 hours |
-| Recovery Factor | 2.21 |
-
-### Monthly Returns Distribution
-
-The strategy demonstrates consistent positive returns across market regimes:
-
-```
-Jan: +2.1%  | Feb: +1.8%  | Mar: +2.4%  | Apr: +1.9%
-May: +1.6%  | Jun: +2.2%  | Jul: +2.8%  | Aug: +1.5%
-Sep: +2.3%  | Oct: +1.7%  | Nov: +2.5%  | Dec: +1.9%
-```
-
-Annual return calculation: 12-month average return applied to compound growth model with monthly rebalancing.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Implementation Strategy
 
@@ -174,14 +152,14 @@ The strategy exhibits low correlation (-0.15 to 0.05) with traditional long-only
 ### Trending Markets
 
 During strong directional moves:
-- Reduce win rate expectations to 40-45%
+- Expect a lower win rate
 - Increase profit factor targets to 2.5-3.0
 - Extend average holding period from 4 to 6 hours
 
 ### Mean Reversion Regimes
 
 During range-bound consolidation:
-- Increase win rate to 60-65%
+- Aim for a higher win rate
 - Accept lower profit factors (1.2-1.5)
 - Tighten stops to 1.8% of ATR
 
@@ -237,7 +215,7 @@ A: Real-time order flow data (tick-level volume) is essential. Standard OHLCV da
 
 Order Flow Analysis provides a systematic framework for exploiting microstructure inefficiencies on Crude Oil Futures. The strategy's 0.76 Sharpe ratio and 60.4% win rate demonstrate consistent outperformance across market regimes. However, successful implementation requires disciplined risk management, realistic slippage assumptions, and quarterly parameter reoptimization.
 
-The intersection of order flow analysis and technical confirmation creates a robust trading signal with acceptable risk-adjusted returns for both institutional and qualified retail traders. The modular Python implementation allows for flexible parameter adjustment and alternative indicator combinations based on specific market conditions and asset classes.
+The intersection of order flow analysis and technical confirmation creates a candidate trading signal that you should test on your own data. The modular Python implementation allows for flexible parameter adjustment and alternative indicator combinations based on specific market conditions and asset classes.
 
 ## References
 

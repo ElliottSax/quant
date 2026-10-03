@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Improving Statistical Arbitrage Safely
 
 Statistical arbitrage (stat arb) is a quantitative trading strategy that exploits temporary mispricings between related financial instruments. Rooted in mean reversion and cointegration theories, stat arb strategies aim to profit from the convergence of price spreads between historically correlated assets—such as pairs of stocks, ETFs, or futures contracts—after deviations from equilibrium.
@@ -182,29 +185,7 @@ For example, GS and JPM easily meet these criteria (avg volume: ~4M and ~8M shar
 
 ## Backtesting Results: GS-JPM Pair (2018–2023)
 
-We simulate a live-like backtest from 2018 to 2023 using the enhanced framework.
-
-| Metric | Value |
-|--------|-------|
-| Total Trades | 42 |
-| Win Rate | 61.9% |
-| Average Return per Trade | 1.42% |
-| Max Drawdown | -21.5% |
-| Annualized Return | 9.8% |
-| Annualized Volatility | 8.7% |
-| Sharpe Ratio (risk-free rate = 2%) | **0.89** |
-| Profit Factor | 1.76 |
-| Worst Losing Trade | -4.3% |
-| Best Winning Trade | +5.1% |
-
-> **Note**: Returns are net of estimated transaction costs:
-> - Bid-ask spread: 0.05% per leg
-> - Slippage: 0.03%
-> - Short borrowing fee: 1.5% annualized
-
-Despite the 2020 drawdown, the strategy delivered consistent returns with a reasonable Sharpe ratio.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Case Study: Failed Pair – TSLA vs. NIO (2020–2022)
 
@@ -281,20 +262,7 @@ If p-value > 0.05 in any sub-period, discard the pair. GS-JPM fails this test in
 
 ## Performance Comparison: Baseline vs. Enhanced Strategy
 
-We compare two versions of the GS-JPM strategy:
-
-| Metric | Baseline (Fixed σ, Static Hedge) | Enhanced (Dynamic, Kalman, Regime Filter) |
-|--------|----------------------------------|------------------------------------------|
-| Sharpe Ratio | 0.62 | **0.89** |
-| Max Drawdown | -31.4% | **-21.5%** |
-| Win Rate | 54.8% | **61.9%** |
-| Avg Win / Avg Loss | 1.45 | **1.92** |
-| Number of Trades | 58 | **42** |
-| Worst Year Return | -18.2% | **-9.7%** |
-
-The enhanced strategy trades less frequently but with higher quality entries and lower drawdowns—demonstrating improved safety.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Real-World Implementation Considerations
 

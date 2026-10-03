@@ -10,6 +10,9 @@ seo_optimized: true
 description: "Tragedy in quantitative trading often stems from position sizing mistakes, not strategy failures."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting Position Sizing Safely
 
 Tragedy in quantitative trading often stems from position sizing mistakes, not strategy failures. Traders blow accounts not because their strategies were wrong, but because they sized positions too aggressively, suffered unexpected drawdowns, and panicked. This comprehensive guide covers safe position sizing practices, psychological circuit breakers, and backtesting safeguards that protect capital.
@@ -308,17 +311,7 @@ class PortfolioRiskController:
 
 ## Backtesting Results: Safety in Action
 
-**Same strategy, three position sizing approaches:**
-
-| Metric | Unsafe (5%) | Moderate (2%) | Conservative (1%) |
-|--------|------------|---------------|------------------|
-| Total Return | 67.3% | 34.1% | 17.2% |
-| Sharpe Ratio | 0.84 | 1.42 | 1.48 |
-| Max Drawdown | -34.2% | -11.4% | -6.1% |
-| Probability of Ruin | 8.2% | 0.3% | 0.01% |
-| Avg Trade Return | $1,850 | $950 | $480 |
-
-Conservative sizing had nearly identical Sharpe ratio but with 82% lower drawdown. Safety doesn't sacrifice returns; it eliminates ruin risk.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

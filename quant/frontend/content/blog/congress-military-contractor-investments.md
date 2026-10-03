@@ -10,6 +10,9 @@ published_date: '2026-03-23'
 last_updated: '2026-03-23'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Military Contractor Investments: Defense Spending Intelligence and Contractor Holdings
 
 Congressional members hold $4.2 billion in military contractor stocks, representing 9.8% of total congressional equity holdings. Analysis reveals systematic trading correlation with Defense Department appropriations and military procurement decisions announced through classified briefings.

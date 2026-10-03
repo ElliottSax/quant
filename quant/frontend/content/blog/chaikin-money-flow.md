@@ -16,6 +16,9 @@ last_updated: '2026-03-21'
 description: "The Chaikin Money Flow (CMF) indicator represents one of the most powerful volume-based tools for predicting directional moves."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Chaikin Money Flow: Volume-Based Price Prediction
 
 The Chaikin Money Flow (CMF) indicator represents one of the most powerful volume-based tools for predicting directional moves. Developed by Marc Chaikin, this cumulative indicator measures the money flow into and out of a security by analyzing where prices close relative to their trading range, weighted by volume.
@@ -105,14 +108,7 @@ class ChaikinMoneyFlowStrategy(bt.Strategy):
 
 ## Backtest Results: CMF Strategy (2020-2025)
 
-| Metric | SPY | QQQ | IWM |
-|--------|-----|-----|-----|
-| Win Rate | 64.2% | 63.8% | 64.7% |
-| Avg Win | 4.2% | 4.8% | 4.1% |
-| Avg Loss | -2.4% | -2.7% | -2.3% |
-| Sharpe Ratio | 1.58 | 1.71 | 1.52 |
-| Max DD | -8.9% | -11.2% | -10.1% |
-| Profit Factor | 1.92 | 2.08 | 1.99 |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## CMF Trading Signals and Strategies
 

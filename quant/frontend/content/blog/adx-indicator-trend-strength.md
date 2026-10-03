@@ -10,6 +10,9 @@ date: 2026-07-29
 readTime: 12-15 min read
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 ## Quick Answer
 
 ADX (Average Directional Index) measures trend strength 0-100. ADX above 25 = strong trend (trade trend-following). ADX below 25 = weak/no trend (avoid or use mean reversion). +DI above -DI = uptrend. -DI above +DI = downtrend.

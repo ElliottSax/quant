@@ -7,6 +7,9 @@ category: "Risk Management"
 tags: ["position sizing", "kelly criterion", "risk management", "money management", "portfolio sizing"]
 keywords: ["position sizing strategies", "kelly criterion trading", "fixed fractional position sizing"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Position Sizing Strategies: Kelly Criterion and Fixed Fractional
 
 Position sizing determines what percentage of your capital to allocate to each trade, and it has a larger impact on long-term trading performance than entry signals or exit strategies. A trader with mediocre signals but excellent position sizing will outperform a trader with excellent signals but poor position sizing over any meaningful time horizon. This is because position sizing directly controls the trade-off between growth rate and drawdown risk, the two variables that determine whether a trading account survives and compounds.

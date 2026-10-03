@@ -7,6 +7,9 @@ category: "Risk Management"
 tags: ["drawdown management", "risk management", "capital preservation", "losing streaks", "trading psychology"]
 keywords: ["drawdown management", "trading drawdown", "maximum drawdown strategy"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Drawdown Management: Protecting Capital During Losing Streaks
 
 Drawdown management is the process of systematically controlling portfolio losses during adverse periods. Every [trading strategy](/blog/breakout-trading-strategy), regardless of its edge, experiences drawdowns. The difference between traders who survive to benefit from their edge over thousands of trades and those who blow up during an inevitable losing streak comes down to one thing: how they manage drawdowns before, during, and after they occur.

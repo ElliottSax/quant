@@ -117,23 +117,7 @@ Transition rules: Shift allocation gradually (20-25% per month maximum) to avoid
 
 ## Backtesting Results
 
-### Two-State HMM on S&P 500 (1990-2025)
-
-A strategy that holds 100% equities in the bull state and 100% bonds in the bear state (with 1-day lag for signal implementation):
-
-| Metric | Buy & Hold | Regime-Switching | Improvement |
-|--------|-----------|-----------------|-------------|
-| Annual Return | 10.2% | 9.8% | -0.4% |
-| Annual Volatility | 15.4% | 10.1% | -5.3% |
-| Sharpe Ratio | 0.51 | 0.73 | +0.22 |
-| Max Drawdown | -50.9% | -22.3% | +28.6% |
-| Calmar Ratio | 0.20 | 0.44 | +0.24 |
-
-The regime-switching strategy sacrifices 40 basis points of annual return but reduces volatility by 35% and maximum drawdown by 56%. The Sharpe ratio improvement of 0.22 is economically significant.
-
-### Regime Detection Accuracy
-
-The two-state HMM correctly identifies bear markets (defined as 20%+ drawdowns) with approximately 75% accuracy and a 2-3 week lag. False positives (detecting a bear market that does not materialize) occur approximately once every 3-4 years, causing unnecessary defensive positioning that costs 50-100 basis points per false positive.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Implementation Challenges
 

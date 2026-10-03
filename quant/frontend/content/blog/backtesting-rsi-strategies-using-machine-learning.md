@@ -275,15 +275,7 @@ class NeuralNetRSIStrategy:
 
 ## Backtesting Results: ML vs Rule-Based RSI
 
-**Applied to SPY daily data (2024-2026, out-of-sample tests):**
-
-| Approach | Win Rate | Total Return | Sharpe | Max DD |
-|----------|----------|--------------|--------|---------|
-| Rule-based RSI 14 | 51.2% | 18.4% | 0.92 | -14.1% |
-| Random Forest | 58.3% | 24.1% | 1.28 | -9.8% |
-| Neural Network | 60.1% | 26.7% | 1.42 | -8.3% |
-
-ML models improved win rate by 8-9 percentage points and Sharpe ratio by 55%. If you want to check whether an observed win rate is statistically meaningful given your sample size, our [Win Rate Significance Calculator](/tools/win-rate-significance) runs the binomial test directly.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Feature Importance Analysis
 

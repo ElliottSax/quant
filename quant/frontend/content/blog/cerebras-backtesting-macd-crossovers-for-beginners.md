@@ -109,30 +109,7 @@ data.dropna(inplace=True)
 
 ## Backtesting Results: AAPL (2010–2020)
 
-After running the backtest, we extract key performance metrics. The table below summarizes the comparison between the MACD crossover strategy and a simple buy-and-hold approach.
-
-| Metric | Buy-and-Hold | MACD Crossover Strategy |
-|--------|--------------|--------------------------|
-| Total Return | 1,072% | 584% |
-| CAGR (Annual Return) | 26.8% | 20.5% |
-| Sharpe Ratio (annualized) | 1.42 | 1.18 |
-| Maximum Drawdown | -60.3% | -42.1% |
-| Number of Trades | 1 | 47 |
-| Win Rate | N/A | 51.1% |
-| Average Gain per Winning Trade | N/A | 8.4% |
-| Average Loss per Losing Trade | N/A | -7.2% |
-
-### Interpretation of Results
-
-- **Total Return**: Buy-and-hold outperforms significantly, returning over 10x the initial investment.
-- **CAGR**: The MACD strategy still delivers strong annual returns (20.5%), though below buy-and-hold.
-- **Sharpe Ratio**: The strategy exhibits slightly lower risk-adjusted returns (1.18 vs. 1.42).
-- **Maximum Drawdown**: The MACD strategy reduces peak-to-trough loss by nearly 18 percentage points, demonstrating better downside protection.
-- **Win Rate**: Just above 50%, indicating the strategy is not consistently profitable on a per-trade basis.
-
-Despite fewer trades, the MACD crossover strategy avoids major downturns (e.g., 2011 correction, 2018 selloff), which explains its lower drawdown.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Real Trade Example: AAPL in 2016
 
@@ -181,47 +158,7 @@ This suggests MACD crossovers are not a standalone alpha generator but may serve
 
 ## Key Performance Metrics Explained
 
-Understanding performance metrics is crucial for evaluating any strategy.
-
-### 1. **Sharpe Ratio**
-
-Measures risk-adjusted return. Calculated as:
-$$
-\text{Sharpe Ratio} = \frac{\text{Annualized Return} - \text{Risk-Free Rate}}{\text{Annualized Volatility}}
-$$
-
-We assume a risk-free rate of 2%. For AAPL:
-
-- Strategy volatility: 28.5% annualized
-- Excess return: 20.5% - 2% = 18.5%
-- Sharpe = 18.5 / 28.5 ≈ **0.65**
-
-Wait — earlier we reported 1.18. Why the discrepancy?
-
-Actually, the correct formula uses **excess return over risk-free rate divided by standard deviation of excess returns**. But in practice, many use total return for simplicity, especially in equity-only backtests.
-
-In our earlier table, we used the simplified version:
-$$
-\text{Sharpe} = \frac{\text{CAGR}}{\text{Volatility}}
-$$
-Thus: 20.5% / 17.4% ≈ **1.18** (volatility of strategy returns).
-
-> Note: For academic rigor, use excess returns. For practical comparison, the simplified version is acceptable.
-
-### 2. **Maximum Drawdown**
-
-The largest peak-to-trough decline in portfolio value. For the MACD strategy on AAPL, the worst drawdown occurred between October 2018 and December 2018, falling from $232 to $134 (-42.1%).
-
-### 3. **Win Rate**
-
-Proportion of profitable trades:
-$$
-\text{Win Rate} = \frac{\text{Number of Winning Trades}}{\text{Total Trades}}
-$$
-
-For AAPL: 24 winning trades out of 47 → **51.1%**.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Limitations of MACD Crossovers
 

@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Improving Bollinger Bands on Forex
 
 Bollinger Bands, developed by John Bollinger in the 1980s, are among the most widely used technical indicators in financial markets, especially in Forex trading. These bands consist of a moving average (typically a 20-period simple moving average) and two standard deviation bands—usually set at ±2 standard deviations—plotted above and below the moving average. Traders use Bollinger Bands to identify volatility, overbought or oversold conditions, and potential reversal points.
@@ -166,20 +169,7 @@ We tested adaptive vs. static bands on AUD/USD (2020–2023, 1-hour):
 
 ## Backtesting Summary: Performance Comparison
 
-The table below summarizes the performance of various Bollinger Band strategies on EUR/USD (2018–2023, 1-hour chart). All strategies used a 50-pip target and 30-pip stop loss.
-
-| Strategy | Total Trades | Win Rate | Avg Win (pips) | Avg Loss (pips) | Sharpe Ratio | Max Drawdown |
-|---------|--------------|----------|----------------|-----------------|--------------|--------------|
-| Standard (20,2) | 87 | 47.1% | 39.4 | 30.8 | 0.31 | -18.4% |
-| Optimized (10,1.5) | 94 | 58.3% | 43.1 | 29.5 | 0.67 | -11.8% |
-| + ATR Filter | 76 | 61.8% | 46.7 | 28.9 | 0.74 | -10.3% |
-| + RSI Filter | 68 | 64.7% | 47.8 | 29.4 | 0.81 | -9.6% |
-| Squeeze Strategy | 34 | 73.5% | 62.0 | 26.1 | 0.93 | -9.8% |
-| Adaptive Bands | 138 | 62.3% | 45.2 | 28.7 | 0.71 | -12.1% |
-
-These results show that filtered and adaptive versions of Bollinger Bands significantly outperform the standard setup in terms of win rate, risk-adjusted returns, and drawdown control.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Practical Implementation: Python Code Example
 

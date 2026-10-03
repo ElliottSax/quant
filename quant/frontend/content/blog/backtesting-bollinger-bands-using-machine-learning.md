@@ -260,13 +260,7 @@ class MLBollingerBandTrader:
 
 ## Backtest Results: ML-Enhanced Bollinger Bands (EUR/USD, 2023-2026)
 
-| Metric | Traditional BB | ML-Enhanced | Improvement |
-|--------|---|---|---|
-| Total Return | 38.42% | 52.18% | +35.8% |
-| Sharpe Ratio | 1.35 | 1.89 | +40.0% |
-| Win Rate | 52.18% | 61.45% | +17.8% |
-| Max Drawdown | -9.75% | -7.32% | -24.9% |
-| Profit Factor | 1.82 | 2.47 | +35.7% |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Feature Importance Analysis
 

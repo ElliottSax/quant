@@ -178,27 +178,7 @@ def create_training_dataset():
 
 ## Empirical Results and Backtesting Analysis
 
-### Comprehensive Performance Comparison
-
-| Metric | Baseline Params | ML-Optimized | Improvement | Significance |
-|--------|-----------------|--------------|-------------|-------------|
-| Sharpe Ratio | 0.8432 | 1.3245 | +57.1% | High |
-| Annual Return | 8.2% | 12.7% | +54.9% | High |
-| Max Drawdown | -18.5% | -12.3% | +33.5% | High |
-| Calmar Ratio | 0.4432 | 1.0325 | +132.9% | Very High |
-| Win Rate | 52.1% | 58.7% | +12.6% | Medium |
-| Volatility | 9.7% | 9.6% | -0.1% | Negligible |
-| Profit Factor | 1.23 | 1.87 | +52.0% | High |
-
-### Market Regime-Based Performance
-
-| Period | Market Regime | Baseline | Optimized | Delta | Volatility |
-|--------|---------------|----------|-----------|-------|-----------|
-| 2020-2021 | Strong Bull | 1.2134 | 1.4567 | +20.0% | 14.2% |
-| 2021-2022 | Correction | 0.3421 | 0.8923 | +160.9% | 22.3% |
-| 2022-2023 | Bear Market | 0.1234 | 0.7654 | +519.9% | 31.5% |
-| 2023-2024 | Recovery | 0.9876 | 1.3245 | +34.1% | 18.9% |
-| 2024-2025 | Bull Rally | 1.4567 | 1.6789 | +15.3% | 12.1% |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Key Findings and Insights
 

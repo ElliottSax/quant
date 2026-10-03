@@ -11,6 +11,9 @@ published_date: '''''''2026-03-21'''''''
 last_updated: '''''''2026-03-21'''''''
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # SEO-Optimized Sector Analysis Articles - Final Generation Report
 
 **Generation Timestamp**: March 19, 2026 23:31:51 UTC

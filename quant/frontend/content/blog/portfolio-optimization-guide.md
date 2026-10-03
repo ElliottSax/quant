@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["portfolio optimization", "modern portfolio theory", "risk parity", "asset allocation"]
 keywords: ["portfolio optimization", "modern portfolio theory", "risk parity portfolio"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Portfolio Optimization: Modern Portfolio Theory in Practice
 
 Portfolio optimization (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)) is the quantitative framework for allocating capital across assets to achieve the best possible risk-adjusted returns. Harry Markowitz's [Modern Portfolio Theory](/blog/mean-variance-optimization) (MPT), introduced in 1952 and awarded the Nobel Prize in 1990, demonstrated that investors should evaluate portfolios holistically rather than individual securities in isolation. The key insight: diversification reduces risk without proportionally reducing returns, and there exists an "efficient frontier" of optimal portfolios that maximize return for each level of risk.
@@ -55,12 +58,7 @@ We optimized a portfolio of 7 asset class ETFs using 10 years of historical data
 
 ### Backtest Results (2010-2025)
 
-| Portfolio | CAGR | Sharpe | Max DD | Volatility |
-|-----------|------|--------|--------|------------|
-| Max Sharpe | 9.4% | 0.88 | -14.2% | 9.8% |
-| Min Variance | 6.2% | 0.82 | -8.4% | 5.8% |
-| Equal Weight | 7.8% | 0.62 | -22.8% | 11.4% |
-| 60/40 Stock/Bond | 7.4% | 0.58 | -24.2% | 10.2% |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## The Problems with Mean-Variance Optimization
 

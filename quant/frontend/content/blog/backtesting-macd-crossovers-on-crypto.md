@@ -239,48 +239,7 @@ class CryptoMACDBacktester:
 
 ## Backtest Results: Crypto MACD Strategies
 
-### Bitcoin (BTC/USDT) - 4-Hour Timeframe, Jan 2023 - Mar 2026
-
-**Parameters: Fast=10, Slow=30, Signal=9**
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 187.45% |
-| Buy & Hold Return | 185.20% |
-| Excess Return | 2.25% |
-| Sharpe Ratio | 0.92 |
-| Win Rate | 49.32% |
-| Max Drawdown | -42.35% |
-| Profit Factor | 1.87 |
-| Total Trades | 156 |
-
-**Observation**: Bitcoin trend is so strong that MACD barely beats buy & hold. Strategy value is in avoiding crashes, not in outperformance.
-
-### Ethereum (ETH/USDT) - 4-Hour Timeframe, Jan 2023 - Mar 2026
-
-**Parameters: Fast=10, Slow=30, Signal=9**
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 142.38% |
-| Buy & Hold Return | 118.75% |
-| Excess Return | 23.63% |
-| Sharpe Ratio | 1.15 |
-| Win Rate | 51.45% |
-| Max Drawdown | -38.20% |
-| Profit Factor | 2.12 |
-| Total Trades | 142 |
-
-**Observation**: ETH shows better MACD performance than BTC, possibly due to higher volatility and trend changes.
-
-### Multi-Asset Crypto Performance
-
-| Asset | Timeframe | Return | Sharpe | Drawdown | Win Rate |
-|-------|-----------|--------|--------|----------|----------|
-| BTC/USDT | 4h | 187.45% | 0.92 | -42.35% | 49.32% |
-| ETH/USDT | 4h | 142.38% | 1.15 | -38.20% | 51.45% |
-| XRP/USDT | 4h | 95.28% | 0.87 | -55.18% | 48.92% |
-| ADA/USDT | 4h | 73.45% | 0.71 | -62.40% | 47.15% |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Crypto-Specific Considerations
 

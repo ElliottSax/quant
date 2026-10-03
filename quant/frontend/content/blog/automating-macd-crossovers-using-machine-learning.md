@@ -150,27 +150,7 @@ print(classification_report(y_test, y_pred))
 
 ## Backtest Results and Performance Metrics
 
-### Test Period: January 2024 - March 2026
-
-**ML-Enhanced MACD Strategy Performance:**
-- Total Return: +47.3% (vs. S&P 500: +31.2%)
-- Sharpe Ratio: 2.14 (traditional MACD: 0.87)
-- Maximum Drawdown: -8.4% (traditional MACD: -16.3%)
-- Win Rate: 64.2%
-- Profit Factor: 2.87
-- Average Trade Duration: 8.3 days
-
-**Comparison to Benchmarks:**
-
-| Metric | ML-MACD | Traditional MACD | Buy & Hold |
-|--------|---------|-----------------|-----------|
-| Annual Return | 23.6% | 9.2% | 15.6% |
-| Sharpe Ratio | 2.14 | 0.87 | 0.98 |
-| Max Drawdown | -8.4% | -16.3% | -12.8% |
-| Win Rate | 64.2% | 51.8% | N/A |
-| Trade Count | 127 | 156 | N/A |
-
-The machine learning model reduced false signals by 38% while improving winning trade percentage from 51.8% to 64.2%.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Signal Filtering Techniques
 

@@ -10,6 +10,9 @@ published_date: '2026-03-23'
 last_updated: '2026-03-23'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Healthcare Stock Trades Analysis: Pharmaceutical Profits and FDA Timing
 
 Congressional members executed over $1.2 billion in healthcare sector stock trades during Q1 2026, with concentrated positions in pharmaceutical companies. Analysis reveals precise timing correlations between congressional trading and FDA approval announcements, drug trial results, and pharmaceutical pricing legislation.

@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Improving Algorithmic Trading Efficiently
 
 Algorithmic trading has transformed financial markets over the past two decades, enabling execution speeds, precision, and scalability unattainable through manual trading. However, as competition intensifies and markets become increasingly efficient, the marginal gains from new strategies shrink rapidly. Traders and institutions must therefore focus not only on developing profitable algorithms but on **improving algorithmic trading efficiently**—maximizing performance gains while minimizing computational overhead, data costs, and time-to-market.
@@ -72,44 +75,7 @@ High-frequency data (tick-level) is often overused. For medium-frequency strateg
 
 ### Performance Comparison Across Data Granularities
 
-We backtested the same momentum strategy (RSI(14) + 50-period SMA) on Bitcoin/USD (BTC-USD) from 2018–2023:
-
-| Data Frequency | Data Size (GB) | Signal Quality (AUC) | Backtest Time (s) | Sharpe Ratio |
-|----------------|----------------|----------------------|-------------------|--------------|
-| Tick | 8.7 | 0.58 | 142 | 1.01 |
-| 1-min | 1.2 | 0.57 | 38 | 1.03 |
-| 5-min | 0.24 | 0.56 | 12 | 1.02 |
-| 15-min | 0.08 | 0.54 | 6 | 0.98 |
-| 1-hour | 0.02 | 0.51 | 3 | 0.89 |
-
-**Key Insight**: Moving from tick to 5-minute data reduces computational load by 97% while preserving 96% of Sharpe efficiency.
-
-Python code for efficient data resampling:
-
-```python
-import pandas as pd
-
-# Load 1-minute data
-df_1min = pd.read_parquet('btc_1min.parquet', 
-                          columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
-df_1min.set_index('timestamp', inplace=True)
-
-# Efficient resampling to 5-minute bars
-df_5min = df_1min.resample('5T').agg({
-    'open': 'first',
-    'high': 'max',
-    'low': 'min',
-    'close': 'last',
-    'volume': 'sum'
-}).dropna()
-
-# Save in compressed format
-df_5min.to_parquet('btc_5min.parquet', compression='zstd')
-```
-
-Using `zstd` compression reduced file size by 68% versus `snappy` and 74% versus uncompressed Parquet.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## 4. Feature Engineering: Sparse, Interpretable Signals
 
@@ -255,31 +221,7 @@ For production deployment, FPGA acceleration reduced order-to-trade latency from
 
 ## 9. Empirical Results: End-to-End Efficient Pipeline
 
-We implemented the above optimizations in a unified pipeline for a multi-asset trend-following strategy (equities, futures, FX).
-
-### Before Optimization (2020)
-
-| Metric | Value |
-|--------|-------|
-| Data Size | 1.2 TB (tick) |
-| Backtest Time | 8.2 hours |
-| Strategies Tested/Month | 22 |
-| Sharpe Ratio (OOS) | 1.05 |
-| Infrastructure Cost | $3,200/month |
-
-### After Optimization (2023)
-
-| Metric | Value | Improvement |
-|--------|-------|-------------|
-| Data Size | 48 GB (5-min OHLCV) | 96% reduction |
-| Backtest Time | 11 minutes | 98% faster |
-| Strategies Tested/Month | 189 | 759% increase |
-| Sharpe Ratio (OOS) | 1.31 | +24.8% |
-| Infrastructure Cost | $680/month | 79% reduction |
-
-The combination of data reduction, vectorized backtesting, and efficient feature selection enabled faster iteration and higher-quality strategy discovery.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## FAQ
 

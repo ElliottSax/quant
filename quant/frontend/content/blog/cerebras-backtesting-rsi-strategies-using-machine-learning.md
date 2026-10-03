@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting RSI Strategies Using Machine Learning
 
 The Relative Strength Index (RSI) is one of the most widely used technical indicators in quantitative trading. Developed by J. Welles Wilder in 1978, the RSI measures the speed and change of price movements on a scale from 0 to 100, typically identifying overbought (above 70) and oversold (below 30) conditions. While traditional RSI strategies rely on fixed thresholds and rule-based signals, integrating machine learning (ML) can enhance signal generation by adapting to market regimes, reducing false positives, and optimizing entry/exit timing.
@@ -187,33 +190,7 @@ data_test['Classic_Return'] = data_test['Classic_Position'] * data_test['Forward
 
 ## Backtesting Results (2016–2023)
 
-| Metric                  | ML-RSI Strategy | Classic RSI | Buy-and-Hold |
-|-------------------------|-----------------|-------------|--------------|
-| Total Return            | 98.3%           | 42.1%       | 147.6%       |
-| Annualized Return       | 8.9%            | 4.5%        | 12.1%        |
-| Annualized Volatility   | 14.2%           | 16.8%       | 18.3%        |
-| Sharpe Ratio            | **0.63**        | 0.27        | 0.66         |
-| Max Drawdown            | -28.4%          | -39.1%      | -33.8%       |
-| Win Rate                | 56.7%           | 48.3%       | N/A          |
-| Number of Trades        | 67              | 89          | N/A          |
-
-*Note: Returns are net of transaction costs. Risk-free rate assumed at 2% for Sharpe ratio.*
-
-### Interpretation
-
-- The **ML-RSI strategy** achieves a Sharpe ratio of 0.63, close to buy-and-hold (0.66) but with significantly lower drawdown.
-- It outperforms the classic RSI strategy in every metric except total return vs. buy-and-hold.
-- The win rate of 56.7% indicates the model generates statistically significant edge.
-- Lower trade frequency (67 vs. 89) suggests better signal filtering.
-
-### Equity Curve Analysis
-
-From 2016 to 2023:
-- ML-RSI strategy avoided major drawdowns in Q1 2020 (-28.4% vs. SPY’s -33.8% peak-to-trough).
-- Underperformed in strong bull runs (e.g., 2017, 2021) due to conservative position sizing and stop-loss rules.
-- Generated consistent alpha during volatile regimes (2018, 2022).
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Walk-Forward Optimization and Robustness Testing
 

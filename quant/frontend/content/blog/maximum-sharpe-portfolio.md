@@ -7,6 +7,9 @@ category: "Portfolio Management"
 tags: ["Sharpe ratio", "tangency portfolio", "portfolio optimization", "risk-adjusted returns", "capital allocation"]
 keywords: ["maximum Sharpe ratio portfolio", "tangency portfolio", "optimal risky portfolio", "Sharpe ratio optimization", "risk-adjusted portfolio construction"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Maximum Sharpe Ratio Portfolio: Optimizing Risk-Adjusted Returns
 
 The maximum [Sharpe ratio portfolio](/blog/sharpe-ratio-portfolio-analysis), also called the tangency portfolio, represents the single most efficient combination of risky assets available to an investor. It is the portfolio that delivers the highest unit of excess return per unit of risk, and every rational investor's optimal risky asset allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)) lies at this point on the efficient frontier. The concept is foundational to [modern portfolio theory](/blog/mean-variance-optimization), but constructing it in practice requires navigating substantial estimation challenges.

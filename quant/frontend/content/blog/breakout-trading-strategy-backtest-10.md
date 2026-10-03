@@ -16,6 +16,9 @@ last_updated: '2026-03-20'
 description: "Breakout trading represents one of the most intuitive and profitable approaches for algorithmic traders."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Breakout Trading Strategy: Complete Backtest and Performance Analysis
 
 Breakout trading represents one of the most intuitive and profitable approaches for algorithmic traders. By identifying price levels where consolidation breaks and volume surges, traders capture strong directional moves with defined risk. This comprehensive analysis covers the mechanics of identifying valid breakouts, precise entry timing, risk management protocols, and empirical backtest results across 5+ years of market data.
@@ -33,30 +36,7 @@ A breakout occurs when price decisively closes above resistance or below support
 
 ## Backtest Results: Comprehensive Analysis (2020-2025)
 
-### Overall Performance Metrics
-
-| Metric | Value |
-|--------|-------|
-| Total Trades | 324 |
-| Winning Trades | 230 (71.0%) |
-| Losing Trades | 94 (29.0%) |
-| Average Win | 7.3% |
-| Average Loss | -3.2% |
-| Profit Factor | 2.37 |
-| Sharpe Ratio | 1.84 |
-| Max Drawdown | -10.2% |
-| Recovery Factor | 4.68 |
-| Annual Return | 18.7% |
-
-### Win Rate by Consolidation Length
-
-| Consolidation Days | Win Rate | Avg Win | Avg Loss | Trades |
-|-------------------|----------|---------|----------|--------|
-| 10-15 days | 68% | 5.2% | -3.1% | 42 |
-| 15-20 days | 71% | 7.1% | -3.2% | 89 |
-| 20-30 days | 73% | 8.4% | -3.3% | 127 |
-| 30+ days | 69% | 6.8% | -3.0% | 66 |
-
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Python Implementation: Automated Breakout Detection
 

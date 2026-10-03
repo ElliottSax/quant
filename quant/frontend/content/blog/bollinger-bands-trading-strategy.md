@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["Bollinger Bands", "volatility", "technical analysis", "mean reversion"]
 keywords: ["Bollinger Bands trading strategy", "Bollinger squeeze", "bandwidth trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Bollinger Bands Trading Strategy: Complete System Guide
 
 Bollinger Bands [trading strategy](/blog/breakout-trading-strategy) leverages one of the most versatile technical indicators in quantitative analysis. Developed by John Bollinger in the 1980s, the bands dynamically adapt to market volatility, expanding during volatile periods and contracting during quiet periods. This adaptive behavior makes Bollinger Bands uniquely suited for both [mean reversion](/blog/mean-reversion-trading-strategy) and breakout strategies, depending on the market context.
@@ -45,16 +48,7 @@ The most intuitive Bollinger Band strategy trades touches of the outer bands as 
 
 ### Backtest Results (S&P 500 Components, 2012-2025)
 
-| Metric | Long Only | Long/Short |
-|--------|-----------|------------|
-| CAGR | 6.4% | 3.1% |
-| Sharpe Ratio | 0.68 | 0.52 |
-| Max Drawdown | -21.3% | -15.8% |
-| Win Rate | 54.2% | 51.8% |
-| Avg Trade Duration | 4.8 days | 4.5 days |
-| Profit Factor | 1.28 | 1.14 |
-
-The basic band-touch strategy shows modest results. The short side significantly underperforms because prices that touch the upper band in strong uptrends continue higher rather than reverting. This is a well-documented limitation of naive mean reversion with Bollinger Bands.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 2: The Bollinger Squeeze
 
@@ -70,16 +64,7 @@ The Bollinger Squeeze is a breakout strategy that exploits periods of low volati
 
 ### Backtest Results (S&P 500 Components, 2012-2025)
 
-| Metric | Long Only | Long/Short |
-|--------|-----------|------------|
-| CAGR | 11.2% | 8.7% |
-| Sharpe Ratio | 1.08 | 1.24 |
-| Max Drawdown | -14.7% | -10.3% |
-| Win Rate | 52.1% | 50.8% |
-| Avg Trade Duration | 8.3 days | 7.6 days |
-| Profit Factor | 1.62 | 1.54 |
-
-The squeeze strategy significantly outperforms the basic band-touch strategy on every metric. The key insight is that low-volatility periods precede high-volatility breakouts, and the direction of the breakout determines the trade.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 3: Double Bollinger Bands
 
@@ -98,14 +83,7 @@ This advanced system uses two sets of Bollinger Bands with different standard de
 
 ### Backtest Results (Forex Majors, 2012-2025)
 
-| Metric | Trend Component | Reversal Component | Combined |
-|--------|----------------|-------------------|----------|
-| CAGR | 7.8% | 4.2% | 9.1% |
-| Sharpe Ratio | 0.94 | 0.71 | 1.18 |
-| Max Drawdown | -12.1% | -8.4% | -10.8% |
-| Win Rate | 44.8% | 58.3% | 48.2% |
-
-The combined system captures both trending and mean-reverting regimes, producing superior risk-adjusted returns.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Optimization: Band Parameters
 

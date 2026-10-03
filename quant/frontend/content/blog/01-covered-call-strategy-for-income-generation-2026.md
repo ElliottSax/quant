@@ -11,9 +11,12 @@ published_date: "2026-03-21"
 last_updated: "2026-03-21"
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Covered Call Strategy for Income Generation 2026: Complete Guide
 
-**Meta Description**: Master the covered call strategy for consistent income. Learn entry/exit rules, Greeks impact, and real-world examples for 2026.
+**Meta Description**: Learn the covered call strategy for income generation. Learn entry/exit rules, Greeks impact, and real-world examples for 2026.
 
 **Quick Summary**: The covered call is the most beginner-friendly options strategy, combining stock ownership with call selling to generate monthly income.
 
@@ -30,7 +33,7 @@ last_updated: "2026-03-21"
 
 ## Introduction
 
-If you own stocks and want to generate consistent income while waiting for price appreciation, the covered call strategy is your answer.
+If you own stocks and want to generate income while waiting for price appreciation, the covered call strategy is your answer.
 
 Unlike passive stock holding, covered calls transform your portfolio into an income engine. You keep all upside to the strike price, collect call premium immediately, and get called away at profit if the stock appreciates.
 

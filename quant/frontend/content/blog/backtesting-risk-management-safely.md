@@ -10,6 +10,9 @@ seo_optimized: true
 description: "Safe risk management isn't about maximizing returns—it's about preventing account destruction."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting Risk Management Safely
 
 Safe risk management isn't about maximizing returns—it's about preventing account destruction. A trader with 10% annual returns who avoids catastrophic losses will outperform a trader with 30% average returns interspersed with account-blowing drawdowns. This guide covers defensive risk management strategies, circuit breakers that stop trading during distress, and backtesting validations that confirm safety under extreme conditions.
@@ -351,18 +354,7 @@ class SafeBacktesting:
 
 ## Backtesting Results: Safety Impact
 
-**Same strategy, with vs without safety controls (500 trades):**
-
-| Metric | Unsafe | Safe |
-|--------|--------|------|
-| Total Return | 48.2% | 31.5% |
-| Max Drawdown | -47.3% | -12.1% |
-| Sharpe Ratio | 0.72 | 1.62 |
-| Longest Loss Streak | 12 trades | 4 trades |
-| Trading Halts | 0 | 1 |
-| Recoverable Account | No | Yes |
-
-Safe trading halted trading once (after 20% drawdown) but maintained a recoverable account. Unsafe approach generated larger losses but catastrophic drawdown.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

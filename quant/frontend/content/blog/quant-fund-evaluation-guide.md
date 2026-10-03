@@ -7,6 +7,9 @@ category: "Fund Analysis"
 tags: ["quant funds", "due diligence", "hedge fund evaluation", "fund selection", "manager assessment"]
 keywords: ["evaluate quant funds", "quant fund due diligence", "hedge fund evaluation framework", "quantitative fund selection", "fund manager assessment"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # How to Evaluate Quant Funds: Due Diligence Framework
 
 Evaluating quantitative funds requires a different skillset than evaluating discretionary managers. The alpha source is embedded in models, data, and infrastructure rather than in the judgment of a portfolio manager. This creates unique due diligence challenges: understanding whether the fund's edge is genuine requires assessing backtesting methodology, model robustness, technology infrastructure, and organizational risk alongside the standard performance and risk metrics. This guide provides a comprehensive framework for evaluating quant funds across four dimensions: performance analysis, strategy assessment, risk management, and operational due diligence.

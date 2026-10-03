@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["breakout trading", "range breakout", "volatility breakout", "technical analysis"]
 keywords: ["breakout trading strategy", "range breakout system", "volatility breakout trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Breakout Trading Strategy: Identifying and Trading Breakouts
 
 Breakout [trading strategy](/blog/momentum-trading-strategy-guide) seeks to capture the beginning of significant price moves by entering when price breaks through established support or resistance levels. The premise is rooted in the volatility clustering phenomenon documented by Mandelbrot (1963) and formalized by Engle's ARCH model (1982): periods of low volatility are followed by periods of high volatility, and breakouts from consolidation often initiate sustained directional moves.
@@ -48,17 +51,7 @@ The Donchian Channel breakout was popularized by the legendary Turtle Traders (R
 
 ### Backtest Results (Diversified Futures, 2010-2025)
 
-| Metric | Donchian 20/10 | Buy & Hold Equities |
-|--------|---------------|---------------------|
-| CAGR | 12.8% | 10.7% |
-| Sharpe Ratio | 0.84 | 0.71 |
-| Max Drawdown | -22.4% | -33.9% |
-| Win Rate | 38.4% | N/A |
-| Avg Winner / Avg Loser | 3.42 | N/A |
-| Longest Drawdown | 14 months | 16 months |
-| Markets Traded | 24 futures | SPY only |
-
-The strategy's low win rate (38.4%) is compensated by a high average winner to average loser ratio (3.42:1). This is the hallmark of trend-following breakout strategies: many small losses offset by occasional large wins.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 2: Volatility Contraction Breakout
 
@@ -74,16 +67,7 @@ This strategy targets the moment when volatility expands after a period of contr
 
 ### Backtest Results (S&P 500 Components, 2010-2025)
 
-| Metric | Volatility Contraction | Donchian Channel |
-|--------|----------------------|------------------|
-| CAGR | 14.2% | 9.8% |
-| Sharpe Ratio | 1.08 | 0.74 |
-| Max Drawdown | -16.8% | -21.4% |
-| Win Rate | 48.2% | 38.4% |
-| Avg Trade Duration | 12.4 days | 22.8 days |
-| Profit Factor | 1.64 | 1.52 |
-
-The volatility contraction strategy outperforms the Donchian channel on equities because it identifies the specific moment when accumulated order flow is about to be released, providing better timing than a simple high/low breakout.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 3: Opening Range Breakout (Intraday)
 
@@ -101,15 +85,7 @@ The opening range breakout (ORB) is a classic intraday strategy that trades the 
 
 ### Backtest Results (SPY, 5-Minute Bars, 2015-2025)
 
-| Metric | 30-Min ORB | 15-Min ORB | 60-Min ORB |
-|--------|-----------|-----------|-----------|
-| CAGR | 11.4% | 8.2% | 9.8% |
-| Sharpe Ratio | 1.12 | 0.78 | 0.94 |
-| Win Rate | 52.8% | 48.4% | 54.1% |
-| Avg Winner | 0.48% | 0.34% | 0.52% |
-| Avg Loser | -0.32% | -0.28% | -0.38% |
-
-The 30-minute opening range produces the best results, balancing sufficient time to establish the range with enough remaining session to capture the breakout move.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## False Breakout Filters
 

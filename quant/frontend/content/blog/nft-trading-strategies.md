@@ -7,6 +7,9 @@ category: "Crypto & DeFi"
 tags: ["nft", "trading-strategies", "arbitrage"]
 keywords: ["NFT trading", "floor price arbitrage", "rarity analysis", "NFT strategies"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # NFT Trading Strategies: Floor Price Arbitrage and Rarity
 
 Non-fungible tokens transformed from speculative mania to established asset class with $25B+ annual trading volume across art, collectibles, gaming items, and digital real estate. While retail traders chase hype and influencer calls, quantitative approaches analyzing floor prices, rarity distributions, holder behavior, and marketplace dynamics generate consistent returns with managed risk exposure.

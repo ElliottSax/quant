@@ -309,21 +309,7 @@ def trailing_stop_for_momentum(entry_price, current_price, atr, trail_distance=2
 
 ## Backtest Results: Safety Impact on Performance
 
-**Test Period: 2018-2026 on Russell 1000**
-
-### Aggressive vs. Safe Momentum Trading
-
-| Metric | Aggressive | Safe | Impact |
-|--------|-----------|------|--------|
-| Annual Return | 28.3% | 21.4% | -24% |
-| Sharpe Ratio | 0.94 | 1.78 | +89% |
-| Maximum Drawdown | -38.2% | -8.3% | +78% |
-| Worst Month | -16.4% | -3.1% | +81% |
-| Win Rate | 61.2% | 58.4% | -3% |
-| Largest Loss | -$28,340 | -$1,610 | -94% |
-| Recovery Time | 14 months | 3 weeks | 50x faster |
-
-**Critical insight**: Safety filters reduce returns 24% but cut largest losses 94% and improve Sharpe 89%. The trade is favorable for sustainable trading.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

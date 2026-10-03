@@ -334,16 +334,7 @@ class RiskManagedBacktest:
 
 ## Backtesting Results: Risk Management Impact
 
-**Applied to trend-following strategy (500 trades):**
-
-| Control | Total Return | Sharpe | Max DD | Trades Skipped |
-|---------|--------------|--------|--------|-----------------|
-| No risk controls | 45.2% | 1.32 | -28.4% | 0 |
-| Position limits | 38.1% | 1.58 | -15.2% | 42 |
-| Daily loss limits | 34.7% | 1.71 | -9.1% | 127 |
-| Full framework | 31.2% | 1.84 | -7.3% | 183 |
-
-Risk management reduces returns but dramatically improves risk-adjusted metrics and prevents catastrophic drawdowns.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

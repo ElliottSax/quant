@@ -55,16 +55,7 @@ The VIX exhibits strong mean-reverting behavior. After spikes above 25, the VIX 
 
 ### Backtest Results (2012-2025)
 
-| Metric | Short VIX | Long VIX | Combined |
-|--------|----------|----------|----------|
-| CAGR | 14.2% | 4.8% | 16.8% |
-| Sharpe Ratio | 0.84 | 0.42 | 0.98 |
-| Max Drawdown | -28.4% | -18.2% | -22.4% |
-| Win Rate | 78.4% | 48.2% | 68.4% |
-| Avg Trade Duration | 12 days | 8 days | 10 days |
-| Trades/Year | 4-6 | 2-4 | 6-10 |
-
-Short VIX trades are significantly more profitable than long VIX trades because the VRP creates a tailwind for short volatility positions. However, the short side carries significant tail risk during market crashes.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 2: Systematic Straddle Selling
 
@@ -83,16 +74,7 @@ A straddle consists of a call and a put at the same strike price and expiration.
 
 ### Backtest Results (SPY Monthly Straddles, 2012-2025)
 
-| Metric | Unhedged | Delta-Hedged |
-|--------|----------|-------------|
-| CAGR | 12.4% | 8.8% |
-| Sharpe Ratio | 0.72 | 1.58 |
-| Max Drawdown | -34.8% | -8.4% |
-| Win Rate | 68.2% | 72.4% |
-| Avg Premium Collected | 3.2% | 3.2% |
-| Avg P&L per Trade | 1.4% | 0.8% |
-
-Delta-hedged straddle selling produces a dramatically higher Sharpe ratio (1.58 vs. 0.72) by isolating the volatility risk premium from directional risk. The max drawdown drops from -34.8% to -8.4%.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 3: Strangle Selling with Defined Risk
 
@@ -111,15 +93,7 @@ A strangle is similar to a straddle but uses out-of-the-money options, providing
 
 ### Backtest Results (SPY Strangles, 45 DTE, 2012-2025)
 
-| Metric | 16-Delta | 25-Delta | 30-Delta |
-|--------|----------|----------|----------|
-| CAGR | 10.2% | 14.8% | 16.4% |
-| Sharpe Ratio | 1.24 | 0.94 | 0.78 |
-| Max Drawdown | -12.4% | -22.8% | -28.4% |
-| Win Rate | 82.4% | 74.8% | 68.2% |
-| Avg Trade Duration | 24 days | 22 days | 20 days |
-
-Wider strangles (16-delta) have lower absolute returns but significantly better risk-adjusted returns (Sharpe 1.24). The 82.4% win rate reflects the high probability of out-of-the-money options expiring worthless.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 4: VIX Term Structure Roll Yield
 
@@ -137,16 +111,7 @@ VIX futures exhibit a persistent contango (upward sloping term structure) approx
 
 ### Backtest Results (VIX Calendar Spread, 2012-2025)
 
-| Metric | Value |
-|--------|-------|
-| CAGR | 12.8% |
-| Sharpe Ratio | 1.08 |
-| Max Drawdown | -18.4% |
-| Win Rate | 74.2% |
-| Time in Contango | 80% |
-| Avg Roll Yield/Month | 2.4% |
-
-The roll yield strategy earns approximately 2.4% per month during contango periods but can lose significantly during backwardation (market stress events).
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 5: Volatility Surface Arbitrage
 
@@ -164,14 +129,7 @@ When the implied volatility surface exhibits distortions relative to its fair va
 
 ### Backtest Results (SPY Volatility Surface Trades, 2015-2025)
 
-| Metric | Skew Trades | Term Structure | Butterfly | Combined |
-|--------|------------|---------------|-----------|----------|
-| CAGR | 6.2% | 8.4% | 4.8% | 10.8% |
-| Sharpe Ratio | 1.42 | 1.18 | 1.08 | 1.62 |
-| Max Drawdown | -8.4% | -12.2% | -6.8% | -9.4% |
-| Win Rate | 58.4% | 62.8% | 64.2% | 60.8% |
-
-The combined surface arbitrage strategy produces a Sharpe of 1.62 with a maximum drawdown of only -9.4%, demonstrating the value of trading volatility mispricing across multiple dimensions.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Risk Management for Volatility Strategies
 

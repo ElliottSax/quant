@@ -241,23 +241,7 @@ Profit Target = Entry + (Stop Distance × Reward Ratio)
 
 ## Backtesting Results: Real Data Example
 
-Applied to SPY daily data (2024-2026, 189 trades):
-
-**With 2% risk per trade:**
-- Total return: 34.2%
-- Sharpe ratio: 1.68
-- Max drawdown: -9.4%
-- Win rate: 54.5%
-- Average trade: +$287
-
-**With 5% risk per trade (same strategy):**
-- Total return: 78.3%
-- Sharpe ratio: 1.24
-- Max drawdown: -24.1%
-- Win rate: 54.5%
-- Average trade: +$716
-
-Higher returns come with substantially higher drawdowns. For beginners, 2% is optimal.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

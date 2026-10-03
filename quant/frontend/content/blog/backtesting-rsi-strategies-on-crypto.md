@@ -273,15 +273,7 @@ print(f"Avg Hold Time: {metrics['avg_hold_hours']:.1f} hours")
 
 ## Backtesting Results: Bitcoin Hourly (2024-2026)
 
-**RSI 9 Period Strategy (4,127 hourly candles):**
-
-| Setting | Win Rate | Total Return | Sharpe | Max DD |
-|---------|----------|--------------|--------|---------|
-| No volume filter | 52.1% | 28.3% | 0.98 | -19.2% |
-| Volume filter | 55.8% | 34.7% | 1.24 | -14.1% |
-| Volume + optimized hold | 57.2% | 38.1% | 1.38 | -12.3% |
-
-Volume filtering improved performance significantly by eliminating false signals from low-volume spikes.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Multi-Timeframe RSI for Crypto
 

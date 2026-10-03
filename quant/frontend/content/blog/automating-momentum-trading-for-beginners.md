@@ -238,32 +238,7 @@ for symbol in momentum_stocks[:5]:  # Trade top 5
 
 ## Backtest Results: NASDAQ 100 Momentum Strategy
 
-**Test Period: 2020-2026 (6 years)**
-
-### Strategy Performance
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 156.3% |
-| Annualized Return | 19.2% |
-| Sharpe Ratio | 1.54 |
-| Maximum Drawdown | -12.1% |
-| Win Rate | 59.2% |
-| Profit Factor | 2.18 |
-| Average Trade | 8.3 days |
-| Total Trades | 412 |
-
-### Comparison: Momentum vs. Buy-and-Hold
-
-| Metric | Momentum | B&H | Difference |
-|--------|----------|-----|-----------|
-| 2020 Return | +32.1% | +43.6% | -11.5% |
-| 2021 Return | +28.4% | +27.1% | +1.3% |
-| 2022 Return | -8.2% | -18.4% | +10.2% |
-| 2023 Return | +41.3% | +44.0% | -2.7% |
-| Total Return | 156.3% | 181.2% | -24.9% |
-| Max Drawdown | -12.1% | -33.7% | +21.6% |
-| Sharpe Ratio | 1.54 | 0.89 | +0.65 |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Best Practices for Momentum Trading Beginners
 

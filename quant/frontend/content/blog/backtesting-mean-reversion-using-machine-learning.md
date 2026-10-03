@@ -10,6 +10,9 @@ seo_optimized: true
 description: "ML can improve mean reversion Sharpe ratios by 25-40% through intelligent signal filtering."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting Mean Reversion using Machine Learning: Adaptive Strategies
 
 Machine learning enhances mean reversion by learning which deviations are most profitable, predicting mean reversion speed, and adapting to market regime changes. If you want to test the underlying Z-score logic before layering ML on top, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required. ML can improve mean reversion Sharpe ratios by 25-40% through intelligent signal filtering.

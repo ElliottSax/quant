@@ -7,6 +7,9 @@ category: "Algo Trading"
 tags: ["Monte Carlo simulation", "risk assessment", "statistical analysis", "drawdown"]
 keywords: ["Monte Carlo simulation trading", "Monte Carlo risk assessment", "trading strategy simulation"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Monte Carlo Simulation for Trading: Risk Assessment Guide
 
 Monte Carlo simulation for trading is one of the most powerful tools available for understanding the range of outcomes a strategy might produce. While a single backtest shows one possible path through historical data, Monte Carlo simulation generates thousands of possible paths, revealing the probability distribution of returns, drawdowns, and other critical metrics. Named after the famous casino district in Monaco, Monte Carlo methods use random sampling to approximate solutions to problems that are analytically intractable.

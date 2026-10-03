@@ -7,6 +7,9 @@ category: "Crypto & DeFi"
 tags: ["layer-2", "arbitrage", "scaling"]
 keywords: ["Layer 2 arbitrage", "Optimism", "Arbitrum", "cross-chain arbitrage"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Layer 2 Arbitrage: Optimism, Arbitrum, and Base Strategies
 
 Layer 2 blockchains (Optimism, Arbitrum, Base, Polygon) enable lower-cost transactions enabling arbitrage strategies unprofitable on Ethereum mainnet. A $100 arbitrage opportunity costing $150 in gas on L1 becomes $15 on L2, enabling smaller positions and more frequent trading. However, bridge mechanics, settlement costs, and liquidity fragmentation create new challenges.

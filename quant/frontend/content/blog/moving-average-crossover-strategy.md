@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["moving average", "golden cross", "death cross", "technical analysis", "trend following"]
 keywords: ["moving average crossover strategy", "golden cross trading", "death cross signal"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Moving Average Crossover Strategy: Golden Cross and Death Cross
 
 The moving average crossover strategy is one of the most widely used systematic trading approaches in both retail and institutional settings. By comparing a fast moving average to a slow moving average, traders generate objective, rule-based signals that eliminate emotional decision-making. The most famous variant, the golden cross (50-day MA crossing above the 200-day MA), has been cited in financial literature since the 1970s and continues to generate significant media attention during major market transitions.

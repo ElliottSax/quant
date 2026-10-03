@@ -16,6 +16,9 @@ last_updated: '2026-03-20'
 description: "Support and resistance represent the foundational pillars of technical price action analysis."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Support and Resistance: Identifying Breakout Levels with Precision
 
 Support and resistance represent the foundational pillars of technical price action analysis. For algorithmic traders, precise identification of these levels dramatically improves breakout entry quality, reduces false signals, and optimizes risk-reward ratios. This comprehensive guide covers the mechanics of identifying valid support/resistance levels, calculating optimal entry and exit points, and empirical performance across multiple markets and timeframes.
@@ -46,32 +49,7 @@ These levels emerge from a combination of: (1) Historical price memory (previous
 
 ## Breakout Performance Analysis (2020-2025)
 
-### Resistance Breakouts: 1,247 Trades
-
-| Metric | Value |
-|--------|-------|
-| Win Rate | 67.3% |
-| Average Win | 12.3% |
-| Average Loss | -3.5% |
-| Profit Factor | 2.56 |
-| Sharpe Ratio | 1.89 |
-| Avg Hold | 11 days |
-| Max Win | 34.1% |
-| Max Loss | -7.2% |
-
-### Support Breakdowns: 1,183 Trades
-
-| Metric | Value |
-|--------|-------|
-| Win Rate | 61.2% |
-| Average Win | 11.8% |
-| Average Loss | -3.8% |
-| Profit Factor | 2.12 |
-| Sharpe Ratio | 1.64 |
-| Avg Hold | 10 days |
-
-### Key Finding: Asymmetric Win Rates
-Resistance breakouts outperform support breakdowns by 6.1 percentage points. This reflects natural market structure where rallies face less friction than declines.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Python Implementation: Support and Resistance Detection
 

@@ -181,19 +181,7 @@ class AdvancedBollingerBandsStrategy(bt.Strategy):
 
 ## Backtest Results: SPY Daily Timeframe (2020-2025)
 
-| Metric | Value |
-|--------|-------|
-| Total Return | 52.3% |
-| Annualized Return | 8.9% |
-| Sharpe Ratio | 1.76 |
-| Max Drawdown | -9.3% |
-| Win Rate | 56.8% |
-| Profit Factor | 2.14 |
-| Number of Trades | 127 |
-| Average Win | $847 |
-| Average Loss | $395 |
-| Largest Win | $3,240 |
-| Largest Loss | -$1,890 |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Multi-Timeframe Bollinger Bands Approach
 

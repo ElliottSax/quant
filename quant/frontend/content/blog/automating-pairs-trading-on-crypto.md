@@ -265,31 +265,7 @@ class CryptoPairsTrader:
 
 ## Backtest Results: Crypto Pairs Trading
 
-**Test Period: 2023-2026 on major crypto pairs**
-
-### BTC/ETH Pair Performance (4-hour timeframe)
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 156.3% |
-| Annual Return | 44.8% |
-| Sharpe Ratio | 2.14 |
-| Maximum Drawdown | -12.4% |
-| Win Rate | 68.2% |
-| Average Trade Duration | 3.2 hours |
-| Total Trades | 1,247 |
-| Largest Win | +4.2% |
-| Largest Loss | -2.1% |
-
-### Multi-Pair Crypto Portfolio (10 pairs)
-
-| Metric | Value |
-|--------|-------|
-| Portfolio Return | 287% |
-| Annual Return | 72.5% |
-| Sharpe Ratio | 2.67 |
-| Maximum Drawdown | -8.3% |
-| Market Beta | 0.15 |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Crypto-Specific Risks and Mitigations
 

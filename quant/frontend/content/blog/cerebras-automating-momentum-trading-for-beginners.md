@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Automating Momentum Trading for Beginners
 
 Momentum trading is a well-documented strategy in quantitative finance that capitalizes on the continuation of existing price trends. It is based on the empirical observation that assets that have performed well in the recent past tend to continue performing well over the near term, and vice versa for underperformers. While traditionally implemented manually, advances in programming, data availability, and brokerage APIs have made it feasible—and increasingly effective—for beginners to automate momentum trading strategies.
@@ -118,25 +121,7 @@ cumulative = (1 + strategy_returns).cumprod()
 
 ## Performance Metrics
 
-We evaluate the strategy using standard risk-adjusted metrics:
-
-| Metric                  | Value (SPY Buy & Hold) | Value (Momentum Strategy) |
-|-------------------------|------------------------|----------------------------|
-| Total Return            | 589%                   | 432%                      |
-| Annualized Return         | 10.2%                  | 8.7%                      |
-| Annualized Volatility     | 18.3%                  | 13.1%                     |
-| Sharpe Ratio (rf=2%)      | 0.45                   | 0.51                      |
-| Maximum Drawdown          | -55.2%                 | -32.4%                    |
-| Win Rate (monthly)        | 58%                    | 64%                       |
-
-*Table: Performance comparison over 2003–2023 (20 years)*
-
-### Interpretation:
-- The momentum strategy underperforms in total return but achieves better risk-adjusted performance.
-- Lower volatility and drawdowns indicate reduced risk exposure during bear markets (e.g., 2008, 2020).
-- The Sharpe ratio improvement (0.45 → 0.51) shows more return per unit of risk.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Real Example: 2008 Market Crash
 

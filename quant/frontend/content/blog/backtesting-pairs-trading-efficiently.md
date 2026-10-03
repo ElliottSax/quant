@@ -120,17 +120,7 @@ class ParallelPairsBacktester:
 
 ## Backtest Results: Pairs Trading (Stock Pairs, 2023-2026)
 
-**EWU/EWG (UK/Germany), EWJ/EWA (Japan/Australia), IYW/IYR (Tech/Real Estate)**
-
-| Pair | Return | B&H (Ratio) | Excess | Sharpe | DD |
-|------|--------|-------------|--------|--------|-----|
-| EWU/EWG | 18.45% | 6.20% | +12.25% | 1.58 | -7.85% |
-| EWJ/EWA | 15.28% | 3.45% | +11.83% | 1.42 | -8.15% |
-| IYW/IYR | 22.15% | 8.90% | +13.25% | 1.72 | -6.45% |
-| GLD/GDX | 19.85% | 5.30% | +14.55% | 1.65 | -7.25% |
-| Average | **19.18%** | **6.21%** | **12.97%** | **1.59** | **-7.43%** |
-
-Pairs trading captures 13% excess annual return with low volatility.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Cointegration Requirements
 

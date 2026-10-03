@@ -8,6 +8,9 @@ tags: []
 published_date: '''''''2026-03-16'''''''
 provider: haiku
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # From Theory to Production: Scalping on Crypto Markets
 
 ## Overview
@@ -48,7 +51,7 @@ When price oscillates without trend, range-trading strategies dominate:
 
 - Buy near support, sell near resistance
 - Use tight stops (wider breakout could be coming)
-- Scalp the swings for small consistent profits
+- Scalp the swings for small gains (results vary and losses are common)
 - Monitor for breakout signals
 
 ## Entry Rules in Detail
@@ -70,19 +73,16 @@ Before entering any position:
 - Wait for close beyond level (not just touch)
 - Confirm with volume above average
 - Enter on next candle after confirmation
-- High success rate: 60-70%
 
 **Reversal Entries**:
 - Identify divergence (price vs indicator)
 - Wait for rejection candle
 - Enter on confirmation next candle
-- Moderate success: 50-60%
 
 **Continuation Entries**:
 - Identify trend with moving averages
 - Wait for pullback to MA
 - Enter when price bounces MA
-- High success rate: 65-75%
 
 ### Entry Timing
 - **Best times**: Market open/close (high volume)
@@ -178,16 +178,7 @@ The core methodology involves:
 
 ## Backtest Performance (2020-2026)
 
-Our analysis on scalping on crypto markets data demonstrates:
-
-- **Total Return**: 42-58% annualized depending on market regime
-- **Sharpe Ratio**: 1.8-2.3 (risk-adjusted returns)
-- **Max Drawdown**: 12-18% (portfolio protection effectiveness)
-- **Win Rate**: 54-62% of trades profitable
-- **Profit Factor**: 2.1-2.8 (revenue vs. losses ratio)
-- **Recovery Factor**: 2.5-3.2 (returns vs. max drawdown)
-
-These metrics reflect performance across multiple market cycles including the 2022 bear market and 2023-2026 recovery period.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Risk Management Framework
 

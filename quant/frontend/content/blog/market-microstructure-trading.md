@@ -7,6 +7,9 @@ category: "Algo Trading"
 tags: ["market microstructure", "order flow", "liquidity", "bid-ask spread"]
 keywords: ["market microstructure trading", "order flow analysis", "liquidity trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Market Microstructure: Understanding Order Flow and Liquidity
 
 Market microstructure is the study of how the actual mechanics of trading, the order books, matching engines, and participant behaviors, determine prices, execution quality, and market dynamics. While most retail traders focus on what to trade (strategy), understanding how trading works at the microstructure level reveals why certain strategies work and how to exploit market structure for better execution. The field was formalized by O'Hara (1995) and has been enriched by Hasbrouck (2007) and Bouchaud et al. (2018), providing quantitative frameworks for understanding price formation.

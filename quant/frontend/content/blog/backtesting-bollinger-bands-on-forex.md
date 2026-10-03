@@ -10,6 +10,9 @@ seo_optimized: true
 description: "Bollinger Bands remain one of the most powerful technical indicators for forex traders. Q: Can I trade Bollinger Bands on all timeframes?"
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting Bollinger Bands on Forex: A Comprehensive Trading Strategy Guide
 
 Bollinger Bands remain one of the most powerful technical indicators for forex traders. This comprehensive guide explores how to backtest Bollinger Band strategies on forex pairs using Python, including complete code examples, mathematical formulas, and real performance metrics.
@@ -134,20 +137,7 @@ print(f"Max Drawdown: {metrics['Max_Drawdown']:.2f}%")
 
 ## Backtest Results: EUR/USD (Jan 2023 - Mar 2026)
 
-Based on comprehensive backtesting with 20-period Bollinger Bands and 2.0 standard deviation multiplier:
-
-| Metric | Value |
-|--------|-------|
-| Total Strategy Return | 42.75% |
-| Buy & Hold Return | 18.30% |
-| Annualized Volatility (Strategy) | 9.85% |
-| Annualized Volatility (B&H) | 8.60% |
-| Sharpe Ratio | 1.48 |
-| Win Rate | 54.32% |
-| Max Drawdown | -8.25% |
-| Calmar Ratio | 5.19 |
-| Trade Count | 127 |
-| Avg Trade Duration | 5.2 days |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Advanced Optimization Strategies
 

@@ -65,7 +65,7 @@ When price oscillates without trend, range-trading strategies dominate:
 
 - Buy near support, sell near resistance
 - Use tight stops (wider breakout could be coming)
-- Scalp the swings for small consistent profits
+- Scalp the swings for small gains (results vary and losses are common)
 - Monitor for breakout signals
 
 ## Entry Rules in Detail
@@ -87,19 +87,16 @@ Before entering any position:
 - Wait for close beyond level (not just touch)
 - Confirm with volume above average
 - Enter on next candle after confirmation
-- High success rate: 60-70%
 
 **Reversal Entries**:
 - Identify divergence (price vs indicator)
 - Wait for rejection candle
 - Enter on confirmation next candle
-- Moderate success: 50-60%
 
 **Continuation Entries**:
 - Identify trend with moving averages
 - Wait for pullback to MA
 - Enter when price bounces MA
-- High success rate: 65-75%
 
 ### Entry Timing
 - **Best times**: Market open/close (high volume)
@@ -197,7 +194,7 @@ The psychological edge: Proper position sizing lets you take losses without emot
 
 ### How It Works
 
-This strategy combines multiple factors to identify high-probability trading opportunities:
+This strategy combines multiple factors to look for trading setups:
 
 1. **Signal 1**: Technical analysis confirmation
 2. **Signal 2**: Volume verification

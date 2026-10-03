@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["momentum trading", "trend following", "factor investing", "systematic trading"]
 keywords: ["momentum trading strategy", "momentum factor", "cross-sectional momentum"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Momentum Trading Strategy: Systematic Approach for 2026
 
 Momentum [trading strategy](/blog/breakout-trading-strategy) is one of the most well-documented anomalies in financial markets. Jegadeesh and Titman's seminal 1993 paper demonstrated that stocks with strong recent performance continue to outperform, while recent losers continue to underperform. This effect has been replicated across equities, bonds, commodities, and currencies in over 200 peer-reviewed studies, making momentum one of the most robust factors in quantitative finance.
@@ -67,34 +70,7 @@ This ensures that each position contributes roughly equal risk to the portfolio,
 
 ## Backtest Results: Russell 1000 (2010-2025)
 
-| Parameter | Value |
-|-----------|-------|
-| Universe | Russell 1000 |
-| Signal | Combined CS (60%) + TS (40%) |
-| Lookback | 12-1 months |
-| Rebalance | Monthly |
-| Position Sizing | Inverse-volatility weighted |
-| Transaction Costs | 10 bps round-trip |
-
-### Performance Summary
-
-| Metric | Long Only | Long/Short | Russell 1000 Index |
-|--------|-----------|------------|-------------------|
-| CAGR | 14.8% | 9.3% | 11.2% |
-| Sharpe Ratio | 0.92 | 1.31 | 0.68 |
-| Max Drawdown | -28.4% | -16.2% | -34.1% |
-| Annual Turnover | 280% | 340% | N/A |
-| Win Rate (monthly) | 62.1% | 58.4% | 61.3% |
-| Avg Monthly Return | 1.15% | 0.73% | 0.88% |
-| Monthly Std Dev | 4.82% | 2.89% | 4.41% |
-
-### Year-by-Year Returns
-
-The strategy showed consistent alpha across most years, with notable exceptions:
-
-- **2020**: The March crash caused a -22% drawdown in the long-only variant as momentum stocks (growth/tech) sold off violently, then recovered sharply
-- **2022**: Strong performance (+18.2% long/short) as the strategy correctly identified the rotation from growth to value
-- **2024-2025**: Moderate performance as sector dispersion narrowed
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## The Momentum Crash Problem
 

@@ -10,6 +10,9 @@ seo_optimized: true
 description: "This comprehensive guide covers building production-grade MACD crossover backtesting systems in Python using industry-standard libraries."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting MACD Crossovers in Python: Production Framework
 
 This comprehensive guide covers building production-grade MACD crossover backtesting systems in Python using industry-standard libraries. If you want to validate a MACD crossover idea before building this framework yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required. Learn how to structure code for maintainability, scalability, and reliable results.
@@ -342,17 +345,7 @@ backtester.export_results('macd_backtest_results.csv')
 
 ## Backtest Results: EUR/USD (Jan 2023 - Mar 2026)
 
-| Metric | Value |
-|--------|-------|
-| Total Return | 33.28% |
-| Buy & Hold | 18.30% |
-| Excess Return | 14.98% |
-| Sharpe Ratio | 1.25 |
-| Sortino Ratio | 1.68 |
-| Win Rate | 51.23% |
-| Profit Factor | 1.94 |
-| Max Drawdown | -11.45% |
-| Total Trades | 84 |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Advanced Features
 

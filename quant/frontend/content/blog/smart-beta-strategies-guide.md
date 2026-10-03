@@ -116,19 +116,7 @@ With equal factor weights (w = 0.25 each) or Sharpe-ratio-proportional weights.
 
 ## Performance Analysis
 
-### Single-Factor Backtests (US Large Cap, 1990-2025)
-
-| Factor | Ann. Return | Ann. Vol | Sharpe | Max DD | Turnover |
-|--------|-----------|---------|--------|--------|----------|
-| Market Cap (benchmark) | 10.3% | 15.2% | 0.51 | -50.9% | 5% |
-| Value | 10.8% | 16.5% | 0.51 | -55.2% | 25% |
-| Momentum | 12.5% | 17.0% | 0.59 | -48.3% | 85% |
-| Quality | 11.5% | 14.0% | 0.64 | -42.1% | 20% |
-| Low Volatility | 9.5% | 10.8% | 0.65 | -29.4% | 15% |
-| Equal Weight | 11.0% | 16.5% | 0.52 | -53.8% | 30% |
-| Multi-Factor (integrated) | 12.0% | 13.5% | 0.70 | -35.2% | 35% |
-
-The multi-factor portfolio achieves the highest Sharpe ratio (0.70) with moderate drawdown (-35.2%), demonstrating the diversification benefit of combining factors.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Implementation Considerations
 

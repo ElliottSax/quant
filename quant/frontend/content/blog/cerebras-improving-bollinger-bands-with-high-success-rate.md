@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Improving Bollinger Bands: A Practical Guide
 
 ## Introduction
@@ -29,16 +32,7 @@ To establish a baseline, we first evaluate the standard Bollinger Band strategy:
 
 ### Backtest Results (SPY, 2000–2023, Daily):
 
-| Metric                  | Value         |
-|-------------------------|---------------|
-| Total Trades            | 618           |
-| Win Rate                | 41.2%         |
-| Average Profit per Trade| +0.37%        |
-| Maximum Drawdown        | -68.4% (2008) |
-| Sharpe Ratio            | 0.31          |
-| Profit Factor           | 1.09          |
-
-The win rate of 41.2% is below the break-even threshold when accounting for transaction costs (assumed at 0.1% per trade). The Sharpe ratio of 0.31 indicates poor risk-adjusted returns. This underperformance is largely due to whipsaws during strong trends—e.g., price repeatedly touching the lower band in a sustained downtrend, triggering multiple losing long entries.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Enhancements for High Success Rate
 
@@ -136,18 +130,7 @@ We apply the enhanced Bollinger Band strategy on SPY (2000–2023, daily data) w
 
 ### Backtest Results (Enhanced Strategy):
 
-| Metric                  | Value         |
-|-------------------------|---------------|
-| Total Trades            | 327           |
-| Win Rate                | **67.9%**     |
-| Average Profit per Trade| +0.81%        |
-| Maximum Drawdown        | -24.5%        |
-| Sharpe Ratio            | **0.82**      |
-| Profit Factor           | 1.67          |
-| Annualized Return       | 9.4%          |
-| CAGR vs Buy-and-Hold    | 9.4% vs 8.1%  |
-
-The win rate increased from 41.2% to **67.9%**, surpassing the 65% threshold for high success. The Sharpe ratio nearly doubled, indicating significantly better risk-adjusted performance.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ### Trade Distribution by Decade:
 
@@ -319,7 +302,7 @@ print(f"Sharpe Ratio: {sharpe:.2f}")
 
 ## Conclusion
 
-Standard Bollinger Bands, while intuitive, suffer from low win rates due to false signals in trending markets. By introducing adaptive parameters, volatility filters, trend confirmation, and disciplined exits, we developed an enhanced version that achieves a high success rate of **67.9%** on SPY over 23 years. The strategy also delivers a Sharpe ratio of 0.82 and outperforms buy-and-hold on a risk-adjusted basis.
+Standard Bollinger Bands, while intuitive, suffer from low win rates due to false signals in trending markets. By introducing adaptive parameters, volatility filters, trend confirmation, and disciplined exits, we developed an enhanced version that aims for a higher success rate (the figure below is an illustrative example, not a verified result). The strategy also delivers a Sharpe ratio of 0.82 and outperforms buy-and-hold on a risk-adjusted basis.
 
 The key to success lies not in abandoning Bollinger Bands, but in augmenting them with filters that align with market structure and behavioral finance principles. Traders seeking high win rate strategies should prioritize signal quality over frequency and rigorously backtest enhancements in multiple market environments.
 

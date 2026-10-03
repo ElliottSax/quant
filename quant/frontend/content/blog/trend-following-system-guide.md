@@ -74,42 +74,7 @@ With a target portfolio volatility of 15% and 26 markets, each market targets ap
 
 ## Backtest Results: 26-Market Portfolio (2000-2025)
 
-| Metric | Trend Following | 60/40 Stock/Bond | S&P 500 |
-|--------|----------------|-------------------|---------|
-| CAGR | 11.4% | 6.8% | 7.2% |
-| Sharpe Ratio | 0.88 | 0.52 | 0.42 |
-| Max Drawdown | -18.2% | -32.4% | -50.8% |
-| Worst Year | -8.4% (2011) | -18.2% (2008) | -37.0% (2008) |
-| Best Year | +34.2% (2008) | +18.4% (2019) | +32.3% (2013) |
-| Annual Volatility | 12.8% | 10.2% | 16.4% |
-| Calmar Ratio | 0.63 | 0.21 | 0.14 |
-| Correlation to S&P | 0.08 | 0.82 | 1.00 |
-
-### Crisis Performance
-
-The defining feature of trend following is its performance during equity market crises:
-
-| Crisis | Trend Following | S&P 500 |
-|--------|----------------|---------|
-| 2000-2002 Dot-Com | +28.4% | -44.7% |
-| 2008 Financial Crisis | +34.2% | -37.0% |
-| 2015 China Devaluation | +8.4% | -0.7% |
-| 2020 COVID (Q1) | +12.8% | -19.6% |
-| 2022 Rate Hiking | +22.1% | -18.1% |
-
-Trend following's near-zero correlation to equities (0.08) and positive crisis returns make it an exceptional portfolio diversifier.
-
-### Sector Attribution
-
-| Sector | Contribution to Return | Best Year | Worst Year |
-|--------|----------------------|-----------|------------|
-| Equities | 2.8% | +14.2% (2020) | -6.1% (2011) |
-| Fixed Income | 3.4% | +12.8% (2019) | -4.2% (2022) |
-| Commodities | 3.1% | +18.4% (2022) | -5.8% (2015) |
-| Currencies | 1.8% | +8.2% (2014) | -3.4% (2018) |
-| Alternatives | 0.3% | +4.2% (2020) | -1.8% (2022) |
-
-No single sector dominates returns, confirming the value of cross-asset diversification. The best-performing sector rotates over time, and trend following captures wherever the trends emerge.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Drawdown Analysis and Recovery
 

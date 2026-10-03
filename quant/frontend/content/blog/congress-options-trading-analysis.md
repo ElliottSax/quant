@@ -10,6 +10,9 @@ published_date: '2026-03-23'
 last_updated: '2026-03-23'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Options Trading Analysis: Leverage Strategies and Leveraged Returns
 
 Congressional members execute sophisticated options trading strategies, generating leveraged returns far exceeding equity trading. Analysis of 2026 options activity reveals deliberate use of leverage on information-driven positions to amplify returns from insider knowledge.

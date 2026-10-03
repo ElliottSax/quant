@@ -7,6 +7,9 @@ category: "Algo Trading"
 tags: ["algorithmic trading", "beginners", "automated trading", "quant trading"]
 keywords: ["algorithmic trading for beginners", "getting started algorithmic trading", "automated trading guide"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Algorithmic Trading for Beginners: Getting Started Guide
 
 Algorithmic trading for beginners can seem overwhelming, but the barrier to entry has never been lower. What once required a team of PhD quants and millions in infrastructure is now accessible to individual traders with a laptop, a brokerage account, and basic programming skills. According to the Bank for International Settlements, algorithmic trading accounts for approximately 60-75% of US equity market volume, and the democratization of tools means individual traders can now participate in this space.

@@ -27,7 +27,7 @@ NFT trading captures value fluctuations in digital collections. Best strategies:
 
 NFT trading in 2026 differs significantly from token trading through collection dynamics, floor price movements, and trait rarity. Successful traders combine quantitative metrics with qualitative collection assessment.
 
-This guide covers proven strategies for generating consistent 5-25% gains from NFT market movements.
+This guide covers proven strategies for approaching NFT market movements.
 
 ## Why NFT Trading Works
 

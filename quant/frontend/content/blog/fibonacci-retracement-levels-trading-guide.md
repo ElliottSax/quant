@@ -10,6 +10,9 @@ date: 2026-08-03
 readTime: 12-15 min read
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 ## Quick Answer
 
 Fibonacci retracement plots key support/resistance levels at 23.6%, 38.2%, 50%, 61.8%, and 78.6% of a swing move. Use 61.8% (Golden Ratio) as primary entry level, 38.2% for aggressive entries, 78.6% for deep pullbacks.

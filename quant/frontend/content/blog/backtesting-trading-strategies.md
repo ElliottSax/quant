@@ -7,6 +7,9 @@ category: "Algo Trading"
 tags: ["backtesting", "strategy validation", "quantitative analysis", "walk-forward"]
 keywords: ["backtest trading strategies", "backtesting framework", "strategy validation"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # How to Backtest Trading Strategies: Complete Framework
 
 Learning how to backtest [trading strategies](/blog/commodity-trading-strategies) correctly is the single most important skill in [quantitative trading](/blog/crypto-quant-trading-strategies). A rigorous backtest separates viable strategies from curve-fitted illusions, and the difference between a properly conducted backtest and a naive one often determines whether a trader succeeds or fails in live markets. Bailey, Borwein, de Prado, and Zhu (2014) estimated that the majority of published backtested strategies are false discoveries due to methodological flaws, making proper backtesting methodology a critical competitive advantage.

@@ -201,20 +201,7 @@ def trailing_stop_loss(entry_price, current_price, highest_price, atr, trail_pct
 
 ## Backtest Results: Safety Features Impact
 
-**Test Period: 2020-2026 on 100 stocks**
-
-### Comparison: Safe vs. Unsafe Implementation
-
-| Metric | Unsafe | Safe (Multi-Layer) | Improvement |
-|--------|--------|-------------------|------------|
-| Annual Return | 28.4% | 19.2% | -32% |
-| Sharpe Ratio | 0.87 | 1.94 | +123% |
-| Maximum Drawdown | -42.3% | -8.1% | -81% |
-| Worst Month | -18.7% | -3.2% | -83% |
-| Win Rate | 61.2% | 58.4% | -3% |
-| Largest Loss | -28,400 | -1,850 | -93% |
-
-**Key insight**: The multi-layer safety approach trades 32% lower returns for 123% higher risk-adjusted returns (Sharpe ratio). The maximum drawdown drops from catastrophic (-42%) to manageable (-8%).
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Real-World Crisis Management
 

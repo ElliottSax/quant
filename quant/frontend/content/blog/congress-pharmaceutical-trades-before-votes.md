@@ -10,6 +10,9 @@ published_date: '2026-03-24'
 last_updated: '2026-03-24'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Pharmaceutical Trades Before Votes: Timing Correlations with Drug Policy Legislation
 
 Congressional members executed coordinated pharmaceutical stock purchases immediately preceding healthcare legislation votes, with timing precision indicating advance knowledge of legislative outcomes. Analysis reveals systematic trading pattern: purchase pharmaceuticals, vote favorably on drug policy, realize gains.

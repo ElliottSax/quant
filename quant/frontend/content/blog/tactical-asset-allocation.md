@@ -7,6 +7,9 @@ category: "Portfolio Management"
 tags: ["tactical allocation", "market timing", "asset allocation", "systematic investing", "dynamic allocation"]
 keywords: ["tactical asset allocation", "systematic market timing", "dynamic asset allocation", "TAA strategies", "tactical portfolio management"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Tactical Asset Allocation: Systematic Market Timing Approaches
 
 Tactical Asset Allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)) (TAA) dynamically adjusts portfolio weights across asset classes based on quantitative signals, aiming to improve risk-adjusted returns relative to a static strategic allocation. While market timing is often dismissed as impossible, systematic TAA strategies with well-defined signals and disciplined implementation have demonstrated the ability to reduce drawdowns and improve Sharpe ratios. The key is distinguishing between discretionary market timing (which fails consistently) and systematic, rules-based allocation adjustment (which captures predictable patterns in asset class returns).

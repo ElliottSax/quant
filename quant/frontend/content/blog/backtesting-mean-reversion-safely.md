@@ -187,38 +187,7 @@ def reality_check_mean_reversion(metrics):
 
 ## Safe Mean Reversion Backtest Results
 
-EUR/USD (Jan 2023 - Mar 2026) with strict validation:
-
-**In-Sample Metrics (Optimized on 2023-2024 data)**
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 31.45% |
-| Sharpe Ratio | 1.45 |
-| Win Rate | 52.18% |
-| Max Drawdown | -10.85% |
-| Avg Trade Return | 0.18% |
-
-**Out-of-Sample Metrics (Tested on 2025-2026 data - fresh data)**
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 26.82% |
-| Sharpe Ratio | 1.31 |
-| Win Rate | 49.45% |
-| Max Drawdown | -12.45% |
-| Avg Trade Return | 0.15% |
-
-**Degradation Analysis**
-
-| Metric | Degradation |
-|--------|-------------|
-| Return | -14.7% |
-| Sharpe Ratio | -9.7% |
-| Win Rate | -5.2% |
-| Max Drawdown | +14.8% |
-
-All within healthy ranges (< 20% degradation).
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Complete Safe Backtester Class
 

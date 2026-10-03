@@ -10,6 +10,9 @@ published_date: '2026-03-23'
 last_updated: '2026-03-23'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Energy Sector Trades 2026: Oil, Gas, and Green Energy Investment Patterns
 
 Congressional members executed $892 million in energy sector trades during Q1 2026, with surprising concentration in traditional fossil fuel companies despite bipartisan emphasis on renewable energy. Trading timing demonstrates correlation with energy legislation and Department of Energy announcements.

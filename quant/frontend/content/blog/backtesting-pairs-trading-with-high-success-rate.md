@@ -247,25 +247,7 @@ def calculate_performance_metrics(returns, risk_free_rate=0.02):
 
 ## Backtesting Results: Real-World Example
 
-When applied to major pairs like EUR/USD-GBP/USD with a 2-year backtest (2024-2026):
-
-**Performance Summary:**
-- Annual Return: 18.7%
-- Sharpe Ratio: 1.84
-- Max Drawdown: -8.3%
-- Win Rate: 58.2%
-- Profit Factor: 2.31
-- Average Trade Duration: 4.2 days
-- Total Trades: 127
-
-**Monthly Returns:**
-```
-2024-01: +3.2%  | 2025-01: +2.8%  | 2026-01: +1.9%
-2024-02: +1.5%  | 2025-02: +4.1%  | 2026-02: +2.3%
-2024-03: +2.8%  | 2025-03: +3.6%
-```
-
-The strategy exhibits consistent performance across market conditions with low correlation to market indices (R² = 0.12), confirming its market-neutral characteristics.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Key Risk Management Principles
 

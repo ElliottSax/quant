@@ -10,6 +10,9 @@ published_date: '2026-03-23'
 last_updated: '2026-03-23'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Green Energy Investment Trends: Clean Energy Policy Trading and Renewable Positioning
 
 Congressional members deployed $467 million in green energy and renewable investments during Q1 2026, concentrating in companies positioned to benefit from climate legislation. Analysis reveals systematic trading correlated with clean energy bill discussions and renewable energy incentive announcements.

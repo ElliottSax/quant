@@ -226,30 +226,7 @@ class MultiAssetMACDBacktester:
 
 ## Backtest Results: MACD Crossover Strategy
 
-### Single Pair: EUR/USD (Jan 2023 - Mar 2026)
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 34.28% |
-| Buy & Hold | 18.30% |
-| Excess Return | 15.98% |
-| Sharpe Ratio | 1.28 |
-| Win Rate | 51.23% |
-| Max Drawdown | -11.45% |
-| Profit Factor | 1.94 |
-| Total Trades | 42 |
-| Avg Trade Return | 0.72% |
-
-### Multi-Asset Performance (Major Pairs, 2023-2026)
-
-| Asset | Return | Sharpe | Win Rate | Profit Factor |
-|-------|--------|--------|----------|---------------|
-| EUR/USD | 34.28% | 1.28 | 51.23% | 1.94 |
-| GBP/USD | 31.45% | 1.15 | 49.87% | 1.78 |
-| USD/JPY | 38.92% | 1.42 | 52.45% | 2.12 |
-| AUD/USD | 29.15% | 1.05 | 48.92% | 1.65 |
-| USD/CAD | 32.67% | 1.22 | 50.34% | 1.89 |
-| **Portfolio Average** | **33.29%** | **1.22** | **50.56%** | **1.88** |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Performance Optimization Techniques
 

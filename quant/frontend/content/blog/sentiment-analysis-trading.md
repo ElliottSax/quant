@@ -7,6 +7,9 @@ category: "Algo Trading"
 tags: ["sentiment analysis", "NLP", "alternative data", "natural language processing"]
 keywords: ["sentiment analysis trading", "NLP trading signals", "market sentiment analysis"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Sentiment Analysis for Trading: NLP-Based Market Signals
 
 Sentiment analysis for trading applies natural language processing (NLP) to extract actionable trading signals from text data, including news articles, social media posts, earnings call transcripts, and regulatory filings. The field has evolved rapidly from simple keyword counting to sophisticated transformer-based models that understand context, sarcasm, and implicit sentiment. Tetlock (2007) first demonstrated that media pessimism predicts downward pressure on stock prices, and subsequent research by Loughran and McDonald (2011) established finance-specific sentiment dictionaries that significantly outperform general-purpose tools for financial text analysis.
@@ -130,15 +133,7 @@ FinBERT offers the best balance of accuracy, speed, and cost for production trad
 
 ### Backtest Results (S&P 500, 2015-2025)
 
-| Metric | News Sentiment | Price Momentum (12-1) | Combined |
-|--------|---------------|---------------------|----------|
-| CAGR | 8.4% | 7.2% | 12.8% |
-| Sharpe Ratio | 1.18 | 0.84 | 1.52 |
-| Max Drawdown | -12.4% | -18.2% | -10.8% |
-| Win Rate (daily) | 54.2% | 52.8% | 55.4% |
-| Correlation | 1.00 | 0.22 | N/A |
-
-The low correlation (0.22) between news sentiment and price momentum signals makes them highly complementary. The combined strategy (50/50 blend) achieves a Sharpe of 1.52.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 2: Earnings Call Tone Analysis
 
@@ -158,17 +153,7 @@ The low correlation (0.22) between news sentiment and price momentum signals mak
 
 ### Backtest Results (Russell 1000, 2016-2025)
 
-| Metric | Value |
-|--------|-------|
-| CAGR | 9.8% |
-| Sharpe Ratio | 1.34 |
-| Max Drawdown | -11.4% |
-| Win Rate | 56.8% |
-| Avg Trade Duration | 20 days |
-| Trades Per Year | ~800 |
-| Alpha (vs. Fama-French 5-factor) | 4.2% |
-
-The most predictive feature is tone change (improvement or deterioration vs. prior quarter), which alone produces a Sharpe of 0.92. The management vs. analyst tone divergence adds incremental alpha: when management is significantly more positive than analysts, future returns are 2.1% higher on average.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 3: Social Media Sentiment (Contrarian)
 
@@ -183,15 +168,7 @@ The most predictive feature is tone change (improvement or deterioration vs. pri
 
 ### Backtest Results (Most-Discussed Stocks, 2018-2025)
 
-| Metric | Value |
-|--------|-------|
-| CAGR | 11.2% |
-| Sharpe Ratio | 0.94 |
-| Max Drawdown | -18.4% |
-| Win Rate | 52.4% |
-| Avg Trade Duration | 8.4 days |
-
-Social media sentiment works best as a contrarian indicator for popular stocks because extreme sentiment levels (both positive and negative) tend to precede [mean reversion](/blog/mean-reversion-strategies-guide). However, during events like the GameStop short squeeze (January 2021), extreme positive social sentiment can persist, making stop-losses essential.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Building a Production Sentiment Pipeline
 

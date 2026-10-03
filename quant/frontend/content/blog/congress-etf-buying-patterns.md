@@ -10,6 +10,9 @@ published_date: '2026-03-23'
 last_updated: '2026-03-23'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress ETF Buying Patterns: Index Fund Positions and Passive Strategy Concentration
 
 Congressional members deployed $1.2 billion in exchange-traded funds during 2026 Q1, representing 14.3% of total congressional trading activity. Surprisingly, ETF purchases are highly concentrated in specific sector and thematic ETFs rather than broad market indices, indicating active strategy disguised as passive investing.

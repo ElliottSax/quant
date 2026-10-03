@@ -7,6 +7,9 @@ category: "Portfolio Management"
 tags: ["multi-asset", "portfolio construction", "asset allocation", "diversification", "crypto allocation"]
 keywords: ["multi-asset portfolio", "portfolio construction", "asset allocation framework", "diversified portfolio", "crypto portfolio allocation"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Multi-Asset Portfolio Construction: Stocks, Bonds, Commodities, Crypto
 
 Multi-asset portfolio construction is the highest-level investment decision. The allocation across asset classes -- equities, [fixed income](/blog/fixed-income-quant-strategies), commodities, real assets, and increasingly digital assets -- determines 80-90% of long-term portfolio return variability, according to decades of research starting with Brinson, Hood, and Beebower (1986). Getting asset allocation (see our [portfolio calculator](https://calculatortools.com/blog/portfolio-allocation-calculator)) right matters more than security selection within any single asset class. This guide provides quantitative frameworks for determining allocation weights, managing cross-asset risk, and incorporating newer asset classes into a coherent portfolio structure.

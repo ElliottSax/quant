@@ -190,12 +190,7 @@ def hierarchical_clustering_correlation_matrix(correlation_matrix):
 
 ## Backtest Results: Adaptive Regime-Based Strategy (2020-2025)
 
-| Regime | Win Rate | Avg Win | Avg Loss | Sharpe |
-|--------|----------|---------|----------|--------|
-| Trending | 62.1% | 5.8% | -2.9% | 1.64 |
-| Ranging | 68.3% | 3.2% | -1.8% | 2.14 |
-| Volatile | 48.2% | 6.1% | -4.2% | 0.89 |
-| Blended | 63.8% | 4.9% | -2.8% | 1.62 |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

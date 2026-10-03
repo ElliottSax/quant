@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting MACD Crossovers Using Machine Learning
 
 ## Introduction
@@ -193,18 +196,7 @@ We compare three strategies:
 
 ### Performance Metrics (2019–2023)
 
-| Metric | Naive MACD | Filtered (ML) | Hold SPY |
-|--------|------------|---------------|----------|
-| CAGR (%) | 6.8 | **9.4** | 11.2 |
-| Sharpe Ratio | 0.41 | **0.68** | 0.72 |
-| Max Drawdown (%) | -28.5 | **-19.3** | -33.8 |
-| Win Rate (%) | 48.2 | **66.1** | — |
-| Number of Trades | 124 | 57 | — |
-| Profit Factor | 1.12 | **1.45** | — |
-
-The ML-filtered strategy reduces trade frequency by over 50% but improves win rate and risk-adjusted returns. Notably, the **Max Drawdown** is significantly lower than the naive and buy-and-hold approaches.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Real Example: Bullish Crossover on July 2, 2020
 
@@ -256,23 +248,7 @@ This suggests trend strength and volatility dominate signal quality—consistent
 
 ## Out-of-Sample Results Across Asset Classes
 
-We extend the model to other ETFs:
-
-| Asset | Ticker | CAGR (%) | Sharpe | Win Rate (%) |
-|------|-------|----------|--------|--------------|
-| Nasdaq 100 | QQQ | 11.3 | 0.71 | 68.2 |
-| Gold | GLD | 4.1 | 0.38 | 60.5 |
-| 10Y Treasury | TLT | -0.8 | -0.12 | 52.1 |
-| Crude Oil | USO | 3.9 | 0.31 | 57.9 |
-
-Performance varies:
-- **QQQ**: Strong trend-following regime, high ADX relevance.
-- **GLD**: Low volatility environment favored precision.
-- **TLT**: Poor performance due to mean-reverting behavior—MACD signals are less reliable.
-
-This confirms the importance of **regime-dependent strategy application**.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Limitations and Sensitivity Analysis
 

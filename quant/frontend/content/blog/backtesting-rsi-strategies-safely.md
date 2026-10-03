@@ -343,17 +343,7 @@ class SafeRSIBacktest:
 
 ## Backtesting Results: Safe RSI Approach
 
-**RSI on SPY 2024-2026 (without vs with safety filters):**
-
-| Metric | Unsafe RSI | Safe RSI |
-|--------|-----------|---------|
-| Total Trades | 187 | 89 |
-| Total Return | 28.4% | 18.2% |
-| Win Rate | 51.2% | 62.1% |
-| Max Drawdown | -23.1% | -8.7% |
-| Sharpe Ratio | 0.94 | 1.52 |
-
-Safe approach reduced trades by 52% and returns by 36%, but improved Sharpe ratio by 62% and eliminated catastrophic drawdowns.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

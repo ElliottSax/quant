@@ -10,6 +10,9 @@ published_date: '2026-03-22'
 last_updated: '2026-03-22'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Big Tech Antitrust Trading: Regulatory Predictions and Strategic Positioning
 
 Congressional members executed strategic Big Tech stock purchases immediately preceding antitrust hearings and regulatory discussions, achieving exceptional returns through positioning that anticipated favorable regulatory outcomes. Analysis reveals systematic trading pattern: purchase Big Tech before antitrust hearings, participate in favorable regulatory process, capture gains from regulatory clarity.

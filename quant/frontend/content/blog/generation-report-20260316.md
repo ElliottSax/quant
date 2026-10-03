@@ -107,24 +107,8 @@ last_updated: '''''''2026-03-21'''''''
 - `estimate_transaction_costs()` - Slippage and commission estimation
 
 ### Performance Metrics Tables
-**Primary Results Table:**
-| Metric | Value |
-|--------|-------|
-| Total Return | 287% |
-| Annual Return | 14.2% |
-| Sharpe Ratio | 1.87 |
-| Max Drawdown | -18.3% |
-| Win Rate | 58.4% |
-| Number of Trades | 1,247-1,500 (varies) |
-| Avg Trade Duration | Style-specific |
 
-**Position Sizing Comparison Table:**
-| Method | Avg Position Size | Sharpe Ratio | Max Drawdown | Win Rate |
-|--------|------------------|--------------|--------------|----------|
-| Fixed 2% Risk | $4,200 | 1.64 | -22.1% | 56.2% |
-| Volatility-Adjusted | $4,850 | 1.87 | -18.3% | 58.4% |
-| Kelly Criterion (0.25 cap) | $5,100 | 1.92 | -17.5% | 59.1% |
-| Risk Parity | $4,650 | 1.81 | -19.2% | 57.8% |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ### FAQ Sections (5 questions per article)
 All customized for trading style with answers addressing:

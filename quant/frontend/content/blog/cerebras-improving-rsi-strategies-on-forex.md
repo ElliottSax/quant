@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Improving RSI Strategies on Forex
 
 ## Introduction
@@ -72,62 +75,7 @@ Daily RSI signals are confirmed by 4-hour RSI(14). A long signal is valid only i
 
 ## Backtesting Results
 
-All strategies were tested on 100,000 simulated trades. Results are aggregated by currency pair. Performance metrics include:
-
-- **Total Return**: Cumulative % gain
-- **Sharpe Ratio (annualized)**: Using risk-free rate = 2%
-- **Win Rate**: % of profitable trades
-- **Profit Factor**: Gross profit / gross loss
-- **Max Drawdown**: Peak-to-trough decline
-
-### Table 1: Performance of Basic RSI Strategy (2005–2023)
-
-| Currency Pair | Total Return (%) | Sharpe Ratio | Win Rate (%) | Profit Factor | Max Drawdown (%) |
-|---------------|------------------|--------------|--------------|---------------|------------------|
-| EUR/USD       | 48.2             | 0.31         | 47.3         | 1.08          | -63.1            |
-| GBP/USD       | 39.6             | 0.28         | 46.1         | 1.03          | -68.4            |
-| USD/JPY       | 52.7             | 0.33         | 48.9         | 1.10          | -59.3            |
-| AUD/USD       | 33.8             | 0.25         | 45.7         | 0.98          | -71.2            |
-| USD/CAD       | 41.5             | 0.29         | 46.5         | 1.05          | -65.7            |
-| NZD/USD       | 37.1             | 0.26         | 45.9         | 0.99          | -73.5            |
-| **Average**   | **42.1**         | **0.29**     | **46.7**     | **1.04**      | **-65.2**        |
-
-The BRSI strategy produces marginal profitability with high drawdowns, confirming its inadequacy as a standalone system.
-
-### Table 2: Performance of Enhanced RSI Strategies (2005–2023)
-
-| Strategy      | Currency Pair | Total Return (%) | Sharpe Ratio | Win Rate (%) | Profit Factor | Max Drawdown (%) |
-|---------------|---------------|------------------|--------------|--------------|---------------|------------------|
-| **DTRSI**     | EUR/USD       | 68.4             | 0.52         | 51.8         | 1.21          | -48.3            |
-|               | GBP/USD       | 59.2             | 0.47         | 50.5         | 1.18          | -53.1            |
-|               | USD/JPY       | 73.9             | 0.55         | 53.2         | 1.25          | -44.7            |
-|               | AUD/USD       | 52.6             | 0.41         | 49.8         | 1.14          | -56.8            |
-|               | USD/CAD       | 61.1             | 0.49         | 51.1         | 1.20          | -51.2            |
-|               | NZD/USD       | 56.3             | 0.44         | 50.0         | 1.16          | -57.9            |
-|               | **Average**   | **61.9**         | **0.48**     | **51.1**     | **1.19**      | **-52.0**        |
-| **VFRSI**     | EUR/USD       | 76.3             | 0.61         | 53.7         | 1.29          | -42.6            |
-|               | GBP/USD       | 68.5             | 0.56         | 52.9         | 1.26          | -46.8            |
-|               | USD/JPY       | 82.1             | 0.64         | 55.4         | 1.33          | -39.2            |
-|               | AUD/USD       | 63.7             | 0.52         | 52.1         | 1.22          | -49.1            |
-|               | USD/CAD       | 70.9             | 0.58         | 54.3         | 1.30          | -44.5            |
-|               | NZD/USD       | 65.4             | 0.53         | 53.0         | 1.27          | -48.7            |
-|               | **Average**   | **71.2**         | **0.57**     | **53.6**     | **1.28**      | **-45.2**        |
-| **MTF-RSI**   | EUR/USD       | 81.7             | 0.67         | 55.3         | 1.36          | -38.4            |
-|               | GBP/USD       | 73.2             | 0.62         | 54.8         | 1.34          | -41.6            |
-|               | USD/JPY       | 91.5             | 0.71         | 57.1         | 1.42          | -35.7            |
-|               | AUD/USD       | 69.8             | 0.58         | 53.9         | 1.31          | -43.3            |
-|               | USD/CAD       | 77.6             | 0.65         | 56.2         | 1.38          | -39.1            |
-|               | NZD/USD       | 70.1             | 0.59         | 54.4         | 1.35          | -42.8            |
-|               | **Average**   | **77.3**         | **0.64**     | **55.3**     | **1.36**      | **-40.2**        |
-
-### Key Observations:
-
-- **MTF-RSI outperforms** all variants, increasing average Sharpe ratio by **121%** over BRSI.
-- **VFRSI reduces drawdowns** by filtering out trades during high volatility, improving risk-adjusted returns.
-- **DTRSI adapts well** to shifting market regimes but underperforms during prolonged trends.
-- **USD/JPY consistently yields highest returns**, benefiting from strong mean-reversion tendencies.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Python Implementation
 
@@ -215,22 +163,7 @@ Matches backtest results in Table 2.
 
 ## Strategy Robustness and Walk-Forward Analysis
 
-To assess robustness, we conducted a 5-year walk-forward optimization (WFO) using 3-year in-sample periods and 1-year out-of-sample tests.
-
-### Table 3: Walk-Forward Results (MTF-RSI on EUR/USD)
-
-| Period          | In-Sample Sharpe | Out-of-Sample Sharpe | Drawdown (OOS) |
-|-----------------|------------------|-----------------------|----------------|
-| 2005–2007       | 0.68             | 0.62                  | -39.1%         |
-| 2008–2010       | 0.71             | 0.65                  | -37.4%         |
-| 2011–2013       | 0.64             | 0.59                  | -41.2%         |
-| 2014–2016       | 0.60             | 0.56                  | -43.8%         |
-| 2017–2019       | 0.66             | 0.60                  | -38.7%         |
-| 2020–2022       | 0.69             | 0.63                  | -36.5%         |
-
-The average out-of-sample Sharpe ratio is **0.61**, within 9% of in-sample performance, indicating strong statistical robustness.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Risk Management Integration
 

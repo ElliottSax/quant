@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Guide to Mean Reversion Safely
 
 ## Introduction
@@ -154,16 +157,7 @@ def backtest_pair(df1, df2, window=60):
 
 ### Performance Metrics (2018–2023)
 
-| Strategy               | CAGR (%) | Sharpe Ratio | Max Drawdown (%) | Win Rate (%) | Annual Turnover |
-|------------------------|----------|--------------|------------------|--------------|-----------------|
-| SPY-EFA Pair           | 8.4      | 1.32         | 12.7             | 58.3         | 3.2             |
-| TLT-SPY Pair           | 11.2     | 1.67         | 9.4              | 61.1         | 4.5             |
-| GLD-TLT Pair           | 6.9      | 0.98         | 16.3             | 54.2         | 2.1             |
-| **Equal-weighted Portfolio** | **8.8**  | **1.41**     | **10.8**         | **57.9**     | **3.3**         |
-
-*Notes: All results net of transaction costs. Sharpe ratio uses daily returns and 2.5% risk-free rate.*
-
-The TLT-SPY pair outperforms due to strong macro drivers (interest rate cycles) and reliable cointegration. GLD-TLT shows higher drawdown, likely due to structural regime shifts in gold behavior post-2020.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Volatility Regime Filtering
 

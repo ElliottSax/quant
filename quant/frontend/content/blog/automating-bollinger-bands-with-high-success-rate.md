@@ -11,6 +11,9 @@ quality_score: 90
 seo_optimized: true
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Automating Bollinger Bands: A Practical Guide
 
 ## Introduction
@@ -244,17 +247,7 @@ class HighWinRateBB:
 
 ## Full Backtest Results
 
-On SPY daily data (2010-2025), comparing approaches:
-
-| Configuration | Win Rate | Avg Return | Sharpe | Trades/Year | Max DD |
-|--------------|----------|------------|--------|-------------|--------|
-| No filter | 57% | +0.42% | 0.65 | 18.2 | -12.3% |
-| + Bandwidth | 63% | +0.58% | 0.82 | 11.4 | -9.8% |
-| + Volume | 64% | +0.61% | 0.87 | 10.8 | -8.9% |
-| + Trend | 62% | +0.55% | 0.79 | 9.1 | -7.4% |
-| All three | 72% | +0.83% | 1.15 | 5.6 | -6.2% |
-
-This is the fundamental tradeoff: higher win rate means fewer opportunities.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Position Sizing by Conviction
 

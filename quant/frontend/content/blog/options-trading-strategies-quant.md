@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["options trading", "Greeks", "volatility", "delta neutral", "options strategies"]
 keywords: ["options trading strategies", "options Greeks quantitative", "volatility trading options"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Options Trading Strategies: Quantitative Approach to Greeks
 
 Options [trading strategies](/blog/backtesting-trading-strategies) take on a new dimension when approached quantitatively. Rather than treating options as leveraged directional bets, systematic traders use the Greeks (delta, gamma, theta, vega) as measurable risk factors that can be isolated, traded, and hedged. The Black-Scholes (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator))-Merton framework (1973) provides the theoretical foundation, while modern practitioners extend it with stochastic volatility models, [volatility surface](/blog/volatility-surface-modeling) analysis, and empirical Greek estimation to build market-neutral options portfolios.
@@ -64,16 +67,7 @@ Historical data (S&P 500, 2005-2025):
 
 ### Backtest Results (SPY, 2010-2025)
 
-| Metric | Covered Calls | SPY Buy & Hold |
-|--------|--------------|----------------|
-| CAGR | 9.8% | 10.7% |
-| Sharpe Ratio | 0.82 | 0.62 |
-| Max Drawdown | -24.8% | -33.9% |
-| Annual Volatility | 11.4% | 15.8% |
-| Win Rate (monthly) | 72.4% | 61.3% |
-| Premium Collected/Year | 4.2% | N/A |
-
-The covered call strategy underperforms SPY in strong bull markets (caps upside) but outperforms on a risk-adjusted basis due to lower volatility and consistent premium income.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 2: Short Strangles with Delta Hedging
 
@@ -91,15 +85,7 @@ Sell both out-of-the-money calls and puts (strangle) and delta-hedge the positio
 
 ### Backtest Results (SPY Options, 2012-2025)
 
-| Metric | Short Strangle (Hedged) | Short Strangle (Unhedged) |
-|--------|------------------------|--------------------------|
-| CAGR | 8.4% | 11.2% |
-| Sharpe Ratio | 1.48 | 0.72 |
-| Max Drawdown | -8.2% | -32.4% |
-| Win Rate | 78.4% | 82.1% |
-| Avg Trade Duration | 22 days | 28 days |
-
-Delta hedging transforms a risky directional bet into a pure volatility trade with dramatically lower drawdowns (from -32.4% to -8.2%) while maintaining solid returns.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 3: Volatility Skew Trading
 
@@ -121,16 +107,7 @@ When skew is extremely steep (above the 80th percentile of its 252-day history),
 
 ### Backtest Results (SPY Options, 2012-2025)
 
-| Metric | Value |
-|--------|-------|
-| CAGR | 6.8% |
-| Sharpe Ratio | 1.24 |
-| Max Drawdown | -9.4% |
-| Win Rate | 64.2% |
-| Avg Trade Duration | 18 days |
-| Trades Per Year | 8-12 |
-
-Skew trading exploits the persistent overpricing of downside protection. However, it has significant tail risk during actual crashes (when put skew increases are justified), making [position sizing](/blog/position-sizing-strategies) critical.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 4: Calendar Spreads (Theta Harvesting)
 
@@ -148,16 +125,7 @@ Sell short-dated options and buy longer-dated options at the same strike. This p
 
 ### Backtest Results (SPY Weekly Options, 2015-2025)
 
-| Metric | Value |
-|--------|-------|
-| CAGR | 7.2% |
-| Sharpe Ratio | 1.08 |
-| Max Drawdown | -12.4% |
-| Win Rate | 62.8% |
-| Avg Trade Duration | 5 days |
-| Capital Efficiency | 15% margin requirement |
-
-Calendar spreads provide consistent income with defined risk, making them attractive for capital-efficient portfolio construction.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Quantitative Greek Management
 

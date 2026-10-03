@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting Bollinger Bands Efficiently
 
 Bollinger Bands, introduced by John Bollinger in the 1980s, remain one of the most widely used technical indicators in financial markets. Their appeal lies in their ability to dynamically measure volatility and identify potential overbought or oversold conditions. However, deploying Bollinger Bands in systematic trading strategies requires rigorous backtesting to assess performance across different market regimes. This article details an efficient approach to backtesting Bollinger Bands strategies with real-world data, Python implementation, and quantitative performance metrics.
@@ -123,38 +126,7 @@ While this loop processes ~6,000 rows efficiently (~100 ms), for larger datasets
 
 ## Performance Metrics and Backtesting Results
 
-We evaluate the strategy using standard quantitative metrics:
-
-| Metric                        | Value                     |
-|------------------------------|---------------------------|
-| Total Return                 | 87.3%                     |
-| CAGR (Compound Annual Growth Rate) | 2.6%                  |
-| Maximum Drawdown             | -61.4%                    |
-| Sharpe Ratio (annualized)    | 0.31                      |
-| Win Rate (Long Trades)       | 52.1%                     |
-| Win Rate (Short Trades)      | 48.7%                     |
-| Average Profit per Trade     | 0.41%                     |
-| Number of Trades             | 184                       |
-| Profit Factor                | 1.08                      |
-| Calmar Ratio                 | 0.042                     |
-
-These results are based on a $100,000 initial capital with no transaction costs or slippage. The strategy underperforms a simple buy-and-hold approach, which returned 647% over the same period (CAGR: 8.6%).
-
-### Trade Distribution by Decade
-
-| Period        | Trades | Avg. Return/Trade | Max Drawdown |
-|--------------|--------|-------------------|--------------|
-| 2000–2009    | 62     | 0.38%             | -58.2%       |
-| 2010–2019    | 75     | 0.43%             | -31.5%       |
-| 2020–2023    | 47     | 0.40%             | -18.7%       |
-
-The strategy performs best during high-volatility regimes (e.g., 2008, 2020), where mean reversion is more pronounced.
-
-### Equity Curve Analysis
-
-The equity curve exhibits extended flat periods during strong trending markets (e.g., 2017 bull run) and sharp drawdowns during volatile reversals. The strategy’s low Sharpe ratio (0.31) suggests poor risk-adjusted returns.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Optimizing Bollinger Band Parameters Efficiently
 

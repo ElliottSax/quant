@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["VWAP", "volume profile", "order flow", "institutional trading"]
 keywords: ["volume-weighted trading strategy", "VWAP trading", "volume profile trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Volume-Weighted Trading Strategy: VWAP and Volume Profile
 
 Volume-weighted [trading strategy](/blog/momentum-trading-strategy-guide) incorporates one of the most underutilized dimensions in retail quantitative analysis: volume. While most technical indicators focus exclusively on price, volume provides critical information about institutional participation, conviction behind price moves, and key support/resistance levels. The Volume Weighted Average Price (VWAP) is the benchmark that institutional traders use to evaluate execution quality, and volume profile reveals the price levels where the most trading activity occurs.
@@ -52,17 +55,7 @@ Similar to Bollinger Bands, VWAP standard deviation bands measure the statistica
 
 ### Backtest Results (ES Futures, 5-Minute Bars, 2018-2025)
 
-| Metric | Long Only | Long/Short |
-|--------|-----------|------------|
-| CAGR (annualized) | 14.2% | 18.7% |
-| Sharpe Ratio | 1.24 | 1.52 |
-| Max Drawdown | -8.4% | -10.2% |
-| Win Rate | 61.8% | 59.4% |
-| Avg Trade Duration | 47 min | 42 min |
-| Profit Factor | 1.68 | 1.74 |
-| Daily Trades | 2.4 | 4.1 |
-
-The VWAP mean reversion strategy produces strong intraday results because institutional VWAP-targeting algorithms create genuine mean-reverting behavior around the VWAP level.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 2: VWAP Trend Following (Intraday)
 
@@ -76,14 +69,7 @@ The VWAP mean reversion strategy produces strong intraday results because instit
 
 ### Backtest Results (SPY, 5-Minute Bars, 2018-2025)
 
-| Metric | With Gap Filter | Without Gap Filter |
-|--------|----------------|-------------------|
-| CAGR | 11.8% | 6.2% |
-| Sharpe Ratio | 1.08 | 0.54 |
-| Win Rate | 54.2% | 47.8% |
-| Avg Winner | 0.42% | 0.38% |
-
-The gap direction filter doubles performance by aligning intraday VWAP trades with the prevailing institutional order flow from the overnight session.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Volume Profile Analysis
 
@@ -111,16 +97,7 @@ Volume profile displays the total volume traded at each price level over a speci
 
 ### Backtest Results (NQ Futures, 15-Minute Bars, 2019-2025)
 
-| Metric | Value |
-|--------|-------|
-| CAGR (annualized) | 16.4% |
-| Sharpe Ratio | 1.38 |
-| Max Drawdown | -9.8% |
-| Win Rate | 57.2% |
-| Avg Trade Duration | 2.4 hours |
-| Profit Factor | 1.62 |
-
-The POC strategy works because the Point of Control represents the price level of maximum agreement between buyers and sellers, making it a natural attractor and reversal point.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 4: Volume-Weighted Breakout
 
@@ -136,16 +113,7 @@ This strategy combines volume analysis with [breakout trading](/blog/breakout-tr
 
 ### Backtest Results (S&P 500 Components, 2010-2025)
 
-| Metric | Volume-Confirmed | All Breakouts |
-|--------|-----------------|---------------|
-| CAGR | 13.8% | 8.4% |
-| Sharpe Ratio | 1.12 | 0.68 |
-| Win Rate | 52.4% | 44.8% |
-| Avg Winner | 8.2% | 5.4% |
-| Avg Loser | -3.4% | -3.8% |
-| Profit Factor | 1.82 | 1.28 |
-
-Volume-confirmed breakouts outperform significantly because above-average volume on the breakout day indicates institutional participation and conviction, making the breakout more likely to follow through.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## On-Balance Volume (OBV) as a Leading Indicator
 

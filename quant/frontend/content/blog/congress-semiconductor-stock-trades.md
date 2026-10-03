@@ -10,6 +10,9 @@ published_date: '2026-03-24'
 last_updated: '2026-03-24'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Semiconductor Stock Trades: Chip Shortage Information and Technology Competition
 
 Congressional members executed $467 million in semiconductor stock purchases during Q1 2026, with timing showing striking correlation to chip policy discussions and supply chain intelligence. The semiconductor sector represents one of Congress's highest-conviction investment categories.

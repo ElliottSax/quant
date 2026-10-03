@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Guide to Position Sizing Safely
 
 In quantitative trading and portfolio management, **position sizing** is one of the most critical yet often overlooked components of risk management. While many traders focus on entry and exit signals, the size of the exposure determines whether a strategy survives long-term drawdowns or fails catastrophically. Proper **position sizing safely** ensures that no single trade or cluster of trades can jeopardize the portfolio’s capital base. This guide presents a rigorous, data-driven approach to position sizing, grounded in statistical risk control, empirical backtesting, and practical implementation.

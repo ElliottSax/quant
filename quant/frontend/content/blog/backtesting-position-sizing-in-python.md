@@ -299,17 +299,7 @@ result = cerebro.run()
 
 ## Backtesting Results: Comprehensive Comparison
 
-Applied to QQQ daily data (2023-2026, 342 trades):
-
-| Metric | Fixed 2% | Volatility | Kelly (25%) |
-|--------|----------|-----------|------------|
-| Total Return | 42.1% | 51.3% | 46.8% |
-| Annual Return | 13.4% | 16.2% | 14.9% |
-| Sharpe Ratio | 1.52 | 1.78 | 1.65 |
-| Max Drawdown | -11.2% | -8.3% | -9.7% |
-| Win Rate | 51.8% | 51.8% | 51.8% |
-
-Python-based dynamic sizing improved returns 19% with better drawdown control.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Performance Optimization Tips
 

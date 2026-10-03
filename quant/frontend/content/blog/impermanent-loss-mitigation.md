@@ -7,6 +7,9 @@ category: "Crypto & DeFi"
 tags: ["impermanent-loss", "hedging", "risk-management"]
 keywords: ["impermanent loss", "IL mitigation", "delta hedging", "AMM risk management"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Impermanent Loss Mitigation: Mathematical Hedging Strategies
 
 Impermanent loss represents the primary risk factor preventing wider adoption of automated market maker [liquidity provision](/blog/liquidity-provision-strategies). The phenomenon occurs when providing liquidity to AMM pools results in lower value than simply holding the underlying assets, despite earning trading fees. For volatile cryptocurrency pairs, impermanent loss can reach 20-50% during significant price movements, often overwhelming fee generation and creating net negative returns.

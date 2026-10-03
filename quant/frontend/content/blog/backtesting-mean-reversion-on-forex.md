@@ -110,17 +110,7 @@ class ForexMeanReversionBacktester:
 
 ## Backtest Results: Major Forex Pairs (Jan 2023 - Mar 2026)
 
-**Z-Score = 2.0, 20-period SMA**
-
-| Pair | Return | B&H | Excess | Sharpe | DD | Trades |
-|------|--------|-----|--------|--------|-----|--------|
-| EUR/USD | 28.45% | 18.30% | +10.15% | 1.42 | -8.95% | 156 |
-| GBP/USD | 31.28% | 22.15% | +9.13% | 1.35 | -9.42% | 142 |
-| USD/JPY | 35.12% | 24.80% | +10.32% | 1.48 | -7.85% | 168 |
-| AUD/USD | 26.73% | 19.45% | +7.28% | 1.28 | -10.15% | 138 |
-| Average | **30.40%** | **21.18%** | **+9.22%** | **1.38** | **-9.09%** | **151** |
-
-Mean reversion on forex averages 9.22% annual outperformance with 1.38 Sharpe ratio.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Parameter Sensitivity Analysis
 

@@ -10,6 +10,9 @@ published_date: '2026-03-25'
 last_updated: '2026-03-25'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Tech Stock Buying Spree 2026: Artificial Intelligence Frenzy and Market Timing
 
 Congressional members collectively executed a coordinated technology stock purchasing frenzy in early 2026, with particular emphasis on artificial intelligence-related companies. Analysis of STOCK Act filings reveals $2.8 billion in congressional tech stock purchases in the first quarter alone, with pronounced timing patterns suggesting information-driven decisions.

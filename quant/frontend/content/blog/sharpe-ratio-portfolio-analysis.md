@@ -7,6 +7,9 @@ category: "Algo Trading"
 tags: ["Sharpe ratio", "risk-adjusted returns", "portfolio analysis", "performance metrics"]
 keywords: ["Sharpe ratio portfolio analysis", "risk-adjusted returns", "Sortino ratio Calmar ratio"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Sharpe Ratio and Portfolio Analysis: Risk-Adjusted Returns
 
 The Sharpe ratio is the most widely used measure of risk-adjusted performance in quantitative finance, and understanding it deeply is essential for evaluating and comparing [trading strategies](/blog/backtesting-trading-strategies). Introduced by William Sharpe in 1966 (and refined in 1994), the Sharpe ratio measures the excess return earned per unit of risk taken. A Sharpe ratio of 1.0 means the strategy earns 1% excess return for every 1% of volatility, while a Sharpe of 2.0 means the strategy is twice as efficient at converting risk into return.

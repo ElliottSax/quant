@@ -109,44 +109,7 @@ Transaction costs represent a critical factor in strategy viability. For Volatil
 
 ## Performance Results
 
-### Backtest Configuration
-
-The following backtest parameters reflect realistic market conditions:
-
-| Parameter | Value | Notes |
-|-----------|-------|-------|
-| Start Date | 2023-01-01 | 3-year historical period |
-| End Date | 2025-12-31 | Recent market environment |
-| Initial Capital | $100,000 | Standard allocation |
-| Commission | 0.05% | Institutional rates |
-| Slippage | 0.03% | Market impact estimate |
-| Rebalance Frequency | Daily | Strategy frequency |
-| Position Size | 95% | Leverage constraint |
-
-### Key Performance Metrics
-
-| Metric | Value | Interpretation |
-|--------|-------|-----------------|
-| Total Return | 18.7% | Cumulative over 3 years |
-| Annual Return | 5.8% | Average yearly performance |
-| Annual Volatility | 8.2% | Downside risk measure |
-| Sharpe Ratio | 0.71 | Risk-adjusted returns |
-| Maximum Drawdown | -12.3% | Worst consecutive loss |
-| Win Rate | 52.1% | Percentage winning trades |
-| Calmar Ratio | 0.47 | Return per unit drawdown |
-| Profit Factor | 1.34 | Gross profit / gross loss |
-
-### Regime Analysis
-
-Performance varies significantly across market regimes:
-
-| Market Regime | Sharpe Ratio | Win Rate | Avg Trade Duration |
-|---------------|-------------|----------|-------------------|
-| Low Volatility | 0.85 | 56% | 2-3 days |
-| High Volatility | 0.42 | 48% | 1 day |
-| Trending Up | 0.92 | 61% | 3-5 days |
-| Trending Down | 0.38 | 44% | 1-2 days |
-| Range-Bound | 0.68 | 54% | 2-3 days |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Risk Management Framework
 
@@ -359,7 +322,7 @@ Volatility Trading on equity options represents a quantitatively rigorous approa
 3. **Adaptability**: Adjusting to changing market regimes
 4. **Continuous optimization**: Regular parameter rebalancing and robustness testing
 
-Traders implementing this strategy should expect 4-8% annual returns net of costs in typical markets, with volatility around 8-12% and maximum drawdowns of 10-15%. Success requires discipline, robust technology infrastructure, and realistic expectations about risk-adjusted returns in increasingly competitive markets.
+Net returns, volatility and drawdowns depend on the market, the period and your costs; measure them on your own data. Success requires discipline, robust technology infrastructure, and realistic expectations about risk-adjusted returns in increasingly competitive markets.
 
 ## References and Further Reading
 

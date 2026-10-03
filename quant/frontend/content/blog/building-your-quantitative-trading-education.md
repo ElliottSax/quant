@@ -18,6 +18,9 @@ published_date: '2026-03-20'
 last_updated: '2026-03-20'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Building Your Quantitative Trading Education
 
 ## Introduction

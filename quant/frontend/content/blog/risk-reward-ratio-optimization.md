@@ -7,6 +7,9 @@ category: "Risk Management"
 tags: ["risk reward ratio", "expectancy", "trading edge", "risk management", "trade management"]
 keywords: ["risk reward ratio optimization", "trading risk reward", "risk reward ratio trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Risk-Reward Ratio Optimization: Finding Your Edge
 
 The risk-reward ratio (R:R) quantifies how much potential profit a trade offers relative to its potential loss. A trade risking $100 to make $200 has a 1:2 risk-reward ratio. While the concept is simple, optimizing the risk-reward ratio for a specific [trading strategy](/blog/breakout-trading-strategy) requires understanding the mathematical relationship between R:R, win rate, and expectancy, the true measure of trading edge.

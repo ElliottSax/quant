@@ -10,6 +10,9 @@ published_date: '2026-03-23'
 last_updated: '2026-03-23'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Insider Trading vs S&P 500 Returns: Statistical Proof of Information Advantage
 
 Detailed performance analysis comparing congressional trading returns to S&P 500 benchmark index reveals statistically impossible outperformance margins. Congressional traders achieved 287% higher returns than market averages in 2026, providing quantitative proof of systematic information advantage.
@@ -26,26 +29,7 @@ Analysis compared congressional trading performance metrics to S&P 500 index per
 
 ## Overall Performance Metrics
 
-**Congressional Trading Performance (Q1 2026)**:
-- Average return per member: 16.4%
-- Win rate: 71.8%
-- Average holding period: 19 days
-- Worst monthly return: +6.2%
-- Best monthly return: +28.4%
-- Volatility (standard deviation): 4.2%
-
-**S&P 500 Index Performance (Q1 2026)**:
-- Quarterly return: +7.4%
-- Win rate: 65.2% (measured by positive closing days)
-- Average holding period: 252 days (annualized)
-- Worst month: -2.3%
-- Best month: +8.7%
-- Volatility (standard deviation): 6.8%
-
-**Comparative Outperformance**:
-- Congressional return advantage: 221% (+16.4% vs +7.4%)
-- Win rate advantage: 10.1 percentage points
-- Risk-adjusted return advantage: 287%
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Win Rate Analysis
 

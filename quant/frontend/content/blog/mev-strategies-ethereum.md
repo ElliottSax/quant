@@ -7,6 +7,9 @@ category: "Crypto & DeFi"
 tags: ["mev", "ethereum", "trading-strategies"]
 keywords: ["MEV", "sandwich attacks", "backrunning", "Ethereum MEV", "flashbots"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # MEV Strategies on Ethereum: Sandwich Attacks and Backrunning
 
 Maximal Extractable Value (MEV) represents one of the most controversial yet profitable phenomena in decentralized finance. MEV extractors identify pending transactions in Ethereum's mempool, analyze their market impact, and insert their own transactions to profit from price movements caused by others' trades. Annual MEV extraction exceeds $600 million across Ethereum and Layer 2 networks, with sophisticated actors capturing millions daily through automated strategies.

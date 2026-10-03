@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["MACD", "signal line crossover", "momentum", "technical analysis"]
 keywords: ["MACD trading strategy", "MACD signal crossover", "MACD histogram trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # MACD Trading Strategy: Signal Line Crossover System
 
 The MACD [trading strategy](/blog/breakout-trading-strategy) built on the Moving Average Convergence Divergence indicator is a cornerstone of systematic [technical analysis](/blog/python-technical-analysis-library). Created by Gerald Appel in the late 1970s, MACD captures momentum shifts by measuring the relationship between two exponential moving averages. Unlike simple oscillators, MACD provides three distinct signal types: signal line crossovers, zero line crossovers, and histogram divergence, each with different risk-reward characteristics.
@@ -41,16 +44,7 @@ The classic MACD trading approach uses crossovers between the MACD line and the 
 
 ### Backtest Results (S&P 500 ETF, 1993-2025)
 
-| Metric | MACD Crossover | MACD + 200 SMA Filter | Buy & Hold |
-|--------|---------------|----------------------|------------|
-| CAGR | 7.2% | 9.8% | 10.1% |
-| Sharpe Ratio | 0.58 | 0.91 | 0.62 |
-| Max Drawdown | -28.4% | -14.8% | -50.8% |
-| Win Rate | 38.2% | 44.7% | N/A |
-| Avg Win / Avg Loss | 2.41 | 2.18 | N/A |
-| Total Trades | 684 | 342 | N/A |
-
-The raw MACD crossover produces mediocre results with a low win rate (38.2%), typical of trend-following systems that sacrifice win rate for larger average wins. Adding the 200-day SMA filter dramatically improves performance by eliminating counter-trend signals.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ### Parameter Sensitivity
 
@@ -77,15 +71,7 @@ The MACD histogram provides earlier signals than line crossovers because it chan
 
 ### Backtest Results (Russell 1000, 2010-2025)
 
-| Metric | Histogram System | Signal Line System |
-|--------|-----------------|-------------------|
-| CAGR | 10.2% | 7.2% |
-| Sharpe Ratio | 0.98 | 0.58 |
-| Max Drawdown | -17.4% | -28.4% |
-| Win Rate | 46.2% | 38.2% |
-| Avg Trade Duration | 8.4 days | 18.2 days |
-
-The histogram reversal system outperforms the signal line system by capturing momentum shifts 3-5 bars earlier, resulting in better entry prices and tighter stop-losses.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 3: MACD Divergence
 

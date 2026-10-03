@@ -10,6 +10,9 @@ published_date: '2026-03-24'
 last_updated: '2026-03-24'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Small-Cap Stock Picks: Penny Stocks and Emerging Company Holdings
 
 Congressional members allocate surprisingly significant capital to small-cap and emerging company stocks, achieving extreme return profiles that suggest specialized information about private companies and pre-IPO opportunities. Analysis of small-cap holdings reveals outsized allocation to biotech, semiconductor, and AI companies before major catalysts.

@@ -7,6 +7,9 @@ category: "Crypto & DeFi"
 tags: ["stablecoins", "yield-farming", "risk-management"]
 keywords: ["stablecoin yield", "DeFi lending", "stable farming", "yield optimization"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Stablecoin Yield Strategies: Low-Risk DeFi Income
 
 Unlike volatile cryptocurrency yields dependent on token appreciation, stablecoin strategies provide pure yield from lending protocols, [liquidity provision](/blog/liquidity-provision-strategies), and yield farming mechanics without directional market risk.

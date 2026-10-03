@@ -161,34 +161,7 @@ def multi_timeframe_forex_strategy(symbol, data_dict):
 
 ## Backtest Results: EURUSD Mean Reversion
 
-**Test Period: January 2021 - March 2026 (1,250+ trading days)**
-
-### Strategy Performance Metrics
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 18.7% |
-| Annualized Return | 3.48% |
-| Sharpe Ratio | 1.94 |
-| Maximum Drawdown | -2.3% |
-| Win Rate | 62.4% |
-| Profit Factor | 2.43 |
-| Average Trade Duration | 4.2 days |
-| Total Trades | 487 |
-
-### Sample Trade Results (Best Performers)
-
-**Trade 1: EURUSD Oversold (2024-06-15)**
-- Entry: 1.0850 (Z-score: -2.3)
-- Exit: 1.0920 (Z-score: +0.4)
-- Return: +0.65% (+65 pips)
-- Duration: 3 days
-
-**Trade 2: GBPUSD Overbought (2023-11-22)**
-- Entry: 1.2750 (Z-score: +2.1)
-- Exit: 1.2685 (Z-score: -0.3)
-- Return: +0.51% (+65 pips)
-- Duration: 5 days
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Risk Management in Forex Mean Reversion
 

@@ -7,6 +7,9 @@ category: "Crypto & DeFi"
 tags: ["uniswap", "liquidity-provision", "amm"]
 keywords: ["Uniswap V3", "concentrated liquidity", "liquidity provision", "AMM strategies"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Liquidity Provision Strategies: Uniswap V3 Range Optimization
 
 Uniswap V3 revolutionized automated market making by introducing concentrated liquidity, allowing liquidity providers to allocate capital within specific price ranges rather than across the entire price curve. This innovation enables 10-100x capital efficiency improvements compared to Uniswap V2, but also introduces complexity in range selection, active management, and [impermanent loss](/blog/impermanent-loss-mitigation) dynamics.

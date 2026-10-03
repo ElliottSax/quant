@@ -47,7 +47,7 @@ When price oscillates without trend, range-trading strategies dominate:
 
 - Buy near support, sell near resistance
 - Use tight stops (wider breakout could be coming)
-- Scalp the swings for small consistent profits
+- Scalp the swings for small gains (results vary and losses are common)
 - Monitor for breakout signals
 
 ## Entry Rules in Detail
@@ -69,19 +69,16 @@ Before entering any position:
 - Wait for close beyond level (not just touch)
 - Confirm with volume above average
 - Enter on next candle after confirmation
-- High success rate: 60-70%
 
 **Reversal Entries**:
 - Identify divergence (price vs indicator)
 - Wait for rejection candle
 - Enter on confirmation next candle
-- Moderate success: 50-60%
 
 **Continuation Entries**:
 - Identify trend with moving averages
 - Wait for pullback to MA
 - Enter when price bounces MA
-- High success rate: 65-75%
 
 ### Entry Timing
 - **Best times**: Market open/close (high volume)
@@ -179,37 +176,7 @@ This quantitative trading approach leverages systematic signals combined with ri
 
 ## Historical Performance Analysis
 
-### Backtesting Results (2020-2026)
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 15.0% |
-| Sharpe Ratio | 1.20 |
-| Maximum Drawdown | -12.0% |
-| Win Rate | 52.0% |
-| Profit Factor | 1.36 |
-| Average Trade Duration | 4.2 days |
-| Trades per Year | 15476 |
-
-### Risk-Adjusted Returns
-
-```python
-import numpy as np
-import pandas as pd
-
-def calculate_metrics(returns):
-    sharpe = returns.mean() / returns.std() * np.sqrt(252)
-    cum_ret = (1 + returns).cumprod()
-    running_max = cum_ret.expanding().max()
-    dd = (cum_ret - running_max) / running_max
-    max_dd = dd.min()
-    wr = (returns > 0).sum() / len(returns)
-    return {'sharpe': sharpe, 'max_dd': max_dd, 'wr': wr}
-
-returns = np.random.normal(0.0005, 0.012, 1260)
-metrics = calculate_metrics(pd.Series(returns))
-print(f"Sharpe: {metrics['sharpe']:.2f}")
-```
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Implementation Methodology
 

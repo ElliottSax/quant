@@ -9,6 +9,9 @@ published_date: '''2026-03-16'''
 provider: cerebras
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Automating Bollinger Bands for Beginners
 
 ## Introduction to Bollinger Bands
@@ -130,65 +133,7 @@ final_strategy = data['Cumulative_Strategy'].iloc[-1]
 
 ## Backtest Results and Performance Metrics
 
-### Cumulative Returns (2020–2023)
-
-| Metric                     | Value       |
-|----------------------------|-------------|
-| Buy-and-Hold Return        | 2.89x       |
-| Bollinger Band Strategy    | 1.67x       |
-| Annualized Return (Market) | 30.6%       |
-| Annualized Return (Strategy)| 14.1%     |
-| Total Trades               | 23          |
-| Win Rate                   | 52.2%       |
-
-*Note: All values based on $1 initial investment in AAPL from 2020-01-01 to 2023-12-31.*
-
-### Risk-Adjusted Performance
-
-| Metric                | Value     |
-|-----------------------|-----------|
-| Sharpe Ratio          | 0.68      |
-| Maximum Drawdown      | -32.1%    |
-| Volatility (Annual)   | 34.2%     |
-| Calmar Ratio          | 0.44      |
-
-The Sharpe ratio of **0.68** indicates modest risk-adjusted returns, below the benchmark of 1.0 often considered acceptable for active strategies. The strategy underperformed buy-and-hold during a strong bull market (2020–2021) but reduced drawdown during the 2022 correction.
-
-### Trade-by-Trade Summary (First 10 Trades)
-
-| Trade # | Entry Date   | Exit Date    | Entry Price | Exit Price | PnL (%) |
-|---------|--------------|--------------|-------------|------------|---------|
-| 1       | 2020-03-23   | 2020-04-06   | $222.50     | $255.00    | +14.6%  |
-| 2       | 2020-08-26   | 2020-09-01   | $463.80     | $450.20    | -2.9%   |
-| 3       | 2020-09-04   | 2020-09-10   | $435.60     | $465.80    | +6.9%   |
-| 4       | 2020-11-09   | 2020-11-17   | $118.00     | $125.50    | +6.4%   |
-| 5       | 2021-01-25   | 2021-02-01   | $130.40     | $126.90    | -2.7%   |
-| 6       | 2021-02-26   | 2021-03-05   | $117.80     | $115.30    | -2.1%   |
-| 7       | 2021-06-15   | 2021-06-25   | $125.60     | $130.20    | +3.7%   |
-| 8       | 2021-08-16   | 2021-08-24   | $147.50     | $150.80    | +2.2%   |
-| 9       | 2021-09-06   | 2021-09-13   | $148.20     | $152.10    | +2.6%   |
-| 10      | 2021-10-05   | 2021-10-13   | $142.80     | $146.30    | +2.4%   |
-
-The strategy generated **positive returns in 12 out of 23 trades (52.2% win rate)**, with larger gains concentrated in high-volatility periods (e.g., March 2020). Losses occurred during sustained trends, where mean reversion failed.
-
-### Equity Curve Visualization
-
-```python
-plt.figure(figsize=(12, 6))
-plt.plot(data.index, data['Cumulative_Market'], label='Buy & Hold', color='blue')
-plt.plot(data.index, data['Cumulative_Strategy'], label='Bollinger Strategy', color='green')
-plt.title('Cumulative Returns: Bollinger Band Strategy vs. Buy & Hold (AAPL)')
-plt.xlabel('Date')
-plt.ylabel('Cumulative Return ($1 Initial)')
-plt.legend()
-plt.grid(True)
-plt.tight_layout()
-plt.show()
-```
-
-The equity curve shows the Bollinger Band strategy underperformed in strong uptrends but limited losses during the 2022 bear market. This highlights its **risk-mitigation potential** in volatile markets.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy Optimization for Beginners
 

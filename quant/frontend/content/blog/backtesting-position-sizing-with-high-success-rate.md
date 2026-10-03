@@ -10,6 +10,9 @@ seo_optimized: true
 description: "Strategies with high win rates (65%+) allow aggressive position sizing while maintaining acceptable drawdowns."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting Position Sizing: A Practical Guide
 
 Strategies with high win rates (65%+) allow aggressive position sizing while maintaining acceptable drawdowns. This guide explores how to identify high-probability strategies, optimize position sizing for maximum compound growth, and backtest these strategies rigorously to validate success rates before deploying real capital.

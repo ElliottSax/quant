@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["pairs trading", "statistical arbitrage", "cointegration", "market neutral"]
 keywords: ["pairs trading strategy", "statistical arbitrage", "cointegration trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Pairs Trading Strategy: Statistical Arbitrage Made Simple
 
 Pairs [trading strategy](/blog/breakout-trading-strategy) is the foundational approach in [statistical arbitrage](/blog/crypto-statistical-arbitrage), pioneered by Nunzio Tartaglia's quantitative group at Morgan Stanley in the 1980s. The concept is straightforward: identify two historically correlated securities, monitor their price spread, and trade the divergence when it exceeds a statistical threshold. When the spread widens, you short the outperformer and buy the underperformer, profiting when prices converge.
@@ -91,39 +94,7 @@ Each pair trade consists of a dollar-neutral long and short position:
 
 ## Backtest Results: S&P 500 Pairs (2010-2025)
 
-| Parameter | Value |
-|-----------|-------|
-| Universe | S&P 500, same sub-industry |
-| Cointegration | Engle-Granger + Johansen |
-| Entry Z-Score | +/- 2.0 |
-| Exit Z-Score | 0 |
-| Stop-Loss Z-Score | +/- 4.0 |
-| Lookback | 252 days (rolling) |
-| Rebalance | Monthly pair selection |
-
-### Performance Summary
-
-| Metric | Pairs Strategy | S&P 500 |
-|--------|---------------|---------|
-| CAGR | 7.8% | 10.7% |
-| Sharpe Ratio | 1.42 | 0.71 |
-| Max Drawdown | -8.9% | -33.9% |
-| Beta to Market | 0.04 | 1.00 |
-| Win Rate | 63.7% | N/A |
-| Avg Trade Duration | 11.2 days | N/A |
-| Profit Factor | 1.68 | N/A |
-| Annual Trades | 480-620 | N/A |
-
-The strategy's near-zero market beta (0.04) confirms its market-neutral nature. While the absolute return (7.8%) is lower than the S&P 500, the risk-adjusted return (Sharpe 1.42) is double, and the maximum drawdown (-8.9%) is less than a third of buy-and-hold.
-
-### Drawdown Analysis
-
-The largest drawdowns occurred during:
-- **March 2020**: -8.9% ([correlation breakdown](/blog/correlation-breakdown-crisis) during COVID panic)
-- **January 2021**: -6.1% (GME/meme stock contagion disrupted sector relationships)
-- **March 2023**: -5.3% (regional banking crisis broke financial sector pairs)
-
-Each drawdown recovered within 45 trading days, demonstrating the strategy's resilience.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Advanced Pair Selection Techniques
 

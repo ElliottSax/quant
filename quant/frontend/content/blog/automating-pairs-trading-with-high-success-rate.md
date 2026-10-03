@@ -329,29 +329,7 @@ class WinProbabilityPositionSizer:
 
 ## Backtest Results: 75%+ Win Rate Pairs System
 
-**Test Period: 2018-2026 on cointegrated pairs**
-
-### High-Win-Rate Configuration
-
-| Metric | Value |
-|--------|-------|
-| Win Rate | 74.2% |
-| Profit Factor | 3.87 |
-| Annual Return | 18.4% |
-| Sharpe Ratio | 2.56 |
-| Maximum Drawdown | -4.2% |
-| Avg Trade Duration | 7.1 days |
-| Total Trades | 312 |
-
-### Comparison: Standard vs. High-Win-Rate
-
-| Metric | Standard | High-WR | Improvement |
-|--------|----------|---------|------------|
-| Win Rate | 62.1% | 74.2% | +12.1% |
-| Profit Factor | 2.18 | 3.87 | +77% |
-| Sharpe Ratio | 1.87 | 2.56 | +37% |
-| Max Drawdown | -6.8% | -4.2% | -38% |
-| Return/Risk | 2.8 | 4.4 | +57% |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Frequently Asked Questions
 

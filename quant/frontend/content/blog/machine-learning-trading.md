@@ -7,6 +7,9 @@ category: "Algo Trading"
 tags: ["machine learning", "AI trading", "random forest", "feature engineering"]
 keywords: ["machine learning trading", "ML trading strategies", "AI quantitative trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Machine Learning for Trading: Practical Applications Guide
 
 Machine learning for trading represents the intersection of data science and quantitative finance, offering the ability to discover non-linear patterns in market data that traditional statistical methods miss. However, the application of machine learning to financial markets is fraught with pitfalls that do not exist in other ML domains. The signal-to-noise ratio in financial data is extremely low, data is non-stationary, and the adversarial nature of markets means that exploitable patterns can disappear once they are widely known. De Prado's "Advances in Financial Machine Learning" (2018) and subsequent work have established rigorous frameworks for applying ML to trading that address these unique challenges.

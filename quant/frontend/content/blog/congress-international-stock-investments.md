@@ -10,6 +10,9 @@ published_date: '2026-03-23'
 last_updated: '2026-03-23'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress International Stock Investments: Foreign Company Holdings and Global Policy Correlation
 
 Congressional members allocated $892 million (11.2% of holdings) to international stocks during 2026 Q1, with trading timing showing precise correlation to US foreign policy announcements, trade negotiations, and geopolitical developments. Analysis reveals systematic exploitation of US foreign policy intelligence for international stock trading.

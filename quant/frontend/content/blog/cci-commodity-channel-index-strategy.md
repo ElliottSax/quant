@@ -10,6 +10,9 @@ date: 2026-07-30
 readTime: 12-15 min read
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 ## Quick Answer
 
 CCI (Commodity Channel Index) measures price deviation from moving average (-100 to +100 typically). CCI above +100 = overbought/strong momentum. CCI below -100 = oversold/weak momentum. CCI +100/-100 crossover = entry signal. Zero-line cross = momentum shift.

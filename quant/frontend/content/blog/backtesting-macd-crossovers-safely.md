@@ -371,16 +371,7 @@ class SafeMACDBacktester:
 
 ## Backtest Results: Safe MACD (EUR/USD, 2023-2026)
 
-With strict validation and realistic costs:
-
-| Metric | Naive Backtest | Safe Backtest | Difference |
-|--------|---|---|---|
-| Total Return | 34.28% | 32.18% | -6.1% |
-| Sharpe Ratio | 1.35 | 1.28 | -5.2% |
-| Win Rate | 51.23% | 49.87% | -2.7% |
-| Max Drawdown | -9.75% | -11.45% | +17.4% |
-
-The safe approach reduces returns by 6%, increases drawdown by 17%, and shows more realistic risk metrics.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## FAQ: Safe Backtesting Practices
 

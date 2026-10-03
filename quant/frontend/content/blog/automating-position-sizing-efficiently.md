@@ -12,6 +12,9 @@ reading_time_minutes: 8
 description: "Position sizing is the primary determinant of trading success, not signal quality. Most traders focus on signals; professionals focus on sizing."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Automating Position Sizing Efficiently
 
 Position sizing is the primary determinant of trading success, not signal quality. Two traders with identical signals but different position sizing can have vastly different outcomes: one doubles wealth, the other blows up the account. This guide reveals institutional position sizing methodologies that maximize risk-adjusted returns while maintaining sustainable drawdowns.
@@ -219,22 +222,7 @@ class DrawdownAdjustedSizer:
 
 ## Backtest Results: Position Sizing Impact
 
-**Same signal set, different position sizing methods**
-
-### Strategy Performance Comparison
-
-| Method | Annual Return | Sharpe Ratio | Max Drawdown | Recovery Time |
-|--------|---------------|--------------|--------------|---------------|
-| Fixed 5% | -65% (ruin) | N/A | -100% | Never |
-| Fixed 2% | 18.4% | 1.87 | -8.2% | 6 weeks |
-| Fixed 1% | 9.2% | 1.94 | -3.1% | 2 weeks |
-| Kelly (100%) | -42% (ruin) | N/A | -97% | Never |
-| Kelly (25%) | 21.4% | 2.34 | -6.8% | 4 weeks |
-| Vol-Adjusted | 19.8% | 2.18 | -5.4% | 3 weeks |
-| Equal-Risk | 20.1% | 2.42 | -4.9% | 3 weeks |
-| Drawdown-Adj | 17.2% | 2.31 | -6.2% | 8 weeks |
-
-**Key finding:** Equal-Risk and Kelly (25%) sizing produce superior Sharpe ratios while maintaining acceptable drawdowns.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Practical Position Sizing Framework
 

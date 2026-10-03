@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["RSI", "relative strength index", "oscillator", "overbought oversold"]
 keywords: ["RSI trading strategy", "relative strength index system", "RSI divergence trading"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # RSI Trading Strategy: Relative Strength Index System
 
 The RSI [trading strategy](/blog/breakout-trading-strategy) built on the Relative Strength Index remains one of the most popular oscillator-based approaches in systematic trading. Developed by J. Welles Wilder in his 1978 book "New Concepts in Technical Trading Systems," the RSI measures the speed and magnitude of recent price changes to evaluate overbought and oversold conditions. While commonly used as a simple threshold indicator (buy below 30, sell above 70), quantitative analysis reveals more sophisticated and profitable applications.
@@ -46,17 +49,7 @@ Larry Connors' research demonstrated that the standard 14-period RSI with 30/70 
 
 ### Backtest Results (S&P 500 Components, 2010-2025)
 
-| Metric | RSI(2) System | RSI(14) System | Buy & Hold |
-|--------|--------------|----------------|------------|
-| CAGR | 12.4% | 6.8% | 10.7% |
-| Sharpe Ratio | 1.18 | 0.62 | 0.71 |
-| Max Drawdown | -15.2% | -24.8% | -33.9% |
-| Win Rate | 68.4% | 54.1% | N/A |
-| Avg Trade Duration | 3.2 days | 8.7 days | N/A |
-| Profit Factor | 1.74 | 1.22 | N/A |
-| Annual Trades | 142 | 48 | N/A |
-
-The RSI(2) system dramatically outperforms the traditional RSI(14) system, confirming Connors' finding that shorter lookback periods produce better mean reversion signals on daily charts. The 200-day SMA filter is essential, adding 3.1% annual return by avoiding counter-trend trades.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 2: RSI Divergence Trading
 
@@ -82,15 +75,7 @@ RSI divergence occurs when price makes a new high or low, but RSI does not confi
 
 ### Backtest Results (Russell 1000, 2010-2025)
 
-| Metric | Regular Divergence | Hidden Divergence | Combined |
-|--------|-------------------|-------------------|----------|
-| CAGR | 8.9% | 7.2% | 10.4% |
-| Sharpe Ratio | 0.92 | 0.84 | 1.08 |
-| Max Drawdown | -16.8% | -14.2% | -13.7% |
-| Win Rate | 56.8% | 52.4% | 55.1% |
-| Profit Factor | 1.48 | 1.35 | 1.52 |
-
-Regular divergence signals are more reliable for reversals, while hidden divergence signals capture trend continuations. Combining both produces the best risk-adjusted returns.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Strategy 3: Multi-Timeframe RSI
 
@@ -114,15 +99,7 @@ This system uses RSI across multiple timeframes for confirmation, reducing false
 
 ### Backtest Results (Forex Majors, 2012-2025)
 
-| Metric | Multi-TF RSI | Single-TF RSI(14) |
-|--------|-------------|-------------------|
-| CAGR | 9.8% | 5.4% |
-| Sharpe Ratio | 1.32 | 0.68 |
-| Max Drawdown | -11.4% | -22.6% |
-| Win Rate | 59.2% | 48.7% |
-| Avg Trade Duration | 5.4 days | 7.8 days |
-
-Multi-timeframe confirmation nearly doubles the Sharpe ratio and cuts the maximum drawdown in half compared to a single-timeframe RSI system.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## RSI Parameter Optimization
 

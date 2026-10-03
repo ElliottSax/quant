@@ -11,6 +11,9 @@ quality_score: 90
 seo_optimized: true
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # statsmodels ARIMA Import Error: the Correct Import
 
 ## Introduction

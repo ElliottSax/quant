@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["mean reversion", "backtesting", "statistical trading", "quantitative strategies"]
 keywords: ["mean reversion trading strategy", "mean reversion backtest", "statistical arbitrage"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Mean Reversion Trading Strategy: Complete Backtest Guide
 
 Mean reversion [trading strategy](/blog/breakout-trading-strategy) remains one of the most statistically robust approaches in quantitative finance. The core premise is elegant: prices tend to oscillate around a long-term equilibrium, and deviations from that equilibrium present exploitable trading opportunities. Research by Poterba and Summers (1988) first documented mean-reverting behavior in equity prices, and decades of subsequent work have refined the approach into a systematic, backtestable framework.
@@ -72,32 +75,7 @@ A standard allocation is 1% risk per trade, with a 2x ATR multiplier for the sto
 
 ## Backtest Results: S&P 500 Components (2010-2025)
 
-We backtested this mean reversion strategy on all S&P 500 components with the following parameters. You can configure this same Z-score entry/exit logic against your own ticker list using our [Strategy Builder](/backtesting/builder) — no code required:
-
-| Metric | Value |
-|--------|-------|
-| Backtest Period | Jan 2010 - Dec 2025 |
-| Universe | S&P 500 components |
-| Z-Score Entry | +/- 2.0 |
-| Z-Score Exit | 0 |
-| Lookback | 20 days |
-| Position Sizing | 1% risk per trade |
-| Slippage | 5 bps per side |
-| Commission | $0.005/share |
-
-### Performance Summary
-
-| Metric | Long Only | Long/Short | Buy & Hold SPY |
-|--------|-----------|------------|----------------|
-| CAGR | 8.2% | 11.4% | 10.7% |
-| Sharpe Ratio | 0.89 | 1.24 | 0.71 |
-| Max Drawdown | -18.3% | -14.7% | -33.9% |
-| Win Rate | 58.2% | 56.8% | N/A |
-| Avg Trade Duration | 6.3 days | 5.8 days | N/A |
-| Profit Factor | 1.41 | 1.52 | N/A |
-| Total Trades | 4,287 | 8,614 | N/A |
-
-The long/short variant outperformed both the long-only version and buy-and-hold SPY on a risk-adjusted basis, with a Sharpe ratio of 1.24 versus 0.71 for SPY.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Common Pitfalls and How to Avoid Them
 

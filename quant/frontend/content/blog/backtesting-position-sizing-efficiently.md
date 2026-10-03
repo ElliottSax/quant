@@ -10,6 +10,9 @@ seo_optimized: true
 description: "Position sizing is the cornerstone of successful quantitative trading. The optimal position size maximizes return per unit of risk."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting Position Sizing Efficiently
 
 Position sizing is the cornerstone of successful quantitative trading. The difference between a profitable strategy and a bankrupted account often comes down to a single variable: how much capital you risk on each trade. This guide explores efficient position sizing methodologies, their mathematical foundations, and practical Python implementations for robust backtesting.
@@ -338,17 +341,7 @@ class PositionSizingBacktest:
 
 ## Backtesting Results: Position Sizing Comparison
 
-Applied to S&P 500 daily data (2023-2026, 750 trades):
-
-| Metric | Fixed 2% | Volatility-Adjusted | Kelly (25%) |
-|--------|----------|---------------------|-------------|
-| Total Return | 28.4% | 35.2% | 32.1% |
-| Sharpe Ratio | 1.42 | 1.68 | 1.55 |
-| Max Drawdown | -15.3% | -9.8% | -11.2% |
-| Win Rate | 52.3% | 52.3% | 52.3% |
-| Avg Trade | $312 | $418 | $384 |
-
-Volatility-adjusted sizing improved risk-adjusted returns by 18% while reducing drawdowns by 36%.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Best Practices for Efficient Position Sizing
 

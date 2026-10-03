@@ -10,6 +10,9 @@ seo_optimized: true
 description: "This guide combines MACD with random forests, gradient boosting, and neural networks for superior risk-adjusted returns."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Backtesting MACD Crossovers using Machine Learning: Signal Enhancement
 
 Machine learning enhances traditional MACD crossovers by learning when signals are most reliable, filtering false positives, and adapting to changing market regimes. If you want to verify the MACD, RSI, and ATR formulas used as model features against real market data, our [indicator formulas reference](/indicator-formulas) cross-checks them against pandas_ta on real bars. This guide combines MACD with random forests, gradient boosting, and neural networks for superior risk-adjusted returns.

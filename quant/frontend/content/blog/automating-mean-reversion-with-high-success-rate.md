@@ -12,6 +12,9 @@ reading_time_minutes: 8
 description: "Beginners chase high win rates; professionals optimize Sharpe ratios. Trade count drops 52% but profits increase 49% because winners are larger than losers."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Automating Mean Reversion: A Practical Guide
 
 This guide reveals the signal refinement techniques, ensemble methods, and statistical frameworks that push mean reversion win rates from mediocre to institutional-grade (65%+).
@@ -224,19 +227,7 @@ if ml_confidence > 0.70:
 
 ## Backtest Results: Win Rate Improvements
 
-**Test Period: 2018-2026 on Russell 1000 stocks**
-
-### Win Rate by Signal Complexity
-
-| Strategy | Win Rate | Profit Factor | Sharpe | Trades |
-|----------|----------|---------------|--------|--------|
-| Simple Z-Score | 56.8% | 1.52 | 1.23 | 847 |
-| Z-Score + Volume | 59.2% | 1.68 | 1.41 | 742 |
-| 3-Signal Ensemble | 62.1% | 1.94 | 1.67 | 654 |
-| 5-Signal Ensemble | 64.3% | 2.18 | 1.89 | 589 |
-| ML Filtered 5-Signal | 71.2% | 2.87 | 2.34 | 412 |
-
-**Key insight**: The ML-filtered ensemble achieves 71.2% win rate by being selective—taking only the highest-quality signals. Trade count drops 52% but profits increase 49% because winners are larger than losers.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Advanced: Bayesian Belief Network for Signal Filtering
 

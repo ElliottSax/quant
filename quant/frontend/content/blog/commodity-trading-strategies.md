@@ -7,6 +7,9 @@ category: "Trading Strategies"
 tags: ["commodities", "trend following", "carry trade", "seasonal trading", "futures trading"]
 keywords: ["commodity trading strategies", "commodity trend following", "carry trade commodities", "seasonal commodity patterns", "commodity futures strategies"]
 ---
+
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
 # Commodity Trading Strategies: Trend, Carry, and Seasonal
 
 Commodity markets offer systematic alpha opportunities that are structurally different from equity and [fixed income](/blog/fixed-income-quant-strategies) markets. Physical supply and demand dynamics, storage costs, weather patterns, and the hedging needs of commercial producers create persistent return patterns that [quantitative strategies](/blog/crypto-defi-quant-strategies) can exploit. The three dominant systematic approaches -- [trend following](/blog/crypto-trend-following-systems), carry, and seasonal -- each capture a distinct source of return and exhibit low correlation with each other and with traditional asset classes. This guide examines each strategy's mechanics, implementation, and empirical performance.

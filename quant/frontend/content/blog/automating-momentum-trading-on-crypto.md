@@ -304,20 +304,7 @@ class CryptoMomentumTradingBot:
 
 ## Backtest Results: Bitcoin Momentum (4-Hour Timeframe)
 
-**Test Period: January 2021 - March 2026**
-
-### Strategy Performance
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 1,247% |
-| Annualized Return | 94.3% |
-| Sharpe Ratio | 1.87 |
-| Maximum Drawdown | -28.4% |
-| Win Rate | 68.2% |
-| Profit Factor | 3.12 |
-| Average Trade Duration | 4.2 hours |
-| Total Trades | 1,247 |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Crypto-Specific Risk Management
 

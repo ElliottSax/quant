@@ -12,6 +12,9 @@ reading_time_minutes: 8
 description: "Unlike directional trading, pairs trading profits from relative mispricings regardless of market direction."
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Automating Pairs Trading Efficiently
 
 Pairs trading—simultaneously buying underperforming assets and shorting overperforming ones within historically correlated pairs—is the foundational strategy of quantitative hedge funds. Unlike directional trading, pairs trading profits from relative mispricings regardless of market direction. This guide reveals institutional approaches to automated pairs trading that generate consistent alpha with low drawdowns.
@@ -279,38 +282,7 @@ class AutomatedPairsTrader:
 
 ## Backtest Results: Technology Sector Pairs Trading
 
-**Test Period: 2020-2026 on Tech Stocks**
-
-**Top Cointegrated Pairs:**
-1. Apple/Microsoft: p-value = 0.003, R² = 0.92
-2. NVIDIA/AMD: p-value = 0.008, R² = 0.87
-3. Google/Meta: p-value = 0.012, R² = 0.84
-4. Amazon/Shopify: p-value = 0.018, R² = 0.81
-
-### Strategy Performance (AAPL/MSFT pair)
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 34.2% |
-| Annualized Return | 5.1% |
-| Sharpe Ratio | 2.34 |
-| Maximum Drawdown | -3.2% |
-| Market Beta | 0.08 |
-| Win Rate | 68.1% |
-| Profit Factor | 3.14 |
-| Average Trade Duration | 9.2 days |
-| Total Trades | 156 |
-
-### Portfolio of 10 Pairs
-
-| Metric | Value |
-|--------|-------|
-| Portfolio Return | 67.8% |
-| Annualized Return | 10.8% |
-| Sharpe Ratio | 2.89 |
-| Maximum Drawdown | -2.1% |
-| Correlation to S&P 500 | 0.12 |
-| Information Ratio | 2.45 |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Hedging and Risk Management
 

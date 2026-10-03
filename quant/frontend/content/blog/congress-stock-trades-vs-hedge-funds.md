@@ -10,6 +10,9 @@ published_date: '2026-03-24'
 last_updated: '2026-03-24'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress Stock Trades vs Hedge Funds: Performance Comparison and Information Advantage Quantification
 
 Comparative analysis of congressional trading performance versus leading hedge funds reveals that congressional members substantially outperform even the most elite hedge funds. Congress achieves returns and Sharpe ratios exceeding top-decile hedge fund performance, providing quantitative evidence of systematic information advantage.

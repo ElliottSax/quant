@@ -573,8 +573,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!strategy) return { title: 'Strategy Not Found' };
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://quantengines.com';
-  const title = `${strategy.name} Trading Strategy | Backtest & Analysis`;
-  const description = `${strategy.shortDescription} Backtested ${strategy.backtestResults.period} with ${strategy.backtestResults.annualizedReturn}% annualized return, ${strategy.backtestResults.sharpeRatio} Sharpe ratio.`;
+  const title = `${strategy.name} Trading Strategy | Rules, Parameters & Risks`;
+  const description = `${strategy.shortDescription} How the rules work, the parameters, when it tends to fail, and how to backtest it yourself.`;
 
   return {
     title: `${title} | QuantEngines`,
@@ -612,9 +612,7 @@ export default async function StrategyDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const bt = strategy.backtestResults;
-
-  return (
+    return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12">
       <div className="container mx-auto px-4">
         {/* Breadcrumb */}
@@ -657,16 +655,20 @@ export default async function StrategyDetailPage({ params }: PageProps) {
           </p>
         </div>
 
-        {/* Key Metrics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-12">
-          <MetricCard label="Total Return" value={`${bt.totalReturn}%`} color="text-green-400" />
-          <MetricCard label="Annual Return" value={`${bt.annualizedReturn}%`} color="text-green-400" />
-          <MetricCard label="Sharpe Ratio" value={bt.sharpeRatio.toFixed(2)} color="text-purple-400" />
-          <MetricCard label="Max Drawdown" value={`${bt.maxDrawdown}%`} color="text-red-400" />
-          <MetricCard label="Win Rate" value={`${bt.winRate}%`} color="text-blue-400" />
-          <MetricCard label="Total Trades" value={bt.totalTrades.toString()} color="text-gray-300" />
-          <MetricCard label="Profit Factor" value={bt.profitFactor.toFixed(2)} color="text-yellow-400" />
-          <MetricCard label="Period" value={bt.period} color="text-gray-300" />
+        {/* Performance figures: the hardcoded numbers that used to be here (annual return, Sharpe,
+            win rate, yearly returns vs S&P 500) had no reproducible source, so they were removed. */}
+        <div className="rounded-xl border border-slate-700 bg-slate-800/30 p-6 mb-12">
+          <h2 className="text-xl font-bold text-white mb-2">Performance figures</h2>
+          <p className="text-gray-300 leading-relaxed">
+            We do not publish a return, win rate or Sharpe ratio for this strategy. Results depend on the
+            market, the period, costs and slippage, and past results do not predict future results.
+            Run it on your own data to see how it behaves, including the years it loses money.
+          </p>
+          <Link href={`/backtesting?strategy=${strategy.slug}`}>
+            <span className="inline-block mt-3 text-blue-400 hover:text-blue-300 text-sm cursor-pointer">
+              Run this backtest yourself
+            </span>
+          </Link>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
@@ -695,53 +697,6 @@ export default async function StrategyDetailPage({ params }: PageProps) {
               </ol>
             </div>
 
-            {/* Yearly Returns Table */}
-            <div className="rounded-xl border border-slate-700 bg-slate-800/30 p-6">
-              <h2 className="text-2xl font-bold text-white mb-4">Yearly Returns vs. Benchmark (S&P 500)</h2>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-slate-700">
-                      <th className="text-left p-3 text-sm text-gray-400">Year</th>
-                      <th className="text-right p-3 text-sm text-gray-400">Strategy</th>
-                      <th className="text-right p-3 text-sm text-gray-400">S&P 500</th>
-                      <th className="text-right p-3 text-sm text-gray-400">Alpha</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {strategy.yearlyReturns.map((yr) => {
-                      const alpha = yr.return - yr.benchmark;
-                      return (
-                        <tr key={yr.year} className="border-b border-slate-800">
-                          <td className="p-3 text-gray-300 font-medium">{yr.year}</td>
-                          <td className={`p-3 text-right font-semibold ${yr.return >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                            {yr.return >= 0 ? '+' : ''}{yr.return}%
-                          </td>
-                          <td className={`p-3 text-right ${yr.benchmark >= 0 ? 'text-green-400/70' : 'text-red-400/70'}`}>
-                            {yr.benchmark >= 0 ? '+' : ''}{yr.benchmark}%
-                          </td>
-                          <td className={`p-3 text-right font-semibold ${alpha >= 0 ? 'text-blue-400' : 'text-orange-400'}`}>
-                            {alpha >= 0 ? '+' : ''}{alpha.toFixed(1)}%
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* Equity Curve Placeholder */}
-              <div className="mt-6 h-48 rounded-lg bg-slate-900/50 border border-slate-700 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-gray-500 mb-2">Equity Curve Visualization</div>
-                  <Link href={`/backtesting?strategy=${strategy.slug}`}>
-                    <span className="text-blue-400 hover:text-blue-300 text-sm cursor-pointer">
-                      Run this backtest to generate interactive charts
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right Column: Parameters, Best For, Risks */}

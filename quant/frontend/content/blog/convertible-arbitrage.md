@@ -15,6 +15,9 @@ published_date: '2026-04-14'
 last_updated: '2026-04-14'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Convertible Arbitrage Strategies
 
 This comprehensive guide to Convertible Arbitrage Strategies covers the essential concepts, Python implementation, and practical applications for algorithmic traders. Understanding these principles is critical for developing robust quantitative trading systems. Convertible arbitrage is a popular strategy used by hedge funds and institutional investors to generate returns by exploiting price discrepancies between convertible bonds and their underlying stocks. The strategy involves buying a convertible bond and shorting the underlying stock, or vice versa, to profit from the difference in prices. The key to success in convertible arbitrage lies in identifying mispricings in the market and quickly exploiting them before they disappear. With the advent of algorithmic trading, convertible arbitrage has become a highly quantitative field, relying on advanced statistical models and machine learning techniques to identify profitable trades.

@@ -205,30 +205,7 @@ class BollingerMeanReversionStrategy(bt.Strategy):
 
 ## Backtest Performance Data (2020-2025)
 
-### Lower Band Bounces: 847 Completed Trades
-
-| Metric | Value |
-|--------|-------|
-| Winning Trades | 576 (68.0%) |
-| Losing Trades | 271 (32.0%) |
-| Average Win | 6.2% |
-| Average Loss | -3.1% |
-| Profit Factor | 2.08 |
-| Largest Win | 14.3% |
-| Largest Loss | -4.8% |
-| Average Hold | 4.2 days |
-| Win/Loss Ratio | 2.0:1 |
-
-### Upper Band Rejections: 823 Completed Trades
-
-| Metric | Value |
-|--------|-------|
-| Winning Trades | 558 (67.8%) |
-| Losing Trades | 265 (32.2%) |
-| Average Win | 5.9% |
-| Average Loss | -3.2% |
-| Profit Factor | 1.98 |
-| Average Hold | 3.8 days |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Critical Optimization Parameters
 

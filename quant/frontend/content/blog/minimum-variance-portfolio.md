@@ -115,31 +115,7 @@ Monthly rebalancing is standard. More frequent rebalancing captures volatility c
 
 ## Performance Analysis
 
-### Historical Backtests
-
-A long-only minimum variance portfolio constructed from the S&P 500 universe, rebalanced monthly, with 5% maximum position weight:
-
-| Metric | Min Variance | S&P 500 | Difference |
-|--------|-------------|---------|------------|
-| Annual Return | 9.2% | 10.5% | -1.3% |
-| Annual Volatility | 10.8% | 15.2% | -4.4% |
-| Sharpe Ratio | 0.65 | 0.52 | +0.13 |
-| Max Drawdown | -29.4% | -50.9% | +21.5% |
-| Beta | 0.65 | 1.00 | -0.35 |
-| Calmar Ratio | 0.31 | 0.21 | +0.10 |
-
-The minimum variance portfolio sacrifices 1.3% of annual return but reduces volatility by 4.4% and maximum drawdown by 21.5%. The net result is superior risk-adjusted performance across every major metric.
-
-### Factor Exposures
-
-Minimum variance portfolios have systematic factor tilts:
-- **Low beta** (by construction): portfolio beta typically 0.55-0.75
-- **Value tilt**: Low-volatility stocks tend to have lower valuations
-- **Quality tilt**: Profitable, low-leverage companies tend to have lower volatility
-- **Anti-momentum**: Low-volatility stocks often are recent underperformers
-- **Size neutral to slight large-cap**: Varies by universe and constraints
-
-Understanding these factor exposures is critical for evaluating whether minimum variance alpha is genuinely from the volatility dimension or is explained by known factors.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Variants and Extensions
 

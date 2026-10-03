@@ -10,6 +10,9 @@ published_date: '2026-03-22'
 last_updated: '2026-03-22'
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Congress AI Stock Investments 2026: Artificial Intelligence Boom and Forward-Looking Positioning
 
 Congressional members executing $1.8 billion in AI-related stock purchases during Q1 2026 represent the single largest coordinated investment in any technology category. Analysis reveals systematic positioning in companies leading artificial intelligence development and deployment.

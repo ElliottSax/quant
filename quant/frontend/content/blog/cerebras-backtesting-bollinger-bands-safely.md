@@ -122,20 +122,7 @@ We also compare the strategy against a buy-and-hold benchmark (SPY).
 
 ## Performance Results (2000–2023)
 
-| Metric               | Bollinger + RSI Strategy | Buy-and-Hold SPY |
-|----------------------|--------------------------|------------------|
-| Total Return         | 482.7%                   | 741.2%           |
-| Annualized Return    | 7.7%                     | 9.6%             |
-| Annualized Volatility| 14.2%                    | 18.4%            |
-| Sharpe Ratio (2% Rf) | 0.40                     | 0.41             |
-| Max Drawdown         | -33.6%                   | -55.2%           |
-| Win Rate             | 58.3%                    | —                |
-| Profit Factor        | 1.42                     | —                |
-| Number of Trades     | 86                       | —                |
-
-> **Note**: The strategy underperformed buy-and-hold in total return but exhibited lower volatility and drawdown.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Trade-Level Analysis
 
@@ -213,17 +200,7 @@ As k increases, fewer trades occur, but win rate and risk-adjusted returns impro
 
 ### Walk-Forward Analysis
 
-We perform a 10-year in-sample (2000–2009) optimization and 5-year out-of-sample (2010–2014) test, rolling forward every 5 years.
-
-| Training Period | Test Period     | Test Return | Test Sharpe |
-|-----------------|-----------------|-------------|-------------|
-| 2000–2009       | 2010–2014       | 8.1%        | 0.44        |
-| 2005–2014       | 2015–2019       | 6.9%        | 0.38        |
-| 2010–2019       | 2020–2023       | 7.2%        | 0.36        |
-
-The consistent Sharpe ratios (0.36–0.44) suggest the strategy generalizes reasonably well across market cycles.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Risk Management and Position Sizing
 

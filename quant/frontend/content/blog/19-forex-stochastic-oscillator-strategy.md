@@ -11,6 +11,9 @@ published_date: '''''''2026-03-21'''''''
 last_updated: '''''''2026-03-21'''''''
 ---
 
+> **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
+
+
 # Forex Stochastic Oscillator Strategy for Accurate Entry Points
 
 *Last updated: March 20, 2026*
@@ -21,7 +24,7 @@ The **Forex stochastic oscillator strategy** is one of the most sought-after tra
 
 This comprehensive guide walks you through every aspect of the forex stochastic oscillator strategy, from the foundational principles to advanced execution techniques. We'll cover entry and exit rules, real-world examples, common pitfalls, and essential risk management strategies that professional traders use daily.
 
-The forex market operates 24/5, offering countless opportunities for traders willing to master discipline and strategy. With proper implementation of the stochastic crossover strategy, traders can achieve consistent returns while managing risk effectively. Our analysis is based on proven technical principles used by institutional traders and hedge funds worldwide.
+The forex market operates 24/5, offering countless opportunities for traders willing to master discipline and strategy. With proper implementation of the stochastic crossover strategy, traders can work toward a repeatable process while managing risk. This guide explains widely taught technical concepts for education; it is not a recommendation.
 
 ## Understanding the Stochastic Crossover Strategy Strategy
 
@@ -184,7 +187,7 @@ This textbook example shows:
 - Proper position sizing (1.5% risk)
 - Profit-taking strategy (partial closes)
 - Stop-loss protection on remaining position
-- Risk/reward ratio of 1:2 minimum, achieved 1:4 actual
+- Risk/reward ratio of at least 1:2 as the planning target (1:4 in this hypothetical example)
 
 The total profit of $600 on a $375 risk demonstrates the power of positive expectancy trading - winning more when right than losing when wrong.
 
@@ -225,7 +228,7 @@ A: The typical holding period depends on your timeframe. If trading 1-hour and 4
 
 **Q2: What's the average win rate and profit factor?**
 
-A: Realistic expectations: 50-60% win rate with this strategy. With proper 1:2 risk/reward ratio, this generates 15-30% annual returns if traded consistently. Win rate matters far less than risk/reward ratio - a 40% win rate with 1:3 ratio beats an 80% win rate with 1:1 ratio.
+A: Results vary widely by market, timeframe, costs and discipline, and no win rate or annual return is guaranteed. Test the rules on a demo account and track your own results. Win rate matters far less than risk/reward ratio - a 40% win rate with 1:3 ratio beats an 80% win rate with 1:1 ratio.
 
 **Q3: Can I trade this strategy on lower timeframes like 1-minute or 5-minute charts?**
 

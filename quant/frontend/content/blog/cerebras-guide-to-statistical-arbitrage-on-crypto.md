@@ -155,24 +155,7 @@ Thus, only spreads > $15–$20 (after fees) are viable. In this case, the opport
 
 ## Performance Metrics from Backtested Strategy (2022–2023)
 
-We backtested a stat arb strategy on 10 crypto pairs (e.g., ETH/BNB, BTC/ETH, SOL/ADA) using daily data and z-score triggers at ±2.0. Trades held until |z| < 0.5.
-
-| Pair       | Total Trades | Win Rate | Avg Return per Trade | Max Drawdown | Sharpe Ratio (Annualized) |
-|------------|--------------|----------|------------------------|--------------|----------------------------|
-| ETH-BNB    | 47           | 68%      | 1.42%                  | -12.3%       | 1.85                       |
-| BTC-ETH    | 53           | 62%      | 0.98%                  | -15.1%       | 1.32                       |
-| SOL-ADA    | 61           | 57%      | 0.71%                  | -18.4%       | 0.97                       |
-| Binance-CB BTC | 112       | 71%      | 0.33%                  | -6.2%        | 2.10                       |
-
-**Assumptions**:
-- 0.1% taker fee per leg (0.2% round-trip)
-- 1% slippage on 10% of trades
-- 5% annual risk-free rate (for Sharpe)
-- Daily rebalancing
-
-The Binance-Coinbase BTC pair delivered the highest Sharpe due to frequent, small, mean-reverting spreads. However, average return per trade was low—profitability depends on high turnover.
-
----
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Risks and Challenges in Crypto Stat Arb
 

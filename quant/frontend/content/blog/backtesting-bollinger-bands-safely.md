@@ -224,21 +224,7 @@ class SafeBollingerBandBacktester:
 
 ## Backtest Results: Safe Bollinger Band Strategy (EUR/USD, Jan 2023 - Mar 2026)
 
-With proper transaction costs (0.01% per trade) and look-ahead bias prevention:
-
-| Metric | Value |
-|--------|-------|
-| Total Return (Strategy) | 38.42% |
-| Total Return (Buy & Hold) | 18.30% |
-| Excess Return | 20.12% |
-| Sharpe Ratio | 1.35 |
-| Win Rate | 52.18% |
-| Max Drawdown | -9.75% |
-| Total Trades | 127 |
-| Avg Trade Return | 0.28% |
-| Return Standard Deviation | 9.95% |
-
-**Note:** The 4.33% reduction from naive backtest reflects realistic transaction costs.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Walk-Forward Test Results
 

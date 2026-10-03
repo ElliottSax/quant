@@ -154,26 +154,7 @@ if __name__ == '__main__':
 
 ## Backtesting Results
 
-Performance metrics across the 5-year backtest period (SPY as proxy for market):
-
-| Metric | Value |
-|--------|-------|
-| Total Return | 47.32% |
-| Annualized Return | 8.08% |
-| Annual Volatility | 11.24% |
-| Sharpe Ratio | 0.72 |
-| Maximum Drawdown | -18.45% |
-| Win Rate | 52.3% |
-| Number of Trades | 247 |
-| Average Trade Duration | 4.2 days |
-
-### Performance by Market Regime
-
-| Regime | Return | Sharpe | Max DD | Win Rate |
-|--------|--------|--------|--------|----------|
-| High Volatility | 6.2% | 0.35 | -22.1% | 48.9% |
-| Normal Volatility | 9.8% | 0.89 | -15.3% | 54.2% |
-| Low Volatility | 7.4% | 0.62 | -8.7% | 56.1% |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Risk Analysis
 
@@ -256,17 +237,7 @@ def check_exit(self, entry_price, current_price, time_in_trade):
 
 ## Walk-Forward Analysis
 
-The strategy maintains consistency across non-overlapping test periods:
-
-| Period | Return | Sharpe | Trades |
-|--------|--------|--------|--------|
-| 2021-2022 | 4.2% | 0.38 | 52 |
-| 2022-2023 | 9.8% | 0.91 | 58 |
-| 2023-2024 | 11.3% | 0.97 | 61 |
-| 2024-2025 | 6.7% | 0.54 | 47 |
-| 2025-2026 | 8.1% | 0.68 | 29 |
-
-Walk-forward testing demonstrates stable performance, suggesting the strategy captures genuine market inefficiencies rather than historical artifacts.
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## FAQ
 
@@ -316,15 +287,15 @@ Key metrics to monitor in production:
 
 ## Conclusion
 
-The combined technical indicator strategy for Volatility Products demonstrates robust performance across multiple market regimes with realistic implementation constraints. The 0.72 Sharpe ratio and 52% win rate provide a solid foundation for profitable trading, though actual results depend heavily on execution quality and position sizing discipline.
+The combined technical indicator strategy for Volatility Products is a starting point to test on your own data. No measured results are published here; actual results depend heavily on market conditions, execution quality and position sizing discipline.
 
 The provided code offers a starting point for production deployment, with modular design enabling parameter optimization and market adaptation. Traders should validate performance on their specific instruments and market conditions before committing capital.
 
 Key takeaways:
 
-- Multi-indicator confirmation reduces false signals by approximately 35%
+- Multi-indicator confirmation can filter some false signals but adds lag and overfitting risk
 - Volatility-adjusted position sizing improves risk-adjusted returns
 - Market regime identification enables dynamic strategy adaptation
-- Walk-forward testing confirms stability of the approach
+- Walk-forward testing is how you check whether the approach is stable
 
 For professional implementation, combine this framework with rigorous risk management, realistic cost assumptions, and continuous performance monitoring.

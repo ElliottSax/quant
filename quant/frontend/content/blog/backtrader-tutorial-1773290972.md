@@ -116,17 +116,7 @@ cerebro.plot()
 
 ## Backtest Results: SMA Crossover on AAPL (2020-2025)
 
-| Metric | Value |
-|--------|-------|
-| Initial Capital | $100,000 |
-| Final Portfolio Value | $247,340 |
-| Total Return | 147.3% |
-| Annualized Return | 20.1% |
-| Sharpe Ratio | 1.42 |
-| Max Drawdown | -18.7% |
-| Win Rate | 52.3% |
-| Trades | 18 |
-| Average Trade Duration | 34 days |
+Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Advanced Strategy: Bollinger Bands Mean Reversion
 
