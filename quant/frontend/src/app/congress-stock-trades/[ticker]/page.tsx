@@ -12,7 +12,8 @@ export const revalidate = 86400
 export const dynamicParams = true
 
 async function tradesFor(ticker: string): Promise<{ trades: Trade[]; asset: string } | null> {
-  const data = await getCongressTrades()
+  // strict: a failed FMP fetch must throw (no false 404), see lib/congress-trades.ts
+  const data = await getCongressTrades({ strict: true })
   if (!data) return null
   const up = ticker.toUpperCase()
   const trades = data.trades.filter((t) => t.ticker.toUpperCase() === up)

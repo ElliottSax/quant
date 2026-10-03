@@ -9,7 +9,8 @@ export const revalidate = 86400
 export const dynamicParams = true
 
 async function forMember(slug: string): Promise<{ trades: Trade[]; name: string; chamber: string } | null> {
-  const data = await getCongressTrades()
+  // strict: a failed FMP fetch must throw (no false 404), see lib/congress-trades.ts
+  const data = await getCongressTrades({ strict: true })
   if (!data) return null
   const trades = data.trades.filter((t) => memberSlug(t.member) === slug)
   if (trades.length === 0) return null

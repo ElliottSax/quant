@@ -76,41 +76,64 @@ export interface CongressData {
   topTickers: { ticker: string; name: string; count: number }[]
 }
 
-async function fetchChamber(path: string, chamber: 'House' | 'Senate', key: string): Promise<Trade[]> {
-  try {
-    const res = await fetch(`${BASE}/${path}?apikey=${key}`, { next: { revalidate: 86400 } })
-    if (!res.ok) return []
-    const raw = (await res.json()) as FmpTrade[]
-    if (!Array.isArray(raw)) return []
-    return raw
-      .filter((t) => t.symbol && t.symbol !== 'N/A')
-      .map((t) => ({
-        ticker: t.symbol,
-        member: t.office || `${t.firstName} ${t.lastName}`.trim(),
-        chamber,
-        date: parseDate(t.transactionDate),
-        transactionDate: t.transactionDate,
-        disclosureDate: t.disclosureDate,
-        daysToDisclose: daysBetween(parseDate(t.transactionDate), parseDate(t.disclosureDate)),
-        assetDescription: t.assetDescription,
-        type: t.type,
-        amount: t.amount,
-        amountMid: amountMidpoint(t.amount),
-        isBuy: /purchase|buy/i.test(t.type),
-        link: t.link,
-      }))
-  } catch {
-    return []
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
+
+// Strict mode is for the per-ticker / per-member pages. A transient FMP failure
+// (rate limit, 5xx) used to come back as an empty list, which those pages rendered
+// as notFound() -- and a static build then baked that 404 in for a ticker that is
+// really in the data (the sitemap, built from the same feed, still listed it).
+// Strict mode retries, then throws, so a bad fetch fails the render (ISR keeps the
+// last good page; a build fails and production stays on the previous deploy)
+// instead of publishing a false 404.
+async function fetchChamber(path: string, chamber: 'House' | 'Senate', key: string, strict = false): Promise<Trade[]> {
+  const attempts = strict ? 3 : 1
+  let lastErr = 'unknown'
+  for (let i = 0; i < attempts; i++) {
+    if (i > 0) await sleep(700 * i)
+    try {
+      const res = await fetch(`${BASE}/${path}?apikey=${key}`, { next: { revalidate: 86400 } })
+      if (!res.ok) { lastErr = `HTTP ${res.status}`; continue }
+      const raw = (await res.json()) as FmpTrade[]
+      if (!Array.isArray(raw)) { lastErr = 'non-array body'; continue }
+      return parseChamber(raw, chamber)
+    } catch (e) {
+      lastErr = e instanceof Error ? e.message : String(e)
+    }
   }
+  if (strict) throw new Error(`FMP ${path} failed after ${attempts} attempts: ${lastErr}`)
+  return []
 }
 
-export async function getCongressTrades(): Promise<CongressData | null> {
+function parseChamber(raw: FmpTrade[], chamber: 'House' | 'Senate'): Trade[] {
+  return raw
+    .filter((t) => t.symbol && t.symbol !== 'N/A')
+    .map((t) => ({
+      ticker: t.symbol,
+      member: t.office || `${t.firstName} ${t.lastName}`.trim(),
+      chamber,
+      date: parseDate(t.transactionDate),
+      transactionDate: t.transactionDate,
+      disclosureDate: t.disclosureDate,
+      daysToDisclose: daysBetween(parseDate(t.transactionDate), parseDate(t.disclosureDate)),
+      assetDescription: t.assetDescription,
+      type: t.type,
+      amount: t.amount,
+      amountMid: amountMidpoint(t.amount),
+      isBuy: /purchase|buy/i.test(t.type),
+      link: t.link,
+    }))
+}
+
+// opts.strict: retry transient FMP failures and THROW instead of returning an
+// empty/partial feed. Used by the per-ticker and per-member pages (see fetchChamber).
+export async function getCongressTrades(opts: { strict?: boolean } = {}): Promise<CongressData | null> {
   const key = process.env.FMP_API_KEY
   if (!key) return null
 
+  const strict = opts.strict === true
   const [senate, house] = await Promise.all([
-    fetchChamber('senate-latest', 'Senate', key),
-    fetchChamber('house-latest', 'House', key),
+    fetchChamber('senate-latest', 'Senate', key, strict),
+    fetchChamber('house-latest', 'House', key, strict),
   ])
   const trades = [...senate, ...house]
     .filter((t) => t.date)
