@@ -143,7 +143,6 @@ During pumps: avoid entering new longs (resistance is near). Instead: close 50% 
 
 ## Ready to Start Trading?
 
-Join our Crypto Trading Discord: daily chart analysis, real-time alerts, and a community of 10,000+ traders. First month free at CryptoTradingMastery.io
 
 ### Next Steps:
 
@@ -156,7 +155,6 @@ Join our Crypto Trading Discord: daily chart analysis, real-time alerts, and a c
 
 - **Technical Analysis:** TradingView Premium ($15/month) - Best charting platform
 - **Market Data:** Yahoo Finance (free) - Historical data and news
-- **Community:** TradersNation Discord (free) - 50,000+ traders discussing setups
 - **Education:** Our complete course collection (linked above)
 
 ---

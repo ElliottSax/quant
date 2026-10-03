@@ -335,14 +335,6 @@ export default function ResourcesPage() {
       <div className="glass-strong rounded-2xl border border-border/50 p-12 text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/20 to-purple-500/20 rounded-full blur-3xl -z-10" />
 
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          <span className="text-sm font-medium text-primary">10,000+ Active Members</span>
-        </div>
-
         <h2 className="text-3xl font-bold mb-4">Join Our Trading Community</h2>
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
           Get exclusive access to strategy discussions, weekly market analysis, and direct support from experienced traders.

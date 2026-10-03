@@ -19,7 +19,7 @@ last_updated: "2026-03-21"
 
 ## What You'll Learn
 - Mechanics of covered calls and how they generate income
-- Entry signals and exit rules for consistent profits
+- Entry signals and exit rules
 - Greeks impact: Theta acceleration, Delta movement, Gamma effects
 - Real-world examples with current market prices
 - Position sizing and risk management

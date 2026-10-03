@@ -15,11 +15,11 @@ last_updated: "2026-03-21"
 
 **Meta Description**: Master the poor man's covered call strategy. Learn entry/exit rules, Greeks impact, real-world examples, P&L diagrams, and FAQ.
 
-**Quick Summary**: The Poor Man's Covered Call strategy is a powerful options trading approach for Capital efficiency. Generate consistent profits through disciplined entry/exit rules and proper risk management in 2026 markets.
+**Quick Summary**: The Poor Man's Covered Call strategy is a powerful options trading approach for Capital efficiency. Learn disciplined entry/exit rules and proper risk management in 2026 markets.
 
 ## What You'll Learn
 - Complete mechanics of the Poor Man's Covered Call strategy
-- Entry signals and exit rules for consistent profits
+- Entry signals and exit rules
 - Greeks impact: Delta, Gamma, Theta, Vega analysis
 - Real-world examples with current market prices
 - Position sizing and risk management frameworks

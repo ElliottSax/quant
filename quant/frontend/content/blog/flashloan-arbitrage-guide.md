@@ -1,6 +1,6 @@
 ---
 title: "Flash Loan Arbitrage: DeFi Atomic Profit Strategies"
-description: "Capital-free arbitrage using flash loans on DeFi protocols. Learn atomic transaction construction, multi-protocol routing, and risk-free profit strategies."
+description: "Capital-free arbitrage using flash loans on DeFi protocols. Learn atomic transaction construction, multi-protocol routing, and the risks involved."
 date: "2026-05-07"
 author: "QuantEngines"
 category: "Crypto & DeFi"
