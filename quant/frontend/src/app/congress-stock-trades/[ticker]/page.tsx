@@ -4,9 +4,12 @@ import { notFound } from 'next/navigation'
 import { getCongressTrades, type Trade } from '@/lib/congress-trades'
 
 export const revalidate = 86400
-// Only tickers present in the current data get pages; anything else is a real
-// 404 (no fake/thin pages, no soft-404 streaming issue).
-export const dynamicParams = false
+// Tickers present in the current data get pages; anything else is a real 404
+// (tradesFor() returns null -> notFound(); no fake/thin pages). dynamicParams
+// must stay true: the sitemap is built from the live data, so a ticker that
+// entered the data after the last build (e.g. HON) would otherwise be listed in
+// the sitemap but 404 until the next deploy.
+export const dynamicParams = true
 
 async function tradesFor(ticker: string): Promise<{ trades: Trade[]; asset: string } | null> {
   const data = await getCongressTrades()

@@ -4,7 +4,9 @@ import { notFound } from 'next/navigation'
 import { getCongressTrades, memberSlug, type Trade } from '@/lib/congress-trades'
 
 export const revalidate = 86400
-export const dynamicParams = false
+// true so members added to the data after the last build still render (the
+// sitemap lists members from live data); absent members hit notFound() below.
+export const dynamicParams = true
 
 async function forMember(slug: string): Promise<{ trades: Trade[]; name: string; chamber: string } | null> {
   const data = await getCongressTrades()
