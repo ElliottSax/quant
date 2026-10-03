@@ -26,7 +26,17 @@ A standard backtest optimizes parameters over the entire historical dataset and 
 
 ### The Scale of the Problem
 
-If you test 100 parameter combinations on random data (no actual edge), you should expect the best combination to show a [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) of approximately 2.0 purely by chance. This is the multiple comparisons problem, and it means that any backtest result must be evaluated against the number of tests conducted.
+If you test 100 parameter combinations on random data with no edge, the best one will still show a flattering [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) by chance, and how flattering depends mostly on how much data you used. We simulated it: 100 independent zero-edge strategies (daily returns with a mean of zero), repeated 2,000 times at each sample length. The best Sharpe of the 100 averaged:
+
+| Years of daily data | Average best Sharpe of 100 | 5th to 95th percentile |
+|---------------------|----------------------------|------------------------|
+| 1 | 2.52 | 1.91 to 3.30 |
+| 2 | 1.79 | 1.35 to 2.34 |
+| 3 | 1.44 | 1.08 to 1.92 |
+| 5 | 1.12 | 0.84 to 1.46 |
+| 10 | 0.79 | 0.60 to 1.04 |
+
+Even with ten years of data, picking the best of 100 tries on pure noise produces a Sharpe near 0.8. This is the multiple comparisons problem, and it means any backtest result must be judged against the number of tests conducted. The simulation assumes the 100 strategies are independent. Real parameter grids are correlated, which lowers the effect somewhat, but it does not remove it. The same idea is formalised in Bailey, Borwein, Lopez de Prado and Zhu (see Sources below).
 
 ## Walk-Forward Optimization Mechanics
 
@@ -185,6 +195,17 @@ class WalkForwardOptimizer:
         }
 ```
 
+## What It Looks Like on Data With No Edge
+
+The best test of a validation method is to feed it data where you know the true answer is "no edge." We ran the `WalkForwardOptimizer` above on 30 independent random walks (8 years of daily bars each, zero drift), with a moving-average crossover strategy and a grid of 30 fast/slow window pairs (`fast` in 5, 10, 15, 20, 30; `slow` in 40, 60, 80, 100, 150, 200), a 504-bar in-sample window, a 126-bar out-of-sample window and a 126-bar step. That gives 12 walk-forward periods per series.
+
+- Average in-sample Sharpe, the number the optimizer picked: **0.51**.
+- Average out-of-sample Sharpe, what those parameters then did on unseen data: **-0.15**.
+- Walk-forward efficiency, computed from those two averages: **-0.29**.
+- Series with a positive average out-of-sample Sharpe: **12 of 30**.
+
+The optimizer reliably found parameters that looked good in-sample on noise, and walk-forward testing exposed them: out-of-sample performance was not just lower but negative, and the efficiency ratio went below zero. That is what a working validation method should do with a strategy that has no edge. When you run your own strategy, compare its efficiency to this noise baseline, not only to a threshold in a table. A small gap between your real result and the noise result is a warning sign. These are synthetic series, so the figures show how the method behaves, not how any real market behaves.
+
 ## Walk-Forward Efficiency (WFE)
 
 Walk-Forward Efficiency is the ratio of out-of-sample performance to in-sample performance:
@@ -250,6 +271,12 @@ An advanced technique that generates multiple train/test splits from all possibl
 - Rolling windows suit adaptive strategies; anchored windows suit strategies based on stable market properties.
 - Fewer parameters produce more robust walk-forward results. Keep optimized parameters to 3 or fewer when possible.
 - Complement walk-forward analysis with [Monte Carlo](/blog/monte-carlo-simulation-trading) permutation tests to assess the statistical significance of the observed edge.
+
+## Sources
+
+- Robert Pardo, *The Evaluation and Optimization of Trading Strategies*, 2nd ed. (Wiley, 2008), the standard book treatment of walk-forward analysis and walk-forward efficiency. Pardo defines efficiency from annualised returns; this article uses Sharpe ratios, and the threshold table below is a rule of thumb, not a statistical test.
+- David H. Bailey, Jonathan M. Borwein, Marcos Lopez de Prado and Qiji Jim Zhu, "The Probability of Backtest Overfitting," *Journal of Computational Finance* (2017).
+- Marcos Lopez de Prado, *Advances in Financial Machine Learning* (Wiley, 2018), chapters on backtesting and cross-validation in finance.
 
 ## Frequently Asked Questions
 

@@ -98,7 +98,21 @@ def apply_triple_barrier(close, event_times, pt_sl, target, vertical_barriers, m
     return out.dropna(subset=["t1"])
 ```
 
-Run against 500 bars of synthetic daily data (2% profit-take/stop-loss multiples on EWMA volatility, a 10-day vertical barrier, sampling every 5th bar as an event), this produces a clean three-class label distribution -- roughly 45% profit-take, 35% stop-loss, 20% time-barrier on that sample, which will vary with your actual price series and multiplier choice. The important properties to check on your own data: every `t1` is at or after its event's start time, and every label is in `{-1, 0, 1}`.
+To reproduce the numbers below, generate 500 business days of synthetic prices with a fixed seed and run the functions above:
+
+```python
+rng = np.random.default_rng(7)
+idx = pd.bdate_range("2022-01-03", periods=500)
+close = pd.Series(100 * np.exp(np.cumsum(rng.normal(0.0003, 0.012, 500))), index=idx)
+
+vol = get_daily_vol(close)
+events = close.index[20:-10:5]                       # every 5th bar as an event
+vb = get_vertical_barriers(close, events, max_holding_days=10)
+labels_tb = apply_triple_barrier(close, vb.index, (2.0, 2.0), vol, vb)
+print(labels_tb["label"].value_counts())
+```
+
+With profit-take and stop-loss both at 2.0x the EWMA volatility, this labels 94 events: 31 profit-take (33%), 46 stop-loss (49%) and 17 time-barrier (18%). The lopsided split is sampling noise, not a property of the method: with only 94 events, the standard error on each share is about 5 percentage points, and a different seed gives a different split. The properties worth checking on your own data are structural. Every `t1` is at or after its event's start time (it was here), and every label is in `{-1, 0, 1}` (it was here).
 
 ## Step 4: Meta-Labeling
 
@@ -153,6 +167,11 @@ X = data[["vol_20", "mom_5", "mom_20", "dist_from_ma50", "side"]]
 y = data["meta_label"]
 
 clf = RandomForestClassifier(n_estimators=200, max_depth=4, min_samples_leaf=20, random_state=7)
+# Split in time order -- never shuffle, labels overlap across neighbouring rows
+cut = int(len(data) * 0.7)
+X_train, X_test = X.iloc[:cut], X.iloc[cut:]
+y_train, y_test = y.iloc[:cut], y.iloc[cut:]
+
 clf.fit(X_train, y_train)
 proba = clf.predict_proba(X_test)[:, 1]
 
@@ -161,7 +180,7 @@ proba = clf.predict_proba(X_test)[:, 1]
 take_bet = proba > 0.55
 ```
 
-Tested against a pure momentum-sign primary signal on synthetic random-walk data, taking every primary signal produces close to a 50/50 win rate, as it should on data with no real edge -- there is nothing for either model to find. On real market data with an actual primary edge, the point of this exercise is the same: the meta-model should raise the win rate among the bets it approves relative to the baseline of taking every signal, at the cost of trading less often. If it doesn't, the meta-model has no information the primary model lacked, and skipping it entirely is the honest conclusion.
+Here is what that produces on the same kind of synthetic random walk, where no real edge exists. The primary signal is the sign of the trailing 10-day return, with 1.5x volatility barriers and a 10-day limit. On the seed-7 series above, 470 labeled bets had a 48.3% win rate when every signal was taken. The meta-model was trained on the first 70% and tested on the last 30%: 133 test bets with a 47.4% baseline win rate, 17 of them approved at a 0.55 threshold, and those 17 won 58.8% of the time. That looks like a lift, but 17 bets is far too few to mean anything, so I repeated the whole experiment on 20 different random series. Averaged across them, the baseline win rate was 49.3% and the approved bets won 52.6%, with approved bets beating the baseline in 11 of 20 runs, about 37 approved bets per run. A 3-point average lift, on data with no edge, with a coin-flip count of winning seeds, is what noise looks like. Take it as a calibration: expect roughly this much "improvement" from pure chance, and demand a clearly larger, repeatable lift on held-out real data before believing the meta-model has found anything. If it doesn't clear that bar, skipping the meta-model is the honest conclusion.
 
 ## Validating the Meta-Model Without Leaking
 

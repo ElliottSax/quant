@@ -1,5 +1,5 @@
 ---
-title: "Python Backtesting Framework: Backtrader vs Zipline vs"
+title: "Python Backtesting Framework: Backtrader vs Zipline vs VectorBT"
 description: "Compare Python backtesting frameworks Backtrader, Zipline, and VectorBT. Learn setup, strategy implementation, and performance analysis for each."
 date: "2026-03-23"
 author: "QuantEngines"
@@ -41,15 +41,24 @@ VectorBT operates on entire arrays simultaneously rather than iterating through 
 
 ## Performance Comparison
 
-| Metric | Backtrader | Zipline | VectorBT |
-|--------|-----------|---------|----------|
-| Speed (simple MA crossover, 10 years daily) | ~2.5 sec | ~4.0 sec | ~0.05 sec |
-| Speed (1000 parameter combinations) | ~40 min | ~65 min | ~30 sec |
-| Memory (10 years daily) | ~200 MB | ~350 MB | ~100 MB |
+We measured Backtrader and VectorBT ourselves on the same synthetic data and the same machine (Python 3.12, a Windows desktop; 2,520 daily bars, which is 10 years of trading days; a 10/30 simple-moving-average crossover). Zipline needs a bundle ingested from a data source before it can run anything, so we did not benchmark it and make no speed claim for it. Your numbers will differ with hardware and strategy, so treat these as a ratio, not a promise.
+
+| Measured | Backtrader 1.9.78 | VectorBT 1.1.1 |
+|----------|-------------------|----------------|
+| One backtest, 10 years daily | 0.69 s | 0.015 s (after the first-call JIT warm-up) |
+| Parameter sweep | 12.3 s for 20 runs, about 0.6 s each, so roughly 10 minutes extrapolated to 1,000 combinations | 8.7 s for 1,035 combinations (46 windows, every fast/slow pair) |
+| Added memory | about 11 MB for the whole run | about 230 MB for the 1,035-combination sweep |
+
+Backtrader's cost is per run, so it grows linearly with the number of combinations. VectorBT's per-combination cost was about 8 ms in this sweep, which is why large parameter scans are where it pays off. Its first call includes numba compilation, so time the second call, not the first. The sweep also uses more memory, because it holds every combination's results at once.
+
+| Qualitative | Backtrader | Zipline | VectorBT |
+|-------------|-----------|---------|----------|
 | Learning Curve | Moderate | Steep | Low-Moderate |
 | Strategy Complexity Support | High | Very High | Moderate |
 | Live Trading Support | Via broker integration | Limited | No (analysis only) |
 | Documentation Quality | Good | Moderate (aging) | Good |
+
+The qualitative rows are our judgment from using the libraries, not measurements.
 
 ## Backtrader: Implementation Example
 
@@ -276,9 +285,18 @@ Regardless of framework, a production-quality backtest requires:
 
 - Backtrader is the most versatile event-driven framework, ideal for complex strategies with conditional logic and broker integration.
 - Zipline excels at cross-sectional factor-based strategies with its Pipeline abstraction and institutional-grade cost modeling.
-- VectorBT is 50-100x faster than event-driven frameworks for parameter optimization, making it the best choice for research and discovery phases.
+- In our benchmark, VectorBT ran each backtest in a parameter sweep about 70 times faster than Backtrader (roughly 8 ms against 0.6 s), which makes it the better choice for research and discovery phases. Measure on your own strategy before you rely on that ratio.
 - No single framework is best for all applications. Many professional quant teams use VectorBT for initial research, then implement production strategies in Backtrader or custom event-driven systems.
 - Regardless of framework, realistic transaction cost modeling, out-of-sample validation, and walk-forward analysis are non-negotiable for reliable backtesting.
+
+## Sources
+
+- Backtrader documentation: [backtrader.com/docu](https://www.backtrader.com/docu/)
+- VectorBT documentation: [vectorbt.dev](https://vectorbt.dev/)
+- zipline-reloaded documentation: [zipline.ml4trading.io](https://zipline.ml4trading.io/)
+- Bailey, Borwein, Lopez de Prado and Zhu, "The Probability of Backtest Overfitting," *Journal of Computational Finance* (2017), on why testing many parameter combinations inflates the best result
+
+The Zipline example above was not executed for this article. Check it against the current zipline-reloaded release before you use it.
 
 ## Frequently Asked Questions
 
