@@ -22,6 +22,11 @@ interface BrokerRecommendationsProps {
   userTier?: string
 }
 
+// The backend's broker list carries placeholder affiliate ids (affiliate=quant2024) and
+// unverified commission figures, not real signed-up programs. Show nothing until real affiliate
+// links are configured and this flag is set on purpose.
+const BROKER_AFFILIATES_ENABLED = process.env.NEXT_PUBLIC_BROKER_AFFILIATES_ENABLED === '1'
+
 export function BrokerRecommendations({
   strategy = 'trend',
   userTier = 'free',
@@ -31,6 +36,10 @@ export function BrokerRecommendations({
   const [clicked, setClicked] = useState<string | null>(null)
 
   useEffect(() => {
+    if (!BROKER_AFFILIATES_ENABLED) {
+      setLoading(false)
+      return
+    }
     const fetchRecommendations = async () => {
       try {
         setLoading(true)
@@ -71,6 +80,10 @@ export function BrokerRecommendations({
 
     // Open affiliate link
     window.open(broker.signup_url, '_blank')
+  }
+
+  if (!BROKER_AFFILIATES_ENABLED) {
+    return null
   }
 
   if (loading) {

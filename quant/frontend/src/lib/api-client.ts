@@ -193,7 +193,8 @@ export const api = {
         .toLowerCase()
         .replace(/[^a-z0-9_]/g, '_')
         .slice(0, 42) || 'user'
-      const username = `${base}_${Math.random().toString(36).slice(2, 8)}`
+      const suffix = Array.from(crypto.getRandomValues(new Uint8Array(4)), (b) => b.toString(36).padStart(2, '0')).join('').slice(0, 6)
+      const username = `${base}_${suffix}`
       return fetchAPI<{ message: string }>('/auth/register', {
         method: 'POST',
         body: JSON.stringify({ email, password, username }),
