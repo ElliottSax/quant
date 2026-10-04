@@ -67,7 +67,7 @@ A subset of members engage in [options trading](/blog/options-trading-strategies
 
 Former Speaker Nancy Pelosi became the most publicly discussed congressional trader, largely due to the trading activity conducted through her husband Paul Pelosi's brokerage account. Key trades that drew attention include:
 
-- **NVIDIA (NVDA)**: Paul Pelosi purchased NVIDIA call options in mid-2021, before the CHIPS and Science Act -- which Speaker Pelosi shepherded through the House -- provided billions in semiconductor subsidies. The position was reported to have gained over $5 million in value.
+- **NVIDIA (NVDA)**: Paul Pelosi purchased NVIDIA call options in mid-2021, before the CHIPS and Science Act -- which Speaker Pelosi shepherded through the House -- provided billions in semiconductor subsidies.
 - **Alphabet (GOOGL)**: Purchases of Alphabet stock during periods when the House was deliberating on tech regulation bills.
 - **Microsoft (MSFT)**: Call option purchases before a major Department of Defense contract was awarded to Microsoft.
 - **Visa (V) and Mastercard (MA)**: Purchases made while fintech regulation was under consideration.

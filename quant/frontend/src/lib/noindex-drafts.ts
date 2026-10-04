@@ -475,14 +475,13 @@ export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
   // Rep. Jerry Nadler (D-NY: "$51K"), plus an aggregate "$2.1 billion"
   // congress-wide Big Tech holdings claim. Same defect, same fix.
   //
-  // Noindexed rather than deleted so the underlying analysis survives for a
-  // human fact-check/rewrite pass.
-  'congress-bank-stock-trades-during-crisis',
-  'congress-healthcare-stock-trades-analysis',
-  'congress-pharmaceutical-trades-before-votes',
+  // UPDATE 2026-10-04: the five named-person posts above (bank, healthcare,
+  // pharmaceutical, semiconductor, big-tech antitrust) were DELETED, together
+  // with ten more congress-* posts that attached invented figures to named
+  // members (some retired or deceased). They 308-redirect to the live tracker
+  // (see next.config.js); QUANT_NAMED_PERSON_TAKEDOWN_2026-10-04.md in life-hq.
+  // Only the name-free AI-investments post stays noindexed.
   'congress-ai-stock-investments-2026',
-  'congress-semiconductor-stock-trades',
-  'congress-big-tech-antitrust-trading',
 ])
 
 /**

@@ -386,8 +386,8 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \\
             response={`{
   "trades": [
     {
-      "id": "txn_2024_0918_pelosi_nvda",
-      "politician": "Nancy Pelosi",
+      "id": "txn_example_0001",
+      "politician": "Example Member",
       "politician_id": "P000197",
       "chamber": "house",
       "party": "Democrat",
@@ -437,7 +437,7 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \\
   "politicians": [
     {
       "id": "P000197",
-      "name": "Nancy Pelosi",
+      "name": "Example Member",
       "chamber": "house",
       "party": "Democrat",
       "state": "CA",

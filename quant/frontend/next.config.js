@@ -31,6 +31,33 @@ const nextConfig = {
     ]
   },
 
+  // Posts removed 2026-10-04: they attached invented returns, holdings and trades to named
+  // members of Congress (some retired or deceased). Send readers to the live disclosure tracker.
+  async redirects() {
+    const removed = [
+      "congress-bank-stock-trades-during-crisis",
+      "congress-big-tech-antitrust-trading",
+      "congress-crypto-investments-analysis",
+      "congress-energy-sector-trades-2026",
+      "congress-etf-buying-patterns",
+      "congress-green-energy-investment-trends",
+      "congress-healthcare-stock-trades-analysis",
+      "congress-insider-trading-vs-sp500-returns",
+      "congress-international-stock-investments",
+      "congress-members-best-stock-traders",
+      "congress-military-contractor-investments",
+      "congress-pharmaceutical-trades-before-votes",
+      "congress-real-estate-investments-2026",
+      "congress-semiconductor-stock-trades",
+      "congress-small-cap-stock-picks"
+    ]
+    return removed.map((slug) => ({
+      source: `/blog/${slug}`,
+      destination: '/congress-stock-trades',
+      permanent: true,
+    }))
+  },
+
   // Environment variables
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',

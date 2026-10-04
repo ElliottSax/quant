@@ -343,7 +343,7 @@ One of the most fascinating developments in data-driven trading is the systemati
 - Disclosure is delayed (up to 45 days), creating a decay in signal value
 - Some members have remarkably consistent track records
 
-For a comprehensive analysis, read our [congressional stock trading guide](/blog/congressional-stock-trading-guide) and [congress members: best stock traders](/blog/congress-members-best-stock-traders).
+For a comprehensive analysis, read our [congressional stock trading guide](/blog/congressional-stock-trading-guide) and [live congressional trade tracker](/congress-stock-trades).
 
 ### Building a Congressional Trading Strategy
 
