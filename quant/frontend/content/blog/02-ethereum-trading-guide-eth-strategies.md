@@ -58,7 +58,7 @@ Combine traditional support/resistance with Ethereum-specific catalysts.
 4. **Enter**: When catalyst occurs at technical level
 5. **Exit**: At next resistance or on bad news
 
-### Real Example
+### Worked example (hypothetical numbers)
 
 March 2026:
 - Ethereum support: $2,200

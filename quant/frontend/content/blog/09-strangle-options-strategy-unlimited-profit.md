@@ -138,7 +138,7 @@ STRANGLE PROFIT/LOSS DIAGRAM
 
 ---
 
-## Real-World Example: Complete Trade
+## Worked example (hypothetical numbers): Complete Trade
 
 ### Setup
 - Stock/Index: Selected based on technical setup

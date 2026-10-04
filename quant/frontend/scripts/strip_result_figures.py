@@ -88,6 +88,8 @@ EXAMPLE_LEAD = re.compile(r"^(\s*(?:[-*]\s+)?(?:\*\*)?)(Real[- ]World Example|Re
 STUDY_STAT = re.compile(r"\b(?:study|studies|survey|research|report|paper)\b[^.!?]{0,260}\d+(?:\.\d+)?\s*%", re.I)
 ILLUSTRATION = "Illustration only (not a measured result):"
 HYPOTHETICAL_LABEL = "Illustration (hypothetical, not a real trade or result):"
+HEADING_REAL = re.compile(r"^(#{2,4}) Real(?:[- ]World)? Example(: Complete Trade)?\s*$")
+BOLD_REAL = re.compile(r"^\*\*Real Example - (.+?)\*\*:\s*$")
 LEAD_ONLY = re.compile(r"^(\s*)\*\*Real(?:[- ]World)? Example:\*\*\s*$")
 BULLET_IMPROVES = re.compile(rf"^\s*[-*]\s+(?:\*\*)?{METRIC}(?:\*\*)?\s*:\s*(?:improves?|increases?|rises?|boosts?|"
                              rf"reduces?|falls?|jumps?)\s+by\s+\d", re.I)
@@ -205,6 +207,19 @@ def process(body: str, stats: dict, samples: list) -> str:
             continue
         if IMPACT_SHARPE.match(line):
             note("impact-lines", line)
+            i += 1
+            continue
+        # "Real Example" / "Real-World Example: Complete Trade" headings introduce invented, dated price scenarios
+        hm = HEADING_REAL.match(line)
+        if hm:
+            out.append(f"{hm.group(1)} Worked example (hypothetical numbers){hm.group(2) or ''}")
+            note("heading-relabel", line)
+            i += 1
+            continue
+        bm = BOLD_REAL.match(line)
+        if bm:
+            out.append(f"**Worked example (hypothetical numbers) - {bm.group(1)}**:")
+            note("heading-relabel", line)
             i += 1
             continue
         # "**Real Example:**" on its own line: these are invented scenarios, so label them as such

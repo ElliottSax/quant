@@ -64,7 +64,7 @@ The simplest beginner strategy uses horizontal price levels where Bitcoin histor
 3. **Enter**: Buy near resistance rejection or sell near support rejection
 4. **Exit**: Take profit at next major level or after 2-5 candles
 
-### Real Example
+### Worked example (hypothetical numbers)
 
 In January 2026, Bitcoin found support at $42,500 (previous consolidation area). When price bounced at this level with bullish candles, the setup triggered:
 

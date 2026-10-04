@@ -165,7 +165,7 @@ Commissions, assignment risk on the short leg, and early-exercise risk around di
 
 ---
 
-## Real-World Example: Complete Trade
+## Worked example (hypothetical numbers): Complete Trade
 
 ### Setup
 - Stock/Index: Selected based on technical setup

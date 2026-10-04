@@ -277,7 +277,7 @@ Trade intraday bounces off technical levels.
 4. **Volume Confirmation**: Above-average volume on bounce
 5. **Entry**: On bounce confirmation candle
 
-### Real Example
+### Worked example (hypothetical numbers)
 
 January 2026 - Bitcoin 1-hour:
 - Yesterday's low: $42,000 (recent support)

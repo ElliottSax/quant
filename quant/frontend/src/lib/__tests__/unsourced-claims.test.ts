@@ -222,3 +222,21 @@ for (const [name, re] of FIFTH_PASS) {
     assert.deepEqual(hits, [])
   })
 }
+
+// "Real Example" / "Real-World Example: Complete Trade" headings introduced invented, dated price
+// scenarios (e.g. Bitcoin at $42,500 in January 2026). They must say they are hypothetical.
+const SIXTH: [string, RegExp][] = [
+  ['"Real Example" heading over an invented scenario', /^#{2,4} Real(?:[- ]World)? Example(?:: Complete Trade)?\s*$/im],
+  ['"Real Example - <name>" bold lead over an invented scenario', /^\*\*Real Example - .+\*\*:\s*$/im],
+]
+
+for (const [name, re] of SIXTH) {
+  test(`no ${name}`, () => {
+    const hits = BLOG.filter((f) => {
+      const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+      if (SOURCED(text)) return false
+      return re.test(proseLines(text).join(String.fromCharCode(10)))
+    })
+    assert.deepEqual(hits, [])
+  })
+}

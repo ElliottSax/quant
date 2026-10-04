@@ -254,7 +254,7 @@ DAY 45:   Expiration - Assignment or roll forward
 - 14 DTE: Theta decay ~$0.25/day (explosive)
 - Total decay 45→0: ~$2.25 (75% of premium)
 
-**Real Example - TSLA Short Call**:
+**Worked example (hypothetical numbers) - TSLA Short Call**:
 - Sold call at $280 strike, 45 DTE, premium $4.50
 - Week 1: Theta decay $0.35 total
 - Week 2: Theta decay $0.50 total
@@ -294,7 +294,7 @@ DAY 45:   Expiration - Assignment or roll forward
 
 ---
 
-## Real-World Example: Complete Trade
+## Worked example (hypothetical numbers): Complete Trade
 
 ### Setup
 - **Stock**: Microsoft (MSFT)

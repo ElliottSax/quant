@@ -298,7 +298,7 @@ Major announcements create predictable 3-5 day moves.
 5. **Secondary Move**: 10-20% move over 2-4 days
 6. **Exit**: At resistance or profit target
 
-### Real Example
+### Worked example (hypothetical numbers)
 
 January 2026 - Ethereum:
 - Rumors of ETF approval
