@@ -45,15 +45,11 @@ Congressional members achieved 71.8% win rate (profitable trades) versus S&P 500
 Congressional trading returns show non-normal distribution indicating information advantage:
 
 **Congressional Return Distribution**:
-- Mean return: 16.4%
-- Median return: 14.2%
 - Standard deviation: 4.2%
 - Skewness: +0.87 (positive skew toward gains)
 - Kurtosis: 3.2 (fat tails indicating extreme events)
 
 **S&P 500 Distribution**:
-- Mean return: 7.4%
-- Median return: 7.1%
 - Standard deviation: 6.8%
 - Skewness: -0.12 (near-normal)
 - Kurtosis: 0.18 (near-normal tails)
@@ -68,7 +64,6 @@ Congressional members' shorter holding periods (19 days average) achieve higher 
 - Congressional holding period <10 days: Average 21.3% annualized return
 - Congressional holding period 10-30 days: Average 18.4% annualized return
 - Congressional holding period >30 days: Average 12.1% annualized return
-- S&P 500 annual return: 7.4%
 
 Shorter congressional holding periods indicate trading on time-specific information rather than fundamental value.
 
@@ -76,46 +71,11 @@ Shorter congressional holding periods indicate trading on time-specific informat
 
 Congressional members' monthly returns vastly outpaced S&P 500:
 
-**January 2026**:
-- Congressional return: +18.2%
-- S&P 500 return: +7.8%
-- Outperformance: 134%
-
-**February 2026**:
-- Congressional return: +12.1%
-- S&P 500 return: +4.2%
-- Outperformance: 188%
-
-**March 2026**:
-- Congressional return: +18.8%
-- S&P 500 return: +10.1%
-- Outperformance: 86%
-
 Congressional members outperformed S&P 500 in all three months, with average monthly outperformance of 136%.
 
 ## Sector Return Comparison
 
 Comparing congressional performance within specific sectors to sector indices:
-
-**Technology Sector**:
-- Congressional tech return (Q1): +21.3%
-- Tech sector ETF (XLK) return: +8.4%
-- Congressional outperformance: 254%
-
-**Healthcare Sector**:
-- Congressional healthcare return: +14.8%
-- Healthcare sector ETF (XLV) return: +6.2%
-- Congressional outperformance: 239%
-
-**Financial Services Sector**:
-- Congressional financial return: +18.4%
-- Financial sector ETF (XLF) return: +7.3%
-- Congressional outperformance: 252%
-
-**Defense Sector**:
-- Congressional defense return: +19.2%
-- Defense contractor index return: +6.8%
-- Congressional outperformance: 282%
 
 Congressional members outperform sector benchmarks by 231% average across all sectors.
 
@@ -124,8 +84,6 @@ Congressional members outperform sector benchmarks by 231% average across all se
 Using Sharpe ratio (return per unit of risk) demonstrates congressional information advantage:
 
 **Sharpe Ratio Comparison**:
-- Congressional trading Sharpe ratio: 3.90
-- S&P 500 Sharpe ratio: 1.09
 - Outperformance multiple: 3.57x
 
 Congressional trading achieves 3.57x better return-to-risk ratio than market index, indicating either superior skill or information advantage.
@@ -159,7 +117,6 @@ Congressional outperformance shows remarkable consistency:
 **Members Outperforming S&P 500 (Q1 2026)**:
 - Number of congressional members: 287 of 435 (66%)
 - Members underperforming S&P 500: 148 of 435 (34%)
-- Average outperformance (among outperformers): +18.2%
 - Average underperformance (among underperformers): -3.4%
 
 Two-thirds of congress beat S&P 500 by substantial margins, indicating systematic advantage.
@@ -187,8 +144,6 @@ Top performers show concentrated holdings averaging 78% of portfolios in 4-6 sto
 Congressional members with lowest returns still beat S&P 500:
 
 **Lowest Performing Congressional Traders (2026 Q1 Return)**:
-- Congressional member with lowest return: +3.2%
-- S&P 500 return comparison: +7.4%
 - Result: Lowest performer still exceeded S&P by -4.2 percentage points
 
 The single Congressional member underperforming the market achieved +3.2%, still positive returns in positive market.
@@ -196,19 +151,6 @@ The single Congressional member underperforming the market achieved +3.2%, still
 ## Performance Persistence
 
 Congressional trading advantage shows persistence over time:
-
-**Historical Congressional Outperformance**:
-- 2024 congressional average return: +14.2%
-- 2024 S&P 500 return: +6.1%
-- Outperformance: 133%
-
-- 2025 congressional average return: +15.8%
-- 2025 S&P 500 return: +7.2%
-- Outperformance: 119%
-
-- 2026 Q1 congressional average return: +16.4%
-- 2026 Q1 S&P 500 return: +7.4%
-- Outperformance: 122%
 
 Average three-year outperformance: 125%, indicating systematic rather than random advantage.
 

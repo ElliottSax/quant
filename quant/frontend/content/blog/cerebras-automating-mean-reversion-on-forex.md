@@ -115,7 +115,6 @@ On **February 14, 2023**, EUR/USD closed at **1.0712**.
 - Exit triggered on **February 21**, when Z-Score reached 0.0 at **1.0895**
 - Holding period: 5 trading days
 - Profit: (1.0895 - 1.0712) / 1.0712 = **+1.70%**
-- Sharpe contribution: +0.18 (annualized)
 
 This trade exemplifies a textbook mean reversion: a sharp drop in EUR/USD due to hawkish Fed commentary, followed by correction as market sentiment stabilized.
 
@@ -252,8 +251,6 @@ Train a logistic regression model on:
 
 to predict the probability of successful mean reversion. Only execute trades when predicted success > 60%.
 
-Backtests show a Sharpe improvement from 0.74 to 0.89 with this filter.
-
 ### 3. Multi-Timeframe Confirmation
 Require that the 4-hour Z-Score aligns with the daily signal. This reduces whipsaws and improves entry timing.
 
@@ -267,7 +264,7 @@ A: Yes, but selectively. Major pairs like EUR/USD exhibit mean-reverting behavio
 
 ### Q: What is the optimal lookback period for calculating the mean?
 
-A: A 20-day rolling window is standard and effective for daily strategies. Shorter windows (e.g., 10 days) increase sensitivity but generate more false signals. Longer windows (e.g., 50 days) reduce responsiveness. Empirical testing on EUR/USD shows peak Sharpe at 18–22 days.
+A: A 20-day rolling window is standard and effective for daily strategies. Shorter windows (e.g., 10 days) increase sensitivity but generate more false signals. Longer windows (e.g., 50 days) reduce responsiveness.
 
 ### Q: How do I handle overnight risk in automated Forex systems?
 

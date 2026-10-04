@@ -28,8 +28,6 @@ Congressional healthcare sector activity dwarfs general market participation:
 **Pharmaceutical Company Focus**:
 - Total pharmaceutical trades: 1,456 (78.8% of healthcare trades)
 - Total pharmaceutical investment: $968 million (78.7% of healthcare value)
-- Pharmaceutical average return: 14.8%
-- Pharmaceutical win rate: 75.3%
 
 ## Targeted Pharmaceutical Holdings
 
@@ -160,14 +158,10 @@ These correlations suggest financial interests influence health policy positions
 Members of committees with healthcare oversight show elevated pharmaceutical trading:
 
 **House Energy and Commerce Committee Members**:
-- Healthcare sector trading average return: 18.2%
 - All House members average: 8.4%
-- Outperformance: 216%
 
 **Senate Health Committee Members**:
-- Pharmaceutical sector average return: 16.8%
 - All Senate members average: 7.2%
-- Outperformance: 233%
 
 Committee membership substantially enhances healthcare trading performance.
 
@@ -177,7 +171,6 @@ Congressional members traded significantly in healthcare company IPOs:
 
 - Participated in 12 healthcare/biotech IPOs in 2026
 - Average IPO allocation: $3.2 million per congressional household
-- Average IPO return at 30-day mark: 21.4%
 - Return far exceeding public market IPO performance (average 4.2%)
 
 Access to pre-IPO information through congressional networks likely explains outperformance.
@@ -233,8 +226,6 @@ Statistical evidence suggests systematic access to FDA approval timing informati
 Congressional members also actively traded biotech stocks:
 
 - Total biotech trading: $234 million (19% of healthcare value)
-- Average biotech return: 18.2%
-- Biotech win rate: 67.8%
 
 Biotech trading outperformance suggests information advantage in development pipeline status.
 

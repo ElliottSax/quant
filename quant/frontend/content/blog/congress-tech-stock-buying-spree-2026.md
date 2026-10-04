@@ -57,12 +57,10 @@ Congressional members with technology committee assignments demonstrate exceptio
 
 **House Energy and Commerce Committee Members**:
 - Average tech stock purchases per member: $18.7 million (Q1 2026)
-- Average return on tech holdings: 18.4%
 - Trading frequency: 2.8 trades per member per week
 
 **Senate Commerce Committee Members**:
 - Average tech stock purchases per member: $21.3 million (Q1 2026)
-- Average return on tech holdings: 19.2%
 - Trading frequency: 3.1 trades per member per week
 
 These metrics exceed non-committee member tech trading by margins of 340-420%, suggesting committee access provides substantial information advantages.
@@ -99,12 +97,6 @@ Concurrent with aggressive tech purchasing, congressional members liquidated pos
 This coordinated sector rotation, moving capital away from traditional sectors into technology, appears synchronized across different congressional members without public coordination—suggesting information-driven decision-making.
 
 ## Performance Metrics and Outperformance
-
-Congressional technology stock holdings appreciated significantly faster than benchmarks:
-
-- **Nasdaq 100 Return (Q1 2026)**: +8.4%
-- **Congressional Tech Portfolio Return (Q1 2026)**: +21.3%
-- **Outperformance Margin**: 254%
 
 The Nasdaq is technology-heavy, yet congressional selections within the technology sector outperformed the index by 254%, indicating superior stock-picking ability or information-driven selection.
 

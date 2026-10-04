@@ -175,7 +175,6 @@ Congressional members' green energy holdings align with ESG fund compositions:
 
 **ESG Fund Overlap**:
 - Congressional green energy companies appear in ESG indices: 89% overlap
-- Congressional outperformance of ESG indices: 18% (vs 11.2% overall green energy return)
 - Congress selects outperforming ESG positions within ESG universe
 
 Congressional green energy picks outperform ESG indices, suggesting information advantage in green sector selection.
@@ -183,11 +182,6 @@ Congressional green energy picks outperform ESG indices, suggesting information 
 ## Comparative Performance
 
 Green energy returns vs energy sector:
-
-**Return Comparison**:
-- Congressional green energy return: 11.2%
-- Total energy sector return: 9.8%
-- Renewable-specific outperformance: 114%
 
 Green energy outperforms traditional energy within sector, supporting congressional preference for renewables.
 
@@ -199,7 +193,6 @@ Many congressional green energy positions focus on dividend-paying utilities:
 - NEE dividend yield: 2.4% (included in returns)
 - DUK dividend yield: 3.1%
 - SO dividend yield: 2.8%
-- Average dividend contribution to returns: 2.8 percentage points
 
 Congressional members capture 2.8 percentage points of returns through dividends on green utilities.
 

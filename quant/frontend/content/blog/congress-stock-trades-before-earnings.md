@@ -71,8 +71,6 @@ Congressional trades correlate with advance earnings guidance information:
 **Guidance-Based Returns**:
 - Stocks with positive guidance changes: Congressional identified 92% of them
 - Average purchase before positive guidance: 2.1 days
-- Average return on positive guidance trades: 22.3%
-- Win rate on guidance plays: 81.4%
 
 ## Committee Member Concentration
 
@@ -80,8 +78,6 @@ Committee members with access to corporate briefings show elevated pre-earnings 
 
 **Financial Services Committee Pre-Earnings Trading**:
 - Members' pre-earnings trades: 89 transactions
-- Average pre-earnings return: 21.2%
-- Non-committee pre-earnings return: 15.6%
 - Committee advantage: 36%
 
 Committee access to investor briefings translates to pre-earnings trading advantage.
@@ -139,8 +135,6 @@ The 156% buying surge 3-1 days before earnings corresponds to investment banking
 Comparing congressional trading to traditional corporate insider trading:
 
 **Congressional vs Corporate Insider Trading**:
-- Congressional pre-earnings win rate: 78.2%
-- Corporate insider pre-earnings win rate: 64.3% (historical average)
 - Congressional advantage: 21.5 percentage points
 
 Congressional pre-earnings trading outperforms traditional insider trading by 21.5 percentage points, suggesting broader access to earnings information.
@@ -152,7 +146,6 @@ Congressional members trade on forward guidance changes:
 **2026 Q1 Forward Guidance Changes**:
 - Negative guidance changes: Congressional members exited positions 4.2 days early (average)
 - Positive guidance changes: Congressional members entered positions 3.1 days early (average)
-- Guidance-driven returns: 24.7% average for positive guidance trades
 
 The earlier exit on negative guidance (4.2 days) vs entry on positive guidance (3.1 days) suggests asymmetric information access favoring positive surprises.
 
@@ -186,7 +179,6 @@ Congressional members trade based on advance profit margin information:
 **Margin Expansion Prediction**:
 - Stocks with margin expansion beats: Congressional identified 87% in pre-earnings trades
 - Average margin expansion beat: 2.1 percentage points
-- Average return on margin beat trades: 18.2%
 
 ## Historical Earnings Season Performance
 

@@ -252,7 +252,7 @@ A: Annual returns typically improve 50-100% while maintaining or reducing maximu
 
 ## Conclusion and Recommendations
 
-XGBoost applied to sector rotation parameter optimization demonstrates substantial and economically significant practical benefits. The methodology achieved 57% improvement in Sharpe ratio with 33% reduction in maximum drawdown while maintaining computational tractability for weekly recalibration. Key success factors include robust cross-validation, appropriate hyperparameter selection, and regime-aware model retraining.
+XGBoost applied to sector rotation parameter optimization demonstrates substantial and economically significant practical benefits. Key success factors include robust cross-validation, appropriate hyperparameter selection, and regime-aware model retraining.
 
 For practitioners implementing these techniques, the primary recommendation is to start with weekly retraining on recent 2-3 year data windows, gradually incorporating additional asset classes and parameter dimensions as operational experience increases. Rigorous backtesting with walk-forward validation is essential before live implementation.
 

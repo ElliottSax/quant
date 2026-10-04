@@ -143,7 +143,6 @@ RSI signals accompanied by above-average volume (> 1.5x 20-day average) have a 7
 - The 200-day SMA trend filter adds 3.1% annual return by eliminating counter-trend trades
 - Multi-timeframe RSI (weekly + daily + 4-hour) nearly doubles the Sharpe ratio versus single-timeframe
 - RSI divergence produces reliable reversal signals with a 56.8% win rate and 1.48 profit factor
-- Combining RSI with [Bollinger Bands](/blog/bollinger-bands-trading-strategy) increases win rate from 54% to 67%
 - The optimal RSI(14) thresholds are 20/80, not the standard 30/70
 
 ## Frequently Asked Questions

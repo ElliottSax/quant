@@ -186,11 +186,9 @@ Top 10 stocks represent 1,209 of 4,234 contracts (28.5% of congressional options
 Options' leverage substantially amplifies returns from information advantage:
 
 **Return Amplification Analysis**:
-- Congressional equity trading average return: 16.4%
 - Congressional equity capital deployed: $4.2 billion
 - Congressional equity profits: $688.8 million
 
-- Congressional options trading average return (per capital): 159%
 - Congressional options capital deployed: $287 million
 - Congressional options profits: $456.4 million
 
@@ -231,12 +229,10 @@ Congressional members with oversight committee positions show elevated options a
 **House Energy and Commerce Committee Options Trading**:
 - Members' total options contracts: 512
 - Members' average options profit: $51,200 per contract
-- Members' options win rate: 81.4%
 
 **Senate Banking Committee Options Trading**:
 - Members' total options contracts: 387
 - Members' average options profit: $48,900 per contract
-- Members' options win rate: 79.1%
 
 Committee membership correlates with higher options win rates, suggesting information advantage concentrated among committee members.
 

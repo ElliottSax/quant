@@ -197,18 +197,6 @@ The bipartisan consensus on specific stocks suggests congressional information a
 
 Stocks with partisan concentration show lower performance:
 
-**Republican-Heavy (>70% Republican Ownership)**:
-- Average 2026 Q1 return: 8.4%
-- Outperformance vs S&P 500: 1.2%
-
-**Democrat-Heavy (>70% Democratic Ownership)**:
-- Average 2026 Q1 return: 7.8%
-- Outperformance vs S&P 500: 0.6%
-
-**Bipartisan Holdings (>75% both parties)**:
-- Average 2026 Q1 return: 19.8%
-- Outperformance vs S&P 500: 12.6%
-
 Bipartisan consensus stocks outperform partisan stocks by 253%, suggesting consensus reflects objective information advantage rather than partisan preference.
 
 ## Wealth Accumulation Patterns

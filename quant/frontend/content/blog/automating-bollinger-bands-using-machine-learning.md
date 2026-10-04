@@ -280,7 +280,6 @@ class BBSignalClassifier:
 
 On a universe of S&P 500 stocks (2018-2025), the ML signal filter typically:
 - Reduces total trades by 40-50%
-- Improves win rate from 57% to 68%
 - Increases Sharpe ratio from 0.65 to 0.95
 - Reduces maximum drawdown by 25-35%
 

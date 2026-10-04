@@ -61,10 +61,6 @@ Rank asset classes by recent performance and overweight the strongest:
 
 **Signal**: Rank N asset classes by their 12-1 month return. Overweight the top third, underweight the bottom third, market-weight the middle.
 
-**Cross-sectional momentum across asset classes (1990-2025):**
-- Average annual alpha: 1.5-2.5% above equal-weight benchmark
-- [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) improvement: 0.15-0.25 versus equal-weight
-
 ### Dual Momentum
 
 Gary Antonacci's Dual Momentum combines time-series and cross-sectional momentum:

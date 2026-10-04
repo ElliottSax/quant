@@ -138,7 +138,6 @@ Analyze a few specific trades to understand strategy behavior.
 - **Exit**: November 1, 2002 (price > SMA)
 - **Exit Price**: $89.75
 - **Holding Period**: 15 days
-- **Return**: +9.3%
 
 This trade captured the early stage of the 2003 bull market.
 
@@ -151,7 +150,6 @@ This trade captured the early stage of the 2003 bull market.
 - **Entry**: March 10 at $70.56
 - **Exit**: April 13, 2009
 - **Exit Price**: $82.34
-- **Return**: +16.7%
 
 This trade coincided with the financial crisis bottom and delivered strong returns.
 
@@ -164,7 +162,6 @@ This trade coincided with the financial crisis bottom and delivered strong retur
 - **Entry**: December 27 at $382.40
 - **Exit**: January 13, 2023
 - **Exit Price**: $397.80
-- **Return**: +4.0%
 
 Captured the year-end rally with moderate gain.
 
@@ -264,7 +261,7 @@ A: Yes, but with caution. Intraday data increases noise and transaction costs. E
 A: Yes. Some traders use a breakout of the upper band as a momentum signal. However, this requires different logic (e.g., "ride the trend") and should be tested separately from mean-reversion.
 
 **Q: How important is the RSI filter in this strategy?**  
-A: In our test, removing the RSI filter increased trades to 134 but reduced the win rate to 51.5% and Sharpe ratio to 0.33. The filter improves risk-adjusted returns by avoiding oversold traps.
+A: The filter improves risk-adjusted returns by avoiding oversold traps.
 
 **Q: Is Python sufficient for professional backtesting?**  
 A: For research and prototyping, yes. However, production systems often use specialized platforms (e.g., QuantConnect, Backtrader) with better event handling and portfolio management.

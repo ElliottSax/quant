@@ -99,11 +99,11 @@ Mean reversion strategies trade frequently. With 8,614 round-trip trades over 15
 
 ### Kalman Filter Estimation
 
-Replace the fixed lookback moving average with a Kalman filter for adaptive mean estimation. The Kalman filter dynamically adjusts its smoothing based on the noise level in the data, producing a more responsive mean estimate. In our tests, the Kalman filter variant improved the Sharpe ratio from 1.24 to 1.38.
+Replace the fixed lookback moving average with a Kalman filter for adaptive mean estimation. The Kalman filter dynamically adjusts its smoothing based on the noise level in the data, producing a more responsive mean estimate.
 
 ### Multi-Timeframe Confirmation
 
-Combine daily Z-scores with weekly Z-scores for confirmation. Only enter when both timeframes signal a mean reversion opportunity. This reduced trade frequency by 40% but improved the win rate from 56.8% to 63.4%.
+Combine daily Z-scores with weekly Z-scores for confirmation. Only enter when both timeframes signal a mean reversion opportunity.
 
 ### Sector Rotation Overlay
 

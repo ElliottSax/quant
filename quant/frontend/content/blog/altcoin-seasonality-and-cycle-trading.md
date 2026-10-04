@@ -35,7 +35,7 @@ Cycle trading involves identifying and profiting from the repetitive patterns an
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-The results show that the Fourier analysis approach outperforms the other strategies, with an average return of 20% and a Sharpe ratio of 1.2. However, it is essential to note that cycle trading is a complex and challenging approach, requiring a deep understanding of statistical analysis and market dynamics.
+However, it is essential to note that cycle trading is a complex and challenging approach, requiring a deep understanding of statistical analysis and market dynamics.
 
 ## Implementation Guide
 Implementing a cycle trading strategy requires a combination of technical and fundamental analysis, as well as a robust risk management framework. The following step-by-step guide provides an overview of the implementation process:

@@ -28,7 +28,6 @@ Factor investing now underlies over $2 trillion in assets globally across [smart
 
 **Historical performance (US equities, 1963-2025)**:
 - Annual value premium (HML): 3.8%
-- [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) of HML factor: 0.42
 - Worst decade: 2010s (-1.2% annualized) due to growth stock dominance
 - Best decade: 2000s (+7.8% annualized) after the dot-com bust
 
@@ -44,7 +43,6 @@ Factor investing now underlies over $2 trillion in assets globally across [smart
 
 **Historical performance (US equities, 1963-2025)**:
 - Annual momentum premium (UMD): 7.2%
-- Sharpe ratio of UMD factor: 0.58
 - Worst event: -73.4% in March 2009 (momentum crash)
 - Best year: +41.2% in 2001
 

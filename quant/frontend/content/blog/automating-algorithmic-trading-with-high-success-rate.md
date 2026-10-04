@@ -358,7 +358,7 @@ Trend-following systems usually win fewer than half their trades and rely on lar
 
 ### How many filters should I use for signal confirmation?
 
-Three to five independent filters is the sweet spot. Fewer than three provides insufficient filtering (win rate improvement of only 3-5%). More than five reduces trade frequency to the point where you cannot achieve statistical significance. Each filter should be based on a different data source or market concept (price, volume, volatility, breadth).
+Three to five independent filters is the sweet spot. More than five reduces trade frequency to the point where you cannot achieve statistical significance. Each filter should be based on a different data source or market concept (price, volume, volatility, breadth).
 
 ### Does a higher win rate mean lower drawdowns?
 

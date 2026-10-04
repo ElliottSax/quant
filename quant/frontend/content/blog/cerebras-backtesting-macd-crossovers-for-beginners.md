@@ -120,7 +120,6 @@ Let’s examine a specific trade triggered in mid-2016.
 - **Exit Signal**: September 21, 2016
 - **Exit Price**: $114.05
 - **Holding Period**: 55 days
-- **Return**: +15.8%
 
 During this period, AAPL rallied due to strong iPhone sales and growing services revenue. The MACD crossover captured the early stage of this upward momentum.
 

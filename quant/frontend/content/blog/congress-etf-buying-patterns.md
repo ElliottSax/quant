@@ -165,8 +165,6 @@ Party affiliation predicts energy sector ETF choices, with Republicans favoring 
 Congressional ETF holdings slightly underperform individual stock holdings:
 
 **Performance Comparison**:
-- Individual stock return: 16.4% average
-- ETF return: 13.2% average
 - Underperformance: 3.2 percentage points
 
 The underperformance suggests that congressional members' active stock-picking generates superior returns compared to thematic ETF exposure.
@@ -248,14 +246,12 @@ Congressional members show distinct ETF specialization:
 - Cloud Computing ETF (CLOU): $1.8 million
 - Tech ETF (XLK): $3.4 million
 - Total tech ETF holdings: $7.3 million
-- Q1 2026 ETF return: +18.2%
 
 **Sen. Elizabeth Warren (D-Massachusetts)**:
 - Financial ETF (XLF): $2.8 million
 - Healthcare ETF (XLV): $1.6 million
 - Tech ETF (QQQ): $2.1 million
 - Total ETF holdings: $6.5 million
-- Q1 2026 ETF return: +12.8%
 
 ## Leverage Through Leveraged ETFs
 
@@ -274,11 +270,6 @@ Leveraged ETF usage provides 2-3x amplification of sector returns.
 ## Comparative Fund Manager Analysis
 
 Congressional ETF selections outperform passive benchmarks:
-
-**Congressional ETF vs Benchmark Comparison**:
-- Congressional tech ETF return: +18.4%
-- S&P tech sector return: +8.4%
-- Outperformance: 219%
 
 Congressional sector ETF selection significantly outperforms passive sector indices, indicating active intelligence-driven selection.
 

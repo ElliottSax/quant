@@ -117,7 +117,6 @@ Wait for price to break out, pull back to the breakout level, and hold (retest c
 
 Applying all three filters simultaneously:
 - **Signal reduction**: 74% fewer trades
-- **Sharpe improvement**: 0.74 to 1.18
 - **Trade-off**: Significantly fewer trading opportunities
 
 ## Multi-Market Breakout Analysis

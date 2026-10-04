@@ -23,7 +23,6 @@ Congressional members executing $1.8 billion in AI-related stock purchases durin
 - Number of transactions: 8,234
 - Members participating: 312 (59% of Congress)
 - Average congressional investment: $5.8 million per household
-- Average return achieved: 24.3%
 
 These metrics dramatically exceed congressional investment in other sectors, indicating exceptional focus on artificial intelligence.
 

@@ -67,8 +67,6 @@ The most basic stochastic signal occurs when %K crosses %D.
 - Enter short on a bearish crossover above 80; stop above the recent swing high
 - Filter: Only take signals in the direction of the higher-timeframe trend
 
-**Win Rate:** Backtesting across S&P 500 components (2010-2024) shows that filtered crossover signals (direction aligned with the 200-day SMA trend) produce win rates of approximately 57% with average risk/reward of 1:1.3.
-
 ### Signal 2: Stochastic Divergence
 
 Divergence between the stochastic and price is a more powerful signal than simple crossovers.

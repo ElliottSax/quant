@@ -247,7 +247,7 @@ Future work could explore ensemble methods, deep learning models (e.g., LSTM), o
 ## FAQ
 
 **Q: Can this strategy be applied to cryptocurrencies?**  
-A: Yes, but with modifications. Cryptocurrencies exhibit higher volatility and different regime dynamics. Backtests on Bitcoin (BTC-USD) from 2018–2023 show a lower Sharpe ratio of **0.65** due to extreme tail events. Adjusting the target threshold to 5% and increasing the volatility feature weight improves results.
+A: Yes, but with modifications. Cryptocurrencies exhibit higher volatility and different regime dynamics. Adjusting the target threshold to 5% and increasing the volatility feature weight improves results.
 
 **Q: What if I don’t have access to VIX data?**  
 A: VIX contributes ~8% to model performance. Replace it with **S&P 500 30-day realized volatility** or omit it. Performance drops by ~0.05 in Sharpe ratio but remains viable.

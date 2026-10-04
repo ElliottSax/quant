@@ -47,10 +47,7 @@ Based on analysis of disclosed trades using midpoint estimates, 30-day and 90-da
 
 Nancy Pelosi's household, primarily through husband Paul Pelosi's trades, produced the most discussed returns in Congress. Key performance metrics:
 
-- Average 30-day return on purchases: +8.2% (vs. S&P 500 average of +1.4% over the same periods)
-- Average 90-day return on purchases: +18.7% (vs. S&P 500 average of +4.1%)
 - Hit rate (percentage of trades that were profitable at 90 days): 74%
-- Annualized portfolio return estimate (2021-2024): 32-38% depending on methodology
 
 The most notable aspect of the Pelosi trades was sector concentration. Over 70% of disclosed purchases were in technology stocks, with heavy weighting toward NVIDIA, Alphabet, Apple, Microsoft, and Salesforce. This concentration amplified returns during the AI-driven tech rally of 2023-2024 but also introduced significant sector risk.
 
@@ -63,8 +60,6 @@ Standout trades:
 
 Representative Crenshaw reported a trading portfolio with notable energy and technology exposure:
 
-- Average 30-day return on purchases: +5.8%
-- Average 90-day return on purchases: +12.4%
 - Hit rate at 90 days: 68%
 - Significant positions in energy sector stocks during the 2022 energy rally
 
@@ -74,8 +69,6 @@ Crenshaw's portfolio benefited from well-timed energy trades during a period of 
 
 Representative Green's trading activity focused heavily on healthcare and biotech:
 
-- Average 30-day return on purchases: +5.1%
-- Average 90-day return on purchases: +11.8%
 - Hit rate at 90 days: 65%
 - Heavy concentration in healthcare names while serving on committees with health policy jurisdiction
 
@@ -85,8 +78,6 @@ Green's portfolio showed a pattern of purchasing healthcare stocks ahead of comm
 
 As one of the wealthiest members of Congress, McCaul's trading portfolio is substantial in absolute terms:
 
-- Average 30-day return on purchases: +4.3%
-- Average 90-day return on purchases: +10.5%
 - Hit rate at 90 days: 63%
 - Diversified portfolio with notable positions in tech and defense
 
@@ -96,8 +87,6 @@ McCaul's role as chairman of the Foreign Affairs Committee and his background on
 
 Representative Gottheimer maintained an active trading portfolio across multiple sectors:
 
-- Average 30-day return on purchases: +4.1%
-- Average 90-day return on purchases: +9.8%
 - Hit rate at 90 days: 62%
 - Notably active in financial sector trades
 
@@ -109,8 +98,6 @@ Not every congressional trader beats the market. Several members have disclosed 
 
 Despite generating enormous volume (130+ trades in his first two years), Tuberville's disclosed trades have shown mixed performance:
 
-- Average 30-day return on purchases: +0.8%
-- Average 90-day return on purchases: +3.2%
 - Hit rate at 90 days: 51%
 - Many trades appeared reactive rather than anticipatory, and the sheer volume of activity suggested a high-turnover approach that generated transaction costs without consistent alpha
 

@@ -148,7 +148,6 @@ for level in resistance_levels:
 - Enter if both conditions met
 - Stop loss = resistance - 2.5%
 - Target = 2.5 × risk distance
-- **Advantage**: Increases win rate to 71%, filters whipsaws
 - **Disadvantage**: Fewer setups (40% reduction)
 
 ### Rule 3: Multi-Timeframe Confirmation

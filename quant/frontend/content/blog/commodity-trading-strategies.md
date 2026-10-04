@@ -182,7 +182,6 @@ The three strategies (trend, carry, seasonal) have low pairwise correlations:
 | Seasonal | 0.10 | 0.20 | 1.00 |
 
 An equally weighted combination of the three strategies achieves:
-- [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis): 0.8-1.2 (substantially higher than any individual strategy)
 - Near-zero correlation with equities and bonds
 
 ## Key Takeaways

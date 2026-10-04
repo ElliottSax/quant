@@ -17,7 +17,7 @@ seo_optimized: true
 
 ## Introduction
 
-While positive, this barely justifies the transaction costs and psychological burden of frequent small losses. By applying targeted filters derived from market microstructure research, we can push the win rate to 65-75% without sacrificing average trade profitability. The key insight is that not all band touches are equal: those accompanied by specific volume patterns, volatility regime conditions, and momentum configurations have substantially higher reversal probability.
+While positive, this barely justifies the transaction costs and psychological burden of frequent small losses. The key insight is that not all band touches are equal: those accompanied by specific volume patterns, volatility regime conditions, and momentum configurations have substantially higher reversal probability.
 
 ## The Baseline: Unfiltered Bollinger Band Performance
 
@@ -91,7 +91,7 @@ class BandwidthFilter:
         return (bandwidth >= low_bound) & (bandwidth <= high_bound)
 ```
 
-**Impact**: Adding bandwidth filter raises win rate from 57% to 63% on SPY. We eliminate the worst trades (those during extreme volatility expansion where the trend continues through the band).
+We eliminate the worst trades (those during extreme volatility expansion where the trend continues through the band).
 
 ## Filter 2: Volume Capitulation Confirmation
 
@@ -123,7 +123,7 @@ class VolumeCapitulationFilter:
         return df['close'] < vwap
 ```
 
-**Impact**: Adding volume capitulation filter (alone) raises win rate from 57% to 64%. Combined with bandwidth filter: 68%.
+Combined with bandwidth filter: 68%.
 
 ## Filter 3: Trend Alignment
 
@@ -305,7 +305,7 @@ Achieving a high success rate with Bollinger Bands requires selective entry thro
 
 ### Is a 72% win rate realistic or am I overfitting?
 
-The 72% figure comes from walk-forward testing on 15 years of SPY data, not a single optimized backtest. In-sample win rates are typically 75-78%, so the 72% out-of-sample figure represents a reasonable ~5% degradation. The key validation: the filters are based on well-documented market microstructure effects (capitulation selling, regime persistence), not data-mined patterns. If you want to check whether your own strategy's win rate is statistically distinguishable from chance, our [Win Rate Significance Calculator](/tools/win-rate-significance) runs the sample-size and binomial-test math directly.
+The 72% figure comes from walk-forward testing on 15 years of SPY data, not a single optimized backtest. The key validation: the filters are based on well-documented market microstructure effects (capitulation selling, regime persistence), not data-mined patterns. If you want to check whether your own strategy's win rate is statistically distinguishable from chance, our [Win Rate Significance Calculator](/tools/win-rate-significance) runs the sample-size and binomial-test math directly.
 
 ### Can I apply these filters to stocks other than SPY?
 

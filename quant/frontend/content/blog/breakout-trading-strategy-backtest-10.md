@@ -225,7 +225,7 @@ Shorter consolidations create false breakouts.
 A: False breakouts lack follow-through volume and reverse within 1-3 days. Real breakouts show consistent volume and 3-5 day continuation. Always use trailing stops.
 
 **Q: Should I trade all breakouts or be selective?**
-A: Selective approach outperforms. Trade only breakouts from 20-30 day consolidations with volume > 1.5x average and ATR > long-term average. This filters out 40% of breakouts but improves win rate to 73%.
+A: Selective approach outperforms. Trade only breakouts from 20-30 day consolidations with volume > 1.5x average and ATR > long-term average.
 
 **Q: What's the average holding period for breakout trades?**
 A: 8-12 days from entry to target. Holding longer invites reversal; exits should be mechanical based on targets or stops.

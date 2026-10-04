@@ -88,7 +88,6 @@ Committee membership substantially increases semiconductor investment concentrat
 **Rep. Greg Walden (R-Oregon)**:
 - Semiconductor holdings: $3.2 million (highest single member)
 - 2026 Q1 semiconductor profit: $389,000
-- Win rate in semiconductors: 76.4%
 - Average semiconductor holding: 21 days
 
 Walden benefits from Energy and Commerce Committee position providing semiconductor policy intelligence.
@@ -227,11 +226,6 @@ This advance timing indicates systematic information advantage regarding semicon
 ## Performance vs S&P 500
 
 Congressional semiconductor trading outperforms benchmarks:
-
-**Q1 2026 Performance Comparison**:
-- Congressional semiconductor return: +14.8%
-- Semiconductor ETF (XSD) return: +8.2%
-- Congressional outperformance: 180%
 
 The 180% outperformance of a semiconductor-focused ETF indicates superior stock selection based on information advantage.
 

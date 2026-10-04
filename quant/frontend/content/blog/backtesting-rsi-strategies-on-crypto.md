@@ -313,4 +313,4 @@ A: Yes, significantly. Filters out false signals from low-volume pump attempts.
 
 ## Conclusion
 
-RSI is exceptionally profitable on cryptocurrency due to extreme volatility and sentiment-driven moves. The key optimizations: use shorter periods (9 instead of 14), adjust thresholds to crypto extremes (70/30 or tighter), add volume confirmation, and use dynamic position sizing based on volatility. Backtesting rigorously with 24/7 data reveals that professional crypto traders can achieve 35%+ returns annually with RSI strategies combined with proper risk management.
+RSI is exceptionally profitable on cryptocurrency due to extreme volatility and sentiment-driven moves. The key optimizations: use shorter periods (9 instead of 14), adjust thresholds to crypto extremes (70/30 or tighter), add volume confirmation, and use dynamic position sizing based on volatility.

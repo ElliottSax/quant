@@ -291,13 +291,13 @@ The key to success lies not in abandoning Bollinger Bands, but in augmenting the
 ## FAQ
 
 **Q: Can this strategy be applied to intraday data?**  
-A: Yes. When tested on SPY 1-hour data (2010–2023), the win rate was 66.3% with a Sharpe of 0.79. However, transaction costs must be carefully modeled.
+A: Yes. However, transaction costs must be carefully modeled.
 
 **Q: What is the optimal standard deviation multiplier?**  
-A: Backtests show 2.0 yields the highest win rate. Values below 1.8 increase false signals; above 2.2 reduce trade frequency excessively.
+A: Values below 1.8 increase false signals; above 2.2 reduce trade frequency excessively.
 
 **Q: How does it perform in bull vs bear markets?**  
-A: In bull markets (SPY annual return >15%), win rate was 71.2%. In bear markets (<-10%), it dropped to 58.4%, but drawdowns were limited by the EMA filter.
+A: In bear markets (<-10%), it dropped to 58.4%, but drawdowns were limited by the EMA filter.
 
 **Q: Can I use this on cryptocurrencies?**  
 Not recommended without position sizing adjustments.
@@ -312,4 +312,4 @@ A: 0.1% per trade (including slippage). At 0.2%, the win rate drops to 65.1%, st
 A: Average of 14 trades per year for SPY. During low-volatility periods (e.g., 2017), as few as 6 trades occurred; during high volatility (2008), up to 28.
 
 **Q: Can I combine this with other indicators like RSI?**  
-A: Yes. Adding RSI < 30 filter increased win rate to 69.5% but reduced trade count by 30%. Use only if reduced frequency aligns with your goals.
+A: Yes. Use only if reduced frequency aligns with your goals.

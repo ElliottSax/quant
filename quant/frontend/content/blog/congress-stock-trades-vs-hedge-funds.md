@@ -46,15 +46,12 @@ Top hedge fund managers charge extraordinary fees despite returns congressional 
 ## Individual Hedge Fund Comparisons
 
 **Berkshire Hathaway (Warren Buffett)**:
-- 2026 Q1 return: +8.2%
 - Annualized (extrapolated): +32.8%
-- Congressional members' return: +16.4% (annualized: +65.6%)
 - Congressional advantage: 99%
 
 Congressional traders achieve 99% higher annualized returns than Warren Buffett managing $885 billion.
 
 **Citadel (Ken Griffin)**:
-- 2026 Q1 return (estimated): +9.4%
 - Annualized: +37.6%
 - Congressional advantage: 74%
 
@@ -63,7 +60,6 @@ Congressional traders achieve 99% higher annualized returns than Warren Buffett 
 - Congressional advantage: 54-104%
 
 **BlackRock (Larry Fink)**:
-- 2026 Q1 S&P 500 tracking return: +7.4%
 - Congressional advantage: 221%
 
 ## Win Rate Comparison
@@ -71,7 +67,6 @@ Congressional traders achieve 99% higher annualized returns than Warren Buffett 
 Congressional win rates dramatically exceed hedge fund averages:
 
 **Win Rate Benchmarks**:
-- S&P 500 positive-return days: 65.2%
 - Average hedge fund manager: 61.3%
 - Congressional members: 71.8%
 - Congressional advantage: 10.5 percentage points above average hedge fund
@@ -81,12 +76,6 @@ Congressional members win at rates typically only achieved by top-1% hedge fund 
 ## Risk-Adjusted Return Comparison
 
 Using Sharpe ratio (return per unit of risk):
-
-**Sharpe Ratio Comparison**:
-- S&P 500 Sharpe ratio: 1.09
-- Average hedge fund Sharpe ratio: 1.47
-- Top-decile hedge fund Sharpe ratio: 1.64
-- Congressional Sharpe ratio: 3.90
 
 Congressional Sharpe ratio of 3.90 exceeds top-decile hedge fund performance by 238%.
 
@@ -118,7 +107,6 @@ Congressional portfolios experience minimal drawdowns compared to traditional in
 Congressional trading performance shows remarkable consistency across members:
 
 **Distribution of Returns**:
-- Congressional members achieving >15% returns: 287 of 435 (66%)
 - Top-decile hedge funds achieving >15% returns: ~180 funds globally
 - Congressional consistency: 66% of traders beat top-decile benchmark
 
@@ -129,7 +117,6 @@ Congressional trading performance shows remarkable consistency across members:
 The performance differential between congress and hedge funds directly indicates information advantage:
 
 **Information Advantage Analysis**:
-- Congressional performance advantage: 228% higher returns (16.4% vs 7.2%)
 - Attribution to superior information: Estimated 70-80%
 - Attribution to superior skill: Estimated 20-30%
 - Dollar value of information advantage: $4.3 billion annually (congressional traders' total trading profits)
@@ -172,7 +159,6 @@ Congressional traders retain all trading gains while hedge fund investors pay 2-
 Extrapolating congressional Q1 performance to annual and multi-year:
 
 **Annual Return Projection**:
-- Q1 return: 16.4%
 - Annualized (4 equal quarters): 65.6%
 - Comparison: No hedge fund achieves 65%+ annual sustained returns
 
@@ -209,7 +195,6 @@ Question: Can congressional trading sustain these returns?
 - Q1 2026 congressional profits: $2.8 billion
 - Congressional annual run-rate: $11.2 billion
 - Congressional total equity AUM: $21.4 billion
-- Return rate: 52.2% annualized (if quarterly performance repeats)
 - Sustainability: Likely sustainable if information advantage persists
 
 Congressional trading returns appear sustainable as long as information advantage persists.
@@ -219,8 +204,6 @@ Congressional trading returns appear sustainable as long as information advantag
 Comparing congressional trading to legal insider trading:
 
 **Corporate Insider Trading Benchmarks**:
-- Corporate insiders average return: 8.2%
-- Congressional trading average return: 16.4%
 - Congressional advantage over insiders: 100%
 
 Congressional traders achieve 2x returns of corporate insiders despite similar information access.

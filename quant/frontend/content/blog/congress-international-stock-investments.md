@@ -235,11 +235,6 @@ European pharmaceuticals and Japanese tech show largest international concentrat
 
 International stock outperformance vs benchmarks:
 
-**Performance Comparison**:
-- Congressional international return: 13.4%
-- MSCI EAFE benchmark return: 5.2%
-- Congressional outperformance: 258%
-
 Congressional international stock selection outperforms EAFE benchmark by 258%.
 
 ## Political Appointment Intelligence

@@ -75,13 +75,11 @@ Armed Services Committee members show exceptional military contractor trading ad
 - Military contractor holdings: Average $67M per member
 - All senators' military holdings: Average $42M per senator
 - Committee advantage: 59%
-- Trading performance: 76.8% win rate vs 71.8% all members
 
 **House Armed Services Committee Members**:
 - Military contractor holdings: Average $48M per member
 - All representatives' military holdings: Average $18M per representative
 - Committee advantage: 167%
-- Trading performance: 75.2% win rate vs 71.8% all members
 
 Armed Services Committee membership provides 59-167% advantage in military contractor trading performance.
 
@@ -153,11 +151,9 @@ Congressional members concentrate on specific strategic weapons programs:
 **F-35 Program Holdings**:
 - Lockheed Martin's F-35 responsibility: LMT holdings $987M
 - Congressional members identifying F-35 importance: Evidenced by LMT concentration
-- F-35 program trading returns: 8.2% average on program-related announcements
 
 **Missile Defense Trading**:
 - Raytheon's missile defense responsibility: RTX holdings $834M
-- Missile defense trading returns: 6.8% average on program announcements
 
 **Submarine Program Trading**:
 - General Dynamics' submarine responsibility: GD holdings $756M
@@ -199,11 +195,6 @@ This "buy and hold" pattern with 96% retention suggests conviction in military c
 ## Comparative Performance
 
 Military contractor stock outperformance vs benchmarks:
-
-**Performance Comparison**:
-- Congressional military contractor return: +16.8%
-- Defense Select Sector ETF (ITA) return: +6.2%
-- Congressional outperformance: 271%
 
 The 271% outperformance of a defense-focused ETF indicates superior contractor selection based on classified information.
 

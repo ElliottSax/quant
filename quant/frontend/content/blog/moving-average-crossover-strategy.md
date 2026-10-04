@@ -46,7 +46,6 @@ The golden cross occurs when the 50-day SMA crosses above the 200-day SMA. It si
 Historical golden cross signals on the S&P 500:
 - **June 2020**: Signaled post-COVID recovery, SPX rallied 52% before next death cross
 - **March 2023**: Signaled end of 2022 bear market, followed by 28% rally
-- **Average forward 12-month return after golden cross**: +14.3% (1950-2025)
 
 ### Death Cross (50/200 SMA)
 
@@ -55,7 +54,6 @@ The death cross occurs when the 50-day SMA crosses below the 200-day SMA. It sig
 Historical death cross signals on the S&P 500:
 - **March 2022**: Preceded an additional 16% decline
 - **March 2020**: Late signal during COVID crash (market had already bottomed)
-- **Average forward 12-month return after death cross**: -1.2% (1950-2025)
 
 ### The Lag Problem
 
@@ -124,7 +122,7 @@ Only take signals when the 14-day ATR is below its 100-day average. This avoids 
 
 ### Trend Strength (ADX) Filter
 
-Require ADX above 20 before entering a crossover trade. ADX below 20 indicates a range-bound market where crossover signals are unreliable. This filter improved the win rate from 48.6% to 57.1% but reduced annual returns by 0.8% due to missed opportunities.
+Require ADX above 20 before entering a crossover trade. ADX below 20 indicates a range-bound market where crossover signals are unreliable.
 
 ### Price Distance Filter
 

@@ -301,7 +301,7 @@ A: 3-5 uncorrelated signals typically optimal. Adding signals beyond 5 yields di
 A: Minimum 2 years (500+ trades) for reliable model training. Better to use 5+ years (1000+ trades). Collect at least 50 positive outcomes per feature to prevent overfitting.
 
 **Q: How does win rate change across different market regimes?**
-A: Significantly. Mean reversion win rates are 70%+ during calm markets but drop to 50-55% during crisis periods (VIX > 40). Adapt model parameters quarterly based on realized performance metrics.
+A: Significantly. Adapt model parameters quarterly based on realized performance metrics.
 
 ## Conclusion
 

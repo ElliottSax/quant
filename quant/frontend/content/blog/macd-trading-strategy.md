@@ -88,8 +88,6 @@ Like RSI divergence, MACD divergence occurs when price and the MACD indicator mo
 ### Performance Data
 
 MACD divergence signals on the S&P 500 (2010-2025):
-- **Bullish divergence win rate**: 61.4%
-- **Bearish divergence win rate**: 54.8%
 - **Average winner**: 4.2%
 - **Average loser**: -2.1%
 
@@ -112,8 +110,6 @@ Requiring above-average volume on MACD crossover signals:
 
 - **Strong signal**: MACD crossover with volume > 1.5x 20-day average
 - **Weak signal**: MACD crossover with below-average volume (ignore)
-
-Volume confirmation improved the win rate from 38.2% to 47.8%.
 
 ### MACD + Bollinger Bands
 

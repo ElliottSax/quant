@@ -126,7 +126,6 @@ A 20-30% allocation to trend following meaningfully improves portfolio Sharpe an
 
 - Trend following has worked across 200+ years of market data and 58+ markets globally
 - A diversified 26-market system produced an 11.4% CAGR with 0.88 [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) (2000-2025)
-- Crisis alpha is the defining feature: +34.2% in 2008 while the S&P 500 lost -37.0%
 - Near-zero equity correlation (0.08) makes trend following an ideal portfolio diversifier
 - Blending fast, medium, and slow trend signals improves Sharpe from 0.72-0.88 to 0.94
 - A 20-30% allocation to trend following in a traditional portfolio reduces max drawdown by 25-35%

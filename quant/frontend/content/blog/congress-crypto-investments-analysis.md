@@ -214,8 +214,6 @@ Congressional members hold cryptographic in non-reportable exchange accounts:
 Crypto holdings concentrate in high-performing congressional traders:
 
 **Crypto Holders' Performance vs Non-Holders**:
-- Crypto-holding members average return 2026 Q1: +18.2%
-- Non-crypto-holding members average return: +14.1%
 - Differential: 4.1 percentage points
 
 While difference appears modest, it reflects crypto volatility and illiquidity vs equity trading.

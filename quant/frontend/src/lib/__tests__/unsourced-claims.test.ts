@@ -240,3 +240,98 @@ for (const [name, re] of SIXTH) {
     assert.deepEqual(hits, [])
   })
 }
+
+// Triage pass (2026-10-04): a stratified sample of 62 of the remaining performance-figure hits found ~60%
+// were invented or unsourced results: Congress "average return" bullets, "Backtests show a Sharpe improvement
+// from 0.74 to 0.89", FAQ answers such as "win rate was 71.2%", a templated conclusion ("achieved 57%
+// improvement in Sharpe ratio"), and real papers cited next to numbers they do not contain (checked against
+// the abstracts: Fama and French 1992, Gatev et al. 2006, Avellaneda and Lee 2010, Khandani et al. 2010 and
+// Black et al. 1972 do not say what the posts claimed). Educational thresholds, worked arithmetic and
+// labelled hypotheticals stay. Pages whose results are computed by code (commit 1326bbf) are exempt.
+const TRI_MEASURED = new Set([
+  'triple-barrier-labeling-meta-labeling.md',
+  'python-backtesting-framework.md',
+  'walk-forward-optimization.md',
+])
+const TRI = BLOG.filter((f) => !TRI_MEASURED.has(path.basename(f)))
+const TRI_SENT = (l: string) => l.split(/(?<=[.!?])\s+/)
+const TRI_AUTHOR_YEAR = /[A-Z][A-Za-z'’-]+(?: (?:and|&) [A-Z][A-Za-z'’-]+| et al\.?)\s*\(?(?:19|20)\d\d\)?/
+const TRI_FINDING = /\b(?:found|finds|show|shows|showed|demonstrat\w+|report\w+|conclud\w+|estimat\w+|reveal\w+|document\w+|according to|can (?:generate|produce|explain|lead)|explains?)\b/i
+const TRI_FIGURE = /\d+(?:\.\d+)?\s*(?:%|percent)|\bSharpe(?: ratio)?[^.!?]{0,20}\d|\b\d\.\d+\b/i
+const TRI_CONDITIONAL = /\b(?:if|suppose|assume|assuming|when you|need(?:s|ed)? (?:a|to)|must|requires?|break-?even|hypothetical|illustrat\w+|imagine|say you|would|could|might)\b/i
+const TRI_HEDGED = /^\s*(?:a|an|any) (?:strategy|model|portfolio|trader|system|backtest)\b[^.!?]*\b(?:may|might|can|could)\b/i
+
+function triProse(f: string): string[] | null {
+  const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+  if (SOURCED(text)) return null
+  return proseLines(text).filter((l) => !l.includes('Note on figures'))
+}
+
+test('no real paper cited next to a figure it was not shown to contain', () => {
+  const hits = TRI.filter((f) => {
+    const lines = triProse(f)
+    return !!lines && lines.some((l) => TRI_SENT(l).some((s) => TRI_AUTHOR_YEAR.test(s) && TRI_FINDING.test(s) && TRI_FIGURE.test(s)))
+  })
+  assert.deepEqual(hits, [])
+})
+
+const TRI_RULES: [string, RegExp][] = [
+  ['"win rate was/were/are NN" stated as a fact', /\bwin rates? (?:are|were|was)\s+(?:about |around |approximately |roughly |typically )?\d/i],
+  ['"push/raise/improve the win rate to NN"', /\b(?:push|raise|lift|increase|improve|boost)\w* (?:the |your )?win rate (?:to|by|from)\s+\d/i],
+  ['"win rate improvement of NN"', /\bwin rate improvement of (?:only )?\d/i],
+  ['"achieved NN% improvement in Sharpe ratio"', /\b(?:achieved|achieves|delivered|produces?)\b[^.!?]{0,40}\b\d+%\s+(?:improvement|reduction)[^.!?]{0,30}\b(?:Sharpe|drawdown)/i],
+  ['"in our test(s)" result with a number', /\bin (?:our|my) (?:own )?tests?\b[^.!?]{0,200}?(?:\d+(?:\.\d+)?\s*%|\bSharpe[^.!?]{0,20}\d|\b\d\.\d+\b)/i],
+  ['"backtests show ..." result with a number', /\b(?:back-?tests?|back-?testing|backtested|empirical testing)\b[^.!?]{0,100}?\b(?:shows?|showed|found|finds|reveal\w*|demonstrate\w*|produce\w*|yield\w*|indicate\w*)\b[^.!?]{0,160}?(?:\d+(?:\.\d+)?\s*%|\bSharpe[^.!?]{0,20}\d|\b\d\.\d+\b)/i],
+  ['"the results show ..." with a number', /\bthe results show\b[^.!?]{0,200}?(?:\d+(?:\.\d+)?\s*%|\bSharpe[^.!?]{0,20}\d|\b\d\.\d+\b)/i],
+  ['survey of N people with a finding', /\bsurvey of \d+[^.!?]{0,120}\b(?:found|showed|reported|revealed|said)\b/i],
+]
+
+for (const [name, re] of TRI_RULES) {
+  test(`no ${name}`, () => {
+    const hits = TRI.filter((f) => {
+      const lines = triProse(f)
+      return !!lines && lines.some((l) => TRI_SENT(l).some((s) => re.test(s) && !TRI_CONDITIONAL.test(s) && !TRI_HEDGED.test(s)))
+    })
+    assert.deepEqual(hits, [])
+  })
+}
+
+const TRI_LABEL_LINE = /^\s*(?:[-*]\s+(?:\*\*)?|\*\*)([^:\n]{2,100}?)(?:\*\*)?\s*:\s*(?:\*\*)?\s*([^\n]*)$/
+const TRI_LABEL_KEY = /\b(?:returns?|sharpe|win[- ]?rate|performance|outperform\w*|alpha|cagr)\b/i
+const TRI_LABEL_EXEMPT = /\b(?:required|expected|target|assumed|assumption|hypothetical|illustrat\w+|risk-free|discount|hurdle|cost|fee|input|initial|starting|break-?even|threshold|minimum|maximum|goal|budget|formula|definition|formulation|limit|stop|window|lookback|horizon|period|if|when|example[- ]only|per trade|position|sizing|rate of return needed|needed|volatility|vol|standard deviation|correlation)\b/i
+const TRI_SECTION_EXEMPT = /\b(?:calculation|calculat\w+|formula|assumption|input|parameter|scenario|hypothetical|illustrat\w+|how to|worked|compute|computing|math|derivation|sizing|kelly|definition|what is|interpret\w*|rule of thumb|benchmarks?|thresholds?|explained|walk-?through|understand\w*|sample|output|reading)\b/i
+const TRI_ARITH = /\b(?:assum\w+|suppose|given|inputs?|parameters?|scenario|hypothetical|illustrat\w+|let'?s say|imagine|for example|for instance)\b/i
+const TRI_LEAD = /^(?:Historical|Average|Annuali[sz]ed|Typical|Backtest|Observed|Realized|Realised)\b/i
+
+test('no labelled performance-result line ("- Average return achieved: 24.3%")', () => {
+  const hits: string[] = []
+  for (const f of TRI) {
+    const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+    if (SOURCED(text)) continue
+    const lines = proseLines(text)
+    let heading = ''
+    for (let i = 0; i < lines.length; i++) {
+      const l = lines[i]
+      if (l.trim().startsWith('#')) heading = l.trim().replace(/^#+\s*/, '')
+      if (l.includes('Note on figures')) continue
+      const m = TRI_LABEL_LINE.exec(l)
+      if (!m || !TRI_LABEL_KEY.test(m[1]) || TRI_LABEL_EXEMPT.test(m[1])) continue
+      const val = m[2].replace(/^[*\s]+/, '').trim()
+      if (!/^(?:estimated |approximately |about |around )?[-+~≈]?\$?\d/.test(val)) continue
+      const pctOk = /\d\s*%|percent/i.test(val) || (/sharpe/i.test(m[1]) && /\d\.\d+/.test(val))
+      const isBullet = /^\s*[-*]\s/.test(l)
+      const dated = /\b(?:19|20)\d\d\b/.test(heading)
+      if (!pctOk || !(isBullet || TRI_LEAD.test(m[1].trim()) || dated)) continue
+      if (val.includes('=') || /[×*]\s*\d/.test(val)) continue
+      if (TRI_SECTION_EXEMPT.test(heading) || (/example/i.test(heading) && !dated)) continue
+      if (TRI_ARITH.test(lines.slice(Math.max(0, i - 8), i).filter((x) => x.trim()).join(' '))) continue
+      hits.push(`${f}:${i + 1}`)
+    }
+  }
+  assert.deepEqual(hits, [])
+})
+
+test('the measured pages keep their computed results', () => {
+  const text = fs.readFileSync(path.join(ROOT, 'content', 'blog', 'triple-barrier-labeling-meta-labeling.md'), 'utf-8')
+  assert.match(text, /baseline win rate was 49\.3%/)
+})

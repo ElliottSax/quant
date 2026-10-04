@@ -40,7 +40,7 @@ Cointegration analysis has numerous practical applications in algorithmic tradin
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-As shown in the table, the cointegration-based statistical arbitrage strategy outperforms the traditional mean-reversion strategy in terms of annual return and Sharpe ratio, while also exhibiting a lower maximum drawdown. Another application of cointegration analysis is pairs trading, which involves identifying two stocks that are cointegrated and trading on the spread between them. For instance, a study by Avellaneda and Lee (2010) found that a pairs trading strategy based on cointegration analysis can generate returns of up to 30% per annum, with a Sharpe ratio of 2.0.
+As shown in the table, the cointegration-based statistical arbitrage strategy outperforms the traditional mean-reversion strategy in terms of annual return and Sharpe ratio, while also exhibiting a lower maximum drawdown. Another application of cointegration analysis is pairs trading, which involves identifying two stocks that are cointegrated and trading on the spread between them.
 
 ## Section 3: Step-by-Step Guide to Cointegration Analysis
 
@@ -64,7 +64,7 @@ In this example, the ADF test statistic for time series X is -2.5, which corresp
 
 ## Section 4: Real-World Examples of Cointegration Analysis
 
-Cointegration analysis has numerous real-world applications in finance and economics. For example, suppose we want to analyze the relationship between the price of crude oil and the price of gasoline. Using cointegration analysis, we can identify a long-term equilibrium relationship between the two time series, which can be used to predict future price movements. Another example is the analysis of the relationship between the yield curve and the inflation rate. By identifying cointegrating relationships between different segments of the yield curve, we can predict future inflation rates and make informed investment decisions. According to a study by Bernanke and Blinder (1992), the yield curve is a strong predictor of future inflation rates, with a correlation coefficient of 0.7. The following table summarizes the results of a cointegration analysis of the yield curve:
+Cointegration analysis has numerous real-world applications in finance and economics. For example, suppose we want to analyze the relationship between the price of crude oil and the price of gasoline. Using cointegration analysis, we can identify a long-term equilibrium relationship between the two time series, which can be used to predict future price movements. Another example is the analysis of the relationship between the yield curve and the inflation rate. By identifying cointegrating relationships between different segments of the yield curve, we can predict future inflation rates and make informed investment decisions. The following table summarizes the results of a cointegration analysis of the yield curve:
 
 | Segment | Cointegrating Coefficient | p-value |
 | --- | --- | --- |

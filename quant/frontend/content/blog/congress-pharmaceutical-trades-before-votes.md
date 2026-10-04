@@ -107,12 +107,10 @@ Votes Favorable to Pharma Companies:
 - Insulin price caps fail: Pharma stocks +3.2%
 - Patent extensions pass: Pharma stocks +4.8%
 - Medicare negotiation limited: Pharma stocks +5.1%
-- Average favorable vote return: +4.4%
 
 Votes Unfavorable to Pharma Companies:
 - Generic competition increases: Pharma stocks -2.1%
 - Price negotiation expands: Pharma stocks -1.8%
-- Average unfavorable vote return: -1.95%
 
 Congressional members' pharmaceutical purchases precede favorable votes, suggesting advance knowledge of legislative outcomes.
 

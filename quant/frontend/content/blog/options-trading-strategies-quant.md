@@ -176,8 +176,6 @@ When the VIX term structure is in steep contango (front-month VIX << back-month 
 
 This trade earns the "roll yield" as front-month futures converge toward spot VIX.
 
-**Historical annual return of VIX contango trade**: 12-18% with Sharpe of 0.8-1.2, but with severe drawdowns during volatility spikes (2018 Volmageddon: -90%).
-
 ## Key Takeaways
 
 - The volatility risk premium (implied > realized 85% of the time) provides a systematic edge for options sellers

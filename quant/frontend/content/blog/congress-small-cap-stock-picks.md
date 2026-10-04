@@ -53,7 +53,6 @@ Biotech represents largest congressional small-cap allocation:
 
 **Top Biotech Holdings**:
 - Smaller biotech companies (clinical stage): $67 million holdings
-- Average return on biotech positions: 42.1%
 - Holding period: 51 days (longer than other small-caps)
 
 Longer biotech holding periods reflect waiting for FDA approval events that drive sharp appreciation.
@@ -223,11 +222,6 @@ Board positions provide insider company information and compensation beyond trad
 ## Comparative Performance
 
 Congressional small-cap returns vastly exceed benchmarks:
-
-**Return Comparison**:
-- Congressional small-cap average return: 34.2%
-- Russell 2000 small-cap index return: 4.2%
-- Congressional outperformance: 714%
 
 Congressional small-cap selection outperforms broad small-cap index by 714%.
 

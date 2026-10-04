@@ -140,8 +140,53 @@ SLIP_REPLACEMENT = ["Slippage depends on liquidity, order size and timing. Estim
 IMPACT_REPLACEMENT = ("Net return is gross return minus cost drag (see the formula above). Recompute the Sharpe ratio "
                       "from the net return series, not from a rule of thumb.")
 
+
+# --- sixth pass (2026-10-04): triage of the "unclear" hits. A 62-hit stratified sample showed ~60% were invented
+# or unsourced results, including real papers cited next to numbers they do not contain (Fama and French 1992,
+# Gatev et al. 2006, Avellaneda and Lee 2010, Khandani et al. 2010, Black et al. 1972 were checked against
+# the published abstracts). Educational thresholds, derived arithmetic and labelled hypotheticals are kept.
+AUTHOR_YEAR = re.compile(r"[A-Z][A-Za-z'\u2019\-]+(?: (?:and|&) [A-Z][A-Za-z'\u2019\-]+| et al\.?)\s*\(?(?:19|20)\d\d\)?")
+FINDING_VERB = re.compile(r"\b(?:found|finds|show|shows|showed|demonstrat\w+|report\w+|conclud\w+|estimat\w+|reveal\w+|"
+                          r"document\w+|according to|can (?:generate|produce|explain|lead)|explains?)\b", re.I)
+FIGURE = re.compile(r"\d+(?:\.\d+)?\s*(?:%|percent)|\bSharpe(?: ratio)?[^.!?]{0,20}\d|\b\d\.\d+\b", re.I)
+SURVEY_N = re.compile(r"\bsurvey of \d+[^.!?]{0,120}\b(?:found|showed|reported|revealed|said)\b", re.I)
+BACKTEST_CLAIM = [
+    re.compile(r"\b(?:back-?tests?|back-?testing|backtested|empirical testing)\b[^.!?]{0,100}?"
+               r"\b(?:shows?|showed|found|finds|reveal\w*|demonstrate\w*|produce\w*|yield\w*|indicate\w*)\b[^.!?]{0,160}?"
+               r"(?:\d+(?:\.\d+)?\s*%|\bSharpe[^.!?]{0,20}\d|\b\d\.\d+\b)", re.I),
+    re.compile(r"\bin (?:our|my) (?:own )?tests?\b[^.!?]{0,200}?(?:\d+(?:\.\d+)?\s*%|\bSharpe[^.!?]{0,20}\d|\b\d\.\d+\b)", re.I),
+    re.compile(r"\bthe results show\b[^.!?]{0,200}?(?:\d+(?:\.\d+)?\s*%|\bSharpe[^.!?]{0,20}\d|\b\d\.\d+\b)", re.I),
+    re.compile(r"\bempirical testing on\b[^.!?]{0,120}?\b(?:shows?|found)\b[^.!?]{0,80}?\d", re.I),
+]
+WINRATE_FACT = [
+    re.compile(r"\bwin rates? (?:are|were|was)\s+(?:about |around |approximately |roughly |typically )?\d", re.I),
+    re.compile(r"\b(?:push|raise|lift|increase|improve|boost)\w* (?:the |your )?win rate (?:to|by|from)\s+\d", re.I),
+    re.compile(r"\bwin rate improvement of (?:only )?\d", re.I),
+    re.compile(r"\b(?:achieved|achieves|delivered|produces?)\b[^.!?]{0,40}\b\d+%\s+(?:improvement|reduction)[^.!?]{0,30}\b(?:Sharpe|drawdown)", re.I),
+]
+CONDITIONAL = re.compile(r"\b(?:if|suppose|assume|assuming|when you|need(?:s|ed)? (?:a|to)|must|requires?|break-?even|"
+                         r"hypothetical|illustrat\w+|imagine|say you|would|could|might)\b", re.I)
+INTRO_LINE = re.compile(r"^\s*(?:\*\*)?[^|\n]{3,120}:(?:\*\*)?\s*$")
+HEDGED_GENERIC = re.compile(r"^\s*(?:a|an|any) (?:strategy|model|portfolio|trader|system|backtest)\b[^.!?]*\b(?:may|might|can|could)\b", re.I)
+# a bullet or bold-lead line whose label names a performance result and whose value is a number
+RESULT_LABEL_LINE = re.compile(r"^\s*(?:[-*]\s+(?:\*\*)?|\*\*)(?P<label>[^:\n]{2,100}?)(?:\*\*)?\s*:\s*(?:\*\*)?\s*(?P<val>[^\n]*)$")
+LABEL_KEY = re.compile(r"\b(?:returns?|sharpe|win[- ]?rate|performance|outperform\w*|alpha|cagr)\b", re.I)
+LABEL_EXEMPT = re.compile(r"\b(?:required|expected|target|assumed|assumption|hypothetical|illustrat\w+|risk-free|discount|"
+                          r"hurdle|cost|fee|input|initial|starting|break-?even|threshold|minimum|maximum|goal|budget|"
+                          r"formula|definition|formulation|limit|stop|window|lookback|horizon|period|if|when|example[- ]only|"
+                          r"per trade|position|sizing|rate of return needed|needed|volatility|vol|standard deviation|correlation)\b", re.I)
+VALUE_NUM = re.compile(r"^(?:estimated |approximately |about |around )?[-+~\u2248]?\$?\d")
+SECTION_EXEMPT = re.compile(r"\b(?:calculation|calculat\w+|formula|assumption|input|parameter|scenario|hypothetical|illustrat\w+|"
+                            r"how to|worked|compute|computing|math|derivation|sizing|kelly|definition|what is|"
+                            r"interpret\w*|rule of thumb|benchmarks?|thresholds?|explained|walk-?through|understand\w*|sample|output|reading)\b", re.I)
+ARITH_CONTEXT = re.compile(r"\b(?:assum\w+|suppose|given|inputs?|parameters?|scenario|hypothetical|illustrat\w+|let'?s say|imagine|"
+                           r"for example|for instance)\b", re.I)
+DATED = re.compile(r"\b(?:19|20)\d\d\b")
+LEAD_WORD = re.compile(r"(?:Historical|Average|Annuali[sz]ed|Typical|Backtest|Observed|Realized|Realised)\b", re.I)
+
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
 MAX_SENTENCE = 360
+MEASURED_PAGES = {"triple-barrier-labeling-meta-labeling.md", "python-backtesting-framework.md", "walk-forward-optimization.md"}
 
 
 def split_front(text: str):
@@ -161,9 +206,12 @@ def process(body: str, stats: dict, samples: list) -> str:
         if len(samples) < 2000:
             samples.append((kind, snippet.strip()[:150]))
 
+    heading = ""
     while i < n:
         line = lines[i]
         s = line.strip()
+        if s.startswith("#"):
+            heading = s.lstrip("#").strip()
         if s.startswith("```"):
             fenced = not fenced
             out.append(line)
@@ -259,6 +307,34 @@ def process(body: str, stats: dict, samples: list) -> str:
             note("template-line", line)
             i += 1
             continue
+        # labelled result lines ("- Average return achieved: 24.3%", "- **Sharpe improvement**: 0.74 to 1.18")
+        lm2 = RESULT_LABEL_LINE.match(line)
+        is_bullet = bool(re.match(r"^\s*[-*]\s", line))
+        val2 = lm2.group("val").lstrip("* ").strip() if lm2 else ""
+        pct_ok = bool(lm2) and bool(
+            re.search(r"\d\s*%|percent", val2, re.I)
+            or (re.search(r"sharpe", lm2.group("label"), re.I) and re.search(r"\d\.\d+", val2))
+        )
+        lead_ok = bool(lm2) and (is_bullet or LEAD_WORD.match(lm2.group("label").strip()) or DATED.search(heading))
+        derived = "=" in val2 or bool(re.search(r"[\u00d7*]\s*\d", val2))  # a worked calculation, not a reported result
+        if lm2 and pct_ok and lead_ok and not derived and LABEL_KEY.search(lm2.group("label")) and VALUE_NUM.match(val2):
+            ctx_ok = not LABEL_EXEMPT.search(lm2.group("label"))
+            recent = " ".join(x for x in lines[max(0, i - 8):i] if x.strip())
+            heading_ok = (not SECTION_EXEMPT.search(heading)) and (not re.search(r"example", heading, re.I) or DATED.search(heading))
+            if ctx_ok and heading_ok and not ARITH_CONTEXT.search(recent):
+                note("labelled-result", line)
+                i += 1
+                # if that was the last item under an intro line ("Cross-sectional momentum (1990-2025):"), drop the intro too
+                j = i
+                while j < n and not lines[j].strip():
+                    j += 1
+                if j >= n or not re.match(r"^\s*[-*]\s", lines[j]):
+                    k = len(out) - 1
+                    while k >= 0 and not out[k].strip():
+                        k -= 1
+                    if k >= 0 and INTRO_LINE.match(out[k]) and not re.match(r"^\s*[-*]\s", out[k]):
+                        del out[k:]
+                continue
         # bullets with specific metric values
         if re.match(r"^\s*[-*]\s", line):
             if (BULLET_ONE.match(line) or BULLET_IMPROVES.match(line)
@@ -300,6 +376,13 @@ def process(body: str, stats: dict, samples: list) -> str:
                 if (len(p) <= MAX_SENTENCE and (not RESULT_EXEMPT.search(p) or STUDY_STAT.search(p))
                         and any(r.search(p) for r in RESULT_SENTENCE)):
                     drop = True
+                if len(p) <= MAX_SENTENCE + 200 and AUTHOR_YEAR.search(p) and FINDING_VERB.search(p) and FIGURE.search(p):
+                    drop = True  # a real paper cited next to a number it does not contain
+                if len(p) <= MAX_SENTENCE + 200 and SURVEY_N.search(p):
+                    drop = True
+                if (len(p) <= MAX_SENTENCE and not CONDITIONAL.search(p) and not HEDGED_GENERIC.search(p)
+                        and (any(r.search(p) for r in BACKTEST_CLAIM) or any(r.search(p) for r in WINRATE_FACT))):
+                    drop = True
                 if len(p) <= MAX_SENTENCE and VAGUE_CITATION.search(p) and not YEAR.search(p):
                     drop = True  # a citation with no year or author cannot be checked
                 if drop:
@@ -309,6 +392,14 @@ def process(body: str, stats: dict, samples: list) -> str:
                     kept.append(p)
             if changed:
                 new = " ".join(kept).strip()
+                if not new and re.match(r"^\s*(?:\*\*)?A(?:nswer)?:(?:\*\*)?", line):
+                    out.append(line[: re.match(r"^\s*(?:\*\*)?A(?:nswer)?:(?:\*\*)?", line).end()] + " Specific figures are not published here; test any idea on your own data with realistic costs.")
+                    note("answer-note", line)
+                    i += 1
+                    continue
+                pm = re.match(r"^\s*(?:\*\*)?A(?:nswer)?:(?:\*\*)?\s*", line)
+                if new and pm and not re.match(r"^\s*(?:\*\*)?A(?:nswer)?:", new):
+                    new = pm.group(0) + new  # keep the answer label when its first sentence was the one removed
                 if new:
                     prefix = re.match(r"^\s*(?:\*\*)?(?:[A-Za-z]:|Q\d*:)", line)
                     out.append(new if not prefix or len(new) > 12 else "")
@@ -334,7 +425,7 @@ def main() -> int:
     samples: list = []
     changed_files = []
     for f in sorted(BLOG.glob("*.md")):
-        if f.name == "ARTICLES_COMPLETED.md":
+        if f.name == "ARTICLES_COMPLETED.md" or f.name in MEASURED_PAGES:
             continue
         text = f.read_text(encoding="utf-8", errors="replace")
         if "## Sources" in text:

@@ -170,8 +170,6 @@ Options amplify Big Tech antitrust plays by average 4.2x leverage.
 Big Tech antitrust committee members achieve superior trading returns:
 
 **House Judiciary Committee Antitrust Subcommittee**:
-- Members' Big Tech trading return: 21.2%
-- Non-committee members' Big Tech return: 15.8%
 - Committee advantage: 34%
 
 Antitrust subcommittee membership provides 34% advantage in Big Tech trading returns.
@@ -228,11 +226,6 @@ Congressional access to advance foreign regulation intelligence enables profitab
 
 Congressional Big Tech antitrust trading vs sector benchmarks:
 
-**Performance Comparison**:
-- Congressional Big Tech return: 18.2%
-- Technology sector benchmark return: 8.4%
-- Congressional outperformance: 217%
-
 The 217% outperformance demonstrates information advantage specific to antitrust outcomes.
 
 ## Hearing Participation Advantage
@@ -242,7 +235,6 @@ Congressional members conducting antitrust hearings show elevated Big Tech tradi
 **Hearing Participant Trading**:
 - Members questioning Big Tech executives during hearing: 34 members
 - Of these 34, Big Tech trading volume in preceding month: 3.4x higher than baseline
-- Trading performance of hearing participants: 19.8% average return vs 16.4% overall
 
 Hearing participants achieve 19.8% returns vs 16.4% overall—suggesting advance preparation involves trading positioning.
 

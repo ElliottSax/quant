@@ -87,8 +87,6 @@ The pivot bounce strategy trades reversals at pivot support and resistance level
 - Stop-Loss: Above R1 by the average range of the last 5 candles, or above R2 if entering at R1
 - Target: PP or S1
 
-**Win Rate Expectation:** Backtesting across major index futures shows pivot bounce strategies at S1 and R1 produce win rates between 55-62% with risk/reward ratios of approximately 1:1.2 to 1:1.5.
-
 ## Trading Strategy 2: Pivot Breakout
 
 When price breaks through a pivot level with conviction, it often continues to the next level.
