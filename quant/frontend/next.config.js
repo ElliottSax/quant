@@ -49,7 +49,12 @@ const nextConfig = {
       "congress-pharmaceutical-trades-before-votes",
       "congress-real-estate-investments-2026",
       "congress-semiconductor-stock-trades",
-      "congress-small-cap-stock-picks"
+      "congress-small-cap-stock-picks",
+      "congress-options-trading-analysis",
+      "congress-stock-trades-before-earnings",
+      "congress-stock-trades-vs-hedge-funds",
+      "congress-tech-stock-buying-spree-2026",
+      "congress-ai-stock-investments-2026"
     ]
     return removed.map((slug) => ({
       source: `/blog/${slug}`,

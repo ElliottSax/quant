@@ -9,7 +9,7 @@ keywords: ["congressional stock trading", "politician stock trades", "congress s
 ---
 # Congressional Stock Trading: How Politicians Trade Stocks and What It Means for You
 
-Congressional stock trading has become one of the most scrutinized topics in American finance. Members of Congress collectively trade billions of dollars in securities each year while simultaneously crafting legislation that directly impacts the companies they own. Between 2019 and 2025, congressional stock trades exceeded $8.5 billion in disclosed value, and multiple academic studies have found that these trades outperform the market by statistically significant margins.
+Congressional stock trading has become one of the most scrutinized topics in American finance. Members of Congress collectively trade billions of dollars in securities each year while simultaneously crafting legislation that directly impacts the companies they own. Disclosures report each trade only as an amount range, and whether these trades beat the market is contested in the academic literature: published estimates differ by period, benchmark and how the filing delay is handled.
 
 Whether you view this as a legitimate exercise of personal financial freedom or a structural conflict of interest, the data is clear: understanding how politicians trade stocks can provide actionable insight for retail investors. This guide covers the legal framework, the key players, notable trades, how to follow congressional activity, and the ethical debate that continues to shape proposed reforms.
 

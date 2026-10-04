@@ -21,6 +21,10 @@ const REMOVED = [
   'congress-military-contractor-investments', 'congress-pharmaceutical-trades-before-votes',
   'congress-real-estate-investments-2026', 'congress-semiconductor-stock-trades',
   'congress-small-cap-stock-picks',
+  // 2026-10-04 second sweep: name-free posts with invented congress-wide aggregates (win rates, profits, volumes)
+  'congress-options-trading-analysis', 'congress-stock-trades-before-earnings',
+  'congress-stock-trades-vs-hedge-funds', 'congress-tech-stock-buying-spree-2026',
+  'congress-ai-stock-investments-2026',
 ]
 
 const TITLE = /\b(?:Sen\.|Rep\.|Senator|Representative|Congressman|Congresswoman)\s+[A-Z][a-z]+|\((?:R|D|I)-[A-Z][A-Za-z]*\)/
@@ -58,4 +62,23 @@ test('every removed post redirects to the live tracker', async () => {
   for (const s of REMOVED) {
     assert.ok(redirects.some((r: any) => r.source === `/blog/${s}` && r.destination === '/congress-stock-trades'), s)
   }
+})
+
+// Congress-wide performance aggregates have no source: a PTR reports an amount band, never a return,
+// so a "win rate", "outperformance" or realised profit for Congress as a group cannot be derived from filings.
+test('no blog line states an unsourced congress-wide win rate, outperformance or realised profit', () => {
+  const GROUP = /\b(?:congress(?:ional)?|lawmakers|legislators|politicians)\b/i
+  const CLAIM = /\b(?:win rate|outperform\w*|beat the market|alpha|sharpe|annuali[sz]ed|realised profit|realized profit|average return|profits? of)\b/i
+  const NUM = /\d+(?:\.\d+)?\s?%|\$\s?\d[\d,.]*\s?(?:[KMB]\b|thousand|million|billion)/i
+  const hits: string[] = []
+  for (const f of FILES) {
+    if (!/congress|politician|stock-act/i.test(f)) continue
+    let fenced = false
+    fs.readFileSync(path.join(BLOG_DIR, f), 'utf-8').split(/\r?\n/).forEach((line, i) => {
+      if (line.trimStart().startsWith('```')) { fenced = !fenced; return }
+      if (fenced || /^>\s*\*\*Note on figures/.test(line)) return
+      if (GROUP.test(line) && CLAIM.test(line) && NUM.test(line.replace(BAND, ''))) hits.push(`${f}:${i + 1}: ${line.slice(0, 100)}`)
+    })
+  }
+  assert.deepEqual(hits, [])
 })
