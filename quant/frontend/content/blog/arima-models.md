@@ -347,7 +347,7 @@ class ARIMAStrategy:
         return results
 ```
 
-On daily SPY returns (2015-2025), an ARIMA(1,0,1) forecast strategy generates a Sharpe ratio of 0.45 -- modest but positive. The ARIMA model's primary value is not as a standalone signal but as one input into a multi-factor alpha model.
+The ARIMA model's primary value is not as a standalone signal but as one input into a multi-factor alpha model.
 
 ## Model Selection: AIC vs BIC
 

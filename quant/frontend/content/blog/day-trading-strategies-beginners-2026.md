@@ -37,7 +37,7 @@ Wait for a breakout above resistance on increased volume, enter on the breakout,
 **Key Indicators:**
 Volume, RSI, MACD
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 SPY breaks above 450 on 2M volume → Enter long → Exit when volume drops below 1.5M average
 
 ### Strategy 2: Breakout Trading
@@ -50,7 +50,7 @@ Identify 5-day high/low, place buy orders 0.10 above high, sell orders 0.10 belo
 **Key Indicators:**
 Support/Resistance, Volume Profile, ATR
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 QQQ breaks above 400 5-day high → Buy 100 shares → Set stop 399.50 → Target 405
 
 ### Strategy 3: Pullback Trading
@@ -63,7 +63,7 @@ Find 15-min uptrend, wait for pullback to 20 EMA, buy the bounce.
 **Key Indicators:**
 EMA 20/50, RSI < 50, Support Levels
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 Stock in uptrend, pulls back to 20 EMA, RSI bounces from 40 → Enter long
 
 ## Risk Management & Position Sizing

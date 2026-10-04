@@ -180,7 +180,7 @@ Due to crypto's extreme volatility, position sizes should be 3-5x smaller than e
 
 ### Is quantitative trading profitable in crypto?
 
-Yes, crypto remains one of the most profitable markets for systematic trading due to higher volatility, more retail participation, and less sophisticated competition compared to equity markets. However, profitability has decreased since 2017-2019 as more quantitative firms entered the space. Our backtest data shows long/short crypto momentum producing 38.2% CAGR with a 1.42 Sharpe, well above what similar strategies achieve in equities. The key risk is exchange counterparty failure, which requires careful risk management.
+Yes, crypto remains one of the most profitable markets for systematic trading due to higher volatility, more retail participation, and less sophisticated competition compared to equity markets. However, profitability has decreased since 2017-2019 as more quantitative firms entered the space. The key risk is exchange counterparty failure, which requires careful risk management.
 
 ### How much capital do you need for crypto quantitative trading?
 

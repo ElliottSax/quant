@@ -293,7 +293,7 @@ A: Full Kelly is dangerously aggressive. Use **0.25× Kelly** for safety. Histor
 
 ## Conclusion
 
-Position sizing is not a secondary concern—it is the cornerstone of sustainable trading. The data clearly shows that **safe sizing methods reduce drawdowns by 20–40% and lower ruin probability by up to 80%** compared to naive approaches.
+Position sizing is not a secondary concern—it is the cornerstone of sustainable trading.
 
 Among the methods evaluated:
 - **Volatility targeting** delivers the most consistent risk-adjusted returns.

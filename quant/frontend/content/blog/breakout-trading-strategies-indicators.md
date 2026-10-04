@@ -37,7 +37,7 @@ Identify resistance level (previous high). Wait for break of resistance + volume
 **Key Indicators:**
 Resistance level, Volume spike, Price momentum
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 SPY avg 800k volume, breaks $450 on 2.4M volume → Real breakout → Buy → Stop below $450
 
 ### Strategy 2: MACD Breakout Confirmation
@@ -50,7 +50,7 @@ Price breaks resistance + MACD crosses above signal line. Double confirmation = 
 **Key Indicators:**
 Resistance/Support, MACD crossover, RSI > 50
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 Stock breaks $100 support and MACD crosses bullish → Buy → Hold until MACD flips negative
 
 ### Strategy 3: Retest Breakout Entry
@@ -63,7 +63,7 @@ Price breaks resistance, pulls back to test the breakout level, bounces. Enter o
 **Key Indicators:**
 Resistance level, Volume on retest, RSI bounce
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 QQQ breaks $400 → Pulls back to $399 test → Bounces on RSI > 50 → Enter long
 
 ## Risk Management & Position Sizing

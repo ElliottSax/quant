@@ -37,7 +37,7 @@ Code: if 50EMA > 200EMA: buy_signal = True. if 50EMA < 200EMA: sell_signal = Tru
 **Key Indicators:**
 EMA 50/200, ATR for stop loss sizing
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 Bot monitors BTC/USD hourly. When 50 > 200 EMA: buys $1000 worth. When 50 < 200: sells all.
 
 ### Strategy 2: Bollinger Bands Mean Reversion Bot
@@ -50,8 +50,8 @@ if price < lower_band: buy. if price > upper_band: sell. RSI confirmation to red
 **Key Indicators:**
 Bollinger Bands, RSI, Volume
 
-**Real Example:**
-Bot trades ETH. When price < lower BB + RSI < 30: buys $500. When price > upper BB + RSI > 70: sells. Win rate: 62%.
+**Illustration (hypothetical, not a real trade or result):**
+Bot trades ETH. When price < lower BB + RSI < 30: buys $500. When price > upper BB + RSI > 70: sells.
 
 ### Strategy 3: Grid Trading Bot
 
@@ -63,7 +63,7 @@ Place buy orders every $0.50 below price, sell orders every $0.50 above. Auto-re
 **Key Indicators:**
 Support/Resistance, Volatility (ATR)
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 BTC at $45,000. Bot places: buy at $44,950, $44,900, $44,850 and sell at $45,050, $45,100, $45,150. Profits from swings.
 
 ## Risk Management & Position Sizing

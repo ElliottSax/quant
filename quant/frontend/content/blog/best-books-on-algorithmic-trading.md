@@ -109,7 +109,7 @@ The following FAQ provides answers to some of the most common questions about al
 3. **What are the risks of algorithmic trading?**: The risks of algorithmic trading include significant losses, errors, and poor performance.
 4. **What programming languages are used in algorithmic trading?**: The most popular programming languages used in algorithmic trading are Python, Java, and C++.
 5. **What is the future of algorithmic trading?**: The future of algorithmic trading is expected to be dominated by artificial intelligence and machine learning, with increased use of cloud computing and big data.
-According to a study by the Journal of Financial Markets, the use of algorithmic trading is expected to continue to grow, with up to 90% of all trades being executed through algorithmic trading systems by 2025. The following table summarizes the FAQ:
+The following table summarizes the FAQ:
 | Question | Answer | Importance |
 | --- | --- | --- |
 | What is Algorithmic Trading? | Use of computer programs to execute trades | High |

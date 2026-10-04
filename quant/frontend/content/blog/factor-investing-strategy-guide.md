@@ -116,7 +116,7 @@ Factor timing attempts to overweight factors that are likely to outperform and u
 
 **Momentum crash prediction**: When market volatility is elevated and momentum returns are extreme, the probability of a momentum crash increases. Reducing momentum exposure when VIX > 30 improved the momentum factor Sharpe from 0.58 to 0.72.
 
-**Business cycle timing**: Value tends to outperform during economic recoveries, momentum during mid-cycle expansions, and quality during recessions. Using leading economic indicators for factor rotation added 1.2% annual return in our backtest.
+**Business cycle timing**: Value tends to outperform during economic recoveries, momentum during mid-cycle expansions, and quality during recessions.
 
 ### Factor Timing Results
 

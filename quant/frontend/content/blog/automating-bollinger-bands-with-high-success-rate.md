@@ -17,7 +17,7 @@ seo_optimized: true
 
 ## Introduction
 
-The standard Bollinger Band mean-reversion strategy -- buy when price touches the lower band, sell at the middle band -- produces a win rate of approximately 55-58% on liquid equities. While positive, this barely justifies the transaction costs and psychological burden of frequent small losses. By applying targeted filters derived from market microstructure research, we can push the win rate to 65-75% without sacrificing average trade profitability. The key insight is that not all band touches are equal: those accompanied by specific volume patterns, volatility regime conditions, and momentum configurations have substantially higher reversal probability.
+While positive, this barely justifies the transaction costs and psychological burden of frequent small losses. By applying targeted filters derived from market microstructure research, we can push the win rate to 65-75% without sacrificing average trade profitability. The key insight is that not all band touches are equal: those accompanied by specific volume patterns, volatility regime conditions, and momentum configurations have substantially higher reversal probability.
 
 ## The Baseline: Unfiltered Bollinger Band Performance
 

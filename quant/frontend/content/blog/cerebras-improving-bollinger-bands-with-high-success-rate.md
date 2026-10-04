@@ -282,7 +282,7 @@ print(f"Sharpe Ratio: {sharpe:.2f}")
 
 ## Conclusion
 
-Standard Bollinger Bands, while intuitive, suffer from low win rates due to false signals in trending markets. By introducing adaptive parameters, volatility filters, trend confirmation, and disciplined exits, we developed an enhanced version that aims for a higher success rate (the figure below is an illustrative example, not a verified result). The strategy also delivers a Sharpe ratio of 0.82 and outperforms buy-and-hold on a risk-adjusted basis.
+Standard Bollinger Bands, while intuitive, suffer from low win rates due to false signals in trending markets. By introducing adaptive parameters, volatility filters, trend confirmation, and disciplined exits, we developed an enhanced version that aims for a higher success rate (the figure below is an illustrative example, not a verified result).
 
 The key to success lies not in abandoning Bollinger Bands, but in augmenting them with filters that align with market structure and behavioral finance principles. Traders seeking high win rate strategies should prioritize signal quality over frequency and rigorously backtest enhancements in multiple market environments.
 

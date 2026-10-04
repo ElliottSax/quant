@@ -37,7 +37,7 @@ Range identified: $100-110. Place buys at 109.50, 109, 108.50, 108. Place sells 
 **Key Indicators:**
 Support/Resistance levels, Bollinger Bands for range, ADX < 20
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 QQQ ranging $350-360. Buy orders at 359.50, 359, 358.50, 358. Sell orders at 350.50, 351, 351.50, 352. Average profit per cycle: $5 per share × 10 shares = $50.
 
 ### Strategy 2: Dynamic Grid Trading
@@ -50,7 +50,7 @@ Use ATR to set grid spacing. Low volatility: grids every $0.25. High volatility:
 **Key Indicators:**
 ATR, Support/Resistance, Volatility
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 Crypto ATR = $200, place grids every $200: 45,200, 45,000, 44,800 (buys) and 45,400, 45,600 (sells). Scale profit with volatility.
 
 ### Strategy 3: Pyramid Grid Trading
@@ -63,7 +63,7 @@ Buy 10 units at 109, 20 units at 108, 30 units at 107. Sell all on bounces. Risk
 **Key Indicators:**
 Trend within range, Volume, Support
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 Stock hits support: buy 100 shares at 99. Continues down: buy 200 more at 98. Bounces to 102: sell all 300 for $300 profit.
 
 ## Risk Management & Position Sizing

@@ -37,7 +37,7 @@ On 4-hour chart, identify key resistance (previous high). Wait for close above r
 **Key Indicators:**
 Resistance levels, Volume, RSI > 50
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 BTC breaks above $45,000 on 4-hour chart → Enter long → Stop $44,500 → Target $47,500 (5.5% profit)
 
 ### Strategy 2: 1-Hour Scalping
@@ -50,7 +50,7 @@ Find 1-hour support level, wait for bounce signal (hammer or bullish engulfing),
 **Key Indicators:**
 Support/Resistance, RSI 30-70, MACD crossovers
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 ETH bounces at $2,500 support → Buy → Hold 15 minutes → Exit at $2,520 ($3 per ETH × 10 = $30 profit)
 
 ### Strategy 3: Range Trading
@@ -63,7 +63,7 @@ Identify range (e.g., BTC 44,000-46,000). Buy at support, sell at resistance. Re
 **Key Indicators:**
 Support/Resistance, Bollinger Bands, Volume
 
-**Real Example:**
+**Illustration (hypothetical, not a real trade or result):**
 BTC ranging 44,000-46,000 → Buy at 44,200 → Sell at 45,800 → Repeat 3-5x daily
 
 ## Risk Management & Position Sizing

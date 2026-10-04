@@ -40,7 +40,7 @@ The scalping targets the 5-minute charts timeframe, making it ideal for traders 
 
 The strategy's effectiveness stems from its combination of technical analysis and risk management principles. By identifying specific market patterns and conditions, traders can enter positions when odds are most favorable. The defined exit rules ensure that losses are controlled while profits are allowed to grow within predetermined targets.
 
-Market research shows that traders using disciplined strategies similar to the scalping achieve success rates 10-15% higher than traders using discretionary approaches. This improvement comes from consistent rule application and emotional discipline.
+This improvement comes from consistent rule application and emotional discipline.
 
 ## Entry Rules: When to Enter Trades
 
@@ -100,7 +100,7 @@ Knowing when to exit is equally important as knowing when to enter. The scalping
 - Analyze what went wrong with the failed trade
 - Adjust position size or strategy if losses exceed 2% of account per trade
 
-**Professional traders execute exits with zero emotion.** Exit rules are predetermined before entering the trade. Discipline in exit execution separates professional traders from amateurs. Studies show that traders who follow predetermined exits achieve 20-30% better results than those who make exit decisions emotionally.
+**Professional traders execute exits with zero emotion.** Exit rules are predetermined before entering the trade. Discipline in exit execution separates professional traders from amateurs.
 
 ## Risk Management: Protecting Your Trading Capital
 

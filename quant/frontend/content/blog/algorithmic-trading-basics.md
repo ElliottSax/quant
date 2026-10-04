@@ -31,7 +31,7 @@ $$
 Signal_t = \begin{cases} +1 & \text{if } MA_{fast,t} > MA_{slow,t} \\ -1 & \text{if } MA_{fast,t} < MA_{slow,t} \end{cases}
 $$
 
-A standard parameterization uses 50-day and 200-day simple moving averages. On the S&P 500 (1950-2025), the long-only version of this strategy produced an annual return of 8.1% with a maximum drawdown of -24%, versus buy-and-hold returns of 10.4% with a -56% drawdown. The strategy sacrifices some return for substantially better risk-adjusted performance.
+A standard parameterization uses 50-day and 200-day simple moving averages. The strategy sacrifices some return for substantially better risk-adjusted performance.
 
 ### Mean Reversion
 

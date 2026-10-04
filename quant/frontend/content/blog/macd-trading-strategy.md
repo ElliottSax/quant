@@ -140,7 +140,7 @@ Raw MACD crossovers produce excessive signals, many in choppy markets. Without f
 
 ### Using Default Parameters Universally
 
-The 12/26/9 default was designed for daily stock charts in the 1970s. Different markets and timeframes benefit from different parameters. Test the 5/35/5 alternative, which showed superior performance in our backtests.
+The 12/26/9 default was designed for daily stock charts in the 1970s. Different markets and timeframes benefit from different parameters.
 
 ### Ignoring the Histogram
 

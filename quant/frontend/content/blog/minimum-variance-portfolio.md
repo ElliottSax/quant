@@ -163,4 +163,4 @@ Substantially. Using a sample covariance matrix with 250 daily observations prod
 
 ### Should I combine minimum variance with momentum or other factors?
 
-Combining minimum variance with momentum can be powerful because the two factors are negatively correlated (low-volatility stocks tend to be past underperformers). A portfolio that selects stocks in the intersection of low-volatility and positive-momentum universes historically achieves Sharpe ratios 20-30% higher than either factor alone. However, this intersection may be small, requiring a larger starting universe.
+Combining minimum variance with momentum can be powerful because the two factors are negatively correlated (low-volatility stocks tend to be past underperformers). However, this intersection may be small, requiring a larger starting universe.

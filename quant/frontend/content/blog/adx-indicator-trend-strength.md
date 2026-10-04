@@ -67,7 +67,6 @@ Use ADX to filter out false signals:
 - Only trade when ADX > 25
 - Avoid trades when ADX < 20
 - Range-bound trading impossible with low ADX
-- Win rate: Improves by 10-15%
 
 ## Real-World ADX Examples
 

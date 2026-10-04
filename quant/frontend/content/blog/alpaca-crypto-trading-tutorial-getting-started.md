@@ -28,7 +28,7 @@ The use of algorithms and quantitative strategies has become increasingly popula
 ## Key Concepts
 To get started with Alpaca crypto trading, it is essential to understand some key concepts, including the Alpaca API, cryptocurrency trading, and quantitative strategies. The Alpaca API is a RESTful API that provides access to a wide range of financial instruments, including stocks, options, and cryptocurrencies. The API is commission-free, with no minimum deposit requirements or trading fees. According to Alpaca's documentation, the API has a latency of less than 10 milliseconds, making it suitable for high-frequency trading applications. In 2022, the average order size on Alpaca was $1,500, with an average order execution time of 20 milliseconds.
 
-The Alpaca API supports a wide range of cryptocurrency trading pairs, including Bitcoin, Ethereum, and Litecoin. The API also provides real-time market data, including prices, volumes, and order books. According to a recent study, the use of real-time market data can improve trading performance by up to 20%, with the majority of traders citing the importance of timely and accurate data in their trading decisions. The following table provides an overview of the cryptocurrency trading pairs supported by Alpaca:
+The Alpaca API supports a wide range of cryptocurrency trading pairs, including Bitcoin, Ethereum, and Litecoin. The API also provides real-time market data, including prices, volumes, and order books. The following table provides an overview of the cryptocurrency trading pairs supported by Alpaca:
 
 | Cryptocurrency | Trading Pairs |
 | --- | --- |
@@ -95,7 +95,7 @@ To get the most out of Alpaca crypto trading, it is essential to follow best pra
 | Position Sizing | A strategy that involves sizing positions based on risk tolerance and market conditions |
 | Performance Monitoring | A strategy that involves monitoring trading performance using metrics such as profit/loss, Sharpe ratio, and drawdown |
 
-According to a recent study, the use of risk management techniques can improve trading performance by up to 30%, with the majority of traders citing the importance of risk management in their trading decisions. The following code snippet provides an example of a simple risk management strategy implemented using the `alpaca-trade-api` library:
+The following code snippet provides an example of a simple risk management strategy implemented using the `alpaca-trade-api` library:
 ```python
 import pandas as pd
 import numpy as np
@@ -139,7 +139,7 @@ def risk_management_strategy(symbol):
 risk_management_strategy('BTC/USD')
 ```
 ## Real-World Examples
-Alpaca crypto trading has a wide range of real-world applications, including high-frequency trading, market making, and statistical arbitrage. According to a recent study, the use of Alpaca crypto trading can improve trading performance by up to 25%, with the majority of traders citing the flexibility and customization options as major advantages. The following table provides an overview of the real-world applications of Alpaca crypto trading:
+Alpaca crypto trading has a wide range of real-world applications, including high-frequency trading, market making, and statistical arbitrage. The following table provides an overview of the real-world applications of Alpaca crypto trading:
 
 | Application | Description |
 | --- | --- |
@@ -202,8 +202,6 @@ There are several common mistakes that traders make when using Alpaca crypto tra
 7. **Inadequate data analysis**: Failing to analyze market data using sound quantitative techniques can result in poor trading performance.
 8. **Inadequate software development**: Failing to develop software using sound programming principles can result in poor trading performance.
 
-According to a recent study, the use of risk management techniques can improve trading performance by up to 30%, with the majority of traders citing the importance of risk management in their trading decisions.
-
 ## FAQ
 The following are some frequently asked questions about Alpaca crypto trading:
 
@@ -212,8 +210,6 @@ The following are some frequently asked questions about Alpaca crypto trading:
 3. **What is the Alpaca API?**: The Alpaca API is a RESTful API that provides access to a wide range of financial instruments, including stocks, options, and cryptocurrencies.
 4. **What programming languages are supported by Alpaca?**: Alpaca supports a wide range of programming languages, including Python, Java, and C++.
 5. **What is the latency of the Alpaca API?**: The latency of the Alpaca API is less than 10 milliseconds, making it suitable for high-frequency trading applications.
-
-According to a recent study, the use of Alpaca crypto trading can improve trading performance by up to 25%, with the majority of traders citing the flexibility and customization options as major advantages.
 
 ## Conclusion
 In conclusion, Alpaca crypto trading is a powerful platform that provides access to a wide range of financial instruments, including cryptocurrencies, using a robust API and extensive documentation. By following the tutorial outlined in this article, traders can get started with Alpaca crypto trading and improve their trading performance using quantitative techniques, including statistical analysis and financial modeling. It is essential to follow best practices, including risk management, position sizing, and performance monitoring, to get the most out of Alpaca crypto trading. With its flexibility, customization options, and robust API, Alpaca crypto trading is an ideal platform for quantitative traders and researchers. According to a recent survey, 80% of quantitative traders use some form of statistical analysis in their trading activities, with the majority citing the importance of data-driven decision making in their trading strategies. By using Alpaca crypto trading, traders can improve their trading performance and achieve their investment goals.

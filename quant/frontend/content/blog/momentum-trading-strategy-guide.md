@@ -89,8 +89,6 @@ We implement three layers of protection:
 2. **Momentum timing**: If past 1-month momentum factor return is negative, reduce exposure by 25%
 3. **Stop-loss**: Individual position stop at 2x ATR from entry
 
-These mechanisms reduced the maximum drawdown from -38.7% (unprotected) to -16.2% in our backtest.
-
 ## Sector and Factor Decomposition
 
 Breaking down the strategy's returns by source reveals:

@@ -226,6 +226,4 @@ A: They increase volatility, often causing bands to widen and prices to break ou
 
 Bollinger Bands are a foundational tool in Forex technical analysis, but their standard configuration is suboptimal for modern trading conditions. By adjusting parameters, integrating volatility filters, combining with RSI, identifying squeezes, and implementing adaptive logic, traders can significantly improve performance.
 
-Backtested results across major currency pairs show that optimized and filtered Bollinger Band strategies achieve win rates above 60%, Sharpe ratios exceeding 0.7, and reduced drawdowns compared to the baseline.
-
 However, no enhancement eliminates risk. Bollinger Bands should be part of a broader trading system that includes risk management, market context awareness, and real-time validation. When used thoughtfully, they remain a powerful tool for identifying high-probability setups in the dynamic world of Forex.

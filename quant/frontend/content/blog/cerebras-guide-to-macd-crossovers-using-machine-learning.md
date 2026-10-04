@@ -32,7 +32,7 @@ A classic crossover signal occurs when:
 - **Buy Signal**: MACD line crosses **above** the signal line
 - **Sell Signal**: MACD line crosses **below** the signal line
 
-While intuitive, this binary rule ignores contextual factors such as market volatility, volume trends, and price momentum. Empirical studies show that pure MACD strategies on daily S&P 500 data generate an average annual return of **5.2%** from 2010–2023, with a Sharpe ratio of **0.48** and a win rate of **51.3%**. These figures indicate marginal outperformance over a buy-and-hold strategy, which returned **9.8%** annually in the same period.
+While intuitive, this binary rule ignores contextual factors such as market volatility, volume trends, and price momentum. These figures indicate marginal outperformance over a buy-and-hold strategy, which returned **9.8%** annually in the same period.
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 

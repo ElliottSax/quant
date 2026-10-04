@@ -100,7 +100,7 @@ Knowing when to exit is equally important as knowing when to enter. The ma cross
 - Analyze what went wrong with the failed trade
 - Adjust position size or strategy if losses exceed 2% of account per trade
 
-**Professional traders execute exits with zero emotion.** Exit rules are predetermined before entering the trade. Discipline in exit execution separates professional traders from amateurs. Studies show that traders who follow predetermined exits achieve 20-30% better results than those who make exit decisions emotionally.
+**Professional traders execute exits with zero emotion.** Exit rules are predetermined before entering the trade. Discipline in exit execution separates professional traders from amateurs.
 
 ## Risk Management: Protecting Your Trading Capital
 

@@ -179,7 +179,7 @@ TAA is systematic, rules-based market timing. The distinction from discretionary
 
 ### What is the optimal bandwidth for tactical adjustments?
 
-Wider bandwidths allow larger deviations but increase the cost of being wrong. Research suggests optimal bandwidths of 10-15% per asset class for most investors. Conservative investors should use narrower bandwidths (5-10%) to limit tracking error relative to the strategic benchmark. Aggressive investors can use 15-25%, but the incremental benefit of wider bandwidths diminishes beyond 15%.
+Wider bandwidths allow larger deviations but increase the cost of being wrong. Conservative investors should use narrower bandwidths (5-10%) to limit tracking error relative to the strategic benchmark. Aggressive investors can use 15-25%, but the incremental benefit of wider bandwidths diminishes beyond 15%.
 
 ### How does TAA perform during sustained bull markets?
 

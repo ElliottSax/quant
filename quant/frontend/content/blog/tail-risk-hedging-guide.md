@@ -130,7 +130,7 @@ This suggests allocating roughly 10-12% of portfolio value to tail protection st
 
 ### Is tail risk hedging worth the cost for a long-term investor?
 
-For a truly long-term investor (20+ year horizon) with no leverage and no liquidity needs, the mathematical answer is often no -- the drag from persistent hedging exceeds the benefit of avoiding drawdowns that the investor can wait through. However, behavioral finance research shows that most investors cannot actually tolerate 40-50% drawdowns without making emotionally driven decisions (selling at the bottom), making tail hedging valuable even for those with long horizons.
+For a truly long-term investor (20+ year horizon) with no leverage and no liquidity needs, the mathematical answer is often no -- the drag from persistent hedging exceeds the benefit of avoiding drawdowns that the investor can wait through.
 
 ### How do I hedge tail risk in a fixed income portfolio?
 

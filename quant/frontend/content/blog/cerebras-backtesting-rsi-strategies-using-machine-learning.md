@@ -281,7 +281,7 @@ The model performs best in volatile, range-bound markets. In strong trends (e.g.
 
 ## Conclusion
 
-Machine learning enhances traditional RSI strategies by incorporating context, adapting to market conditions, and improving signal quality. Our backtest on SPY from 2016 to 2023 shows that an XGBoost model using RSI and auxiliary features achieves a Sharpe ratio of 0.63, outperforming a classic RSI strategy (0.27) and reducing maximum drawdown by 10.7 percentage points.
+Machine learning enhances traditional RSI strategies by incorporating context, adapting to market conditions, and improving signal quality.
 
 Key takeaways:
 - ML models should augment, not replace, sound trading logic.

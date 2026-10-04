@@ -275,7 +275,7 @@ A: Limit open positions before high-impact events (e.g., NFP, FOMC). Use an econ
 
 ### Q: Can mean reversion work on shorter timeframes like M15 or H1?
 
-A: Yes, but with caveats. On 1-hour data, the Z-Score strategy on EUR/USD (2015–2023) yields a Sharpe of 0.68 and win rate of 59%, but requires tighter spreads (<0.5 pip) and faster execution. Latency becomes a critical factor.
+A: Yes, but with caveats. Latency becomes a critical factor.
 
 ### Q: Should I use closing price or bid/ask midpoint?
 
@@ -291,6 +291,6 @@ A: A minimum of 5 years of daily data is required to capture multiple market cyc
 
 Automating mean reversion on Forex offers a disciplined, rules-based approach to capturing short-term mispricings in currency pairs. When applied to liquid, range-bound markets like EUR/USD, the strategy can behave differently across market conditions.
 
-Our backtest over 2015–2023 shows an annualized return of 6.7% and a Sharpe ratio of 0.74, with a win rate of 61.5%. Performance varies significantly across currency pairs and market regimes, underscoring the need for robust risk management and regime filters.
+Performance varies significantly across currency pairs and market regimes, underscoring the need for robust risk management and regime filters.
 
 While not a "holy grail," automated mean reversion is a valuable component of a diversified trading portfolio — particularly when combined with trend-following strategies and macro filters. Success depends not on complexity, but on discipline, rigorous testing, and continuous monitoring of structural market changes.

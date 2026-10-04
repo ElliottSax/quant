@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remove fabricated backtest/result figures from blog posts (fourth pass, 2026-10-04).
+"""Remove fabricated backtest/result figures from blog posts (fourth and fifth pass, 2026-10-04).
 
     python scripts/strip_result_figures.py --dry-run
     python scripts/strip_result_figures.py --apply
@@ -52,8 +52,9 @@ BULLET_ONE = re.compile(rf"^\s*[-*]\s+(?:\*\*)?{METRIC}(?:\*\*)?\s*(?:\([^)]*\))
 METRIC_VAL = re.compile(rf"{METRIC}[^\n|]{{0,18}}?[-+~]?\d", re.I)
 
 RESULT_SENTENCE = [
-    re.compile(r"\b(?:generated|produced|achieved|delivered|yielded|returned|posted|reached|recorded|showed)\s+"
-               r"(?:an?\s+)?(?:annuali[sz]ed\s+|average\s+|total\s+)?"
+    re.compile(r"\b(?:generated|produced|achieved|delivered|yielded|returned|posted|reached|recorded|showed|"
+               r"generates|produces|achieves|delivers|yields)\s+"
+               r"(?:an?\s+)?(?:annuali[sz]ed\s+|annual\s+|average\s+|total\s+)?"
                r"(?:return|Sharpe(?: ratio)?|win rate|profit factor|drawdown)\b[^.!?]{0,40}?[-+]?\d", re.I),
     re.compile(r"\b\d(?:\.\d+)?\s+Sharpe(?: ratio)?\s+and\s+\d{2}(?:\.\d+)?%\s+win rate", re.I),
     re.compile(r"\bSharpe(?: ratio)? of \d\.\d+[^.!?]{0,60}?(?:drawdown|return)\b", re.I),
@@ -64,7 +65,32 @@ RESULT_SENTENCE = [
     re.compile(r"\bproduced the (?:best|highest|lowest)[^.!?\n]{0,70}(?:Sharpe|drawdown|return)[^.!?\n]{0,25}\d", re.I),
     re.compile(r"\btypically (?:achieves?|produces?|delivers?|generates?)[^.!?]{0,60}Sharpe ratios? (?:of|between|from) \d", re.I),
     re.compile(r"\b(?:Win rate|Sharpe)\b[^.!?\n]{0,12}\d[^.!?\n]*\b(?:Sharpe|profit factor|average return)\b[^.!?\n]{0,12}\d", re.I),
+    # fifth pass (2026-10-04): in-house results phrased in other ways, and vague "studies"
+    re.compile(r"\b(?:our|my) (?:own )?back-?tests?\b[^.!?]{0,80}\d", re.I),
+    re.compile(r"\d[^.!?]*\b(?:in|from|on|during) (?:our|my) (?:own )?back-?tests?\b", re.I),
+    re.compile(r"\b(?:the )?results? (?:show|shows|indicate|indicates|suggest|suggests)\b[^.!?]{0,80}"
+               r"(?:return|Sharpe|win rate|drawdown)[^.!?]{0,40}\d", re.I),
+    re.compile(r"\b(?:a |one |the )?(?:study|survey|research|report|paper|analysis) (?:by|from|in|published in) "
+               r"(?:the )?[A-Z][A-Za-z&' ]{2,50}(?:Journal|Review|Institute|Association|Society)\b[^.!?]{0,160}\d", re.I),
+    re.compile(r"\b(?:empirical )?(?:studies|research|evidence) (?:show|shows|found|finds|suggests?|indicates?)\b"
+               r"[^.!?]{0,100}\d+(?:\.\d+)?\s*%", re.I),
+    re.compile(r"\b(?:average|mean|typical) (?:monthly |annual |annualized |annualised )?returns? of \d[^.!?]{0,40}"
+               r"\b(?:historically|during|in the|over the|since|each year)\b", re.I),
+    re.compile(r"\bhistorically[^.!?]{0,80}\b(?:average|mean|typical) (?:monthly |annual )?returns? of \d", re.I),
+    # generic "can increase efficiency by up to 30%" filler that no study backs
+    re.compile(r"\b(?:increase|improve|boost|enhance|reduce|decrease|cut|lower)\w*\b[^.!?]{0,70}"
+               r"\bby up to \d+(?:\.\d+)?\s*%", re.I),
 ]
+# a section lead-in that frames invented numbers as a measured example
+EXAMPLE_LEAD = re.compile(r"^(\s*(?:[-*]\s+)?(?:\*\*)?)(Real[- ]World Example|Real Example|Example [Rr]esults?|"
+                          r"Backtest(?:ed)? [Rr]esults?)(\*\*)?\s*:?\s*(.*)$")
+# "For example, a study by X found ... 3.5%" is a cited statistic, not a hypothetical: "for example" does not exempt it
+STUDY_STAT = re.compile(r"\b(?:study|studies|survey|research|report|paper)\b[^.!?]{0,260}\d+(?:\.\d+)?\s*%", re.I)
+ILLUSTRATION = "Illustration only (not a measured result):"
+HYPOTHETICAL_LABEL = "Illustration (hypothetical, not a real trade or result):"
+LEAD_ONLY = re.compile(r"^(\s*)\*\*Real(?:[- ]World)? Example:\*\*\s*$")
+BULLET_IMPROVES = re.compile(rf"^\s*[-*]\s+(?:\*\*)?{METRIC}(?:\*\*)?\s*:\s*(?:improves?|increases?|rises?|boosts?|"
+                             rf"reduces?|falls?|jumps?)\s+by\s+\d", re.I)
 VAGUE_CITATION = re.compile(r"\b(?:study|survey|research|report|paper)s? (?:by|from|published in) (?:the )?Journal of \w+", re.I)
 YEAR = re.compile(r"\b(?:19|20)\d\d\b")
 RESULT_EXEMPT = re.compile(r"\b(?:for example|for instance|suppose|assume|assuming|hypothetical|illustrat\w+|"
@@ -181,6 +207,22 @@ def process(body: str, stats: dict, samples: list) -> str:
             note("impact-lines", line)
             i += 1
             continue
+        # "**Real Example:**" on its own line: these are invented scenarios, so label them as such
+        # and drop any outcome sentence ("Win rate: 62%.") from the line that follows
+        lm = LEAD_ONLY.match(line)
+        if lm:
+            nxt = lines[i + 1] if i + 1 < n else ""
+            out.append(f"{lm.group(1)}**{HYPOTHETICAL_LABEL}**")
+            note("example-lead-relabel", line)
+            if nxt.strip() and METRIC_VAL.search(nxt):
+                kept_parts = [p for p in SENT_SPLIT.split(nxt) if not METRIC_VAL.search(p)]
+                note("example-outcome-dropped", nxt)
+                if kept_parts:
+                    out.append(" ".join(kept_parts).strip())
+                i += 2
+            else:
+                i += 1
+            continue
         # tables
         if s.startswith("|"):
             j = i
@@ -204,10 +246,25 @@ def process(body: str, stats: dict, samples: list) -> str:
             continue
         # bullets with specific metric values
         if re.match(r"^\s*[-*]\s", line):
-            if BULLET_ONE.match(line) or len(set(m.group(0).split()[0].lower() for m in METRIC_VAL.finditer(line))) >= 2:
+            if (BULLET_ONE.match(line) or BULLET_IMPROVES.match(line)
+                    or len(set(m.group(0).split()[0].lower() for m in METRIC_VAL.finditer(line))) >= 2):
                 note("bullet", line)
                 i += 1
                 continue
+        # "Real Example: ... Win rate: 62%." -> keep the rule, drop the invented outcome, relabel
+        em = EXAMPLE_LEAD.match(line)
+        if em and METRIC_VAL.search(em.group(4)) and not RESULT_EXEMPT.search(em.group(4)):
+            if em.group(2).lower().startswith("real"):
+                # a described trade rule is fine as an illustration; its invented outcome is not
+                kept_parts = [p for p in SENT_SPLIT.split(em.group(4)) if not METRIC_VAL.search(p)]
+                note("example-relabel", line)
+                if kept_parts:
+                    out.append(f"{em.group(1)}{ILLUSTRATION}{em.group(3) or ''} {' '.join(kept_parts).strip()}")
+            else:
+                # "Backtest results: ..." / "Example results: ..." is itself a result claim
+                note("example-result-dropped", line)
+            i += 1
+            continue
         # sentences
         if s and not s.startswith("#") and not line.startswith("    "):
             parts = SENT_SPLIT.split(line)
@@ -225,7 +282,8 @@ def process(body: str, stats: dict, samples: list) -> str:
                     if p2:
                         kept.append(p2)
                     continue
-                if len(p) <= MAX_SENTENCE and not RESULT_EXEMPT.search(p) and any(r.search(p) for r in RESULT_SENTENCE):
+                if (len(p) <= MAX_SENTENCE and (not RESULT_EXEMPT.search(p) or STUDY_STAT.search(p))
+                        and any(r.search(p) for r in RESULT_SENTENCE)):
                     drop = True
                 if len(p) <= MAX_SENTENCE and VAGUE_CITATION.search(p) and not YEAR.search(p):
                     drop = True  # a citation with no year or author cannot be checked

@@ -147,7 +147,7 @@ MVO maximizes in-sample fit to the estimated parameters, which includes fitting 
 
 ### What Sharpe ratio should I use as a target?
 
-The tangency portfolio's [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) depends entirely on the input estimates. Historically, diversified equity portfolios achieve Sharpe ratios of 0.3-0.5. Multi-asset portfolios with risk parity characteristics can achieve 0.5-0.8. Individual stocks rarely sustain Sharpe ratios above 0.2. If your optimizer produces a Sharpe ratio above 1.0 for a long-only equity portfolio, the expected return estimates are likely too aggressive.
+The tangency portfolio's [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) depends entirely on the input estimates. Historically, diversified equity portfolios achieve Sharpe ratios of 0.3-0.5. Multi-asset portfolios with risk parity characteristics can achieve 0.5-0.8. Individual stocks rarely sustain Sharpe ratios above 0.2.
 
 ### How often should I re-optimize the portfolio?
 

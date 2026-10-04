@@ -401,7 +401,7 @@ A Sharpe above 3.0 on daily data is almost certainly overfit unless it operates 
 
 ### How many parameters are too many for a trading strategy?
 
-A useful rule of thumb is to have at least 50-100 independent observations per free parameter. A strategy with 10 parameters needs a minimum of 500-1,000 observations for reliable estimation. Simpler is better: a 3-parameter strategy that produces a Sharpe of 1.2 is far more likely to be genuine than a 30-parameter strategy that produces a Sharpe of 2.5.
+A useful rule of thumb is to have at least 50-100 independent observations per free parameter. A strategy with 10 parameters needs a minimum of 500-1,000 observations for reliable estimation.
 
 ### Can I fix overfitting by using more data?
 

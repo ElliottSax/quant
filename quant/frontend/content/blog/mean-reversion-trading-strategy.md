@@ -57,7 +57,7 @@ We use Z-scores as our primary signal. The Z-score measures how many standard de
 
 **Z = (Price - Moving_Average) / Standard_Deviation**
 
-For our backtest, we use a 20-day simple moving average and 20-day standard deviation as the lookback window. This balance was selected after optimizing across 50, 100, and 200-day alternatives on out-of-sample data from 2010-2018. You can plot these moving averages against live price data yourself using our [Charts tool](/charts) before committing to a lookback window.
+This balance was selected after optimizing across 50, 100, and 200-day alternatives on out-of-sample data from 2010-2018. You can plot these moving averages against live price data yourself using our [Charts tool](/charts) before committing to a lookback window.
 
 **Entry Rules:**
 - **Long entry**: Z-score falls below -2.0
@@ -93,7 +93,7 @@ The most dangerous trap in mean reversion backtesting is optimizing lookback per
 
 ### Transaction Costs
 
-Mean reversion strategies trade frequently. With 8,614 round-trip trades over 15 years, transaction costs accumulate. Our backtest includes 5 bps slippage and $0.005/share commission, which reduced raw returns by approximately 2.1% annually. Using a broker with competitive rates is essential.
+Mean reversion strategies trade frequently. With 8,614 round-trip trades over 15 years, transaction costs accumulate. Using a broker with competitive rates is essential.
 
 ## Advanced Enhancements
 
@@ -138,7 +138,7 @@ Mean reversion strategies tend to win more often than trend-following strategies
 
 ### Can mean reversion be applied to cryptocurrency markets?
 
-Yes, but with modifications. Crypto markets exhibit stronger momentum effects and higher volatility. Our backtests on BTC/ETH show mean reversion works on shorter timeframes (4-hour and daily) but breaks down on weekly and monthly horizons. Wider Z-score thresholds (+/- 2.5 instead of +/- 2.0) and tighter stop-losses are recommended for crypto mean reversion.
+Yes, but with modifications. Crypto markets exhibit stronger momentum effects and higher volatility. Wider Z-score thresholds (+/- 2.5 instead of +/- 2.0) and tighter stop-losses are recommended for crypto mean reversion.
 
 ---
 

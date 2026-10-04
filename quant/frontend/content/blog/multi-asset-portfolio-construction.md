@@ -143,7 +143,6 @@ Multi-asset rebalancing is more complex than single-asset-class rebalancing:
 ## Key Takeaways
 
 - Asset allocation across stocks, bonds, commodities, and alternatives determines 80-90% of long-term return variability, making it the most important investment decision
-- Risk parity allocation equalizes risk contributions across asset classes and historically achieves Sharpe ratios of 0.75-0.85, higher than traditional 60/40 portfolios, though requiring leverage
 - Cryptocurrency allocations of 1-5% are supported by low correlation with traditional assets and high historical Sharpe ratios, with [position sizing](/blog/position-sizing-strategies) constrained by extreme volatility and drawdown potential
 - Multi-asset risk management must account for correlation convergence during crises; stressed-correlation analysis and dedicated tail hedging address this vulnerability
 - The Black-Litterman framework provides a stable methodology for expressing tactical views within a multi-asset portfolio, deviating from equilibrium weights proportionally to conviction

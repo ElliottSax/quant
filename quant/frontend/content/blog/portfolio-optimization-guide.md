@@ -164,8 +164,6 @@ Monthly rebalancing is optimal after transaction costs for most portfolios.
 **Calendar**: Rebalance on fixed dates (monthly, quarterly)
 **Threshold**: Rebalance when any asset drifts more than 5% from target weight
 
-Threshold rebalancing with a 5% band produced a 0.04 higher Sharpe than monthly calendar rebalancing in our backtest, by rebalancing when needed rather than on a fixed schedule.
-
 ## Key Takeaways
 
 - Mean-variance optimization produces theoretically optimal portfolios but is extremely sensitive to estimation errors
@@ -188,7 +186,7 @@ Naive mean-variance optimization often disappoints in practice due to estimation
 
 ### How many assets should be in an optimized portfolio?
 
-Research suggests 7-15 asset classes for strategic allocation and 20-40 individual securities for equity portfolios. Below 7 assets, diversification is insufficient. Above 15 asset classes, estimation error increases faster than diversification benefit. For individual stocks, the marginal diversification benefit becomes negligible beyond 30-40 holdings. Our backtests used 7 asset class ETFs, which provides adequate diversification while maintaining estimation tractability.
+Research suggests 7-15 asset classes for strategic allocation and 20-40 individual securities for equity portfolios. Below 7 assets, diversification is insufficient. Above 15 asset classes, estimation error increases faster than diversification benefit. For individual stocks, the marginal diversification benefit becomes negligible beyond 30-40 holdings.
 
 ### What is risk parity and is it better than traditional allocation?
 

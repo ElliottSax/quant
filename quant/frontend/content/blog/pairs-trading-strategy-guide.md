@@ -148,7 +148,7 @@ Pairs trades require simultaneous execution of two legs. Slippage on either leg 
 
 ### How many pairs should you trade simultaneously?
 
-We recommend 15-25 simultaneous pairs for adequate diversification. Fewer than 10 pairs concentrates risk in individual spread relationships, while more than 30 pairs increases execution complexity and transaction costs without proportional diversification benefit. Our backtest used a maximum of 20 pairs with a 35% sector cap.
+We recommend 15-25 simultaneous pairs for adequate diversification. Fewer than 10 pairs concentrates risk in individual spread relationships, while more than 30 pairs increases execution complexity and transaction costs without proportional diversification benefit.
 
 ### What is the typical holding period for a pairs trade?
 

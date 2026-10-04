@@ -191,7 +191,6 @@ An equally weighted combination of the three strategies achieves:
 - Trend following in commodities benefits from supply response lags, inventory cycles, and hedging pressure, delivering positive returns during equity market crises
 - Carry strategies exploit the futures term structure, going long backwardated and short contangoed commodities to harvest the roll yield premium
 - Seasonal patterns arise from physical supply/demand cycles (planting/harvest, heating/cooling seasons) and must be rigorously tested for statistical significance
-- Combining all three strategies achieves Sharpe ratios of 0.8-1.2 due to low inter-strategy correlations, substantially better than any individual approach
 
 ## Frequently Asked Questions
 

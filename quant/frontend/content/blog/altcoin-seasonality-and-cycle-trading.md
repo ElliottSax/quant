@@ -56,7 +56,6 @@ Best practices for altcoin seasonality and cycle trading include:
 
 ## Real-World Examples
 Real-world examples of altcoin seasonality and cycle trading include:
-* **Ethereum**: Ethereum has historically exhibited a significant degree of seasonality, with average returns of 25% during the summer months.
 * **Litecoin**: Litecoin has been shown to exhibit a strong cyclical pattern, with a dominant cycle of 30 days.
 * **Bitcoin Cash**: Bitcoin Cash has been known to exhibit a high degree of volatility, making it a popular target for cycle traders.
 

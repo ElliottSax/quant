@@ -108,8 +108,6 @@ Adding RSI confirmation to band-touch signals significantly improves performance
 - **Buy**: Price touches lower band AND RSI(14) < 30
 - **Sell**: Price touches upper band AND RSI(14) > 70
 
-This combination improved the win rate from 54.2% to 62.7% in our backtest, as RSI confirms momentum exhaustion rather than just price extremity.
-
 ### Bollinger Bands + Volume
 
 Requiring above-average volume on band penetrations filters out noise:

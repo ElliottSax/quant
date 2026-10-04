@@ -195,3 +195,30 @@ test('no study cited by journal name alone (no year, no author)', () => {
   })
   assert.deepEqual(hits, [])
 })
+
+// Fifth pass (2026-10-04): live recount after the fourth pass still found invented outcomes inside
+// worked examples ("Real Example: Bot trades ETH ... Win rate: 62%."), "our backtest" results with no
+// code, studies/surveys named only by an institution with a percentage and no year, "historically
+// average returns of 25%", "Win rate: Improves by 10-15%" bullets and generic "improves performance by
+// up to 30%" filler. Educational thresholds ("a Sharpe above 1.0 is considered good") are fine.
+const FIFTH_PASS: [string, RegExp][] = [
+  ['"Real Example" label on an invented scenario', /^\s*\*\*Real(?:[- ]World)? Example:\*\*\s*$/im],
+  ['"Real Example:" followed by a win-rate / Sharpe outcome', /Real(?:[- ]World)? Example:?\**[^\n]*\n?[^\n]*(?:win[- ]?rate|sharpe)[^\n]{0,18}\d/i],
+  ['"Win rate: Improves by NN%" bullet', /^\s*[-*]\s+(?:\*\*)?(?:win[- ]?rate|sharpe(?: ratio)?)(?:\*\*)?\s*:\s*(?:improves?|increases?|boosts?)\s+by\s+\d/im],
+  ['"our/my backtest" result with a number', /\b(?:our|my) (?:own )?back-?tests?\b[^.\n]{0,80}\d/i],
+  ['study or survey named only by an institution, with a number and no year', /\b(?:study|survey|research|report|paper|analysis) (?:by|from|in|published in) (?:the )?[A-Z][A-Za-z&' ]{2,50}(?:Journal|Review|Institute|Association|Society)\b(?![^.\n]*\b(?:19|20)\d\d\b)[^.\n]{0,160}\d/],
+  ['"studies show ... NN%"', /\b(?:empirical )?(?:studies|research|evidence) (?:show|shows|found|finds|suggests?|indicates?)\b(?![^.\n]*\b(?:19|20)\d\d\b)[^.\n]{0,100}\d+(?:\.\d+)?\s*%/i],
+  ['historical "average returns of NN%" claim', /\bhistorically[^.\n]{0,80}\b(?:average|mean|typical) (?:monthly |annual )?returns? of \d/i],
+  ['generic "improve ... by up to NN%" filler', /\b(?:increase|improve|boost|enhance|reduce|decrease|cut|lower)\w*\b[^.\n]{0,70}\bby up to \d+(?:\.\d+)?\s*%/i],
+]
+
+for (const [name, re] of FIFTH_PASS) {
+  test(`no ${name}`, () => {
+    const hits = BLOG.filter((f) => {
+      const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+      if (SOURCED(text)) return false
+      return re.test(proseLines(text).join(String.fromCharCode(10)))
+    })
+    assert.deepEqual(hits, [])
+  })
+}

@@ -150,7 +150,7 @@ The combined portfolio Sharpe of 1.42 exceeds any individual component due to lo
 
 ### How do you distinguish a real breakout from a false breakout?
 
-The most reliable real breakout indicators are: (1) volume at least 1.5x average on the breakout bar, (2) close in the top/bottom quartile of the bar's range, (3) breakout occurs after a period of volatility contraction (ATR below its moving average), and (4) breakout is confirmed by a retest of the broken level. No single filter eliminates all false breakouts, but combining multiple filters raises the win rate from 38% to 62% in our backtests.
+The most reliable real breakout indicators are: (1) volume at least 1.5x average on the breakout bar, (2) close in the top/bottom quartile of the bar's range, (3) breakout occurs after a period of volatility contraction (ATR below its moving average), and (4) breakout is confirmed by a retest of the broken level.
 
 ### What timeframe is best for breakout trading?
 

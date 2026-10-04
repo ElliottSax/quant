@@ -131,7 +131,7 @@ When RSI(14) < 30 and price touches the lower Bollinger Band (20, 2), the combin
 
 ### RSI + MACD
 
-Buy when RSI(14) crosses above 30 from below AND MACD crosses above the signal line within 3 bars. This combination improved the profit factor from 1.22 to 1.61 in our backtest by requiring both momentum exhaustion (RSI) and momentum shift (MACD).
+Buy when RSI(14) crosses above 30 from below AND MACD crosses above the signal line within 3 bars.
 
 ### RSI + Volume
 
