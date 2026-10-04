@@ -13,6 +13,7 @@
 
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PartnerBlock from '@/components/affiliate/PartnerBlock'
 
 export const metadata: Metadata = {
   title: 'Market Data API Benchmark — Measured, Not Quoted | QuantEngines',
@@ -217,6 +218,9 @@ export default function DataVendorsPage() {
               programmatic use and no availability guarantee.
             </p>
           </div>
+
+          {/* Renders nothing until a partner tracking URL is set in the server env. */}
+          <PartnerBlock />
         </>
       )}
     </div>

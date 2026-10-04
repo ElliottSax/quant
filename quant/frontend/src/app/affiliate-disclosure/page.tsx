@@ -4,6 +4,7 @@ import Link from 'next/link'
 // the app is force-dynamic nothing catches that at build time -- the page compiles
 // and then 500s on first request. Only use icons verified against the pinned version.
 import { Link2, ShieldCheck, Ban } from 'lucide-react'
+import { disclosureStatus } from '@/lib/affiliate-partners'
 
 export const metadata: Metadata = {
   title: 'Affiliate Disclosure | QuantEngines',
@@ -17,13 +18,19 @@ export const metadata: Metadata = {
 // When the first live link ships, update the status paragraph in the same commit —
 // a disclosure that lags the links it describes is the failure this page exists to
 // prevent, and it is the thing affiliate networks check hardest.
+//
+// Pre-wired: the status below is derived from the same server environment that decides whether
+// a partner link renders (src/lib/affiliate-partners.ts), so the day a tracking URL is set the
+// page flips to the "live" wording in the same deploy. With no URL set it renders exactly the
+// text it always has.
 export default function AffiliateDisclosurePage() {
+  const status = disclosureStatus(process.env)
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-white mb-4">Affiliate Disclosure</h1>
-          <p className="text-slate-400">Last updated: August 2026</p>
+          {!status.live && <p className="text-slate-400">Last updated: August 2026</p>}
         </div>
 
         <div className="max-w-3xl mx-auto space-y-8">
@@ -32,12 +39,23 @@ export default function AffiliateDisclosurePage() {
               <Link2 className="h-6 w-6 text-blue-400 shrink-0 mt-0.5" />
               <h2 className="text-2xl font-bold text-white">Current status</h2>
             </div>
-            <p className="text-slate-300 leading-relaxed">
-              As of August 2026, QuantEngines carries <strong>no affiliate links</strong> and
-              earns <strong>no commissions</strong> from any broker, data vendor or software
-              company. Nothing on this site is a paid placement today. This page exists so
-              that the rules are published before any such link appears, not after.
-            </p>
+            {status.live ? (
+              <p className="text-slate-300 leading-relaxed">
+                QuantEngines now carries <strong>affiliate links</strong> to:{' '}
+                <strong>{status.partnerNames.join(', ')}</strong>. If you sign up through one of
+                them we may earn a commission, paid by the company at no extra cost to you. Each
+                link is marked &quot;Affiliate link&quot; where it appears and carries{' '}
+                <code>rel=&quot;sponsored&quot;</code>. No other link on this site is a paid
+                placement.
+              </p>
+            ) : (
+              <p className="text-slate-300 leading-relaxed">
+                As of August 2026, QuantEngines carries <strong>no affiliate links</strong> and
+                earns <strong>no commissions</strong> from any broker, data vendor or software
+                company. Nothing on this site is a paid placement today. This page exists so
+                that the rules are published before any such link appears, not after.
+              </p>
+            )}
           </section>
 
           <section className="bg-slate-900/60 border border-slate-700 rounded-xl p-6">
