@@ -15,7 +15,7 @@ The intersection of xgboost and swing trading represents a significant advanceme
 
 ## Executive Summary
 
-Systematic swing trading strategies require continuous parameter optimization to maintain competitive edge in dynamic market environments. Machine learning approaches to parameter tuning have demonstrated 34-160% improvements in Sharpe ratios compared to static parameter configurations. This article details the practical application of XGBoost to optimize trading parameters, including empirical validation, implementation challenges, and risk management frameworks.
+Systematic swing trading strategies require continuous parameter optimization to maintain competitive edge in dynamic market environments. Machine learning approaches to parameter tuning can improve on static parameter configurations, but gains are not guaranteed and have to be validated out-of-sample. This article details the practical application of XGBoost to optimize trading parameters, including empirical validation, implementation challenges, and risk management frameworks.
 
 ## Introduction to Parameter Optimization in Algorithmic Trading
 
@@ -182,20 +182,20 @@ Measured results are not published for this strategy. The code above is a starti
 
 ## Key Findings and Insights
 
-1. **Parameter Importance Distribution**: XGBoost feature importance analysis identified lookback period (44% importance), exit multiple (33%), and entry threshold (23%) as primary drivers of strategy performance. This hierarchy demonstrates that historical window length is the dominant parameter.
+1. **Parameter Importance Distribution**: Feature-importance analysis can show which parameters drive a strategy's performance. Compute it on your own data before concluding that any one parameter dominates.
 
-2. **Regime-Dependent Optimization**: Largest performance improvements occurred during volatile market regimes (519.9% in bear markets versus 15.3% in bull markets). This indicates parameter flexibility is most valuable during market dislocations when static parameters become suboptimal.
+2. **Regime-Dependent Optimization**: Parameter flexibility may matter most in volatile regimes, when static parameters can become suboptimal. Check regime-dependent behaviour on your own data.
 
-3. **Computational Efficiency**: XGBoost model training completed in 2-3 hours versus 50+ hours for exhaustive grid search, enabling practical weekly or even daily recalibration schedules without prohibitive computational costs.
+3. **Computational Efficiency**: Model-based search is usually much cheaper than exhaustive grid search, which can make frequent recalibration practical. Measure the runtime on your own data.
 
-4. **Generalization Robustness**: Cross-validation R² scores of 0.84-0.91 across different time periods confirm stable model generalization. Out-of-sample performance degradation averaged only 8-12%, suggesting the learned patterns have predictive value beyond training data.
+4. **Generalization Robustness**: Report cross-validation scores and out-of-sample degradation from your own runs; do not assume stable generalization.
 
 ## Practical Implementation Guidance
 
 ### Recommended Retraining Frequency
 
 - **Daily**: Optimal during periods of elevated market volatility (VIX > 25) or major regime transitions
-- **Weekly**: Standard approach balancing computational cost against parameter drift (typically 14-21% drift per week)
+- **Weekly**: Standard approach balancing computational cost against parameter drift
 - **Monthly**: Suitable for lower-frequency strategies with stable parameter requirements
 - **Quarterly**: Captures seasonal regime shifts and longer-term market evolution
 
@@ -215,7 +215,7 @@ For optimal XGBoost performance:
 
 ### Multi-Asset Optimization
 
-Asset-specific models outperform universal models by 20-30% due to regime heterogeneity. A hierarchical approach combines global meta-models for broad patterns with asset-specific fine-tuning models. This approach maintains computational efficiency while capturing asset-specific dynamics.
+Asset-specific models can outperform universal models when assets behave differently across regimes. A hierarchical approach combines global meta-models for broad patterns with asset-specific fine-tuning models. This approach maintains computational efficiency while capturing asset-specific dynamics.
 
 ### Feature Engineering Extensions
 
@@ -226,8 +226,6 @@ Beyond basic parameters, advanced features include:
 - Macro indicators (economic data, yield curves)
 - Time features (day-of-week, seasonal effects)
 
-These extensions typically improve R² by 15-25%.
-
 ## FAQ: Common Questions and Answers
 
 **Q: How frequently should optimization models be retrained?**
@@ -236,19 +234,19 @@ A: Weekly retraining provides optimal balance between computational cost and par
 
 **Q: What prevents the model from overfitting to historical parameter performance?**
 
-A: Multiple safeguards exist: 5-fold cross-validation with non-overlapping date ranges, dedicated 6-month out-of-sample validation set, L1/L2 regularization penalties, and feature importance thresholding. Achieved validation R² of 0.84-0.91 confirms robust generalization despite parameter complexity.
+A: Multiple safeguards exist: 5-fold cross-validation with non-overlapping date ranges, dedicated 6-month out-of-sample validation set, L1/L2 regularization penalties, and feature importance thresholding. Check generalization with your own out-of-sample validation.
 
 **Q: Can this approach work across multiple assets or asset classes?**
 
-A: Asset-specific models achieve 20-30% higher performance than universal models due to regime variation. Use hierarchical approach: train global models for broad patterns and asset-specific fine-tuning models for local adaptations.
+A: Asset-specific models can outperform universal models when assets behave differently across regimes. Use hierarchical approach: train global models for broad patterns and asset-specific fine-tuning models for local adaptations.
 
 **Q: How are parameter bounds and operational constraints handled?**
 
-A: Hard constraints (e.g., maximum position size) are enforced within the backtesting engine. Soft constraints (e.g., minimize parameter changes) are encoded as penalty terms in the objective function. Constrained optimization yields 5-15% lower performance but ensures compliance.
+A: Hard constraints (e.g., maximum position size) are enforced within the backtesting engine. Soft constraints (e.g., minimize parameter changes) are encoded as penalty terms in the objective function. Constraints can reduce in-sample performance but keep the strategy within its limits.
 
 **Q: What's the typical improvement in risk-adjusted returns?**
 
-A: Annual returns typically improve 50-100% while maintaining or reducing maximum drawdown. Backtested improvements typically exceed live trading results by 20-40% due to slippage and market impact.
+A: No typical improvement figure is published here: gains found in a backtest depend on the data, the costs assumed and how many variants were tried. Backtested results are usually more optimistic than live trading because of costs, slippage, market impact and overfitting. Judge a parameter change by out-of-sample and paper-trading results.
 
 ## Conclusion and Recommendations
 

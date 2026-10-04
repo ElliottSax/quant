@@ -179,8 +179,7 @@ This trade earns the "roll yield" as front-month futures converge toward spot VI
 ## Key Takeaways
 
 - The volatility risk premium (implied > realized 85% of the time) provides a systematic edge for options sellers
-- Systematic covered calls reduce portfolio volatility from 15.8% to 11.4% with minimal return sacrifice
-- Volatility skew trading (Sharpe 1.24) exploits the persistent overpricing of downside protection
+- Systematic covered calls can reduce portfolio volatility, at the cost of capping upside
 - Portfolio-level Greek management targets delta-neutral, theta-positive, vega-short positions
 - Trade only liquid options (SPY, QQQ, IWM) to minimize bid-ask spread impact
 

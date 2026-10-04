@@ -202,7 +202,6 @@ For institutional orders (10,000+ shares), HFT can significantly increase execut
 
 - HFT accounts for 50-60% of US equity volume, operating at microsecond timescales
 - The four core HFT strategies are market making, latency arbitrage, [statistical arbitrage](/blog/crypto-statistical-arbitrage), and event-driven trading
-- HFT market making has reduced spreads by 50-70% since the mid-2000s, benefiting all investors
 - Latency arbitrage extracts approximately $5 billion annually from other market participants
 - HFT infrastructure costs $5-50 million annually, creating a barrier to entry
 - Non-HFT traders should use limit orders, avoid the open/close, and use [algorithmic execution](/blog/algorithmic-execution-quality) for large orders

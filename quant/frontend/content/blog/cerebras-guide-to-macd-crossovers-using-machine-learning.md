@@ -169,20 +169,13 @@ portfolio['cumulative'] = (1 + portfolio['strategy_returns']).cumprod()
 
 ## Performance Evaluation
 
-The ML-augmented MACD strategy significantly outperforms both the traditional MACD and buy-and-hold benchmarks over the 2018–2023 period.
+Compare the ML-augmented MACD strategy with the traditional MACD and buy-and-hold benchmarks on your own data.
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 *Table 3: Backtested performance (2018–2023)*
 
-Key findings:
-
-- The ML model **reduced trade frequency by 42%**, filtering out low-probability signals
-- Annual return increased by **+7.3 percentage points** over pure MACD
-- Sharpe ratio improved from **0.38 to 0.93**, indicating superior risk-adjusted returns
-- Maximum drawdown was **13.2 percentage points lower** than the pure MACD strategy
-
-The equity curve in Figure 1 (not shown) demonstrates consistent outperformance, particularly during high-volatility regimes such as Q1 2020 and Q4 2022.
+An ML filter aims to cut low-probability signals and trade less often. Whether it improves the Sharpe ratio, returns or drawdowns has to be measured on your own data with realistic costs.
 
 ## Model Robustness and Sensitivity
 

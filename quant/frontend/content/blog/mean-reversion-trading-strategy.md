@@ -113,7 +113,6 @@ Apply mean reversion within sectors rather than across the entire universe. Sect
 
 - Mean reversion works best on spreads, ratios, and Z-scores rather than raw prices
 - Always test for stationarity with the ADF test before deploying a mean reversion strategy
-- The long/short variant produced a 1.24 Sharpe ratio versus 0.71 for buy-and-hold SPY
 - Transaction costs matter significantly due to high trade frequency
 - Regime detection (trending vs. range-bound) is essential for drawdown control
 - Walk-forward optimization prevents overfitting to historical data

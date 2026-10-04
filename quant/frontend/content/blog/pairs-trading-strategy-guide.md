@@ -106,7 +106,7 @@ We tested replacing traditional cointegration screening with a random forest cla
 - Sector and industry alignment
 - Spread volatility regime
 
-The ML-enhanced selection improved the Sharpe ratio from 1.42 to 1.61 by identifying pairs with more stable relationships, though at the cost of a smaller trading universe (120 pairs vs. 200).
+ML-enhanced selection aims to identify pairs with more stable relationships, at the cost of a smaller trading universe.
 
 ### Copula-Based Pair Selection
 
@@ -142,7 +142,7 @@ Pairs trades require simultaneous execution of two legs. Slippage on either leg 
 - Requiring both Engle-Granger and Johansen tests reduces false positives significantly
 - The half-life of mean reversion should be 5-60 days for practical trading
 - Stop-losses at Z-score +/- 4.0 and monthly cointegration re-testing protect against relationship breakdown
-- [Machine learning](/blog/machine-learning-trading) can enhance pair selection, improving Sharpe from 1.42 to 1.61
+- [Machine learning](/blog/machine-learning-trading) can enhance pair selection
 
 ## Frequently Asked Questions
 

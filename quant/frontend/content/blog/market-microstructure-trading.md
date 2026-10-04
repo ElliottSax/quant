@@ -177,8 +177,6 @@ The Almgren-Chriss framework (2001) optimizes the trade-off between market impac
 - Order flow imbalance explains 60-70% of short-term price changes (Cont et al., 2014)
 - The bid-ask spread is a direct cost that strategies must overcome; it ranges from 1-3 bps (mega-cap) to 50-200 bps (micro-cap)
 - Adverse selection is the largest component of the spread for liquid stocks, representing 30-75% of total spread
-- Volume-based bars improve signal quality by 15-25% compared to time-based bars
-- Institutional order flow creates detectable patterns that can be traded with a Sharpe of 1.42
 - Market impact follows a square root law: doubling order size increases impact by 41%, not 100%
 - Optimal execution balances market impact (trading too fast) against timing risk (trading too slow)
 

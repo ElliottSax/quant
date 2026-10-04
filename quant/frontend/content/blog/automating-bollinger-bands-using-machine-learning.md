@@ -278,10 +278,7 @@ class BBSignalClassifier:
 
 ### Expected Improvement
 
-On a universe of S&P 500 stocks (2018-2025), the ML signal filter typically:
-- Reduces total trades by 40-50%
-- Increases Sharpe ratio from 0.65 to 0.95
-- Reduces maximum drawdown by 25-35%
+An ML signal filter aims to cut false signals and trade less often. Whether it improves risk-adjusted returns net of costs depends on the data and has to be tested out-of-sample.
 
 ## Approach 3: Regime-Aware Strategy Switching
 

@@ -201,7 +201,7 @@ Use a simple 50-day moving average filter:
 This reduces counter-trend trades during strong bull/bear markets.
 
 ### 4. Stop-Loss Implementation
-Add a dynamic stop-loss at 1.5× ATR from entry. In backtests, this reduced maximum drawdown from -12.3% to -8.9% with only a 7% reduction in total returns.
+Add a dynamic stop-loss at 1.5× ATR from entry.
 
 ---
 

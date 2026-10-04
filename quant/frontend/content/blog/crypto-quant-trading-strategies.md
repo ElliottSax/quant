@@ -169,8 +169,6 @@ Due to crypto's extreme volatility, position sizes should be 3-5x smaller than e
 ## Key Takeaways
 
 - Crypto markets exhibit stronger momentum effects than traditional markets due to retail dominance and attention-driven trading
-- Funding rate arbitrage (Sharpe 2.42) is one of the highest-quality systematic crypto strategies
-- On-chain data provides unique alpha sources that improve momentum strategies by 29% (Sharpe improvement)
 - Cross-exchange arbitrage opportunities still exist but require increasingly sophisticated infrastructure
 - Position sizes should be 3-5x smaller than equity equivalents due to crypto's extreme volatility
 - Exchange risk (counterparty failure) is the most critical non-market risk in crypto trading

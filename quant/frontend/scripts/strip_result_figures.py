@@ -188,6 +188,188 @@ SENT_SPLIT = re.compile(r"(?<!et al\.)(?<!e\.g\.)(?<!i\.e\.)(?<=[.!?])\s+")
 MAX_SENTENCE = 360
 MEASURED_PAGES = {"triple-barrier-labeling-meta-labeling.md", "python-backtesting-framework.md", "walk-forward-optimization.md"}
 
+# --- seventh pass (2026-10-04): the leftovers the sixth pass listed, and their near-variants.
+# Found by reading every instance in context: "Key Takeaways" bullets that state a strategy's Sharpe / win rate /
+# drawdown / improvement as a result, "improved X from A to B" sentences, "Annual returns of N-M%" claims, the
+# generic "Backtested improvements typically exceed live trading results by 20-40%" line, and the figures of the
+# machine-generated "haiku" template (the same invented numbers on ~25 pages).
+KEY_HEAD = re.compile(r"^#{2,4}\s+.*\b(?:key takeaways?|takeaways?|key points|key findings|in short|bottom line)\b", re.I)
+TAKEAWAY_PERF = re.compile(
+    r"\bSharpe\b[^.\n]{0,25}\d|\bwin[- ]?rates?\b[^.\n]{0,60}\d+(?:\.\d+)?\s*%|\bdrawdowns?\b[^.\n]{0,60}\d+(?:\.\d+)?\s*%|"
+    r"\b(?:improv|reduc|increas|boost|cut|lower|rais)\w*\b[^.\n]{0,70}\d+(?:\.\d+)?\s*(?:-|–|to)?\s*\d*(?:\.\d+)?\s*%|"
+    r"\boutperform\w*\b[^.\n]{0,80}\d|\bprofit factor\b[^.\n]{0,25}\d|\b(?:annual|annualized) returns?\b[^.\n]{0,40}\d", re.I)
+# a takeaway whose number is derived from a simulation shown with its stated inputs on the same page
+TAKEAWAY_VERIFIED = re.compile(r"Even a Sharpe 1\.0 strategy has a 22% chance of a -15% drawdown")
+# a takeaway that is a definition, a derivation or a caution is not a result and stays
+TAKEAWAY_KEEP = re.compile(
+    r"\b(?:requires?|mathematically|break-?even|deflat\w+|skeptic\w*|square root|significance|acceptable|size positions|"
+    r"row-by-row|if|could|would|might|may|should|treated|hypothetical|illustrat\w+)\b|\b1:\d", re.I)
+IMPROVED_FROM_TO = re.compile(
+    r"\b(?:improv|increas|rais|boost|reduc|cut|lower)\w*\b[^.!?\n]{0,60}?\b(?:Sharpe(?: ratio)?|win[- ]?rates?|profit factor|"
+    r"drawdowns?|returns?)\b[^.!?\n]{0,40}?\bfrom\s+\*{0,2}[-+]?\d[\d.]*\s*%?\s+to\s+\*{0,2}[-+]?\d|"
+    r"\b(?:Sharpe(?: ratio)?|win[- ]?rates?|profit factor|(?:max(?:imum)? )?drawdown)\s+(?:improv|increas|rose|fell|dropp|declin|reduc)\w*"
+    r"\s+from\s+\*{0,2}[-+]?\d[\d.]*\s*%?\s+to\s+\*{0,2}[-+]?\d", re.I)
+ANNUAL_RANGE_CLAIM = re.compile(
+    r"\bannual(?:i[sz]ed)?\s+returns?\s+(?:of\s+)?\d[\d.]*\s*(?:-|–|to)\s*\d[\d.]*\s*%[^.!?\n]{0,80}?"
+    r"\b(?:are|is|were|have been)\s+(?:achievable|typical|common|realistic|possible)", re.I)
+
+QUALITATIVE_BACKTEST_GAP = ("Backtested results are usually more optimistic than live trading because of costs, slippage, "
+                            "market impact and overfitting.")
+# line-level replacements for the machine-generated "haiku" template and the generic filler (exact templates)
+LINE_RULES = [
+    (re.compile(r"\s*Achieved validation R² of 0\.84-0\.91 confirms robust generalization despite parameter complexity\."),
+     " Check generalization with your own out-of-sample validation."),
+    (re.compile(r"Annual returns typically improve \d+(?:\.\d+)?(?:-\d+(?:\.\d+)?)?% while maintaining or reducing maximum drawdown\.\s*"
+                r"Backtested improvements typically exceed live trading results by [^.]*\."),
+     "No typical improvement figure is published here: gains found in a backtest depend on the data, the costs assumed and how many "
+     "variants were tried. " + QUALITATIVE_BACKTEST_GAP + " Judge a parameter change by out-of-sample and paper-trading results."),
+    (re.compile(r"\s*Backtested improvements typically exceed live trading results by [^.]*\."), " " + QUALITATIVE_BACKTEST_GAP),
+    (re.compile(r"Machine learning approaches to parameter tuning have demonstrated \d+-\d+% improvements in Sharpe ratios compared to "
+                r"static parameter configurations\."),
+     "Machine learning approaches to parameter tuning can improve on static parameter configurations, but gains are not "
+     "guaranteed and have to be validated out-of-sample."),
+    (re.compile(r"(\*\*Parameter Importance Distribution\*\*): ([^.\n]*?) feature importance analysis identified [^.\n]*?\(\d+% importance\)[^.\n]*?"
+                r"\(\d+%\)[^.\n]*?\(\d+%\)[^.\n]*?as primary drivers of strategy performance\.[^\n]*"),
+     r"\1: Feature-importance analysis can show which parameters drive a strategy's performance. Compute it on your own data "
+     r"before concluding that any one parameter dominates."),
+    (re.compile(r"(\*\*Regime-Dependent Optimization\*\*): Largest performance improvements occurred during volatile market regimes "
+                r"\(\d+(?:\.\d+)?% in bear markets versus \d+(?:\.\d+)?% in bull markets\)\.[^\n]*"),
+     r"\1: Parameter flexibility may matter most in volatile regimes, when static parameters can become suboptimal. Check "
+     r"regime-dependent behaviour on your own data."),
+    (re.compile(r"(\*\*Computational Efficiency\*\*): [^\n]*? training completed in [^\n]*?(?:hours|minutes)[^\n]*"),
+     r"\1: Model-based search is usually much cheaper than exhaustive grid search, which can make frequent recalibration practical. "
+     r"Measure the runtime on your own data."),
+    (re.compile(r"(\*\*Generalization Robustness\*\*): Cross-validation R² scores of [^\n]*"),
+     r"\1: Report cross-validation scores and out-of-sample degradation from your own runs; do not assume stable generalization."),
+    (re.compile(r" \(typically \d+-\d+% drift per week\)"), ""),
+    (re.compile(r"Asset-specific models outperform universal models by \d+-\d+% due to regime heterogeneity\."),
+     "Asset-specific models can outperform universal models when assets behave differently across regimes."),
+    (re.compile(r"Asset-specific models achieve \d+-\d+% higher performance than universal models due to regime variation\."),
+     "Asset-specific models can outperform universal models when assets behave differently across regimes."),
+    (re.compile(r"\s*These extensions typically improve R² by \d+-\d+%\."), ""),
+    (re.compile(r"Constrained optimization yields \d+-\d+% lower performance but ensures compliance\."),
+     "Constraints can reduce in-sample performance but keep the strategy within its limits."),
+]
+
+# file-specific rewrites for items that do not generalise: (file, regex, replacement). Each pattern must match the
+# corpus at least once on the first run (checked by the test); later runs are no-ops.
+EXPLICIT = [
+    ("automating-bollinger-bands-using-machine-learning.md",
+     re.compile(r"On a universe of S&P 500 stocks \(2018-2025\), the ML signal filter typically:\n- Reduces total trades by 40-50%\n"
+                r"- Increases Sharpe ratio from 0\.65 to 0\.95\n- Reduces maximum drawdown by 25-35%"),
+     "An ML signal filter aims to cut false signals and trade less often. Whether it improves risk-adjusted returns net of costs "
+     "depends on the data and has to be tested out-of-sample."),
+    ("automating-pairs-trading-with-high-success-rate.md",
+     re.compile(r"\n# Impact: Adding 2 confirmation signals raises win rate from 62% to 75%"), ""),
+    ("backtesting-macd-crossovers-using-machine-learning.md",
+     re.compile(r"\*\*Key insight\*\*: ML filters out ~46% of false signals while increasing win rate from 50% to 56%\."),
+     "**Key insight**: An ML filter aims to remove false signals. Whether it raises the win rate or the net return has to be "
+     "measured out-of-sample with realistic costs."),
+    ("market-regime-detection.md",
+     re.compile(r"captured the bull run with a \[Sharpe ratio\]\(/blog/sharpe-ratio-portfolio-analysis\) of approximately 1\.2"),
+     "captured the bull run"),
+    ("market-regime-detection.md", re.compile(r"Multiple false signals due to shallow pullbacks, Sharpe approximately 0\.4"),
+     "Multiple false signals due to shallow pullbacks"),
+    ("market-regime-detection.md", re.compile(r"Inconsistent performance, Sharpe approximately 0\.6"), "Inconsistent performance"),
+    ("algorithmic-trading-beginners.md",
+     re.compile(r"This translates to \$4,000-7,500 per year\. (Scaling requires either more capital, leverage, or multiple "
+                r"uncorrelated strategies\.) The median independent quant trader in surveys reports annual returns of 10-20% before fees\."),
+     r"Returns depend on capital, strategy and costs, and no figure is guaranteed. \1"),
+    ("commodity-trading-strategies.md",
+     re.compile(r"Commodity carry strategies have historically delivered:\n- Annual returns of 5-8% \(cross-sectional\) or 3-6% "
+                r"\(time-series\)\n- Sharpe ratios of 0\.5-0\.8\n- Low correlation with trend following \(0\.1-0\.3\), enabling strong "
+                r"diversification when combined\n- Moderate drawdowns \(-15 to -20% maximum\)"),
+     "Commodity carry strategies earn returns from the roll yield, and results vary widely by period and implementation. Estimate "
+     "returns, the Sharpe ratio, drawdowns and the correlation with trend following on your own data, net of costs."),
+    ("crypto-arbitrage-strategies.md",
+     re.compile(r"Annual returns of 25-60% are achievable but require significant time investment"),
+     "Returns depend heavily on capital, costs and competition and are not guaranteed, and the strategies require significant "
+     "time investment"),
+    ("pairs-trading-strategy-guide.md",
+     re.compile(r"The ML-enhanced selection improved the Sharpe ratio from 1\.42 to 1\.61 by identifying pairs with more stable "
+                r"relationships, though at the cost of a smaller trading universe \(120 pairs vs\. 200\)\."),
+     "ML-enhanced selection aims to identify pairs with more stable relationships, at the cost of a smaller trading universe."),
+    ("pairs-trading-strategy-guide.md", re.compile(r"can enhance pair selection, improving Sharpe from 1\.42 to 1\.61"),
+     "can enhance pair selection"),
+    ("crypto-exchange-rate-arbitrage-global-markets.md",
+     re.compile(r",? typically ranging from \d+% to \d+% per trade"), ""),
+    ("crypto-exchange-rate-arbitrage-global-markets.md",
+     re.compile(r"\| (Low|Medium|High) \| \d+-\d+% \|"), r"| \1 | Varies; not guaranteed |"),
+    ("automating-mean-reversion-safely.md",
+     re.compile(r"The frameworks presented achieve superior risk-adjusted returns \(Sharpe 1\.94 vs\. 0\.87\) while reducing maximum "
+                r"drawdowns by 81%\."),
+     "The frameworks presented aim to improve risk-adjusted returns and reduce drawdowns; verify those benefits on your own data."),
+    ("cerebras-backtesting-bollinger-bands-efficiently.md",
+     re.compile(r"The best-performing configuration is \*\*window=10, k=2\.5\*\* \(Sharpe: 0\.38\)\. This setting increases "
+                r"sensitivity to short-term price movements and reduces false signals\."),
+     "Run the optimization on your own data to find the configuration that suits your market."),
+    ("momentum-trading-strategy-guide.md",
+     re.compile(r"Monthly rebalancing is standard, but we tested alternatives:\n\n- \*\*Weekly\*\*: Higher Sharpe \(1\.38\) but 3x higher "
+                r"turnover, net worse after costs\n- \*\*Monthly\*\*: Best risk-adjusted returns after costs \(Sharpe 1\.31\)\n- "
+                r"\*\*Quarterly\*\*: Lower turnover but misses intermediate signals \(Sharpe 0\.94\)"),
+     "Monthly rebalancing is standard. Weekly rebalancing raises turnover and costs, and quarterly rebalancing lowers turnover but "
+     "misses intermediate signals. Compare rebalancing frequencies on your own data, net of costs."),
+    ("cerebras-guide-to-macd-crossovers-using-machine-learning.md",
+     re.compile(r"Key findings:\n\n- The ML model \*\*reduced trade frequency by 42%\*\*[^\n]*\n- Annual return increased by \*\*[^\n]*\n"
+                r"- Sharpe ratio improved from \*\*0\.38 to 0\.93\*\*[^\n]*\n- Maximum drawdown was \*\*[^\n]*\n\n"
+                r"The equity curve in Figure 1 \(not shown\) demonstrates consistent outperformance, particularly during high-volatility "
+                r"regimes such as Q1 2020 and Q4 2022\."),
+     "An ML filter aims to cut low-probability signals and trade less often. Whether it improves the Sharpe ratio, returns or drawdowns "
+     "has to be measured on your own data with realistic costs."),
+    ("cerebras-guide-to-macd-crossovers-using-machine-learning.md",
+     re.compile(r"The ML-augmented MACD strategy significantly outperforms both the traditional MACD and buy-and-hold benchmarks over the "
+                r"2018.2023 period\."),
+     "Compare the ML-augmented MACD strategy with the traditional MACD and buy-and-hold benchmarks on your own data."),
+    ("tail-risk-hedging-guide.md",
+     re.compile(r"but cost 1\.5-3\.0% annually; put spreads and VIX call spreads reduce costs by 40-60% while covering"),
+     "but carry an ongoing premium cost; put spreads and VIX call spreads reduce costs while covering"),
+    ("rebalancing-strategies-quant.md",
+     re.compile(r"reducing unnecessary transactions by 30-50% versus calendar rebalancing"),
+     "reducing unnecessary transactions compared with calendar rebalancing"),
+    ("risk-budgeting-framework.md",
+     re.compile(r"can improve risk-adjusted returns by 15-30% relative to static budgets"),
+     "may improve risk-adjusted returns relative to static budgets, but test this on your own data"),
+    ("smart-beta-strategies-guide.md",
+     re.compile(r"produces superior risk-adjusted returns because factor premia are lowly or negatively correlated; integrated "
+                r"multi-factor portfolios achieve Sharpe ratios 35-40% higher than single factors"),
+     "can improve risk-adjusted returns because factor premia are imperfectly correlated; check this on your own data"),
+    ("smart-beta-strategies-guide.md", re.compile(r"buffer rules reduce turnover by 30-40%, and"), "buffer rules reduce turnover, and"),
+    ("tactical-asset-allocation.md",
+     re.compile(r", achieving 15-25% lower volatility and 30-60% lower maximum drawdowns relative to static allocation"),
+     ", aiming for lower volatility and smaller drawdowns than static allocation"),
+    ("tactical-asset-allocation.md",
+     re.compile(r"produces more robust TAA than any single signal category, with Sharpe ratio improvements of 0\.15-0\.25"),
+     "can make TAA more robust than any single signal category"),
+    ("trend-following-system-guide.md",
+     re.compile(r"slow trend signals improves Sharpe from 0\.72-0\.88 to 0\.94"), "slow trend signals diversifies across horizons"),
+    ("trend-following-system-guide.md",
+     re.compile(r"A 20-30% allocation to trend following in a traditional portfolio reduces max drawdown by 25-35%"),
+     "Adding a trend-following allocation to a traditional portfolio may reduce drawdowns, depending on the period and implementation"),
+    ("options-trading-strategies-quant.md",
+     re.compile(r"reduce portfolio volatility from 15\.8% to 11\.4% with minimal return sacrifice"),
+     "can reduce portfolio volatility, at the cost of capping upside"),
+    ("moving-average-crossover-strategy.md",
+     re.compile(r"Triple MA systems reduce false signals by 42% at the cost of later entries"),
+     "Triple MA systems can reduce false signals at the cost of later entries"),
+    ("momentum-trading-strategy-guide.md",
+     re.compile(r"essential to survive momentum crashes \(reduce max drawdown from -38\.7% to -16\.2%\)"),
+     "essential to survive momentum crashes"),
+    ("breakout-trading-strategy.md",
+     re.compile(r"Breakout strategies have low win rates \(38-48%\) compensated by high reward-to-risk ratios \(2:1 to 4:1\)"),
+     "Breakout strategies tend to have low win rates, compensated by high reward-to-risk ratios"),
+]
+
+
+def apply_explicit(name: str, body: str, stats: dict, samples: list) -> str:
+    for fname, rx, repl in EXPLICIT:
+        if fname != name:
+            continue
+        body, n = rx.subn(repl, body)
+        if n:
+            stats["explicit"] = stats.get("explicit", 0) + n
+            samples.append(("explicit", f"{fname}: {rx.pattern[:100]}"))
+    return body
+
 
 def split_front(text: str):
     m = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n?", text, re.S)
@@ -207,11 +389,13 @@ def process(body: str, stats: dict, samples: list) -> str:
             samples.append((kind, snippet.strip()[:150]))
 
     heading = ""
+    in_key = False
     while i < n:
         line = lines[i]
         s = line.strip()
         if s.startswith("#"):
             heading = s.lstrip("#").strip()
+            in_key = bool(KEY_HEAD.match(s))
         if s.startswith("```"):
             fenced = not fenced
             out.append(line)
@@ -221,6 +405,14 @@ def process(body: str, stats: dict, samples: list) -> str:
             out.append(line)
             i += 1
             continue
+        # seventh pass: exact-template replacements (haiku template, generic backtest-gap filler)
+        replaced = line
+        for rx_t, repl_t in LINE_RULES:
+            replaced = rx_t.sub(repl_t, replaced)
+        if replaced != line:
+            note("line-rule", line)
+            line = replaced
+            s = line.strip()
         # computed cost block
         if COST_HEAD.match(line):
             j = i + 1
@@ -335,6 +527,12 @@ def process(body: str, stats: dict, samples: list) -> str:
                     if k >= 0 and INTRO_LINE.match(out[k]) and not re.match(r"^\s*[-*]\s", out[k]):
                         del out[k:]
                 continue
+        # seventh pass: "Key Takeaways" bullets that state a strategy result as a fact (Sharpe, win rate, drawdown, improvement)
+        if (in_key and re.match(r"^\s*(?:[-*]|\d+\.)\s", line) and TAKEAWAY_PERF.search(line)
+                and not TAKEAWAY_KEEP.search(line) and not TAKEAWAY_VERIFIED.search(line)):
+            note("takeaway-result", line)
+            i += 1
+            continue
         # bullets with specific metric values
         if re.match(r"^\s*[-*]\s", line):
             if (BULLET_ONE.match(line) or BULLET_IMPROVES.match(line)
@@ -385,6 +583,9 @@ def process(body: str, stats: dict, samples: list) -> str:
                     drop = True
                 if len(p) <= MAX_SENTENCE and VAGUE_CITATION.search(p) and not YEAR.search(p):
                     drop = True  # a citation with no year or author cannot be checked
+                if (len(p) <= MAX_SENTENCE + 200 and not CONDITIONAL.search(p)
+                        and (IMPROVED_FROM_TO.search(p) or ANNUAL_RANGE_CLAIM.search(p))):
+                    drop = True  # "improved the Sharpe from A to B", "annual returns of N-M% are achievable"
                 if drop:
                     note("result-sentence", p)
                     changed = True
@@ -432,7 +633,7 @@ def main() -> int:
             continue
         head, body = split_front(text)
         stats: dict = {}
-        new_body = process(body, stats, samples)
+        new_body = process(apply_explicit(f.name, body, stats, samples), stats, samples)
         if new_body != body:
             changed_files.append(f.name)
             for k, v in stats.items():

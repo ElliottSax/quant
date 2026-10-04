@@ -139,7 +139,6 @@ RSI signals accompanied by above-average volume (> 1.5x 20-day average) have a 7
 
 ## Key Takeaways
 
-- RSI(2) with 5/95 thresholds dramatically outperforms traditional RSI(14) with 30/70 thresholds for mean reversion
 - The 200-day SMA trend filter adds 3.1% annual return by eliminating counter-trend trades
 - Multi-timeframe RSI (weekly + daily + 4-hour) nearly doubles the Sharpe ratio versus single-timeframe
 - RSI divergence produces reliable reversal signals with a 56.8% win rate and 1.48 profit factor

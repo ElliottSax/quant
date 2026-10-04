@@ -167,11 +167,7 @@ Monthly rebalancing is optimal after transaction costs for most portfolios.
 ## Key Takeaways
 
 - Mean-variance optimization produces theoretically optimal portfolios but is extremely sensitive to estimation errors
-- Black-Litterman (Sharpe 0.94) outperforms raw MVO (0.88) by anchoring to market equilibrium and incorporating views with confidence levels
-- Risk parity produces the most stable portfolios with the lowest drawdowns (-8.8% vs. -14.2% for MVO)
-- Robust optimization methods (min-max, resampled) improve out-of-sample performance by 20-40% versus naive MVO
 - Weight constraints (2-30% per asset) are essential for practical MVO implementation
-- Threshold rebalancing (5% bands) outperforms calendar rebalancing by 0.04 Sharpe
 - The Ledoit-Wolf shrinkage estimator significantly improves covariance matrix estimation for MVO
 
 ## Frequently Asked Questions

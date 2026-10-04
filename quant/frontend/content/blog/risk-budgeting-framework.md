@@ -172,7 +172,7 @@ Note how capital weights and risk weights differ substantially. [Statistical arb
 - [Equal Risk Contribution](/blog/risk-parity-portfolio) (ERC) maximizes risk diversification across portfolio components without requiring expected return estimates, making it robust to the most common source of optimization error
 - Custom risk budgets should be proportional to the square of each strategy's Sharpe ratio when Sharpe ratios are known, maximizing portfolio-level risk-adjusted returns
 - Multi-level [hierarchical risk](/blog/hierarchical-risk-parity) budgeting cascades risk allocations from asset classes down to individual positions, maintaining consistent risk governance across the portfolio
-- Dynamic risk budgets that adjust based on rolling performance, regime conditions, and aggregate volatility can improve risk-adjusted returns by 15-30% relative to static budgets
+- Dynamic risk budgets that adjust based on rolling performance, regime conditions, and aggregate volatility may improve risk-adjusted returns relative to static budgets, but test this on your own data
 
 ## Frequently Asked Questions
 

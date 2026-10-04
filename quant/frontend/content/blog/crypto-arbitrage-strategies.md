@@ -112,7 +112,7 @@ Effective crypto arbitrage requires $10,000-50,000 minimum across multiple excha
 
 **What are realistic returns from crypto arbitrage strategies?**
 
-Annual returns of 25-60% are achievable but require significant time investment, technology infrastructure, and operational expertise. Returns compress as more capital chases the same opportunities.
+Returns depend heavily on capital, costs and competition and are not guaranteed, and the strategies require significant time investment, technology infrastructure, and operational expertise. Returns compress as more capital chases the same opportunities.
 
 **How do gas fees impact DEX arbitrage profitability?**
 

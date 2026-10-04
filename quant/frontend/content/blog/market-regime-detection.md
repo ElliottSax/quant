@@ -19,10 +19,10 @@ Detecting the current regime and selecting the appropriate strategy is one of th
 
 Consider a simple moving [average crossover strategy](/blog/moving-average-crossover-strategy) (50/200 SMA) tested on SPY from 2000-2025:
 
-- **2003-2007 (uptrend):** The strategy captured the bull run with a [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) of approximately 1.2
+- **2003-2007 (uptrend):** The strategy captured the bull run
 - **2008-2009 (crisis):** The strategy avoided the worst of the crash but whipsawed during the recovery
-- **2010-2014 (low vol uptrend):** Multiple false signals due to shallow pullbacks, Sharpe approximately 0.4
-- **2015-2019 (mixed):** Inconsistent performance, Sharpe approximately 0.6
+- **2010-2014 (low vol uptrend):** Multiple false signals due to shallow pullbacks
+- **2015-2019 (mixed):** Inconsistent performance
 - **2020 (crisis + recovery):** Excellent, capturing the V-shaped recovery
 
 If the trader could detect the regime and apply the strategy only in favorable conditions, the overall Sharpe would improve dramatically.

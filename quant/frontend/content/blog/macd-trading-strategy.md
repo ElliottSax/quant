@@ -102,8 +102,6 @@ The combination of MACD (trend/momentum) with RSI (overbought/oversold) produces
 - **Buy**: MACD signal line crossover bullish AND RSI(14) < 40 (not overbought)
 - **Sell**: MACD signal line crossover bearish AND RSI(14) > 60 (not oversold)
 
-This combination improved the [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) from 0.58 to 1.04 by filtering out signals that occur when momentum is already extended.
-
 ### MACD + Volume
 
 Requiring above-average volume on MACD crossover signals:
@@ -144,11 +142,7 @@ Most traders focus on line crossovers and ignore the histogram. The histogram pr
 
 ## Key Takeaways
 
-- The 5/35/5 MACD parameters outperform the standard 12/26/9 on a risk-adjusted basis (Sharpe 0.84 vs. 0.58)
-- Adding a 200-day SMA filter improves Sharpe from 0.58 to 0.91 by eliminating counter-trend signals
 - MACD histogram reversals provide earlier signals than line crossovers, with 3-5 bar lead time
-- MACD + RSI combination (Sharpe 1.04) significantly outperforms MACD alone
-- Bullish MACD divergence has a 61.4% win rate; bearish divergence is less reliable at 54.8%
 - MACD works best on trending assets (equities, gold) and poorly on choppy assets (commodities)
 
 ## Frequently Asked Questions

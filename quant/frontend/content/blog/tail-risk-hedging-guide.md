@@ -121,7 +121,7 @@ This suggests allocating roughly 10-12% of portfolio value to tail protection st
 ## Key Takeaways
 
 - Tail risk events occur 8-10x more frequently than normal distribution models predict, making explicit hedging essential for portfolios that cannot tolerate large drawdowns
-- Put options provide the most direct protection but cost 1.5-3.0% annually; put spreads and VIX call spreads reduce costs by 40-60% while covering the most probable tail scenarios
+- Put options provide the most direct protection but carry an ongoing premium cost; put spreads and VIX call spreads reduce costs while covering the most probable tail scenarios
 - Trend-following allocations (10-15% of portfolio) provide structural tail protection without explicit option costs, historically delivering positive returns during sustained market declines
 - Optimal tail hedge sizing, derived from Kelly-style analysis, suggests allocating 10-12% of portfolio value to protection strategies
 - A tiered protection framework combining structural diversification, tactical hedging, and catastrophic insurance provides comprehensive tail protection at manageable cost

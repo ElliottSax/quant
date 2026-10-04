@@ -115,11 +115,7 @@ At 50 bps round-trip, the strategy becomes marginal. Institutional investors wit
 
 ### Rebalance Frequency
 
-Monthly rebalancing is standard, but we tested alternatives:
-
-- **Weekly**: Higher Sharpe (1.38) but 3x higher turnover, net worse after costs
-- **Monthly**: Best risk-adjusted returns after costs (Sharpe 1.31)
-- **Quarterly**: Lower turnover but misses intermediate signals (Sharpe 0.94)
+Monthly rebalancing is standard. Weekly rebalancing raises turnover and costs, and quarterly rebalancing lowers turnover but misses intermediate signals. Compare rebalancing frequencies on your own data, net of costs.
 
 ## Combining Momentum with Other Factors
 
@@ -134,7 +130,7 @@ The negative correlation between momentum and value (-0.38) makes them natural c
 - Momentum is one of the most robust and well-documented anomalies across asset classes
 - Combining cross-sectional (60%) and time-series (40%) momentum produces superior risk-adjusted returns
 - The 12-1 month lookback remains the gold standard, but a composite with 6-1 month adds value
-- Crash protection mechanisms are essential to survive momentum crashes (reduce max drawdown from -38.7% to -16.2%)
+- Crash protection mechanisms are essential to survive momentum crashes
 - Transaction costs above 20 bps significantly erode momentum alpha
 - Momentum pairs well with value (correlation -0.38) in multi-factor portfolios
 

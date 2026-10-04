@@ -270,7 +270,6 @@ class MultiSignalPairsFilter:
 
         return signals
 
-# Impact: Adding 2 confirmation signals raises win rate from 62% to 75%
 ```
 
 ## Position Scaling by Win Probability

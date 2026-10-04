@@ -195,7 +195,7 @@ class MLEnhancedMACDBacktester:
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-**Key insight**: ML filters out ~46% of false signals while increasing win rate from 50% to 56%.
+**Key insight**: An ML filter aims to remove false signals. Whether it raises the win rate or the net return has to be measured out-of-sample with realistic costs.
 
 ## Feature Importance (Random Forest)
 

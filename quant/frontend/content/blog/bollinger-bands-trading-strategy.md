@@ -115,8 +115,6 @@ Requiring above-average volume on band penetrations filters out noise:
 - **Confirmed signal**: Band touch + volume > 150% of 20-day average volume
 - **Unconfirmed**: Band touch + normal volume (ignore)
 
-Volume confirmation improved the profit factor from 1.28 to 1.51.
-
 ### Bollinger Bands + MACD
 
 Using MACD divergence with band touches identifies higher-probability reversals:
@@ -144,12 +142,9 @@ Use %B to scale position sizes:
 
 ## Key Takeaways
 
-- The Bollinger Squeeze strategy (Sharpe 1.24) significantly outperforms basic band-touch strategies (Sharpe 0.68)
 - Low-volatility squeezes preceded by bandwidth contraction to 120-day lows are the highest-probability setups
-- Adding RSI confirmation to band-touch signals improves win rates from 54% to 63%
 - The 2.0-2.5 standard deviation range balances signal frequency with quality
 - Double Bollinger Bands (1 SD and 2 SD) effectively capture both trending and reverting regimes
-- Volume confirmation improves the profit factor from 1.28 to 1.51
 
 ## Frequently Asked Questions
 

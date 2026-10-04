@@ -97,7 +97,7 @@ Perry Kaufman's Adaptive Moving Average automatically adjusts its smoothing peri
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-The key insight: the crossover strategy matched buy-and-hold returns while cutting the maximum drawdown by more than two-thirds (from -50.8% to -16.2%). The strategy was out of the market during the worst of the 2008 financial crisis and the 2020 COVID crash.
+The strategy was out of the market during the worst of the 2008 financial crisis and the 2020 COVID crash.
 
 ### Drawdown Comparison
 
@@ -118,7 +118,7 @@ Require above-average volume on the crossover day to confirm the signal.
 
 ### ATR Volatility Filter
 
-Only take signals when the 14-day ATR is below its 100-day average. This avoids trading during high-volatility regimes where whipsaws are most common. This filter improved the Sharpe from 0.88 to 0.96.
+Only take signals when the 14-day ATR is below its 100-day average. This avoids trading during high-volatility regimes where whipsaws are most common.
 
 ### Trend Strength (ADX) Filter
 
@@ -141,9 +141,8 @@ The core logic involves comparing yesterday's MA relationship to today's: if yes
 
 ## Key Takeaways
 
-- Moving average crossovers match buy-and-hold returns while reducing maximum drawdown by 60-70%
 - The golden cross (50/200) is the most widely followed but not the most profitable variant
-- Triple MA systems reduce false signals by 42% at the cost of later entries
+- Triple MA systems can reduce false signals at the cost of later entries
 - Adding volume, ATR, and ADX filters improves win rates by 5-9 percentage points
 - The primary value of MA crossovers is bear market avoidance, not alpha generation
 

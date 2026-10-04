@@ -226,7 +226,7 @@ No. While PhDs are common at large quantitative hedge funds, individual algorith
 
 ### How much money can you make with algorithmic trading?
 
-This translates to $4,000-7,500 per year. Scaling requires either more capital, leverage, or multiple uncorrelated strategies. The median independent quant trader in surveys reports annual returns of 10-20% before fees.
+Returns depend on capital, strategy and costs, and no figure is guaranteed. Scaling requires either more capital, leverage, or multiple uncorrelated strategies.
 
 ### What programming language should I learn for algo trading?
 

@@ -47,11 +47,11 @@ There are several arbitrage strategies that traders can employ, each with its ow
 
 | Strategy | Description | Risk Level | Potential Return |
 | --- | --- | --- | --- |
-| **Simple Arbitrage** | Buy and sell the same cryptocurrency on different exchanges, exploiting price differences | Low | 1-3% |
-| **Triangular Arbitrage** | Exploit price differences between three or more cryptocurrencies on the same exchange, using a combination of buy and sell orders | Medium | 2-5% |
-| **Statistical Arbitrage** | Use statistical models to identify mispricings in the market, executing trades based on predicted price movements | High | 5-10% |
+| **Simple Arbitrage** | Buy and sell the same cryptocurrency on different exchanges, exploiting price differences | Low | Varies; not guaranteed |
+| **Triangular Arbitrage** | Exploit price differences between three or more cryptocurrencies on the same exchange, using a combination of buy and sell orders | Medium | Varies; not guaranteed |
+| **Statistical Arbitrage** | Use statistical models to identify mispricings in the market, executing trades based on predicted price movements | High | Varies; not guaranteed |
 
-Simple arbitrage is the most basic strategy, involving the simultaneous purchase and sale of the same cryptocurrency on different exchanges. This strategy is relatively low-risk but generates lower returns, typically ranging from 1% to 3% per trade. Triangular arbitrage, on the other hand, involves exploiting price differences between three or more cryptocurrencies on the same exchange, using a combination of buy and sell orders. This strategy is more complex and carries higher risks, but can generate higher returns, typically ranging from 2% to 5% per trade. Statistical arbitrage is the most advanced strategy, using statistical models to identify mispricings in the market and executing trades based on predicted price movements. This strategy is high-risk but can generate the highest returns, typically ranging from 5% to 10% per trade.
+Simple arbitrage is the most basic strategy, involving the simultaneous purchase and sale of the same cryptocurrency on different exchanges. This strategy is relatively low-risk but generates lower returns. Triangular arbitrage, on the other hand, involves exploiting price differences between three or more cryptocurrencies on the same exchange, using a combination of buy and sell orders. This strategy is more complex and carries higher risks, but can generate higher returns. Statistical arbitrage is the most advanced strategy, using statistical models to identify mispricings in the market and executing trades based on predicted price movements. This strategy is high-risk but can generate the highest returns.
 
 ## Section 3: Implementation and Execution
 

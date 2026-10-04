@@ -335,3 +335,48 @@ test('the measured pages keep their computed results', () => {
   const text = fs.readFileSync(path.join(ROOT, 'content', 'blog', 'triple-barrier-labeling-meta-labeling.md'), 'utf-8')
   assert.match(text, /baseline win rate was 49\.3%/)
 })
+
+// Pass 4 (2026-10-04): the last known invented results: "Sharpe ratio improved from 0.38 to 0.93",
+// "Annual returns of 5-8%", the haiku-template FAQ ("Backtested improvements typically exceed live trading
+// results by 20-40%"), its "34-160%" intro, "519.9% in bear markets" and "R² 0.84-0.91", plus per-page
+// "Key Takeaways" bullets that stated invented Sharpe / win-rate / drawdown results as fact. Pages with a
+// documented method ("## Sources") are exempt; so is the Monte Carlo takeaway, whose 22% is reproducible
+// from the assumptions printed on the same page.
+const PASS4: [string, RegExp][] = [
+  ['"Sharpe ratio improved from A to B"', /\bSharpe(?: ratio)?\s+(?:improv|increas)\w*\s+from\s+\*{0,2}\d[\d.]*\s+to\s+\*{0,2}\d/i],
+  ['"improved the Sharpe/win rate/profit factor from A to B"', /\b(?:improv|increas|rais|boost|reduc|cut|lower)\w*\b[^.!?\n]{0,60}?\b(?:Sharpe(?: ratio)?|win[- ]?rates?|profit factor|drawdowns?)\b[^.!?\n]{0,40}?\bfrom\s+\*{0,2}[-+]?\d[\d.]*\s*%?\s+to\s+\*{0,2}[-+]?\d/i],
+  ['"Annual returns of 5-8%" range', /\bannual(?:i[sz]ed)? returns? of \d[\d.]*\s*(?:-|–|to)\s*\d[\d.]*\s*%/i],
+  ['"backtested improvements typically exceed live results by NN%"', /Backtested improvements typically exceed live trading results by/i],
+  ['"typically exceed live trading results by NN%"', /typically exceed live trading results by \d/i],
+  ['haiku intro "34-160% improvements in Sharpe ratios"', /\d+-\d+% improvements in Sharpe ratios/i],
+  ['haiku "519.9% in bear markets"', /519\.9%/],
+  ['haiku R² 0.84-0.91 claim', /R²\s*(?:of\s*)?0\.84-0\.91/],
+  ['haiku "(typically N-M% drift per week)"', /typically \d+-\d+% drift per week/i],
+]
+
+for (const [name, re] of PASS4) {
+  test(`pass 4: no ${name}`, () => {
+    const hits = BLOG.filter((f) => {
+      const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+      if (SOURCED(text)) return false
+      return re.test(proseLines(text).join(String.fromCharCode(10)))
+    })
+    assert.deepEqual(hits, [])
+  })
+}
+
+test('pass 4: "Key Takeaways" bullets do not state Sharpe / win-rate / drawdown results as fact', () => {
+  const PERF = /\bSharpe\b[^.\n]{0,25}\d|\bwin[- ]?rates?\b[^.\n]{0,60}\d+(?:\.\d+)?\s*%|\bdrawdowns?\b[^.\n]{0,60}\d+(?:\.\d+)?\s*%/i
+  const KEEP = /\b(?:requires?|mathematically|break-?even|deflat\w+|skeptic\w*|square root|significance|acceptable|size positions|row-by-row|if|could|would|might|may|should|treated|hypothetical|illustrat\w+)\b|\b1:\d|Even a Sharpe 1\.0 strategy has a 22% chance/i
+  const hits: string[] = []
+  for (const f of BLOG) {
+    const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+    if (SOURCED(text)) continue
+    let inKey = false
+    proseLines(text).forEach((l, i) => {
+      if (/^#{2,4}\s/.test(l)) inKey = /\b(?:key takeaways?|takeaways?|key points|key findings|in short|bottom line)\b/i.test(l)
+      else if (inKey && /^\s*(?:[-*]|\d+\.)\s/.test(l) && PERF.test(l) && !KEEP.test(l)) hits.push(`${f}:${i + 1}`)
+    })
+  }
+  assert.deepEqual(hits, [])
+})

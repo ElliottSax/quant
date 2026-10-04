@@ -161,11 +161,10 @@ Where delta_w_i is the tactical weight deviation for asset class i, and R_i is t
 
 ## Key Takeaways
 
-- Tactical Asset Allocation systematically adjusts portfolio weights based on quantitative signals, achieving 15-25% lower volatility and 30-60% lower maximum drawdowns relative to static allocation
+- Tactical Asset Allocation systematically adjusts portfolio weights based on quantitative signals, aiming for lower volatility and smaller drawdowns than static allocation
 - Time-series momentum (10-month SMA rule) is the most robust single TAA signal, with decades of documented effectiveness across asset classes and geographies
-- Combining momentum, macro, and valuation signals produces more robust TAA than any single signal category, with Sharpe ratio improvements of 0.15-0.25
+- Combining momentum, macro, and valuation signals can make TAA more robust than any single signal category
 - Turnover management through signal smoothing, dead zones, and gradual implementation is essential for maintaining net-of-cost performance
-- TAA alpha primarily comes from equity underweighting during drawdowns (60-70% of total alpha), making the strategy most valuable for risk-averse investors
 
 ## Frequently Asked Questions
 

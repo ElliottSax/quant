@@ -201,7 +201,6 @@ Measured results are not published for this strategy. The code above is a starti
 - Position sizing has more impact on portfolio performance than entry signals
 - Fixed fractional (1% risk per trade) is the recommended starting point for systematic traders
 - Half Kelly or quarter Kelly provides a practical balance between growth and drawdown
-- Dynamic drawdown control (reducing sizes during drawdowns) reduced max drawdown from -22.4% to -15.8% with only 1.2% CAGR cost
 - CVaR ([Expected Shortfall](/blog/expected-shortfall-cvar)) is a more robust risk measure than VaR for fat-tailed return distributions
 - Correlation-aware position sizing prevents hidden concentration risk
 - [Stress testing](/blog/stress-testing-portfolios) against historical crises is essential before deploying capital

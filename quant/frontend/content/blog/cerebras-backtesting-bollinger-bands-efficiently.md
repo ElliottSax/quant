@@ -177,7 +177,7 @@ We precompute rolling statistics once per window to avoid redundant calculations
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-The best-performing configuration is **window=10, k=2.5** (Sharpe: 0.38). This setting increases sensitivity to short-term price movements and reduces false signals.
+Run the optimization on your own data to find the configuration that suits your market.
 
 Total optimization runtime: **1.8 seconds** on standard hardware — demonstrating efficient backtesting design.
 

@@ -142,15 +142,10 @@ Not all volume environments are equal. We classify volume into regimes for strat
 | Low volume + trending | Volume < 0.8x avg, ADX > 25 | Avoid (unreliable moves) |
 | Low volume + ranging | Volume < 0.8x avg, ADX < 20 | Avoid (no opportunity) |
 
-Trading only in the high-volume regimes improved overall portfolio Sharpe from 1.12 to 1.34 while reducing time in market by 35%.
-
 ## Key Takeaways
 
 - VWAP creates genuine mean-reverting behavior due to institutional [execution algorithms](/blog/execution-algorithms-guide) targeting it
-- Volume-confirmed breakouts (2x average volume) outperform unconfirmed breakouts with a profit factor of 1.82 vs. 1.28
-- Volume Profile Point of Control is a high-probability support/resistance level (Sharpe 1.38)
 - OBV divergence leads price divergence by an average of 8 trading days
-- Trading only in high-volume regimes improves Sharpe by 20% while reducing time in market
 
 ## Frequently Asked Questions
 

@@ -167,8 +167,6 @@ Mean reversion fails during trending markets or high uncertainty. We enhance saf
 - 30-day spread volatility < 1.5 × 5-year median
 - No FOMC meetings within ±3 days
 
-Applying these filters reduces trading frequency by 38%, but improves Sharpe ratio from 1.41 to **1.73** and cuts max drawdown to **8.1%**.
-
 ```python
 def safe_entry_filter(vix, spread_vol, fomc_dates, current_date):
     if vix > 25:

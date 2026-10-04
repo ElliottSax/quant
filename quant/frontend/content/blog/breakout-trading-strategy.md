@@ -138,12 +138,7 @@ The combined portfolio Sharpe of 1.42 exceeds any individual component due to lo
 ## Key Takeaways
 
 - False breakouts account for 50-70% of signals; systematic filtering is essential
-- Volume confirmation improves breakout win rates from 38% to 48%
-- Volatility contraction breakouts (Sharpe 1.08) outperform simple Donchian channel breakouts (Sharpe 0.74) on equities
-- The 30-minute opening range breakout produces the best intraday results (Sharpe 1.12)
-- Retest confirmation dramatically improves win rate (56%) but reduces trade frequency by 58%
-- Combining breakout systems across markets yields a portfolio Sharpe of 1.42
-- Breakout strategies have low win rates (38-48%) compensated by high reward-to-risk ratios (2:1 to 4:1)
+- Breakout strategies tend to have low win rates, compensated by high reward-to-risk ratios
 
 ## Frequently Asked Questions
 

@@ -108,11 +108,7 @@ Carry strategies explicitly exploit this dynamic by going long only backwardated
 
 ### Performance
 
-Commodity carry strategies have historically delivered:
-- Annual returns of 5-8% (cross-sectional) or 3-6% (time-series)
-- Sharpe ratios of 0.5-0.8
-- Low correlation with trend following (0.1-0.3), enabling strong diversification when combined
-- Moderate drawdowns (-15 to -20% maximum)
+Commodity carry strategies earn returns from the roll yield, and results vary widely by period and implementation. Estimate returns, the Sharpe ratio, drawdowns and the correlation with trend following on your own data, net of costs.
 
 The carry premium is compensation for bearing inventory risk: backwardated commodities have tight supply (risk of further tightening), while contangoed commodities have ample supply.
 

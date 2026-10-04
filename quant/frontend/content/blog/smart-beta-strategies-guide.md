@@ -142,8 +142,8 @@ Some practitioners adjust factor allocations based on the factor's valuation (is
 ## Key Takeaways
 
 - Smart beta strategies systematically capture factor premia (value, momentum, quality, low volatility, size) through rules-based index construction, bridging passive indexing and active management
-- Multi-factor combination produces superior risk-adjusted returns because factor premia are lowly or negatively correlated; integrated multi-factor portfolios achieve Sharpe ratios 35-40% higher than single factors
-- Implementation details matter: buffer rules reduce turnover by 30-40%, and [transaction cost](/blog/transaction-cost-analysis) management is critical for high-turnover factors like momentum
+- Multi-factor combination can improve risk-adjusted returns because factor premia are imperfectly correlated; check this on your own data
+- Implementation details matter: buffer rules reduce turnover, and [transaction cost](/blog/transaction-cost-analysis) management is critical for high-turnover factors like momentum
 - Factor timing based on factor valuation and momentum can add modest alpha but carries the risk of extended factor drawdowns (value underperformed for a decade post-2010)
 - The smart beta industry manages over $1.5 trillion, validating these concepts at institutional scale while raising questions about factor crowding and diminished future premia
 

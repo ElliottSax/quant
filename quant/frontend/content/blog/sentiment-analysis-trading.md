@@ -214,11 +214,9 @@ A critical preprocessing step: accurately identifying which company a news artic
 
 ## Key Takeaways
 
-- News sentiment (Sharpe 1.18) and price momentum (Sharpe 0.84) have low correlation (0.22), making them excellent complements
 - Earnings call tone analysis produces 4.2% alpha over Fama-French factors, with tone change as the most predictive feature
 - Social media sentiment works best as a contrarian indicator for heavily discussed stocks
 - The Loughran-McDonald dictionary is essential for finance-specific sentiment (general dictionaries underperform by 10-15%)
-- Combined sentiment + momentum strategies achieve Sharpe ratios of 1.52
 
 ## Frequently Asked Questions
 

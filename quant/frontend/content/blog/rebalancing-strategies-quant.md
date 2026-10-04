@@ -173,7 +173,7 @@ For investors with multiple accounts (401k, IRA, taxable brokerage), coordinate 
 
 - Rebalancing controls risk drift, captures the rebalancing premium (approximately 10-20 basis points annually after costs), and maintains portfolio diversification
 - Quarterly calendar rebalancing offers the best trade-off between tracking error and transaction costs for most portfolios
-- Threshold rebalancing (4-5% bandwidth for equities, 8-10% for bonds) trades only when drift is meaningful, reducing unnecessary transactions by 30-50% versus calendar rebalancing
+- Threshold rebalancing (4-5% bandwidth for equities, 8-10% for bonds) trades only when drift is meaningful, reducing unnecessary transactions compared with calendar rebalancing
 - Tactical rebalancing incorporating momentum and volatility signals can add 30-80 basis points annually, but requires more sophisticated implementation and monitoring
 - Tax-aware rebalancing in taxable accounts should use cash flows for rebalancing, harvest tax losses, and consider the after-tax net benefit of each trade
 
