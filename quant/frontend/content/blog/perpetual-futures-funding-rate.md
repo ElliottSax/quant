@@ -115,9 +115,7 @@ Backtesting frameworks validate strategies using historical funding rates and pr
 
 ## Key Takeaways
 
-
 Cash-and-carry arbitrage buying spot and shorting perps represents the foundational strategy, earning positive funding while maintaining zero directional exposure, though requiring careful margin management to avoid liquidations during volatile price moves.
-
 
 Multi-asset portfolios diversify funding sources across BTC, ETH, and altcoins with dynamic rebalancing toward highest funding opportunities, achieving 30-40% portfolio-level yields with lower single-asset concentration risk.
 

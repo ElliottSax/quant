@@ -54,15 +54,9 @@ Randomly resample completed trades with replacement to generate thousands of alt
 
 **Results from a strategy with Sharpe 1.2 (10,000 iterations)**:
 
-| Percentile | CAGR | Max Drawdown | Sharpe |
-|-----------|------|-------------|--------|
-| 5th | 4.2% | -28.4% | 0.62 |
-| 25th | 7.8% | -18.2% | 0.94 |
-| 50th (Median) | 10.4% | -14.8% | 1.18 |
-| 75th | 13.2% | -11.4% | 1.44 |
-| 95th | 18.4% | -8.2% | 1.82 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-**Interpretation**: Even though the backtest showed a Sharpe of 1.2, there is a 5% chance the strategy could produce a Sharpe below 0.62 or a max drawdown exceeding -28.4%. This is the information a single backtest cannot provide.
+This is the information a single backtest cannot provide.
 
 ### Method 2: Return Randomization
 
@@ -142,13 +136,7 @@ The most common use of Monte Carlo in trading: estimating the probability of exp
 
 Run Monte Carlo with different position sizing rules to find the best risk-adjusted approach:
 
-| Position Size Rule | Median CAGR | 5th Percentile CAGR | Probability of Ruin |
-|-------------------|-------------|---------------------|-------------------|
-| 0.5% risk/trade | 6.2% | 2.4% | 0.1% |
-| 1.0% risk/trade | 10.4% | -1.2% | 0.8% |
-| 2.0% risk/trade | 14.8% | -8.4% | 4.2% |
-| 5.0% risk/trade | 18.2% | -22.4% | 18.4% |
-| Full Kelly | 22.4% | -42.8% | 28.2% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The optimal position size depends on the investor's risk tolerance. At 2% risk per trade, there is a 4.2% chance of ruin over the simulation period, which many traders find unacceptable.
 

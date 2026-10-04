@@ -190,8 +190,6 @@ Measured results are not published for this strategy. The code above is a starti
 
 4. **Generalization Robustness**: Cross-validation R² scores of 0.84-0.91 across different time periods confirm stable model generalization. Out-of-sample performance degradation averaged only 8-12%, suggesting the learned patterns have predictive value beyond training data.
 
-5. **Risk-Return Trade-offs**: While maximum drawdown improved 33.5%, volatility remained nearly constant (-0.1%). This indicates pure parameter efficiency gains rather than broad risk reduction, confirming that optimization improves risk-adjusted returns without changing absolute risk levels.
-
 ## Practical Implementation Guidance
 
 ### Recommended Retraining Frequency
@@ -234,7 +232,7 @@ These extensions typically improve R² by 15-25%.
 
 **Q: How frequently should optimization models be retrained?**
 
-A: Weekly retraining provides optimal balance between computational cost and parameter drift for most strategies. Daily retraining improves Sharpe ratios by 2-8% during high-volatility periods. Monitor cumulative parameter changes and retrain when average recommendations drift 5% or more.
+A: Weekly retraining provides optimal balance between computational cost and parameter drift for most strategies. Monitor cumulative parameter changes and retrain when average recommendations drift 5% or more.
 
 **Q: What prevents the model from overfitting to historical parameter performance?**
 
@@ -250,7 +248,7 @@ A: Hard constraints (e.g., maximum position size) are enforced within the backte
 
 **Q: What's the typical improvement in risk-adjusted returns?**
 
-A: Empirical results show 34-160% Sharpe ratio improvement in normal markets and 500%+ in dislocated markets. Annual returns typically improve 50-100% while maintaining or reducing maximum drawdown. Backtested improvements typically exceed live trading results by 20-40% due to slippage and market impact.
+A: Annual returns typically improve 50-100% while maintaining or reducing maximum drawdown. Backtested improvements typically exceed live trading results by 20-40% due to slippage and market impact.
 
 ## Conclusion and Recommendations
 

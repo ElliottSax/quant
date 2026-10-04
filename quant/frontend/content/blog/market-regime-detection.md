@@ -25,7 +25,7 @@ Consider a simple moving [average crossover strategy](/blog/moving-average-cross
 - **2015-2019 (mixed):** Inconsistent performance, Sharpe approximately 0.6
 - **2020 (crisis + recovery):** Excellent, capturing the V-shaped recovery
 
-The same strategy produced Sharpe ratios ranging from 0.4 to 1.2 depending on the regime. If the trader could detect the regime and apply the strategy only in favorable conditions, the overall Sharpe would improve dramatically.
+If the trader could detect the regime and apply the strategy only in favorable conditions, the overall Sharpe would improve dramatically.
 
 ### Four Primary Market Regimes
 

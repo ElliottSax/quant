@@ -13,7 +13,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Price Action Forex Trading Strategy: Reading Charts Without Indicators
 
 *Last updated: March 20, 2026*
@@ -50,7 +49,6 @@ Identifying the right entry point is crucial for trading success. The pure price
 
 **Technical requirements for entry:**
 
-
 1. **Identify support/resistance through pivot highs and lows** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Pin bar (long wick, small body) at key level signals rejection** - This condition helps confirm strong directional bias and reduces false signals.
@@ -78,7 +76,6 @@ Knowing when to exit is equally important as knowing when to enter. The pure pri
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Profit target: Previous swing high/low** - This helps lock in profits while limiting losses.
 

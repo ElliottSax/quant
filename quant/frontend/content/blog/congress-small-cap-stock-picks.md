@@ -12,7 +12,6 @@ last_updated: '2026-03-24'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Small-Cap Stock Picks: Penny Stocks and Emerging Company Holdings
 
 Congressional members allocate surprisingly significant capital to small-cap and emerging company stocks, achieving extreme return profiles that suggest specialized information about private companies and pre-IPO opportunities. Analysis of small-cap holdings reveals outsized allocation to biotech, semiconductor, and AI companies before major catalysts.
@@ -22,8 +21,6 @@ Congressional members allocate surprisingly significant capital to small-cap and
 **Congressional Small-Cap Allocation (2026)**:
 - Total small-cap holdings: $234 million (4.8% of total congressional holdings)
 - Number of transactions: 1,234
-- Average return per trade: 34.2%
-- Win rate: 62.1%
 - Average holding period: 42 days
 
 Small-cap allocations show 2.1x higher returns than large-cap congressional holdings (34.2% vs 16.4%), though with somewhat lower win rates.
@@ -57,7 +54,6 @@ Biotech represents largest congressional small-cap allocation:
 **Top Biotech Holdings**:
 - Smaller biotech companies (clinical stage): $67 million holdings
 - Average return on biotech positions: 42.1%
-- Win rate: 58.2%
 - Holding period: 51 days (longer than other small-caps)
 
 Longer biotech holding periods reflect waiting for FDA approval events that drive sharp appreciation.
@@ -101,7 +97,6 @@ Congressional small-cap selection accuracy of 82.5% suggests foreknowledge of co
 **Rep. Darren Soto (D-Florida)** (Crypto/startup advocate):
 - Small-cap holdings: $18 million
 - Q1 2026 small-cap profit: $4.2 million
-- Win rate: 67.8%
 - Sector focus: Crypto, AI, biotech startups
 
 Soto's technology background enables identification of emerging company opportunities.
@@ -109,7 +104,6 @@ Soto's technology background enables identification of emerging company opportun
 **Rep. Tom Emmer (R-Minnesota)** (Tech/startup advocate):
 - Small-cap holdings: $14 million
 - Q1 2026 small-cap profit: $3.8 million
-- Win rate: 64.2%
 - Sector focus: AI, fintech startups
 
 ## Private Equity Access

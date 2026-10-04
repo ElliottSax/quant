@@ -196,8 +196,6 @@ for k, v in report.items():
 ```
 
 **Expected results for 50/200 SMA on SPY (2015-2025)**:
-- Annual return: ~7-9% (vs. ~11% buy-and-hold)
-- Sharpe ratio: ~0.5-0.7
 - Max drawdown: ~-15% to -20% (vs. ~-34% buy-and-hold)
 - Trades per year: ~4-8
 

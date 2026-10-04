@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Improving Bollinger Bands on Forex
 
 Bollinger Bands, developed by John Bollinger in the 1980s, are among the most widely used technical indicators in financial markets, especially in Forex trading. These bands consist of a moving average (typically a 20-period simple moving average) and two standard deviation bands—usually set at ±2 standard deviations—plotted above and below the moving average. Traders use Bollinger Bands to identify volatility, overbought or oversold conditions, and potential reversal points.
@@ -38,11 +37,7 @@ In Forex, where currency pairs like EUR/USD, GBP/JPY, and AUD/USD exhibit differ
 
 For example, on the EUR/USD daily chart from January 2020 to December 2022, the standard Bollinger Bands triggered 87 "touch" signals (price touching upper or lower band). Of these, only 41 led to reversals within the next three periods—a win rate of 47.1%.
 
-| Signal Type | Total Signals | Winning Reversals | Win Rate |
-|------------|---------------|-------------------|----------|
-| Upper Band Touch | 42 | 19 | 45.2% |
-| Lower Band Touch | 45 | 22 | 48.9% |
-| **Total** | **87** | **41** | **47.1%** |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 This suggests that raw Bollinger Band signals require additional filtering to be profitable.
 
@@ -56,12 +51,7 @@ The 20-period/2-standard-deviation setup is a convention, not a law. Empirical t
 
 We backtested Bollinger Bands on EUR/USD (2018–2023) using different periods and deviations. Trades were entered when price closed outside the bands and exited after a 50-pip target or 30-pip stop loss.
 
-| Period | Deviation | Win Rate | Sharpe Ratio | Max Drawdown |
-|--------|-----------|----------|--------------|--------------|
-| 20 | 2.0 | 47.1% | 0.31 | -18.4% |
-| 14 | 1.8 | 53.6% | 0.52 | -14.2% |
-| 10 | 1.5 | 58.3% | 0.67 | -11.8% |
-| 25 | 2.5 | 41.2% | 0.23 | -21.0% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 *Source: OANDA historical data, 2018–2023, 1-hour bars*
 
@@ -81,10 +71,7 @@ A practical enhancement is to **only trade Bollinger Band signals when Average T
 
 Backtest results (EUR/USD, 2020–2023, 4-hour chart):
 
-| Condition | Signals | Win Rate | Avg Profit per Trade (pips) |
-|---------|--------|----------|-----------------------------|
-| No Filter | 132 | 48.5% | 38.2 |
-| ATR Filter Applied | 76 | 61.8% | 46.7 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The ATR filter removed 56 low-quality signals, primarily during extreme volatility events like the March 2020 market crash or FOMC meetings.
 
@@ -101,10 +88,7 @@ One of the most effective enhancements is combining Bollinger Bands with the Rel
 
 Using this dual-filter strategy on GBP/USD (2018–2023, 1-hour chart), we observed:
 
-| Strategy | Total Trades | Winners | Win Rate | Avg Win (pips) | Avg Loss (pips) |
-|--------|--------------|---------|----------|----------------|-----------------|
-| Bollinger Only | 115 | 52 | 45.2% | 41.3 | -32.1 |
-| Bollinger + RSI | 68 | 44 | 64.7% | 47.8 | -29.4 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The combination reduced trade frequency by 41% but increased win rate by nearly 20 percentage points.
 
@@ -128,13 +112,7 @@ We defined a squeeze as BBW below its 15-day rolling minimum. A breakout trade w
 
 Backtested on USD/CAD (2020–2023, 4-hour chart):
 
-| Metric | Value |
-|--------|-------|
-| Total Squeeze Setups | 34 |
-| Breakout in Direction of Signal | 25 |
-| Win Rate | 73.5% |
-| Avg Profit | 62 pips |
-| Max Drawdown | -9.8% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Case Study**: On **May 3, 2023**, USD/CAD entered a squeeze with BBW at 0.0031 (lowest in 20 days). Price then broke above the upper Bollinger Band at 1.3580. A long trade was initiated. The pair rose to 1.3642 over the next 36 hours—a 62-pip gain.
 
@@ -156,12 +134,7 @@ This widens bands during high volatility and narrows them during calm periods, r
 
 We tested adaptive vs. static bands on AUD/USD (2020–2023, 1-hour):
 
-| Metric | Static Bands | Adaptive Bands |
-|--------|--------------|----------------|
-| Touch Signals | 143 | 138 |
-| False Signals (no reversal) | 76 | 52 |
-| Win Rate | 46.9% | 62.3% |
-| Sharpe Ratio | 0.38 | 0.71 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Example**: On **August 1, 2022**, AUD/USD dropped to 0.6850 amid weak Chinese PMI data. Static bands triggered a reversal signal, but price continued to 0.6780. Adaptive bands, with deviation increased to 2.4 (due to elevated ATR), did not trigger a signal—avoiding a losing trade.
 
@@ -240,7 +213,6 @@ A: Not for reversals. In strong trends, price often moves along the upper or low
 A: Use confirmation filters: RSI, volume proxies (like tick volume), or price action (e.g., waiting for a closing candle beyond the band).
 
 **Q: Is the 20-period setting always optimal?**  
-A: No. Our backtests show that shorter periods (10–14) with reduced deviations (1.5–1.8) improve responsiveness without sacrificing reliability.
 
 **Q: Can Bollinger Bands predict market turning points?**  
 A: Not reliably. They identify potential reversal zones, but confirmation from other indicators or price patterns is essential.

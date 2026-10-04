@@ -101,7 +101,7 @@ The Black-Scholes model and the Greeks have many real-world applications in fina
 * Portfolio optimization: The Black-Scholes model and the Greeks can be used to optimize portfolios and to minimize risk.
 * Volatility trading: The Black-Scholes model can be used to estimate the value of volatility and to inform trading decisions.
 
-For example, a study by the CBOE found that the Black-Scholes model is used by over 70% of options traders, and that it is the most widely used model for options pricing. Another study by the Journal of Financial Economics found that the Greeks are widely used in risk management, and that they are essential tools for traders and risk managers who seek to manage complex options portfolios.
+For example, a study by the CBOE found that the Black-Scholes model is used by over 70% of options traders, and that it is the most widely used model for options pricing.
 
 The use of the Black-Scholes model and the Greeks can be illustrated with a specific example. Suppose we are a trader who wants to buy a call option on a stock with a current price of $50, and we want to estimate the value of the call option using the Black-Scholes model. We can use the model to estimate the value of the call option, and we can use the Greeks to measure the sensitivity of the option's price to changes in the underlying asset price, volatility, and time to expiration.
 

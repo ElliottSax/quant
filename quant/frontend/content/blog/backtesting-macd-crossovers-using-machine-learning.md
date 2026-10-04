@@ -12,7 +12,6 @@ description: "This guide combines MACD with random forests, gradient boosting, a
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting MACD Crossovers using Machine Learning: Signal Enhancement
 
 Machine learning enhances traditional MACD crossovers by learning when signals are most reliable, filtering false positives, and adapting to changing market regimes. If you want to verify the MACD, RSI, and ATR formulas used as model features against real market data, our [indicator formulas reference](/indicator-formulas) cross-checks them against pandas_ta on real bars. This guide combines MACD with random forests, gradient boosting, and neural networks for superior risk-adjusted returns.
@@ -194,13 +193,7 @@ class MLEnhancedMACDBacktester:
 
 **EUR/USD, 2023-2026 Out-of-Sample Testing**
 
-| Metric | Traditional MACD | ML-Enhanced | Improvement |
-|--------|---|---|---|
-| Total Return | 32.18% | 42.85% | +33.1% |
-| Sharpe Ratio | 1.28 | 1.62 | +26.6% |
-| Win Rate | 49.87% | 56.32% | +12.9% |
-| Max Drawdown | -11.45% | -8.92% | -22.1% |
-| Total Trades | 127 | 68 | -46.5% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Key insight**: ML filters out ~46% of false signals while increasing win rate from 50% to 56%.
 

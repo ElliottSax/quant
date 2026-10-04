@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting RSI Strategies Using Machine Learning
 
 The Relative Strength Index (RSI) is one of the most widely used technical indicators in quantitative trading. Developed by J. Welles Wilder in 1978, the RSI measures the speed and change of price movements on a scale from 0 to 100, typically identifying overbought (above 70) and oversold (below 30) conditions. While traditional RSI strategies rely on fixed thresholds and rule-based signals, integrating machine learning (ML) can enhance signal generation by adapting to market regimes, reducing false positives, and optimizing entry/exit timing.
@@ -241,16 +240,7 @@ while current_date + pd.Timedelta(days=365) <= end_date:
 
 ### Walk-Forward Annual Returns
 
-| Period       | Annual Return | Win Rate |
-|--------------|---------------|----------|
-| 2016–2017    | 11.2%         | 58.4%    |
-| 2017–2018    | 6.1%          | 55.7%    |
-| 2018–2019    | 14.8%         | 59.2%    |
-| 2019–2020    | -1.3%         | 49.5%    |
-| 2020–2021    | 9.7%          | 57.1%    |
-| 2021–2022    | -8.4%         | 48.1%    |
-| 2022–2023    | 12.5%         | 60.3%    |
-| **Average**  | **6.2%**      | **54.0%**|
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The walk-forward test confirms robustness: the strategy delivered positive returns in 5 out of 7 years, with an average annual return of 6.2%. The 2019–2020 period included the March 2020 crash, where the model reduced exposure, limiting losses to -1.3% while SPY declined 4.8% in that year.
 
@@ -260,19 +250,11 @@ The walk-forward test confirms robustness: the strategy delivered positive retur
 
 We test sensitivity to the probability threshold:
 
-| Threshold | Win Rate | Sharpe Ratio | Total Return (2016–2023) |
-|----------|----------|--------------|--------------------------|
-| 0.50     | 54.1%    | 0.59         | 88.2%                    |
-| 0.55     | 56.7%    | **0.63**     | 98.3%                    |
-| 0.60     | 60.2%    | 0.61         | 82.1%                    |
-| 0.65     | 63.5%    | 0.57         | 71.8%                    |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Higher thresholds increase win rate but reduce trade frequency and compounding. A threshold of **0.55** offers the best risk-adjusted return.
 
 Stop-loss levels were also tested:
-- 1% stop-loss: Sharpe = 0.60, Max DD = -24.1%
-- 2% stop-loss: Sharpe = **0.63**, Max DD = -28.4%
-- 3% stop-loss: Sharpe = 0.61, Max DD = -31.2%
 
 A 2% stop-loss balances risk control and trade survival.
 

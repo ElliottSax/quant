@@ -62,12 +62,7 @@ Lopez de Prado's original paper and subsequent studies demonstrate HRP's advanta
 
 ### Out-of-Sample Performance (10,000 simulations, 40 assets)
 
-| Method | Sharpe Ratio | Max Drawdown | Turnover | Stability |
-|--------|-------------|--------------|----------|-----------|
-| Mean-Variance (MVO) | 0.48 | -28.3% | 0.85 | Low |
-| Inverse-Volatility RP | 0.52 | -22.1% | 0.15 | High |
-| Equal Risk Contribution | 0.55 | -20.8% | 0.22 | Medium |
-| HRP | 0.57 | -19.5% | 0.18 | High |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Key observations:
 - HRP achieves the highest Sharpe ratio, benefiting from correlation-aware diversification without covariance inversion

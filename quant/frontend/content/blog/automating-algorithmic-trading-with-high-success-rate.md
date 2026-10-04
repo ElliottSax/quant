@@ -13,7 +13,6 @@ seo_optimized: true
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating Algorithmic Trading: A Practical Guide
 
 ## Introduction
@@ -322,7 +321,6 @@ def validate_win_rate(trades: pd.Series, claimed_win_rate: float,
         'min_trades_for_significance': min_trades
     }
 ```
-
 
 ## The Win Rate Deception
 

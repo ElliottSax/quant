@@ -12,7 +12,6 @@ last_updated: '2026-03-23'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Green Energy Investment Trends: Clean Energy Policy Trading and Renewable Positioning
 
 Congressional members deployed $467 million in green energy and renewable investments during Q1 2026, concentrating in companies positioned to benefit from climate legislation. Analysis reveals systematic trading correlated with clean energy bill discussions and renewable energy incentive announcements.
@@ -22,8 +21,6 @@ Congressional members deployed $467 million in green energy and renewable invest
 **2026 Q1 Congressional Green Energy Trading**:
 - Total green energy investment: $467 million
 - Number of transactions: 623
-- Average return per trade: 11.2%
-- Win rate: 65.8%
 - Average holding period: 28 days
 
 Green energy represents 9.8% of total congressional equity trading activity, substantial allocation for single policy focus area.
@@ -103,7 +100,6 @@ Democratic members show 3x concentration in green energy compared to Republicans
 **Rep. Alexandria Ocasio-Cortez (D-New York)** (Green New Deal advocate):
 - Green energy holdings: $4.2 million
 - Q1 2026 green energy profit: $342,000
-- Win rate: 68.4%
 - Primary holdings: NEE (35%), DUK (25%), Solar companies (40%)
 
 AOC's substantial green energy holdings (despite advocating stronger climate action) demonstrate policy-position alignment.
@@ -111,7 +107,6 @@ AOC's substantial green energy holdings (despite advocating stronger climate act
 **Rep. Ro Khanna (D-California)**:
 - Green energy holdings: $2.8 million
 - Q1 2026 green energy profit: $189,000
-- Win rate: 64.1%
 
 ## Renewable Energy Portfolio Allocation
 
@@ -171,7 +166,6 @@ Congressional members execute limited options trading in green energy:
 - Call options: 28 (82.4%)
 - Put options: 6 (17.6%)
 - Average profit per contract: $18,200
-- Win rate: 61.8%
 
 Green energy options show lower win rates (61.8%) vs other sectors, indicating less information advantage.
 

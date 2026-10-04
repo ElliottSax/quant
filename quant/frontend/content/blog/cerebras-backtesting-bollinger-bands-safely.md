@@ -170,11 +170,7 @@ Captured the year-end rally with moderate gain.
 
 ### Summary of Trade Characteristics
 
-| Period       | Avg. Holding (days) | Avg. Win | Avg. Loss | Win Rate |
-|--------------|---------------------|----------|-----------|----------|
-| 2000–2009    | 21                  | +7.2%   | -4.1%     | 52.6%    |
-| 2010–2019    | 18                  | +6.8%   | -3.9%     | 61.5%    |
-| 2020–2023    | 12                  | +5.4%   | -4.3%     | 60.0%    |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The strategy performed best in the 2010s, with higher win rates and shorter holding periods.
 
@@ -188,13 +184,7 @@ To backtest safely, we must assess how sensitive the strategy is to parameter ch
 
 We test the standard deviation multiplier (k) from 1.5 to 2.5:
 
-| k (σ) | Annualized Return | Sharpe Ratio | Max Drawdown | Trades |
-|-------|-------------------|--------------|--------------|--------|
-| 1.5   | 6.1%              | 0.32         | -41.2%       | 142    |
-| 1.8   | 7.0%              | 0.36         | -37.5%       | 110    |
-| 2.0   | 7.7%              | 0.40         | -33.6%       | 86     |
-| 2.2   | 7.5%              | 0.39         | -31.8%       | 73     |
-| 2.5   | 6.8%              | 0.35         | -28.4%       | 54     |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 As k increases, fewer trades occur, but win rate and risk-adjusted returns improve up to k=2.0. Beyond that, opportunity cost rises.
 

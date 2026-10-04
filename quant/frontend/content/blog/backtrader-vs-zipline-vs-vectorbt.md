@@ -16,7 +16,6 @@ last_updated: '2026-03-18'
 **Category:** Algo Trading
 **Date:** 2026-03-16
 
-
 ## Backtrader vs Zipline vs VectorBT — at a glance
 
 | Feature | Backtrader | Zipline | VectorBT |

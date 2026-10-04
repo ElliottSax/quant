@@ -114,14 +114,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 ## Parameter Sensitivity Analysis
 
-| Period | Z-Score | Return | Sharpe | Trades |
-|--------|---------|--------|--------|--------|
-| 15 | 1.5 | 26.42% | 1.31 | 187 |
-| 20 | 1.5 | 29.18% | 1.39 | 168 |
-| 20 | 2.0 | 28.45% | 1.42 | 156 |
-| 20 | 2.5 | 24.15% | 1.28 | 124 |
-| 25 | 2.0 | 27.35% | 1.40 | 142 |
-| 30 | 2.0 | 25.88% | 1.35 | 128 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Optimal**: 20-period SMA with Z-score = 2.0 threshold.
 

@@ -116,7 +116,6 @@ Wait for price to break out, pull back to the breakout level, and hold (retest c
 ### Combined Filters
 
 Applying all three filters simultaneously:
-- **Win rate**: 62.4%
 - **Signal reduction**: 74% fewer trades
 - **Sharpe improvement**: 0.74 to 1.18
 - **Trade-off**: Significantly fewer trading opportunities
@@ -125,13 +124,7 @@ Applying all three filters simultaneously:
 
 Breakout effectiveness varies by asset class:
 
-| Asset Class | Win Rate | Avg Breakout Follow-Through | Best Filter |
-|-------------|----------|---------------------------|-------------|
-| US Equities | 42% | 3.8% | Volume |
-| Forex | 38% | 2.1% | Retest |
-| Commodities | 44% | 5.2% | Volatility contraction |
-| Crypto | 46% | 8.4% | Volume |
-| Bonds | 40% | 1.8% | Close position |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Commodities and crypto produce the largest average follow-through moves, while forex produces the smallest. This reflects the different volatility and trending characteristics of each market.
 
@@ -139,13 +132,7 @@ Commodities and crypto produce the largest average follow-through moves, while f
 
 Combining multiple breakout systems across markets produces diversification benefits:
 
-| Component | Allocation | Sharpe (Standalone) |
-|-----------|-----------|-------------------|
-| Donchian Channel (Futures) | 30% | 0.84 |
-| Volatility Contraction (Equities) | 30% | 1.08 |
-| Opening Range (Intraday) | 20% | 1.12 |
-| Pattern Breakout (Multi-Asset) | 20% | 0.72 |
-| **Combined Portfolio** | **100%** | **1.42** |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The combined portfolio Sharpe of 1.42 exceeds any individual component due to low correlation between strategies.
 

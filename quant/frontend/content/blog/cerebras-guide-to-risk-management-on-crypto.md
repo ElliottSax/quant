@@ -54,11 +54,7 @@ Effective risk management begins with quantification. Below are essential metric
 
 ### Real Example: Bitcoin vs. Ethereum Volatility (2020–2023)
 
-| Asset | Annualized Volatility | Max Drawdown | Sharpe Ratio (Risk-free = 2%) |
-|-------|------------------------|--------------|-------------------------------|
-| Bitcoin (BTC) | 78% | -77% (2022) | 0.82 |
-| Ethereum (ETH) | 92% | -82% (2022) | 0.68 |
-| S&P 500 | 16% | -34% (2020) | 0.95 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 *Source: Yahoo Finance, CoinGecko, author calculations*
 
@@ -263,10 +259,7 @@ Strategies to reduce emotional trading:
 
 ### DCA vs. Lump-Sum: Bitcoin (2019–2021)
 
-| Strategy | Entry Period | Average Buy Price | Final Value (Dec 2021) | CAGR |
-|---------|--------------|-------------------|------------------------|------|
-| Lump-sum (Jan 2019) | $3,700 | $68,000 | 427% |
-| DCA ($1,000/month) | $7,300 avg | $68,000 | 274% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 While lump-sum outperformed, DCA reduced timing risk and emotional stress.
 

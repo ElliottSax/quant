@@ -14,7 +14,6 @@ description: "Beginners chase high win rates; professionals optimize Sharpe rati
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating Mean Reversion: A Practical Guide
 
 This guide reveals the signal refinement techniques, ensemble methods, and statistical frameworks that push mean reversion win rates from mediocre to institutional-grade (65%+).

@@ -12,7 +12,6 @@ description: "This comprehensive guide covers building production-grade MACD cro
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting MACD Crossovers in Python: Production Framework
 
 This comprehensive guide covers building production-grade MACD crossover backtesting systems in Python using industry-standard libraries. If you want to validate a MACD crossover idea before building this framework yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required. Learn how to structure code for maintainability, scalability, and reliable results.

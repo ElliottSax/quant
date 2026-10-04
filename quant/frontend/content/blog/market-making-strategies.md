@@ -89,7 +89,6 @@ class AvellanedaStoikov:
             "inventory_adjustment": mid - r,
         }
 
-
 class MarketMaker:
     """
     Automated market making engine with inventory management.

@@ -146,14 +146,18 @@ Practical stop-loss rules balance protection with avoiding whipsaws:
 Transaction costs significantly impact strategy returns. Analysis shows:
 
 ### Commission Impact
-- **2 trades/day at 0.05% commission**: -3.7% annual return impact
-- **1 trade/day at 0.05% commission**: -1.9% annual return impact
-- **5 trades/week at 0.05% commission**: -0.7% annual return impact
+
+Cost drag grows with turnover: annual drag is about round trips per year x cost per round trip x the fraction of capital committed to each trade.
+Worked example with stated assumptions (not a forecast): 0.05% commission per side is 0.10% per round trip with all capital committed each time.
+
+- 1 round trip per day (252 a year): 252 x 0.10% = 25.2% a year
+- 2 round trips per day (504 a year): 504 x 0.10% = 50.4% a year
+- 1 round trip per week (52 a year): 52 x 0.10% = 5.2% a year
+- 1 round trip per month (12 a year): 12 x 0.10% = 1.2% a year
 
 ### Slippage Impact
-- **High-liquidity assets (top 100)**: -0.3% annual impact
-- **Mid-cap stocks**: -0.8% annual impact
-- **Low-liquidity ETFs**: -2.1% annual impact
+
+Slippage depends on liquidity, order size and timing. Estimate it from your own fills instead of a rule of thumb.
 
 ### Bid-Ask Spread Impact
 
@@ -219,12 +223,7 @@ Signal reliability varies throughout the trading day:
 
 Strategy performance during extreme market conditions:
 
-| Period | Market Condition | Sharpe Ratio | Max DD |
-|--------|-----------------|-------------|--------|
-| 2020-03-16 | COVID crash | -0.82 | -28% |
-| 2022-09-28 | UK LDI crisis | 0.34 | -8% |
-| 2024-08-05 | Yen carry unwind | -0.45 | -15% |
-| 2025-01-20 | Volatility spike | 0.29 | -6% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### Parameter Sensitivity Analysis
 
@@ -308,7 +307,7 @@ Exchanges enforce maximum position limits:
 
 ### Q4: How does regime detection improve performance?
 
-**A:** Regime-aware strategies can achieve 20-40% Sharpe ratio improvements by adapting parameters to market conditions. Machine learning approaches (gradient boosting, reinforcement learning) help identify regime transitions earlier than traditional methods.
+**A:** Machine learning approaches (gradient boosting, reinforcement learning) help identify regime transitions earlier than traditional methods.
 
 ### Q5: What's the relationship between position sizing and maximum drawdown?
 

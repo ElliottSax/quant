@@ -16,7 +16,6 @@ Technical analysis combines multiple indicators to create robust trading signals
 
 The dual-indicator approach captures both momentum and volatility dynamics, reducing false signals compared to single-indicator strategies. Traders using this combination report improved risk-adjusted returns through enhanced entry and exit precision.
 
-
 ## Technical Indicators and Market Context
 
 Forex Pairs exhibit distinct characteristics affecting strategy performance. The combination of technical indicators selected for this analysis captures both trending and mean-reversion dynamics relevant to current market conditions.
@@ -28,7 +27,6 @@ Key market characteristics:
 - **Correlation Structure**: Dynamic correlations with macroeconomic factors
 - **Trend Persistence**: Varying mean-reversion strength across regimes
 
-
 ## Methodology
 
 The combined strategy uses complementary technical indicators to validate trading signals. This multi-layer approach:
@@ -39,7 +37,6 @@ The combined strategy uses complementary technical indicators to validate tradin
 4. Implements dynamic exit conditions
 
 The implementation targets Forex Pairs, which exhibits specific volatility characteristics requiring tailored parameter optimization. We optimize for maximum Sharpe ratio while maintaining acceptable maximum drawdown levels (below 20%).
-
 
 ## Implementation Code
 

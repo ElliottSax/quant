@@ -72,7 +72,6 @@ def load_ff_factors(
 
     return df
 
-
 def load_momentum_factor(frequency: str = "daily") -> pd.Series:
     """Load the Carhart momentum factor (UMD)."""
     import pandas_datareader.data as web

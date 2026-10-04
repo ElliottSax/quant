@@ -21,13 +21,11 @@ color: '''"secondary"'''
 
 Day trading involves buying and selling securities within the same trading day. Beginners should focus on 3-5 core strategies: momentum, breakout, and pullback trading. Start with small position sizes (1-2% risk per trade), use stop losses on every trade, and practice on paper accounts for 30 days before risking real capital.
 
-
 ## Introduction
 
 Day trading can be lucrative, but it requires discipline, proper training, and proven strategies. In 2026, successful day traders combine technical analysis with risk management. This guide covers everything beginners need to know to get started safely.
 
 ## Trading Strategies
-
 
 ### Strategy 1: Momentum Trading
 
@@ -42,7 +40,6 @@ Volume, RSI, MACD
 **Real Example:**
 SPY breaks above 450 on 2M volume → Enter long → Exit when volume drops below 1.5M average
 
-
 ### Strategy 2: Breakout Trading
 
 **Description:** Entering trades when price breaks above key resistance or below key support levels.
@@ -56,7 +53,6 @@ Support/Resistance, Volume Profile, ATR
 **Real Example:**
 QQQ breaks above 400 5-day high → Buy 100 shares → Set stop 399.50 → Target 405
 
-
 ### Strategy 3: Pullback Trading
 
 **Description:** Entering on retracements within uptrends using moving averages as support.
@@ -69,7 +65,6 @@ EMA 20/50, RSI < 50, Support Levels
 
 **Real Example:**
 Stock in uptrend, pulls back to 20 EMA, RSI bounces from 40 → Enter long
-
 
 ## Risk Management & Position Sizing
 
@@ -93,7 +88,6 @@ Traders often fall into these pitfalls when using this strategy:
 5. **Trading without stop losses**
 6. **Averaging down in losing positions**
 
-
 ## Real Trading Examples
 
 | Market | Entry | Stop Loss | Target | Risk/Reward | Expected Outcome |
@@ -102,7 +96,6 @@ Traders often fall into these pitfalls when using this strategy:
 | Forex (EUR/USD) | MA Crossover | 15 pips | 45+ pips | 1:3+ | 50-100 pips weekly |
 | Crypto (BTC) | Technical Level | 2% below | 5-10% above | 1:2.5+ | 5-15% monthly |
 | Emerging Market ETF | Range Breakout | Below support | 10-20% move | 1:2 | Mid-term 20-50% moves |
-
 
 ## Best Practices for This Strategy
 
@@ -115,31 +108,25 @@ Traders often fall into these pitfalls when using this strategy:
 
 ## Frequently Asked Questions
 
-
 ### How much money do you need to start day trading?
 
 In the US, you need at least $25,000 in your account to day trade (SEC PDT rule). However, many brokers allow unlimited day trading with accounts under $25k if you trade only 1-2 times per week. Paper trading (simulated) is free.
-
 
 ### What's the best time to day trade?
 
 The first 30-60 minutes after market open (9:30-10:30 AM ET) typically have the highest volume and best setups. The last hour before market close (3-4 PM ET) can also be profitable.
 
-
 ### Can beginners make money day trading?
 
 Yes, but only 5-10% of day traders consistently profit. Success requires proper education, risk management, discipline, and at least 3-6 months of consistent practice. Start small while learning.
-
 
 ### Should I use leverage for day trading?
 
 Beginners should avoid leverage initially. Once experienced, use 2:1 leverage at most. Leverage amplifies losses as much as gains. Many professional traders use 1:1 (no leverage).
 
-
 ### What's the minimum account to day trade profitably?
 
 Professionals recommend starting with $2,000-5,000 minimum (below PDT limits). Scale slowly as skills improve.
-
 
 ## Ready to Start Trading?
 

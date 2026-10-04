@@ -189,16 +189,7 @@ This threshold approach trades only on high-confidence predictions, improving th
 
 ### Results
 
-| Metric | LightGBM Strategy | Random Forest | Buy & Hold SPY |
-|--------|-------------------|---------------|----------------|
-| CAGR | 12.8% | 10.4% | 10.7% |
-| Sharpe Ratio | 1.34 | 1.12 | 0.71 |
-| Max Drawdown | -14.2% | -16.8% | -33.9% |
-| Accuracy | 54.2% | 52.8% | N/A |
-| Daily Trades | 8-15 | 10-20 | N/A |
-| Win Rate | 53.8% | 52.4% | N/A |
-
-The LightGBM model achieved a Sharpe of 1.34 with 54.2% accuracy, confirming that even modest predictive edge (slightly above 50%) can be highly profitable with proper [position sizing](/blog/position-sizing-strategies) and risk management.
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ## Key Takeaways
 

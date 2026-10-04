@@ -12,7 +12,6 @@ description: "Tragedy in quantitative trading often stems from position sizing m
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting Position Sizing Safely
 
 Tragedy in quantitative trading often stems from position sizing mistakes, not strategy failures. Traders blow accounts not because their strategies were wrong, but because they sized positions too aggressively, suffered unexpected drawdowns, and panicked. This comprehensive guide covers safe position sizing practices, psychological circuit breakers, and backtesting safeguards that protect capital.

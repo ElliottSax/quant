@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating Bollinger Bands for Beginners
 
 ## Introduction to Bollinger Bands
@@ -141,13 +140,7 @@ The default Bollinger Band parameters (20-period, 2 standard deviations) may not
 
 ### Performance Across Different Parameters
 
-| Window | Std Dev | Total Return | Sharpe Ratio | Max Drawdown |
-|--------|---------|--------------|--------------|--------------|
-| 10     | 1.5     | 1.42x        | 0.51         | -35.8%       |
-| 15     | 1.8     | 1.51x        | 0.59         | -34.1%       |
-| 20     | 2.0     | 1.67x        | 0.68         | -32.1%       |
-| 25     | 2.2     | 1.58x        | 0.62         | -33.4%       |
-| 30     | 2.5     | 1.45x        | 0.54         | -36.0%       |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Optimal Parameters**: 20-period, 2.0 standard deviations.
 
@@ -187,13 +180,7 @@ data['Cumulative_Filtered'] = (1 + data['Strategy_Returns_Filtered']).cumprod()
 
 ### Filtered Strategy Results
 
-| Metric                | Without RSI | With RSI Filter |
-|-----------------------|-------------|-----------------|
-| Total Return          | 1.67x       | 1.89x           |
-| Sharpe Ratio          | 0.68        | 0.81            |
-| Max Drawdown          | -32.1%      | -28.4%          |
-| Number of Trades      | 23          | 16              |
-| Win Rate              | 52.2%       | 62.5%           |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The RSI filter **reduced trades by 30% but improved win rate and Sharpe ratio**, demonstrating the value of confirmation filters for beginners.
 

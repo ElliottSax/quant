@@ -40,7 +40,6 @@ Unlike stock markets that close, crypto trades 24/7, creating constant news flow
 - **Lower Time Commitment**: 1-2 hours daily monitoring
 - **Reduced Overtrading**: Forces discipline through longer holds
 
-
 ## Market Context and Timing
 
 Understanding market conditions is crucial for implementing these strategies effectively. Different market environments reward different approaches.
@@ -188,7 +187,6 @@ This ensures consistent position sizes:
 - Monthly at 5 trades: $375-750 profit
 
 The psychological edge: Proper position sizing lets you take losses without emotional damage. Our [Position Size Calculator](/tools/position-size) automates this math from your account size, risk percentage, entry, and stop.
-
 
 ## Swing Trading Strategy #1: Trend Following with Confirmation
 
@@ -408,7 +406,6 @@ Swing trading crypto succeeds through:
 2. **Confluence confirmation** (multiple factors aligning)
 3. **Strict stop losses** (1.5-2% maximum)
 4. **Profitable exits** (predetermined levels)
-
 
 ## Next Steps
 

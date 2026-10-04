@@ -13,7 +13,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Fibonacci Trading Strategy Using Retracements: Mathematical Entry Points
 
 *Last updated: March 20, 2026*
@@ -50,7 +49,6 @@ Identifying the right entry point is crucial for trading success. The fibonacci 
 
 **Technical requirements for entry:**
 
-
 1. **Identify swing: Clear trend move (100+ pips minimum)** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Draw Fibonacci: From swing low to swing high (or vice versa)** - This condition helps confirm strong directional bias and reduces false signals.
@@ -78,7 +76,6 @@ Knowing when to exit is equally important as knowing when to enter. The fibonacc
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Target 1: 23.6% Fibonacci extension** - This helps lock in profits while limiting losses.
 

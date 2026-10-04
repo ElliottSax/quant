@@ -20,32 +20,20 @@ last_updated: '2026-03-16'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Altcoin Seasonality and Cycle Trading
 
 ## Introduction
-Altcoin seasonality and cycle trading have gained significant attention in recent years, particularly among quantitative traders and investors. The concept of altcoin seasonality refers to the periodic fluctuations in the price of alternative cryptocurrencies, which can be predicted and exploited using statistical models and technical analysis. Our [Seasonality Screener](/scanner) applies this same kind of statistical rigor, complete with sample sizes and multiple-testing correction, to monthly seasonal patterns across a fixed stock universe. Cycle trading, on the other hand, involves identifying and profiting from the repetitive patterns and cycles that occur in the cryptocurrency market. In this article, we will delve into the world of altcoin seasonality and cycle trading, exploring the key concepts, statistical analysis, and implementation strategies. We will also examine the benefits and risks associated with these approaches and provide guidance on how to navigate the complex landscape of cryptocurrency trading. According to a study published in the Journal of Financial Economics, the altcoin market has exhibited a significant degree of seasonality, with average returns of 12.5% during the summer months and -5.2% during the winter months. Furthermore, a report by CoinMarketCap found that the top 10 altcoins by market capitalization have experienced an average price increase of 25.6% during the first quarter of each year, highlighting the potential for seasonal trading strategies.
+Altcoin seasonality and cycle trading have gained significant attention in recent years, particularly among quantitative traders and investors. The concept of altcoin seasonality refers to the periodic fluctuations in the price of alternative cryptocurrencies, which can be predicted and exploited using statistical models and technical analysis. Our [Seasonality Screener](/scanner) applies this same kind of statistical rigor, complete with sample sizes and multiple-testing correction, to monthly seasonal patterns across a fixed stock universe. Cycle trading, on the other hand, involves identifying and profiting from the repetitive patterns and cycles that occur in the cryptocurrency market. In this article, we will delve into the world of altcoin seasonality and cycle trading, exploring the key concepts, statistical analysis, and implementation strategies. We will also examine the benefits and risks associated with these approaches and provide guidance on how to navigate the complex landscape of cryptocurrency trading. Furthermore, a report by CoinMarketCap found that the top 10 altcoins by market capitalization have experienced an average price increase of 25.6% during the first quarter of each year, highlighting the potential for seasonal trading strategies.
 
 ## Key Concepts
 The concept of altcoin seasonality is rooted in the idea that the cryptocurrency market is subject to periodic fluctuations, driven by a combination of fundamental and technical factors. One of the key drivers of altcoin seasonality is the halving of Bitcoin's block reward, which occurs every four years and has been shown to have a significant impact on the price of alternative cryptocurrencies. For example, in 2016, the Bitcoin halving event was followed by a significant increase in the price of Ethereum, which rose from $10 to $130 in the subsequent six months. Similarly, the 2020 halving event was followed by a surge in the price of DeFi tokens, with some assets experiencing gains of over 1000%. According to data from CoinMetrics, the average return of the top 10 altcoins during the six months following a Bitcoin halving event is 150%, compared to 20% for the S&P 500 over the same period. The following table illustrates the average returns of the top 10 altcoins during different periods:
 
-| Period | Average Return |
-| --- | --- |
-| Post-halving (6 months) | 150% |
-| Pre-halving (6 months) | -10% |
-| Summer months (June-August) | 12.5% |
-| Winter months (December-February) | -5.2% |
-| First quarter (January-March) | 25.6% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ## Statistical Analysis of Cycle Trading
-Cycle trading involves identifying and profiting from the repetitive patterns and cycles that occur in the cryptocurrency market. One of the most popular approaches to cycle trading is the use of Fourier analysis, which involves decomposing the price series into its constituent frequencies and identifying the dominant cycles. According to a study published in the Journal of Financial Markets, the cryptocurrency market exhibits a significant degree of cyclical behavior, with the dominant cycles ranging from 10 to 30 days. The following table compares the performance of different cycle trading strategies:
+Cycle trading involves identifying and profiting from the repetitive patterns and cycles that occur in the cryptocurrency market. One of the most popular approaches to cycle trading is the use of Fourier analysis, which involves decomposing the price series into its constituent frequencies and identifying the dominant cycles. The following table compares the performance of different cycle trading strategies:
 
-| Strategy | Average Return | Sharpe Ratio |
-| --- | --- | --- |
-| Fourier analysis | 20% | 1.2 |
-| Moving average crossover | 15% | 0.8 |
-| Bollinger Bands | 12% | 0.6 |
-| MACD | 10% | 0.4 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The results show that the Fourier analysis approach outperforms the other strategies, with an average return of 20% and a Sharpe ratio of 1.2. However, it is essential to note that cycle trading is a complex and challenging approach, requiring a deep understanding of statistical analysis and market dynamics.
 

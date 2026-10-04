@@ -11,7 +11,6 @@ keywords: ["crypto statistical arbitrage", "pair trading", "cointegration", "mea
 
 [Statistical arbitrage](/blog/statistical-arbitrage-guide) in cryptocurrency markets exploits temporary deviations from historical price relationships between correlated assets. Unlike pure arbitrage capturing risk-free spreads, statistical arbitrage (stat arb) trades mean-reverting price relationships with statistical confidence rather than certainty. When executed systematically across dozens of pairs, stat arb generates consistent returns through high win rates and favorable risk-reward ratios.
 
-
 ## Statistical Arbitrage Fundamentals
 
 Statistical arbitrage trades temporary price dislocations between related assets, betting on mean reversion to historical norms. The core premise: if BTC and ETH maintain 0.85 correlation and their price ratio diverges 2+ standard deviations from average, the spread likely reverts, creating profit opportunities.
@@ -129,7 +128,6 @@ The walk-[forward optimization](/blog/walk-forward-optimization) prevents overfi
 Risk monitoring systems track real-time exposure, correlation shifts, and drawdown levels. Circuit breakers automatically halt trading if: daily loss exceeds 3%, single position loss exceeds 5%, correlation of "cointegrated" pairs drops below 0.40, or exchange API connectivity fails for >5 minutes.
 
 ## Key Takeaways
-
 
 Cointegration testing using Engle-Granger methodology identifies tradable pairs maintaining stationary relationships despite trending prices, with ADF p-values <0.05 indicating robust mean reversion suitable for statistical arbitrage.
 

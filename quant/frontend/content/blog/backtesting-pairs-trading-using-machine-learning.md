@@ -12,7 +12,6 @@ description: "ML-enhanced pairs strategies show 30-40% improvement in Sharpe rat
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting Pairs Trading using Machine Learning: Signal Enhancement
 
 Machine learning improves pairs trading by learning which spread deviations are most profitable, predicting mean-reversion speed, and adapting to regime changes. ML-enhanced pairs strategies show 30-40% improvement in Sharpe ratio over traditional Z-score methods.
@@ -164,12 +163,7 @@ class MLPairsTrader:
 
 **AAPL/MSFT Pairs, Out-of-Sample (2025-2026)**
 
-| Metric | Traditional | ML-Enhanced | Improvement |
-|--------|---|---|---|
-| Return | 12.45% | 16.82% | +35.1% |
-| Sharpe | 1.15 | 1.52 | +32.2% |
-| Win Rate | 51.23% | 56.45% | +10.1% |
-| Trades | 156 | 78 | -50.0% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ML filters out 50% of unprofitable trades while improving Sharpe 32%. If you want to check whether a resulting win rate is statistically meaningful rather than luck, our [Win Rate Significance Calculator](/tools/win-rate-significance) runs the binomial test directly.
 

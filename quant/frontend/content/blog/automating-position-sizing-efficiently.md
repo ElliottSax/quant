@@ -14,7 +14,6 @@ description: "Position sizing is the primary determinant of trading success, not
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating Position Sizing Efficiently
 
 Position sizing is the primary determinant of trading success, not signal quality. Two traders with identical signals but different position sizing can have vastly different outcomes: one doubles wealth, the other blows up the account. This guide reveals institutional position sizing methodologies that maximize risk-adjusted returns while maintaining sustainable drawdowns.
@@ -24,7 +23,6 @@ Position sizing is the primary determinant of trading success, not signal qualit
 Research by Edwin de Bondt and others shows that position sizing accounts for 80-90% of portfolio performance variance, while signal quality accounts for only 10-20%. Most traders focus on signals; professionals focus on sizing. If you want to compute your own Kelly fraction from win rate and average win/loss without doing the algebra by hand, our [Kelly criterion calculator](/tools/kelly-criterion) does it directly.
 
 **Kelly Criterion Example:**
-- Win rate: 60%, Average win: +2%, Average loss: -1%
 - Kelly fraction: f = (0.60 × 2% - 0.40 × 1%) / 2% = 40%
 - Optimal position size: 40% of capital per trade
 - Position size too large: account ruin (drawdown >95%)

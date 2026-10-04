@@ -13,7 +13,6 @@ last_updated: "2026-03-21"
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Covered Call Strategy for Income Generation 2026: Complete Guide
 
 **Meta Description**: Learn the covered call strategy for income generation. Learn entry/exit rules, Greeks impact, and real-world examples for 2026.
@@ -141,13 +140,7 @@ COVERED CALL PROFIT/LOSS DIAGRAM
 
 ### Risk/Reward Analysis Before Entry
 
-| Metric | Value | Decision |
-|--------|-------|----------|
-| Max Profit | $325 (0.76%) | Acceptable if diversified |
-| Max Loss | -$4,275 (10%) | 50% of position size OK |
-| Probability ITM | 30% | Expected 3/10 assignments |
-| Profit Factor | 2.1:1 | Good risk/reward |
-| Sharpe Ratio | 0.85 | Acceptable returns |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ---
 

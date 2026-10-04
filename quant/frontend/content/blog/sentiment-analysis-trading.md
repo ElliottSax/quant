@@ -224,10 +224,9 @@ A critical preprocessing step: accurately identifying which company a news artic
 
 ### Is sentiment analysis profitable for trading?
 
-Yes, when implemented correctly. Academic research (Heston and Sinha, 2017) demonstrates 1-2% monthly alpha from news sentiment signals. Our backtests show Sharpe ratios of 1.18-1.34 for well-designed sentiment strategies. However, the alpha from sentiment analysis has diminished as more participants use similar approaches. The edge increasingly comes from better data (proprietary sources), better models (fine-tuned transformers), and better integration with other signals (multi-factor approaches).
+Yes, when implemented correctly. Academic research (Heston and Sinha, 2017) demonstrates 1-2% monthly alpha from news sentiment signals. However, the alpha from sentiment analysis has diminished as more participants use similar approaches. The edge increasingly comes from better data (proprietary sources), better models (fine-tuned transformers), and better integration with other signals (multi-factor approaches).
 
 ### What NLP model should I use for financial sentiment?
-
 
 ### How quickly does sentiment get priced into markets?
 

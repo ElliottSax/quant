@@ -12,7 +12,6 @@ last_updated: '2026-03-24'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Pharmaceutical Trades Before Votes: Timing Correlations with Drug Policy Legislation
 
 Congressional members executed coordinated pharmaceutical stock purchases immediately preceding healthcare legislation votes, with timing precision indicating advance knowledge of legislative outcomes. Analysis reveals systematic trading pattern: purchase pharmaceuticals, vote favorably on drug policy, realize gains.
@@ -22,8 +21,6 @@ Congressional members executed coordinated pharmaceutical stock purchases immedi
 **2026 Q1 Pharmaceutical Trading**:
 - Total pharmaceutical trades: 1,456
 - Total investment value: $968 million
-- Average return per trade: 14.8%
-- Win rate: 75.3%
 - Average holding period: 21 days
 
 Pharmaceuticals represent 15.4% of total congressional trading activity despite representing only 2.1% of market capitalization—demonstrating disproportionate congressional focus.
@@ -256,7 +253,6 @@ Congressional members amplify pharmaceutical position using options:
 - Call options: 152 (80.4%)
 - Put options: 37 (19.6%)
 - Average profit per contract: $41,300
-- Win rate: 74.1%
 
 Options provide leverage on core pharmaceutical positions for vote-timing events.
 

@@ -138,13 +138,7 @@ This occurred during a broader tech selloff and earnings-related volatility. The
 
 To assess robustness, we extend the backtest to a diversified set of stocks across sectors.
 
-| Ticker | Company | Sector | Strategy CAGR | Buy-and-Hold CAGR | Max Drawdown (Strategy) |
-|--------|--------|--------|----------------|-------------------|--------------------------|
-| AAPL | Apple | Tech | 20.5% | 26.8% | -42.1% |
-| MSFT | Microsoft | Tech | 24.3% | 29.1% | -39.8% |
-| JNJ | Johnson & Johnson | Healthcare | 6.2% | 9.8% | -28.4% |
-| XOM | ExxonMobil | Energy | -1.8% | -3.5% | -55.2% |
-| JPM | JPMorgan Chase | Financial | 9.1% | 12.3% | -45.6% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### Observations:
 

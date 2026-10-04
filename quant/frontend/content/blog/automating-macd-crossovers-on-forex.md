@@ -13,7 +13,6 @@ seo_optimized: true
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating MACD Crossovers On Forex
 
 ## Introduction
@@ -121,7 +120,6 @@ class ForexMACD:
         confirmed[~expanding] = 0
 
         return confirmed
-
 
 class ForexSessionFilter:
     """
@@ -346,14 +344,7 @@ class ForexBacktester:
 
 Not all currency pairs respond equally to MACD signals. Trending pairs (those with higher Hurst exponents) produce better MACD results:
 
-| Pair | Hurst Exponent | MACD Sharpe (2020-2025) | Recommended |
-|------|---------------|------------------------|-------------|
-| EUR/USD | 0.48 | 0.35 | Marginal |
-| GBP/USD | 0.51 | 0.52 | Yes |
-| USD/JPY | 0.53 | 0.61 | Yes |
-| AUD/USD | 0.52 | 0.55 | Yes |
-| EUR/JPY | 0.54 | 0.68 | Best |
-| GBP/JPY | 0.55 | 0.72 | Best |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 JPY crosses tend to trend more persistently, making them ideal for MACD-based strategies. EUR/USD is nearly a random walk (Hurst ~0.48), making MACD signals marginal.
 

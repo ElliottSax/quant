@@ -81,8 +81,6 @@ Increase position sizes during winning streaks and decrease during losing streak
 - **After 3 consecutive losses**: Decrease to 0.5% per trade
 - **Reset**: After any position size change, require 3 trades at the new size before further adjustment
 
-In our backtest, anti-martingale sizing improved CAGR by 2.1% with only a 0.8% increase in maximum drawdown, producing a net improvement in risk-adjusted returns.
-
 ## Drawdown Analysis and Control
 
 ### Understanding Drawdowns
@@ -99,13 +97,7 @@ A drawdown is the peak-to-trough decline in account equity. It measures the wors
 
 Based on Monte Carlo analysis of a strategy with [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) 1.0 and 10% annual volatility:
 
-| Probability | Expected Max Drawdown |
-|------------|----------------------|
-| 50% chance | -14.2% |
-| 25% chance | -18.4% |
-| 10% chance | -22.8% |
-| 5% chance | -26.1% |
-| 1% chance | -32.4% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Even a good strategy (Sharpe 1.0) has a 5% chance of a drawdown exceeding -26%. Traders must be psychologically and financially prepared for these events.
 
@@ -121,7 +113,7 @@ Implement automatic risk reduction during drawdowns:
 | -15% to -20% | Reduce to 25% position sizes |
 | > -20% | Stop trading, review strategy |
 
-This approach limits the depth of drawdowns at the cost of slower recovery. In our backtest, dynamic drawdown control reduced maximum drawdown from -22.4% to -15.8% while reducing CAGR by only 1.2%.
+This approach limits the depth of drawdowns at the cost of slower recovery.
 
 ## Value at Risk (VaR)
 

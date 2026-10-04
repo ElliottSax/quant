@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating Mean Reversion on Forex
 
 ## Introduction
@@ -211,12 +210,7 @@ Add a dynamic stop-loss at 1.5× ATR from entry. In backtests, this reduced maxi
 
 We extend the same strategy to four major Forex pairs over 2015–2023:
 
-| Currency Pair | Win Rate | Sharpe Ratio | Max Drawdown | Annual Return |
-|---------------|----------|--------------|--------------|---------------|
-| EUR/USD       | 61.5%    | 0.74         | -12.3%       | 6.7%          |
-| USD/JPY       | 58.2%    | 0.61         | -14.1%       | 5.3%          |
-| GBP/USD       | 56.7%    | 0.52         | -16.8%       | 4.8%          |
-| AUD/USD       | 52.1%    | 0.38         | -19.4%       | 3.1%          |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Analysis**:
 - EUR/USD is the most mean-reverting major pair due to deep liquidity and balanced macro fundamentals.
@@ -231,7 +225,7 @@ We extend the same strategy to four major Forex pairs over 2015–2023:
 In 2018, EUR/USD declined from 1.25 to 1.13 over nine months. The mean reversion system issued 7 buy signals, 5 of which lost money. This highlights the danger of fighting strong macro trends.
 
 ### 2. Parameter Sensitivity
-Changing the Z-Score threshold from ±2.0 to ±1.8 increases trade frequency by 60% but reduces win rate to 54% and Sharpe to 0.55. Over-optimization leads to curve-fitting.
+Over-optimization leads to curve-fitting.
 
 ### 3. Event Risk
 Central bank decisions, geopolitical events, and data surprises can cause multi-day gaps that invalidate mean reversion assumptions. For example, EUR/USD dropped 2.3% in one day after the 2015 Swiss Franc unpegging.

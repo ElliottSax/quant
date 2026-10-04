@@ -14,7 +14,6 @@ description: "Unlike directional trading, pairs trading profits from relative mi
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating Pairs Trading Efficiently
 
 Pairs trading—simultaneously buying underperforming assets and shorting overperforming ones within historically correlated pairs—is the foundational strategy of quantitative hedge funds. Unlike directional trading, pairs trading profits from relative mispricings regardless of market direction. This guide reveals institutional approaches to automated pairs trading that generate consistent alpha with low drawdowns.
@@ -26,8 +25,6 @@ Pairs trading exploits mean reversion of price ratios. When two historically cor
 **Empirical advantages:**
 - Market-neutral: profits regardless of bull/bear markets
 - Beta ~0.1: minimal correlation to equity market
-- Win rate: 65%+ achievable (vs. 55-60% for directional trading)
-- Sharpe ratio: 2.0+ sustainable (vs. 1.2-1.5 for directional)
 - Drawdowns: 5-10% typical (vs. 15-25% for momentum)
 
 ## Selecting Pairs Candidates

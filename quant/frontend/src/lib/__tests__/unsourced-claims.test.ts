@@ -112,3 +112,86 @@ for (const [name, re] of THIRD_PASS) {
     assert.deepEqual(hits, [])
   })
 }
+
+// Fourth pass (2026-10-04): 400+ posts still showed specific results that nothing in the repo
+// computes: numeric result tables (Sharpe 1.35 / Win Rate 53.2% / Max Drawdown -7.8%), "- Win rate: 68.4%"
+// bullets (including invented statistics about Congress), "the strategy's 1.5 Sharpe ratio and 62.5% win
+// rate demonstrate consistent outperformance", a cost block whose numbers contradicted each other
+// (1 trade/day cost 1.9% a year, 5 trades/week cost 0.7%), and "a study by the Journal of Financial
+// Economics found ..." with no year, author or title. A banner that says "illustrative" does not make
+// them honest, so they are banned outright outside posts that document a method under "## Sources".
+const METRIC_WORDS = /sharpe ratio|sortino|calmar|win[- ]?rate|annuali[sz]ed return|annual return|total return|max(?:imum)? drawdown|profit factor|cagr/i
+const NUMERIC_CELL = /\|\s*[-+~]?\$?\d[\d.,]*\s*(?:%|:1|x)?\s*(?:\||$)/
+
+function tableBlocks(lines: string[]): string[][] {
+  const blocks: string[][] = []
+  let cur: string[] = []
+  for (const l of lines) {
+    if (l.trim().startsWith('|')) cur.push(l)
+    else {
+      if (cur.length) blocks.push(cur)
+      cur = []
+    }
+  }
+  if (cur.length) blocks.push(cur)
+  return blocks
+}
+
+const SOURCED = (text: string) => text.includes('## Sources')
+
+test('no numeric performance result tables outside documented posts', () => {
+  const hits = BLOG.filter((f) => {
+    const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+    if (SOURCED(text)) return false
+    return tableBlocks(proseLines(text)).some((b) => {
+      const joined = b.join('\n')
+      if (/required|break-?even|needed to/i.test(b[0])) return false
+      return METRIC_WORDS.test(joined) && b.slice(2).some((r) => NUMERIC_CELL.test(r))
+    })
+  })
+  assert.deepEqual(hits, [])
+})
+
+const BULLET_METRIC = /^\s*[-*]\s+(?:\*\*)?(?:win[- ]?rate|success rate|average return(?: per trade)?|sharpe(?: ratio)?|total return|annuali[sz]ed return|annual return|max(?:imum)? drawdown|profit factor)(?:\*\*)?\s*(?:\([^)]*\))?\s*[:=]\s*(?:\*\*)?[-+~]?\$?\d/i
+
+test('no bullet stating a specific performance metric value', () => {
+  const hits = BLOG.filter((f) => {
+    const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+    if (SOURCED(text)) return false
+    return proseLines(text).some((l) => BULLET_METRIC.test(l))
+  })
+  assert.deepEqual(hits, [])
+})
+
+const FOURTH_PASS: [string, RegExp][] = [
+  ['"the strategy\'s N Sharpe ratio and N% win rate" conclusion', /\d(?:\.\d+)?\s+Sharpe(?: ratio)?\s+and\s+\d{2}(?:\.\d+)?%\s+win rate/i],
+  ['templated commission-impact numbers', /\d+ trades?\/(?:day|week) at 0\.05% commission\*\*:\s*-?\d/i],
+  ['templated "Impact on annual return: N%" line', /^Impact on (?:annual return|Sharpe ratio): [\d.]+/m],
+  ['templated regime-aware Sharpe improvement', /Regime-aware strategies can achieve 20-40% Sharpe/],
+  ['templated "34-160% Sharpe ratio improvement"', /34-160% Sharpe ratio improvement/],
+  ['templated daily-retraining Sharpe gain', /Daily retraining improves Sharpe ratios by 2-8%/],
+  ['templated "Risk-Return Trade-offs ... improved 33.5%"', /Risk-Return Trade-offs\*\*: While maximum drawdown improved/],
+  ['"our backtest(s)" result with a number and no code', /\bin our (?:own )?back-?tests?\b[^.\n]*\d/i],
+]
+
+for (const [name, re] of FOURTH_PASS) {
+  test(`no ${name}`, () => {
+    const hits = BLOG.filter((f) => {
+      const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+      if (SOURCED(text)) return false
+      return re.test(proseLines(text).join(String.fromCharCode(10)))
+    })
+    assert.deepEqual(hits, [])
+  })
+}
+
+test('no study cited by journal name alone (no year, no author)', () => {
+  const hits = BLOG.filter((f) => {
+    const text = fs.readFileSync(path.join(ROOT, f), 'utf-8')
+    if (SOURCED(text)) return false
+    return proseLines(text).some(
+      (l) => /\b(?:study|survey|research|report|paper)s? (?:by|from|published in) (?:the )?Journal of \w+/i.test(l) && !/\b(?:19|20)\d\d\b/.test(l)
+    )
+  })
+  assert.deepEqual(hits, [])
+})

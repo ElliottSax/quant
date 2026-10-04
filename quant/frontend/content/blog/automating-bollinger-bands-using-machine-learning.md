@@ -329,7 +329,6 @@ class RegimeDetector:
 
         return pd.Series(mapped_labels, index=features.index, name='regime')
 
-
 class RegimeAdaptiveBB:
     """
     Switch between BB strategies based on detected regime.

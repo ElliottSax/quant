@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Scalping Strategy on 5-Minute Charts: High-Frequency Trading for Quick Profits
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The scalping u
 
 **Technical requirements for entry:**
 
-
 1. **Price touches 20-period EMA on the 5-minute chart** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **RSI (14) shows oversold (below 30) or overbought (above 70) conditions** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The scalping
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Profit target: 10-20 pips (0.1-0.2% move)** - This helps lock in profits while limiting losses.
 

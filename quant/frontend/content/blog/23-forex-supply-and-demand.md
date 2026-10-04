@@ -13,7 +13,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Supply and Demand Trading Strategy: Block-Based Level Trading
 
 *Last updated: March 20, 2026*
@@ -50,7 +49,6 @@ Identifying the right entry point is crucial for trading success. The supply/dem
 
 **Technical requirements for entry:**
 
-
 1. **Supply zone: Area where price dropped sharply (sellers overwhelmed buyers)** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Demand zone: Area where price rose sharply (buyers overwhelmed sellers)** - This condition helps confirm strong directional bias and reduces false signals.
@@ -78,7 +76,6 @@ Knowing when to exit is equally important as knowing when to enter. The supply/d
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Profit target: Opposite supply/demand zone or 100-200 pips** - This helps lock in profits while limiting losses.
 

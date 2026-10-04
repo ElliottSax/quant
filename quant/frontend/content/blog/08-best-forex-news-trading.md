@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Best Forex News Trading Strategies 2026: Profiting from Economic Events
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The news event
 
 **Technical requirements for entry:**
 
-
 1. **High-impact news events: NFP, ECB decisions, Fed announcements** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Pre-event: Price consolidates with narrow range 30 minutes before** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The news eve
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Profit target: 50 pips (scalp) to 150 pips (full swing)** - This helps lock in profits while limiting losses.
 

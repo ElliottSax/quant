@@ -12,7 +12,6 @@ readTime: 12-15 min read
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 ## Quick Answer
 
 Fibonacci retracement plots key support/resistance levels at 23.6%, 38.2%, 50%, 61.8%, and 78.6% of a swing move. Use 61.8% (Golden Ratio) as primary entry level, 38.2% for aggressive entries, 78.6% for deep pullbacks.
@@ -41,7 +40,6 @@ Fibonacci retracements are based on the mathematical ratio found throughout natu
 4. Confirm with support + volume
 5. Enter on breakout above 38.2%
 
-
 **Example:**
 - Swing low: 1.0800
 - Swing high: 1.0900
@@ -58,7 +56,6 @@ When Fibonacci level aligns with support/resistance, probability increases drama
 - Fibonacci 61.8% overlaps with previous support
 - Price bounces from this confluence zone
 - Volume increases on bounce
-- Win rate: 70%+
 
 ### Strategy 3: Fib Extension Target Projection
 
@@ -88,7 +85,6 @@ Aligning Fibs across timeframes dramatically improves accuracy.
 - 4H Fib 38.2% level
 - 1H Fib 23.6% level
 - Entry when price bounces from confluence
-- Win rate: 70-75%
 
 ### Fibonacci Channels
 
@@ -98,7 +94,6 @@ Draw trend channels using Fibonacci ratios for support/resistance.
 - Plot parallel lines at Fib percentages
 - Price respects these channels
 - Breakout = trend acceleration
-- Win rate: 55-60%
 
 ## Real-World Fibonacci Examples
 
@@ -156,7 +151,6 @@ Draw trend channels using Fibonacci ratios for support/resistance.
 - Use Fib on weekly swings
 - Golden ratio (61.8%) most important
 - Extensions project 4-8 week targets
-- Win rate: 65-70%
 
 ## Platform Implementation
 

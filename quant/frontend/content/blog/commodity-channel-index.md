@@ -17,7 +17,6 @@ description: "Understanding these principles is critical for developing robust q
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Commodity Channel Index Trading Strategy
 
 This comprehensive guide to Commodity Channel Index Trading Strategy covers the essential concepts, Python implementation, and practical applications for algorithmic traders. Understanding these principles is critical for developing robust quantitative trading systems.

@@ -12,7 +12,6 @@ description: "Position sizing is the cornerstone of successful quantitative trad
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting Position Sizing Efficiently
 
 Position sizing is the cornerstone of successful quantitative trading. The difference between a profitable strategy and a bankrupted account often comes down to a single variable: how much capital you risk on each trade. This guide explores efficient position sizing methodologies, their mathematical foundations, and practical Python implementations for robust backtesting.
@@ -36,7 +35,6 @@ Where:
 - b = average win / average loss ratio
 
 **Example Calculation:**
-- Win rate: 55% (p = 0.55)
 - Average win: $1,500
 - Average loss: $1,000
 - Profit/loss ratio: 1.5 (b = 1.5)

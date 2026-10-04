@@ -65,15 +65,7 @@ The 50/200 crossover is inherently lagging. By the time the golden cross forms, 
 
 ### Dual Moving Average Systems
 
-| Fast / Slow | CAGR | Sharpe | Max DD | Trades/Year |
-|-------------|------|--------|--------|-------------|
-| 10/50 | 9.1% | 0.74 | -19.8% | 8.2 |
-| 20/50 | 9.8% | 0.82 | -17.4% | 5.6 |
-| 50/200 | 8.4% | 0.71 | -22.1% | 1.4 |
-| 10/200 | 9.2% | 0.76 | -20.5% | 3.8 |
-| 20/100 | 10.1% | 0.88 | -16.2% | 4.1 |
-
-The 20/100 combination produced the best risk-adjusted returns in our S&P 500 backtest (1990-2025), with a [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) of 0.88 and maximum drawdown of -16.2%.
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### Triple Moving Average System
 
@@ -83,13 +75,11 @@ The triple MA system uses three moving averages (e.g., 10/50/200) for confirmati
 - **Sell signal**: 10-day crosses below 50-day OR 50-day crosses below 200-day
 - **Neutral**: Mixed signals = no position
 
-This system reduces whipsaws by requiring multi-timeframe confirmation. In our backtest, it reduced false signals by 42% compared to the dual MA system, though at the cost of slightly later entries.
+This system reduces whipsaws by requiring multi-timeframe confirmation.
 
 ### Adaptive Moving Average (Kaufman's AMA)
 
 Perry Kaufman's Adaptive Moving Average automatically adjusts its smoothing period based on market volatility. In trending markets, it behaves like a fast MA; in choppy markets, it behaves like a slow MA.
-
-The AMA crossover produced a Sharpe ratio of 0.94 in our backtest, the highest among all single-indicator MA systems, because it naturally reduces whipsaws during range-bound periods.
 
 ## Comprehensive Backtest: S&P 500 (1990-2025)
 
@@ -107,16 +97,7 @@ The AMA crossover produced a Sharpe ratio of 0.94 in our backtest, the highest a
 
 ### Results
 
-| Metric | 20/100 Crossover | Buy & Hold SPY |
-|--------|------------------|----------------|
-| CAGR | 10.1% | 10.3% |
-| Sharpe Ratio | 0.88 | 0.62 |
-| Max Drawdown | -16.2% | -50.8% |
-| Worst Year | -8.4% (2011) | -37.0% (2008) |
-| Best Year | +31.2% (2013) | +32.3% (2013) |
-| Time in Market | 72% | 100% |
-| Total Trades | 144 | 1 |
-| Win Rate | 48.6% | N/A |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The key insight: the crossover strategy matched buy-and-hold returns while cutting the maximum drawdown by more than two-thirds (from -50.8% to -16.2%). The strategy was out of the market during the worst of the 2008 financial crisis and the 2020 COVID crash.
 
@@ -135,7 +116,7 @@ The strategy's ability to sidestep major bear markets is its primary value propo
 
 ### Volume Confirmation
 
-Require above-average volume on the crossover day to confirm the signal. In our backtest, this filter eliminated 18% of signals but increased the win rate from 48.6% to 54.2%.
+Require above-average volume on the crossover day to confirm the signal.
 
 ### ATR Volatility Filter
 
@@ -162,7 +143,6 @@ The core logic involves comparing yesterday's MA relationship to today's: if yes
 
 ## Key Takeaways
 
-- The 20/100 SMA crossover produced the best risk-adjusted returns (Sharpe 0.88) across all dual MA combinations tested
 - Moving average crossovers match buy-and-hold returns while reducing maximum drawdown by 60-70%
 - The golden cross (50/200) is the most widely followed but not the most profitable variant
 - Triple MA systems reduce false signals by 42% at the cost of later entries
@@ -185,7 +165,7 @@ In our testing, the Exponential Moving Average (EMA) marginally outperformed the
 
 ### Can moving average crossovers be applied to individual stocks?
 
-Yes, but with lower reliability than indices. Individual stocks have more idiosyncratic noise, which increases whipsaws. We recommend: (1) applying the strategy only to high-liquidity stocks (top 200 by market cap), (2) using slightly longer lookback periods (50/200 instead of 20/100), and (3) diversifying across 20-30 stocks to reduce individual stock noise. Our S&P 100 component backtest showed a Sharpe of 0.72 for individual stocks versus 0.88 for the index.
+Yes, but with lower reliability than indices. Individual stocks have more idiosyncratic noise, which increases whipsaws. We recommend: (1) applying the strategy only to high-liquidity stocks (top 200 by market cap), (2) using slightly longer lookback periods (50/200 instead of 20/100), and (3) diversifying across 20-30 stocks to reduce individual stock noise.
 
 ---
 

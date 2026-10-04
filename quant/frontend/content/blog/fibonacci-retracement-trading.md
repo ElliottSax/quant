@@ -93,7 +93,7 @@ A Fibonacci retracement level may be technically valid but irrelevant if it fall
 
 Quantitative analysis of Fibonacci retracement effectiveness yields nuanced results. Academic studies (Pring, 2002; Murphy, 1999) have found that the 38.2% and 61.8% levels are statistically more significant than the 23.6% or 78.6% levels, though this varies by asset class.
 
-In backtesting conducted across 10 years of S&P 500 daily data, entries at the 61.8% retracement level with a confirmation candle produced a win rate of approximately 58%, with an average risk-[reward ratio](/blog/risk-reward-ratio-optimization) of 1:1.7. This edge, while modest, becomes meaningful when applied consistently with proper [position sizing](/blog/position-sizing-strategies).
+This edge, while modest, becomes meaningful when applied consistently with proper [position sizing](/blog/position-sizing-strategies).
 
 A simple Python backtest using `pandas` and `scipy.signal` to identify swing points can automate Fibonacci level calculation:
 

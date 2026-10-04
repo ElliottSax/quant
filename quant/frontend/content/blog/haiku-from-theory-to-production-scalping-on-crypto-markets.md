@@ -17,7 +17,6 @@ provider: haiku
 
 This quantitative trading strategy focuses on from theory to production applied to scalping on crypto markets. The approach combines empirical market analysis with statistical validation to identify profitable trading opportunities. Based on historical data analysis and backtesting from 2020-2026, this strategy demonstrates consistent risk-adjusted returns across multiple market regimes.
 
-
 ## Market Context and Timing
 
 Understanding market conditions is crucial for implementing these strategies effectively. Different market environments reward different approaches.
@@ -165,7 +164,6 @@ This ensures consistent position sizes:
 - Monthly at 5 trades: $375-750 profit
 
 The psychological edge: Proper position sizing lets you take losses without emotional damage.
-
 
 ## Strategy Architecture
 

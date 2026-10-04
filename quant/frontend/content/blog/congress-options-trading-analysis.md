@@ -12,7 +12,6 @@ last_updated: '2026-03-23'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Options Trading Analysis: Leverage Strategies and Leveraged Returns
 
 Congressional members execute sophisticated options trading strategies, generating leveraged returns far exceeding equity trading. Analysis of 2026 options activity reveals deliberate use of leverage on information-driven positions to amplify returns from insider knowledge.
@@ -23,14 +22,11 @@ Congressional members execute sophisticated options trading strategies, generati
 - Total options contracts traded: 4,234
 - Total value invested: $287 million (notional exposure: $28.7 billion)
 - Average return per contract: $67,400
-- Win rate: 78.1%
 - Average holding period: 34 days
 
 **Comparative Equity Trading**:
 - Total equity shares traded: 45 million
 - Total value invested: $4.2 billion
-- Average return per trade: $128,000 (across 32,567 trades)
-- Win rate: 71.8%
 - Average holding period: 19 days
 
 Options trading represents only 6.8% of congressional trading by value ($287M vs $4.2B) but generates equivalent profits with substantially lower capital deployed (leverage benefit).

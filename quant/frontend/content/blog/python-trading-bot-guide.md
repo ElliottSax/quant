@@ -241,7 +241,7 @@ For US equities, Alpaca offers the best beginner-friendly API with free real-tim
 
 ### How do you handle market gaps and overnight risk?
 
-Daily strategies should check for overnight gaps before generating signals. If the market opens significantly above or below the previous close (> 2%), skip the first signal or adjust [position sizing](/blog/position-sizing-strategies). For overnight risk, consider: (1) closing all positions before market close, (2) using stop orders that trigger at market open, or (3) reducing position sizes to account for gap risk. In our backtests, gap filtering improved risk-adjusted returns by 8-12%.
+Daily strategies should check for overnight gaps before generating signals. If the market opens significantly above or below the previous close (> 2%), skip the first signal or adjust [position sizing](/blog/position-sizing-strategies). For overnight risk, consider: (1) closing all positions before market close, (2) using stop orders that trigger at market open, or (3) reducing position sizes to account for gap risk.
 
 ### What happens if my trading bot crashes?
 

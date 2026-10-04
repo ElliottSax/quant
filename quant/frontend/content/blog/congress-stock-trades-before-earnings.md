@@ -12,7 +12,6 @@ last_updated: '2026-03-24'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Stock Trades Before Earnings: Timing Advantage Around Quarterly Reports
 
 Congressional members execute coordinated stock purchases in advance of quarterly earnings announcements, achieving 78.2% win rate on pre-earnings trades. Analysis reveals systematic access to earnings guidance before public announcement.
@@ -22,8 +21,6 @@ Congressional members execute coordinated stock purchases in advance of quarterl
 **2026 Q1 Congressional Pre-Earnings Trading**:
 - Total pre-earnings transactions: 847
 - Total investment value: $567 million
-- Average return per trade: 18.4%
-- Win rate: 78.2%
 - Average holding period: 12 days (earnings cycle timing)
 
 ## Earnings Timing Precision
@@ -67,7 +64,6 @@ Congressional pre-earnings trades predominantly result in stock appreciation (ea
 - Expected probability (50/50 beat/miss): 50%
 - Actual congressional beat correlation: 188% above expected
 
-
 ## Guidance Intelligence
 
 Congressional trades correlate with advance earnings guidance information:
@@ -94,20 +90,14 @@ Committee access to investor briefings translates to pre-earnings trading advant
 
 **Technology Pre-Earnings**:
 - Transactions: 234 trades
-- Average return: 19.2%
-- Win rate: 79.8%
 - Average days before earnings: 2.8
 
 **Financial Pre-Earnings**:
 - Transactions: 187 trades
-- Average return: 16.4%
-- Win rate: 76.2%
 - Average days before earnings: 3.6
 
 **Healthcare Pre-Earnings**:
 - Transactions: 156 trades
-- Average return: 17.8%
-- Win rate: 77.1%
 - Average days before earnings: 3.4
 
 ## Options on Earnings Plays
@@ -117,7 +107,6 @@ Congressional members amplify pre-earnings plays through options:
 **Pre-Earnings Call Options**:
 - Total contracts: 178
 - Average profit per contract: $67,300
-- Win rate: 82.1%
 - Leverage amplification: 4.2x vs underlying stock
 
 Options provide 4.2x leverage on already-profitable pre-earnings equity positions.
@@ -198,7 +187,6 @@ Congressional members trade based on advance profit margin information:
 - Stocks with margin expansion beats: Congressional identified 87% in pre-earnings trades
 - Average margin expansion beat: 2.1 percentage points
 - Average return on margin beat trades: 18.2%
-
 
 ## Historical Earnings Season Performance
 

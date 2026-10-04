@@ -12,7 +12,6 @@ description: "Bollinger Bands remain one of the most powerful technical indicato
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting Bollinger Bands on Forex: A Comprehensive Trading Strategy Guide
 
 Bollinger Bands remain one of the most powerful technical indicators for forex traders. This comprehensive guide explores how to backtest Bollinger Band strategies on forex pairs using Python, including complete code examples, mathematical formulas, and real performance metrics.

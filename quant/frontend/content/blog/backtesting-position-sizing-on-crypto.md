@@ -309,12 +309,8 @@ class CryptoBacktest:
 **Same momentum strategy, different position sizing:**
 
 **Bitcoin (BTC/USD) 2024-2026:**
-- High-volatility sizing: Total return 67.3%, Sharpe 1.42, Max DD -18.2%
-- Fixed 2% sizing: Total return 18.4%, Sharpe 0.71, Max DD -42.1%
 
 **S&P 500 (SPY) 2024-2026:**
-- Fixed 2% sizing: Total return 42.1%, Sharpe 1.68, Max DD -11.3%
-- High-volatility sizing: Total return 28.7%, Sharpe 1.31, Max DD -9.2%
 
 **Key finding:** Volatility-scaled sizing outperforms fixed sizing in crypto markets while fixed sizing works better in equities.
 

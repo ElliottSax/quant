@@ -12,7 +12,6 @@ readTime: 12-15 min read
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 ## Quick Answer
 
 CCI (Commodity Channel Index) measures price deviation from moving average (-100 to +100 typically). CCI above +100 = overbought/strong momentum. CCI below -100 = oversold/weak momentum. CCI +100/-100 crossover = entry signal. Zero-line cross = momentum shift.
@@ -42,14 +41,12 @@ The Commodity Channel Index measures price deviation from its moving average. Or
 - Price at resistance
 - Entry: Short on close below +100
 - Stop: Above recent high
-- Win rate: 55-60%
 
 **Oversold Reversal (-100):**
 - CCI drops below -100
 - Price at support
 - Entry: Long on close above -100
 - Stop: Below recent low
-- Win rate: 55-60%
 
 ### Strategy 2: Zero-Line Crossover
 
@@ -57,25 +54,21 @@ The Commodity Channel Index measures price deviation from its moving average. Or
 - CCI crosses above zero
 - Momentum turning positive
 - Entry: Above crossover level
-- Win rate: 55-60%
 
 **Sell Signal:**
 - CCI crosses below zero
 - Momentum turning negative
 - Entry: Below crossover level
-- Win rate: 55-60%
 
 ### Strategy 3: CCI Divergence
 
 **Bullish Divergence:**
 - Price lower low, CCI higher low
 - Entry: Break above swing high
-- Win rate: 65%
 
 **Bearish Divergence:**
 - Price higher high, CCI lower high
 - Entry: Break below swing low
-- Win rate: 65%
 
 ## Real-World CCI Examples
 
@@ -128,19 +121,16 @@ The Commodity Channel Index measures price deviation from its moving average. Or
 - CCI (14) standard
 - Overbought/oversold trades
 - Zero-line crosses frequent
-- Win rate: 55%
 
 ### 4H Charts
 - CCI (20) standard
 - Divergence very reliable
 - Swing trading sweet spot
-- Win rate: 60-65%
 
 ### Daily Charts
 - CCI (20) standard
 - Major reversals only
 - Position trading timeframe
-- Win rate: 65-70%
 
 ## Common CCI Mistakes
 
@@ -164,12 +154,10 @@ Draw trendlines on CCI for early signals:
 **Uptrend Trendline:**
 - Connect swing lows
 - Break signals weakness
-- Win rate: 60%
 
 **Downtrend Trendline:**
 - Connect swing highs
 - Break signals strength
-- Win rate: 60%
 
 ### CCI Extreme Zones
 
@@ -178,12 +166,10 @@ CCI extreme values predict reversals:
 **Extreme Overbought (+200+):**
 - Very rare
 - Strong reversal likely
-- Win rate: 70%+
 
 **Extreme Oversold (-200+):**
 - Very rare
 - Strong reversal likely
-- Win rate: 70%+
 
 ## Platform Implementation
 

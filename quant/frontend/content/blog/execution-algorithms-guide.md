@@ -80,7 +80,6 @@ class TWAPSchedule:
 
         return pd.DataFrame(schedule)
 
-
 class TWAPExecutor:
     """Simulate TWAP execution against market data."""
 

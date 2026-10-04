@@ -16,7 +16,6 @@ Transaction costs significantly impact trading profitability, often consuming 30
 
 Understanding the true cost of trading is essential for strategy evaluation. This article breaks down commissions, market impact, bid-ask spreads, and opportunity costs specific to Emerging Markets, enabling realistic profitability assessment.
 
-
 ## Technical Indicators and Market Context
 
 Emerging Markets exhibit distinct characteristics affecting strategy performance. The combination of technical indicators selected for this analysis captures both trending and mean-reversion dynamics relevant to current market conditions.
@@ -28,7 +27,6 @@ Key market characteristics:
 - **Correlation Structure**: Dynamic correlations with macroeconomic factors
 - **Trend Persistence**: Varying mean-reversion strength across regimes
 
-
 ## Methodology
 
 Transaction cost analysis encompasses:
@@ -39,7 +37,6 @@ Transaction cost analysis encompasses:
 4. **Opportunity Costs**: Slippage from order execution delays
 
 The framework implements Monte Carlo simulations for realistic cost estimation, accounting for market microstructure effects specific to Emerging Markets. Results include sensitivity analysis for different market conditions.
-
 
 ## Implementation Code
 

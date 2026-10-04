@@ -89,7 +89,6 @@ Event volatility strategies prepare for known catalysts (Fed meetings, Bitcoin h
 
 ## Key Takeaways
 
-
 Call/put spreads and iron condors define maximum risk while maintaining profitable payoff ratios, suitable for systematic traders willing to actively manage positions rather than passively holding long options.
 
 Volatility arbitrage between realized and implied volatility, term structures, and cross-exchange pricing enables market-neutral profit opportunities independent of price direction, exploiting persistent mispricing from retail flow imbalance.

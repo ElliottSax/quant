@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Trend Following Strategy with Indicators: Riding Major Market Moves
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The trend foll
 
 **Technical requirements for entry:**
 
-
 1. **ADX (14) above 25 confirms strong trend** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Price trades above 50-period EMA (uptrend) or below (downtrend)** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The trend fo
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **ADX falls below 20 (trend weakness)** - This helps lock in profits while limiting losses.
 

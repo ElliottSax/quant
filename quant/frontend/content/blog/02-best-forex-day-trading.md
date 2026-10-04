@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Best Forex Day Trading Strategy for Beginners: Clear Methods with Clear Rules
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The day tradin
 
 **Technical requirements for entry:**
 
-
 1. **Identify daily support and resistance levels on 1-hour chart** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Wait for price to break and hold above resistance (15-min confirmation)** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The day trad
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Profit target: 1:2 risk/reward ratio minimum** - This helps lock in profits while limiting losses.
 

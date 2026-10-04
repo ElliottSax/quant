@@ -12,7 +12,6 @@ last_updated: '2026-03-23'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress ETF Buying Patterns: Index Fund Positions and Passive Strategy Concentration
 
 Congressional members deployed $1.2 billion in exchange-traded funds during 2026 Q1, representing 14.3% of total congressional trading activity. Surprisingly, ETF purchases are highly concentrated in specific sector and thematic ETFs rather than broad market indices, indicating active strategy disguised as passive investing.
@@ -24,7 +23,6 @@ Congressional members deployed $1.2 billion in exchange-traded funds during 2026
 - Number of ETF transactions: 2,847
 - Specific ETFs held: 76 different ETFs
 - Average return per ETF position: 13.2%
-- Win rate: 69.4%
 - Average holding period: 31 days
 
 ETF investing represents sophisticated sector-specific positioning while maintaining passive investment appearance.
@@ -182,7 +180,6 @@ Congressional members execute options strategies on ETFs:
 - Call options: 187 (79.9%)
 - Put options: 47 (20.1%)
 - Average profit per contract: $38,400
-- Win rate: 72.3%
 
 ETF call option concentration suggests confidence in sector appreciation, with leverage amplifying ETF returns.
 

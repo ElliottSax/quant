@@ -27,7 +27,6 @@ Crypto day trading uses 15-minute to 1-hour charts to capture 1-3% daily moves. 
 
 Day trading cryptocurrency offers immediate profits with no overnight gap risk. The 24/7 markets generate constant trading opportunities through volatility spikes and technical patterns.
 
-
 ## Why Day Trading Crypto Works
 
 Crypto's 24/7 market + high volatility creates consistent day trading opportunities:
@@ -37,7 +36,6 @@ Crypto's 24/7 market + high volatility creates consistent day trading opportunit
 - **No Overnight Risk**: Close all positions before sleep
 - **Multiple Entries**: 10-20 trade opportunities daily
 - **Immediate Feedback**: Know results instantly
-
 
 ## Market Context and Timing
 
@@ -186,7 +184,6 @@ This ensures consistent position sizes:
 - Monthly at 5 trades: $375-750 profit
 
 The psychological edge: Proper position sizing lets you take losses without emotional damage.
-
 
 ## Day Trading Strategy #1: RSI Overbought/Oversold
 
@@ -432,7 +429,6 @@ Successful day trading requires:
 2. **Volume confirmation** (no volume = no entry)
 3. **Tight stops** (1-2% maximum loss)
 4. **Consistent execution** (same plan every day)
-
 
 ## Next Steps
 

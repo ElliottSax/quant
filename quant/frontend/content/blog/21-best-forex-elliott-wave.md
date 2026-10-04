@@ -13,7 +13,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Best Forex Elliott Wave Trading Strategy: Mastering Wave Patterns
 
 *Last updated: March 20, 2026*
@@ -50,7 +49,6 @@ Identifying the right entry point is crucial for trading success. The elliott wa
 
 **Technical requirements for entry:**
 
-
 1. **Identify 5-wave impulse: Waves 1, 3, 5 up (or down)** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Wave 3 is longest and not shortest of waves 1, 3, 5** - This condition helps confirm strong directional bias and reduces false signals.
@@ -78,7 +76,6 @@ Knowing when to exit is equally important as knowing when to enter. The elliott 
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Profit target: Wave 5 peak (estimated from previous waves)** - This helps lock in profits while limiting losses.
 

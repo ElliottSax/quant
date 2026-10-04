@@ -136,14 +136,7 @@ A strategy based on detecting and trading with institutional order flow:
 
 **Backtest Results (S&P 500 Components, 5-Minute Data, 2019-2025)**:
 
-| Metric | Value |
-|--------|-------|
-| CAGR (annualized) | 14.8% |
-| Sharpe Ratio | 1.42 |
-| Max Drawdown | -7.8% |
-| Win Rate | 54.2% |
-| Avg Trade Duration | 45 minutes |
-| Profit Factor | 1.58 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ## Market Impact Models
 

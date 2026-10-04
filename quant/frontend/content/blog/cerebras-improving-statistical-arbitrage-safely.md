@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Improving Statistical Arbitrage Safely
 
 Statistical arbitrage (stat arb) is a quantitative trading strategy that exploits temporary mispricings between related financial instruments. Rooted in mean reversion and cointegration theories, stat arb strategies aim to profit from the convergence of price spreads between historically correlated assets—such as pairs of stocks, ETFs, or futures contracts—after deviations from equilibrium.
@@ -144,14 +143,7 @@ Here, we risk 2% of capital per trade, scaled by annualized spread volatility. T
 
 We perform **walk-forward optimization** using a 3-year training window and 1-year testing window.
 
-| Period | Training Years | Test Year | Sharpe Ratio (Test) | Max Drawdown |
-|--------|----------------|---------|---------------------|--------------|
-| 1 | 2015–2017 | 2018 | 1.21 | -14.3% |
-| 2 | 2016–2018 | 2019 | 1.45 | -9.7% |
-| 3 | 2017–2019 | 2020 | 0.68 | -28.1% |
-| 4 | 2018–2020 | 2021 | 1.33 | -11.2% |
-| 5 | 2019–2021 | 2022 | 0.92 | -21.5% |
-| 6 | 2020–2022 | 2023 | 1.18 | -13.8% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Observations**:
 - Sharpe ratio averaged **1.13** across test years.
@@ -200,11 +192,7 @@ However, in 2021–2022:
 
 The spread diverged permanently:
 
-| Metric | TSLA-NIO (2021–2022) |
-|--------|-----------------------|
-| Win Rate | 38.5% |
-| Max Drawdown | -47.2% |
-| Sharpe Ratio | -0.31 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Lesson**: Sector similarity ≠ cointegration. Regulatory, geopolitical, and liquidity differences can break relationships.
 

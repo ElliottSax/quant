@@ -147,7 +147,6 @@ Trading only in the high-volume regimes improved overall portfolio Sharpe from 1
 ## Key Takeaways
 
 - VWAP creates genuine mean-reverting behavior due to institutional [execution algorithms](/blog/execution-algorithms-guide) targeting it
-- VWAP [mean reversion](/blog/mean-reversion-strategies-guide) on ES futures produced a Sharpe of 1.52 in our intraday backtest
 - Volume-confirmed breakouts (2x average volume) outperform unconfirmed breakouts with a profit factor of 1.82 vs. 1.28
 - Volume Profile Point of Control is a high-probability support/resistance level (Sharpe 1.38)
 - OBV divergence leads price divergence by an average of 8 trading days
@@ -169,7 +168,7 @@ VWAP (Volume-Weighted Average Price) weights each price by its associated volume
 
 ### How reliable is volume profile for support and resistance?
 
-Volume profile-derived support and resistance (POC, value area boundaries) is among the most reliable because it represents actual trading activity rather than arbitrary lines. In our backtest, price bounced from the previous day's POC 57% of the time and from value area boundaries 62% of the time. These rates are meaningfully above the 50% random baseline and, combined with good risk-reward ratios, produce profitable trading systems.
+Volume profile-derived support and resistance (POC, value area boundaries) is among the most reliable because it represents actual trading activity rather than arbitrary lines. These rates are meaningfully above the 50% random baseline and, combined with good risk-reward ratios, produce profitable trading systems.
 
 ---
 

@@ -13,7 +13,6 @@ seo_optimized: true
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating Bollinger Bands: A Practical Guide
 
 ## Introduction
@@ -64,8 +63,6 @@ def baseline_bollinger(close: pd.Series, period: int = 20,
         )
     }
 ```
-
-**Baseline SPY results**: Win rate 57%, average return +0.42%, Sharpe 0.65, profit factor 1.31.
 
 ## Filter 1: Bandwidth Regime (The Squeeze Filter)
 

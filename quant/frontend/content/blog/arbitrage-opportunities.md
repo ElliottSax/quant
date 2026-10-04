@@ -13,7 +13,6 @@ seo_optimized: true
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Arbitrage Opportunities: Quantitative Detection and Exploitation
 
 ## Introduction
@@ -197,14 +196,7 @@ class PairsTrader:
 
 A well-constructed pairs trading portfolio on S&P 500 sector ETFs (2015-2025) exhibits:
 
-| Metric | Value |
-|--------|-------|
-| Annual Return | 5.2% |
-| Sharpe Ratio | 1.35 |
-| Max Drawdown | -7.8% |
-| Win Rate | 62% |
-| Average Holding Period | 12.3 days |
-| Half-Life of Convergence | 8.5 days |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The key insight: pairs trading returns are uncorrelated with the market (beta ~0.05), making it a genuine diversifier.
 
@@ -330,4 +322,4 @@ Implement rolling cointegration tests with a lookback of 120-250 days. If the p-
 
 ### What causes arbitrage opportunities to disappear?
 
-Technology (faster execution), regulation (market structure reforms), and competition (more participants). In the 1990s, index arbitrage opportunities lasted minutes. Today they last milliseconds. Statistical arbitrage spreads have compressed by roughly 50% per decade as more capital chases the same strategies. The result: strategies that generated Sharpe 3+ in 2005 may yield Sharpe 1 today.
+Technology (faster execution), regulation (market structure reforms), and competition (more participants). In the 1990s, index arbitrage opportunities lasted minutes. Today they last milliseconds. Statistical arbitrage spreads have compressed by roughly 50% per decade as more capital chases the same strategies.

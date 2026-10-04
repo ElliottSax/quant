@@ -24,7 +24,7 @@ last_updated: '2026-03-18'
 Quantitative trading involves using mathematical models and algorithms to make investment decisions, and it has become an increasingly popular field in recent years. As a quantitative researcher, I can attest to the importance of having a solid foundation in statistical analysis, financial modeling, and algorithmic trading. One of the best ways to develop this foundation is through reading books written by experienced practitioners and academics. In this article, I will provide an overview of the best books on quantitative trading, including books on algorithmic trading, statistical analysis, and financial modeling. I will also provide recommendations for aspiring and practicing quantitative traders, and discuss the key concepts and techniques that are essential for success in this field. According to a survey by the CFA Institute, 71% of investment firms use quantitative methods to make investment decisions, and the global algorithmic trading market is expected to reach $18.8 billion by 2025, growing at a compound annual growth rate (CAGR) of 10.3%. With the increasing demand for quantitative traders, it is essential to have a comprehensive understanding of the subject matter.
 
 ## Key Concepts
-The key concepts in quantitative trading include statistical analysis, financial modeling, and algorithmic trading. Statistical analysis involves using statistical techniques such as regression analysis, time series analysis, and hypothesis testing to analyze and model financial data. Financial modeling involves using mathematical models to estimate the value of financial instruments and to predict future prices. Algorithmic trading involves using computer programs to automatically execute trades based on predefined rules. According to a study by the Journal of Financial Economics, the use of statistical analysis and financial modeling can increase returns by up to 20% per annum, while reducing risk by up to 15%. Some of the key statistical concepts used in quantitative trading include:
+The key concepts in quantitative trading include statistical analysis, financial modeling, and algorithmic trading. Statistical analysis involves using statistical techniques such as regression analysis, time series analysis, and hypothesis testing to analyze and model financial data. Financial modeling involves using mathematical models to estimate the value of financial instruments and to predict future prices. Algorithmic trading involves using computer programs to automatically execute trades based on predefined rules. Some of the key statistical concepts used in quantitative trading include:
 * Mean reversion: 75% of stocks exhibit mean reversion, meaning that they tend to revert to their historical means over time
 * Momentum: 60% of stocks exhibit momentum, meaning that they tend to continue to move in the same direction over time
 * Volatility: 80% of stocks exhibit volatility, meaning that they tend to fluctuate in price over time
@@ -63,7 +63,7 @@ To implement a quantitative trading strategy, the following steps can be followe
 6. Refine the model by adjusting the parameters and the variables
 7. Implement the model in a trading platform using a programming language such as Python or R
 8. Monitor and adjust the model over time to ensure that it remains optimal
-For example, a quantitative trader may use a statistical model to identify stocks that are likely to outperform the market, and then use a trading platform to automatically execute trades based on the model's predictions. According to a study by the Journal of Financial Markets, the use of quantitative models can increase returns by up to 15% per annum, while reducing risk by up to 10%. Some of the key statistical techniques used in backtesting include:
+For example, a quantitative trader may use a statistical model to identify stocks that are likely to outperform the market, and then use a trading platform to automatically execute trades based on the model's predictions. Some of the key statistical techniques used in backtesting include:
 * Walk-forward optimization: 90% of quantitative traders use walk-forward optimization to evaluate the performance of their models
 * Cross-validation: 80% of quantitative traders use cross-validation to evaluate the performance of their models
 * Bootstrapping: 70% of quantitative traders use bootstrapping to evaluate the performance of their models
@@ -90,7 +90,6 @@ Some common mistakes that quantitative traders make include:
 6. Not diversifying the portfolio: 40% of quantitative traders report that not diversifying the portfolio is a common mistake
 7. Not using multiple models and strategies: 35% of quantitative traders report that not using multiple models and strategies is a common mistake
 8. Not continuously learning and improving: 30% of quantitative traders report that not continuously learning and improving is a common mistake
-According to a study by the Journal of Financial Economics, the use of quantitative models can reduce errors by up to 20% and increase returns by up to 10%.
 
 ## FAQ
 Here are some frequently asked questions about quantitative trading:

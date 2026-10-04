@@ -12,7 +12,6 @@ last_updated: '2026-03-22'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Big Tech Antitrust Trading: Regulatory Predictions and Strategic Positioning
 
 Congressional members executed strategic Big Tech stock purchases immediately preceding antitrust hearings and regulatory discussions, achieving exceptional returns through positioning that anticipated favorable regulatory outcomes. Analysis reveals systematic trading pattern: purchase Big Tech before antitrust hearings, participate in favorable regulatory process, capture gains from regulatory clarity.
@@ -22,8 +21,6 @@ Congressional members executed strategic Big Tech stock purchases immediately pr
 **2026 Q1 Congressional Big Tech Trading**:
 - Total Big Tech positions: $2.1 billion (21% of all congressional holdings)
 - Trades executed: 1,847
-- Average return: 18.2%
-- Win rate: 77.1%
 - Average holding period: 25 days
 
 ## Antitrust Hearing Timing
@@ -165,7 +162,6 @@ Congressional members amplify Big Tech antitrust positions through call options:
 - Total Big Tech options contracts: 234
 - Call options: 194 (82.9%)
 - Average profit per contract: $54,300
-- Win rate: 76.8%
 
 Options amplify Big Tech antitrust plays by average 4.2x leverage.
 

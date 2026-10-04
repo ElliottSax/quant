@@ -111,9 +111,6 @@ On-chain analysis provides 3-7 day forward visibility into market participant be
 
 Exchange net flow analysis reveals supply/demand dynamics, with extreme inflows (+10,000 BTC) predicting 8-15% selloffs within 7 days at 65-75% probability and extreme outflows signaling accumulation preceding 10-20% rallies.
 
-
-
-
 ## Frequently Asked Questions
 
 **How much does on-chain data access cost and which providers are best?**

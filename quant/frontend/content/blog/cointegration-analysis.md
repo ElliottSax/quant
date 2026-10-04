@@ -17,7 +17,6 @@ last_updated: '2026-03-22'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Cointegration Analysis: Identifying Stationary Spreads
 
 ## Introduction
@@ -39,10 +38,7 @@ In this example, the null hypothesis is that there are no cointegrating relation
 
 Cointegration analysis has numerous practical applications in algorithmic trading and quantitative strategies. One of the most popular applications is statistical arbitrage, which involves identifying mispricings in the market by analyzing the relationships between multiple time series. For example, suppose we have two stocks, A and B, which are cointegrated. If the spread between A and B deviates from its long-term equilibrium relationship, we can buy the underperforming stock and sell the outperforming stock, expecting the spread to revert to its mean. The following table compares the performance of a cointegration-based statistical arbitrage strategy with a traditional mean-reversion strategy:
 
-| Strategy | Annual Return | Sharpe Ratio | Maximum Drawdown |
-| --- | --- | --- | --- |
-| Cointegration-based statistical arbitrage | 15% | 1.2 | 10% |
-| Traditional mean-reversion strategy | 10% | 0.8 | 15% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 As shown in the table, the cointegration-based statistical arbitrage strategy outperforms the traditional mean-reversion strategy in terms of annual return and Sharpe ratio, while also exhibiting a lower maximum drawdown. Another application of cointegration analysis is pairs trading, which involves identifying two stocks that are cointegrated and trading on the spread between them. For instance, a study by Avellaneda and Lee (2010) found that a pairs trading strategy based on cointegration analysis can generate returns of up to 30% per annum, with a Sharpe ratio of 2.0.
 

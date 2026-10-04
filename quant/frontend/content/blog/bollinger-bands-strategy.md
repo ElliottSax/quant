@@ -20,7 +20,6 @@ description: "If touching them 20%+ of the time, either market is very volatile 
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Bollinger Bands Strategy: Complete Guide for Active Traders
 
 Bollinger Bands rank among the most versatile technical indicators available, serving simultaneously as support/resistance, volatility measure, and overbought/oversold detector. For algorithmic traders, understanding the full spectrum of Bollinger Band applications unlocks multiple profitable trading methodologies across all asset classes and timeframes. This comprehensive guide covers the complete implementation, includes production-ready Python code, real backtesting results across 10+ assets, and specific parameter tuning for different market conditions and timeframes.
@@ -54,7 +53,6 @@ Trade mean reversion when price touches the bands:
 - **Entry**: Price pierces upper or lower band
 - **Signal**: Volume decreases after spike (exhaustion)
 - **Exit**: Target = opposite band or middle band
-- **Profit Factor**: 2.08x
 - **Average Trade Duration**: 4-5 days
 
 ### 2. Trend Breakout Strategy
@@ -62,7 +60,6 @@ Trade breakouts above/below band extremes:
 - **Entry**: Price breaks above upper band with volume surge
 - **Exit**: Target = 3-5 times initial risk
 - **Holding Period**: 5-15 days
-- **Profit Factor**: 1.75x
 
 ### 3. Bollinger Band Squeeze Strategy
 Trade the volatility expansion following tight band consolidation:

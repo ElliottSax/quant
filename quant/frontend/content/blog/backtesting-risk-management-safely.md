@@ -12,7 +12,6 @@ description: "Safe risk management isn't about maximizing returns—it's about p
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting Risk Management Safely
 
 Safe risk management isn't about maximizing returns—it's about preventing account destruction. A trader with 10% annual returns who avoids catastrophic losses will outperform a trader with 30% average returns interspersed with account-blowing drawdowns. This guide covers defensive risk management strategies, circuit breakers that stop trading during distress, and backtesting validations that confirm safety under extreme conditions.

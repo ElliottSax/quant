@@ -60,7 +60,6 @@ Factor investing now underlies over $2 trillion in assets globally across [smart
 
 **Historical performance (US equities, 1963-2025)**:
 - Annual quality premium: 4.1%
-- Sharpe ratio: 0.52
 - Low correlation with value (-0.15) and momentum (0.08)
 - Strong performance in bear markets (flight to quality)
 
@@ -76,8 +75,6 @@ Factor investing now underlies over $2 trillion in assets globally across [smart
 
 **Historical performance (US equities, 1963-2025)**:
 - Annual low-vol premium: 2.8%
-- Sharpe ratio: 0.72 (highest among individual factors)
-- Max drawdown: -18.4% (lowest among individual factors)
 - Underperforms in strong bull markets (lower beta)
 
 **Characteristic**: Low volatility acts more like a risk-reduction strategy than an alpha-generation strategy. It achieves comparable returns to the market with significantly lower risk.
@@ -115,7 +112,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 Factor timing attempts to overweight factors that are likely to outperform and underweight factors that are likely to underperform. The evidence is mixed:
 
-**Value spread timing**: When the spread between cheap and expensive stocks is wide (above historical median), the subsequent value factor return is higher. This provided marginal timing value in our backtests (0.3% annual improvement).
+**Value spread timing**: When the spread between cheap and expensive stocks is wide (above historical median), the subsequent value factor return is higher.
 
 **Momentum crash prediction**: When market volatility is elevated and momentum returns are extreme, the probability of a momentum crash increases. Reducing momentum exposure when VIX > 30 improved the momentum factor Sharpe from 0.58 to 0.72.
 
@@ -123,13 +120,7 @@ Factor timing attempts to overweight factors that are likely to outperform and u
 
 ### Factor Timing Results
 
-| Timing Method | CAGR Improvement | Sharpe Improvement |
-|--------------|-----------------|-------------------|
-| No timing (equal weight) | Baseline | 0.92 |
-| Value spread timing | +0.3% | 0.94 |
-| Volatility-based momentum timing | +1.1% | 1.02 |
-| Business cycle rotation | +1.2% | 1.04 |
-| All three combined | +1.8% | 1.08 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Factor timing adds modest value but introduces model complexity and potential overfitting risk. Most practitioners recommend static or slowly-varying factor allocations rather than aggressive timing.
 
@@ -157,7 +148,6 @@ Building factor portfolios directly from individual stocks provides:
 ## Key Takeaways
 
 - Four robust equity factors (value, momentum, quality, low volatility) have been documented across decades and markets
-- Multi-factor portfolios (composite scoring) achieved a Sharpe of 1.12, nearly 3x the Russell 1000 (0.38)
 - Value and momentum have -0.38 correlation, making them natural complements in a portfolio
 - Quality provides stability and bear market protection with the lowest drawdown among individual factors
 - Factor timing adds modest value (+1.2-1.8% CAGR) but introduces complexity and overfitting risk

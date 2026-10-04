@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Harmonic Patterns Trading Strategy: Precise Entry with Geometric Ratios
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The harmonic p
 
 **Technical requirements for entry:**
 
-
 1. **Gartley pattern (M-shape): X-A-B-C-D sequence at Fibonacci ratios** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Butterfly pattern (W-shape): Extended Gartley with 1.27 extension** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The harmonic
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Profit target: 61.8% or 88.6% extension from C-D move** - This helps lock in profits while limiting losses.
 

@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Improving RSI Strategies on Forex
 
 ## Introduction
@@ -153,9 +152,6 @@ print(f"Win Rate: {win_rate*100:.1f}%")
 ```
 
 **Output for EUR/USD (2005–2023):**
-- Total Return: 81.7%
-- Sharpe Ratio: 0.67
-- Win Rate: 55.3%
 
 Matches backtest results in Table 2.
 
@@ -171,11 +167,7 @@ Even optimized RSI strategies require risk controls. We tested fixed fractional 
 
 ### Table 4: Impact of Position Sizing on MTF-RSI (EUR/USD)
 
-| Risk per Trade | Total Return (%) | Max Drawdown (%) | Sharpe Ratio |
-|----------------|------------------|------------------|--------------|
-| 1%             | 81.7             | -38.4            | 0.67         |
-| 2%             | 147.3            | -62.1            | 0.65         |
-| 3%             | 198.5            | -75.8            | 0.61         |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 While higher risk increases returns, drawdowns grow disproportionately. The Kelly Criterion suggests optimal risk at **1.8%**, balancing growth and survival.
 
@@ -195,4 +187,4 @@ This confirms that RSI-based mean reversion works best in low-to-medium volatili
 
 ## Conclusion
 
-Basic RSI strategies on Forex generate marginal returns with excessive drawdowns. However, enhancements—particularly multi-timeframe confirmation—significantly improve performance. The MTF-RSI strategy achieved an average Sharpe ratio of **0.64** and total return of **77.3%** over 19 years, outperforming the benchmark by over 8
+Basic RSI strategies on Forex generate marginal returns with excessive drawdowns. However, enhancements—particularly multi-timeframe confirmation—significantly improve performance.

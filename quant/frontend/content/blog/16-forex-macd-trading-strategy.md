@@ -15,7 +15,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex MACD Trading Strategy Using Signals: Momentum-Based Entry and Exit Rules
 
 *Last updated: March 20, 2026*
@@ -52,7 +51,6 @@ Identifying the right entry point is crucial for trading success. The macd signa
 
 **Technical requirements for entry:**
 
-
 1. **MACD line crosses above signal line = BUY (bullish crossover)** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **MACD line crosses below signal line = SELL (bearish crossover)** - This condition helps confirm strong directional bias and reduces false signals.
@@ -80,7 +78,6 @@ Knowing when to exit is equally important as knowing when to enter. The macd sig
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Opposite crossover: Close on bearish/bullish signal crossover** - This helps lock in profits while limiting losses.
 

@@ -153,14 +153,12 @@ The strategy exhibits low correlation (-0.15 to 0.05) with traditional long-only
 
 During strong directional moves:
 - Expect a lower win rate
-- Increase profit factor targets to 2.5-3.0
 - Extend average holding period from 4 to 6 hours
 
 ### Mean Reversion Regimes
 
 During range-bound consolidation:
 - Aim for a higher win rate
-- Accept lower profit factors (1.2-1.5)
 - Tighten stops to 3.0% of ATR
 
 ### Volatility Expansion Periods
@@ -174,12 +172,7 @@ During VIX spikes:
 
 The framework supports flexible indicator selection:
 
-| Primary Indicator | Confirmation | Asset Class | Sharpe | Win Rate |
-|------------------|---|---|---|---|
-| Order Book Depth | RSI | Crypto | 1.8 | 52% |
-| Tick Volume | MACD | Futures | 2.1 | 48% |
-| VWAP Deviation | Stochastic | Equities | 1.9 | 55% |
-| Market Profile | Williams %R | Forex | 2.3 | 50% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ## Slippage and Commission Impact
 
@@ -188,8 +181,7 @@ Realistic transaction costs reduce theoretical returns:
 - Commission: 2-3 bps round trip
 - Effective cost per trade: ~3-4 bps
 
-Impact on annual return: 19.1% (approximate net of costs)
-Impact on Sharpe ratio: 1.01 (adjusted for reduced returns)
+Net return is gross return minus cost drag (see the formula above). Recompute the Sharpe ratio from the net return series, not from a rule of thumb.
 
 ## Frequently Asked Questions
 
@@ -213,7 +205,7 @@ A: Real-time order flow data (tick-level volume) is essential. Standard OHLCV da
 
 ## Conclusion
 
-Paper Trading Framework provides a systematic framework for exploiting microstructure inefficiencies on EUR/USD. The strategy's 1.06 Sharpe ratio and 46.9% win rate demonstrate consistent outperformance across market regimes. However, successful implementation requires disciplined risk management, realistic slippage assumptions, and quarterly parameter reoptimization.
+Paper Trading Framework provides a systematic framework for exploiting microstructure inefficiencies on EUR/USD. However, successful implementation requires disciplined risk management, realistic slippage assumptions, and quarterly parameter reoptimization.
 
 The intersection of order flow analysis and technical confirmation creates a candidate trading signal that you should test on your own data. The modular Python implementation allows for flexible parameter adjustment and alternative indicator combinations based on specific market conditions and asset classes.
 

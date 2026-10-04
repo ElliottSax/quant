@@ -334,7 +334,6 @@ Successful NFT trading requires:
 3. **Momentum recognition** (ride catalyst waves)
 4. **Risk management** (stops, position sizing)
 
-
 ## Next Steps
 
 - Download Rarity.tools and familiarize yourself

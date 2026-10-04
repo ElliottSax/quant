@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Guide to MACD Crossovers Using Machine Learning
 
 ## Introduction
@@ -35,10 +34,7 @@ A classic crossover signal occurs when:
 
 While intuitive, this binary rule ignores contextual factors such as market volatility, volume trends, and price momentum. Empirical studies show that pure MACD strategies on daily S&P 500 data generate an average annual return of **5.2%** from 2010–2023, with a Sharpe ratio of **0.48** and a win rate of **51.3%**. These figures indicate marginal outperformance over a buy-and-hold strategy, which returned **9.8%** annually in the same period.
 
-| Strategy             | Annual Return (%) | Sharpe Ratio | Win Rate (%) | Max Drawdown (%) |
-|----------------------|-------------------|--------------|--------------|------------------|
-| Pure MACD Crossover  | 5.2               | 0.48         | 51.3         | -34.1            |
-| Buy-and-Hold         | 9.8               | 0.67         | N/A          | -33.9            |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 *Table 1: Performance of pure MACD crossover vs. buy-and-hold on SPY (2010–2023)*
 
@@ -175,14 +171,7 @@ portfolio['cumulative'] = (1 + portfolio['strategy_returns']).cumprod()
 
 The ML-augmented MACD strategy significantly outperforms both the traditional MACD and buy-and-hold benchmarks over the 2018–2023 period.
 
-| Metric                  | ML-Augmented MACD | Pure MACD | Buy-and-Hold |
-|-------------------------|-------------------|-----------|--------------|
-| Annual Return (%)       | **11.4**          | 4.1       | 9.6          |
-| Sharpe Ratio            | **0.93**          | 0.38      | 0.71         |
-| Win Rate (%)            | **68.2**          | 50.7      | N/A          |
-| Profit Factor             | **1.87**          | 1.12      | N/A          |
-| Max Drawdown (%)        | **-22.4**         | -35.6     | -34.8        |
-| Number of Trades        | 89                | 154       | N/A          |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 *Table 3: Backtested performance (2018–2023)*
 
@@ -203,13 +192,7 @@ We test the strategy’s robustness through parameter sensitivity and walk-forwa
 
 The classification threshold (default 0.65) significantly impacts performance:
 
-| Threshold | Annual Return (%) | Sharpe Ratio | Trade Count |
-|----------|-------------------|--------------|-------------|
-| 0.50     | 9.1               | 0.76         | 124         |
-| 0.60     | 10.3              | 0.85         | 103         |
-| **0.65** | **11.4**          | **0.93**     | **89**      |
-| 0.70     | 10.9              | 0.89         | 76          |
-| 0.75     | 9.8               | 0.81         | 61          |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 *Table 4: Performance sensitivity to classification threshold*
 
@@ -273,10 +256,10 @@ A: VIX contributes ~8% to model performance. Replace it with **S&P 500 30-day re
 A: Retrain **quarterly** or **annually**. Monthly retraining offers minimal improvement and increases overfitting risk. Walk-forward analysis supports annual updates.
 
 **Q: Is this strategy suitable for intraday trading?**  
-A: Possible, but transaction costs and data latency become critical. On 1-hour SPY data (2020–2023), the strategy achieved a Sharpe of **1.02**, but net returns dropped to **8.9%** after 0.1% slippage per trade.
+A: Possible, but transaction costs and data latency become critical.
 
 **Q: Why use 10-day forward returns as the target?**  
 A: The 10-day horizon aligns with the typical duration of MACD signals. Shorter horizons (5-day) increase noise; longer horizons (20-day) dilute signal relevance. Sensitivity tests confirm 10 days as optimal.
 
 **Q: Can I use logistic regression instead of XGBoost?**  
-A: Yes, but expect reduced performance. Logistic regression achieved a Sharpe of **0.72** in backtests—still above pure MACD but 210 basis points below XGBoost. Use it if interpretability is prioritized over returns.
+A: Yes, but expect reduced performance. Use it if interpretability is prioritized over returns.

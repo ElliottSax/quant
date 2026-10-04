@@ -138,7 +138,6 @@ Pairs trades require simultaneous execution of two legs. Slippage on either leg 
 
 ## Key Takeaways
 
-- Pairs trading provides market-neutral returns with a Sharpe ratio of 1.42 and maximum drawdown of only -8.9%
 - Cointegration (not correlation) is the correct statistical test for pair selection
 - Requiring both Engle-Granger and Johansen tests reduces false positives significantly
 - The half-life of mean reversion should be 5-60 days for practical trading
@@ -153,11 +152,11 @@ We recommend 15-25 simultaneous pairs for adequate diversification. Fewer than 1
 
 ### What is the typical holding period for a pairs trade?
 
-The average holding period in our backtest was 11.2 trading days, with a range of 2-30 days. Most profitable trades converged within 8-15 days. The 30-day time stop forces exit on trades that fail to converge, preventing capital from being tied up in stale positions.
+Most profitable trades converged within 8-15 days. The 30-day time stop forces exit on trades that fail to converge, preventing capital from being tied up in stale positions.
 
 ### Can you do pairs trading with ETFs instead of individual stocks?
 
-Yes, ETF pairs trading is viable and simpler to implement. Common pairs include SPY/QQQ, XLF/KBE, and GLD/GDX. ETF pairs tend to have more stable cointegration relationships but narrower spreads, resulting in lower returns. Our ETF pairs backtest produced a Sharpe of 1.15 versus 1.42 for individual stocks.
+Yes, ETF pairs trading is viable and simpler to implement. Common pairs include SPY/QQQ, XLF/KBE, and GLD/GDX. ETF pairs tend to have more stable cointegration relationships but narrower spreads, resulting in lower returns.
 
 ### How much capital is needed for pairs trading?
 
@@ -165,7 +164,7 @@ A minimum of $50,000 is recommended for a diversified pairs portfolio. Each pair
 
 ### Does pairs trading work in crypto markets?
 
-Pairs trading can work in crypto, particularly for closely related assets (BTC/ETH, SOL/AVAX) and exchange-listed tokens with shared fundamentals. However, crypto pairs have less stable cointegration relationships and higher volatility, requiring wider Z-score thresholds and more frequent re-testing. Our crypto pairs backtest showed a Sharpe of 0.98 with higher turnover.
+Pairs trading can work in crypto, particularly for closely related assets (BTC/ETH, SOL/AVAX) and exchange-listed tokens with shared fundamentals. However, crypto pairs have less stable cointegration relationships and higher volatility, requiring wider Z-score thresholds and more frequent re-testing.
 
 ---
 

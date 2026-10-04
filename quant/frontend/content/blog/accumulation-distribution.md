@@ -13,7 +13,6 @@ seo_optimized: true
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Accumulation Distribution: The Volume-Price Indicator Every Quant Should Master
 
 ## Introduction
@@ -94,7 +93,6 @@ def accumulation_distribution(df: pd.DataFrame) -> pd.Series:
 
     return pd.Series(ad_line, index=df.index, name='AD')
 
-
 def ad_signal(df: pd.DataFrame, fast: int = 3, slow: int = 10) -> pd.DataFrame:
     """
     Generate trading signals from A/D line crossovers.
@@ -147,7 +145,7 @@ The most powerful application of the A/D line is divergence detection. When pric
 - Stop loss: 1.5 ATR(14) above entry
 - Target: 2.0 ATR(14) below entry
 
-In backtests on SPY daily data from 2015-2025, this divergence strategy generated a Sharpe ratio of 0.82 with a maximum drawdown of -11.3%, compared to a buy-and-hold Sharpe of 0.61. You can backtest a divergence-based strategy like this yourself using our [Strategy Builder](/backtesting/builder), no code required.
+You can backtest a divergence-based strategy like this yourself using our [Strategy Builder](/backtesting/builder), no code required.
 
 ### Strategy 2: A/D Trend Confirmation Filter
 
@@ -162,7 +160,6 @@ def ad_trend_filter(df: pd.DataFrame, lookback: int = 20) -> pd.Series:
     ad = accumulation_distribution(df)
     slope = ad.diff(lookback)
     return np.sign(slope)
-
 
 def filtered_momentum(df: pd.DataFrame, mom_period: int = 60,
                        ad_lookback: int = 20) -> pd.Series:

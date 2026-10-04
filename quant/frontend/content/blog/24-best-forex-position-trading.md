@@ -15,7 +15,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Best Forex Position Trading for Long-Term Profitability: Hold Trades for Days/Weeks
 
 *Last updated: March 20, 2026*
@@ -52,7 +51,6 @@ Identifying the right entry point is crucial for trading success. The long-term 
 
 **Technical requirements for entry:**
 
-
 1. **Identify major trend: 200-period EMA on weekly chart slope direction** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Entry on pullback: Daily chart shows 38.2-50% retracement of larger move** - This condition helps confirm strong directional bias and reduces false signals.
@@ -80,7 +78,6 @@ Knowing when to exit is equally important as knowing when to enter. The long-ter
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Take profit: Weekly support/resistance or 500+ pips profit** - This helps lock in profits while limiting losses.
 

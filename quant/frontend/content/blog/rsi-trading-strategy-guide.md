@@ -119,14 +119,9 @@ Shorter RSI periods are more sensitive and suit [mean reversion strategies](/blo
 
 We tested symmetric thresholds from 10/90 to 40/60 on the RSI(14) across S&P 500 stocks:
 
-| Threshold | Win Rate | Sharpe | Trades/Year |
-|-----------|----------|--------|-------------|
-| 10/90 | 62.4% | 0.74 | 12 |
-| 20/80 | 58.1% | 0.82 | 28 |
-| 30/70 | 54.1% | 0.62 | 48 |
-| 40/60 | 49.8% | 0.44 | 86 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-The 20/80 threshold produced the best Sharpe ratio (0.82) by balancing signal quality with sufficient trade frequency. The standard 30/70 generates too many signals in trending markets.
+The standard 30/70 generates too many signals in trending markets.
 
 ## Combining RSI with Other Indicators
 
@@ -155,11 +150,11 @@ RSI signals accompanied by above-average volume (> 1.5x 20-day average) have a 7
 
 ### What RSI setting is best for swing trading?
 
-For swing trading (holding 3-10 days), RSI(5) or RSI(9) with thresholds of 15/85 or 25/75 performs best. These shorter lookbacks capture the faster momentum cycles relevant to swing traders. Our backtest showed RSI(5) with 20/80 thresholds produced a Sharpe of 0.94 for swing trades on S&P 500 components, compared to 0.62 for the standard RSI(14) with 30/70.
+For swing trading (holding 3-10 days), RSI(5) or RSI(9) with thresholds of 15/85 or 25/75 performs best. These shorter lookbacks capture the faster momentum cycles relevant to swing traders.
 
 ### Is RSI better for stocks or forex?
 
-RSI works well in both markets but with different optimal settings. Stocks respond better to mean reversion RSI strategies (RSI 2-5, extreme thresholds) because equities exhibit stronger mean-reverting behavior on short timeframes. Forex responds better to trend-following RSI applications (RSI 14-21, moderate thresholds) because currency pairs tend to trend more persistently. In our backtests, RSI mean reversion achieved a Sharpe of 1.18 on stocks versus 0.74 on forex.
+RSI works well in both markets but with different optimal settings. Stocks respond better to mean reversion RSI strategies (RSI 2-5, extreme thresholds) because equities exhibit stronger mean-reverting behavior on short timeframes. Forex responds better to trend-following RSI applications (RSI 14-21, moderate thresholds) because currency pairs tend to trend more persistently.
 
 ### How do you identify RSI divergence programmatically?
 

@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting Bollinger Bands Efficiently
 
 Bollinger Bands, introduced by John Bollinger in the 1980s, remain one of the most widely used technical indicators in financial markets. Their appeal lies in their ability to dynamically measure volatility and identify potential overbought or oversold conditions. However, deploying Bollinger Bands in systematic trading strategies requires rigorous backtesting to assess performance across different market regimes. This article details an efficient approach to backtesting Bollinger Bands strategies with real-world data, Python implementation, and quantitative performance metrics.
@@ -176,13 +175,7 @@ We precompute rolling statistics once per window to avoid redundant calculations
 
 ### Optimization Results
 
-| Window | Multiplier (k) | Sharpe Ratio | Total Return |
-|-------|----------------|--------------|--------------|
-| 10    | 2.5            | 0.38         | 104.2%       |
-| 15    | 2.2            | 0.36         | 98.1%        |
-| 20    | 2.0            | 0.31         | 87.3%        |
-| 25    | 1.8            | 0.29         | 76.5%        |
-| 30    | 1.5            | 0.24         | 63.2%        |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The best-performing configuration is **window=10, k=2.5** (Sharpe: 0.38). This setting increases sensitivity to short-term price movements and reduces false signals.
 
@@ -234,12 +227,7 @@ With stop-loss and volatility scaling, the Sharpe improves to **0.43**, and maxi
 
 We compare the optimized Bollinger Band strategy against benchmarks:
 
-| Strategy                          | CAGR  | Sharpe | Max Drawdown |
-|-----------------------------------|-------|--------|--------------|
-| Bollinger Band (optimized)        | 3.1%  | 0.43   | -49.8%       |
-| Buy-and-Hold (SPY)                | 8.6%  | 0.76   | -55.2%       |
-| 60/40 Portfolio (SPY + TLT)       | 6.8%  | 0.81   | -32.1%       |
-| S&P 500 Index (TR)                | 10.2% | 0.79   | -55.2%       |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Despite optimization, the Bollinger Band strategy fails to match passive benchmarks. Its value lies in diversification, not standalone performance.
 
@@ -287,12 +275,7 @@ Additionally, the strategy suffers from:
 
 Efficiency in backtesting must include regime analysis. We segment performance by VIX quartiles:
 
-| VIX Level | Avg. Trade Return | Win Rate |
-|---------|-------------------|----------|
-| < 15    | 0.21%             | 49.1%    |
-| 15–25   | 0.48%             | 53.7%    |
-| 25–35   | 0.62%             | 56.3%    |
-| > 35    | 0.35%             | 51.0%    |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The strategy performs best in moderately high volatility (VIX 15–35), confirming its suitability for volatile but non-panic conditions.
 
@@ -310,7 +293,7 @@ The strategy performs best in moderately high volatility (VIX 15–35), confirmi
 ## FAQ
 
 **Q: Can Bollinger Bands be used for intraday trading?**  
-Yes. On 1-hour SPY data (2018–2023), the optimized strategy achieved a Sharpe ratio of 0.67 with 342 trades. Shorter windows (e.g., 10 periods) and tighter multipliers (k=1.8) perform better at higher frequencies.
+Yes. Shorter windows (e.g., 10 periods) and tighter multipliers (k=1.8) perform better at higher frequencies.
 
 **Q: Why is my backtest slow?**  
 Common causes: iterative signal generation, redundant calculations, lack of vectorization. Use `pandas` rolling operations and precompute indicators.

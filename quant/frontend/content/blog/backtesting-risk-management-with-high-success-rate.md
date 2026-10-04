@@ -12,7 +12,6 @@ description: "High-success-rate strategies (70%+ win rate) require different ris
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting Risk Management: A Practical Guide
 
 With most trades being winners, risk management shifts from preventing catastrophic losses to optimizing profit extraction while protecting against the rare losing streaks. This guide covers specialized risk management techniques that maximize returns for high-probability strategies without exposing capital to unacceptable drawdowns.

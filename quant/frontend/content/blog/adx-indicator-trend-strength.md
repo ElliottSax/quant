@@ -12,7 +12,6 @@ readTime: 12-15 min read
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 ## Quick Answer
 
 ADX (Average Directional Index) measures trend strength 0-100. ADX above 25 = strong trend (trade trend-following). ADX below 25 = weak/no trend (avoid or use mean reversion). +DI above -DI = uptrend. -DI above +DI = downtrend.
@@ -42,13 +41,11 @@ ADX (Average Directional Index) measures the strength of a trend rather than its
 - ADX > 25 and rising
 - +DI > -DI
 - Entry: Pullback to support MA
-- Win rate: 60-65%
 
 **Strong Downtrend:**
 - ADX > 25 and rising
 - -DI > +DI
 - Entry: Bounce to resistance MA
-- Win rate: 60-65%
 
 ### Strategy 2: DI Crossover Trading
 
@@ -56,13 +53,11 @@ ADX (Average Directional Index) measures the strength of a trend rather than its
 - +DI crosses above -DI
 - ADX > 20 or rising
 - Entry: Cross with price above MA
-- Win rate: 55-60%
 
 **Sell Signal:**
 - -DI crosses above +DI
 - ADX > 20 or rising
 - Entry: Cross with price below MA
-- Win rate: 55-60%
 
 ### Strategy 3: Avoiding Whipsaws
 
@@ -105,19 +100,16 @@ Use ADX to filter out false signals:
 - Standard (14) period
 - ADX >25 indicates tradeable trend
 - DI crossovers frequent
-- Win rate: 55%
 
 ### 4H Charts
 - Standard (14) period
 - ADX signals clearer
 - Fewer false signals
-- Win rate: 60%
 
 ### Daily Charts
 - Standard (14) period
 - ADX very reliable
 - Strong trends only
-- Win rate: 65-70%
 
 ## Common ADX Mistakes
 

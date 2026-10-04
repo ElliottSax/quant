@@ -103,7 +103,6 @@ Tax efficiency: staking rewards typically taxed as ordinary income. Some jurisdi
 
 ## Key Takeaways
 
-
 Solo staking optimizes yields (100% reward capture) but requires operational expertise and 32+ ETH minimum, while pooled and liquid staking sacrifice 5-10% rewards for simplicity and capital efficiency suitable for passive investors.
 
 Liquid staking through Lido enables capital composability (stETH as collateral on Aave) creating compound yield opportunities (staking yield + lending yield) exceeding solo staking despite higher fees, suitable for sophisticated yield optimization.

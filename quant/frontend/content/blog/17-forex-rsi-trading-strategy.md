@@ -13,7 +13,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex RSI Trading Strategy for Overbought and Oversold Conditions
 
 *Last updated: March 20, 2026*
@@ -50,7 +49,6 @@ Identifying the right entry point is crucial for trading success. The rsi extrem
 
 **Technical requirements for entry:**
 
-
 1. **RSI (14) above 70 = Overbought, prepare for reversal down** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **RSI (14) below 30 = Oversold, prepare for reversal up** - This condition helps confirm strong directional bias and reduces false signals.
@@ -78,7 +76,6 @@ Knowing when to exit is equally important as knowing when to enter. The rsi extr
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Profit target: Previous swing low/high** - This helps lock in profits while limiting losses.
 

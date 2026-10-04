@@ -95,7 +95,6 @@ def find_cointegrated_pairs(
     print(f"Tested {pairs_tested} pairs, found {len(pairs_df)} cointegrated")
     return pairs_df
 
-
 def compute_half_life(spread: pd.Series) -> float:
     """
     Compute mean-reversion half-life using OLS on spread changes.

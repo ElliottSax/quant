@@ -13,7 +13,6 @@ seo_optimized: true
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # statsmodels ARIMA Import Error: the Correct Import
 
 ## Introduction
@@ -188,7 +187,6 @@ def fit_arima(series: pd.Series, order: tuple,
         'residual_std': result.resid.std(),
         'log_likelihood': result.llf
     }
-
 
 def auto_arima(series: pd.Series, max_p: int = 5, max_d: int = 2,
                max_q: int = 5, criterion: str = 'aic') -> dict:

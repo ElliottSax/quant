@@ -144,7 +144,6 @@ Regime transitions require substantial [portfolio rebalancing](/blog/rebalancing
 
 - Market regimes (bull, bear, high-volatility, low-volatility) exhibit distinct statistical properties that fundamentally affect optimal portfolio positioning
 - [Hidden Markov Models](/blog/hidden-markov-models-trading) provide the most rigorous quantitative framework for regime detection, estimating state-specific parameters and transition probabilities from observed returns
-- Regime-based allocation typically improves Sharpe ratios by 0.15-0.25 and reduces maximum drawdowns by 25-50% relative to static allocation, at the cost of modest return reduction
 - Blending regime-specific portfolios weighted by regime probabilities produces smoother transitions and better handles regime uncertainty than binary regime switching
 - Detection lag, overfitting risk, and transaction costs are the primary implementation challenges, addressed through composite signals, parsimonious models, and gradual reallocation
 

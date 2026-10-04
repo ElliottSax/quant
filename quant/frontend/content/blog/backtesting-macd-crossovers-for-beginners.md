@@ -12,7 +12,6 @@ description: "If you're new to algorithmic trading, MACD crossover strategies of
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting MACD Crossovers for Beginners: Step-by-Step Guide
 
 If you're new to algorithmic trading, MACD crossover strategies offer an excellent starting point. This beginner-friendly guide walks you through understanding MACD, building a basic backtest in Python, interpreting results, and avoiding common mistakes.

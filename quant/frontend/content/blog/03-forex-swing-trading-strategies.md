@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Swing Trading Strategies 2026: Multi-Day Trend Capturing Methods
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The swing trad
 
 **Technical requirements for entry:**
 
-
 1. **Identify 5+ candle swing low/high on daily chart** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Price retraces to 38.2% or 50% Fibonacci level** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The swing tr
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Target 1: 76.4% Fibonacci level (partial exit)** - This helps lock in profits while limiting losses.
 

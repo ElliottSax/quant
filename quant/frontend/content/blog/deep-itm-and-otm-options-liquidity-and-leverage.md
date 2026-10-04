@@ -28,7 +28,7 @@ Deep ITM options are highly likely to expire in-the-money, with a high probabili
 | --- | --- | --- | --- | --- |
 | Deep ITM | 0.8+ | 80%+ | High | 250,000 contracts |
 | Deep OTM | 0.2- | 20%- | Low | 50,000 contracts |
-The data suggests that deep ITM options are more liquid and have a higher trading volume than deep OTM options. However, the lower liquidity of deep OTM options can also result in higher potential returns, as traders are willing to pay a premium for these contracts. For example, a study by the Journal of Financial Economics found that deep OTM options can provide returns of up to 20% per annum, compared to 10% per annum for deep ITM options.
+The data suggests that deep ITM options are more liquid and have a higher trading volume than deep OTM options. However, the lower liquidity of deep OTM options can also result in higher potential returns, as traders are willing to pay a premium for these contracts.
 
 ## Comparison of Deep ITM and OTM Options
 
@@ -42,7 +42,7 @@ The following markdown table compares the key features of deep ITM and OTM optio
 | Average Notional Value | $1.2 billion | $200 million |
 | Potential Returns | 10% per annum | 20% per annum |
 | Risk | Low | High |
-The table highlights the key differences between deep ITM and OTM options, including delta, probability of exercise, liquidity, and potential returns. Deep ITM options are characterized by high liquidity, low risk, and relatively low potential returns, while deep OTM options are characterized by low liquidity, high risk, and relatively high potential returns. Traders must carefully consider these factors when making investment decisions, as the wrong choice can result in significant losses. For instance, a study by the Journal of Financial Markets found that traders who invested in deep OTM options experienced an average loss of 15% per annum, compared to an average gain of 5% per annum for traders who invested in deep ITM options.
+The table highlights the key differences between deep ITM and OTM options, including delta, probability of exercise, liquidity, and potential returns. Deep ITM options are characterized by high liquidity, low risk, and relatively low potential returns, while deep OTM options are characterized by low liquidity, high risk, and relatively high potential returns. Traders must carefully consider these factors when making investment decisions, as the wrong choice can result in significant losses.
 
 ## Implementing Deep ITM and OTM Options Strategies
 

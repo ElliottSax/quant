@@ -100,7 +100,6 @@ def analyze_autocorrelation(
     plt.tight_layout()
     return fig
 
-
 def identify_arima_order(
     series: pd.Series, max_p: int = 5, max_d: int = 2, max_q: int = 5
 ) -> tuple[int, int, int]:

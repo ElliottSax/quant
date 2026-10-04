@@ -13,7 +13,6 @@ provider: haiku
 
 Feature Engineering for Gradient Boosting in Scalping on Crypto Markets is a sophisticated approach to algorithmic trading combining quantitative analysis with machine learning. This examines theoretical foundations, implementation strategies, and empirical performance across asset classes.
 
-
 ## Market Context and Timing
 
 Understanding market conditions is crucial for implementing these strategies effectively. Different market environments reward different approaches.
@@ -162,7 +161,6 @@ This ensures consistent position sizes:
 
 The psychological edge: Proper position sizing lets you take losses without emotional damage.
 
-
 ## Strategy Framework
 
 This quantitative trading approach leverages systematic signals combined with rigorous risk management to generate alpha across market conditions.
@@ -202,12 +200,7 @@ weights = build_portfolio(signals, vol)
 
 ### Market Regimes
 
-| Regime | Sharpe | DD | Config |
-|--------|--------|-----|--------|
-| Trending | 1.32 | 10.8% | Momentum Focus |
-| Ranging | 1.08 | 13.2% | Mean Reversion |
-| High Vol | 0.96 | 15.6% | Reduced Size |
-| Low Liq | 0.84 | 18.0% | Slippage Buffer |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ## Execution Considerations
 
@@ -243,13 +236,7 @@ print(f"Position: {size:.2%}")
 
 ### Cross-Asset Performance
 
-| Asset | Sharpe | Return | DD | Trades |
-|-------|--------|--------|-----|--------|
-| Stocks | 1.20 | 13.5% | 11.4% | 156 |
-| Small-Cap | 1.32 | 17.2% | 14.4% | 142 |
-| Commodities | 1.14 | 12.8% | 13.2% | 168 |
-| Crypto | 1.02 | 15.0% | 16.8% | 189 |
-| Forex | 1.08 | 12.0% | 11.8% | 174 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### Walk-Forward Testing
 

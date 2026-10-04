@@ -12,7 +12,6 @@ last_updated: '2026-03-23'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Healthcare Stock Trades Analysis: Pharmaceutical Profits and FDA Timing
 
 Congressional members executed over $1.2 billion in healthcare sector stock trades during Q1 2026, with concentrated positions in pharmaceutical companies. Analysis reveals precise timing correlations between congressional trading and FDA approval announcements, drug trial results, and pharmaceutical pricing legislation.
@@ -24,8 +23,6 @@ Congressional healthcare sector activity dwarfs general market participation:
 **2026 Q1 Healthcare Trading**:
 - Total congressional healthcare trades: 1,847
 - Total value: $1.23 billion
-- Average return per trade: 12.4%
-- Win rate: 72.1%
 - Members participating: 178 (33% of Congress)
 
 **Pharmaceutical Company Focus**:
@@ -100,7 +97,6 @@ These timing patterns suggest access to trial result information before public d
 - Healthcare holdings: $2.1 million primarily in pharmaceutical companies
 - 2026 Q1 trades: 38 healthcare transactions
 - Realized gains: $412,000
-- Win rate: 81.6%
 
 Boozman serves on committees related to pharmaceutical pricing and research funding, positions providing information advantage.
 
@@ -108,7 +104,6 @@ Boozman serves on committees related to pharmaceutical pricing and research fund
 - Healthcare holdings: $1.8 million concentrated in biotech and pharmaceutical
 - 2026 Q1 trades: 42 healthcare transactions
 - Realized gains: $348,000
-- Win rate: 73.8%
 
 Murray chairs Senate health committee, providing access to advance health policy information.
 
@@ -193,7 +188,6 @@ Congressional members executed 178 pharmaceutical options trades in Q1 2026:
 - Call options: 142 positions (79.8%)
 - Put options: 36 positions (20.2%)
 - Average profit per position: $38,400
-- Win rate: 74.6%
 
 Heavy call option concentration with subsequent stock appreciation suggests foreknowledge of positive catalysts.
 

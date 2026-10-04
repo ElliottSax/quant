@@ -57,7 +57,6 @@ def prepare_sequences(
         y.append(target[i + forecast_horizon - 1])
     return np.array(X), np.array(y)
 
-
 def create_dataset(
     df: pd.DataFrame,
     target_col: str = "target",
@@ -240,7 +239,6 @@ class TemporalAttention(layers.Layer):
         attention_weights = tf.nn.softmax(score, axis=1)
         context = tf.reduce_sum(attention_weights * hidden_states, axis=1)
         return context, attention_weights
-
 
 def build_attention_lstm(
     sequence_length: int,

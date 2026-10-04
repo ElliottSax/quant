@@ -13,7 +13,6 @@ seo_optimized: true
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Algorithmic Trading Basics: From Concept to Production
 
 ## Introduction
@@ -124,7 +123,6 @@ class Strategy(ABC):
     def size_position(self, signal: Signal, portfolio: dict) -> int:
         """Convert signal strength to position size."""
         pass
-
 
 class MomentumStrategy(Strategy):
     def __init__(self, fast_period: int = 20, slow_period: int = 60,

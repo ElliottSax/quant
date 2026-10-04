@@ -71,7 +71,6 @@ Correlation regimes between BTC and alts (0.4-0.95 range) shift predictably acro
 
 Dominance acceleration (rapid shifts in dominance direction) precedes regime changes 70-80% of time, enabling early positioning in emerging alt seasons before crowd recognition and providing 4-8 week alpha advantage.
 
-
 Risk management through [position sizing](/blog/position-sizing-strategies) adjustments during uncertain regimes, hedge positions offsetting correlation risk, and portfolio construction maintaining both upside and downside protection prevents catastrophic losses from regime failures.
 
 ## Frequently Asked Questions

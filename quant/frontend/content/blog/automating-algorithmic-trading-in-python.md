@@ -182,7 +182,6 @@ class StrategyBase(ABC):
         """
         pass
 
-
 class MeanReversionStrategy(StrategyBase):
     """
     Bollinger Band mean reversion with volume confirmation.
@@ -237,7 +236,6 @@ class MeanReversionStrategy(StrategyBase):
             self.logger.debug(f"{symbol}: z={current_z:.2f}, vol_ratio={current_vol:.2f}")
 
         return signals
-
 
 class MomentumStrategy(StrategyBase):
     """

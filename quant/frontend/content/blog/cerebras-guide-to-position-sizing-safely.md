@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Guide to Position Sizing Safely
 
 In quantitative trading and portfolio management, **position sizing** is one of the most critical yet often overlooked components of risk management. While many traders focus on entry and exit signals, the size of the exposure determines whether a strategy survives long-term drawdowns or fails catastrophically. Proper **position sizing safely** ensures that no single trade or cluster of trades can jeopardize the portfolio’s capital base. This guide presents a rigorous, data-driven approach to position sizing, grounded in statistical risk control, empirical backtesting, and practical implementation.
@@ -56,13 +55,7 @@ Below we analyze four widely used methods, their assumptions, and backtested per
 Allocates a fixed percentage of capital per trade (e.g., 1% of account value).  
 **Assumption**: All trades have similar risk.
 
-| Metric | Value |
-|--------|-------|
-| Avg. Annual Return | 9.8% |
-| Max Drawdown | -37.4% |
-| Sharpe Ratio | 0.82 |
-| Win Rate | 53.2% |
-| Ruin Probability (10y) | 4.1% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 > **Note**: While simple, this method ignores volatility differences and can overexpose the portfolio during high-volatility regimes.
 
@@ -83,13 +76,7 @@ For example:
 - Stop-loss = 2×ATR = $10.00  
 - Position size = $10,000 / $10.00 = 1,000 shares
 
-| Metric | Value |
-|--------|-------|
-| Avg. Annual Return | 11.3% |
-| Max Drawdown | -29.1% |
-| Sharpe Ratio | 1.11 |
-| Win Rate | 54.1% |
-| Ruin Probability (10y) | 1.7% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 > **Advantage**: Adapts to volatility. Underperforms only during sudden volatility spikes.
 
@@ -115,11 +102,7 @@ Using historical data from the momentum strategy:
 
 **Full Kelly** leads to extreme volatility. Thus, **Fractional Kelly (0.25×)** is commonly used.
 
-| Method | Position Size | Avg Return | Max DD | Sharpe |
-|--------|---------------|-----------|--------|--------|
-| Full Kelly | 14.8% | 15.1% | -61.3% | 0.89 |
-| 0.5× Kelly | 7.4% | 13.4% | -44.7% | 1.03 |
-| 0.25× Kelly | 3.7% | 11.9% | -33.2% | 1.14 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 > **Insight**: Half-Kelly or quarter-Kelly significantly improves safety while retaining most of the growth.
 
@@ -136,13 +119,7 @@ $$
 
 Backtested on a 50-stock momentum portfolio, rebalanced weekly:
 
-| Metric | Value |
-|--------|-------|
-| Avg. Annual Return | 10.7% |
-| Max Drawdown | -26.8% |
-| Sharpe Ratio | 1.21 |
-| Portfolio Volatility (realized) | 10.3% |
-| Turnover | 320% annually |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 > **Strength**: Stabilizes risk across market regimes. Particularly effective during 2008 and 2020 crises.
 
@@ -157,13 +134,7 @@ Backtest details:
 - Initial capital: $1,000,000  
 - Risk-free rate: 2%  
 
-| Method | CAGR | Max DD | Sharpe | Calmar | 10Y Ruin Prob |
-|--------|------|--------|--------|--------|---------------|
-| Fixed Fractional (1%) | 9.8% | -37.4% | 0.82 | 0.26 | 4.1% |
-| ATR-Based (2×ATR stop) | 11.3% | -29.1% | 1.11 | 0.39 | 1.7% |
-| 0.25× Kelly | 11.9% | -33.2% | 1.14 | 0.36 | 1.2% |
-| Vol Targeting (10%) | 10.7% | -26.8% | 1.21 | 0.40 | 0.8% |
-| Equal Weight (no sizing) | 8.1% | -41.6% | 0.67 | 0.19 | 6.3% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Key observations**:  
 - Volatility targeting achieves the best Sharpe and lowest ruin probability.  
@@ -277,11 +248,7 @@ Safe sizing must adapt to macro conditions. Below are regime-dependent adjustmen
 
 Backtest results during VIX > 30 periods (2008, 2011, 2020):
 
-| Sizing Method | Avg Return (Crisis) | Max DD (Crisis) |
-|---------------|---------------------|-----------------|
-| Fixed 1% | -18.2% | -34.1% |
-| VIX-Adjusted (50% size) | -9.7% | -19.3% |
-| Stop Widening + Size Cut | -6.4% | -14.2% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 > **Conclusion**: Dynamic sizing based on market regime improves crisis resilience.
 

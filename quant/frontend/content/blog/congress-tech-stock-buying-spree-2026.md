@@ -12,7 +12,6 @@ last_updated: '2026-03-25'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Tech Stock Buying Spree 2026: Artificial Intelligence Frenzy and Market Timing
 
 Congressional members collectively executed a coordinated technology stock purchasing frenzy in early 2026, with particular emphasis on artificial intelligence-related companies. Analysis of STOCK Act filings reveals $2.8 billion in congressional tech stock purchases in the first quarter alone, with pronounced timing patterns suggesting information-driven decisions.
@@ -118,7 +117,6 @@ Congressional members executed 4,200 options trades focused on technology stocks
 - **Call Options**: 3,200 positions (76%)
 - **Put Options**: 1,000 positions (24%)
 - **Average Profit per Position**: $47,300
-- **Win Rate**: 78.4%
 
 Call option concentration suggests confidence in near-term appreciation, while put option timing (purchased ahead of market corrections) suggests foreknowledge of downside moves.
 

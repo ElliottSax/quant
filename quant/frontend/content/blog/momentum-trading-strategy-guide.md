@@ -95,14 +95,7 @@ These mechanisms reduced the maximum drawdown from -38.7% (unprotected) to -16.2
 
 Breaking down the strategy's returns by source reveals:
 
-| Source | Contribution to Annual Return |
-|--------|------------------------------|
-| Sector momentum | 3.2% |
-| Within-sector stock selection | 4.8% |
-| Time-series signal | 2.1% |
-| Market timing (crash protection) | 1.4% |
-| Transaction costs | -1.8% |
-| **Net Alpha** | **9.7%** |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The largest contribution comes from within-sector stock selection, confirming that momentum is primarily a stock-level rather than sector-level phenomenon.
 
@@ -112,26 +105,13 @@ The largest contribution comes from within-sector stock selection, confirming th
 
 The 12-1 month lookback is the academic standard, but practitioners often use shorter windows:
 
-| Lookback | CAGR | Sharpe | Turnover |
-|----------|------|--------|----------|
-| 3-1 month | 8.1% | 0.72 | 520% |
-| 6-1 month | 10.4% | 1.05 | 380% |
-| 12-1 month | 9.3% | 1.31 | 340% |
-| 12-1 month + 6-1 composite | 11.2% | 1.42 | 360% |
-
-The composite of 12-1 and 6-1 month lookbacks produced the highest Sharpe ratio (1.42) by combining intermediate and long-term momentum signals.
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### Transaction Cost Sensitivity
 
 Momentum strategies have high turnover, making transaction costs a critical consideration:
 
-| Cost Assumption | Net CAGR (L/S) | Net Sharpe |
-|----------------|-----------------|------------|
-| 0 bps | 11.8% | 1.58 |
-| 5 bps | 10.5% | 1.44 |
-| 10 bps | 9.3% | 1.31 |
-| 20 bps | 6.9% | 1.04 |
-| 50 bps | 2.1% | 0.38 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 At 50 bps round-trip, the strategy becomes marginal. Institutional investors with sub-5 bps execution costs capture significantly more alpha than retail traders.
 
@@ -147,13 +127,7 @@ Monthly rebalancing is standard, but we tested alternatives:
 
 Momentum works best in combination with other factors that have low correlation:
 
-| Factor Combination | Sharpe Ratio | Correlation with Momentum |
-|-------------------|--------------|---------------------------|
-| Momentum alone | 1.31 | 1.00 |
-| Momentum + Value | 1.52 | -0.38 |
-| Momentum + Quality | 1.48 | 0.12 |
-| Momentum + Low Vol | 1.44 | -0.21 |
-| All four factors | 1.71 | N/A |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The negative correlation between momentum and value (-0.38) makes them natural complements. When momentum underperforms (crash recovery periods), value tends to outperform, and vice versa.
 

@@ -106,7 +106,6 @@ class IncrementalBollinger:
 
         return True
 
-
 class MultiBollinger:
     """
     Manage Bollinger Bands for multiple symbols efficiently.

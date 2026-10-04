@@ -48,12 +48,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 ### Parameter Sensitivity
 
-| EMA Fast/Slow/Signal | CAGR | Sharpe | Trades/Year |
-|---------------------|------|--------|-------------|
-| 8/17/9 | 8.4% | 0.72 | 28.4 |
-| 12/26/9 (standard) | 7.2% | 0.58 | 21.3 |
-| 5/35/5 | 9.1% | 0.84 | 14.8 |
-| 19/39/9 | 6.8% | 0.76 | 11.2 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The 5/35/5 parameters produced the highest Sharpe ratio by widening the gap between fast and slow EMAs (capturing longer trends) and using a shorter signal period (faster entries). However, parameter sensitivity analysis shows that results are robust across a wide range of settings, a positive sign that the strategy is not overfit.
 
@@ -97,7 +92,6 @@ MACD divergence signals on the S&P 500 (2010-2025):
 - **Bearish divergence win rate**: 54.8%
 - **Average winner**: 4.2%
 - **Average loser**: -2.1%
-- **Profit factor**: 1.72
 
 Bullish divergence is significantly more reliable than bearish divergence, consistent with the long-term upward bias of equity markets.
 
@@ -134,14 +128,7 @@ This combination ensures entries occur before the trend is fully extended.
 
 We tested the optimized MACD system (5/35/5 parameters + 200 SMA filter) across asset classes:
 
-| Asset Class | CAGR | Sharpe | Max DD |
-|-------------|------|--------|--------|
-| US Large Cap (SPY) | 9.8% | 0.91 | -14.8% |
-| US Small Cap (IWM) | 8.4% | 0.72 | -18.2% |
-| International (EFA) | 6.2% | 0.58 | -16.1% |
-| Bonds (TLT) | 4.8% | 0.82 | -8.4% |
-| Gold (GLD) | 7.1% | 0.74 | -12.8% |
-| Crude Oil (USO) | 3.2% | 0.34 | -28.4% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 MACD works best on assets with clear trending behavior (equities, gold) and poorly on mean-reverting or choppy assets (crude oil).
 
@@ -180,11 +167,11 @@ MACD is primarily a lagging indicator because it is based on moving averages, wh
 
 ### How do you use MACD for day trading?
 
-For day trading, adjust MACD parameters to 3/10/16 or 5/13/8 on 5-minute or 15-minute charts. Focus on histogram reversals rather than line crossovers for faster signals. Use VWAP as a trend filter instead of the 200-day SMA. Our intraday backtest on ES futures showed the 5/13/8 MACD with VWAP filter produced a Sharpe of 0.78 on 15-minute bars, comparable to daily performance.
+For day trading, adjust MACD parameters to 3/10/16 or 5/13/8 on 5-minute or 15-minute charts. Focus on histogram reversals rather than line crossovers for faster signals. Use VWAP as a trend filter instead of the 200-day SMA.
 
 ### Why does MACD sometimes give false signals?
 
-MACD false signals occur primarily during range-bound markets where the fast and slow EMAs oscillate around each other, generating frequent crossovers without meaningful price movement. The [ADX indicator](/blog/adx-trend-strength-indicator) can identify these conditions: when ADX < 20, the market is range-bound and MACD signals should be ignored. In our backtest, filtering for ADX > 20 reduced false signals by 44%.
+MACD false signals occur primarily during range-bound markets where the fast and slow EMAs oscillate around each other, generating frequent crossovers without meaningful price movement. The [ADX indicator](/blog/adx-trend-strength-indicator) can identify these conditions: when ADX < 20, the market is range-bound and MACD signals should be ignored.
 
 ---
 

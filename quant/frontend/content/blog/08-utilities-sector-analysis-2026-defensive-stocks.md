@@ -67,7 +67,6 @@ Several major trends are shaping Utilities sector dynamics in 2026:
 | 9 | **CMS** | Value Play | 16.4 | 3.1% | 7.3/10 |
 | 10 | **AWK** | Growth Story | 23.2 | 0.6% | 7.0/10 |
 
-
 ### Stock #1: XLU - Market Leader
 
 **Overview**: XLU represents the flagship utilities sector holding, maintaining leadership position with exceptional fundamentals.
@@ -296,13 +295,7 @@ Top performers show:
 
 Utilities sector companies show strong fundamental characteristics:
 
-| Metric | Current | 1-Year Growth | 5-Year CAGR |
-|--------|---------|---------------|-------------|
-| Earnings Per Share | $8.42 | +12.3% | +9.8% |
-| Revenue | $285B | +8.7% | +7.2% |
-| Operating Margin | 16.2% | +110 bps | +45 bps |
-| Net Margin | 10.8% | +85 bps | +35 bps |
-| Free Cash Flow | $42B | +15.2% | +11.3% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Interpretation**:
 - EPS growth accelerating, suggesting improving operational leverage

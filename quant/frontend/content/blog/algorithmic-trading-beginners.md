@@ -132,9 +132,6 @@ This strategy is transparent, has a long academic track record, and teaches fund
 ### Expected Results for First Strategy
 
 A properly implemented 50/200 MA crossover on SPY should produce:
-- CAGR: 7-9% (slightly below buy-and-hold)
-- Sharpe: 0.6-0.8 (slightly above buy-and-hold)
-- Max Drawdown: -15 to -20% (significantly below buy-and-hold's -50%)
 
 If your results are dramatically better, you likely have a bug (most commonly look-ahead bias).
 

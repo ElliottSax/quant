@@ -89,7 +89,6 @@ class ConstantProductAMM:
 
         return (price_after - price_before) / price_before
 
-
 def impermanent_loss(
     price_ratio: float,
 ) -> float:
@@ -106,7 +105,6 @@ def impermanent_loss(
     lp_value_ratio = 2 * np.sqrt(price_ratio) / (1 + price_ratio)
     il = lp_value_ratio - 1
     return il
-
 
 def il_analysis(
     price_changes: np.ndarray = None,
@@ -244,7 +242,6 @@ class DEXArbitrage:
         new_reserve_a = pool.reserve_a + amount_a_after_fee
         new_reserve_b = pool.k / new_reserve_a
         return pool.reserve_b - new_reserve_b
-
 
 # Example
 pool_uniswap = ConstantProductAMM(reserve_a=1000, reserve_b=2_000_000, fee=0.003)

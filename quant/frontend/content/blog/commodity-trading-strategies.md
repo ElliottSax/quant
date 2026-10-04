@@ -67,14 +67,7 @@ Where target_risk is the portfolio's target volatility, N is the number of commo
 
 Historical performance of a diversified commodity trend-following strategy (1990-2025):
 
-| Metric | Commodity Trend | S&P 500 | 60/40 Portfolio |
-|--------|----------------|---------|-----------------|
-| Annual Return | 8.5% | 10.2% | 8.8% |
-| Annual Volatility | 12.0% | 15.3% | 9.5% |
-| Sharpe Ratio | 0.54 | 0.51 | 0.68 |
-| Max Drawdown | -22% | -51% | -32% |
-| Correlation with S&P 500 | -0.05 | 1.00 | 0.98 |
-| Crisis Alpha (2008) | +18% | -37% | -22% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The near-zero correlation with equities and positive returns during the 2008 crisis make commodity trend following a valuable portfolio diversifier.
 
@@ -189,9 +182,7 @@ The three strategies (trend, carry, seasonal) have low pairwise correlations:
 | Seasonal | 0.10 | 0.20 | 1.00 |
 
 An equally weighted combination of the three strategies achieves:
-- Annual return: 7-10%
 - [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis): 0.8-1.2 (substantially higher than any individual strategy)
-- Maximum drawdown: -12 to -18%
 - Near-zero correlation with equities and bonds
 
 ## Key Takeaways

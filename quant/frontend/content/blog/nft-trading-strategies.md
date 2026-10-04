@@ -112,7 +112,6 @@ Automated trading bots monitor multiple marketplaces 24/7, executing predefined 
 
 ## Key Takeaways
 
-
 Floor price arbitrage across OpenSea, Blur, and LooksRare captures 1-5% spreads within 24 hours, requiring automated monitoring and sub-minute execution speed to compete with professional traders.
 
 Rarity scoring using trait frequency and statistical models identifies undervalued NFTs trading at 1.5-2× floor despite top 10% rarity suggesting 3-5× floor fair value, creating 50-100% upside opportunities.

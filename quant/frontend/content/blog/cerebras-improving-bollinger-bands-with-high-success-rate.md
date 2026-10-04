@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Improving Bollinger Bands: A Practical Guide
 
 ## Introduction
@@ -134,11 +133,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 ### Trade Distribution by Decade:
 
-| Period     | Total Trades | Win Rate | Avg. Profit/Trade |
-|------------|--------------|----------|-------------------|
-| 2000–2009  | 105          | 62.9%    | +0.73%            |
-| 2010–2019  | 147          | 70.1%    | +0.88%            |
-| 2020–2023  | 75           | 68.0%    | +0.76%            |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Performance improved post-2010, likely due to more consistent mean-reverting behavior in the low-interest-rate environment.
 
@@ -158,30 +153,15 @@ To test robustness, we apply the optimized strategy to three additional assets:
 
 ### 1. QQQ (Nasdaq-100 ETF, 2000–2023)
 
-| Metric          | Value   |
-|-----------------|---------|
-| Win Rate        | 66.4%   |
-| Sharpe Ratio    | 0.78    |
-| Max Drawdown    | -28.1%  |
-| Avg Profit/Trade| +0.74%  |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### 2. IWM (Russell 2000 ETF, 2000–2023)
 
-| Metric          | Value   |
-|-----------------|---------|
-| Win Rate        | 64.8%   |
-| Sharpe Ratio    | 0.69    |
-| Max Drawdown    | -35.2%  |
-| Avg Profit/Trade| +0.69%  |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### 3. GLD (Gold ETF, 2005–2023)
 
-| Metric          | Value   |
-|-----------------|---------|
-| Win Rate        | 69.1%   |
-| Sharpe Ratio    | 0.85    |
-| Max Drawdown    | -18.3%  |
-| Avg Profit/Trade| +0.87%  |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Gold performed best due to its strong mean-reverting characteristics. Small caps (IWM) showed slightly lower win rate due to higher volatility and structural trends.
 
@@ -320,7 +300,7 @@ A: Backtests show 2.0 yields the highest win rate. Values below 1.8 increase fal
 A: In bull markets (SPY annual return >15%), win rate was 71.2%. In bear markets (<-10%), it dropped to 58.4%, but drawdowns were limited by the EMA filter.
 
 **Q: Can I use this on cryptocurrencies?**  
-A: Limited testing on BTC/USD (2015–2023) showed a win rate of 63.1%, but higher volatility increased drawdowns to -41.2%. Not recommended without position sizing adjustments.
+Not recommended without position sizing adjustments.
 
 **Q: Is short-selling included?**  
 A: This article focuses on long-only execution. Short signals (upper band reversions) had a win rate of 59.7%, below the 65% threshold.

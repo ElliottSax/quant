@@ -21,13 +21,11 @@ color: secondary
 
 Breakout trading buys/sells when price breaks above resistance or below support with confirmation. Top confirmations: (1) Volume doubles or triples on breakout, (2) RSI crosses 50 from below/above, (3) MACD crosses signal line bullish/bearish. False breakouts kill accounts, so confirm with 2-3 indicators always. Target: 1-3x risk/reward.
 
-
 ## Introduction
 
 Breakouts are some of the most powerful trading setups. A breakout of a 3-month resistance level often leads to a 10-20% move. This guide teaches how to trade them without getting caught in false breakouts.
 
 ## Trading Strategies
-
 
 ### Strategy 1: Volume Confirmation Breakout
 
@@ -42,7 +40,6 @@ Resistance level, Volume spike, Price momentum
 **Real Example:**
 SPY avg 800k volume, breaks $450 on 2.4M volume → Real breakout → Buy → Stop below $450
 
-
 ### Strategy 2: MACD Breakout Confirmation
 
 **Description:** Entering breakouts when MACD also crosses signal line (double confirmation).
@@ -56,7 +53,6 @@ Resistance/Support, MACD crossover, RSI > 50
 **Real Example:**
 Stock breaks $100 support and MACD crosses bullish → Buy → Hold until MACD flips negative
 
-
 ### Strategy 3: Retest Breakout Entry
 
 **Description:** Waiting for price to retest the breakout level before entering (more conservative).
@@ -69,7 +65,6 @@ Resistance level, Volume on retest, RSI bounce
 
 **Real Example:**
 QQQ breaks $400 → Pulls back to $399 test → Bounces on RSI > 50 → Enter long
-
 
 ## Risk Management & Position Sizing
 
@@ -93,7 +88,6 @@ Traders often fall into these pitfalls when using this strategy:
 5. **Chasing breakouts 5+ candles after they happened**
 6. **Not considering macroeconomic events nearby**
 
-
 ## Real Trading Examples
 
 | Market | Entry | Stop Loss | Target | Risk/Reward | Expected Outcome |
@@ -102,7 +96,6 @@ Traders often fall into these pitfalls when using this strategy:
 | Forex (EUR/USD) | MA Crossover | 15 pips | 45+ pips | 1:3+ | 50-100 pips weekly |
 | Crypto (BTC) | Technical Level | 2% below | 5-10% above | 1:2.5+ | 5-15% monthly |
 | Emerging Market ETF | Range Breakout | Below support | 10-20% move | 1:2 | Mid-term 20-50% moves |
-
 
 ## Best Practices for This Strategy
 
@@ -115,31 +108,25 @@ Traders often fall into these pitfalls when using this strategy:
 
 ## Frequently Asked Questions
 
-
 ### What's the difference between a real breakout and a false breakout?
 
 Real: volume 2-3x average, RSI > 50, closes above resistance, doesn't immediately reverse. False: low volume, closes back below resistance within candles, no indicator confirmation.
-
 
 ### How far do breakouts typically move?
 
 Conservative: 5-10% of the consolidation range height. Average: 10-20%. Aggressive: 20-50%. Use the height of the consolidation as a target guide.
 
-
 ### Should you scale into breakouts or all-in?
 
 Scale in: 50% at breakout, 50% at retest for lower risk. All-in: only if break is very powerful (5%+ immediate). Scaling reduces false breakout losses.
-
 
 ### How often should you trade breakouts?
 
 Wait for proper setups: 3+ week consolidation, clear resistance. Quality over quantity. 3-5 quality breakouts/month > 20 mediocre breakouts/month.
 
-
 ### What timeframe is best for breakout trading?
 
 Daily chart: identify breakout levels. 4-hour chart: confirm setup and entry. 1-hour chart: timing. This multi-timeframe approach catches most real breakouts.
-
 
 ## Ready to Start Trading?
 

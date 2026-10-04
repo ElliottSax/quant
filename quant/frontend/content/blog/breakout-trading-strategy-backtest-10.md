@@ -18,7 +18,6 @@ description: "Breakout trading represents one of the most intuitive and profitab
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Breakout Trading Strategy: Complete Backtest and Performance Analysis
 
 Breakout trading represents one of the most intuitive and profitable approaches for algorithmic traders. By identifying price levels where consolidation breaks and volume surges, traders capture strong directional moves with defined risk. This comprehensive analysis covers the mechanics of identifying valid breakouts, precise entry timing, risk management protocols, and empirical backtest results across 5+ years of market data.

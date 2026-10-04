@@ -397,7 +397,7 @@ def overfitting_checklist(
 
 ### What Sharpe ratio should I expect from a genuine trading strategy?
 
-After accounting for transaction costs and multiple testing, genuine daily [trading strategies](/blog/backtesting-trading-strategies) typically produce Sharpe ratios between 0.5 and 2.0. A Sharpe above 3.0 on daily data is almost certainly overfit unless it operates in extremely niche markets. Institutional [quant funds](/blog/quant-fund-evaluation-guide) target net Sharpe ratios of 1.0-2.0. If your backtest shows a Sharpe of 5.0, you have a bug, data error, or overfitting problem.
+A Sharpe above 3.0 on daily data is almost certainly overfit unless it operates in extremely niche markets. Institutional [quant funds](/blog/quant-fund-evaluation-guide) target net Sharpe ratios of 1.0-2.0. If your backtest shows a Sharpe of 5.0, you have a bug, data error, or overfitting problem.
 
 ### How many parameters are too many for a trading strategy?
 

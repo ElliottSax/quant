@@ -319,7 +319,7 @@ Re-estimate weekly or whenever the spread's z-score exceeds 2.5 on a fresh trade
 
 **What is a reasonable Sharpe ratio to expect?**
 
-Net of costs, a well-implemented equity pairs strategy targeting liquid large-cap names typically achieves Sharpe ratios of 0.8 to 1.4 in live trading. Backtested Sharpes above 2.0 for strategies with more than 3 years of history should be treated with skepticism unless the strategy transacts infrequently and uses no optimization.
+Backtested Sharpes above 2.0 for strategies with more than 3 years of history should be treated with skepticism unless the strategy transacts infrequently and uses no optimization.
 
 **Can mean reversion strategies be applied to cryptocurrencies?**
 

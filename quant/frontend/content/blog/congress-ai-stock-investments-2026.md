@@ -12,7 +12,6 @@ last_updated: '2026-03-22'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress AI Stock Investments 2026: Artificial Intelligence Boom and Forward-Looking Positioning
 
 Congressional members executing $1.8 billion in AI-related stock purchases during Q1 2026 represent the single largest coordinated investment in any technology category. Analysis reveals systematic positioning in companies leading artificial intelligence development and deployment.
@@ -25,7 +24,6 @@ Congressional members executing $1.8 billion in AI-related stock purchases durin
 - Members participating: 312 (59% of Congress)
 - Average congressional investment: $5.8 million per household
 - Average return achieved: 24.3%
-- Win rate: 81.2%
 
 These metrics dramatically exceed congressional investment in other sectors, indicating exceptional focus on artificial intelligence.
 
@@ -225,7 +223,6 @@ Congressional members executed 456 AI options trades in Q1 2026:
 - Call options: 398 positions (87.3%)
 - Put options: 58 positions (12.7%)
 - Average profit per position: $52,300
-- Win rate: 83.4%
 
 Heavy call option concentration suggests confidence in continued AI appreciation.
 

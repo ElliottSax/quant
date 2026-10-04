@@ -89,23 +89,13 @@ Measured results are not published for this strategy. The code above is a starti
 
 ### Standard Deviation Multiplier
 
-| Multiplier | Win Rate | Sharpe | Trades/Year |
-|------------|----------|--------|-------------|
-| 1.5 SD | 48.1% | 0.62 | 142 |
-| 2.0 SD | 54.2% | 0.68 | 87 |
-| 2.5 SD | 59.8% | 0.74 | 41 |
-| 3.0 SD | 64.1% | 0.61 | 18 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Wider bands (2.5 SD) produce higher win rates but fewer trades. The 2.0-2.5 SD range represents the optimal balance between signal frequency and quality.
 
 ### Lookback Period
 
-| Period | Sharpe | Max DD | Responsiveness |
-|--------|--------|--------|----------------|
-| 10 days | 0.58 | -24.1% | High (noisy) |
-| 20 days | 0.68 | -21.3% | Balanced |
-| 30 days | 0.65 | -19.8% | Moderate |
-| 50 days | 0.54 | -18.2% | Low (smooth) |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The standard 20-day lookback remains optimal for daily strategies. Shorter periods are better for intraday, while longer periods suit weekly timeframes.
 
@@ -167,7 +157,7 @@ Use %B to scale position sizes:
 
 ### What is the best Bollinger Band setting for day trading?
 
-For day trading, use shorter lookback periods (10-14) with 1.5-2.0 standard deviations on 5-minute or 15-minute charts. The tighter settings produce more signals suited to intraday timeframes. Combine with VWAP for additional confirmation. Our intraday backtest on ES futures showed a Sharpe of 0.82 with 10-period, 2.0 SD Bollinger Bands on 15-minute bars.
+For day trading, use shorter lookback periods (10-14) with 1.5-2.0 standard deviations on 5-minute or 15-minute charts. The tighter settings produce more signals suited to intraday timeframes. Combine with VWAP for additional confirmation.
 
 ### How reliable is the Bollinger Squeeze?
 

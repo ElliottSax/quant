@@ -16,7 +16,6 @@ Market regime detection identifies structural changes in volatility, correlation
 
 Regime-aware strategies adapt dynamically to market conditions, outperforming static rule-based approaches during market transitions. By detecting regime changes, traders can optimize leverage, position sizing, and indicator parameters for current market conditions.
 
-
 ## Technical Indicators and Market Context
 
 Commodities exhibit distinct characteristics affecting strategy performance. The combination of technical indicators selected for this analysis captures both trending and mean-reversion dynamics relevant to current market conditions.
@@ -28,7 +27,6 @@ Key market characteristics:
 - **Correlation Structure**: Dynamic correlations with macroeconomic factors
 - **Trend Persistence**: Varying mean-reversion strength across regimes
 
-
 ## Methodology
 
 The regime detection framework uses market microstructure variables to classify Commodities into distinct behavioral regimes:
@@ -39,7 +37,6 @@ The regime detection framework uses market microstructure variables to classify 
 4. **Performance Evaluation**: Sharpe ratio, Sortino ratio, and maximum drawdown analysis
 
 The implementation incorporates walk-forward optimization and cross-validation to prevent overfitting while maintaining realistic transaction costs and slippage assumptions.
-
 
 ## Implementation Code
 

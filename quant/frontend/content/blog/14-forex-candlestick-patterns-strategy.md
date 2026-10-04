@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Candlestick Patterns Strategy 2026: High-Probability Chart Formations
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The candlestic
 
 **Technical requirements for entry:**
 
-
 1. **Hammer at support: Small body, long lower wick at support level** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Morning star: 3-candle pattern (down, small body, up) at support** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The candlest
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Profit target: Previous swing high/low** - This helps lock in profits while limiting losses.
 

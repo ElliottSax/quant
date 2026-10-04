@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating Momentum Trading for Beginners
 
 Momentum trading is a well-documented strategy in quantitative finance that capitalizes on the continuation of existing price trends. It is based on the empirical observation that assets that have performed well in the recent past tend to continue performing well over the near term, and vice versa for underperformers. While traditionally implemented manually, advances in programming, data availability, and brokerage APIs have made it feasible—and increasingly effective—for beginners to automate momentum trading strategies.
@@ -151,8 +150,6 @@ cumulative_net = (1 + strategy_returns_net).cumprod()
 ```
 
 After costs:
-- Annualized return: 8.5% → 8.3%
-- Sharpe ratio: 0.51 → 0.49
 
 Transaction costs modestly reduce performance but do not eliminate the risk-adjusted edge.
 
@@ -238,13 +235,7 @@ Extend the strategy to a universe of five ETFs:
 
 Backtest results (2003–2023):
 
-| Metric               | Value |
-|----------------------|-------|
-| Annualized Return      | 9.1%  |
-| Annualized Volatility  | 11.8% |
-| Sharpe Ratio           | 0.60  |
-| Max Drawdown           | -28.5%|
-| Win Rate (monthly)     | 67%   |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Diversification improves risk-adjusted returns by capturing momentum across asset classes.
 

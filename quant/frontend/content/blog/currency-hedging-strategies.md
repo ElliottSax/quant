@@ -53,7 +53,6 @@ Where F is the forward rate, S is the spot rate, r_domestic is the domestic inte
 
 **Hedging cost/benefit**: The forward points (F - S) represent the interest rate differential. When US rates exceed foreign rates, hedging foreign currencies produces a positive carry (you earn the interest rate differential). When US rates are lower, hedging has a negative carry.
 
-
 **Rolling forwards**: Hedges are typically implemented as 1-month or 3-month forwards, rolled at expiration. The rolling process requires settling the expiring contract and entering a new one, creating settlement risk and operational overhead.
 
 ### Currency Options

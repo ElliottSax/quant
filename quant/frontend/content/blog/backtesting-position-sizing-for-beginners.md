@@ -27,7 +27,6 @@ Consider a coin flip game where heads wins $100, tails loses $100. With 50/50 od
 
 The math: **Probability of ruin = e^(-2bp/s²)** where b = bankroll, p = win probability, s = standard deviation
 
-
 ## The Simplest Approach: Fixed Percentage Risk
 
 For beginners, fixed percentage risk is the safest starting point. The concept is simple: risk the same dollar amount (or percentage) on every trade.
@@ -160,11 +159,7 @@ for risk_pct in [0.02, 0.05, 0.10]:
 ```
 
 **Results (using same 252-day price series):**
-| Risk | Final Account | Return | Max Drawdown | Win Rate |
-|------|---------------|--------|--------------|----------|
-| 2% | $127,400 | +27.4% | -8.2% | 52% |
-| 5% | $142,800 | +42.8% | -18.5% | 52% |
-| 10% | $89,200 | -10.8% | -45.3% | 52% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 **Key insight:** Same strategy, 2% sizing generates positive returns while 10% sizing ruins the account. Position sizing made the difference.
 

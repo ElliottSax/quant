@@ -12,7 +12,6 @@ last_updated: '2026-03-23'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Energy Sector Trades 2026: Oil, Gas, and Green Energy Investment Patterns
 
 Congressional members executed $892 million in energy sector trades during Q1 2026, with surprising concentration in traditional fossil fuel companies despite bipartisan emphasis on renewable energy. Trading timing demonstrates correlation with energy legislation and Department of Energy announcements.
@@ -22,8 +21,6 @@ Congressional members executed $892 million in energy sector trades during Q1 20
 **2026 Q1 Energy Sector Activity**:
 - Total trades: 1,123
 - Total investment value: $892 million
-- Average return per trade: 9.8%
-- Win rate: 68.4%
 - Members participating: 156 (29% of Congress)
 
 **Sector Breakdown**:
@@ -86,8 +83,6 @@ These holdings represent 62% of congressional renewable energy allocation.
 
 **Renewable Energy Legislation Trading (2026 Q1)**:
 - Total renewable energy trading: $339 million
-- Win rate: 64.2%
-- Average return: 7.3%
 
 Notably lower win rate and return than traditional energy, suggesting less information advantage regarding renewable policies.
 
@@ -113,7 +108,6 @@ Committee members show strong preference for traditional energy despite public r
 - 2026 Q1 energy trades: 67 transactions
 - Primary holdings: CVX ($1.2 million), XOM ($890,000), Pioneer ($567,000)
 - Realized gains: $234,000
-- Win rate: 71.6%
 - Average holding period: 14 days
 
 Manchin's holdings align with coal/natural gas state interests and his votes supporting traditional energy.
@@ -122,13 +116,11 @@ Manchin's holdings align with coal/natural gas state interests and his votes sup
 - 2026 Q1 energy trades: 43 transactions
 - Holdings: CVX ($789,000), NEE ($456,000), DUK ($234,000)
 - Realized gains: $156,000
-- Win rate: 72.1%
 
 **Senator Jon Barrasso (R-Wyoming)**:
 - 2026 Q1 energy trades: 54 transactions
 - Holdings: CVX ($1.4 million), COP ($678,000), SLB ($432,000)
 - Realized gains: $287,000
-- Win rate: 77.4%
 
 ## Oil Price Movement Trading
 
@@ -196,7 +188,6 @@ Congressional members executed 134 energy sector options trades in Q1 2026:
 - Call options: 89 positions (66.4%)
 - Put options: 45 positions (33.6%)
 - Average profit per position: $34,200
-- Win rate: 67.1%
 
 The significant put option activity (33.6%) in energy suggests some hedging or profiting from price downturns, distinct from other sectors.
 

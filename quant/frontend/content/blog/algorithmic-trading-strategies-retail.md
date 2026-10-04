@@ -21,13 +21,11 @@ color: '''"secondary"'''
 
 Algorithmic trading automates trades based on rules (buy when 50 EMA > 200 EMA, sell when RSI > 80). Best platforms: TradingView (Pine Script), Python (ccxt), or no-code (3Commas). Key advantage: removes emotion, trades 24/7 even while you sleep.
 
-
 ## Introduction
 
 Retail traders now have access to powerful algorithmic trading tools that were previously only for institutional traders. This guide covers building simple algos that actually work.
 
 ## Trading Strategies
-
 
 ### Strategy 1: Simple MA Crossover Bot
 
@@ -42,7 +40,6 @@ EMA 50/200, ATR for stop loss sizing
 **Real Example:**
 Bot monitors BTC/USD hourly. When 50 > 200 EMA: buys $1000 worth. When 50 < 200: sells all.
 
-
 ### Strategy 2: Bollinger Bands Mean Reversion Bot
 
 **Description:** Algorithm that buys oversold (below lower band) and sells overbought (above upper band).
@@ -56,7 +53,6 @@ Bollinger Bands, RSI, Volume
 **Real Example:**
 Bot trades ETH. When price < lower BB + RSI < 30: buys $500. When price > upper BB + RSI > 70: sells. Win rate: 62%.
 
-
 ### Strategy 3: Grid Trading Bot
 
 **Description:** Algorithm that places orders in a grid above/below current price, profiting from volatility.
@@ -69,7 +65,6 @@ Support/Resistance, Volatility (ATR)
 
 **Real Example:**
 BTC at $45,000. Bot places: buy at $44,950, $44,900, $44,850 and sell at $45,050, $45,100, $45,150. Profits from swings.
-
 
 ## Risk Management & Position Sizing
 
@@ -93,7 +88,6 @@ Traders often fall into these pitfalls when using this strategy:
 5. **Ignoring edge cases (gaps, limit up/down, circuit breakers)**
 6. **Trusting bots completely (still monitor daily)**
 
-
 ## Real Trading Examples
 
 | Market | Entry | Stop Loss | Target | Risk/Reward | Expected Outcome |
@@ -102,7 +96,6 @@ Traders often fall into these pitfalls when using this strategy:
 | Forex (EUR/USD) | MA Crossover | 15 pips | 45+ pips | 1:3+ | 50-100 pips weekly |
 | Crypto (BTC) | Technical Level | 2% below | 5-10% above | 1:2.5+ | 5-15% monthly |
 | Emerging Market ETF | Range Breakout | Below support | 10-20% move | 1:2 | Mid-term 20-50% moves |
-
 
 ## Best Practices for This Strategy
 
@@ -115,31 +108,25 @@ Traders often fall into these pitfalls when using this strategy:
 
 ## Frequently Asked Questions
 
-
 ### What programming language is best for trading bots?
 
 Python (easiest, tons of libraries: ccxt, pandas, numpy). JavaScript/Node.js (fast, webhooks). Pine Script (TradingView built-in). Beginners: TradingView Pine Script (no coding needed).
-
 
 ### How profitable can retail trading bots be?
 
 Simple bots: 1-3% monthly (conservative). Advanced bots: 3-10% monthly (risky). Most bots: -5% to 0% (over-optimized). Success requires proper testing and market regime awareness.
 
-
 ### Do trading bots work in all markets?
 
 No. Crypto: excellent (volatile 24/7). Stocks: good (clear trends). Forex: okay (spreads are costs). Bots fail in choppy/sideways markets (high false signals).
-
 
 ### How much capital do you need to run a bot?
 
 Minimum: $100-500 (crypto). $2,000+ (stocks, PDT rule). Most profitable: $5,000+. Larger capital = lower %fee impact, better position sizing.
 
-
 ### Should you run multiple bots on the same account?
 
 Carefully. One bot per market (don't run BTC and ETH bots on same $1000). Never run overlapping strategies (double leverage). Separate accounts: safest approach.
-
 
 ## Ready to Start Trading?
 

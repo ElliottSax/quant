@@ -12,7 +12,6 @@ description: "The modern financial landscape demands sophisticated approaches to
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Automating Statistical Arbitrage On Forex
 
 ## Introduction
@@ -347,13 +346,7 @@ def trailing_stop(entry_price, current_price, trailing_pct=0.05):
 
 Backtesting results across various strategy types (2020-2024 historical data):
 
-| Strategy | Annual Return | Sharpe Ratio | Max Drawdown | Win Rate | Profit Factor |
-|---|---|---|---|---|---|
-| Trend Following (50/200 MA) | 11.2% | 0.92 | -18.5% | 52% | 1.68 |
-| Mean Reversion (Bollinger) | 8.7% | 0.84 | -15.2% | 55% | 1.55 |
-| Statistical Arbitrage | 14.3% | 1.28 | -12.1% | 58% | 2.15 |
-| ML Classifier (RandomForest) | 16.5% | 1.41 | -14.8% | 61% | 2.42 |
-| Blended Multi-Strategy | 13.2% | 1.15 | -11.3% | 56% | 1.92 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ## Frequently Asked Questions
 

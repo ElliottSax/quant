@@ -16,7 +16,6 @@ Correlation dynamics significantly impact multi-asset trading strategies. This a
 
 Effective correlation management reduces portfolio volatility while maintaining alpha generation. Strategies that dynamically adjust hedge ratios based on correlation regimes demonstrate superior risk-adjusted returns during market stress events.
 
-
 ## Technical Indicators and Market Context
 
 Multiple Markets exhibit distinct characteristics affecting strategy performance. The combination of technical indicators selected for this analysis captures both trending and mean-reversion dynamics relevant to current market conditions.
@@ -28,7 +27,6 @@ Key market characteristics:
 - **Correlation Structure**: Dynamic correlations with macroeconomic factors
 - **Trend Persistence**: Varying mean-reversion strength across regimes
 
-
 ## Methodology
 
 The correlation management framework monitors time-varying correlations using rolling windows and exponential weighting. Key components:
@@ -39,7 +37,6 @@ The correlation management framework monitors time-varying correlations using ro
 4. **Risk Metrics**: Portfolio volatility decomposition and diversification ratios
 
 The strategy targets Multiple Markets, implementing systematic correlation harvesting while managing execution costs and market impact.
-
 
 ## Implementation Code
 

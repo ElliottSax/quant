@@ -18,7 +18,6 @@ description: "Support and resistance represent the foundational pillars of techn
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Support and Resistance: Identifying Breakout Levels with Precision
 
 Support and resistance represent the foundational pillars of technical price action analysis. For algorithmic traders, precise identification of these levels dramatically improves breakout entry quality, reduces false signals, and optimizes risk-reward ratios. This comprehensive guide covers the mechanics of identifying valid support/resistance levels, calculating optimal entry and exit points, and empirical performance across multiple markets and timeframes.
@@ -219,7 +218,6 @@ False breakouts ("whipsaws") account for 20-35% of all breakout attempts:
 **Position Size**: $2,000 / $10.20 = 196 shares
 
 ## Advanced: Machine Learning Level Identification
-
 
 ```python
 from sklearn.ensemble import RandomForestRegressor

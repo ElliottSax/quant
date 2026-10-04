@@ -221,7 +221,6 @@ Ethereum trading succeeds by combining:
 3. **Ecosystem understanding** (layer 2, smart contracts)
 4. **Volatility management** (tighter stops, smaller positions)
 
-
 ## Next Steps
 
 - Set up TradingView with ETH/USDT

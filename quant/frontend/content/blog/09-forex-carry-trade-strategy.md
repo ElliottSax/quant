@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Carry Trade Strategy Explained: Profiting from Interest Rate Differentials
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The carry trad
 
 **Technical requirements for entry:**
 
-
 1. **Select pairs with 3%+ interest rate differential (high-yielding currency vs low)** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Fundamental strength: Central bank hawkish stance on high-yielding currency** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The carry tr
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Take profits: After 300+ pips gain or quarterly interest payment** - This helps lock in profits while limiting losses.
 

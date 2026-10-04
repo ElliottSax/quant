@@ -12,7 +12,6 @@ description: "ML can improve mean reversion Sharpe ratios by 25-40% through inte
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting Mean Reversion using Machine Learning: Adaptive Strategies
 
 Machine learning enhances mean reversion by learning which deviations are most profitable, predicting mean reversion speed, and adapting to market regime changes. If you want to test the underlying Z-score logic before layering ML on top, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required. ML can improve mean reversion Sharpe ratios by 25-40% through intelligent signal filtering.
@@ -179,13 +178,7 @@ class MLMeanReversionBacktester:
 
 **EUR/USD, Out-of-Sample (2025-2026)**
 
-| Metric | Traditional | ML-Enhanced | Improvement |
-|--------|---|---|---|
-| Total Return | 26.82% | 31.45% | +17.3% |
-| Sharpe Ratio | 1.31 | 1.58 | +20.6% |
-| Win Rate | 49.45% | 54.18% | +9.6% |
-| Max Drawdown | -12.45% | -10.25% | -17.6% |
-| Total Trades | 142 | 76 | -46.5% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ML filters out 46% of unprofitable trades while improving Sharpe by 20.6%.
 
@@ -266,4 +259,4 @@ A: Yes, use traditional signals + ML confirmation for robust system.
 
 ## Conclusion
 
-Machine learning improves mean reversion by filtering false signals (46% fewer trades) while increasing win rate by 10% and Sharpe ratio by 20%. Key: rigorous time series validation, monthly retraining, and conservative confidence thresholds. ML mean reversion shows 30%+ returns with 1.5+ Sharpe on out-of-sample data when properly implemented.
+Key: rigorous time series validation, monthly retraining, and conservative confidence thresholds. ML mean reversion shows 30%+ returns with 1.5+ Sharpe on out-of-sample data when properly implemented.

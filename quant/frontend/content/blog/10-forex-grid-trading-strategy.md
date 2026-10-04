@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Grid Trading Strategy Automated: Set and Forget Trading Systems
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The grid tradi
 
 **Technical requirements for entry:**
 
-
 1. **Define grid range: 200-500 pips above/below starting price** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Place buy orders every 20 pips below market price** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The grid tra
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Close all grid when 50% of orders have 20-pip profit** - This helps lock in profits while limiting losses.
 

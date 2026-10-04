@@ -168,8 +168,6 @@ Key metrics to evaluate your trading strategy:
 4. **Iterate**: Continuously improve based on performance data
 5. **Document**: Keep detailed records of strategy logic and changes
 
-
-
 ## Additional Implementation Considerations
 
 ### Performance Optimization
@@ -223,7 +221,6 @@ Beyond the basics, professional quantitative traders use:
 This comprehensive overview provides the foundational knowledge needed to develop, test, and deploy quantitative trading strategies. Success requires continuous learning, rigorous testing, and disciplined risk management.
 
 Start by implementing simple strategies, gradually increasing complexity as you gain experience and confidence in your ability to manage risk effectively.
-
 
 ## Conclusion
 

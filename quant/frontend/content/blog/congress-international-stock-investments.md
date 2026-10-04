@@ -12,7 +12,6 @@ last_updated: '2026-03-23'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress International Stock Investments: Foreign Company Holdings and Global Policy Correlation
 
 Congressional members allocated $892 million (11.2% of holdings) to international stocks during 2026 Q1, with trading timing showing precise correlation to US foreign policy announcements, trade negotiations, and geopolitical developments. Analysis reveals systematic exploitation of US foreign policy intelligence for international stock trading.
@@ -22,8 +21,6 @@ Congressional members allocated $892 million (11.2% of holdings) to internationa
 **2026 Q1 Congressional International Stock Allocation**:
 - Total international holdings: $892 million
 - Number of transactions: 987
-- Average return per trade: 13.4%
-- Win rate: 67.2%
 - Average holding period: 24 days
 
 International stocks represent 11.2% of congressional equity holdings.
@@ -115,13 +112,11 @@ Senate Foreign Relations Committee members achieve 95% advantage in internationa
 **Sen. Christopher Coons (D-Delaware)** (Foreign Relations Committee):
 - International holdings: $6.2 million
 - Q1 2026 international profit: $487,000
-- Win rate: 71.3%
 - Sector focus: UK pharmaceuticals, Canadian energy, Japanese tech
 
 **Rep. Gregory Meeks (D-New York)** (Foreign Affairs Committee):
 - International holdings: $4.8 million
 - Q1 2026 international profit: $321,000
-- Win rate: 65.4%
 
 ## Trade Negotiation Intelligence
 
@@ -209,7 +204,6 @@ Congressional members execute limited options strategies internationally:
 - Call options: 38 (84.4%)
 - Put options: 7 (15.6%)
 - Average profit per contract: $24,600
-- Win rate: 64.2%
 
 Lower options activity internationally (vs 5.4% overall) reflects reduced leverage comfort.
 

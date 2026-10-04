@@ -12,7 +12,6 @@ last_updated: '2026-03-24'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Stock Trades vs Hedge Funds: Performance Comparison and Information Advantage Quantification
 
 Comparative analysis of congressional trading performance versus leading hedge funds reveals that congressional members substantially outperform even the most elite hedge funds. Congress achieves returns and Sharpe ratios exceeding top-decile hedge fund performance, providing quantitative evidence of systematic information advantage.
@@ -20,17 +19,9 @@ Comparative analysis of congressional trading performance versus leading hedge f
 ## Performance Benchmark Comparison
 
 **2026 Congressional Performance**:
-- Average return: 16.4% (Q1)
-- Win rate: 71.8%
-- Sharpe ratio: 3.90
-- Maximum drawdown: -2.1%
 - Average holding period: 19 days
 
 **Top-Decile Hedge Fund Performance (2026 Q1 averages)**:
-- Average return: 7.2%
-- Win rate: 61.3%
-- Sharpe ratio: 1.12
-- Maximum drawdown: -8.4%
 - Average holding period: 34 days
 
 **Comparative Metrics**:

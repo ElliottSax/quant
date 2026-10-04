@@ -11,7 +11,6 @@ keywords: ["cross-exchange arbitrage", "latency arbitrage", "execution", "multi-
 
 Cross-exchange arbitrage exploits temporary price discrepancies across venues, requiring sophisticated execution infrastructure minimizing latency and maximizing fill probability. Unlike risk-free true arbitrage where profit is guaranteed, practical cross-exchange trading involves execution risk, transfer delays, and competition from other arbitrageurs reducing theoretical profits to realistic 0.3-2% per trade after all costs.
 
-
 ## Execution Latency and Pricing Efficiency
 
 Latency (time delay) between exchanges creates windows of opportunity before other traders eliminate spreads. BTC trading at $42,000 on Coinbase but $42,050 on Kraken represents potential $50 profit per BTC, but only if you can execute both trades before prices adjust.
@@ -67,7 +66,6 @@ Execution quality metrics: track fill rate (% of intended orders filled), averag
 The [drawdown management](/blog/drawdown-management-guide) policy: maximum daily loss -2% capital triggers shutdown, maximum weekly loss -5% halts trading until manual review, maximum monthly loss -10% requires strategy overhaul. This prevents cascading losses during unusual market conditions (delisting announcements, exchange manipulation, flash crashes).
 
 ## Key Takeaways
-
 
 Maintaining funded accounts on 5-10 major exchanges eliminates transfer delays and enables rapid position turnover, with $100,000 distributed as $10,000 per venue balancing opportunity capture against counterparty risk concentration.
 

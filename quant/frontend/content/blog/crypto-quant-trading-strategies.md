@@ -56,13 +56,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 ### Momentum Lookback Optimization
 
-| Lookback | CAGR (L/S) | Sharpe | Turnover |
-|----------|-----------|--------|----------|
-| 7 days | 28.4% | 1.08 | 520% |
-| 14 days | 32.1% | 1.24 | 380% |
-| 30 days | 38.2% | 1.42 | 240% |
-| 60 days | 24.8% | 1.12 | 160% |
-| 90 days | 18.4% | 0.88 | 120% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The 30-day lookback is optimal, balancing signal decay (shorter = noisier) with trend capture (longer = more lag).
 

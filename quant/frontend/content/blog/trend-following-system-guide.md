@@ -102,22 +102,13 @@ Trend following underperforms during:
 
 ### Speed of Trend Signal
 
-| Signal Speed | CAGR | Sharpe | Max DD | Turnover |
-|-------------|------|--------|--------|----------|
-| Fast (20/50 MA) | 10.2% | 0.72 | -22.4% | 480% |
-| Medium (50/200 MA) | 11.4% | 0.88 | -18.2% | 240% |
-| Slow (100/300 MA) | 9.8% | 0.82 | -16.8% | 140% |
-| Blended (equal weight) | 11.8% | 0.94 | -15.4% | 280% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Blending fast, medium, and slow signals with equal weight produces the best risk-adjusted returns by capturing trends at different speeds and diversifying across trend horizons.
 
 ### Long-Only vs. Long/Short
 
-| Approach | CAGR | Sharpe | Crisis Alpha |
-|----------|------|--------|-------------|
-| Long/Short (full) | 11.4% | 0.88 | +22.1% (avg) |
-| Long only | 8.2% | 0.54 | -12.4% (avg) |
-| Long + Flat (no shorting) | 9.4% | 0.72 | +2.8% (avg) |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The short side contributes significantly to both absolute returns and crisis alpha. Without shorting, the strategy loses its hedging properties.
 
@@ -127,12 +118,7 @@ The short side contributes significantly to both absolute returns and crisis alp
 
 Adding trend following to a traditional portfolio:
 
-| Allocation | CAGR | Sharpe | Max DD |
-|-----------|------|--------|--------|
-| 100% 60/40 | 6.8% | 0.52 | -32.4% |
-| 80% 60/40 + 20% TF | 7.8% | 0.68 | -24.2% |
-| 70% 60/40 + 30% TF | 8.4% | 0.76 | -20.8% |
-| 60% 60/40 + 40% TF | 8.8% | 0.82 | -18.4% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 A 20-30% allocation to trend following meaningfully improves portfolio Sharpe and reduces maximum drawdown without significantly altering expected returns.
 
@@ -162,7 +148,7 @@ Over long periods (20+ years), trend following has matched or exceeded buy-and-h
 
 ### What are the main risks of trend following?
 
-The main risks are: (1) extended drawdown periods during choppy, non-trending markets (the longest drawdown in our backtest was 10 months), (2) crowding risk as more capital follows trends, potentially reducing profitability, (3) model risk from signal overfitting, and (4) execution risk from high portfolio turnover in fast-signal variants. Diversification across markets, signal speeds, and entry methods mitigates most of these risks.
+Diversification across markets, signal speeds, and entry methods mitigates most of these risks.
 
 ---
 

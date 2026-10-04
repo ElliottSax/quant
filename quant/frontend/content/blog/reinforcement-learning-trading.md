@@ -309,7 +309,6 @@ class QNetwork(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.network(x)
 
-
 class ReplayBuffer:
     """Experience replay buffer for DQN training."""
 
@@ -332,7 +331,6 @@ class ReplayBuffer:
 
     def __len__(self):
         return len(self.buffer)
-
 
 class DQNAgent:
     """

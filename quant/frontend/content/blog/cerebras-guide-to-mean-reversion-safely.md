@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Guide to Mean Reversion Safely
 
 ## Introduction
@@ -183,24 +182,13 @@ def safe_entry_filter(vix, spread_vol, fomc_dates, current_date):
 
 Filtered performance (2018–2023):
 
-| Metric                | Unfiltered | Filtered |
-|-----------------------|----------|--------|
-| Sharpe Ratio          | 1.41     | 1.73   |
-| Max Drawdown (%)      | 10.8     | 8.1    |
-| Number of Trades      | 217      | 134    |
-| Avg Profit per Trade  | 0.41%    | 0.58%  |
-| CAGR (%)              | 8.8      | 9.4    |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ## Out-of-Sample Validation
 
 To avoid overfitting, we test the filtered strategy on **out-of-sample data** from January 2024 to June 2024.
 
-| Metric                | In-Sample (2018–2023) | Out-of-Sample (2024) |
-|-----------------------|------------------------|-----------------------|
-| CAGR (%)              | 9.4                    | 8.9                   |
-| Sharpe Ratio          | 1.73                   | 1.65                  |
-| Max Drawdown (%)      | 8.1                    | 7.4                   |
-| Win Rate (%)          | 57.9                   | 56.7                  |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Stable performance confirms robustness. The slight decline in Sharpe is expected due to lower volatility in 2024.
 
@@ -226,12 +214,7 @@ Unconstrained leverage during mean reversion failures leads to blowups (e.g., LT
 
 Excessive rebalancing increases transaction costs and slippage. We cap turnover at 3.5x annually. Backtests show that increasing turnover beyond this yields diminishing returns.
 
-| Turnover (annual) | Sharpe Ratio | CAGR (%) |
-|-------------------|--------------|----------|
-| 2.0               | 1.40         | 7.8      |
-| 3.0               | 1.73         | 9.4      |
-| 4.0               | 1.68         | 9.1      |
-| 5.0               | 1.32         | 7.9      |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Optimal turnover is **3.0–3.5x**.
 
@@ -258,7 +241,7 @@ Use this checklist to deploy a safe mean reversion strategy:
 
 ## Conclusion
 
-Mean reversion, when applied **safely**, can deliver consistent risk-adjusted returns. Key elements include rigorous statistical testing, dynamic risk controls, and disciplined execution. Our backtested portfolio of cointegrated ETF pairs achieved a Sharpe ratio of 1.73 and max drawdown of 8.1% over six years, with further improvement under volatility filtering.
+Mean reversion, when applied **safely**, can deliver consistent risk-adjusted returns. Key elements include rigorous statistical testing, dynamic risk controls, and disciplined execution.
 
 The strategy is not immune to tail risks, but with proper safeguards—especially regime filtering and stop-losses—it remains a robust component of a diversified quant portfolio.
 

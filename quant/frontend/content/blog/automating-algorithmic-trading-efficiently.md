@@ -76,7 +76,6 @@ class EventBus:
             return 0
         return self._stats['total_latency_ns'] / self._stats['events_processed'] / 1000
 
-
 class EfficientStrategy:
     """Strategy that incrementally updates on each event."""
 
@@ -152,7 +151,6 @@ class RingBuffer:
         if not self.is_full:
             return self._data[:self._count].copy()
         return np.roll(self._data, -self._index).copy()
-
 
 class IncrementalSMA:
     """O(1) simple moving average using running sum."""

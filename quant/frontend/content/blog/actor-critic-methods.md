@@ -13,7 +13,6 @@ seo_optimized: true
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Actor-Critic Methods in Quantitative Trading
 
 ## Introduction
@@ -126,7 +125,6 @@ class ActorCritic(nn.Module):
         action = dist.sample()
         log_prob = dist.log_prob(action).sum(-1)
         return action.clamp(-1, 1), log_prob, value
-
 
 class PPOTrader:
     def __init__(self, state_dim: int, action_dim: int, lr: float = 3e-4,
@@ -262,12 +260,7 @@ This penalizes variance (via the squared return term) and turnover (via the acti
 
 In a portfolio allocation task across 30 DJIA stocks (2018-2025), PPO achieved:
 
-| Metric | PPO Agent | Equal Weight | Minimum Variance |
-|--------|-----------|-------------|------------------|
-| Annual Return | 14.2% | 11.8% | 9.6% |
-| Sharpe Ratio | 1.05 | 0.72 | 0.81 |
-| Max Drawdown | -18.4% | -33.9% | -21.2% |
-| Annual Turnover | 4.2x | 0.1x | 1.8x |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The PPO agent learned to reduce exposure during volatile regimes and concentrate holdings during trending markets, demonstrating genuine adaptive behavior rather than curve fitting.
 

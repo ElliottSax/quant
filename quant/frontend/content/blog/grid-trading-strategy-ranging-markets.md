@@ -21,13 +21,11 @@ color: secondary
 
 Grid trading places buy/sell orders at regular intervals within a price range, profiting from each swing. Setup: identify range ($100-110), place buys at $109.50, $109, $108.50, sells at $100.50, $101, $101.50. Each swing: $1-2 profit per share. Range profits: $50-100 per swing × 10-20 swings daily = $500-2000 daily profit potential.
 
-
 ## Introduction
 
 Grid trading is the most profitable strategy in ranging/sideways markets. By automating orders in a grid, you capture every $0.50-$1.00 swing without emotion. This guide covers theory and real implementation.
 
 ## Trading Strategies
-
 
 ### Strategy 1: Fixed Grid Trading
 
@@ -42,7 +40,6 @@ Support/Resistance levels, Bollinger Bands for range, ADX < 20
 **Real Example:**
 QQQ ranging $350-360. Buy orders at 359.50, 359, 358.50, 358. Sell orders at 350.50, 351, 351.50, 352. Average profit per cycle: $5 per share × 10 shares = $50.
 
-
 ### Strategy 2: Dynamic Grid Trading
 
 **Description:** Adjust grid spacing based on volatility (wider grids in high volatility).
@@ -56,7 +53,6 @@ ATR, Support/Resistance, Volatility
 **Real Example:**
 Crypto ATR = $200, place grids every $200: 45,200, 45,000, 44,800 (buys) and 45,400, 45,600 (sells). Scale profit with volatility.
 
-
 ### Strategy 3: Pyramid Grid Trading
 
 **Description:** Increase position size as price moves in your favor (pyramid up).
@@ -69,7 +65,6 @@ Trend within range, Volume, Support
 
 **Real Example:**
 Stock hits support: buy 100 shares at 99. Continues down: buy 200 more at 98. Bounces to 102: sell all 300 for $300 profit.
-
 
 ## Risk Management & Position Sizing
 
@@ -93,7 +88,6 @@ Traders often fall into these pitfalls when using this strategy:
 5. **Using grid trading on volatile/illiquid assets**
 6. **Over-sizing positions (one breakout wipes profit)**
 
-
 ## Real Trading Examples
 
 | Market | Entry | Stop Loss | Target | Risk/Reward | Expected Outcome |
@@ -102,7 +96,6 @@ Traders often fall into these pitfalls when using this strategy:
 | Forex (EUR/USD) | MA Crossover | 15 pips | 45+ pips | 1:3+ | 50-100 pips weekly |
 | Crypto (BTC) | Technical Level | 2% below | 5-10% above | 1:2.5+ | 5-15% monthly |
 | Emerging Market ETF | Range Breakout | Below support | 10-20% move | 1:2 | Mid-term 20-50% moves |
-
 
 ## Best Practices for This Strategy
 
@@ -115,31 +108,25 @@ Traders often fall into these pitfalls when using this strategy:
 
 ## Frequently Asked Questions
 
-
 ### How do you identify if a market is suitable for grid trading?
 
 ADX < 20-25 (no strong trend). RSI oscillating 40-60. Price bouncing between support/resistance 3+ times. Volume declining (no breakout pressure).
-
 
 ### What's the optimal grid spacing?
 
 General rule: grid space = 0.5 × ATR (Average True Range). Example: ATR = $2, grids every $1. Too wide = fewer profits. Too tight = quick fills, limited cycles.
 
-
 ### How much can you make with grid trading?
 
 Conservative: 0.5-1% daily on capital deployed (50% of account in grids = 0.25-0.5% daily total). Example: $10k account, $5k in grids, $25-50 daily = $750-1500 monthly.
-
 
 ### What happens when the price breaks out of the grid range?
 
 You lose. If it breaks up: you sell at breakout (collect profits), then the remaining buy orders don't trigger (lost opportunity). Always have exit rule: if price breaks above/below range, stop grid trading.
 
-
 ### Is manual or automated grid trading better?
 
 Automated: more consistent, 24/7 trading, less emotion. Manual: more control, can adjust for breakouts. Beginners: automated (3Commas, Grid+ bots). Advanced: manual (full control).
-
 
 ## Ready to Start Trading?
 

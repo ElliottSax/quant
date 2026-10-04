@@ -228,11 +228,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 ## Walk-Forward Test Results
 
-| Period | In-Sample Sharpe | Out-Sample Sharpe | Out-Sample Return |
-|--------|-----------------|-------------------|-------------------|
-| 2023-01 to 2024-12 | 1.42 | 1.31 | 18.5% |
-| 2023-07 to 2025-06 | 1.38 | 1.28 | 16.2% |
-| 2024-01 to 2025-12 | 1.40 | 1.34 | 19.8% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Walk-forward results show consistent out-of-sample performance, validating the strategy isn't overfit.
 

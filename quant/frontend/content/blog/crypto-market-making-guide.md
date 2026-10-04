@@ -107,7 +107,6 @@ Monitoring and alerting systems track key metrics: profit per trade, fill rates,
 
 ## Key Takeaways
 
-
 Order placement optimization balances spread width against fill probability using mid-price-relative strategies, order book imbalance signals, volatility-adjusted spreads, and dynamic inventory-aware quoting.
 
 Inventory risk management through aggressive position flipping, dynamic limits, hedging with perpetuals, and mean reversion exploitation prevents directional exposure from overwhelming spread capture profits.

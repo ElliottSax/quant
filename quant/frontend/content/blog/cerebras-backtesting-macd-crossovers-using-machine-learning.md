@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting MACD Crossovers Using Machine Learning
 
 ## Introduction
@@ -256,12 +255,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 We test robustness to key parameters:
 
-| Holding Period | Win Rate (ML) | Sharpe |
-|---------------|---------------|--------|
-| 5 days | 63.4% | 0.61 |
-| **10 days** | **66.1%** | **0.68** |
-| 15 days | 61.2% | 0.63 |
-| 20 days | 58.7% | 0.58 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The 10-day horizon offers the best trade-off.
 
@@ -269,11 +263,7 @@ The 10-day horizon offers the best trade-off.
 
 Assuming $0.01 per share and 100-share trades:
 
-| Strategy | Net CAGR (%) |
-|---------|--------------|
-| Naive MACD | 6.1 |
-| ML-Filtered | **8.9** |
-| Hold SPY | 11.2 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Even after costs, ML filtering improves net returns.
 
@@ -305,7 +295,7 @@ Empirical testing on SPY showed that 10 days maximized risk-adjusted returns. Sh
 
 ### Q: What if the model predicts a bearish signal?
 
-The strategy can be extended to short positions. In backtests, bearish ML-filtered signals in SPY achieved a 62.4% win rate on 10-day shorts (2019–2023), with a profit factor of 1.38.
+The strategy can be extended to short positions.
 
 ### Q: How often should the model be retrained?
 

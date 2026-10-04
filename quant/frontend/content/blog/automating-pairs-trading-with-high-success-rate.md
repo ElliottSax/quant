@@ -57,7 +57,6 @@ print(f"Strategy B (60% win): Profit Factor = {pf_b:.2f}")
 
 ## High-Win-Rate Pair Selection
 
-
 ```python
 from statsmodels.tsa.stattools import coint
 import numpy as np

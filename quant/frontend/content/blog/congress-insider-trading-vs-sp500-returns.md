@@ -12,7 +12,6 @@ last_updated: '2026-03-23'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Insider Trading vs S&P 500 Returns: Statistical Proof of Information Advantage
 
 Detailed performance analysis comparing congressional trading returns to S&P 500 benchmark index reveals statistically impossible outperformance margins. Congressional traders achieved 287% higher returns than market averages in 2026, providing quantitative proof of systematic information advantage.

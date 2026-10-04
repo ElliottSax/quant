@@ -162,13 +162,7 @@ Risk budgets change as the covariance matrix evolves, triggering rebalancing. To
 
 A multi-strategy fund with four strategies and a total portfolio volatility target of 8%:
 
-| Strategy | Sharpe Ratio | Risk Budget | Capital Weight | Volatility | Risk Contribution |
-|----------|-------------|-------------|---------------|-----------|-------------------|
-| Stat Arb | 1.5 | 35% | 56% | 5% | 2.8% |
-| Macro | 1.0 | 25% | 20% | 10% | 2.0% |
-| Event | 0.8 | 20% | 12% | 13% | 1.6% |
-| Credit | 1.2 | 20% | 12% | 13% | 1.6% |
-| **Total** | | **100%** | **100%** | | **8.0%** |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Note how capital weights and risk weights differ substantially. [Statistical arbitrage](/blog/crypto-statistical-arbitrage) receives 56% of capital (because its lower volatility requires more capital to consume 35% of risk), while Event-Driven receives only 12% of capital (its higher volatility means a small capital allocation generates substantial risk contribution).
 

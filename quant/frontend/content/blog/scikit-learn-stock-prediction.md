@@ -154,7 +154,6 @@ def temporal_train_test_split(
 
     return X_train, X_test, y_train, y_test
 
-
 def walk_forward_validation(
     X: pd.DataFrame,
     y: pd.Series,

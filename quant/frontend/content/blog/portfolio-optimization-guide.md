@@ -46,15 +46,7 @@ Our [Max Sharpe Portfolio tool](/tools/max-sharpe) computes the tangent portfoli
 
 We optimized a portfolio of 7 asset class ETFs using 10 years of historical data:
 
-| Asset | ETF | Avg Return | Volatility | MV Weight | Max Sharpe Weight |
-|-------|-----|-----------|------------|-----------|-------------------|
-| US Large Cap | SPY | 10.7% | 15.8% | 18% | 32% |
-| US Small Cap | IWM | 8.4% | 19.2% | 5% | 8% |
-| Int'l Developed | EFA | 5.8% | 14.2% | 12% | 4% |
-| Emerging Markets | EEM | 4.2% | 18.4% | 3% | 0% |
-| US Bonds | AGG | 2.8% | 4.8% | 42% | 15% |
-| Real Estate | VNQ | 7.2% | 17.8% | 8% | 12% |
-| Gold | GLD | 6.4% | 14.2% | 12% | 29% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### Backtest Results (2010-2025)
 
@@ -100,26 +92,13 @@ Where RC_i is the risk contribution of asset i, and RC_target = 1/N for equal ri
 
 ### Risk Parity Weights (Same 7-Asset Portfolio)
 
-| Asset | MVO Max Sharpe | Risk Parity | Equal Weight |
-|-------|---------------|-------------|--------------|
-| US Large Cap (SPY) | 32% | 12% | 14.3% |
-| US Small Cap (IWM) | 8% | 10% | 14.3% |
-| Int'l Developed (EFA) | 4% | 13% | 14.3% |
-| Emerging Markets (EEM) | 0% | 10% | 14.3% |
-| US Bonds (AGG) | 15% | 35% | 14.3% |
-| Real Estate (VNQ) | 12% | 11% | 14.3% |
-| Gold (GLD) | 29% | 9% | 14.3% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Risk parity allocates heavily to bonds (35%) because bonds have low volatility, so a larger allocation is needed to equalize risk contribution. This is the key insight: risk parity treats each asset's risk budget equally rather than its dollar allocation.
 
 ### Risk Parity Backtest (2010-2025)
 
-| Metric | Risk Parity | Risk Parity (Leveraged 10% Vol) | Max Sharpe MVO |
-|--------|-------------|--------------------------------|---------------|
-| CAGR | 5.4% | 8.2% | 9.4% |
-| Sharpe Ratio | 0.78 | 0.78 | 0.88 |
-| Max Drawdown | -8.8% | -14.2% | -14.2% |
-| Volatility | 5.2% | 10.0% | 9.8% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Unleveraged risk parity has lower absolute returns but also lower risk. When leveraged to match MVO's volatility level, risk parity produces comparable returns with a slightly lower Sharpe but greater stability.
 
@@ -152,12 +131,7 @@ These views are combined with the equilibrium portfolio to produce adjusted weig
 
 ### Black-Litterman Backtest (Quarterly Rebalancing, 2010-2025)
 
-| Metric | Black-Litterman | Max Sharpe MVO | Market Cap Weight |
-|--------|----------------|---------------|-------------------|
-| CAGR | 10.2% | 9.4% | 8.8% |
-| Sharpe Ratio | 0.94 | 0.88 | 0.72 |
-| Max Drawdown | -12.8% | -14.2% | -18.4% |
-| Turnover (Annual) | 42% | 84% | 12% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Black-Litterman outperforms both MVO and market cap weights by producing more stable, diversified portfolios with lower turnover.
 
@@ -173,15 +147,7 @@ This produces portfolios that perform well even if return estimates are signific
 
 ### Comparison of Optimization Methods (Out-of-Sample, 2015-2025)
 
-| Method | Avg OOS Sharpe | Sharpe Stability | Max DD |
-|--------|---------------|-----------------|--------|
-| Naive MVO | 0.52 | Low | -22.4% |
-| Constrained MVO | 0.68 | Medium | -16.8% |
-| Resampled MVO | 0.74 | Medium | -15.2% |
-| Black-Litterman | 0.82 | High | -12.8% |
-| Risk Parity | 0.72 | Very High | -8.8% |
-| Robust Min-Max | 0.78 | Very High | -10.4% |
-| Equal Weight | 0.58 | Very High | -22.8% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Black-Litterman produces the highest out-of-sample Sharpe, while risk parity and robust methods produce the most stable performance.
 
@@ -189,12 +155,7 @@ Black-Litterman produces the highest out-of-sample Sharpe, while risk parity and
 
 ### Rebalancing Frequency
 
-| Frequency | Sharpe Impact | Turnover | Transaction Costs |
-|-----------|--------------|----------|-------------------|
-| Daily | +0.02 | 480% | High |
-| Monthly | Baseline | 120% | Moderate |
-| Quarterly | -0.04 | 60% | Low |
-| Annually | -0.08 | 30% | Very Low |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Monthly rebalancing is optimal after transaction costs for most portfolios.
 

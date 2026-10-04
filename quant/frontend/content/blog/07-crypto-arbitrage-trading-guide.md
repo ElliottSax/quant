@@ -41,7 +41,6 @@ Crypto markets are fragmented:
 
 These inefficiencies create arbitrage opportunities worth $500M+ annually.
 
-
 ## Market Context and Timing
 
 Understanding market conditions is crucial for implementing these strategies effectively. Different market environments reward different approaches.
@@ -189,7 +188,6 @@ This ensures consistent position sizes:
 - Monthly at 5 trades: $375-750 profit
 
 The psychological edge: Proper position sizing lets you take losses without emotional damage. Our [Position Size Calculator](/tools/position-size) automates this math from your account size, risk percentage, entry, and stop.
-
 
 ## Crypto Arbitrage Strategy #1: Cross-Exchange Arbitrage
 

@@ -14,7 +14,6 @@ last_updated: '''''''2026-03-21'''''''
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Forex Ichimoku Cloud Trading Strategy: Comprehensive Technical Analysis
 
 *Last updated: March 20, 2026*
@@ -51,7 +50,6 @@ Identifying the right entry point is crucial for trading success. The ichimoku c
 
 **Technical requirements for entry:**
 
-
 1. **Price above cloud = Bullish (support at cloud top)** - This condition helps confirm strong directional bias and reduces false signals.
 
 2. **Price below cloud = Bearish (resistance at cloud bottom)** - This condition helps confirm strong directional bias and reduces false signals.
@@ -79,7 +77,6 @@ Knowing when to exit is equally important as knowing when to enter. The ichimoku
 ### Exit Criteria
 
 **Primary exit conditions:**
-
 
 1. **Price breaks opposite side of cloud = Reversal signal** - This helps lock in profits while limiting losses.
 

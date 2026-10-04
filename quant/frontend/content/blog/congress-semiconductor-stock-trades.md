@@ -12,7 +12,6 @@ last_updated: '2026-03-24'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Semiconductor Stock Trades: Chip Shortage Information and Technology Competition
 
 Congressional members executed $467 million in semiconductor stock purchases during Q1 2026, with timing showing striking correlation to chip policy discussions and supply chain intelligence. The semiconductor sector represents one of Congress's highest-conviction investment categories.
@@ -22,8 +21,6 @@ Congressional members executed $467 million in semiconductor stock purchases dur
 **2026 Q1 Congressional Semiconductor Positions**:
 - Total semiconductor investment: $467 million
 - Number of transactions: 412
-- Average return per trade: 14.8%
-- Win rate: 72.3%
 - Average holding period: 22 days
 
 Semiconductor represents concentrated sector with only 34 publicly traded semiconductor companies, yet congressional holdings concentrate in top 8 companies.
@@ -99,13 +96,11 @@ Walden benefits from Energy and Commerce Committee position providing semiconduc
 **Rep. Tom Emmer (R-Minnesota)**:
 - Semiconductor holdings: $2.8 million (NVDA-focused)
 - 2026 Q1 semiconductor profit: $347,000
-- Win rate: 81.2%
 - Primary focus: AI chip (NVDA) concentration
 
 **Sen. Ron Johnson (R-Wisconsin)**:
 - Semiconductor holdings: $1.8 million
 - 2026 Q1 semiconductor profit: $234,000
-- Win rate: 74.1%
 - Commerce Committee member advantage
 
 ## Supply Chain Vulnerability Information
@@ -215,7 +210,6 @@ Congressional members execute options on semiconductor stocks:
 - Call options: 187 (79.9%)
 - Put options: 47 (20.1%)
 - Average profit per contract: $54,200
-- Win rate: 75.6%
 
 Call option concentration indicates confidence in semiconductor price appreciation.
 

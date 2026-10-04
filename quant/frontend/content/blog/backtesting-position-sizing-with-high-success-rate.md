@@ -12,7 +12,6 @@ description: "Strategies with high win rates (65%+) allow aggressive position si
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Backtesting Position Sizing: A Practical Guide
 
 Strategies with high win rates (65%+) allow aggressive position sizing while maintaining acceptable drawdowns. This guide explores how to identify high-probability strategies, optimize position sizing for maximum compound growth, and backtest these strategies rigorously to validate success rates before deploying real capital.
@@ -359,14 +358,6 @@ class HighWinRateBacktest:
 ## Backtesting Results: High Win Rate Impact
 
 **Applied to mean reversion strategy (2024-2026, 187 trades):**
-
-- Fixed 2% sizing: Total return 22.1%, Sharpe 1.15, Max DD -12.3%
-- Aggressive Kelly: Total return 48.7%, Sharpe 1.38, Max DD -18.2%
-- Growth-optimized: Total return 52.3%, Sharpe 1.42, Max DD -19.4%
-
-- Fixed 2% sizing: Total return 31.4%, Sharpe 1.62, Max DD -8.1%
-- Aggressive Kelly: Total return 78.9%, Sharpe 1.85, Max DD -14.3%
-- Growth-optimized: Total return 94.2%, Sharpe 1.92, Max DD -16.8%
 
 Higher win rates justify dramatically larger position sizes while maintaining acceptable risk.
 

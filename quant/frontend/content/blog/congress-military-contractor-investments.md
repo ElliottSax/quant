@@ -12,7 +12,6 @@ last_updated: '2026-03-23'
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Congress Military Contractor Investments: Defense Spending Intelligence and Contractor Holdings
 
 Congressional members hold $4.2 billion in military contractor stocks, representing 9.8% of total congressional equity holdings. Analysis reveals systematic trading correlation with Defense Department appropriations and military procurement decisions announced through classified briefings.
@@ -91,18 +90,15 @@ Armed Services Committee membership provides 59-167% advantage in military contr
 **Sen. Jim Inhofe (R-Oklahoma)** (Armed Services Committee Vice Chair):
 - Military contractor holdings: $134M
 - 2026 Q1 military contractor profit: $8.4M
-- Win rate: 79.3%
 - Concentration: LMT (42%), RTX (28%), GD (18%), NOC (12%)
 
 **Rep. Greg Walden (R-Oregon)**:
 - Military contractor holdings: $89M
 - 2026 Q1 military contractor profit: $6.2M
-- Win rate: 76.4%
 
 **Sen. Roger Wicker (R-Mississippi)**:
 - Military contractor holdings: $78M
 - 2026 Q1 military contractor profit: $5.8M
-- Win rate: 82.1%
 
 ## Weapons System Procurement Trading
 
@@ -174,7 +170,6 @@ Congressional members execute leveraged options strategies on military contracto
 **Military Contractor Call Options**:
 - Total military contractor call options: 234 contracts
 - Average profit per contract: $61,200
-- Win rate: 78.9%
 - Average holding period: 28 days
 
 Options provide leverage on military contractor positions timed around procurement announcements.
@@ -268,7 +263,6 @@ Military contractor trading shows remarkable consistency:
 - 2025 Q4: 76.4% win rate
 - 2026 Q1: 76.8% win rate
 - Average: 76.1% win rate
-
 
 ## Wealth Accumulation from Military Contractor Trading
 

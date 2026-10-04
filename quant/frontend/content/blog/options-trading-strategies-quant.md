@@ -181,7 +181,6 @@ This trade earns the "roll yield" as front-month futures converge toward spot VI
 ## Key Takeaways
 
 - The volatility risk premium (implied > realized 85% of the time) provides a systematic edge for options sellers
-- Delta-hedged short strangles produced a Sharpe of 1.48 with only -8.2% maximum drawdown
 - Systematic covered calls reduce portfolio volatility from 15.8% to 11.4% with minimal return sacrifice
 - Volatility skew trading (Sharpe 1.24) exploits the persistent overpricing of downside protection
 - Portfolio-level Greek management targets delta-neutral, theta-positive, vega-short positions

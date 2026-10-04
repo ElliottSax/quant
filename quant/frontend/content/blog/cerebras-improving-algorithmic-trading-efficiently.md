@@ -11,7 +11,6 @@ provider: cerebras
 
 > **Note on figures:** Any returns, win rates, Sharpe ratios or other performance numbers in this article are illustrative examples or assumptions. They are not published, audited or reproducible backtest results, and they are not predictions. Past performance does not predict future results.
 
-
 # Improving Algorithmic Trading Efficiently
 
 Algorithmic trading has transformed financial markets over the past two decades, enabling execution speeds, precision, and scalability unattainable through manual trading. However, as competition intensifies and markets become increasingly efficient, the marginal gains from new strategies shrink rapidly. Traders and institutions must therefore focus not only on developing profitable algorithms but on **improving algorithmic trading efficiently**—maximizing performance gains while minimizing computational overhead, data costs, and time-to-market.
@@ -56,14 +55,7 @@ Using historical S&P 500 futures (ES1) from 2010–2023, we tested 1,247 variati
 
 The top-performing strategy (30/120 EMA crossover with volume filter) achieved:
 
-| Metric | Value |
-|--------|-------|
-| Annualized Return | 11.4% |
-| Annualized Volatility | 8.9% |
-| Sharpe Ratio | 1.28 |
-| Max Drawdown | 18.3% |
-| Win Rate | 53.7% |
-| Backtest Duration | 42 seconds |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 This approach improved research throughput from 18 strategies/day to 112 strategies/day on the same hardware.
 
@@ -159,11 +151,7 @@ Volatility-based position sizing improves risk-adjusted returns without increasi
 
 We compare three methods on a portfolio of 50 liquid equities (2015–2023):
 
-| Method | Avg. Position Size | Sharpe Ratio | Turnover | Max DD |
-|--------|--------------------|--------------|----------|--------|
-| Equal Weight | 2.0% | 0.91 | 82% | 34.1% |
-| Volatility-Weighted (21-day) | Variable (1.2–3.1%) | 1.18 | 85% | 27.3% |
-| Kelly Criterion | Variable (0.5–6.8%) | 1.21 | 112% | 29.7% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 Volatility weighting delivers 89% of Kelly’s Sharpe with 24% lower turnover and smaller position extremes.
 

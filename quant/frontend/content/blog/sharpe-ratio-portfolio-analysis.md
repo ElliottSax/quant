@@ -12,7 +12,7 @@ keywords: ["Sharpe ratio portfolio analysis", "risk-adjusted returns", "Sortino 
 
 # Sharpe Ratio and Portfolio Analysis: Risk-Adjusted Returns
 
-The Sharpe ratio is the most widely used measure of risk-adjusted performance in quantitative finance, and understanding it deeply is essential for evaluating and comparing [trading strategies](/blog/backtesting-trading-strategies). Introduced by William Sharpe in 1966 (and refined in 1994), the Sharpe ratio measures the excess return earned per unit of risk taken. A Sharpe ratio of 1.0 means the strategy earns 1% excess return for every 1% of volatility, while a Sharpe of 2.0 means the strategy is twice as efficient at converting risk into return.
+The Sharpe ratio is the most widely used measure of risk-adjusted performance in quantitative finance, and understanding it deeply is essential for evaluating and comparing [trading strategies](/blog/backtesting-trading-strategies). Introduced by William Sharpe in 1966 (and refined in 1994), the Sharpe ratio measures the excess return earned per unit of risk taken.
 
 This guide covers the Sharpe ratio in depth along with complementary risk-adjusted metrics, their proper calculation, common misinterpretations, and how to use them for systematic portfolio analysis.
 
@@ -63,13 +63,7 @@ A strategy with:
 
 The Sharpe ratio has a direct relationship with expected maximum drawdown:
 
-| Sharpe | Expected Max DD (approximate) |
-|--------|------------------------------|
-| 0.5 | -30 to -45% |
-| 1.0 | -15 to -25% |
-| 1.5 | -10 to -18% |
-| 2.0 | -7 to -12% |
-| 3.0 | -4 to -8% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 These are approximate relationships derived from [Monte Carlo simulation](/blog/monte-carlo-simulation-trading) assuming normal returns. Fat tails in real markets can produce larger drawdowns than these estimates suggest.
 
@@ -134,12 +128,7 @@ Measures return relative to the worst peak-to-trough decline. Directly addresses
 
 **Interpretation**: A Calmar ratio above 1.0 means the strategy's annual return exceeds its worst drawdown. Above 0.5 is considered acceptable.
 
-| Sharpe | Typical Calmar |
-|--------|---------------|
-| 0.5 | 0.2 - 0.3 |
-| 1.0 | 0.4 - 0.6 |
-| 1.5 | 0.6 - 1.0 |
-| 2.0 | 1.0 - 1.5 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### Information Ratio
 
@@ -183,13 +172,7 @@ How long must a strategy run before its Sharpe ratio is statistically significan
 
 For 95% confidence (Z = 1.96):
 
-| Sharpe Ratio | Minimum Track Record |
-|-------------|---------------------|
-| 0.5 | 15.4 years |
-| 1.0 | 3.8 years |
-| 1.5 | 1.7 years |
-| 2.0 | 1.0 years |
-| 3.0 | 0.4 years |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 A strategy with a Sharpe of 1.0 needs nearly 4 years of track record to be statistically significant at the 95% confidence level.
 
@@ -216,12 +199,7 @@ Calculate 36-month rolling versions of each metric to assess stability. A strate
 
 Break performance into market regimes:
 
-| Regime | Strategy Sharpe | Benchmark Sharpe |
-|--------|----------------|-----------------|
-| Bull market | 0.8 | 1.2 |
-| Bear market | 1.4 | -0.4 |
-| High volatility | 1.2 | 0.2 |
-| Low volatility | 0.6 | 0.8 |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 A strategy that outperforms in bear markets and high volatility (when protection is most valuable) may be more desirable than one with a higher overall Sharpe but poor crisis performance.
 

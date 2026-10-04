@@ -18,16 +18,7 @@ Multi-asset portfolio construction is the highest-level investment decision. The
 
 ### Return and Risk Profiles (1990-2025 Annualized)
 
-| Asset Class | Ann. Return | Ann. Volatility | Sharpe Ratio | Max Drawdown |
-|-------------|-----------|----------------|-------------|-------------|
-| US Equities (S&P 500) | 10.3% | 15.2% | 0.51 | -50.9% |
-| Int'l Dev Equities (EAFE) | 5.8% | 16.8% | 0.22 | -56.4% |
-| US Agg Bonds | 4.8% | 4.2% | 0.67 | -17.2% |
-| TIPS | 5.2% | 6.5% | 0.52 | -18.6% |
-| Commodities (GSCI) | 2.1% | 18.5% | 0.01 | -72.3% |
-| Gold | 7.5% | 16.0% | 0.35 | -42.5% |
-| REITs | 9.2% | 19.8% | 0.36 | -68.3% |
-| Bitcoin (2014-2025) | 65.0% | 75.0% | 0.80 | -82.0% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 ### Correlation Matrix (1990-2025)
 
@@ -71,8 +62,6 @@ For N asset classes with volatility vector sigma and correlation matrix C:
 
 For a target of 10% volatility and unlevered risk parity volatility of 5%:
 Leverage = 2.0x
-
-The leveraged risk parity portfolio has historically achieved Sharpe ratios of 0.75-0.85, substantially higher than 60/40, though with the added complexity and cost of leverage.
 
 ### Black-Litterman for Multi-Asset
 

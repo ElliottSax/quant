@@ -51,12 +51,7 @@ The simplest and most effective TAA signal: hold the asset class when its return
 
 **Historical performance (1973-2025):**
 
-| Metric | GTAA (5 assets) | 60/40 Buy & Hold |
-|--------|----------------|-----------------|
-| Annual Return | 9.5% | 9.2% |
-| Annual Volatility | 7.8% | 10.2% |
-| Sharpe Ratio | 0.85 | 0.67 |
-| Max Drawdown | -13.2% | -32.5% |
+*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
 The GTAA strategy achieves similar returns with 24% lower volatility and 59% lower maximum drawdown.
 
