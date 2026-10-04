@@ -183,18 +183,18 @@ class BreakoutStrategy(bt.Strategy):
 
 The difference between breakout success and failure often comes down to precise entry timing:
 
-### Optimal Entry Window (71% Win Rate)
+### Optimal Entry Window
 1. Wait for price to close above resistance
 2. Enter on the next bar open if volume > 1.5x average
 3. Place stop loss 1-2 ATR below resistance
 4. Target = 2-3 ATR above entry
 
-### Aggressive Entry (68% Win Rate)
+### Aggressive Entry
 - Enter at the moment price penetrates resistance
 - Tighter stop loss (0.5 ATR)
 - Requires faster execution
 
-### Conservative Entry (73% Win Rate)
+### Conservative Entry
 - Wait for confirmation close above resistance
 - Enter on pullback toward resistance
 - Wider stop loss (2 ATR)

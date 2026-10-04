@@ -333,7 +333,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 ## Frequently Asked Questions
 
-A: Realistic with ultra-strict pair selection (top 1% of cointegrated pairs) and multi-signal confirmation. On out-of-sample data, expect 70-73% (2-3% degradation from overfitting).
+A: Realistic with ultra-strict pair selection (top 1% of cointegrated pairs) and multi-signal confirmation. On out-of-sample data, expect a lower win rate than in-sample (degradation from overfitting).
 
 **Q: How do I prevent overfitting while achieving high win rates?**
 A: Use walk-forward testing. Train thresholds on 2018-2022, test on 2023-2025. Train on 2019-2023, test on 2024-2026.

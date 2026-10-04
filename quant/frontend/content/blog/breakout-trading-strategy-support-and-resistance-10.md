@@ -33,7 +33,7 @@ These levels emerge from a combination of: (1) Historical price memory (previous
 
 ## Identifying Valid Support and Resistance
 
-### Criteria for Valid Levels (67-71% Win Rate)
+### Criteria for Valid Levels
 
 1. **Multiple Tests**: Level tested 2-3 times minimum (preferably 3-4 times)
 2. **Price Memory**: Level respected at different points in time
@@ -41,7 +41,7 @@ These levels emerge from a combination of: (1) Historical price memory (previous
 4. **Volume Alignment**: Price shows rejection at level (volume increase on rejection)
 5. **Technical Confirmation**: Alignment with moving averages, pivot points, or Fibonacci
 
-### Weak Levels (50% Win Rate - Avoid)
+### Weak Levels (Avoid)
 - Single test only
 - Tested within same candle
 - No volume rejection
@@ -135,7 +135,7 @@ for level in resistance_levels:
 
 ## Breakout Entry Rules: Precise Mechanics
 
-### Rule 1: Minimum Close Above Resistance (67% Win Rate)
+### Rule 1: Minimum Close Above Resistance
 - Require price to close > resistance + 0.5% (not just touch)
 - Enter next bar open if still above resistance
 - Stop loss = resistance - 2%
@@ -143,7 +143,7 @@ for level in resistance_levels:
 - **Advantage**: Filters 35% false breakouts
 - **Disadvantage**: Misses 10% of valid moves
 
-### Rule 2: Volume Confirmation (71% Win Rate)
+### Rule 2: Volume Confirmation
 - Require volume > 1.5x 20-day average on breakout day
 - Require continued volume > 1.2x average on follow-through day
 - Enter if both conditions met
@@ -152,7 +152,7 @@ for level in resistance_levels:
 - **Advantage**: Increases win rate to 71%, filters whipsaws
 - **Disadvantage**: Fewer setups (40% reduction)
 
-### Rule 3: Multi-Timeframe Confirmation (73% Win Rate)
+### Rule 3: Multi-Timeframe Confirmation
 - Daily: Confirm breakout above weekly resistance
 - Identify weekly support as stop loss level
 - Enter only if 4-hour chart also shows bullish structure

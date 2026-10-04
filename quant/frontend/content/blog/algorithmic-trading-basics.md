@@ -315,7 +315,7 @@ For equities, $25,000 minimum (SEC pattern day trading rule in the U.S.) but $10
 
 ### What is a good Sharpe ratio for a trading strategy?
 
-A Sharpe ratio above 1.0 is considered good for a daily-frequency strategy. Above 2.0 is excellent and typically found only in high-frequency or capacity-constrained strategies. Be skeptical of backtested Sharpes above 3.0 -- they usually indicate overfitting. In live trading, expect Sharpe ratios to degrade by 30-50% from backtest estimates.
+A Sharpe ratio above 1.0 is considered good for a daily-frequency strategy. Above 2.0 is excellent and typically found only in high-frequency or capacity-constrained strategies. Be skeptical of backtested Sharpes above 3.0 -- they usually indicate overfitting. In live trading, expect Sharpe ratios to come in below backtest estimates.
 
 ### How do I know if my strategy is overfitted?
 

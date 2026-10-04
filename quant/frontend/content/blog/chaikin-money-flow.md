@@ -112,21 +112,21 @@ Measured results are not published for this strategy. The code above is a starti
 
 ## CMF Trading Signals and Strategies
 
-### Signal 1: Bullish Divergence (66% Win Rate)
+### Signal 1: Bullish Divergence
 - Price makes lower low
 - CMF makes higher low (bullish divergence)
 - Entry: Buy on next bar open
 - Target: Previous swing high
 - Stop: Recent swing low
 
-### Signal 2: Confirmation of Breakouts (62% Win Rate)
+### Signal 2: Confirmation of Breakouts
 - Price breaks above resistance
 - CMF > 0.0 and above 20-period moving average
 - Entry: On confirmed breakout
 - Target: 2-3 ATR above breakout
 - Stop: Below breakout level
 
-### Signal 3: Trend Continuation (64% Win Rate)
+### Signal 3: Trend Continuation
 - CMF crosses above/below zero line
 - Indicates money flow shift
 - Entry: On crossover

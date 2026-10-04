@@ -300,8 +300,8 @@ A: Sharpe ratios above 2.0 in backtests are suspicious. Real-world performance r
 A: Compare in-sample and out-of-sample metrics. Degradation of 10-20% is normal; more suggests overfitting.
 
 **Q: What's the typical discrepancy between backtest and live trading?**
-A: Expect 15-30% lower returns due to slippage, wider spreads, and emotional hesitation.
+A: Expect lower returns due to slippage, wider spreads, and emotional hesitation.
 
 ## Conclusion
 
-Safe backtesting of Bollinger Bands requires vigilant attention to look-ahead bias, realistic transaction costs, proper data validation, and out-of-sample testing. The framework presented here reduces common pitfalls and produces reliable performance estimates. Always treat backtest results conservatively and expect 15-30% performance degradation in live trading.
+Safe backtesting of Bollinger Bands requires vigilant attention to look-ahead bias, realistic transaction costs, proper data validation, and out-of-sample testing. The framework presented here reduces common pitfalls and produces reliable performance estimates. Always treat backtest results conservatively and expect performance to degrade in live trading.

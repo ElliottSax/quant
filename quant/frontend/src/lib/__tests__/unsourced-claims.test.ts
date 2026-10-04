@@ -91,3 +91,24 @@ test('strategy pages do not render hardcoded performance figures', () => {
     assert.doesNotMatch(src, /strategy\.yearlyReturns|annualizedReturn\}% annualized/, f)
   }
 })
+
+// Third pass (2026-10-04): headings such as "Mean Reversion Strategy (68% Win Rate)", FAQ answers
+// such as "typically achieve win rates of 55-65%" / "expect 45-55%" and "expect 30-40% degradation"
+// were still shipping under the figures note. Headings and FAQ answers must not carry them.
+const THIRD_PASS: [string, RegExp][] = [
+  ['win-rate number in a heading', /^#{2,4} .*\(\s*\d+(?:-\d+)?%\s*win rate/im],
+  ['"expect NN-NN%" win-rate or degradation answer', /expect\s+\d{1,2}(?:\.\d)?-\d{1,2}(?:\.\d)?%\s*(?:degradation|lower|performance|with proper|\()/i],
+  ['"degrade by NN-NN%"', /degrade by \d{1,2}-\d{1,2}%/i],
+  ['"NN-NN% lower than the backtest"', /\d{1,2}-\d{1,2}% lower than the backtest/i],
+  ['typical/realistic win-rate range', /(?:win rates? of|trend-following strategies:|mean reversion:|market making:)\s*\d{2}-\d{2}%/i],
+]
+
+for (const [name, re] of THIRD_PASS) {
+  test(`no ${name}`, () => {
+    const hits = BLOG.filter((f) => {
+      const text = proseLines(fs.readFileSync(path.join(ROOT, f), 'utf-8')).join(String.fromCharCode(10))
+      return re.test(text)
+    })
+    assert.deepEqual(hits, [])
+  })
+}

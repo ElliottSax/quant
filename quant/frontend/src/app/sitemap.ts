@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
-import { getCongressTrades, memberSlug } from '@/lib/congress-trades'
+import { getCongressTrades, tickerSlugs, memberSlugs } from '@/lib/congress-trades'
 import { readFrontmatterValue } from '@/lib/frontmatter'
 import { isNoindexDraft } from '@/lib/noindex-drafts'
 
@@ -66,6 +66,11 @@ function getBlogEntries(): BlogEntry[] {
   }
 }
 
+// The congress entries come from a feed that rolls over daily; without this the
+// sitemap is frozen at the last deploy and lists tickers that have since dropped out
+// of the feed (their pages correctly 404). Refresh it several times a day.
+export const revalidate = 21600
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://quantengines.com'
   const currentDate = new Date()
@@ -76,14 +81,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const congress = await getCongressTrades()
     const trades = congress?.trades ?? []
-    const tickers = new Set(trades.map((t) => t.ticker.toUpperCase()))
-    const members = new Set(trades.map((t) => memberSlug(t.member)).filter(Boolean))
+    // Same predicate the pages use (lib/congress-trades): listed => page finds trades.
+    const tickers = tickerSlugs(trades)
+    const members = memberSlugs(trades)
     tickerEntries = [
-      ...Array.from(tickers).map((tk) => ({
+      ...tickers.map((tk) => ({
         url: `${baseUrl}/congress-stock-trades/${tk}`,
         lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
       })),
-      ...Array.from(members).map((m) => ({
+      ...members.map((m) => ({
         url: `${baseUrl}/congress-stock-trades/member/${m}`,
         lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
       })),

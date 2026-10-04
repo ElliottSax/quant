@@ -241,7 +241,7 @@ A: Learns which extreme deviations are likely to revert vs which are justified m
 A: Monthly or when performance degrades. Relationships change over time.
 
 **Q: What's the overfitting risk?**
-A: Use proper time series validation (never mix future into past). Expect 15-25% performance degradation.
+A: Use proper time series validation (never mix future into past). Expect some performance degradation.
 
 **Q: Should I combine traditional + ML?**
 A: Yes. Traditional for core signal, ML for confirmation. Robust ensemble approach.

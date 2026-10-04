@@ -164,3 +164,48 @@ export async function getCongressTrades(opts: { strict?: boolean } = {}): Promis
 
   return { trades, lastUpdated: trades[0]?.transactionDate || '', topMembers, topTickers }
 }
+
+// ---- Shared page/sitemap predicate -------------------------------------------------
+// The sitemap and the per-ticker / per-member pages must agree on exactly which
+// tickers and members exist. Both go through these functions, so a URL is only ever
+// listed if the page's own lookup (tradesForTicker / tradesForMember) finds trades
+// for it in the same data. /congress-stock-trades/HON was listed and 404ed because
+// the two paths normalised and filtered the feed separately.
+
+// Ticker as it appears in URLs: trimmed, upper-cased.
+export function normalizeTicker(s: string): string {
+  return (s || '').trim().toUpperCase()
+}
+
+// Plain symbols only (HON, BRK.B, BF-B). Anything else (blank, "N/A", spaces,
+// slashes, very long strings) never becomes a URL.
+const TICKER_URL_RE = /^[A-Z0-9][A-Z0-9.-]{0,9}$/
+
+export function tickerSlugs(trades: Trade[]): string[] {
+  const seen = new Set<string>()
+  for (const t of trades) {
+    const up = normalizeTicker(t.ticker)
+    if (TICKER_URL_RE.test(up) && tradesForTicker(trades, up).length > 0) seen.add(up)
+  }
+  return Array.from(seen)
+}
+
+export function tradesForTicker(trades: Trade[], ticker: string): Trade[] {
+  const up = normalizeTicker(ticker)
+  if (!TICKER_URL_RE.test(up)) return []
+  return trades.filter((t) => normalizeTicker(t.ticker) === up)
+}
+
+export function memberSlugs(trades: Trade[]): string[] {
+  const seen = new Set<string>()
+  for (const t of trades) {
+    const s = memberSlug(t.member)
+    if (s) seen.add(s)
+  }
+  return Array.from(seen)
+}
+
+export function tradesForMember(trades: Trade[], slug: string): Trade[] {
+  if (!slug) return []
+  return trades.filter((t) => memberSlug(t.member) === slug)
+}

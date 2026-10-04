@@ -21,14 +21,13 @@ Strategies with high win rates (65%+) allow aggressive position sizing while mai
 
 ### Industry Standards
 
-**Minimum acceptable win rates:**
-- Trend-following: 35-45%
-- Mean reversion: 45-55%
-- Statistical arbitrage: 55-65%
-- Market-making: 60-75%
-- Scalping: 70%+
+**What counts as an acceptable win rate depends on the strategy type:**
+- Trend-following: wins less often than it loses and relies on large winners
+- Mean reversion: wins more often, with smaller winners and occasional large losers
+- Statistical arbitrage and market-making: win often, with small gains per trade
+- Scalping: needs a high win rate because each winner is tiny
 
-Strategies with win rates below 40% are generally not worth trading, as drawdowns exceed gains over time.
+A low win rate only works when the average winner is much larger than the average loser, so judge a strategy by expectancy, not win rate alone.
 
 ### The Math of High Win Rates
 

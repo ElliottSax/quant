@@ -364,7 +364,7 @@ A: Minimum 2-3 years for daily/swing strategies, 5+ years strongly preferred. In
 A: Use walk-forward analysis with non-overlapping test sets, limit parameter combinations tested, maintain separate validation dataset, test across multiple uncorrelated assets. Over-optimized parameters often fail catastrophically on new data. If you want to run this kind of validation without building the harness yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest a strategy directly, no signup required.
 
 **Q: What Sharpe ratio should I target for live trading?**
-A: Backtested Sharpe >1.5 indicates healthy edge. Expect 30-40% degradation in live trading. Backtest Sharpe of 2.0 might achieve 1.2-1.4 live. Below 0.5 live indicates insufficient edge.
+A: Backtested Sharpe >1.5 indicates healthy edge. Expect live results to come in below the backtest, because of costs, slippage and overfitting. Below 0.5 live indicates insufficient edge.
 
 **Q: How frequently rebalance algorithmic portfolios?**
 A: Aligns with strategy timeframe. High-frequency: microseconds to minutes. Swing: daily-weekly. Position: weekly-monthly. Rebalance when weights drift >5-10% from targets.

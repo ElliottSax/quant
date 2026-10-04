@@ -49,7 +49,7 @@ Width = (Upper - Lower) / SMA × 100%  # Volatility indicator
 
 ## Bollinger Band Trading Strategies Overview
 
-### 1. Mean Reversion Strategy (68% Win Rate)
+### 1. Mean Reversion Strategy
 Trade mean reversion when price touches the bands:
 - **Entry**: Price pierces upper or lower band
 - **Signal**: Volume decreases after spike (exhaustion)
@@ -57,14 +57,14 @@ Trade mean reversion when price touches the bands:
 - **Profit Factor**: 2.08x
 - **Average Trade Duration**: 4-5 days
 
-### 2. Trend Breakout Strategy (52% Win Rate)
+### 2. Trend Breakout Strategy
 Trade breakouts above/below band extremes:
 - **Entry**: Price breaks above upper band with volume surge
 - **Exit**: Target = 3-5 times initial risk
 - **Holding Period**: 5-15 days
 - **Profit Factor**: 1.75x
 
-### 3. Bollinger Band Squeeze Strategy (61% Win Rate)
+### 3. Bollinger Band Squeeze Strategy
 Trade the volatility expansion following tight band consolidation:
 - **Entry**: Bands at 20-day low width, then expand > 1.3x average
 - **Direction**: Trade in direction of momentum

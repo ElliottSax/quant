@@ -243,7 +243,7 @@ for k, v in metrics.items():
 
 **Expected output for AAPL (2020-2025)**:
 
-A typical Bollinger Band mean-reversion strategy on a single stock produces 8-15 trades per year with a win rate of 55-65% and a Sharpe ratio of 0.5-0.8. It substantially underperforms buy-and-hold during strong trends but outperforms during choppy, range-bound markets.
+A typical Bollinger Band mean-reversion strategy on a single stock trades infrequently, often only a handful of times a year. It substantially underperforms buy-and-hold during strong trends but outperforms during choppy, range-bound markets.
 
 ## Step 5: Visualizing Results
 

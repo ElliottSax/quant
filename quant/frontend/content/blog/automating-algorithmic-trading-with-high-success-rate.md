@@ -356,7 +356,7 @@ Achieving a high success rate in automated trading requires a nuanced understand
 
 ### What is a realistic win rate for an algorithmic trading system?
 
-For trend-following strategies: 35-45%. For mean reversion: 55-65%. For market making: 60-75%. Any claim above 80% should be scrutinized for the average loss size, which is typically very large in high-win-rate systems. The most important metric is expectancy (expected profit per trade), not win rate.
+Trend-following systems usually win fewer than half their trades and rely on large winners; mean-reversion and market-making systems usually win more often but risk larger losses on the trades they lose. Any very high win rate should be scrutinized for the average loss size, which is typically very large in high-win-rate systems. The most important metric is expectancy (expected profit per trade), not win rate.
 
 ### How many filters should I use for signal confirmation?
 

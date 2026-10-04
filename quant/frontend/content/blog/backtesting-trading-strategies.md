@@ -215,7 +215,7 @@ Use adjusted prices for calculating returns (they account for dividends and spli
 
 ### What is a good Sharpe ratio for a backtest?
 
-In backtesting, a Sharpe ratio of 1.0-1.5 after realistic transaction costs is considered good for daily strategies. Above 2.0 should raise suspicion of overfitting unless the strategy has very specific structural advantages. In live trading, expect performance to be 30-50% lower than the backtest due to execution differences, market regime changes, and strategy decay. A backtest Sharpe of 1.5 might translate to 0.8-1.0 in live trading. Academic research suggests a minimum deflated Sharpe of 0.5 for strategy significance.
+In backtesting, a Sharpe ratio of 1.0-1.5 after realistic transaction costs is considered good for daily strategies. Above 2.0 should raise suspicion of overfitting unless the strategy has very specific structural advantages. In live trading, expect performance to be lower than the backtest due to execution differences, market regime changes, and strategy decay. A backtest Sharpe of 1.5 might translate to 0.8-1.0 in live trading. Academic research suggests a minimum deflated Sharpe of 0.5 for strategy significance.
 
 ---
 

@@ -287,7 +287,7 @@ confidence = filter.posterior_probability(signal_strength=-2.2,
 
 ## Frequently Asked Questions
 
-However, they typically require sacrificing trade frequency (taking only the highest-quality signals). On out-of-sample data, expect 2-3% degradation.
+However, they typically require sacrificing trade frequency (taking only the highest-quality signals). On out-of-sample data, expect some degradation.
 
 **Q: How do I prevent overfitting while optimizing win rate?**
 A: Use walk-forward testing: train on 2018-2022, test on 2023-2024, train on 2019-2023, test on 2025. Never optimize parameters on test data. Use k-fold cross-validation to confirm signal robustness.

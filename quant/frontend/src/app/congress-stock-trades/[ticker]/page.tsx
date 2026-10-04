@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getCongressTrades, type Trade } from '@/lib/congress-trades'
+import { getCongressTrades, tickerSlugs, tradesForTicker, normalizeTicker, type Trade } from '@/lib/congress-trades'
 
 export const revalidate = 86400
 // Tickers present in the current data get pages; anything else is a real 404
@@ -15,8 +15,8 @@ async function tradesFor(ticker: string): Promise<{ trades: Trade[]; asset: stri
   // strict: a failed FMP fetch must throw (no false 404), see lib/congress-trades.ts
   const data = await getCongressTrades({ strict: true })
   if (!data) return null
-  const up = ticker.toUpperCase()
-  const trades = data.trades.filter((t) => t.ticker.toUpperCase() === up)
+  const up = normalizeTicker(ticker)
+  const trades = tradesForTicker(data.trades, up)
   if (trades.length === 0) return null
   return { trades, asset: trades[0].assetDescription || up }
 }
@@ -24,13 +24,7 @@ async function tradesFor(ticker: string): Promise<{ trades: Trade[]; asset: stri
 export async function generateStaticParams() {
   const data = await getCongressTrades()
   if (!data) return []
-  const seen = new Set<string>()
-  const params: { ticker: string }[] = []
-  for (const t of data.trades) {
-    const up = t.ticker.toUpperCase()
-    if (!seen.has(up)) { seen.add(up); params.push({ ticker: up }) }
-  }
-  return params
+  return tickerSlugs(data.trades).map((ticker) => ({ ticker }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ ticker: string }> }): Promise<Metadata> {

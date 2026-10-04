@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getCongressTrades, memberSlug, type Trade } from '@/lib/congress-trades'
+import { getCongressTrades, memberSlugs, tradesForMember, type Trade } from '@/lib/congress-trades'
 
 export const revalidate = 86400
 // true so members added to the data after the last build still render (the
@@ -12,7 +12,7 @@ async function forMember(slug: string): Promise<{ trades: Trade[]; name: string;
   // strict: a failed FMP fetch must throw (no false 404), see lib/congress-trades.ts
   const data = await getCongressTrades({ strict: true })
   if (!data) return null
-  const trades = data.trades.filter((t) => memberSlug(t.member) === slug)
+  const trades = tradesForMember(data.trades, slug)
   if (trades.length === 0) return null
   return { trades, name: trades[0].member, chamber: trades[0].chamber }
 }
@@ -20,13 +20,7 @@ async function forMember(slug: string): Promise<{ trades: Trade[]; name: string;
 export async function generateStaticParams() {
   const data = await getCongressTrades()
   if (!data) return []
-  const seen = new Set<string>()
-  const params: { slug: string }[] = []
-  for (const t of data.trades) {
-    const s = memberSlug(t.member)
-    if (s && !seen.has(s)) { seen.add(s); params.push({ slug: s }) }
-  }
-  return params
+  return memberSlugs(data.trades).map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

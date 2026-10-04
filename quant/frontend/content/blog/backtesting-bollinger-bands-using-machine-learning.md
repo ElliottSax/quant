@@ -317,7 +317,7 @@ A: Use SHAP values or feature importance. Traditional traders need transparency 
 A: Gradient Boosting typically outperforms Random Forests; ensemble voting beats all single models.
 
 **Q: What's the real-world performance degradation?**
-A: Expect 20-30% lower returns due to overfitting, data snooping, and implementation costs.
+A: Expect lower returns due to overfitting, data snooping, and implementation costs.
 
 ## Conclusion
 

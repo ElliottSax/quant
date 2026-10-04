@@ -134,7 +134,7 @@ Use the Augmented Dickey-Fuller (ADF) test on the price series or spread. A p-va
 
 ### What is the typical win rate for mean reversion strategies?
 
-Well-designed mean reversion strategies typically achieve win rates of 55-65%, which is higher than trend-following strategies (typically 35-45%). However, the average winning trade is usually smaller than the average losing trade, so risk management through stop-losses and position sizing is critical to maintaining positive expectancy.
+Mean reversion strategies tend to win more often than trend-following strategies. However, the average winning trade is usually smaller than the average losing trade, so risk management through stop-losses and position sizing is critical to maintaining positive expectancy.
 
 ### Can mean reversion be applied to cryptocurrency markets?
 

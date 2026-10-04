@@ -182,7 +182,7 @@ The R:R ratio and win rate observed in a backtest represent the best-case scenar
 
 ### What is a good risk-reward ratio for day trading?
 
-For day trading, a minimum 1:1.5 R:R is recommended for strategies with win rates above 50%. Many successful day traders operate with 1:1 to 1:2 R:R combined with win rates of 55-65%, producing positive expectancy after commissions. The key constraint for day trading R:R is the intraday range: targets must be achievable within a single session, which limits how high the R:R can realistically be set.
+For day trading, a minimum 1:1.5 R:R is recommended for strategies with win rates above 50%. Many successful day traders operate with 1:1 to 1:2 R:R combined with a win rate high enough to produce positive expectancy after commissions. The key constraint for day trading R:R is the intraday range: targets must be achievable within a single session, which limits how high the R:R can realistically be set.
 
 ### How do I know if my risk-reward ratio is optimal?
 
