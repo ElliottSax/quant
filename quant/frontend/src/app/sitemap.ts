@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
-import { getCongressTrades, tickerSlugs, memberSlugs } from '@/lib/congress-trades'
 import { readFrontmatterValue } from '@/lib/frontmatter'
 import { isNoindexDraft } from '@/lib/noindex-drafts'
 
@@ -66,37 +65,13 @@ function getBlogEntries(): BlogEntry[] {
   }
 }
 
-// The congress entries come from a feed that rolls over daily; without this the
-// sitemap is frozen at the last deploy and lists tickers that have since dropped out
-// of the feed (their pages correctly 404). Refresh it several times a day.
-export const revalidate = 21600
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://quantengines.com'
   const currentDate = new Date()
 
-  // Per-ticker congressional-trade pages (the actively-traded symbols in the
-  // current data). Guarded so a data hiccup can't break the sitemap.
-  let tickerEntries: MetadataRoute.Sitemap = []
-  try {
-    const congress = await getCongressTrades()
-    const trades = congress?.trades ?? []
-    // Same predicate the pages use (lib/congress-trades): listed => page finds trades.
-    const tickers = tickerSlugs(trades)
-    const members = memberSlugs(trades)
-    tickerEntries = [
-      ...tickers.map((tk) => ({
-        url: `${baseUrl}/congress-stock-trades/${tk}`,
-        lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
-      })),
-      ...members.map((m) => ({
-        url: `${baseUrl}/congress-stock-trades/member/${m}`,
-        lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
-      })),
-    ]
-  } catch {
-    tickerEntries = []
-  }
+  // Congress ticker/member pages are NOT listed here: this file is prerendered at build time, so
+  // it would snapshot the FMP feed of the build while the pages render against the live feed
+  // (HON was listed here and 404ed). They are served by /congress-sitemap.xml (request time).
 
   // Static tool pages
   const toolPages = [
@@ -191,8 +166,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...toolEntries,
     // Trust and compliance pages
     ...legalEntries,
-    // Per-ticker congressional-trade pages
-    ...tickerEntries,
     // Blog articles
     ...blogEntries,
   ]

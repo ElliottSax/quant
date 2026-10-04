@@ -66,11 +66,23 @@ describe('wiring: sitemap and pages use the shared functions', () => {
   const appDir = path.resolve(import.meta.dirname, '..', '..', 'app')
   const read = (rel: string) => fs.readFileSync(path.join(appDir, rel), 'utf8')
 
-  test('sitemap uses tickerSlugs/memberSlugs and refreshes during the day', () => {
+  test('static sitemap.ts lists no data-driven congress URLs (build-time snapshot of a live feed)', () => {
     const src = read('sitemap.ts')
+    assert.doesNotMatch(src, /getCongressTrades|tickerSlugs|memberSlugs/)
+  })
+
+  test('congress-sitemap.xml is rendered at request time from the shared predicate', () => {
+    const src = read('congress-sitemap.xml/route.ts')
+    assert.match(src, /export const dynamic\s*=\s*'force-dynamic'/)
     assert.match(src, /tickerSlugs\(/)
     assert.match(src, /memberSlugs\(/)
-    assert.match(src, /export const revalidate\s*=\s*\d+/)
+    assert.match(src, /getCongressTrades\(\)/)
+  })
+
+  test('robots.txt advertises both sitemaps', () => {
+    const robots = fs.readFileSync(path.resolve(import.meta.dirname, '..', '..', '..', 'public', 'robots.txt'), 'utf8')
+    assert.match(robots, /Sitemap: https:\/\/quantengines\.com\/sitemap\.xml/)
+    assert.match(robots, /Sitemap: https:\/\/quantengines\.com\/congress-sitemap\.xml/)
   })
 
   test('ticker and member pages use the shared lookups', () => {

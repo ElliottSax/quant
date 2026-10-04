@@ -20,3 +20,4 @@ User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://quantengines.com/sitemap.xml
+Sitemap: https://quantengines.com/congress-sitemap.xml
