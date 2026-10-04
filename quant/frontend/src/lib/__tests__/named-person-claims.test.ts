@@ -27,6 +27,9 @@ const REMOVED = [
   'congress-ai-stock-investments-2026',
   // 2026-10-04 third sweep: named senators/representatives with trades no source backs
   'congress-signals-retail-weakness-selling-consumer-stocks-2026-03-15',
+  // 2026-10-04 pass 7 (persona leads): invented congress-wide aggregates with no named member
+  // (87%/89% of each party "purchased" NVDA, $523M, 294 purchasers, correlation 0.89, "253% outperformance")
+  'bipartisan-stock-picks-what-both-parties-buy',
 ]
 
 const TITLE = /\b(?:Sen\.|Rep\.|Senator|Representative|Congressman|Congresswoman)\s+[A-Z][a-z]+|\((?:R|D|I)-[A-Z][A-Za-z]*\)/

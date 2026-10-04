@@ -46,9 +46,9 @@ These levels emerge from a combination of: (1) Historical price memory (previous
 - No volume rejection
 - Touched but not closed at level
 
-## Breakout Performance Analysis (2020-2025)
+## Breakout Performance: What Is and Is Not Known
 
-Measured results are not published for this strategy. The code above is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
+Measured results are not published for this strategy. The code below is a starting point: run it on your own data with realistic costs and keep the full record, including the losing periods. Past performance does not predict future results.
 
 ## Python Implementation: Support and Resistance Detection
 
@@ -139,8 +139,8 @@ for level in resistance_levels:
 - Enter next bar open if still above resistance
 - Stop loss = resistance - 2%
 - Target = 2 × risk distance above entry
-- **Advantage**: Filters 35% false breakouts
-- **Disadvantage**: Misses 10% of valid moves
+- **Advantage**: filters one-bar false breakouts that only touch the level
+- **Disadvantage**: misses valid moves that never close 0.5% above
 
 ### Rule 2: Volume Confirmation
 - Require volume > 1.5x 20-day average on breakout day
@@ -148,19 +148,19 @@ for level in resistance_levels:
 - Enter if both conditions met
 - Stop loss = resistance - 2.5%
 - Target = 2.5 × risk distance
-- **Disadvantage**: Fewer setups (40% reduction)
+- **Disadvantage**: fewer setups
 
 ### Rule 3: Multi-Timeframe Confirmation
 - Daily: Confirm breakout above weekly resistance
 - Identify weekly support as stop loss level
 - Enter only if 4-hour chart also shows bullish structure
 - Target = next resistance level above current breakout
-- **Advantage**: Highest win rate (73%), best risk-reward
+- **Advantage**: fewest false signals of the three rules, best risk-reward
 - **Disadvantage**: Requires 3 timeframe analysis, slower execution
 
 ## False Breakout Analysis and Prevention
 
-False breakouts ("whipsaws") account for 20-35% of all breakout attempts:
+A large share of breakout attempts fail and reverse ("whipsaws"):
 
 **Common False Breakout Patterns:**
 - One-bar breakout without follow-through
@@ -171,19 +171,19 @@ False breakouts ("whipsaws") account for 20-35% of all breakout attempts:
 
 **Prevention Strategies:**
 
-1. **Time Filter** (reduces whipsaws 35% → 20%)
+1. **Time Filter**
    - Require 2-3 consecutive closes above resistance
    - Eliminate same-bar entries
 
-2. **Volatility Filter** (reduces whipsaws 35% → 18%)
+2. **Volatility Filter**
    - Only trade breakouts when ATR > 20-day average
    - Avoid breakouts during low volatility
 
-3. **Trend Filter** (reduces whipsaws 35% → 15%)
+3. **Trend Filter**
    - Use ADX > 25 for confirmation
    - Trade breakouts in direction of larger trend only
 
-4. **Price Action Filter** (reduces whipsaws 35% → 22%)
+4. **Price Action Filter**
    - Require body of breakout candle > 60% of range
    - Avoid breakouts with long upper/lower wicks
 
@@ -212,7 +212,7 @@ False breakouts ("whipsaws") account for 20-35% of all breakout attempts:
 - Target 1: $438.90 (2× risk = $20.40 gain)
 - Target 2: $453.20 (3× risk = $30.60 gain)
 
-**Expected Value**: 67% × $20.40 - 33% × -$10.20 = $13.67 - $3.37 = $10.30 average profit per share
+**Expected Value (illustration only, assuming a 67% hit rate on Target 1; the real rate is unknown until you measure it)**: 67% × $20.40 - 33% × $10.20 = $13.67 - $3.37 = $10.30 average profit per share
 
 **Position Size**: $2,000 / $10.20 = 196 shares
 
@@ -255,7 +255,7 @@ def ml_support_resistance_detector(price_data, lookback=100):
 A: At least 0.5% close above resistance for large-cap stocks, 1-2% for small-cap/illiquid assets.
 
 **Q: How do I distinguish between resistance and support on different timeframes?**
-A: Weekly/monthly resistance is stronger than daily. Trade only when multiple timeframes align (e.g., daily above weekly resistance). This increases win rate 67% → 71%.
+A: Weekly/monthly resistance is stronger than daily. Trade only when multiple timeframes align (e.g., daily above weekly resistance).
 
 **Q: Should I trade support/resistance breakdowns or breakouts?**
 Asymmetry suggests trading breakouts preferentially over breakdowns.
@@ -264,7 +264,7 @@ Asymmetry suggests trading breakouts preferentially over breakdowns.
 A: 8-14 days for daily timeframe. Holding longer risks reversal to middle of previous consolidation. Use 2× risk trailing stop after 3% gain.
 
 **Q: Can support and resistance be used on crypto?**
-A: Yes, with 3-5% price proximity tolerance instead of 2% due to higher volatility. Win rates remain consistent 65-70%.
+A: Yes, with 3-5% price proximity tolerance instead of 2% due to higher volatility.
 
 ## Conclusion
 

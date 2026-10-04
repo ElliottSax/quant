@@ -14,19 +14,19 @@ keywords: ["stablecoin yield", "DeFi lending", "stable farming", "yield optimiza
 
 Unlike volatile cryptocurrency yields dependent on token appreciation, stablecoin strategies provide pure yield from lending protocols, [liquidity provision](/blog/liquidity-provision-strategies), and yield farming mechanics without directional market risk.
 
-This comprehensive guide develops frameworks for evaluating lending protocols, liquidity provision on stablecoin pairs, multi-protocol diversification, and risk management strategies generating consistent risk-adjusted returns with sub-5% annual volatility.
+This comprehensive guide develops frameworks for evaluating lending protocols, liquidity provision on stablecoin pairs, multi-protocol diversification, and risk management strategies generating income that does not depend on the direction of crypto prices.
 
 ## Stablecoin Yield Sources and Mechanics
 
 Stablecoin yields originate from multiple sources requiring different risk assessments. Lending protocol yields pay interest to depositors when borrowers borrow stablecoins against collateral. Liquidity pool yields on AMMs like Curve pay trading fees to providers without [impermanent loss](/blog/impermanent-loss-mitigation). Yield farming programs distribute governance tokens on top of base yields.
 
-Aave and Compound lending represent the lowest-risk stablecoin yields. Deposit USDC on Aave, earn 4-6% APY paid from borrowers' interest payments. Compound offers similar rates. These protocols maintain 1.5-2x over-collateralization requirements preventing insolvency from borrower defaults. The 4-6% yield requires zero active management - simply deposit and earn until withdrawal.
+Aave and Compound lending represent the lowest-risk stablecoin yields. Deposit USDC on Aave and earn a variable APY paid from borrowers' interest; the rate moves with utilisation, so check the live market before assuming anything. Compound works the same way. These protocols maintain 1.5-2x over-collateralization requirements preventing insolvency from borrower defaults. The lending yield requires zero active management - simply deposit and earn until withdrawal.
 
 The historical reliability proves strong. Aave experienced zero fund loss for depositors across 5+ years despite multiple exploits and market crashes. Compound also maintained perfect depositor security despite brief governance attacks. Only Celsius and FTX inflicted major losses through centralized risk-taking, not legitimate lending protocol failures.
 
-Curve stablecoin pools generate trading fees without impermanent loss. The USDC/USDT/DAI pool on Curve shares all swap fees (0.04% per swap) with liquidity providers proportional to their share. Pools process $500M-$1B daily volume, generating significant fee income. A $10,000 position in a $100M liquidity pool (0.01% share) earns $500-$2,000 monthly in fees with zero IL risk due to correlated assets.
+Curve stablecoin pools generate trading fees without impermanent loss. The USDC/USDT/DAI pool on Curve shares all swap fees (0.04% per swap) with liquidity providers proportional to their share. Fee income scales with pool volume, which varies widely by pool and period. For illustration only: if a pool turned over $500M a day at a 0.04% fee, that is $200,000 a day in fees, and a $10,000 position in a $100M pool (0.01% share) would earn about $20 a day, roughly $600 a month, with zero IL risk due to correlated assets.
 
-Liquidity mining programs amplify yields through token distributions. Aave distributes AAVE token rewards to depositors/borrowers based on activity. Curve distributes CRV tokens. When these governance tokens are worth real value, effective yields reach 8-15% APY including token distributions. However, token inflation reduces long-term sustainability.
+Liquidity mining programs amplify yields through token distributions. Aave distributes AAVE token rewards to depositors/borrowers based on activity. Curve distributes CRV tokens. When these governance tokens have real market value, the effective yield can be well above the base lending rate; it falls with the token price. However, token inflation reduces long-term sustainability.
 
 Convex Finance optimizes Curve yields through vote-buying. Lock CRV (Curve's governance token) to vote on which pools receive governance rewards. Convex accumulates millions of CRV votes to direct max rewards to highest-yield pools. Depositing into Convex earns: base Curve fees (3-5% APY) + optimized CRV rewards (5-10% APY) = 8-15% total yield without manual voting.
 
@@ -96,7 +96,7 @@ Automated monitoring tracks key risk metrics: individual protocol TVL changes >2
 
 ## Key Takeaways
 
-Stablecoin yield strategies generate 5-10% consistent returns with sub-5% volatility through lending protocols and AMM fee collection, suitable for conservative capital allocation and low-risk portfolio components.
+Stablecoin yield strategies earn variable, non-directional income through lending interest and AMM fee collection, suitable for conservative capital allocation and low-risk portfolio components.
 
 Aave and Compound USDC/USDT lending represent the safest yields (4-6% APY) with exceptional track records of zero depositor loss despite market extremes and security incidents across 5+ year histories.
 
@@ -110,7 +110,7 @@ Risk-adjusted return framework comparing required risk premiums against offered 
 
 **What are realistic annual returns from conservative stablecoin strategies?**
 
-Conservative 100% Aave/Compound lending approach: 5-6% APY annually, requiring zero active management. Moderate Curve/Convex focused strategy: 8-10% APY with weekly rebalancing. Aggressive leveraged approach: 12-20% annually but requires daily monitoring and carries liquidation risk. Most institutional capital targets 6-8% as sweet spot of reasonable yield without excessive risk-taking. After 2.5% inflation and 30% tax on gains, conservative strategies provide 2-3% real (inflation-adjusted) after-tax returns versus 0-1% from bank deposits.
+There is no fixed number: lending rates float with borrowing demand and have ranged from near zero to double digits across market cycles. A conservative 100% Aave/Compound lending approach earns the live lending rate with zero active management. A Curve/Convex strategy adds trading fees and token rewards with weekly rebalancing. A leveraged approach multiplies the spread but requires daily monitoring and carries liquidation risk. Whatever the headline rate, subtract inflation and your tax rate before comparing it with a bank deposit.
 
 **Which stablecoin is safest for yield farming - USDC, USDT, or DAI?**
 
