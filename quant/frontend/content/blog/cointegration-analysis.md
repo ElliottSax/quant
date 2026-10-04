@@ -36,11 +36,9 @@ In this example, the null hypothesis is that there are no cointegrating relation
 
 ## Section 2: Practical Applications of Cointegration Analysis
 
-Cointegration analysis has numerous practical applications in algorithmic trading and quantitative strategies. One of the most popular applications is statistical arbitrage, which involves identifying mispricings in the market by analyzing the relationships between multiple time series. For example, suppose we have two stocks, A and B, which are cointegrated. If the spread between A and B deviates from its long-term equilibrium relationship, we can buy the underperforming stock and sell the outperforming stock, expecting the spread to revert to its mean. The following table compares the performance of a cointegration-based statistical arbitrage strategy with a traditional mean-reversion strategy:
+Cointegration analysis has numerous practical applications in algorithmic trading and quantitative strategies. One of the most popular applications is statistical arbitrage, which involves identifying mispricings in the market by analyzing the relationships between multiple time series. For example, suppose we have two stocks, A and B, which are cointegrated. If the spread between A and B deviates from its long-term equilibrium relationship, we can buy the underperforming stock and sell the outperforming stock, expecting the spread to revert to its mean.
 
-*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
-
-As shown in the table, the cointegration-based statistical arbitrage strategy outperforms the traditional mean-reversion strategy in terms of annual return and Sharpe ratio, while also exhibiting a lower maximum drawdown. Another application of cointegration analysis is pairs trading, which involves identifying two stocks that are cointegrated and trading on the spread between them.
+Another application of cointegration analysis is pairs trading, which involves identifying two stocks that are cointegrated and trading on the spread between them.
 
 ## Section 3: Step-by-Step Guide to Cointegration Analysis
 

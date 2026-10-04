@@ -87,11 +87,7 @@ Like RSI divergence, MACD divergence occurs when price and the MACD indicator mo
 
 ### Performance Data
 
-MACD divergence signals on the S&P 500 (2010-2025):
-- **Average winner**: 4.2%
-- **Average loser**: -2.1%
-
-Bullish divergence is significantly more reliable than bearish divergence, consistent with the long-term upward bias of equity markets.
+This guide does not publish backtest results for MACD divergence signals. Test the rule on your own data, with realistic costs, before relying on it.
 
 ## Combining MACD with Other Indicators
 

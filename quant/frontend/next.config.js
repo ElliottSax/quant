@@ -54,7 +54,8 @@ const nextConfig = {
       "congress-stock-trades-before-earnings",
       "congress-stock-trades-vs-hedge-funds",
       "congress-tech-stock-buying-spree-2026",
-      "congress-ai-stock-investments-2026"
+      "congress-ai-stock-investments-2026",
+      "congress-signals-retail-weakness-selling-consumer-stocks-2026-03-15"
     ]
     return removed.map((slug) => ({
       source: `/blog/${slug}`,

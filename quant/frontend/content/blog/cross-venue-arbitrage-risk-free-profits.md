@@ -66,11 +66,7 @@ For instance, a trader can use a high-frequency trading platform to execute trad
 
 ## Section 4: Real-World Examples and Case Studies
 
-Cross-venue arbitrage strategies have been successfully implemented by various traders and institutions. Another example is the use of statistical arbitrage strategies by hedge funds, which have been shown to generate high returns with low risk. The following table highlights the performance of a cross-venue arbitrage strategy based on statistical arbitrage:
-
-*Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
-
-The strategy also demonstrated low risk, with a maximum drawdown of 10.2% over the same period.
+Cross-venue arbitrage strategies have been successfully implemented by various traders and institutions.
 
 ## Section 5: Common Mistakes
 

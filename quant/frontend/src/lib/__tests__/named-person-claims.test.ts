@@ -25,6 +25,8 @@ const REMOVED = [
   'congress-options-trading-analysis', 'congress-stock-trades-before-earnings',
   'congress-stock-trades-vs-hedge-funds', 'congress-tech-stock-buying-spree-2026',
   'congress-ai-stock-investments-2026',
+  // 2026-10-04 third sweep: named senators/representatives with trades no source backs
+  'congress-signals-retail-weakness-selling-consumer-stocks-2026-03-15',
 ]
 
 const TITLE = /\b(?:Sen\.|Rep\.|Senator|Representative|Congressman|Congresswoman)\s+[A-Z][a-z]+|\((?:R|D|I)-[A-Z][A-Za-z]*\)/
@@ -78,6 +80,29 @@ test('no blog line states an unsourced congress-wide win rate, outperformance or
       if (line.trimStart().startsWith('```')) { fenced = !fenced; return }
       if (fenced || /^>\s*\*\*Note on figures/.test(line)) return
       if (GROUP.test(line) && CLAIM.test(line) && NUM.test(line.replace(BAND, ''))) hits.push(`${f}:${i + 1}: ${line.slice(0, 100)}`)
+    })
+  }
+  assert.deepEqual(hits, [])
+})
+
+// "The following table ..." with no table behind it reads as a missing result. Several posts had their
+// invented result tables removed but kept the sentence introducing them (and sentences "as shown in the table").
+test('no blog post points at a table or chart that is not there', () => {
+  const REF = /\b(?:the following (?:table|chart)|(?:table|chart) below|(?:as )?shown in the table|(?:table|chart) above|as the table shows)\b/i
+  const hits: string[] = []
+  for (const f of FILES) {
+    const text = fs.readFileSync(path.join(BLOG_DIR, f), 'utf-8')
+    if (/^\s*\|.*\|\s*$/m.test(text) || /<table|<img|!\[/i.test(text)) continue
+    text.split(/\r?\n/).forEach((line, i) => { if (REF.test(line)) hits.push(`${f}:${i + 1}: ${line.slice(0, 100)}`) })
+  }
+  assert.deepEqual(hits, [])
+})
+
+test('no blog post lists unsourced "Average winner/loser" percentages', () => {
+  const hits: string[] = []
+  for (const f of FILES) {
+    fs.readFileSync(path.join(BLOG_DIR, f), 'utf-8').split(/\r?\n/).forEach((line, i) => {
+      if (/\*\*Average (?:winner|loser)\*\*:\s*-?\d/i.test(line)) hits.push(`${f}:${i + 1}: ${line.slice(0, 100)}`)
     })
   }
   assert.deepEqual(hits, [])
