@@ -254,7 +254,7 @@ const TRI_MEASURED = new Set([
   'walk-forward-optimization.md',
 ])
 const TRI = BLOG.filter((f) => !TRI_MEASURED.has(path.basename(f)))
-const TRI_SENT = (l: string) => l.split(/(?<=[.!?])\s+/)
+const TRI_SENT = (l: string) => l.split(/(?<!et al\.)(?<!e\.g\.)(?<!i\.e\.)(?<=[.!?])\s+/)
 const TRI_AUTHOR_YEAR = /[A-Z][A-Za-z'’-]+(?: (?:and|&) [A-Z][A-Za-z'’-]+| et al\.?)\s*\(?(?:19|20)\d\d\)?/
 const TRI_FINDING = /\b(?:found|finds|show|shows|showed|demonstrat\w+|report\w+|conclud\w+|estimat\w+|reveal\w+|document\w+|according to|can (?:generate|produce|explain|lead)|explains?)\b/i
 const TRI_FIGURE = /\d+(?:\.\d+)?\s*(?:%|percent)|\bSharpe(?: ratio)?[^.!?]{0,20}\d|\b\d\.\d+\b/i

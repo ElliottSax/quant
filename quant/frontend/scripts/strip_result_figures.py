@@ -184,7 +184,7 @@ ARITH_CONTEXT = re.compile(r"\b(?:assum\w+|suppose|given|inputs?|parameters?|sce
 DATED = re.compile(r"\b(?:19|20)\d\d\b")
 LEAD_WORD = re.compile(r"(?:Historical|Average|Annuali[sz]ed|Typical|Backtest|Observed|Realized|Realised)\b", re.I)
 
-SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
+SENT_SPLIT = re.compile(r"(?<!et al\.)(?<!e\.g\.)(?<!i\.e\.)(?<=[.!?])\s+")
 MAX_SENTENCE = 360
 MEASURED_PAGES = {"triple-barrier-labeling-meta-labeling.md", "python-backtesting-framework.md", "walk-forward-optimization.md"}
 
