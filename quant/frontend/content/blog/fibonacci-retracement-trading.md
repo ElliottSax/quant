@@ -91,7 +91,7 @@ A Fibonacci retracement level may be technically valid but irrelevant if it fall
 
 ## Backtesting Fibonacci Retracement Strategies
 
-Quantitative analysis of Fibonacci retracement effectiveness yields nuanced results. Academic studies (Pring, 2002; Murphy, 1999) have found that the 38.2% and 61.8% levels are statistically more significant than the 23.6% or 78.6% levels, though this varies by asset class.
+Quantitative analysis of Fibonacci retracement effectiveness yields nuanced results. Practitioner texts such as Pring (2002) and Murphy (1999) treat the 38.2% and 61.8% levels as the most important, but rigorous statistical evidence that these levels matter more than others is weak; treat them as widely watched levels, not proven support or resistance.
 
 This edge, while modest, becomes meaningful when applied consistently with proper [position sizing](/blog/position-sizing-strategies).
 

@@ -14,7 +14,7 @@ description: "Momentum trading's primary risk: catching falling knives. The trad
 
 # Automating Momentum Trading Safely
 
-Momentum trading's primary risk: catching falling knives. A stock that rises 15% creates momentum, but that same momentum can reverse catastrophically on earnings or news. This guide reveals how institutional traders automate momentum trading with safety guardrails that eliminate 80%+ of catastrophic losses while preserving 90%+ of upside potential.
+Momentum trading's primary risk: catching falling knives. A stock that rises 15% creates momentum, but that same momentum can reverse catastrophically on earnings or news. This guide reveals how institutional traders automate momentum trading with safety guardrails that reduce the risk of catastrophic losses.
 
 ## The Momentum Trap: When Momentum Reverses
 
@@ -333,6 +333,6 @@ A: Check stops every 15 minutes during trading hours. Move up on trailing basis 
 
 ## Conclusion
 
-Safe momentum trading requires disciplined application of filters, proper position sizing, and adaptive risk management. The safety frameworks presented—volatility regime analysis, trend maturity measurement, liquidity validation, and adaptive stops—reduce catastrophic losses by 90%+ while sacrificing only 24% of upside returns.
+Safe momentum trading requires disciplined application of filters, proper position sizing, and adaptive risk management. The safety frameworks presented—volatility regime analysis, trend maturity measurement, liquidity validation, and adaptive stops—aim to reduce catastrophic losses, at some cost in upside returns.
 
-The most important insight: safety and profitability are not opposing forces. By trading only high-quality momentum setups (low volatility, early-stage trends, strong liquidity), position sizing appropriately, and managing risk mechanically, you achieve superior risk-adjusted returns. Professional traders accept 20-25% lower raw returns in exchange for 80-90% lower drawdowns and far greater longevity. This is the path to sustainable, institutional-grade trading performance.
+The most important insight: safety and profitability are not opposing forces. By trading only high-quality momentum setups (low volatility, early-stage trends, strong liquidity), position sizing appropriately, and managing risk mechanically, you achieve superior risk-adjusted returns. Professional traders often accept lower raw returns in exchange for smaller drawdowns and greater longevity. This is the path to sustainable, institutional-grade trading performance.

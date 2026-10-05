@@ -91,7 +91,7 @@ The Directional Movement crossover system generates trend-following signals filt
 **Stop-Loss:** Below the swing low that preceded the crossover (longs) or above the swing high (shorts)
 **Exit:** When ADX turns down from above 40 (trend weakening), or when a reverse crossover occurs
 
-**Performance Note:** The +DI/-DI crossover without ADX filtering produces excessive false signals in rangebound markets. Adding the ADX > 20 filter eliminates approximately 40-50% of losing trades in non-trending conditions, significantly improving net profitability.
+**Performance Note:** The +DI/-DI crossover without ADX filtering produces excessive false signals in rangebound markets. Adding the ADX > 20 filter removes many of the false signals that appear in non-trending conditions. Test the effect on your own data before relying on it.
 
 ## Trading Strategy 2: ADX Breakout System
 

@@ -487,4 +487,4 @@ A: Alpaca's paper trading, Interactive Brokers' demo accounts, or simulate manua
 
 ## Conclusion
 
-Python provides all tools needed for institutional-grade pairs trading: data fetching (yfinance), statistical analysis (statsmodels), backtesting (backtesting.py), and live execution (alpaca-api). The code frameworks presented handle data pipeline, pair selection, signal generation, backtesting, and paper trading. With these foundations, you can build production pairs trading systems generating 2+ Sharpe ratios with single-digit drawdowns.
+Python provides all tools needed for institutional-grade pairs trading: data fetching (yfinance), statistical analysis (statsmodels), backtesting (backtesting.py), and live execution (alpaca-api). The code frameworks presented handle data pipeline, pair selection, signal generation, backtesting, and paper trading. With these foundations, you can build production pairs trading systems whose live results you measure and report honestly.

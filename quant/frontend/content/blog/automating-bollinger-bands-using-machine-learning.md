@@ -407,13 +407,13 @@ def validate_ml_bb(df: pd.DataFrame, n_splits: int = 5):
 
 ## Conclusion
 
-Machine learning enhances Bollinger Band strategies along three dimensions: adaptive parameters that respond to regime changes, signal classification that filters low-probability setups, and regime detection that switches between mean-reversion and breakout modes. The signal classifier provides the highest practical improvement (typically +0.3 Sharpe over the baseline) because it directly addresses the core weakness of Bollinger Bands: the inability to distinguish reversals from trend continuations. All ML enhancements must be validated with purged walk-forward analysis to prevent overfitting, which is the primary risk when adding model complexity to trading strategies.
+Machine learning enhances Bollinger Band strategies along three dimensions: adaptive parameters that respond to regime changes, signal classification that filters low-probability setups, and regime detection that switches between mean-reversion and breakout modes. The signal classifier provides the highest practical improvement because it directly addresses the core weakness of Bollinger Bands: the inability to distinguish reversals from trend continuations. All ML enhancements must be validated with purged walk-forward analysis to prevent overfitting, which is the primary risk when adding model complexity to trading strategies.
 
 ## Frequently Asked Questions
 
 ### Does ML really improve Bollinger Band performance?
 
-In walk-forward tests, ML signal filtering improves the Sharpe ratio by 0.2-0.4 over raw Bollinger signals. The improvement comes from eliminating 40-50% of losing trades while retaining most winners. The improvement is most pronounced during transition periods between market regimes, where fixed-parameter bands generate the most false signals.
+The improvement comes from eliminating 40-50% of losing trades while retaining most winners. The improvement is most pronounced during transition periods between market regimes, where fixed-parameter bands generate the most false signals.
 
 ### What is the risk of overfitting with ML-enhanced indicators?
 

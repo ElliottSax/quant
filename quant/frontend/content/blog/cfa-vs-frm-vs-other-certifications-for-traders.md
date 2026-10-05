@@ -83,7 +83,7 @@ Here are some frequently asked questions about the CFA and FRM certifications:
 1. What is the difference between the CFA and FRM certifications?
 The CFA certification is focused on investment analysis and portfolio management, while the FRM certification is focused on risk management and financial modeling.
 2. How much does it cost to obtain the CFA or FRM certification?
-The cost of obtaining the CFA or FRM certification can range from $1,000 to $3,000, depending on the level of the program and the location of the exams.
+The cost of obtaining the CFA or FRM certification varies by level, registration window and exam location; check the current fee schedules on the CFA Institute and GARP sites.
 3. How long does it take to obtain the CFA or FRM certification?
 The time it takes to obtain the CFA or FRM certification can range from 1 to 3 years, depending on the level of the program and the amount of study time required.
 4. What are the eligibility requirements for the CFA or FRM certification?

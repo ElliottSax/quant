@@ -509,7 +509,7 @@ def backtest_evt_var(returns, confidence=0.99, window=252):
 
 ### How does EVT differ from normal distribution assumptions?
 
-Normal distributions severely underestimate tail risk—they predict extreme events are far rarer than reality. EVT is specifically designed for extremes and accounts for fat tails common in financial returns. For 99%+ VaR, EVT can be 30-50% higher than normal assumptions.
+Normal distributions severely underestimate tail risk—they predict extreme events are far rarer than reality. EVT is specifically designed for extremes and accounts for fat tails common in financial returns. For 99%+ VaR, EVT estimates are typically higher than estimates that assume normality, because real return tails are fatter.
 
 ### What threshold should I use for Peaks Over Threshold?
 

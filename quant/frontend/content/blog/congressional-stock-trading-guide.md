@@ -39,7 +39,7 @@ The law has significant gaps that limit its effectiveness:
 | Minimal penalties | The $200 late filing fee is not a meaningful deterrent |
 | No real-time reporting | Electronic filing exists but is not standardized or machine-readable |
 
-Between 2021 and 2025, the Campaign Legal Center documented over 200 instances of late filings by members of both parties, with the average late filing arriving 78 days after the statutory deadline. The cumulative fines assessed were negligible relative to the trading profits involved.
+The cumulative fines assessed were negligible relative to the trading profits involved.
 
 ## How Politicians Actually Trade
 

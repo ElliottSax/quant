@@ -364,4 +364,4 @@ A: Annually minimum. If market regime changes, adjust filters quarterly.
 
 ## Conclusion
 
-Safe RSI trading requires filtering false signals through trend confirmation, volatility checks, and volume analysis. Combining these safeguards with proper stop losses and position sizing transforms RSI from a boom-bust strategy into a reliable income generator. The backtests show that safe approaches consistently outperform unsafe ones on risk-adjusted returns, which is the true measure of trading profitability.
+Safe RSI trading requires filtering false signals through trend confirmation, volatility checks, and volume analysis. Combining these safeguards with proper stop losses and position sizing transforms RSI from a boom-bust strategy into a reliable income generator. Safer approaches tend to look better on risk-adjusted returns, which is the more meaningful measure; verify this on your own data.

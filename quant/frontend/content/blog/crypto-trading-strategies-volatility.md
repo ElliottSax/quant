@@ -19,11 +19,11 @@ color: '''"secondary"'''
 
 ## Quick Answer
 
-Crypto volatility (10-20% daily moves) creates profit opportunities daily. Top strategies: (1) Breakout trading on 4-hour resistance (profit 5-15% per trade), (2) Scalping on 1-hour support bounces (50-200 pip trades), (3) Range trading when trapped between key levels (30 minute holds). Use 2-5x leverage maximum on exchanges like Binance/Bybit, set hard stop losses 2% below entry.
+Crypto volatility (10-20% daily moves) creates profit opportunities daily. Top strategies: (1) Breakout trading on 4-hour resistance, (2) Scalping on 1-hour support bounces (50-200 pip trades), (3) Range trading when trapped between key levels (30 minute holds). Use 2-5x leverage maximum on exchanges like Binance/Bybit, set hard stop losses 2% below entry.
 
 ## Introduction
 
-Cryptocurrency volatility is 3-5x higher than stocks, meaning bigger price moves daily. This volatility creates both risks and profits. This guide covers strategies that capitalize on crypto's unique characteristics.
+Cryptocurrency is typically far more volatile than stocks, meaning bigger price moves daily. This volatility creates both risks and profits. This guide covers strategies that capitalize on crypto's unique characteristics.
 
 ## Trading Strategies
 
@@ -92,9 +92,9 @@ Traders often fall into these pitfalls when using this strategy:
 
 | Market | Entry | Stop Loss | Target | Risk/Reward | Expected Outcome |
 |--------|-------|-----------|--------|-------------|------------------|
-| Stocks (SPY) | Breakout + Volume | 2% below entry | 3x risk above | 1:3 | 2-3% monthly returns |
-| Forex (EUR/USD) | MA Crossover | 15 pips | 45+ pips | 1:3+ | 50-100 pips weekly |
-| Crypto (BTC) | Technical Level | 2% below | 5-10% above | 1:2.5+ | 5-15% monthly |
+| Stocks (SPY) | Breakout + Volume | 2% below entry | 3x risk above | 1:3 | No forecast; depends on testing |
+| Forex (EUR/USD) | MA Crossover | 15 pips | 45+ pips | 1:3+ | No forecast; depends on testing |
+| Crypto (BTC) | Technical Level | 2% below | 5-10% above | 1:2.5+ | No forecast; depends on testing |
 | Emerging Market ETF | Range Breakout | Below support | 10-20% move | 1:2 | Mid-term 20-50% moves |
 
 ## Best Practices for This Strategy
@@ -118,7 +118,7 @@ Beginners: 1x (no leverage). Intermediate: 2-3x maximum. Advanced: 5x maximum. M
 
 ### Is crypto trading profitable in 2026?
 
-Yes, volatility creates daily profits. Average trader: -5% (due to poor risk management). Smart trader: +10% month.
+Yes, volatility creates daily profits. Outcomes vary widely; poor risk management is the usual reason traders lose money.
 
 ### What's the difference between spot and futures trading?
 

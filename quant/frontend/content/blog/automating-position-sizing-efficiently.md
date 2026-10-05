@@ -20,7 +20,7 @@ Position sizing is the primary determinant of trading success, not signal qualit
 
 ## The Position Sizing Imperative
 
-Research by Edwin de Bondt and others shows that position sizing accounts for 80-90% of portfolio performance variance, while signal quality accounts for only 10-20%. Most traders focus on signals; professionals focus on sizing. If you want to compute your own Kelly fraction from win rate and average win/loss without doing the algebra by hand, our [Kelly criterion calculator](/tools/kelly-criterion) does it directly.
+Most traders focus on signals; professionals focus on sizing. If you want to compute your own Kelly fraction from win rate and average win/loss without doing the algebra by hand, our [Kelly criterion calculator](/tools/kelly-criterion) does it directly.
 
 **Kelly Criterion Example:**
 - Kelly fraction: f = (0.60 × 2% - 0.40 × 1%) / 2% = 40%
@@ -319,7 +319,7 @@ A: Depends. With 50% win rate, 2% causes account drawdowns >30%. Never exceed 2%
 A: Reduce sizing by 50% after 3 consecutive losses, 25% after 2. Resume normal after 3 consecutive wins. This "dynamic safety" prevents ruin.
 
 **Q: What's maximum leverage for algorithmic trading?**
-A: 2-3x for equities, 5-10x for forex/crypto. Professional firms use 1-2x despite higher leverage availability. Conservative leverage = 50-year survival.
+A: 2-3x for equities, 5-10x for forex/crypto. Conservative leverage = 50-year survival.
 
 ## Conclusion
 

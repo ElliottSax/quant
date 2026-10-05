@@ -9,7 +9,7 @@ keywords: ["algorithmic trading guide", "algo trading 2026", "quantitative tradi
 ---
 # The Complete Guide to Algorithmic Trading in 2026
 
-Algorithmic trading now accounts for approximately 60-75% of U.S. equity market volume and an even higher share in futures and forex markets. What was once the exclusive domain of hedge funds and investment banks has been democratized by open-source tools, affordable data feeds, and cloud computing. In 2026, an individual trader with Python skills and a $10,000 account can deploy strategies that rival what required a team of PhDs and millions in infrastructure a decade ago.
+Algorithmic trading now accounts for a large share of U.S. equity volume and of futures and forex markets. What was once the exclusive domain of hedge funds and investment banks has been democratized by open-source tools, affordable data feeds, and cloud computing. In 2026, an individual trader with Python skills and a $10,000 account can deploy strategies that rival what required a team of PhDs and millions in infrastructure a decade ago.
 
 This guide is a comprehensive reference for algorithmic trading — from foundational concepts through advanced strategies, backtesting methodology, risk management, platform selection, and the emerging field of congressional trading analysis. Whether you are writing your first moving average crossover or optimizing a multi-factor portfolio, this is your starting point and ongoing reference.
 
@@ -48,14 +48,14 @@ For a gentler introduction, see our [algorithmic trading for beginners guide](/b
 
 ### The Algorithmic Trading Spectrum
 
-| Type | Timeframe | Complexity | Capital Needed | Annual Target |
-|------|-----------|------------|----------------|---------------|
-| Systematic macro | Days to months | Medium | $25,000+ | 10-20% |
-| [Statistical arbitrage](/blog/statistical-arbitrage-guide) | Minutes to days | High | $50,000+ | 15-30% |
-| [Mean reversion](/blog/mean-reversion-strategies-guide) | Hours to days | Medium | $10,000+ | 10-25% |
-| [Momentum/Trend following](/blog/momentum-trading-strategy-guide) | Days to months | Low-Medium | $25,000+ | 10-20% |
-| [Market making](/blog/market-making-strategies) | Seconds to minutes | Very High | $100,000+ | 20-40% |
-| [High-frequency trading](/blog/high-frequency-trading-explained) | Microseconds | Extreme | $1,000,000+ | 30-100% |
+| Type | Timeframe | Complexity | Capital Needed |
+|------|-----------|------------|----------------|
+| Systematic macro | Days to months | Medium | $25,000+ |
+| [Statistical arbitrage](/blog/statistical-arbitrage-guide) | Minutes to days | High | $50,000+ |
+| [Mean reversion](/blog/mean-reversion-strategies-guide) | Hours to days | Medium | $10,000+ |
+| [Momentum/Trend following](/blog/momentum-trading-strategy-guide) | Days to months | Low-Medium | $25,000+ |
+| [Market making](/blog/market-making-strategies) | Seconds to minutes | Very High | $100,000+ |
+| [High-frequency trading](/blog/high-frequency-trading-explained) | Microseconds | Extreme | $1,000,000+ |
 
 For beginners, systematic trend following or mean reversion on daily timeframes offers the best risk-reward ratio for learning while the account builds.
 
@@ -163,7 +163,6 @@ For a complete framework, see [backtesting trading strategies](/blog/backtesting
 | [Sharpe Ratio](/blog/sharpe-ratio-portfolio-analysis) | > 1.0 | > 2.0 | Annualized risk-adjusted return |
 | [Maximum Drawdown](/blog/maximum-drawdown-analysis) | < 20% | < 10% | Worst peak-to-trough decline |
 | Profit Factor | > 1.5 | > 2.0 | Gross profit / gross loss |
-| Win Rate | > 45% | > 55% | Percentage of profitable trades |
 | [Value at Risk](/blog/value-at-risk-var-guide) | Context-dependent | — | Maximum expected loss at confidence level |
 | [Expected Shortfall (CVaR)](/blog/expected-shortfall-cvar) | Context-dependent | — | Average loss beyond VaR |
 | Calmar Ratio | > 1.0 | > 3.0 | Annual return / max drawdown |
@@ -338,7 +337,6 @@ One of the most fascinating developments in data-driven trading is the systemati
 
 ### Why Congressional Trades Matter
 
-- Congressional portfolios have historically outperformed the S&P 500 by 4-6% annually
 - Members sit on committees with advance knowledge of legislation, regulation, and government contracts
 - Disclosure is delayed (up to 45 days), creating a decay in signal value
 - Some members have remarkably consistent track records
@@ -370,9 +368,9 @@ The gap between backtest returns and live returns is almost always explained by 
 | Cost Type | Impact | Mitigation |
 |-----------|--------|------------|
 | Commission | $0-5 per trade | Use commission-free brokers for small accounts |
-| Spread | 0.01-0.10% per trade | Trade liquid instruments; use limit orders |
-| Slippage | 0.05-0.50% per trade | Account for in backtests; use VWAP/TWAP execution |
-| Market impact | 0.10-1.00% for large orders | Break large orders into smaller pieces |
+| Spread | Small per trade; wider in illiquid names | Trade liquid instruments; use limit orders |
+| Slippage | Varies with liquidity and order size | Account for in backtests; use VWAP/TWAP execution |
+| Market impact | Grows with order size relative to volume | Break large orders into smaller pieces |
 | Opportunity cost | Varies | Balance speed vs. cost |
 
 For systematic approaches, see [algorithmic execution quality](/blog/algorithmic-execution-quality), [execution algorithms guide](/blog/execution-algorithms-guide), and [transaction cost analysis](/blog/transaction-cost-analysis).

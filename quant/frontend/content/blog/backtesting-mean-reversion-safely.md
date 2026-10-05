@@ -274,4 +274,4 @@ A: Normal. Go back to simple parameters; complex parameters overfit.
 
 ## Conclusion
 
-Safe mean reversion backtesting demands walk-forward validation, stress testing across regimes, realistic cost modeling, and reality checks. Out-of-sample degradation of 10-20% is normal and healthy.
+Safe mean reversion backtesting demands walk-forward validation, stress testing across regimes, realistic cost modeling, and reality checks. Some out-of-sample degradation is normal; a large gap is a warning sign of overfitting.

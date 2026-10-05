@@ -181,8 +181,6 @@ For equities, use regular trading hours (RTH) data for pivot calculations. Exten
 
 ### How often do prices react to pivot levels?
 
-Analysis of S&P 500 E-mini futures across multiple years shows that price touches or comes within 0.1% of at least one pivot level (PP, S1, R1, S2, R2) approximately 85% of trading days. Meaningful reactions (reversal of at least 0.25%) occur at these levels roughly 60-70% of the time. The central pivot point (PP) is touched on approximately 70% of trading days.
-
 ### Can pivot points be used for swing trading?
 
 Yes, weekly and monthly pivot points are effective for swing trading. Weekly pivots provide support and resistance levels for multi-day holding periods, and monthly pivots serve as significant reference levels for position management. Many swing traders use weekly pivots for entries and exits while using monthly pivots for overall directional bias and risk management.

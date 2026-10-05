@@ -49,7 +49,7 @@ This comprehensive guide covers everything from foundational concepts to proven 
 Bitcoin represents the most liquid cryptocurrency, with 24/7 markets, tight spreads, and reliable price discovery across major exchanges. Beginners benefit from:
 
 - **Liquidity**: Enter and exit positions instantly at fair prices
-- **Volatility**: Average daily moves of 2-5% create trading opportunities
+- **Volatility**: Large daily moves create trading opportunities, and losses
 - **Established Patterns**: Technical analysis works reliably on Bitcoin
 - **Lower Complexity**: BTC charts follow predictable patterns more than altcoins
 
@@ -97,7 +97,7 @@ March 2026 setup:
 - 200 MA: $45,800
 - Bullish crossover triggered at $46,300
 - Rode trend up to $49,500
-- Profit: $3,200 on $2,000 position
+- Move: $46,300 to $49,500 is +6.9%, about $138 on a $2,000 position before fees (illustrative)
 
 ### Why It Works
 
@@ -272,7 +272,7 @@ Bitcoin trading for beginners succeeds through:
 3. **Consistent execution** (following your plan)
 4. **Continuous learning** (studying price action)
 
-Start with small positions, practice on a simulator first, and scale only after consistent profitability. Most successful traders take 6-12 months to develop consistency.
+Start with small positions, practice on a simulator first, and scale only after consistent profitability.
 
 ## Next Steps
 

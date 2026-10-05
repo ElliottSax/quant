@@ -9,7 +9,7 @@ keywords: ["order types execution", "limit order vs market order", "stop loss or
 ---
 # Order Types and Execution: Limit, Market, Stop, and Iceberg
 
-Order types are the mechanism through which trading decisions translate into actual market transactions. Selecting the correct order type for each situation directly impacts execution quality, which over hundreds of trades compounds into a meaningful difference in portfolio performance. A trader who consistently uses market orders when limit orders would suffice may give up 5-15 basis points per trade in slippage, a cost that compounds across the full trade cycle (entry and exit) and across all trades taken.
+Order types are the mechanism through which trading decisions translate into actual market transactions. Selecting the correct order type for each situation directly impacts execution quality, which over hundreds of trades compounds into a meaningful difference in portfolio performance. A trader who consistently uses market orders when limit orders would suffice may give up avoidable slippage on every trade, a cost that compounds across the full trade cycle (entry and exit) and across all trades taken.
 
 This guide covers every major order type, when to use each, and the execution principles that professional traders follow to minimize transaction costs.
 
@@ -62,7 +62,7 @@ Limit orders execute according to price-time priority:
 ### Fill Rate Considerations
 
 Not all limit orders fill. Historical analysis shows that:
-- Limit orders placed at the current bid (buy) or ask (sell) fill approximately 60-75% of the time
+- Limit orders placed at the current bid (buy) or ask (sell) do not always fill; the fill rate depends on the instrument and market conditions
 - Limit orders placed 1 tick better than the current market fill approximately 30-50%
 - Limit orders placed significantly away from the market fill infrequently but capture larger moves when they do
 
@@ -169,7 +169,7 @@ Use stop-market orders when execution certainty is paramount (you must exit the 
 
 ### What is the typical slippage on a market order?
 
-For liquid instruments (SPY, AAPL, EUR/USD), slippage on a standard-sized market order is typically 0.01-0.03% (1-3 basis points). For less liquid instruments, slippage can range from 0.05-0.50% or more. Slippage increases during the first and last 15 minutes of the trading session, during news events, and when order size exceeds the displayed depth. Track your actual slippage per order over time to understand your true execution costs.
+For liquid instruments (SPY, AAPL, EUR/USD), slippage on a standard-sized market order is typically small (a few basis points or less). For less liquid instruments, slippage can be much larger. Slippage increases during the first and last 15 minutes of the trading session, during news events, and when order size exceeds the displayed depth. Track your actual slippage per order over time to understand your true execution costs.
 
 ### How do professional traders handle large orders?
 

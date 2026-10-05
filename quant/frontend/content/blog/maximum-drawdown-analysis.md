@@ -106,7 +106,7 @@ This approach locks in a maximum drawdown ceiling (approximately the sum of thre
 
 **Correlation monitoring**: When strategy correlations increase (a warning sign of crowded positioning or regime change), reduce overall exposure. Many multi-strategy funds monitor rolling 20-day correlations and trigger deleveraging when the average pairwise correlation exceeds historical norms by more than 1 standard deviation.
 
-**Regime detection**: Use Hidden Markov Models or similar techniques to identify high-volatility, high-correlation regimes, and reduce exposure during these periods. Regime-based allocation can reduce maximum drawdown by 30-50% relative to static allocation, though at the cost of reduced returns during regime transition periods.
+**Regime detection**: Use Hidden Markov Models or similar techniques to identify high-volatility, high-correlation regimes, and reduce exposure during these periods. Regime-based allocation can reduce maximum drawdown relative to static allocation, though at the cost of reduced returns during regime transition periods.
 
 ## Drawdown-Adjusted Performance Metrics
 
@@ -152,7 +152,7 @@ Combine historical worst-case scenarios with hypothetical stress tests. Apply th
 
 ### Does drawdown-based deleveraging hurt long-term returns?
 
-Yes, by 1-3% annually in most backtests. The cost comes from selling after declines and missing early recovery moves. However, the reduction in maximum drawdown (typically 30-50%) and the psychological benefit of manageable losses often justify this cost, particularly for strategies with investor capital that is subject to redemption pressure.
+Yes, typically; the size of the cost depends on the strategy and the period. The cost comes from selling after declines and missing early recovery moves. However, the reduction in maximum drawdown and the psychological benefit of manageable losses often justify this cost, particularly for strategies with investor capital that is subject to redemption pressure.
 
 ### How should I account for drawdown when sizing strategies?
 

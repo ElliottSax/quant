@@ -75,6 +75,8 @@ const REMOVED_TO: Record<string, string> = {
   'butterfly-spreads-long-vs-short-variants': '05-butterfly-spread-options-strategy-low-risk',
   'black-litterman-model-incorporating-market-views': 'black-litterman-model',
   'cross-validation-for-trading-systems-walk-forward-analysis': 'cross-validation-trading-models',
+  'circuit-breakers-and-trading-halts-market-safeguards': 'market-microstructure-trading',
+  'cross-chain-arbitrage-exploiting-multi-chain-pricing': 'crypto-arbitrage-strategies',
 }
 
 test('removed non-congress posts stay removed and redirect to a live post', async () => {

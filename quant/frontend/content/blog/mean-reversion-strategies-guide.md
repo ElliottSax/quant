@@ -269,7 +269,7 @@ Cointegration relationships break down. The most reliable early warning signals:
 
 1. The rolling ADF p-value rises above 0.10 over a 60-day window.
 2. The spread's rolling Hurst exponent rises above 0.48.
-3. The spread exceeds 4 standard deviations — at that point, the probability that it reverts before your capital constraint forces closure is below 30%.
+3. The spread exceeds 4 standard deviations, at which point the relationship may have broken; whether it reverts before your capital constraint forces closure is uncertain, which is why a hard stop matters.
 
 Implement a circuit breaker that reduces position size by 50% when any of these conditions triggers, and exits entirely when two of three trigger simultaneously.
 

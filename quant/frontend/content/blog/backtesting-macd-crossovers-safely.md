@@ -392,4 +392,4 @@ A: It likely overfitted. Return to simpler parameters and broader market conditi
 
 ## Conclusion
 
-Safe MACD backtesting requires meticulous attention to look-ahead bias, overfitting prevention, realistic cost modeling, and walk-forward validation. Results consistently show 5-20% degradation from naive backtests, but these conservative estimates prove far more reliable in live trading. Always apply reality checks to suspicious results.
+Safe MACD backtesting requires meticulous attention to look-ahead bias, overfitting prevention, realistic cost modeling, and walk-forward validation. Out-of-sample results are typically worse than naive backtests, but these conservative estimates prove far more reliable in live trading. Always apply reality checks to suspicious results.

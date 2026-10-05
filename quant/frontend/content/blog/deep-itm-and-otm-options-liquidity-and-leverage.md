@@ -19,11 +19,11 @@ last_updated: '2026-04-17'
 
 ## Introduction
 
-Deep In-The-Money (ITM) and Out-Of-The-Money (OTM) options liquidity and leverage are critical components of quantitative trading and algorithmic finance. This comprehensive guide delves into the key principles, implementation strategies, and practical applications of these concepts, providing aspiring and practicing quantitative traders with a thorough understanding of the subject matter. Deep ITM options have a delta of 0.8 or higher, while deep OTM options have a delta of 0.2 or lower. Our [Options Calculator](/options) computes delta and the other Greeks for any strike, so you can check exactly where a contract sits on this spectrum before trading it. The liquidity and leverage associated with these options can significantly impact trading decisions, and it is essential to understand the underlying dynamics to maximize returns and minimize losses. For instance, a study by the Chicago Mercantile Exchange (CME) found that deep ITM options can provide a hedge ratio of up to 90%, while deep OTM options can offer a hedge ratio of up to 10%. This guide will explore the theoretical foundations, empirical evidence, and practical implications of deep ITM and OTM options liquidity and leverage, providing traders with the knowledge and tools necessary to navigate these complex markets.
+Deep In-The-Money (ITM) and Out-Of-The-Money (OTM) options liquidity and leverage are critical components of quantitative trading and algorithmic finance. This comprehensive guide delves into the key principles, implementation strategies, and practical applications of these concepts, providing aspiring and practicing quantitative traders with a thorough understanding of the subject matter. Deep ITM options have a delta of 0.8 or higher, while deep OTM options have a delta of 0.2 or lower. Our [Options Calculator](/options) computes delta and the other Greeks for any strike, so you can check exactly where a contract sits on this spectrum before trading it. The liquidity and leverage associated with these options can significantly impact trading decisions, and it is essential to understand the underlying dynamics to maximize returns and minimize losses. This guide will explore the theoretical foundations, empirical evidence, and practical implications of deep ITM and OTM options liquidity and leverage, providing traders with the knowledge and tools necessary to navigate these complex markets.
 
 ## Characteristics of Deep ITM and OTM Options
 
-Deep ITM options are highly likely to expire in-the-money, with a high probability of being exercised. As a result, they tend to exhibit high liquidity, with many market participants actively buying and selling these contracts. According to data from the Options Clearing Corporation (OCC), the average daily trading volume for deep ITM options is approximately 250,000 contracts, with an average notional value of $1.2 billion. In contrast, deep OTM options have a low probability of being exercised and tend to exhibit lower liquidity, with fewer market participants actively trading these contracts. The average daily trading volume for deep OTM options is approximately 50,000 contracts, with an average notional value of $200 million. The following table illustrates the key characteristics of deep ITM and OTM options:
+Deep ITM options are highly likely to expire in-the-money, with a high probability of being exercised. As a result, they tend to exhibit high liquidity, with many market participants actively buying and selling these contracts. In contrast, deep OTM options have a low probability of being exercised and tend to exhibit lower liquidity, with fewer market participants actively trading these contracts. The average daily trading volume for deep OTM options is approximately 50,000 contracts, with an average notional value of $200 million. The following table illustrates the key characteristics of deep ITM and OTM options:
 | Option Type | Delta | Probability of Exercise | Liquidity | Average Daily Trading Volume |
 | --- | --- | --- | --- | --- |
 | Deep ITM | 0.8+ | 80%+ | High | 250,000 contracts |
@@ -40,7 +40,6 @@ The following markdown table compares the key features of deep ITM and OTM optio
 | Liquidity | High | Low |
 | Average Daily Trading Volume | 250,000 contracts | 50,000 contracts |
 | Average Notional Value | $1.2 billion | $200 million |
-| Potential Returns | 10% per annum | 20% per annum |
 | Risk | Low | High |
 The table highlights the key differences between deep ITM and OTM options, including delta, probability of exercise, liquidity, and potential returns. Deep ITM options are characterized by high liquidity, low risk, and relatively low potential returns, while deep OTM options are characterized by low liquidity, high risk, and relatively high potential returns. Traders must carefully consider these factors when making investment decisions, as the wrong choice can result in significant losses.
 
@@ -80,7 +79,6 @@ Deep ITM options have a high delta and a high probability of exercise, while dee
 2. **How do I determine the optimal position size for a deep ITM or OTM options trade?**
 The optimal position size depends on the trader's risk tolerance and investment objective, as well as the market conditions and liquidity.
 3. **What is the potential return on investment for deep ITM and OTM options?**
-The potential return on investment for deep ITM options is relatively low, typically in the range of 5-10% per annum. In contrast, the potential return on investment for deep OTM options is relatively high, typically in the range of 15-20% per annum.
 4. **How do I manage risk when trading deep ITM and OTM options?**
 Risk can be managed by using stop-loss orders, limiting position size, and diversifying a portfolio.
 5. **What is the role of liquidity in deep ITM and OTM options trading?**

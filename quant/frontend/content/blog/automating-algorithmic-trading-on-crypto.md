@@ -234,7 +234,7 @@ class FundingRateArbitrage:
         }
 ```
 
-In 2024-2025, BTC perpetual funding rates averaged +0.01% per 8 hours during bull markets (annualized ~13.7%), which makes it a strategy worth testing carefully.
+Perpetual funding rates are often positive in bullish markets; a rate of +0.01% per 8 hours annualizes to about 11% (0.01% x 3 x 365 = 10.95%), which makes it a strategy worth testing carefully.
 
 ### Strategy 3: Volatility Breakout on Altcoins
 

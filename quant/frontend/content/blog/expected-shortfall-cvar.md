@@ -123,9 +123,7 @@ This LP formulation is computationally tractable for large-scale problems and pr
 ### CVaR vs. Mean-Variance: Empirical Results
 
 Backtests across global equity portfolios from 2000-2025 consistently show:
-- CVaR-optimized portfolios reduce maximum drawdown by 15-30% relative to mean-variance portfolios with the same expected return
 - Sharpe ratios are comparable (within 5-10%), as the reduced tail risk comes primarily from avoiding concentrated bets in assets with fat-tailed distributions
-- During the 2008 crisis, CVaR-optimized portfolios outperformed by 8-15 percentage points due to lower exposure to financial sector concentration risk
 
 ## Implementation Considerations
 

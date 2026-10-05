@@ -232,7 +232,7 @@ Research suggests that news sentiment is mostly priced in within 1-3 trading day
 
 ### Can sentiment analysis predict market crashes?
 
-Aggregate market sentiment can provide warning signals but cannot predict exact crash timing. The VIX, investor surveys (AAII, CNN Fear & Greed), and news sentiment aggregates have shown predictive value for market direction over 1-3 month horizons. Extreme bullish sentiment (above the 90th percentile historically) has preceded below-average returns 68% of the time. However, sentiment can remain extreme for extended periods before reversing, making timing unreliable. Sentiment is best used for [position sizing](/blog/position-sizing-strategies) (reduce exposure during extreme bullish sentiment) rather than crash timing.
+Aggregate market sentiment can provide warning signals but cannot predict exact crash timing. The VIX, investor surveys (AAII, CNN Fear & Greed), and news sentiment aggregates have shown predictive value for market direction over 1-3 month horizons. However, sentiment can remain extreme for extended periods before reversing, making timing unreliable. Sentiment is best used for [position sizing](/blog/position-sizing-strategies) (reduce exposure during extreme bullish sentiment) rather than crash timing.
 
 ---
 

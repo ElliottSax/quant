@@ -158,4 +158,4 @@ Elliott Wave structure can identify periods of heightened risk for significant d
 
 ### How long does it take to learn Elliott Wave analysis?
 
-Developing proficiency in Elliott Wave counting typically requires 6-12 months of dedicated practice. The theory itself can be learned in a few days, but applying it to live markets, developing the pattern recognition needed to identify waves in real-time, and learning to manage the inherent ambiguity requires significant screen time. Begin by analyzing completed patterns in historical data before attempting to count developing patterns.
+The theory itself can be learned in a few days, but applying it to live markets, developing the pattern recognition needed to identify waves in real-time, and learning to manage the inherent ambiguity requires significant screen time. Begin by analyzing completed patterns in historical data before attempting to count developing patterns.

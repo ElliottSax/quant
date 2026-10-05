@@ -46,7 +46,7 @@ CEX-DEX arbitrage exploits price differences between centralized exchanges and d
 
 A typical CEX-DEX arbitrage opportunity occurs when Ethereum trades at $2,500 on Coinbase but the ETH/USDC pool on Uniswap V3 reflects a price of $2,530 due to low liquidity or recent large trades. The arbitrageur buys ETH on Coinbase at $2,500 and immediately swaps it for USDC on Uniswap at $2,530, profiting $30 per ETH minus fees.
 
-Gas optimization becomes critical for CEX-DEX arbitrage profitability. A simple Uniswap swap costs 120,000-180,000 gas. At 50 gwei gas prices and $2,500 ETH, that translates to $15-27 per trade. The $30 gross profit shrinks to $3-15 net profit, requiring careful opportunity selection.
+Gas optimization becomes critical for CEX-DEX arbitrage profitability. A simple Uniswap swap costs 120,000-180,000 gas. At 50 gwei gas prices and $2,500 ETH, that translates to roughly $15-22.50 per trade (120,000-180,000 gas x 50 gwei x $2,500). The $30 gross profit shrinks to about $7.50-15 net profit, requiring careful opportunity selection.
 
 Flash loan integration enables capital-efficient CEX-DEX arbitrage. Instead of using personal capital, traders borrow millions from Aave or dYdX within a single transaction, execute the arbitrage, repay the loan plus 0.09% fee, and keep the profit.
 
@@ -58,9 +58,9 @@ MEV (Maximal Extractable Value) competition creates challenges for CEX-DEX arbit
 
 Triangular arbitrage exploits pricing inefficiencies between three trading pairs on a single exchange. Instead of comparing prices across venues, this strategy identifies circular trading opportunities within one platform's ecosystem.
 
-The classic example involves BTC, ETH, and USDT pairs on Binance. Suppose BTC/USDT trades at $42,000, ETH/USDT at $2,500, and the ETH/BTC pair at 0.0595. The implied ETH/BTC rate from the first two pairs is 2,500 / 42,000 = 0.0595238. The 0.4% discrepancy (0.0595238 vs 0.0595) creates an arbitrage opportunity.
+The classic example involves BTC, ETH, and USDT pairs on Binance. Suppose BTC/USDT trades at $42,000, ETH/USDT at $2,500, and the ETH/BTC pair at 0.0595. The implied ETH/BTC rate from the first two pairs is 2,500 / 42,000 = 0.0595238. The discrepancy (0.0595238 vs 0.0595) is only about 0.04%, far below the 0.3% in fees discussed below, so it is used here only to show the mechanics.
 
-The execution flow involves three simultaneous trades: Buy ETH with USDT at $2,500 per ETH (spending $25,000 for 10 ETH), sell ETH for BTC at 0.0595 (receiving 0.595 BTC), and sell BTC for USDT at $42,000 (receiving $25,000). The circular trade returns slightly more USDT than the starting amount, minus fees.
+The execution flow involves three simultaneous trades: Buy ETH with USDT at $2,500 per ETH (spending $25,000 for 10 ETH), sell ETH for BTC at 0.0595 (receiving 0.595 BTC), and sell BTC for USDT at $42,000 (receiving $25,000). As quoted, this direction returns $24,990, a loss of $10. The reverse direction (USDT to BTC to ETH to USDT) returns about $25,010, a gain of 0.04% before fees.
 
 Triangular arbitrage profitability depends on exchange fee structures. Binance VIP 0 users pay 0.1% per trade (0.3% total for three legs), so the pricing discrepancy must exceed 0.3% for profitability. VIP 9 users with 0.02% maker fees only need 0.06% spreads, dramatically increasing opportunity frequency.
 

@@ -11,7 +11,7 @@ keywords: ["track congress stock trades", "congressional trading tracker", "poli
 
 Tracking [congressional stock](/blog/congressional-stock-trading-guide) trades has evolved from a niche research activity into a mainstream investment strategy. The data is public by law -- the STOCK Act requires members of Congress to disclose securities transactions within 45 days -- but accessing, parsing, and acting on that data requires knowing where to look and how to filter signal from noise. This guide covers every step of the process, from raw government filings to automated alert systems that notify you when a senator buys a stock.
 
-As of 2026, over 7,000 individual stock transactions are disclosed by members of Congress annually. The challenge is not the availability of data but the speed and structure of access. Members who file promptly create actionable signals; those who file at the 45-day deadline (or later) produce data that is often stale. Understanding this timing dynamic is critical to extracting value from congressional trading data.
+The challenge is not the availability of data but the speed and structure of access. Members who file promptly create actionable signals; those who file at the 45-day deadline (or later) produce data that is often stale. Understanding this timing dynamic is critical to extracting value from congressional trading data.
 
 ## Where Congressional Disclosures Are Filed
 
@@ -37,11 +37,10 @@ Understanding the filing timeline is essential:
 | Filing deadline | Day 45 |
 | Filing processed and published | Day 46-50 (typical) |
 | Late filing (with penalty) | Day 46+ |
-| Average actual filing delay | 28 days (median) |
 
 The 45-day window creates a structural information lag. A trade executed on January 1 may not appear in public records until mid-February. This means that by the time you see a disclosure, the original thesis behind the trade may have partially or fully played out.
 
-However, analysis of filing patterns reveals that approximately 35% of congressional trades are filed within 14 days of execution. These early filers produce the most actionable data, and tracking tools that flag filing speed can help you prioritize.
+These early filers produce the most actionable data, and tracking tools that flag filing speed can help you prioritize.
 
 ## Tools and Platforms for Tracking Congressional Trades
 
@@ -205,7 +204,7 @@ The single biggest challenge in congressional trade tracking is the filing delay
 
 ### Fast Filers (0-14 Days)
 
-Trades disclosed within two weeks of execution are the most valuable. The thesis behind the trade is likely still in play, and the stock may not have fully priced in whatever information drove the purchase. Approximately 35% of trades fall in this window.
+Trades disclosed within two weeks of execution are the most valuable. The thesis behind the trade is likely still in play, and the stock may not have fully priced in whatever information drove the purchase.
 
 ### Medium Filers (15-30 Days)
 

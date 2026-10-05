@@ -180,8 +180,6 @@ class MLMeanReversionBacktester:
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-ML filters out 46% of unprofitable trades while improving Sharpe by 20.6%.
-
 ## Feature Importance
 
 | Feature | Importance |

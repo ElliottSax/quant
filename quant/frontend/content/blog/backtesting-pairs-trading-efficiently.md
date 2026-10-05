@@ -230,4 +230,4 @@ A: Monthly or quarterly. Relationships change over time.
 
 ## Conclusion
 
-Pairs trading delivers 13% excess annual return by exploiting mean-reverting spreads. Efficient vectorized backtesting across multiple pairs enables rapid strategy development. Key: rigorous cointegration testing, appropriate parameter selection, and multi-pair portfolio construction. Sharpe ratios of 1.5+ achievable with properly identified pairs.
+Efficient vectorized backtesting across multiple pairs enables rapid strategy development. Key: rigorous cointegration testing, appropriate parameter selection, and multi-pair portfolio construction.

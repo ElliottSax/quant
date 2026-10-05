@@ -379,7 +379,7 @@ For latency-critical applications, consider Cython for hot paths, or rewrite the
 
 ## Conclusion
 
-Efficient automated trading systems are built on three pillars: event-driven architecture that processes each market update incrementally, cache-friendly data structures (ring buffers, columnar arrays) that minimize memory allocation, and disciplined resource management (symbol filtering, batch processing, multi-process parallelism). These optimizations reduce infrastructure costs by 5-10x while improving latency by 10-100x compared to naive implementations. Start with profiling to identify bottlenecks, optimize the hot path first, and resist premature optimization of code that runs infrequently.
+Efficient automated trading systems are built on three pillars: event-driven architecture that processes each market update incrementally, cache-friendly data structures (ring buffers, columnar arrays) that minimize memory allocation, and disciplined resource management (symbol filtering, batch processing, multi-process parallelism). Start with profiling to identify bottlenecks, optimize the hot path first, and resist premature optimization of code that runs infrequently.
 
 ## Frequently Asked Questions
 

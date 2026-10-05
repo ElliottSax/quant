@@ -53,7 +53,7 @@ Implementing a risk management strategy involves several steps, including identi
 For example, a company can use a decision tree to assess the potential risks associated with a new business strategy, including the potential impact of market risk, credit risk, and operational risk.
 
 ## Best Practices
-Best practices in risk management involve several key principles, including risk governance, risk culture, and risk metrics. According to a survey conducted by the Institute of Internal Auditors, 71% of respondents considered risk governance to be a critical component of their risk management strategy, with 62% of respondents identifying risk culture as a key factor in effective risk management. The following table provides a summary of best practices in risk management:
+Best practices in risk management involve several key principles, including risk governance, risk culture, and risk metrics. The following table provides a summary of best practices in risk management:
 | Best Practice | Description | Example |
 | --- | --- | --- |
 | Risk Governance | The process of overseeing and managing risk | A company establishing a risk management committee to oversee risk management activities |

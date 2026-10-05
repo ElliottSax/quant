@@ -170,7 +170,7 @@ print(f"Variance Reduction: {result['variance_reduction']:.1f}x")
 # Typical variance reduction: 50-200x
 ```
 
-The geometric Asian serves as an excellent control variate because it is highly correlated with the arithmetic Asian (correlation > 0.99) and has a known analytical price. This typically reduces the standard error by a factor of 7-15x.
+The geometric Asian serves as an excellent control variate because it is highly correlated with the arithmetic Asian (correlation > 0.99) and has a known analytical price. This reduces the standard error, often substantially; measure the reduction on your own paths.
 
 ## The Volatility Reduction Effect
 
@@ -299,13 +299,13 @@ This typically results in ATM or slightly OTM strikes for cost hedging.
 
 ## Conclusion
 
-Asian options occupy a unique niche in the derivatives universe: cheaper than vanilla options due to the averaging effect, resistant to spot price manipulation, and naturally aligned with the hedging needs of corporations exposed to average prices. For quantitative traders, the pricing challenge (no closed-form for arithmetic averages) is well-addressed by Monte Carlo simulation with geometric Asian control variates, which reduces standard errors by 50-200x. The declining delta profile makes them cost-effective to hedge, and the volatility reduction creates opportunities for spread trades between Asian and vanilla implied volatilities.
+Asian options occupy a unique niche in the derivatives universe: cheaper than vanilla options due to the averaging effect, resistant to spot price manipulation, and naturally aligned with the hedging needs of corporations exposed to average prices. For quantitative traders, the pricing challenge (no closed-form for arithmetic averages) is well-addressed by Monte Carlo simulation with geometric Asian control variates, which can reduce standard errors substantially. The declining delta profile makes them cost-effective to hedge, and the volatility reduction creates opportunities for spread trades between Asian and vanilla implied volatilities.
 
 ## Frequently Asked Questions
 
 ### Why are Asian options cheaper than vanilla options?
 
-Averaging reduces the effective volatility of the payoff-determining variable. The average of a series of prices has lower variance than any individual price observation. Since option value increases with volatility, the reduced effective volatility directly translates to a lower premium -- typically 35-45% cheaper for continuous averaging.
+Averaging reduces the effective volatility of the payoff-determining variable. The average of a series of prices has lower variance than any individual price observation. Since option value increases with volatility, the reduced effective volatility directly translates to a lower premium -- the discount depends on volatility, maturity and the averaging window.
 
 ### Can I price arithmetic Asian options analytically?
 

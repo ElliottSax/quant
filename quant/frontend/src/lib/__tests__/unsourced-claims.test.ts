@@ -380,3 +380,28 @@ test('pass 4: "Key Takeaways" bullets do not state Sharpe / win-rate / drawdown 
   }
   assert.deepEqual(hits, [])
 })
+
+// Pass 11 (2026-10-05): persona-read leads confirmed in the text and fixed. These exact claims were wrong
+// (arithmetic, mechanics, facts) or invented (surveys, fund returns, study citations). They must not return.
+const PASS11_GONE: [string, RegExp][] = [
+  ['$3,200 profit on a 6.9% move of a $2,000 position', /Profit: \$3,200 on \$2,000 position/],
+  ['PDT rule stated as $2,000', /\$2,000\+ \(stocks, PDT rule\)/],
+  ['weighted return 9.5% for the example table (it is 8.8%)', /expected return of 9\.5% and an expected risk of 14\.2%/],
+  ['CalPERS / GPFG invented allocations and returns', /CalPERS portfolio has (?:generated|a 60% allocation)|GPFG portfolio has (?:generated|a 40% allocation)/],
+  ['0.01% per 8h annualised as 13.7%', /annualized ~13\.7%/],
+  ['reverse-calendar mechanics described as a calendar spread', /essentially selling time, and profiting from the difference in time decay/],
+  ['calendar spread: buying $5 and selling $7 is a credit, not a net cost', /buys the option with the shorter expiration date for \$5 and sells the option with the longer expiration date for \$7/],
+  ['40% less 0.04% arbitrage gap written as 0.4%', /The 0\.4% discrepancy \(0\.0595238 vs 0\.0595\)/],
+  ['FTX listed as an active perpetuals venue', /Perpetual futures on Binance, FTX, Bybit/],
+  ['profit factor of a 60% / 2:1 payoff stated as 1.2', /= 1\.2× profit factor/],
+  ['1.5x risk target described as 3:1', /Target 1: 1\.5 × Risk \(3:1 reward\/risk\)/],
+  ['rebalancing band 0.42 written as 4.2%', /approximately 4\.2%\*\*/],
+  ['0.0001-0.0002 written as 0.5-1 pip', /Use 0\.5-1 pip for forex/],
+  ['unidentifiable survey / study citations', /According to a recent survey, \d+% of quantitative traders|a study by the Chicago Mercantile Exchange|According to data from the Options Clearing Corporation|survey by the Python Software Foundation|Institute of Internal Auditors, 71%/],
+]
+for (const [name, re] of PASS11_GONE) {
+  test(`pass 11: ${name} stays fixed`, () => {
+    const hits = FILES.filter((f) => re.test(fs.readFileSync(path.join(ROOT, f), 'utf-8')))
+    assert.deepEqual(hits, [])
+  })
+}

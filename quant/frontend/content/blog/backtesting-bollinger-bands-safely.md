@@ -281,7 +281,7 @@ def stress_test(backtester, extreme_volatility_periods):
 A: Minimum 3-5 years for daily timeframes to capture multiple market regimes. Shorter data significantly increases overfitting risk.
 
 **Q: What transaction cost should I use?**
-A: Use 0.5-1 pip for forex (0.0001-0.0002). Add slippage of 1 additional pip during backtests.
+A: Use 1-2 pips for forex (0.0001-0.0002 on most pairs). Add slippage of 1 additional pip during backtests.
 
 **Q: Should I include spreads?**
 A: Absolutely. Spreads vary by broker (1-3 pips for majors). Add to your transaction costs.

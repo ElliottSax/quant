@@ -347,7 +347,7 @@ The path from beginner to competent algorithmic trader follows a clear sequence:
 
 ### How long does it take to build a profitable trading system?
 
-Expect 6-12 months of learning and experimentation before deploying a strategy with real money. The coding itself takes days; the statistical education and parameter tuning take months. Start with a well-documented strategy (like the dual MA crossover) and focus on execution quality rather than finding exotic alpha signals.
+The coding itself takes days; the statistical education and parameter tuning take months. Start with a well-documented strategy (like the dual MA crossover) and focus on execution quality rather than finding exotic alpha signals.
 
 ### Do I need to know advanced mathematics?
 

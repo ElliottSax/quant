@@ -13,7 +13,7 @@ Volatility itself is tradeable as an asset class separate from directional price
 
 ## Volatility Fundamentals and Measurement
 
-Volatility measures price fluctuation magnitude, quantified by standard deviation of returns. High volatility = large daily moves (±5-10%), low volatility = small moves (±1-2%). Cryptocurrency averages 60-80% annualized volatility versus 15-20% for S&P 500, creating more trading opportunities and larger drawdowns.
+Volatility measures price fluctuation magnitude, quantified by standard deviation of returns. High volatility = large daily moves (±5-10%), low volatility = small moves (±1-2%). Cryptocurrency is typically much more volatile than the S&P 500, creating more trading opportunities and larger drawdowns.
 
 Realized volatility (RV) measures historical price movements: RV = sqrt(Σ(ln(P_t/P_(t-1)))^2 / N). Calculate 30-day BTC realized volatility by: (1) Log returns for each day, (2) Sum squared returns, (3) Divide by days, (4) Square root to annualize. If daily volatility = 2%, annualized = 2% × sqrt(252) = 32%.
 
@@ -51,7 +51,7 @@ The vol surface profiles IV across both maturity (time) and strike (moneyness). 
 
 Variance swaps trade realized volatility directly without options complexity. Pay fixed variance strike, receive realized variance payout: P&L = Notional × (Realized_Var - Strike_Var). If strike = 50% annualized, RV realizes 70%, payoff per notional = 20%. These simple instruments eliminate Greeks management complexity, focusing purely on vol prediction.
 
-The volatility index (Bitcoin VIX via Deribit) tracks 30-day implied volatility. When VIX spikes to 100+ during crashes, it reverts to 40-60% within 2-4 weeks. Mechanical reversion trades: buy when VIX >90, sell when VIX <50. Success rate: 70%+ with 2:1 profit factor despite being simple heuristic.
+The volatility index (Bitcoin VIX via Deribit) tracks 30-day implied volatility.
 
 ## Mean Reversion and Momentum Strategies
 
@@ -59,7 +59,7 @@ Volatility exhibits mean reversion over 2-4 week periods and momentum over 5-10 
 
 The volatility mean reversion strategy: When realized vol reaches 90th percentile (very high), position for compression. Calculate 60-day realized vol, compare to 90-day moving average. If current vol >1.5× average = extreme, short volatility (sell straddles, buy variance swaps at high strikes).
 
-Momentum volatility strategy: When vol increases from 2% daily → 3% daily → 4% daily over 5 days, momentum is upward. Volatility likely continues expanding 2-3 more days. Position: buy vol (long straddles), expect further moves. Success rate: 60% with 2× payoff when right, 1× loss when wrong = 1.2× profit factor.
+Momentum volatility strategy: When vol increases from 2% daily → 3% daily → 4% daily over 5 days, momentum is upward. Volatility likely continues expanding 2-3 more days. Position: buy vol (long straddles), expect further moves. Success rate: 60% with 2× payoff when right, 1× loss when wrong = profit factor of 3.0 (average gross profit of 1.2 per trade divided by average gross loss of 0.4 per trade); the 60% is an illustrative assumption.
 
 The volatility trend filter combines both: identify trend (increasing vol = uptrend, decreasing = downtrend), position according to trend (buy during up, sell during down), but mean-revert at extremes (exit when hitting 90th percentile assuming reversion).
 

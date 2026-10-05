@@ -35,7 +35,7 @@ Price discrepancy detection monitors multiple DEXes for the same trading pair. I
 
 The mathematical optimization determines maximum profitable loan size. Price impact increases with trade size: Impact = TradeSize / (Liquidity + TradeSize). For 1,000 ETH liquidity pools, a 100 ETH trade creates ~9% price impact on each side, consuming most of the 0.8% initial spread.
 
-Optimal loan size formula: Loan = sqrt(L1 × L2 × Spread / Fee) - L_avg, where L1 and L2 are liquidity depths and L_avg is average liquidity. For $1M liquidity per side, 0.8% spread, 0.09% fee: Loan ≈ $100,000-$150,000 maximizes profit before slippage overwhelms opportunity.
+Illustrative heuristic (not derived or validated here): Loan = sqrt(L1 × L2 × Spread / Fee) - L_avg, where L1 and L2 are liquidity depths and L_avg is average liquidity. Treat any formula output as a starting point, and simulate the actual pools price impact before sizing a loan.
 
 Multi-hop arbitrage routes through intermediate assets when direct pairs show no spread but indirect paths do. If ETH/USDC shows no arbitrage but ETH→DAI→USDC→ETH creates net profit, execute three-asset circular arbitrage. This requires analyzing thousands of potential paths in real-time.
 

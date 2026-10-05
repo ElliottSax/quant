@@ -16,7 +16,7 @@ The Fama-French three-factor model transformed investing by demonstrating that s
 
 ## Key Takeaways
 
-- **Factor models explain 60-90% of portfolio return variation**, leaving only 10-40% attributable to stock selection skill.
+- **Factor models can explain a large share of portfolio return variation**, leaving the remainder to stock selection skill and noise.
 - **Five factors have robust empirical support**: market, size, value, profitability, and investment (Fama-French five-factor model).
 - **Factor timing is extremely difficult.** Most alpha comes from factor construction (selecting the right securities within each factor) rather than timing factor exposures.
 - **Factor crowding** reduces expected returns. When too many investors target the same factor, valuations compress and the premium shrinks.

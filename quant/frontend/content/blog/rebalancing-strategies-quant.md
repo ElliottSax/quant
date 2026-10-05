@@ -47,17 +47,7 @@ Rebalance on a fixed schedule regardless of how much weights have drifted: daily
 
 ### Frequency Analysis
 
-Research across multiple asset classes and time periods shows:
-
-| Frequency | Annual Turnover | Transaction Cost | Tracking Error | Net Benefit |
-|-----------|----------------|------------------|----------------|-------------|
-| Daily | 95-120% | 0.48-0.60% | 0.01% | Negative |
-| Monthly | 25-40% | 0.13-0.20% | 0.15% | Marginal |
-| Quarterly | 12-20% | 0.06-0.10% | 0.35% | Optimal for most |
-| Semi-annual | 8-15% | 0.04-0.08% | 0.55% | Good for tax-sensitive |
-| Annual | 5-10% | 0.03-0.05% | 0.80% | Acceptable |
-
-Quarterly rebalancing typically offers the best trade-off between tracking error and transaction costs. More frequent rebalancing adds costs without proportional risk reduction. Less frequent rebalancing allows excessive drift.
+Quarterly or semi-annual rebalancing is a common compromise between tracking error and transaction costs. More frequent rebalancing adds costs without proportional risk reduction. Less frequent rebalancing allows excessive drift.
 
 ### Calendar Rebalancing Limitations
 
@@ -77,19 +67,9 @@ Rebalance only when any asset's weight deviates from its target by more than a s
 
 ### Threshold Calibration
 
-The optimal threshold depends on asset class volatility and transaction costs:
+The optimal threshold depends on asset class volatility and transaction costs.
 
-**Optimal threshold approximately = sqrt(2 * c / sigma^2)**
-
-Where c is the round-trip transaction cost (as a fraction) and sigma is asset volatility.
-
-For equities with 15% volatility and 0.2% transaction cost:
-**threshold = sqrt(2 * 0.002 / 0.0225) = 0.42, or approximately 4.2%**
-
-For bonds with 5% volatility and 0.1% transaction cost:
-**threshold = sqrt(2 * 0.001 / 0.0025) = 0.89, or approximately 8.9%**
-
-These calculations suggest wider bands for low-volatility assets (less drift, so wider bands avoid unnecessary trading) and narrower bands for high-volatility assets (drift accumulates quickly, so narrower bands catch it sooner).
+In general, higher transaction costs justify wider bands, because each rebalance costs more; the right width also depends on volatility and correlations, so test candidate bands on your own data.
 
 ### Bandwidth Variants
 
@@ -134,7 +114,6 @@ Common tactical signals and their implementation:
 
 Backtests of tactical rebalancing strategies show:
 
-- Momentum-based tactical adjustments add 30-80 basis points annually after transaction costs
 - Volatility-based adjustments reduce maximum drawdown by 15-25% with minimal return impact
 - Combined momentum + volatility tactically rebalanced portfolios achieve Sharpe ratio improvements of 0.10-0.20 versus calendar rebalancing
 - Macroeconomic signal integration is most valuable over multi-year horizons but has limited impact over quarters
@@ -163,7 +142,7 @@ Set a minimum trade size (e.g., $5,000 or 0.5% of portfolio) to avoid generating
 
 ### Cash Flow Integration
 
-Use new cash flows (contributions, dividends, interest) to rebalance rather than selling existing positions. Direct new cash to underweight assets, achieving rebalancing without triggering taxable sales. This approach alone can reduce rebalancing turnover by 30-50%.
+Use new cash flows (contributions, dividends, interest) to rebalance rather than selling existing positions. Direct new cash to underweight assets, achieving rebalancing without triggering taxable sales.
 
 ### Multi-Account Coordination
 
@@ -185,15 +164,15 @@ For tax-advantaged retirement accounts (401k, IRA), threshold rebalancing with 5
 
 ### Does rebalancing reduce returns?
 
-In trending markets, rebalancing reduces returns because it trims winners and adds to losers before the trend exhausts itself. In mean-reverting markets, rebalancing adds returns by buying low and selling high. Over long horizons, the return impact of rebalancing is roughly neutral (plus or minus 20 basis points annually), but the risk reduction benefit is substantial and consistent.
+In trending markets, rebalancing reduces returns because it trims winners and adds to losers before the trend exhausts itself. In mean-reverting markets, rebalancing adds returns by buying low and selling high. Over long horizons, the return impact of rebalancing is roughly neutral, but the risk reduction benefit is substantial and consistent.
 
 ### How do I rebalance a leveraged portfolio?
 
-Leveraged portfolios require more frequent rebalancing because leverage amplifies drift. A 2x leveraged 60/40 portfolio should be rebalanced when the effective equity allocation (accounting for leverage) drifts by more than 3% from target. Futures-based leverage allows rebalancing through rolling contracts rather than cash market transactions, reducing costs.
+Leveraged portfolios require more frequent rebalancing because leverage amplifies drift. A 2x leveraged 60/40 portfolio should be rebalanced when the effective equity allocation (accounting for leverage) drifts materially from target. Futures-based leverage allows rebalancing through rolling contracts rather than cash market transactions, reducing costs.
 
 ### Should I rebalance within asset classes (e.g., between individual stocks)?
 
-Yes, but the optimal frequency and threshold differ from asset class rebalancing. Individual stocks are more volatile, so drift accumulates faster. However, transaction costs per position are also higher. A practical approach: rebalance individual positions quarterly, subject to a minimum turnover threshold of 0.5% per position. Combine with tax-loss harvesting at the individual security level.
+Yes, but the optimal frequency and threshold differ from asset class rebalancing. Individual stocks are more volatile, so drift accumulates faster. However, transaction costs per position are also higher. A practical approach: rebalance individual positions quarterly, skipping trades smaller than a minimum size. Combine with tax-loss harvesting at the individual security level.
 
 ### How does rebalancing interact with dollar-cost averaging?
 

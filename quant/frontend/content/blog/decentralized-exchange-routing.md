@@ -10,7 +10,7 @@ keywords: ["DEX routing", "1inch", "Cow Swap", "swap aggregation", "execution op
 
 # DEX Routing Optimization: 1inch, Cow Swap, and Aggregators
 
-Decentralized exchange (DEX) fragmentation across Uniswap, Curve, Sushiswap, Balancer, and others creates routing complexity. Direct swaps on single DEXes often result in 50-200 basis points worse execution than optimal paths across multiple venues. DEX aggregators (1inch, 0x, Paraswap) route through multiple pools finding best prices, saving traders $100-1,000+ per transaction through intelligent path optimization.
+Decentralized exchange (DEX) fragmentation across Uniswap, Curve, Sushiswap, Balancer, and others creates routing complexity. Direct swaps on single DEXes can result in worse execution than the best path across multiple venues. DEX aggregators (1inch, 0x, Paraswap) route through multiple pools finding best prices, often improving the execution price through path optimization.
 
 This comprehensive guide examines DEX routing mechanics, aggregator selection, MEV protection, and execution strategies maximizing trading efficiency across fragmented DeFi.
 
@@ -91,7 +91,7 @@ Execution quality monitoring tracking actual prices versus best-bid-ask benchmar
 
 **How much can DEX aggregators really save compared to direct swaps?**
 
-Typical savings: $10k swap saves 5-15 basis points (50-150 dollars). $100k swap saves 20-50 basis points ($2,000-5,000). $1M swap saves 50-150 basis points ($5,000-15,000). Savings depend on: token pair (stablecoins save less, exotics save more), market conditions (illiquid markets save more), aggregator quality (1inch saves more than simple routers). Rule of thumb: expect 20-30 basis points savings for mid-size trades, less for stablecoins, more for exotic pairs.
+Savings depend on pool depth and trade size; for illustration, saving 5 basis points on a $10k swap is $5, and saving 20 basis points on a $100k swap is $200. Savings depend on: token pair (stablecoins save less, exotics save more), market conditions (illiquid markets save more), aggregator quality (1inch saves more than simple routers). Rule of thumb: expect 20-30 basis points savings for mid-size trades, less for stablecoins, more for exotic pairs.
 
 **Which aggregator is best for different scenarios?**
 

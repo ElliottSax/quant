@@ -20,7 +20,6 @@ Cryptocurrency pairs trading combines the market-neutral alpha generation of tra
 
 Cryptocurrency pairs exhibit distinct properties from equity pairs:
 
-1. **Stronger cointegration**: Bitcoin/Ethereum have 0.95+ correlation; AAPL/MSFT only 0.92
 2. **Faster mean reversion**: Crypto pairs revert in 2-6 hours vs. 5-15 days for equities
 3. **24/7 trading**: No gaps; continuous price discovery across time zones
 4. **Exchange fragmentation**: Same pair trades at different prices across exchanges (arbitrage opportunity)
@@ -348,6 +347,6 @@ A: Don't trade same pair back-and-forth same exchange same day without market co
 
 ## Conclusion
 
-Crypto pairs trading combines the statistical rigor of traditional pairs with digital asset advantages: 24/7 liquidity, faster mean reversion, and exceptional cointegration strengths. Bitcoin-Ethereum and protocol token pairs offer 2.1+ Sharpe ratios with 12% maximum drawdowns over 4-hour trading horizons.
+Crypto pairs trading combines the statistical rigor of traditional pairs with digital asset advantages: 24/7 liquidity, faster mean reversion, and exceptional cointegration strengths. Bitcoin-Ethereum and protocol token pairs are common candidates; test cointegration, costs and capacity on your own data.
 
 Success requires understanding crypto-specific dynamics: exchange fragmentation, custody risks, extreme volatility, and liquidation mechanics. Start with spot trading on major pairs (BTC/ETH, SOL/AVAX), validate thoroughly on 1,000+ trades, then scale to margin trading and alternative pairs only after proven edge.

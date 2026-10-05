@@ -12,7 +12,7 @@ keywords: ["algorithmic trading for beginners", "getting started algorithmic tra
 
 # Algorithmic Trading for Beginners: Getting Started Guide
 
-Algorithmic trading for beginners can seem overwhelming, but the barrier to entry has never been lower. What once required a team of PhD quants and millions in infrastructure is now accessible to individual traders with a laptop, a brokerage account, and basic programming skills. According to the Bank for International Settlements, algorithmic trading accounts for approximately 60-75% of US equity market volume, and the democratization of tools means individual traders can now participate in this space.
+Algorithmic trading for beginners can seem overwhelming, but the barrier to entry has never been lower. What once required a team of PhD quants and millions in infrastructure is now accessible to individual traders with a laptop, a brokerage account, and basic programming skills.
 
 This guide provides a structured path from zero experience to deploying your first algorithmic [trading strategy](/blog/breakout-trading-strategy), covering the essential concepts, tools, common pitfalls, and a realistic timeline for skill development.
 
@@ -216,7 +216,6 @@ More complex is not better. Simple strategies (2-3 parameters) are more robust o
 - Include transaction costs, avoid look-ahead bias, and use out-of-sample validation
 - Start live trading with the minimum viable position size ($5,000-10,000)
 - Follow strict risk management: 1% per trade, 2% per day, 6% per month
-- Expect 3-6 months of learning before deploying a strategy with confidence
 
 ## Frequently Asked Questions
 
@@ -238,7 +237,7 @@ Yes, but the risks are different from discretionary trading. Algorithmic risks i
 
 ### How long does it take to become profitable?
 
-Most successful algorithmic traders report 6-18 months from starting to learn programming to deploying their first profitable strategy. The learning curve is steep but well-defined: 1-2 months for Python basics, 1-2 months for financial concepts and backtesting, 1-2 months for strategy development, and 1-3 months for paper trading and live deployment. Continuous improvement and strategy iteration is an ongoing process.
+The learning curve is steep but well-defined: 1-2 months for Python basics, 1-2 months for financial concepts and backtesting, 1-2 months for strategy development, and 1-3 months for paper trading and live deployment. Continuous improvement and strategy iteration is an ongoing process.
 
 ---
 

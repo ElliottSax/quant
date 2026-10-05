@@ -142,7 +142,7 @@ Estimate how much capital is pursuing similar strategies:
 
 ### What is a good Sharpe ratio for a quant fund?
 
-Sharpe ratios vary by strategy and should be evaluated in context. Statistical arbitrage funds should deliver 1.5+. Market-neutral equity funds should deliver 0.8+. Managed futures should deliver 0.5+. Be skeptical of claimed Sharpe ratios above 3.0 for any strategy (these likely reflect backtest optimization, illiquidity premium capture without proper accounting, or survivorship bias). After fees, a Sharpe ratio of 1.0 is excellent for any quant strategy.
+Sharpe ratios vary by strategy and should be evaluated in context. Appropriate Sharpe targets differ by strategy type and period; compare a fund with its own peer group and the fees it charges. Be skeptical of claimed Sharpe ratios above 3.0 for any strategy (these likely reflect backtest optimization, illiquidity premium capture without proper accounting, or survivorship bias). After fees, a Sharpe ratio of 1.0 is excellent for any quant strategy.
 
 ### How much track record is sufficient to evaluate a quant fund?
 

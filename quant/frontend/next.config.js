@@ -66,6 +66,10 @@ const nextConfig = {
       'butterfly-spreads-long-vs-short-variants': '/blog/05-butterfly-spread-options-strategy-low-risk',
       'black-litterman-model-incorporating-market-views': '/blog/black-litterman-model',
       'cross-validation-for-trading-systems-walk-forward-analysis': '/blog/cross-validation-trading-models',
+      // Pass 11: wrong circuit-breaker rules (a Dow/Nasdaq breaker table, 14 triggers since 1988, a 30-minute Level 2 halt)
+      // and a cross-chain post built on invented price gaps, bot returns and profit examples with wrong arithmetic.
+      'circuit-breakers-and-trading-halts-market-safeguards': '/blog/market-microstructure-trading',
+      'cross-chain-arbitrage-exploiting-multi-chain-pricing': '/blog/crypto-arbitrage-strategies',
     }
     return [
       ...removed.map((slug) => ({

@@ -402,4 +402,4 @@ A: Use vectorized pandas operations, avoid loops, use numpy for calculations.
 
 ## Conclusion
 
-Building production MACD backtesting systems in Python requires careful attention to code structure, logging, error handling, and metric calculation. The framework presented here is scalable, maintainable, and suitable for testing across multiple assets and parameters. Total returns of 33-35% with Sharpe ratios above 1.2 demonstrate the viability of MACD crossover strategies with proper implementation.
+Building production MACD backtesting systems in Python requires careful attention to code structure, logging, error handling, and metric calculation. The framework presented here is scalable, maintainable, and suitable for testing across multiple assets and parameters.

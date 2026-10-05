@@ -28,7 +28,7 @@ Bollinger Bands measure price deviation from a moving average using standard dev
 **Upper Band (UB)**: MB + (2.0 × 20-period Standard Deviation)
 **Lower Band (LB)**: MB - (2.0 × 20-period Standard Deviation)
 
-The two-standard-deviation framework captures approximately 95% of normal price movements. When price ventures outside these bands, mean reversion is statistically likely within 3-5 trading periods.
+The two-standard-deviation framework captures approximately 95% of normal price movements. When price ventures outside these bands, mean reversion is possible, but timing varies and strong trends can keep price outside the bands.
 
 ## Mechanical Trading Rules
 
@@ -219,10 +219,9 @@ Measured results are not published for this strategy. The code above is a starti
 
 ### Combining with Additional Indicators
 
-Adding RSI confirmation improves accuracy to 72%:
-- RSI < 30 for long entries (vs 68% without)
+Adding RSI confirmation can help filter signals (test it on your own data):
+- RSI < 30 for long entries
 - RSI > 70 for short entries
-- Reduces false signals by 32%
 
 ## Real-World Trading Considerations
 

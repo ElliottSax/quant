@@ -9,7 +9,7 @@ keywords: ["minimum variance portfolio", "low volatility portfolio", "minimum ri
 ---
 # Minimum Variance Portfolio: Lowest Risk for Your Returns
 
-The minimum variance portfolio (MVP) occupies a unique position in quantitative finance: it is the only portfolio on the efficient frontier that requires no expected return estimates. By minimizing portfolio variance subject to full investment and optional long-only constraints, the MVP sidesteps the most error-prone input in [portfolio optimization](/blog/portfolio-optimization-guide) while exploiting the well-documented low-volatility anomaly. Institutional adoption has grown substantially, with over $100 billion in assets tracking minimum variance strategies globally.
+The minimum variance portfolio (MVP) occupies a unique position in quantitative finance: it is the only portfolio on the efficient frontier that requires no expected return estimates. By minimizing portfolio variance subject to full investment and optional long-only constraints, the MVP sidesteps the most error-prone input in [portfolio optimization](/blog/portfolio-optimization-guide) while exploiting the well-documented low-volatility anomaly. Institutional adoption has grown substantially.
 
 ## Mathematical Foundation
 
@@ -58,8 +58,6 @@ The minimum variance portfolio benefits from one of the most robust anomalies in
 
 Studies across global equity markets from 1968-2025 consistently document:
 
-- The lowest-volatility quintile of stocks earns Sharpe ratios 40-60% higher than the highest-volatility quintile
-- Minimum variance portfolios achieve 70-80% of the market return with 60-70% of the market volatility
 - The anomaly persists after controlling for size, value, momentum, and profitability factors
 
 ### Explanations for the Anomaly
@@ -147,7 +145,7 @@ Construct the MVP at the factor level rather than the asset level. Choose factor
 
 ### Does the minimum variance portfolio always underperform the market in bull markets?
 
-Typically yes, because its low beta (0.55-0.75) mechanically limits upside capture. During 2013-2019, a period of strong equity markets, minimum variance strategies underperformed the S&P 500 by 2-4% annually. However, the outperformance during bear markets (2008, 2020) typically more than compensates over a full market cycle. Investors should expect the MVP to lag during extended bull markets and outperform during corrections and bear markets.
+Typically yes, because its low beta (0.55-0.75) mechanically limits upside capture. In strong equity markets, minimum variance strategies tend to lag the S&P 500. However, the outperformance during bear markets (2008, 2020) can offset some of the lag over a full market cycle. Investors should expect the MVP to lag during extended bull markets and outperform during corrections and bear markets.
 
 ### How many assets should the minimum variance portfolio hold?
 
@@ -159,7 +157,7 @@ Yes, and it is particularly powerful for multi-asset portfolios because cross-as
 
 ### How sensitive is the MVP to the covariance estimation method?
 
-Substantially. Using a sample covariance matrix with 250 daily observations produces portfolio weights that change by 15-25% when the estimation window shifts by just 5 trading days. Ledoit-Wolf shrinkage reduces this instability to 5-10%, and factor-model-based covariance reduces it further to 3-7%. For production implementations, covariance estimation method matters more than optimization algorithm.
+Substantially. Using a sample covariance matrix with 250 daily observations produces portfolio weights that can change materially when the estimation window shifts by just a few trading days. For production implementations, covariance estimation method matters more than optimization algorithm.
 
 ### Should I combine minimum variance with momentum or other factors?
 

@@ -200,10 +200,7 @@ For institutional orders (10,000+ shares), HFT can significantly increase execut
 
 ## Key Takeaways
 
-- HFT accounts for 50-60% of US equity volume, operating at microsecond timescales
 - The four core HFT strategies are market making, latency arbitrage, [statistical arbitrage](/blog/crypto-statistical-arbitrage), and event-driven trading
-- Latency arbitrage extracts approximately $5 billion annually from other market participants
-- HFT infrastructure costs $5-50 million annually, creating a barrier to entry
 - Non-HFT traders should use limit orders, avoid the open/close, and use [algorithmic execution](/blog/algorithmic-execution-quality) for large orders
 - Regulatory proposals (batch auctions, speed bumps) aim to reduce latency arbitrage while preserving market making benefits
 
@@ -219,7 +216,7 @@ Yes, HFT is legal in all major jurisdictions. Market making, [statistical arbitr
 
 ### How profitable is HFT?
 
-HFT profitability has declined significantly since its peak in 2009-2012 as competition has increased and easy opportunities have been arbitraged away. Industry estimates suggest that aggregate HFT revenue in US equities has declined from approximately $7.2 billion in 2009 to $1.5-2.5 billion in 2024. Individual firms range from $25 million to over $1 billion in annual revenue. The most profitable firms are those with the best technology (lowest latency) and the broadest market coverage (multiple asset classes and geographies).
+HFT profitability has declined significantly since its peak in 2009-2012 as competition has increased and easy opportunities have been arbitraged away. The most profitable firms are those with the best technology (lowest latency) and the broadest market coverage (multiple asset classes and geographies).
 
 ### Does HFT cause flash crashes?
 

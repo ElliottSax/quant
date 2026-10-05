@@ -333,4 +333,4 @@ A: Every 6-12 months. Markets change and old parameters degrade performance.
 
 ## Conclusion
 
-MACD crossover backtesting can be efficiently implemented using vectorized pandas operations, delivering 10x performance improvements over loop-based approaches. Multi-asset parallel backtesting enables rapid strategy evaluation across multiple instruments. The strategy delivers consistent 1.2+ Sharpe ratios across major forex pairs with careful implementation and parameter optimization. Production backtesting requires proper transaction cost modeling, walk-forward validation, and realistic performance expectations.
+MACD crossover backtesting can be efficiently implemented using vectorized pandas operations, delivering 10x performance improvements over loop-based approaches. Multi-asset parallel backtesting enables rapid strategy evaluation across multiple instruments. Production backtesting requires proper transaction cost modeling, walk-forward validation, and realistic performance expectations.

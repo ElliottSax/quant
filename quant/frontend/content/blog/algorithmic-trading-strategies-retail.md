@@ -92,9 +92,9 @@ Traders often fall into these pitfalls when using this strategy:
 
 | Market | Entry | Stop Loss | Target | Risk/Reward | Expected Outcome |
 |--------|-------|-----------|--------|-------------|------------------|
-| Stocks (SPY) | Breakout + Volume | 2% below entry | 3x risk above | 1:3 | 2-3% monthly returns |
-| Forex (EUR/USD) | MA Crossover | 15 pips | 45+ pips | 1:3+ | 50-100 pips weekly |
-| Crypto (BTC) | Technical Level | 2% below | 5-10% above | 1:2.5+ | 5-15% monthly |
+| Stocks (SPY) | Breakout + Volume | 2% below entry | 3x risk above | 1:3 | No forecast; depends on testing |
+| Forex (EUR/USD) | MA Crossover | 15 pips | 45+ pips | 1:3+ | No forecast; depends on testing |
+| Crypto (BTC) | Technical Level | 2% below | 5-10% above | 1:2.5+ | No forecast; depends on testing |
 | Emerging Market ETF | Range Breakout | Below support | 10-20% move | 1:2 | Mid-term 20-50% moves |
 
 ## Best Practices for This Strategy
@@ -114,7 +114,7 @@ Python (easiest, tons of libraries: ccxt, pandas, numpy). JavaScript/Node.js (fa
 
 ### How profitable can retail trading bots be?
 
-Simple bots: 1-3% monthly (conservative). Advanced bots: 3-10% monthly (risky). Most bots: -5% to 0% (over-optimized). Success requires proper testing and market regime awareness.
+Returns vary widely, and many over-optimized bots lose money; none of these examples is a forecast. Success requires proper testing and market regime awareness.
 
 ### Do trading bots work in all markets?
 
@@ -122,7 +122,7 @@ No. Crypto: excellent (volatile 24/7). Stocks: good (clear trends). Forex: okay 
 
 ### How much capital do you need to run a bot?
 
-Minimum: $100-500 (crypto). $2,000+ (stocks, PDT rule). Most profitable: $5,000+. Larger capital = lower %fee impact, better position sizing.
+Minimum: $100-500 (crypto). $25,000+ to day-trade stocks in a US margin account (PDT rule). Larger capital = lower %fee impact, better position sizing.
 
 ### Should you run multiple bots on the same account?
 

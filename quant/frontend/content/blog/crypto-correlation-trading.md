@@ -19,7 +19,7 @@ Bitcoin dominance measures BTC market cap as percentage of total crypto market c
 
 Calculation: BTC_Dominance = BTC_Market_Cap / Total_Crypto_Market_Cap × 100%. Example: BTC = $500B, total = $2T → dominance = 25%.
 
-Dominance trends reflect market cycles: (1) Bull market starts: BTC dominance falls (alt appreciation higher than BTC), (2) Bull market peak: alt dominance maximum (4x-10x gains in alts vs. 2-3x BTC), (3) Bear market: BTC dominance rises (BTC declines less than alts), (4) Bear market trough: BTC dominance maximum (alts 80-90% down, BTC 60-70% down).
+Dominance trends reflect market cycles: (1) Bull market starts: BTC dominance tends to fall as alts appreciate faster than BTC, (2) Bull market peak: alt dominance tends to be at its maximum, (3) Bear market: BTC dominance tends to rise as BTC declines less than alts, (4) Bear market trough: BTC dominance tends to be at its maximum.
 
 The seasonal pattern: dominance roughly declines Jan-May (alt season), peaks June-August, declines Sept-Nov (late alt season), peaks December-January. This seasonal pattern hasn't persisted reliably across cycles, but general trend observable.
 
@@ -55,7 +55,7 @@ Execution mechanics: buy/sell altcoin indices rather than individual assets (red
 
 [Correlation trading](/blog/correlation-trading-strategies) performance depends on regime persistence and execution quality.
 
-Profit factor (average win / average loss): 2.0-2.5× typical for systematic approaches.
+Profit factor (gross profit / gross loss): above 1 is profitable; targets are strategy-specific.
 
 Drawdown risk: periods when position against regime cause multi-month losses. If allocated heavy to alts during BTC dominance increase (wrong regime), position might suffer 20-30% loss over 2-3 months. Risk management prevents catastrophic loss through: (1) smaller position sizes during uncertain regimes, (2) faster mean-reversion exit thresholds, (3) hedge positions offsetting correlation risk.
 
@@ -65,11 +65,11 @@ Correlation hedge strategies use options or perpetual shorts to hedge undesired 
 
 ## Key Takeaways
 
-Bitcoin dominance (30-70% range) drives altcoin relative performance, with high dominance (>65%) signaling altcoin undervaluation and mean reversion opportunities to 50-80% outperformance within 3-6 months.
+Bitcoin dominance (30-70% range) drives altcoin relative performance, with high dominance (>65%) signaling altcoin undervaluation and possible mean reversion opportunities.
 
 Correlation regimes between BTC and alts (0.4-0.95 range) shift predictably across market cycles, enabling pair [trading strategies](/blog/backtesting-trading-strategies) that profit from correlation compressions and expansions with 2:1 profit factor.
 
-Dominance acceleration (rapid shifts in dominance direction) precedes regime changes 70-80% of time, enabling early positioning in emerging alt seasons before crowd recognition and providing 4-8 week alpha advantage.
+Dominance acceleration (rapid shifts in dominance direction) often precedes regime changes, which can allow early positioning in emerging alt seasons, though the signal is noisy and can fail.
 
 Risk management through [position sizing](/blog/position-sizing-strategies) adjustments during uncertain regimes, hedge positions offsetting correlation risk, and portfolio construction maintaining both upside and downside protection prevents catastrophic losses from regime failures.
 
@@ -81,7 +81,7 @@ Early warning signals: (1) dominance accelerating downward (falling 2%+ weekly),
 
 **Which altcoins best represent typical alt season performance?**
 
-Large-cap alts (ETH, BNB, SOL, MATIC, AVAX) move 3-5× BTC during alt season (BTC +20%, alts +60-100%). Mid-cap alts (UNI, AAVE, LINK) move 5-10× BTC (BTC +20%, alts +100-200%). Small-cap altcoins (emerging DeFi, L1s) can move 10-50× BTC but carry much higher risk. Strategy: weight portfolio toward large/mid-cap during uncertain dominance (lower volatility), shift toward small-cap when dominance clearly in favor (capturing outsized returns). Alternative: use alt index (combination of 10-20 alts) rather than single assets, reducing single-asset risk while capturing segment moves.
+Large-cap alts (ETH, BNB, SOL, MATIC, AVAX) often move more than BTC during alt season. Mid-cap alts (UNI, AAVE, LINK) often move even more than large-cap alts. Small-cap altcoins (emerging DeFi, L1s) can move more still but carry much higher risk. Strategy: weight portfolio toward large/mid-cap during uncertain dominance (lower volatility), shift toward small-cap when dominance clearly in favor (capturing outsized returns). Alternative: use alt index (combination of 10-20 alts) rather than single assets, reducing single-asset risk while capturing segment moves.
 
 **How does correlation differ between bear and bull markets?**
 

@@ -172,7 +172,7 @@ Pure duration strategies underperform during rate rises (by construction). Howev
 
 ### Are fixed income quant strategies capacity-constrained?
 
-Less so than equity strategies because the fixed income market is larger ($130T+ globally vs. $100T+ for equities). However, specific segments (high-yield, emerging market debt) have limited liquidity. Investment-grade credit strategies can manage $5-20 billion without significant capacity constraints. Duration and curve strategies using Treasury futures are highly scalable.
+Less so than equity strategies because the fixed income market is larger ($130T+ globally vs. $100T+ for equities). However, specific segments (high-yield, emerging market debt) have limited liquidity. Duration and curve strategies using Treasury futures are highly scalable.
 
 ### Can I apply equity factor models to fixed income?
 

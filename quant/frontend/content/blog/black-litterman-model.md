@@ -162,7 +162,7 @@ The model shifted allocation from International (30% to 23%) to US (50% to 58%),
 
 ### How many views should I express?
 
-Express views only where you have genuine conviction and an informational edge. Expressing views on all assets defeats the purpose of the model (you are back to specifying all expected returns). Institutional implementations typically express 3-8 views across a universe of 20-50 assets, leaving the majority of assets at equilibrium weights.
+Express views only where you have genuine conviction and an informational edge. Expressing views on all assets defeats the purpose of the model (you are back to specifying all expected returns). Institutional implementations typically express only a few views, leaving the majority of assets at equilibrium weights.
 
 ### Can Black-Litterman handle factor-based views?
 

@@ -20,7 +20,7 @@ description: "Breakout trading represents one of the most intuitive and profitab
 
 # Breakout Trading Strategy: Complete Backtest and Performance Analysis
 
-Breakout trading represents one of the most intuitive and profitable approaches for algorithmic traders. By identifying price levels where consolidation breaks and volume surges, traders capture strong directional moves with defined risk. This comprehensive analysis covers the mechanics of identifying valid breakouts, precise entry timing, risk management protocols, and empirical backtest results across 5+ years of market data.
+Breakout trading represents one of the most intuitive and profitable approaches for algorithmic traders. By identifying price levels where consolidation breaks and volume surges, traders capture strong directional moves with defined risk. This comprehensive analysis covers the mechanics of identifying valid breakouts, precise entry timing, risk management protocols, and how to test breakouts on your own data.
 
 ## Understanding Breakout Trading
 
@@ -208,7 +208,7 @@ The difference between breakout success and failure often comes down to precise 
 - Our [Position Size Calculator](/tools/position-size) will do this arithmetic for you from account size, risk %, entry, and stop
 
 **Profit Targets**:
-- Target 1: 1.5 × Risk (3:1 reward/risk) - close 50% position
+- Target 1: 1.5 × Risk (1.5:1 reward/risk) - close 50% position
 - Target 2: 2.5 × Risk - close remaining position
 - Trailing stop: Activate after 2% gain
 

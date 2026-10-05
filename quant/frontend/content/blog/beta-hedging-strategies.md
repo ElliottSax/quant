@@ -109,7 +109,7 @@ The optimal rehedging frequency balances precision against transaction costs:
 
 **Daily rehedging**: Maximum precision, but transaction costs (bid-ask spread, market impact, commissions) can reach 0.5-1.0% annually for active strategies. Appropriate for highly leveraged portfolios where small beta drift produces large P&L impact.
 
-**Weekly rehedging**: Acceptable for most equity long/short strategies. Beta drift over a week is typically 0.05-0.15 for diversified portfolios. Transaction costs are substantially reduced.
+**Weekly rehedging**: Acceptable for most equity long/short strategies. Transaction costs are substantially reduced.
 
 **Threshold-based rehedging**: Rehedge when |beta_portfolio| exceeds a tolerance (e.g., 0.05 or 0.10). This approach minimizes unnecessary trading while ensuring the hedge remains effective. Most institutional implementations use this method.
 
@@ -144,7 +144,7 @@ For factors without direct tradable proxies, construct factor-mimicking portfoli
 
 ## Common Pitfalls
 
-**Estimation error**: Beta estimates from 60-day windows have standard errors of approximately 0.15-0.25, meaning a true beta of 1.0 could produce estimates ranging from 0.75 to 1.25. Over-precision in hedge ratios is illusory.
+**Estimation error**: Beta estimates from 60-day windows can have large standard errors, so an estimated beta can differ noticeably from the true beta. Over-precision in hedge ratios is illusory.
 
 **Basis risk**: The hedge instrument (e.g., S&P 500 futures) may not match the portfolio's actual market exposure. A portfolio of small-cap stocks hedged with S&P 500 futures retains substantial exposure to the small-cap premium.
 
@@ -164,7 +164,7 @@ For factors without direct tradable proxies, construct factor-mimicking portfoli
 
 ### How much does beta hedging cost?
 
-Direct hedging costs include futures roll costs (approximately 0.1-0.3% annually for S&P 500 futures), ETF borrow costs (0.3-1.0% for liquid ETFs), and transaction costs from rehedging (0.2-0.5% annually depending on frequency). The total cost is typically 0.5-1.5% annually. The indirect cost is the foregone market return: in a year when the market returns 15%, a beta-hedged portfolio captures only its alpha component.
+Direct hedging costs include futures roll costs (approximately 0.1-0.3% annually for S&P 500 futures), ETF borrow costs (0.3-1.0% for liquid ETFs), and transaction costs from rehedging (0.2-0.5% annually depending on frequency). The indirect cost is the foregone market return: in a year when the market returns 15%, a beta-hedged portfolio captures only its alpha component.
 
 ### Should I hedge with the S&P 500 or the Russell 2000?
 

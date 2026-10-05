@@ -9,7 +9,7 @@ keywords: ["currency hedging strategies", "FX hedging", "international portfolio
 ---
 # Currency Hedging Strategies for International Portfolios
 
-International diversification exposes portfolios to currency risk. A US-based investor holding European equities earns the local equity return plus (or minus) the EUR/USD exchange rate movement. In some years, currency effects dominate the underlying investment return. During 2022, MSCI EAFE returned -14.5% in USD but only -5.7% in local currency terms -- nearly 9 percentage points of the loss came from the strengthening dollar. Systematic currency hedging manages this risk, and the choice of hedging approach materially affects portfolio risk and return.
+International diversification exposes portfolios to currency risk. A US-based investor holding European equities earns the local equity return plus (or minus) the EUR/USD exchange rate movement. In some years, currency effects dominate the underlying investment return. Systematic currency hedging manages this risk, and the choice of hedging approach materially affects portfolio risk and return.
 
 ## Understanding Currency Exposure
 
@@ -37,7 +37,7 @@ Currency movements contribute significantly to international portfolio volatilit
 
 Total USD return volatility: approximately 16-18% (higher than local volatility due to currency)
 
-Currency contributes approximately 15-30% of total portfolio variance for unhedged international equity allocations. This is risk that provides no systematic compensation -- the long-run expected return from holding foreign currencies is approximately zero (supported by extensive empirical evidence).
+This is risk that provides no systematic compensation -- the long-run expected return from holding foreign currencies is approximately zero (supported by extensive empirical evidence).
 
 ## Hedging Instruments
 
@@ -183,14 +183,14 @@ Many investors accept unhedged EM currency exposure, treating it as a risk premi
 - Currency risk contributes 15-30% of international portfolio variance without providing systematic compensation, making some degree of hedging appropriate for most investors
 - Forward contracts are the primary hedging instrument, with the cost or benefit determined by interest rate differentials between domestic and foreign rates
 - The optimal hedge ratio for equity portfolios is typically 50-80%, reflecting the partial natural hedge between currency moves and local equity returns; [fixed income](/blog/fixed-income-quant-strategies) portfolios warrant higher hedge ratios (80-100%)
-- Dynamic hedge ratios incorporating carry, momentum, and volatility signals can add 50-100 basis points annually versus static hedging
+- Dynamic hedge ratios incorporating carry, momentum, and volatility signals may improve results versus static hedging, depending on the signals and costs
 - Currency overlay separates FX management from security selection, enabling specialized expertise and centralized netting of currency exposures
 
 ## Frequently Asked Questions
 
 ### Should I hedge emerging market currencies?
 
-The cost of hedging EM currencies is often prohibitive (5-15% annually due to high local interest rates). Many institutional investors leave EM currency exposure unhedged, viewing the positive carry from EM bonds as compensation for currency risk. If hedging, consider options rather than forwards to avoid the large negative carry cost. Partial hedging (25-50%) of the most liquid EM currencies (CNY, KRW, BRL, MXN) is a practical compromise.
+The cost of hedging EM currencies is often prohibitive (high local interest rates make forward hedging expensive). Many institutional investors leave EM currency exposure unhedged, viewing the positive carry from EM bonds as compensation for currency risk. If hedging, consider options rather than forwards to avoid the large negative carry cost. Partial hedging (25-50%) of the most liquid EM currencies (CNY, KRW, BRL, MXN) is a practical compromise.
 
 ### Does currency hedging always reduce portfolio volatility?
 

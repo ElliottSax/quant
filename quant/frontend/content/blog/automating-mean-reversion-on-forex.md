@@ -264,4 +264,4 @@ A: Start with 5-10:1 leverage. Mean reversion typically requires 2-4 risk-reward
 
 Forex mean reversion strategies leverage the unique characteristics of currency markets—high liquidity, carry relationships, and continuous trading—to generate consistent, risk-adjusted returns. The combination of volatility-adjusted bands, multi-timeframe confirmation, and proper risk management creates a robust framework for automated trading.
 
-Success in forex mean reversion requires understanding both the technical (Z-scores, volatility regimes) and fundamental (carry, interest rate differentials) drivers of currency pair movements. With proper implementation and risk discipline, traders can achieve Sharpe ratios exceeding 1.9 while managing drawdowns below 2.5%.
+Success in forex mean reversion requires understanding both the technical (Z-scores, volatility regimes) and fundamental (carry, interest rate differentials) drivers of currency pair movements. Sharpe ratio and drawdown outcomes depend on the pair, costs and market regime; measure them on your own data before trading real money.

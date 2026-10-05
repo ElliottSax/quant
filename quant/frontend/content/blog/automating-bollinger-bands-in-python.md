@@ -477,4 +477,4 @@ The for-loop state machine is needed for complex entry/exit logic. For simple th
 
 ### What is a realistic Sharpe ratio for a Bollinger Band strategy?
 
-On a single stock: 0.3-0.7. On a diversified portfolio of 20-50 stocks: 0.7-1.2. These numbers are after transaction costs. If your backtest shows a Sharpe above 2.0, you likely have look-ahead bias or insufficient transaction cost modeling. The strategy works best as one component of a multi-factor system rather than standalone.
+Realistic Sharpe ratios are modest and depend on the universe, the period and your cost assumptions; diversifying across many instruments helps. If your backtest shows a Sharpe above 2.0, you likely have look-ahead bias or insufficient transaction cost modeling. The strategy works best as one component of a multi-factor system rather than standalone.

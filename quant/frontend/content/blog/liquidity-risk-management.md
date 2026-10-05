@@ -170,7 +170,7 @@ Liquidity varies enormously: Large-cap US equities have bid-ask spreads of 1-3 b
 
 ### Should I accept lower returns for higher liquidity?
 
-Yes, and most institutional investors do so implicitly. The "liquidity premium" -- the additional expected return from holding illiquid assets -- is estimated at 1-4% annually for private equity and real estate. The decision to hold illiquid assets should be based on a framework that compares the liquidity premium to the opportunity cost of capital lockup and the risk of forced selling. Investors with stable long-term capital (endowments, sovereign wealth funds) should harvest the liquidity premium; investors with redemption-sensitive capital (hedge funds) should not.
+Yes, and most institutional investors do so implicitly. The "liquidity premium" -- the additional expected return from holding illiquid assets -- is commonly cited as positive for private equity and real estate, though estimates vary widely by period and method. The decision to hold illiquid assets should be based on a framework that compares the liquidity premium to the opportunity cost of capital lockup and the risk of forced selling. Investors with stable long-term capital (endowments, sovereign wealth funds) should harvest the liquidity premium; investors with redemption-sensitive capital (hedge funds) should not.
 
 ### How do I manage liquidity risk in a multi-strategy portfolio?
 
