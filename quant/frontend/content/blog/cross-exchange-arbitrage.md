@@ -15,9 +15,9 @@ Cross-exchange arbitrage exploits temporary price discrepancies across venues, r
 
 Latency (time delay) between exchanges creates windows of opportunity before other traders eliminate spreads. BTC trading at $42,000 on Coinbase but $42,050 on Kraken represents potential $50 profit per BTC, but only if you can execute both trades before prices adjust.
 
-The latency breakdown: (1) Network latency (100-500ms) from your server to exchange, (2) Exchange matching engine processing (50-200ms), (3) Your system processing and next order submission (100-300ms). Total: 250-1,000ms. During this delay, prices move. If volatility is 60% annualized = 2% daily, 1% intraday = 0.14% per hour = 0.0000019% per millisecond. A 1,000ms delay risks losing 0.19% of position to adverse price movement on volatile assets.
+The latency breakdown: (1) Network latency (100-500ms) from your server to exchange, (2) Exchange matching engine processing (50-200ms), (3) Your system processing and next order submission (100-300ms). Total: 250-1,000ms. During this delay, prices move. At 60% annualized volatility (roughly 3-4% per day), a one-second delay exposes you to adverse moves of a few hundredths of a percent on average, with much larger moves during fast markets - comparable to the whole spread you are trying to capture.
 
-Geographical optimization reduces latency through co-location (servers physically near exchange data centers). Coinbase colocates in Chicago, Binance in Singapore, Kraken in Canada. If your server in New York has 100ms latency to Coinbase vs. someone colocated having 5ms, you lose 95ms of reaction time. Professional arbitrageurs colocate in multiple regions ($5,000-$20,000/month rental), shrinking latency to single-digit milliseconds.
+Geographical optimization reduces latency through co-location (servers physically near exchange data centers). Each exchange's matching engine lives in a specific region (check the exchange's own documentation). If your server in New York has 100ms latency to Coinbase vs. someone colocated having 5ms, you lose 95ms of reaction time. Professional arbitrageurs colocate in multiple regions ($5,000-$20,000/month rental), shrinking latency to single-digit milliseconds.
 
 Network optimization implements direct connections to exchanges via FIX protocols (financial information exchange) where available, reducing REST API latency from 300-500ms to 50-100ms. Most crypto exchanges lack FIX but some (Coinbase, Kraken Futures) offer it for institutional clients.
 
@@ -49,7 +49,7 @@ Order routing algorithms decide: place market orders immediately capturing execu
 
 Position tracking across exchanges: maintain real-time sum of holdings by asset across all venues, P&L from arbitrage executed, and margin utilization. Automated alerts trigger if: total position concentration exceeds 30% on single exchange (reduce via rebalancing), single exchange margin exceeds 70% utilized (available capital squeezed, reduce position size), or daily loss exceeds -1% (kill switch halting trading for review).
 
-Backtesting validates arbitrage strategy across historical data. Simulate: (1) Detect profitable spreads from historical L2 order book data, (2) Execute with realistic slippage based on position size, (3) Account for fees at historical rates, (4) Model transfer times if cross-exchange transfers required. If you want to prototype a spread-threshold strategy like this without writing the simulation loop yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required. Example backtest: test strategy on Jan 2023 BTC prices across Binance/Coinbase/Kraken. Result: 200 arbitrage opportunities monthly, average 0.3% profit, minus transfer costs = 0.1% average = 3% monthly = 36% annualized.
+Backtesting validates arbitrage strategy across historical data. Simulate: (1) Detect profitable spreads from historical L2 order book data, (2) Execute with realistic slippage based on position size, (3) Account for fees at historical rates, (4) Model transfer times if cross-exchange transfers required. If you want to prototype a spread-threshold strategy like this without writing the simulation loop yourself, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no signup required. We do not publish measured results for this strategy; count opportunities, net profit per trade and transfer costs from your own data, and compound them honestly.
 
 ## Risk Management and Operational Excellence
 
@@ -83,7 +83,7 @@ Minimum $50,000-$100,000 across exchanges ($10,000 per venue minimum spread 5-10
 
 **What are realistic monthly returns from cross-exchange arbitrage?**
 
-Conservative estimate: 200-300 profitable opportunities monthly, 0.2-0.4% net profit each = 40-120 basis points = 4-12% monthly = 48-144% annualized. Reality: after fees, execution challenges, transfer costs: 15-35% annualized achievable for professional operations. Reality check: if 100% monthly possible, everyone would do it. Difficulty increases as: more capital deployed (harder to move prices), more competitors (spread shrinking), lower fee opportunities (need higher capital/speed to compete).
+Any projection multiplies three things you must measure yourself: opportunities per month, net profit per opportunity after fees and slippage, and the capital tied up in transfers. We do not publish measured results. Reality check: if triple-digit annual returns were available, everyone would do it. Difficulty increases as: more capital deployed (harder to move prices), more competitors (spread shrinking), lower fee opportunities (need higher capital/speed to compete).
 
 **What infrastructure costs are necessary for competitive arbitrage?**
 

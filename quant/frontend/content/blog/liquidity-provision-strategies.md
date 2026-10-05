@@ -90,7 +90,7 @@ Consider $10,000 deposited into ETH/USDC at $2,500 with $2,400-$2,600 range (rou
 
 Full-range V2 positions suffer ~13% IL at 2.8x price movement. Concentrated positions suffer higher IL (15-25%) depending on range width, but earn 5-10x more fees to compensate. Net outcome depends on volatility, volume, and fee tier.
 
-[Hedging strategies](/blog/beta-hedging-strategies) use [perpetual futures](/blog/perpetual-futures-funding-rate) or options to offset directional risk. A provider with $10,000 in ETH/USDC range buys $5,000 notional ETH perpetuals, creating delta neutrality. If ETH rises 10%, the LP position loses $300 to IL but the perp gains $500, netting +$200. The hedge costs funding rates (typically -5% to +20% APY) but eliminates directional exposure.
+[Hedging strategies](/blog/beta-hedging-strategies) use [perpetual futures](/blog/perpetual-futures-funding-rate) or options to offset directional risk. A provider with $10,000 in ETH/USDC range buys $5,000 notional ETH perpetuals, creating delta neutrality. If ETH rises 10%, the LP position loses $300 to IL but the perp gains $500, netting +$200. The hedge costs funding rates (which vary widely and can be negative) but eliminates directional exposure.
 
 Options-based hedging sells covered calls or buys protective puts around the liquidity range. If providing liquidity at $2,400-$2,600, sell ETH calls at $2,600 strike. Premium collected offsets IL if price rises above $2,600, effectively capping upside exposure in exchange for reduced downside risk.
 
@@ -136,7 +136,7 @@ Creating a new V3 position costs 200,000-250,000 gas (first position in pair) or
 
 **Which fee tier generates the highest returns on Uniswap V3?**
 
-Fee tier selection depends on pair volatility and volume distribution. Stablecoin pairs: 0.01% tier captures most volume with minimal IL. ETH/USDC: 0.3% tier balances volume and IL compensation. Exotic altcoin pairs: 1% tier necessary for IL compensation despite lower volume. Check actual volume distribution across tiers for specific pairs before deploying. Often 0.3% tier captures 70-90% of volume on major pairs.
+Fee tier selection depends on pair volatility and volume distribution. Stablecoin pairs: 0.01% tier captures most volume with minimal IL. ETH/USDC: 0.3% tier balances volume and IL compensation. Exotic altcoin pairs: 1% tier necessary for IL compensation despite lower volume. Check actual volume distribution across tiers for specific pairs before deploying. On major pairs the 0.3% tier is often the deepest; check the pool's current volume split before choosing.
 
 **How do you calculate expected APY from a Uniswap V3 position before deploying?**
 

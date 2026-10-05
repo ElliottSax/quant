@@ -23,11 +23,7 @@ Research by Carr and Wu (2009) documented the persistent volatility risk premium
 
 **The Volatility Risk Premium (VRP)**: IV consistently exceeds RV, meaning options are systematically overpriced relative to actual outcomes.
 
-Historical data (S&P 500, 2005-2025):
-- Average VIX (implied): 18.4%
-- Average 30-day realized volatility: 15.2%
-- Average VRP: 3.2 percentage points
-- VRP positive: 85% of months
+The gap between implied and realized volatility has been positive in most months over the past two decades, by a few volatility points on average; we do not publish a measured series here, and the premium disappears or reverses in crashes.
 
 This persistent overpricing of options creates a systematic edge for volatility sellers, analogous to the insurance industry's consistent profitability from charging premiums above expected losses.
 
@@ -99,7 +95,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 ### Concept
 
-VIX futures exhibit a persistent contango (upward sloping term structure) approximately 80% of the time. Front-month futures converge to spot VIX as expiration approaches, creating "roll yield" for short positions.
+VIX futures exhibit a persistent contango (upward sloping term structure) most of the time. Front-month futures converge to spot VIX as expiration approaches, creating "roll yield" for short positions.
 
 ### Rules
 
@@ -155,7 +151,7 @@ Combining multiple volatility strategies with different risk profiles:
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-The 10% tail hedge allocation costs approximately 0.4 Sharpe per year but provides critical protection during the events that destroy unhedged short volatility strategies.
+A tail hedge allocation lowers the strategy's risk-adjusted return in calm years but provides critical protection during the events that destroy unhedged short volatility strategies.
 
 ## Volatility Products and Instruments
 
@@ -179,9 +175,9 @@ The 10% tail hedge allocation costs approximately 0.4 Sharpe per year but provid
 
 ## Key Takeaways
 
-- The volatility risk premium (IV > RV 85% of the time) is the foundation of systematic short volatility strategies
-- VIX term structure roll yield earns approximately 2.4% per month during contango periods
-- A 10% allocation to tail hedges costs 0.4 Sharpe/year but provides essential crash protection
+- The volatility risk premium (IV above RV in most months) is the foundation of systematic short volatility strategies
+- VIX term structure roll yield is the source of return for short-futures positions during contango; measure it on your own data
+- A tail-hedge allocation costs return in calm years but provides essential crash protection
 
 ## Frequently Asked Questions
 
@@ -191,7 +187,7 @@ You can trade volatility using VIX futures (directly accessible through most fut
 
 ### Is selling volatility safe?
 
-Selling volatility is profitable on average (the volatility risk premium ensures positive expected returns) but carries extreme tail risk. The 2018 Volmageddon event destroyed $4 billion in short volatility products in a single day. Safety requires: (1) strict [position sizing](/blog/position-sizing-strategies) (maximum 5% of portfolio per position), (2) stop-losses triggered by VIX level (exit above 30), (3) tail hedges (1-2% of portfolio in far OTM puts), and (4) diversification across multiple volatility strategies with different risk profiles.
+Selling volatility is profitable on average (the volatility risk premium ensures positive expected returns) but carries extreme tail risk. The February 2018 "Volmageddon" event wiped out most of the value of the largest short-volatility products in a single day (XIV was terminated). Safety requires: (1) strict [position sizing](/blog/position-sizing-strategies) (maximum 5% of portfolio per position), (2) stop-losses triggered by VIX level (exit above 30), (3) tail hedges (1-2% of portfolio in far OTM puts), and (4) diversification across multiple volatility strategies with different risk profiles.
 
 ### What is the difference between trading VIX futures and options?
 
@@ -199,7 +195,7 @@ VIX futures provide direct exposure to expected 30-day volatility and are subjec
 
 ### How has the VIX changed over time?
 
-The long-term average VIX has declined from approximately 20-22 in the 2000s-2010s to 15-18 in recent years, reflecting lower structural volatility, increased liquidity, and the growth of volatility-selling strategies. However, VIX spikes have become sharper and shorter: the VIX reached 82 during COVID (March 2020) but reverted below 25 within 3 months. This pattern of lower baseline volatility with sharper spikes creates both opportunity (more frequent VRP collection) and risk (more violent tail events) for volatility traders.
+The long-term average VIX has been lower in recent years than in the 2000s-2010s, reflecting lower structural volatility, increased liquidity, and the growth of volatility-selling strategies. However, VIX spikes have become sharper and shorter: the VIX reached 82 during COVID (March 2020) but reverted below 25 within 3 months. This pattern of lower baseline volatility with sharper spikes creates both opportunity (more frequent VRP collection) and risk (more violent tail events) for volatility traders.
 
 ---
 

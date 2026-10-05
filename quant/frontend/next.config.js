@@ -58,11 +58,25 @@ const nextConfig = {
       "congress-signals-retail-weakness-selling-consumer-stocks-2026-03-15",
       "bipartisan-stock-picks-what-both-parties-buy"
     ]
-    return removed.map((slug) => ({
-      source: `/blog/${slug}`,
-      destination: '/congress-stock-trades',
-      permanent: true,
-    }))
+    // Posts removed 2026-10-04 (pass 9) whose readers belong on a different live page: the
+    // butterfly duplicate described the strategy wrong (long butterfly "profits from a moderate
+    // increase"), cited CBOE studies that do not exist and showed a P/L table that implies a
+    // zero-debit spread. The real guide lives at 05-butterfly-spread-options-strategy-low-risk.
+    const removedTo = {
+      'butterfly-spreads-long-vs-short-variants': '/blog/05-butterfly-spread-options-strategy-low-risk',
+    }
+    return [
+      ...removed.map((slug) => ({
+        source: `/blog/${slug}`,
+        destination: '/congress-stock-trades',
+        permanent: true,
+      })),
+      ...Object.entries(removedTo).map(([slug, destination]) => ({
+        source: `/blog/${slug}`,
+        destination,
+        permanent: true,
+      })),
+    ]
   },
 
   // Environment variables

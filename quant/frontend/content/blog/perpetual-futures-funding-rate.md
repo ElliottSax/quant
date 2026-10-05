@@ -33,7 +33,7 @@ Negative funding occurs during bear markets or periods of high short interest. S
 
 Cash-and-carry represents the core funding rate arbitrage strategy: simultaneously hold spot assets and equivalent short perp positions, earning funding payments while maintaining delta neutrality.
 
-The basic trade structure for BTC at $42,000 with 0.05% 8-hour funding (60% annualized): Buy 1 BTC spot for $42,000, short 1 BTC perp at $42,100. Position delta = +1 BTC spot - 1 BTC perp = 0 (delta neutral). Every 8 hours receive funding payment = $42,000 × 0.05% = $21. Annual yield = $21 × 3 × 365 / $42,000 = 60% on deployed capital.
+The basic trade structure for BTC at $42,000 with 0.05% 8-hour funding (about 55% annualized, simple, before costs): Buy 1 BTC spot for $42,000, short 1 BTC perp at $42,100. Position delta = +1 BTC spot - 1 BTC perp = 0 (delta neutral). Every 8 hours receive funding payment = $42,000 × 0.05% = $21. Annual yield = $21 × 3 × 365 / $42,000 ≈ 55% on deployed capital (simple, not compounded, before costs).
 
 Capital efficiency improves through perp leverage. Instead of $42,000 for 1 BTC spot, many strategies allocate $35,000 to spot and $7,000 to perp margin (7x leverage on perps). This generates equivalent funding on $42,000 notional using only $42,000 capital, but increases liquidation risk on perp position.
 
@@ -43,13 +43,13 @@ Margin calculations: At 5x leverage, $10,000 margin controls $50,000 notional pe
 
 Rebalancing maintains neutrality as positions grow from funding accumulation. After collecting $5,000 funding over several months, either: (1) Add $5,000 to perp shorts maintaining equal notional, (2) Withdraw $5,000 funding and maintain existing position size, or (3) Compound by adding $5,000 spot and equivalent perp shorts.
 
-Position entry timing significantly impacts returns. Entering when funding is 80% annualized versus 20% creates 4× return differential. Historical analysis shows funding peaks during parabolic price rises (December 2017, April 2021, November 2021) at 100-200% annualized, while normal markets show 15-40%. Patient arbitrageurs wait for favorable entries.
+Position entry timing significantly impacts returns. Entering when funding is 80% annualized versus 20% creates 4× return differential. Historical analysis shows funding peaks during parabolic price rises (December 2017, April 2021, November 2021) at extreme annualized levels relative to calmer markets; we do not publish a measured series. Patient arbitrageurs wait for favorable entries.
 
 ## Cross-Exchange Arbitrage Strategies
 
 Cross-exchange funding arbitrage exploits funding rate differences across derivatives platforms, earning spreads while maintaining delta neutrality or enhancing yields through selective positioning.
 
-The spread capture strategy identifies funding rate divergence. If Binance BTC perps show 0.05% 8h funding while Bybit shows 0.08%, short on Bybit (receive 0.08%) and long on Binance (pay 0.05%), earning 0.03% spread every 8 hours (11% annualized) with zero net directional exposure and no spot position needed.
+The spread capture strategy identifies funding rate divergence. If Binance BTC perps show 0.05% 8h funding while Bybit shows 0.08%, short on Bybit (receive 0.08%) and long on Binance (pay 0.05%), earning 0.03% spread every 8 hours (about 33% annualized, simple, before costs) with zero net directional exposure and no spot position needed.
 
 Delta neutrality without spot holdings simplifies operations. Instead of buying BTC spot and shorting perps, maintain offsetting perp positions on different exchanges. This eliminates spot custody, transfer fees, and rebalancing complexity. The tradeoff: exchange counterparty risk on both exchanges versus single exchange for cash-and-carry.
 
@@ -101,7 +101,7 @@ Systematic funding rate harvesting requires robust technical infrastructure for 
 
 Funding rate monitoring tracks current and historical rates across exchanges and assets. WebSocket connections to Binance, Bybit, OKX, dYdX, and others provide real-time funding updates. Database storage enables historical analysis identifying average funding levels, volatility, and [mean reversion](/blog/mean-reversion-strategies-guide) characteristics for each asset.
 
-The opportunity scoring system ranks potential positions by risk-adjusted return. Score = (Funding_Rate - Risk_Free_Rate) / Volatility - Liquidation_Risk_Penalty - Exchange_Risk_Premium. Positions with scores >0.5 warrant allocation, <0.3 reject, 0.3-0.5 monitor. Automated alerts notify when scores exceed thresholds.
+The opportunity scoring system ranks potential positions by risk-adjusted return. Score = (Funding_Rate - Risk_Free_Rate) / Volatility - Liquidation_Risk_Penalty - Exchange_Risk_Premium. The thresholds you use for allocate / monitor / reject are a design choice for this illustrative heuristic, not tested values. Automated alerts notify when scores exceed thresholds.
 
 Execution systems handle position opening/closing across exchanges. REST API integration enables placing spot buys and perp shorts simultaneously, minimizing execution gap. For cross-exchange spread arbitrage, coordinating simultaneous perp orders on two platforms requires careful timing and pre-positioned margin.
 
@@ -117,7 +117,7 @@ Backtesting frameworks validate strategies using historical funding rates and pr
 
 Cash-and-carry arbitrage buying spot and shorting perps represents the foundational strategy, earning positive funding while maintaining zero directional exposure, though requiring careful margin management to avoid liquidations during volatile price moves.
 
-Multi-asset portfolios diversify funding sources across BTC, ETH, and altcoins with dynamic rebalancing toward highest funding opportunities, achieving 30-40% portfolio-level yields with lower single-asset concentration risk.
+Multi-asset portfolios diversify funding sources across BTC, ETH, and altcoins with dynamic rebalancing toward highest funding opportunities, aiming for a higher blended funding yield with lower single-asset concentration risk.
 
 Liquidation prevention through 2-3x maximum effective leverage, isolated margin, volatility circuit breakers, and exchange diversification represents the critical risk management framework separating successful arbitrageurs from liquidated positions during market crashes.
 
@@ -129,7 +129,7 @@ Minimum $10,000-$25,000 enables meaningful funding arbitrage on a single exchang
 
 **What are realistic returns from funding rate arbitrage?**
 
-Historical analysis from 2020-2024 shows: 2020 average 35% (moderate funding), 2021 average 55% (bull market peak funding), 2022 average 15% (bear market with frequent negative funding), 2023 average 25% (recovery phase). Multi-year average approximately 30-35% accounting for market cycles, substantially exceeding traditional [fixed income](/blog/fixed-income-quant-strategies) with moderate risk.
+Funding income has varied widely by year: bull-market peaks paid the most, bear markets brought long stretches of negative funding. We do not publish a measured multi-year series; compare any figure you see against [fixed income](/blog/fixed-income-quant-strategies) only after costs, exchange risk and the periods of negative funding are included.
 
 **How do you avoid liquidation during extreme volatility?**
 

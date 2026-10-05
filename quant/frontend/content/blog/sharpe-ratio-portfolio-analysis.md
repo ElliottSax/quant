@@ -224,7 +224,7 @@ Compare the strategy's metrics against relevant peers:
 
 ### What is a good Sharpe ratio for a trading strategy?
 
-A Sharpe ratio of 1.0-2.0 is considered good for a systematic [trading strategy](/blog/breakout-trading-strategy). In live trading (not backtesting), a Sharpe above 1.0 puts you in the top quartile of professional quantitative managers. Backtested Sharpe ratios are typically 30-50% higher than live performance due to execution differences, slippage, and strategy decay. Therefore, a backtest Sharpe of 1.5 might translate to 0.8-1.0 in production. Warren Buffett's long-term Sharpe ratio is approximately 0.76, and Renaissance Technologies' Medallion fund reportedly achieves 2.0+.
+A Sharpe ratio of 1.0-2.0 is considered good for a systematic [trading strategy](/blog/breakout-trading-strategy). A live Sharpe above 1.0 is strong for a systematic strategy. Backtested Sharpe ratios are commonly well above live results (overfitting, costs, regime change) due to execution differences, slippage, and strategy decay. Therefore, a backtest Sharpe of 1.5 might translate to 0.8-1.0 in production. Warren Buffett's long-term Sharpe ratio is approximately 0.76, and Renaissance Technologies' Medallion fund reportedly achieves 2.0+.
 
 ### Can you compare Sharpe ratios across different strategies?
 

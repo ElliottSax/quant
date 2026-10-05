@@ -199,7 +199,7 @@ Report Monte Carlo results as probability distributions, not point estimates:
 
 ### How many Monte Carlo simulations do I need?
 
-For most [trading strategy](/blog/breakout-trading-strategy) analysis, 10,000 iterations provides reliable probability estimates. At this level, the 5th and 95th percentile estimates stabilize to within 0.5% of their converged values. For extreme tail analysis (1st percentile and below), increase to 100,000 or more. You can check convergence by running 5,000 and then 10,000 iterations: if the percentile estimates change by less than 1%, you have sufficient iterations.
+For most [trading strategy](/blog/breakout-trading-strategy) analysis, 10,000 iterations provides reliable probability estimates. At this level the tail percentile estimates are usually stable; standard error falls roughly with the square root of the iteration count. For extreme tail analysis (1st percentile and below), increase to 100,000 or more. You can check convergence by running 5,000 and then 10,000 iterations: if the percentile estimates change by less than 1%, you have sufficient iterations.
 
 ### Can Monte Carlo simulation predict future performance?
 
@@ -215,7 +215,7 @@ Validate Monte Carlo results by: (1) checking convergence (run more iterations a
 
 ### Should I use Monte Carlo for position sizing decisions?
 
-Yes, Monte Carlo simulation is one of the best tools for position sizing decisions. By running simulations at different risk levels (0.5%, 1%, 2%, 5% per trade), you can see the full distribution of outcomes for each and select the risk level that balances growth potential with acceptable ruin probability. Most practitioners target a ruin probability below 1% and a worst-case drawdown below their psychological and financial tolerance.
+Yes, Monte Carlo simulation is one of the best tools for position sizing decisions. By running simulations at different risk levels (0.5%, 1%, 2%, 5% per trade), you can see the full distribution of outcomes for each and select the risk level that balances growth potential with acceptable ruin probability. A common design choice is a low ruin-probability target (for example 1%) and a worst-case drawdown below their psychological and financial tolerance.
 
 ---
 

@@ -142,7 +142,7 @@ Measured results are not published for this strategy. The code above is a starti
 | Exchange failure | Exchange insolvency (FTX) | Multi-exchange, max 20% per exchange |
 | Smart contract risk | DeFi protocol exploit | Audit status, insurance (Nexus Mutual) |
 | Regulatory risk | Government bans or restrictions | Diversify jurisdictions |
-| Flash crash | 20-40% drops in minutes | Circuit breaker, position limits |
+| Flash crash | Large drops within minutes | Circuit breaker, position limits |
 | Liquidity risk | Large slippage on exits | Trade only top 20 by volume |
 | Custody risk | Private key compromise | Hardware wallets, multi-sig |
 
@@ -182,7 +182,7 @@ Yes, crypto remains one of the most profitable markets for systematic trading du
 
 ### How much capital do you need for crypto quantitative trading?
 
-For basic momentum or [mean reversion strategies](/blog/mean-reversion-strategies-guide): $10,000-25,000 is sufficient. For funding rate arbitrage: $25,000-50,000 for meaningful returns (need capital on both spot and futures). For cross-exchange arbitrage: $50,000+ across multiple exchanges. For market making: $100,000+ for adequate inventory. Start with a single strategy and scale as the system proves profitable. Commission-free spot trading on many exchanges makes small accounts more viable than in equities.
+Capital needs rise with the strategy's operational footprint: basic momentum or [mean reversion strategies](/blog/mean-reversion-strategies-guide) need the least; funding-rate arbitrage needs capital on both spot and futures; cross-exchange arbitrage needs balances on several exchanges; market making needs inventory. Figures quoted for each are illustrative, not thresholds. Start with a single strategy and scale as the system proves profitable. Commission-free spot trading on many exchanges makes small accounts more viable than in equities.
 
 ### What programming tools are used for crypto trading bots?
 

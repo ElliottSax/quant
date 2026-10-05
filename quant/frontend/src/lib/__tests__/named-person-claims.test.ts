@@ -69,6 +69,22 @@ test('every removed post redirects to the live tracker', async () => {
   }
 })
 
+// 2026-10-04 pass 9: posts removed for invented content whose readers belong on a different live page
+// (not the congress tracker). The destination must be a post that still exists.
+const REMOVED_TO: Record<string, string> = {
+  'butterfly-spreads-long-vs-short-variants': '05-butterfly-spread-options-strategy-low-risk',
+}
+
+test('removed non-congress posts stay removed and redirect to a live post', async () => {
+  const cfg = (await import('../../../next.config.js')).default
+  const redirects = await cfg.redirects()
+  for (const [s, dest] of Object.entries(REMOVED_TO)) {
+    assert.ok(!FILES.includes(`${s}.md`), `${s} is back`)
+    assert.ok(FILES.includes(`${dest}.md`), `${dest} missing`)
+    assert.ok(redirects.some((r: any) => r.source === `/blog/${s}` && r.destination === `/blog/${dest}`), s)
+  }
+})
+
 // Congress-wide performance aggregates have no source: a PTR reports an amount band, never a return,
 // so a "win rate", "outperformance" or realised profit for Congress as a group cannot be derived from filings.
 test('no blog line states an unsourced congress-wide win rate, outperformance or realised profit', () => {

@@ -9,7 +9,7 @@ keywords: ["trend following system", "trend following strategy", "managed future
 ---
 # Trend Following System: Complete Strategy and Backtest Results
 
-A [trend following](/blog/crypto-trend-following-systems) system is the backbone of the managed futures industry, which manages over $350 billion in assets globally as of 2025. The fundamental premise, validated across 200+ years of market data by Hurst, Ooi, and Pedersen (2017), is that asset prices exhibit persistent trends driven by behavioral biases, central bank policies, and macroeconomic shifts. Trend followers profit by identifying and riding these trends across diversified portfolios of futures contracts.
+A [trend following](/blog/crypto-trend-following-systems) system is the backbone of the managed futures industry, a large managed-futures industry. The fundamental premise, supported by more than a century of market data in Hurst, Ooi and Pedersen (2017), is that asset prices exhibit persistent trends driven by behavioral biases, central bank policies, and macroeconomic shifts. Trend followers profit by identifying and riding these trends across diversified portfolios of futures contracts.
 
 This guide presents a complete trend following system with institutional-grade [position sizing](/blog/position-sizing-strategies), multi-market allocation, and backtest results that span decades of market history.
 
@@ -88,7 +88,7 @@ Measured results are not published for this strategy. The code above is a starti
 | Sep 2018 - Jan 2019 | -11.2% | 4 months | 3 months |
 | Mar 2023 - Aug 2023 | -9.8% | 5 months | 4 months |
 
-Average drawdown recovery time was 5.2 months. No drawdown exceeded -18.2%, and no drawdown lasted longer than 10 months.
+Measured drawdown statistics for this system are not published here. Expect multi-month drawdowns and recoveries; size positions so the worst drawdown of your own backtest, after costs, is survivable.
 
 ### When Trend Following Struggles
 
@@ -124,9 +124,9 @@ A 20-30% allocation to trend following meaningfully improves portfolio Sharpe an
 
 ## Key Takeaways
 
-- Trend following has worked across 200+ years of market data and 58+ markets globally
-- A diversified 26-market system produced an 11.4% CAGR with 0.88 [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) (2000-2025)
-- Near-zero equity correlation (0.08) makes trend following an ideal portfolio diversifier
+- Trend following has evidence behind it across more than a century of market data and many markets (Hurst, Ooi and Pedersen, 2017)
+- Measured results for the 26-market system above are not published here; run it on your own data with realistic costs and judge the [Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) yourself
+- Historically low correlation to equities is the reason trend following is used as a portfolio diversifier
 - Blending fast, medium, and slow trend signals diversifies across horizons
 - Adding a trend-following allocation to a traditional portfolio may reduce drawdowns, depending on the period and implementation
 - The short side is essential for crisis alpha and hedging properties

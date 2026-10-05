@@ -19,7 +19,7 @@ Flash loans exploit blockchain atomicity - transactions either execute completel
 
 The execution flow: (1) Borrow $1M from Aave flash loan pool, (2) Execute arbitrage or other profitable operation, (3) Repay $1M plus 0.09% fee ($900), (4) Transaction completes with $X profit minus $900 fee. If step 3 fails (insufficient funds to repay), entire transaction reverts including step 1's loan disbursement.
 
-Major flash loan providers include Aave (0.09% fee, largest liquidity $8B+ across assets), dYdX (0% fee but limited to ETH, WBTC, USDC), Uniswap V2/V3 (0.3% swap fee used as loan fee), and Balancer (varies by pool). Each provider offers different assets, fees, and liquidity depths.
+Major flash loan providers include Aave (0.09% fee, among the deepest liquidity; check current TVL), dYdX (0% fee but limited to ETH, WBTC, USDC), Uniswap V2/V3 (0.3% swap fee used as loan fee), and Balancer (varies by pool). Each provider offers different assets, fees, and liquidity depths.
 
 The smart contract implementation involves calling the flash loan provider's loan function with callback specification. Aave's flashLoan() accepts borrowed assets, amounts, and contract address implementing executeOperation(). The provider sends borrowed funds, calls executeOperation() for custom logic, then checks repayment. If debt plus fee not returned, transaction reverts.
 
@@ -75,7 +75,7 @@ The liquidation mechanics on Aave: if a borrower with $10,000 ETH collateral and
 
 Flash loan liquidation flow: (1) Borrow 3,500 USDC via flash loan, (2) Call Aave.liquidate() to repay debt and receive 1.47 ETH, (3) Swap 1.47 ETH to USDC on Uniswap receiving ~$3,675, (4) Repay 3,500 USDC flash loan plus fee ($3.15), (5) Profit $171.85 minus gas costs.
 
-Monitoring liquidation opportunities requires tracking positions near liquidation thresholds across protocols. When oracle price updates push positions underwater, compete to submit liquidation transactions. Competition is intense - hundreds of bots monitor the same liquidations, creating priority gas auctions.
+Monitoring liquidation opportunities requires tracking positions near liquidation thresholds across protocols. When oracle price updates push positions underwater, compete to submit liquidation transactions. Competition is intense - many bots monitor the same liquidations, creating priority gas auctions.
 
 Optimal liquidation sizing calculates maximum profit considering protocol liquidation bonuses, swap slippage, flash loan fees, and gas costs. For a $100,000 liquidation eligible position: 50% maximum liquidation = $50,000 debt repayment, 5% bonus = $2,500 gross profit, minus $45 flash loan fee, minus $800 swap slippage on $52,500 ETH swap, minus $200 gas = $1,455 net profit.
 
@@ -145,7 +145,7 @@ contract FlashArbitrage {
 
 Reentrancy protection prevents malicious contracts from calling back during execution. Use nonReentrant modifiers from OpenZeppelin or custom mutex locks. Flash loan contracts especially vulnerable since they transfer large amounts and execute arbitrary code.
 
-Gas optimization reduces transaction costs through: (1) Minimizing storage writes (use memory variables), (2) Efficient loops and calculations, (3) Batching approvals, (4) Using swap routers that optimize paths. A well-optimized flash loan arbitrage uses 350,000-500,000 gas versus 600,000-900,000 for naive implementations.
+Gas optimization reduces transaction costs through: (1) Minimizing storage writes (use memory variables), (2) Efficient loops and calculations, (3) Batching approvals, (4) Using swap routers that optimize paths. A well-optimized flash loan arbitrage uses materially less gas than a naive implementation; measure yours on a fork before going live.
 
 Mainnet fork testing validates strategies before risking real funds. Tools like Foundry's anvil fork current mainnet state, execute flash loan contracts, and verify profitability. Testing should cover: profitable scenarios, unprofitable scenarios (verify clean revert), gas estimation, edge cases (zero liquidity, maximum slippage), and reentrancy attacks.
 

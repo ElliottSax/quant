@@ -15,9 +15,9 @@ This comprehensive analysis applies quantitative finance principles to DeFi yiel
 
 ## Understanding Yield Farming Mechanics
 
-Yield farming generates returns through multiple mechanisms, each with distinct risk profiles. Lending protocols like Aave and Compound pay interest from borrowers to lenders, with yields determined by utilization rates. When 70% of USDC supply is borrowed, lenders earn higher rates than when only 30% is borrowed. These yields typically range from 2-8% APY on stablecoins and 0-4% on volatile assets, varying with market conditions.
+Yield farming generates returns through multiple mechanisms, each with distinct risk profiles. Lending protocols like Aave and Compound pay interest from borrowers to lenders, with yields determined by utilization rates. When 70% of USDC supply is borrowed, lenders earn higher rates than when only 30% is borrowed. Rates move with utilization and market conditions; check the protocol's live rate rather than any figure in an article.
 
-Automated market makers like Uniswap and Curve distribute trading fees to liquidity providers proportional to their pool share. A provider with 1% of the ETH/USDC pool receives 1% of all trading fees generated. Fee yields depend on trading volume relative to pool liquidity. High-volume pairs like ETH/USDC on Uniswap V3 generate 20-50% APY in fees during volatile periods, while low-volume pairs might yield 2-5% annually.
+Automated market makers like Uniswap and Curve distribute trading fees to liquidity providers proportional to their pool share. A provider with 1% of the ETH/USDC pool receives 1% of all trading fees generated. Fee yields depend on trading volume relative to pool liquidity. High-volume pairs like ETH/USDC on Uniswap V3 earn far more in fees during volatile periods than low-volume pairs; the pool's own analytics show the current fee APR.
 
 Liquidity mining programs add token incentives on top of base yields. A protocol might distribute 100,000 governance tokens monthly to liquidity providers, creating additional yield beyond fees or interest. These "bonus" yields can reach 100-500% APY but carry significant risks from token price volatility and emission sustainability.
 
@@ -55,7 +55,7 @@ A typical simulation for ETH/USDC on Uniswap V3 with concentrated liquidity migh
 
 Concentrated liquidity in Uniswap V3 amplifies both fees and IL. Providing liquidity in a narrow range (e.g., ETH price $2,400-$2,600) earns 5-10x fees compared to full-range positions but suffers complete IL if price moves outside the range. Quantitative range optimization balances fee generation against IL risk using volatility-based range widths.
 
-For risk-averse farmers, stablecoin pools (USDC/USDT, DAI/USDC) eliminate IL risk entirely. Curve Finance's stableswap algorithm optimizes for minimal slippage on correlated asset swaps, generating 3-8% APY from fees on stablecoin pools with essentially zero IL risk.
+For risk-averse farmers, stablecoin pools (USDC/USDT, DAI/USDC) eliminate IL risk entirely. Curve Finance's stableswap algorithm optimizes for minimal slippage on correlated asset swaps, earning fee yield on stablecoin pools with essentially zero IL risk.
 
 ## Protocol Selection Framework
 
@@ -111,7 +111,7 @@ Stablecoin strategies on established protocols (Aave, Compound, Curve) offer 4-1
 
 Concentrated liquidity on Uniswap V3 amplifies both fee generation and impermanent loss, requiring sophisticated volatility modeling and active range management to achieve superior risk-adjusted returns.
 
-Portfolio diversification across protocols, asset types, and yield mechanisms reduces concentration risk while maintaining attractive blended yields in the 12-20% range for balanced allocations.
+Portfolio diversification across protocols, asset types, and yield mechanisms reduces concentration risk while keeping a blended yield that reflects the risk taken; we do not publish a measured figure.
 
 Tax accounting complexity grows exponentially with transaction frequency, requiring automated tracking tools and proactive tax planning to avoid surprise liabilities from hundreds or thousands of yield-generating events.
 
@@ -119,7 +119,7 @@ Tax accounting complexity grows exponentially with transaction frequency, requir
 
 **What is the minimum capital needed to make yield farming worthwhile after gas fees?**
 
-Ethereum mainnet yield farming requires $10,000-$25,000 minimum to justify gas costs. A typical deposit and withdrawal costs $50-$200 in gas fees, meaning positions must earn $500-$2,000 to achieve reasonable ROI. Layer 2 solutions (Arbitrum, Optimism) and alternative chains (Polygon, BSC) reduce minimums to $1,000-$5,000 with sub-$1 transaction fees.
+On Ethereum mainnet, gas for entering and exiting a position sets a practical minimum size: estimate the round-trip gas at current prices and require the position to earn a multiple of it. Layer 2 solutions (Arbitrum, Optimism) and alternative chains (Polygon, BSC) reduce minimums to $1,000-$5,000 with sub-$1 transaction fees.
 
 **How often should yield farming positions be rebalanced or compounded?**
 

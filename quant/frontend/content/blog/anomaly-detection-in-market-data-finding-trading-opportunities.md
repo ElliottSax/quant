@@ -39,18 +39,13 @@ There are several anomaly detection techniques that can be used in market data a
 Implementing an anomaly detection strategy requires a step-by-step approach, starting with data collection and preprocessing. The following steps provide a general guide to implementing an anomaly detection strategy:
 1. Collect and preprocess market data, including cleaning and normalizing the data.
 2. Choose an anomaly detection technique, such as statistical process control or machine learning.
-3. Train the model using historical data, with a minimum of 5 years of data recommended.
+3. Train the model using historical data, covering several market regimes.
 4. Test the model using out-of-sample data, with a minimum of 2 years of data recommended.
 5. Evaluate the performance of the model using metrics such as precision and recall.
 6. Refine the model as needed, using techniques such as parameter tuning and feature selection.
 
 ## Real-World Examples
-Anomaly detection has been used in a variety of real-world applications, including trading and risk management. The following table provides a comparison of some real-world examples:
-| Example | Description | Results |
-| --- | --- | --- |
-| Trading Strategy | Used anomaly detection to identify trading opportunities | 20% increase in trading returns |
-| Risk Management | Used anomaly detection to identify potential risks | 15% reduction in risk exposure |
-| Portfolio Optimization | Used anomaly detection to optimize portfolio performance | 25% increase in portfolio returns |
+Anomaly detection is used in trading (flagging unusual price or volume behaviour), risk management (spotting positions or counterparties behaving abnormally) and portfolio monitoring. We do not publish measured results for any of these uses; treat any percentage improvement quoted without a method and data as unverified.
 
 ## Common Mistakes
 There are several common mistakes that can be made when implementing an anomaly detection strategy, including:
@@ -74,7 +69,7 @@ To implement an anomaly detection strategy, follow the steps outlined in the imp
 4. What are some common mistakes to avoid when implementing an anomaly detection strategy?
 Some common mistakes to avoid include using a single technique, failing to preprocess the data, using too little data, failing to evaluate the performance of the model, and failing to refine the model.
 5. What are some real-world examples of anomaly detection in market data?
-Some real-world examples of anomaly detection in market data include trading strategies, risk management, and portfolio optimization, with results including a 20% increase in trading returns, a 15% reduction in risk exposure, and a 25% increase in portfolio returns.
+Some real-world examples of anomaly detection in market data include trading strategies, risk management, and portfolio optimization, measured results depend entirely on the data, method and costs, so no general figure applies.
 
 ## Conclusion
 Anomaly detection is a powerful tool for identifying trading opportunities in market data, with a wide range of techniques and strategies available. By following the steps outlined in this article, traders can implement an effective anomaly detection strategy and improve their trading performance. With the increasing availability of market data and advances in computational power, anomaly detection is becoming an essential component of quantitative trading strategies.
