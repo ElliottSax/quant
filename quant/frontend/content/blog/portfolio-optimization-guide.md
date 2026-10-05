@@ -182,7 +182,7 @@ Naive mean-variance optimization often disappoints in practice due to estimation
 
 ### How many assets should be in an optimized portfolio?
 
-Research suggests 7-15 asset classes for strategic allocation and 20-40 individual securities for equity portfolios. Below 7 assets, diversification is insufficient. Above 15 asset classes, estimation error increases faster than diversification benefit. For individual stocks, the marginal diversification benefit becomes negligible beyond 30-40 holdings.
+There is no single right number of assets. Too few assets leaves diversification insufficient, while too many asset classes lets estimation error grow faster than the diversification benefit. For individual stocks, the marginal diversification benefit shrinks as holdings increase.
 
 ### What is risk parity and is it better than traditional allocation?
 

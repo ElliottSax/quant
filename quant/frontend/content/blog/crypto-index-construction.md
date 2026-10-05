@@ -47,7 +47,7 @@ Factor-based risks: (1) concentration (fewer assets = higher volatility), (2) mi
 
 Rebalancing return differences between strategies exceed 1-3% annually - non-trivial impact on long-term performance.
 
-Buy-and-hold strategy: initial rebalancing to targets, then no further action. Drift: can reach 40-50% from target (largest asset might reach 50% instead of 25%). Returns highest during bull markets (overweight winners), lowest in bear markets (overweight losers). 10-year test: underperforms quarterly rebalancing by 2-3% due to late-cycle concentration.
+Buy-and-hold strategy: initial rebalancing to targets, then no further action. Drift: weights can wander far from target as winners grow (a 25% asset can end up well above 25%). Returns tend to be strongest in bull markets (overweight winners) and weakest in bear markets (overweight losers).
 
 Quarterly mechanical rebalancing: each quarter return to exact targets. Works well: prevents excessive drift, forces buy low/sell high discipline, simple to implement. Drawback: potentially expensive in high-frequency rebalancing if many position changes.
 
@@ -63,13 +63,13 @@ Evaluating index performance requires comparison to relevant benchmarks and risk
 
 Comparison benchmarks: (1) 60/40 BTC/ETH portfolio (simple alternative), (2) Market-cap weighted (representative alternative), (3) Equal-weight (naive alternative), (4) Hold Cash (risk-free baseline). Index performance versus these alternatives determines value-add.
 
-[Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) compares risk-adjusted returns: (Annual Return - Risk-Free Rate) / Volatility. Market-cap weighted crypto typically achieves 0.5-1.5 Sharpe ratio (attractive vs. traditional assets' 0.3-0.6). Factor-based indices typically 0.3-1.0 (depends on factor).
+[Sharpe ratio](/blog/sharpe-ratio-portfolio-analysis) compares risk-adjusted returns: (Annual Return - Risk-Free Rate) / Volatility. Sharpe ratios for crypto indices vary widely by period and construction, so compute them from your own backtest rather than assuming a typical range.
 
-Information ratio measures excess return per unit of tracking error (deviation from benchmark): (Index Return - Benchmark Return) / Tracking Error. Factor-based indices aiming 0.5-1.0 information ratio. Values >1.0 indicate excellent factor selection, <0 indicate underperformance versus benchmark.
+Information ratio measures excess return per unit of tracking error (deviation from benchmark): (Index Return - Benchmark Return) / Tracking Error. A positive information ratio means the index added value per unit of tracking error; a negative one means it lagged the benchmark.
 
-Downside capture ratio measures losses during bear markets versus benchmark. Ideal: 80-90% (capture 90% of losses during downturns, avoid excessive damage). Ratios >100% indicate higher losses than benchmark (undesirable). Concentration in single assets (DeFi index in crypto bear) might show 110-120% downside capture.
+Downside capture ratio measures losses during bear markets versus benchmark. Lower is better: below 100% means the index lost less than the benchmark in down markets, above 100% means it lost more. A concentrated index (for example DeFi-only) will usually show higher downside capture in a crypto bear market.
 
-Correlation analysis shows movements relative to market. Market-cap weighted indices show 0.95+ correlation with overall crypto market (moving in lockstep). Factor-based indices 0.70-0.85 correlation (some independence). Higher correlation = more systematic (market beta), lower = more idiosyncratic (alpha generation).
+Correlation analysis shows movements relative to market. Market-cap weighted indices tend to move almost in lockstep with the overall crypto market, while factor-based indices can diverge from it. Higher correlation = more systematic (market beta), lower = more idiosyncratic (alpha generation).
 
 ## Practical Index Implementation
 
@@ -89,7 +89,7 @@ Market-cap weighted cryptocurrency indices provide representative exposure to cr
 
 Factor-based indices enable thematic sector investing (DeFi-pure, L1-platforms, privacy) with higher returns potential but concentrated risk versus broad market-cap indices, requiring tactical rebalancing around favorable/unfavorable cycles.
 
-Rebalancing mechanics significantly impact long-term returns (2-3% annually), with quarterly mechanical rebalancing providing simple discipline versus tactical approaches requiring valuation judgment and potentially higher transaction costs.
+Rebalancing mechanics can noticeably affect long-term returns, with quarterly mechanical rebalancing providing simple discipline versus tactical approaches requiring valuation judgment and potentially higher transaction costs.
 
 Risk-adjusted performance evaluation using Sharpe ratio, information ratio, downside capture, and correlation analysis differentiates high-quality index construction from underperforming alternatives across different market regimes.
 
@@ -103,7 +103,7 @@ Market-cap weighted advantages: (1) transparent rules, (2) low fees (0.2-0.5%), 
 
 **What's the optimal rebalancing frequency for crypto indices?**
 
-Annual rebalancing: lowest transaction costs, but drift reaches 30-50% from targets. Works for BTC/ETH focused portfolios with high trading pairs. Quarterly rebalancing: 2-3% transaction costs annually, keeps drift 10-15%, optimal balance for most. Monthly rebalancing: excessive costs ($500-1,000 annually on $100k portfolio) outweigh 1-2% benefit. Threshold-based: drift triggers 10%+ above/below target, very efficient if drift often within thresholds. Recommendation: quarterly mechanical unless can confidently time tactically (which most can't).
+Annual rebalancing: lowest transaction costs, but weights can drift far from targets. Works for BTC/ETH focused portfolios with liquid trading pairs. Quarterly rebalancing: a middle ground between cost and drift, and a sensible default for most. Monthly rebalancing: trading costs can outweigh the benefit. Threshold-based: rebalance only when a weight moves a set distance from its target, which is efficient if drift often stays within thresholds. Recommendation: quarterly mechanical unless can confidently time tactically (which most can't).
 
 **How do you handle initial index allocation when starting with limited capital?**
 

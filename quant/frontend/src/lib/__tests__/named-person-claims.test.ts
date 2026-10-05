@@ -73,6 +73,8 @@ test('every removed post redirects to the live tracker', async () => {
 // (not the congress tracker). The destination must be a post that still exists.
 const REMOVED_TO: Record<string, string> = {
   'butterfly-spreads-long-vs-short-variants': '05-butterfly-spread-options-strategy-low-risk',
+  'black-litterman-model-incorporating-market-views': 'black-litterman-model',
+  'cross-validation-for-trading-systems-walk-forward-analysis': 'cross-validation-trading-models',
 }
 
 test('removed non-congress posts stay removed and redirect to a live post', async () => {
@@ -122,6 +124,33 @@ test('no blog post lists unsourced "Average winner/loser" percentages', () => {
   for (const f of FILES) {
     fs.readFileSync(path.join(BLOG_DIR, f), 'utf-8').split(/\r?\n/).forEach((line, i) => {
       if (/\*\*Average (?:winner|loser)\*\*:\s*-?\d/i.test(line)) hits.push(`${f}:${i + 1}: ${line.slice(0, 100)}`)
+    })
+  }
+  assert.deepEqual(hits, [])
+})
+
+// 2026-10-05 pass 10: attributions to studies and surveys that cannot be identified. A real citation names
+// the paper, author and year; "a survey by GARP found that 85% of FRM holders ..." names none, and the
+// statistics attached to it were invented. Generated tables of "Effectiveness" or "Accuracy Improvement"
+// percentages have no method behind them either.
+test('no blog post cites an unidentifiable study or survey with a precise figure', () => {
+  const FAKE = [
+    /\b(?:a|the) (?:survey|study)(?: conducted)? by (?:GARP|the Global Association of Risk Professionals)\b/i,
+    /\ba (?:survey|study) of quantitative traders found\b/i,
+    /\bAccording to (?:a study by |data from )?the (?:Federal Reserve Bank of New York|Chicago Mercantile Exchange|Securities and Exchange Commission|Chicago Board Options Exchange)\b[^.]{0,120}\d/i,
+    /\bQuantopian or Zipline\b/i,
+  ]
+  const hits: string[] = []
+  for (const f of FILES) {
+    const text = fs.readFileSync(path.join(BLOG_DIR, f), 'utf-8')
+    for (const block of text.split(/\r?\n\r?\n/)) {
+      const rows = block.split(/\r?\n/).filter((l) => l.startsWith('|'))
+      if (rows.length > 2 && /\|\s*(?:Effectiveness|Accuracy Improvement)\s*\|\s*$/i.test(rows[0]) && rows.slice(2).some((r) => /\d+%\s*\|\s*$/.test(r))) {
+        hits.push(`${f}: percentage-valued Effectiveness/Accuracy table`)
+      }
+    }
+    text.split(/\r?\n/).forEach((line, i) => {
+      if (FAKE.some((re) => re.test(line))) hits.push(`${f}:${i + 1}: ${line.slice(0, 100)}`)
     })
   }
   assert.deepEqual(hits, [])

@@ -148,7 +148,7 @@ def calculate_expectancy(trades):
 
 ### Statistical Significance
 
-A minimum of 100 trades is needed to have moderate confidence in expectancy estimates, and 200+ trades provide better statistical reliability. With fewer than 50 trades, expectancy estimates are unreliable and should not be used for position sizing decisions.
+The more trades behind an expectancy estimate, the more reliable it is. With a small number of trades, expectancy estimates are unreliable and should not be used for position sizing decisions.
 
 ## Common R:R Optimization Mistakes
 
@@ -160,14 +160,14 @@ Requiring a minimum 1:2 or 1:3 R:R on every trade ignores the fact that differen
 
 A strategy with a theoretical expectancy of $0.05 per dollar risked may become negative after accounting for:
 - Commission costs ($0.005-0.01 per share, round trip)
-- Bid-ask spread slippage ($0.01-0.05 per share)
+- Bid-ask spread slippage (per share, varies by instrument and time of day)
 - Execution slippage on stop orders ($0.02-0.10 per share)
 
 For active strategies, subtract total transaction costs from expectancy to determine net edge.
 
 ### Mistake 3: Optimizing on In-Sample Data
 
-The R:R ratio and win rate observed in a backtest represent the best-case scenario for the specific optimization period. Out-of-sample performance is typically 20-40% lower than in-sample results. When optimizing R:R, always reserve the most recent 20-30% of data for validation.
+The R:R ratio and win rate observed in a backtest represent the best-case scenario for the specific optimization period. Out-of-sample performance is typically lower than in-sample results. When optimizing R:R, always reserve the most recent 20-30% of data for validation.
 
 ## Key Takeaways
 

@@ -49,13 +49,9 @@ Vega measures the sensitivity of option price to a 1% change in implied volatili
 
 ### The Volatility Risk Premium
 
-Implied volatility exceeds realized volatility approximately 85% of the time across major equity indices. This "volatility risk premium" (VRP) provides a systematic edge for options sellers.
+Implied volatility has tended to exceed subsequently realized volatility on major equity indices over long samples. This "volatility risk premium" (VRP) provides a systematic edge for options sellers.
 
-Historical data (S&P 500, 2005-2025):
-- Average implied volatility (VIX): 18.4%
-- Average realized volatility: 15.2%
-- Average VRP: 3.2 percentage points
-- VRP positive in 85% of monthly periods
+The size of the premium varies by sample period and how realized volatility is measured, and it turns sharply negative in crashes. Measure it yourself by comparing VIX with subsequently realized S&P 500 volatility over your own sample.
 
 ### Rules
 
@@ -151,10 +147,10 @@ Options have wider bid-ask spreads than equities:
 
 | Option Type | Typical Spread | Impact on Strategy |
 |-------------|---------------|-------------------|
-| ATM SPY (monthly) | $0.02-0.04 (1-2%) | Minimal |
-| OTM SPY (monthly) | $0.01-0.03 (3-5%) | Moderate |
-| ATM single stock | $0.05-0.15 (2-5%) | Significant |
-| OTM single stock | $0.05-0.10 (5-15%) | Can eliminate edge |
+| ATM SPY (monthly) | Tight | Minimal |
+| OTM SPY (monthly) | Moderate | Moderate |
+| ATM single stock | Wider | Significant |
+| OTM single stock | Widest | Can eliminate edge |
 
 Stick to liquid underlyers (SPY, QQQ, IWM) and near-the-money strikes to minimize friction.
 
@@ -178,7 +174,7 @@ This trade earns the "roll yield" as front-month futures converge toward spot VI
 
 ## Key Takeaways
 
-- The volatility risk premium (implied > realized 85% of the time) provides a systematic edge for options sellers
+- The volatility risk premium (implied has tended to exceed realized over long samples) provides a systematic edge for options sellers
 - Systematic covered calls can reduce portfolio volatility, at the cost of capping upside
 - Portfolio-level Greek management targets delta-neutral, theta-positive, vega-short positions
 - Trade only liquid options (SPY, QQQ, IWM) to minimize bid-ask spread impact
@@ -191,7 +187,7 @@ The volatility risk premium (VRP) is the consistent spread between implied volat
 
 ### How much capital do you need for options trading strategies?
 
-For delta-hedged strategies on SPY options, a minimum of $25,000-50,000 is recommended due to margin requirements and the need for multiple contracts for proper Greek management. Single-stock options strategies require $10,000-25,000. For a diversified options portfolio across multiple strategies and underlyers, $100,000+ provides adequate capital efficiency. Pattern day trading rules ($25,000 minimum) apply to options as well.
+Capital needs depend on your broker's margin rules, the strategy and your position size. Delta-hedged strategies need enough capital to trade multiple contracts for proper Greek management, and a diversified options portfolio across several strategies and underlyers needs more still, so check your broker's margin requirements. Pattern day trader rules can also apply to options trading in margin accounts; check the current rules.
 
 ### Are options strategies really market-neutral?
 
@@ -199,7 +195,7 @@ Options strategies can be structured as market-neutral (delta = 0) at inception,
 
 ### What happens to options strategies during a market crash?
 
-Short volatility strategies (short strangles, covered calls, iron condors) suffer significant losses during crashes as implied volatility spikes and short puts move deep in-the-money. The 2020 COVID crash caused -25 to -40% drawdowns for unhedged short vol strategies. Mitigation includes: (1) always delta-hedge, (2) buy protective far-OTM puts, (3) reduce position sizes when VIX > 25, (4) use defined-risk structures (verticals instead of naked positions). Long gamma strategies, conversely, profit from crashes but bleed theta during calm markets.
+Short volatility strategies (short strangles, covered calls, iron condors) suffer significant losses during crashes as implied volatility spikes and short puts move deep in-the-money. The 2020 COVID crash caused very large drawdowns for unhedged short volatility strategies. Mitigation includes: (1) always delta-hedge, (2) buy protective far-OTM puts, (3) reduce position sizes when VIX > 25, (4) use defined-risk structures (verticals instead of naked positions). Long gamma strategies, conversely, profit from crashes but bleed theta during calm markets.
 
 ---
 

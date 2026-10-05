@@ -49,14 +49,7 @@ Many traders underestimate the probability and magnitude of drawdowns because th
 
 ### Expected Maximum Drawdown by Strategy Characteristics
 
-For a strategy with a 55% win rate and 1.5:1 risk-[reward ratio](/blog/risk-reward-ratio-optimization), risking 1% per trade, the expected maximum drawdown over various trade counts:
-
-- **100 trades:** ~6-8% MDD (most likely longest losing streak: 5-6)
-- **500 trades:** ~10-14% MDD (longest streak: 7-8)
-- **1,000 trades:** ~12-18% MDD (longest streak: 8-10)
-- **5,000 trades:** ~15-22% MDD (longest streak: 10-12)
-
-These are for independent trades. Correlated positions, [market regime](/blog/market-regime-detection) changes, or systematic risks can produce significantly worse outcomes.
+For a strategy with a 55% win rate and 1.5:1 risk-[reward ratio](/blog/risk-reward-ratio-optimization), risking 1% per trade, both the longest losing streak and the maximum drawdown grow with the number of trades. Simulate the trade sequence (a Monte Carlo with your own win rate, reward ratio and risk per trade) to see the distribution, rather than relying on rules of thumb. A simulation like this assumes independent trades. Correlated positions, [market regime](/blog/market-regime-detection) changes, or systematic risks can produce significantly worse outcomes.
 
 ### The Monte Carlo Approach
 
@@ -182,11 +175,11 @@ Use the drawdown period to assess whether the drawdown was strategy-specific or 
 
 ### What is an acceptable maximum drawdown for a trading strategy?
 
-For most retail traders, a maximum drawdown of 15-25% is the practical limit beyond which psychological and financial stress impairs decision-making. Institutional funds typically target maximum drawdowns of 10-15%. The appropriate limit depends on your risk tolerance, account size, and recovery capability. A useful rule of thumb: your maximum acceptable drawdown should be half of the percentage that would cause you to stop trading, because actual drawdowns will always exceed backtested maximums.
+Many traders find that beyond a certain drawdown, psychological and financial stress impairs decision-making, and professional funds set explicit drawdown limits in their mandates. The appropriate limit depends on your risk tolerance, account size, and recovery capability. A useful rule of thumb: your maximum acceptable drawdown should be half of the percentage that would cause you to stop trading, because actual drawdowns will always exceed backtested maximums.
 
 ### How long do drawdowns typically last?
 
-This varies dramatically by strategy and market conditions. Trend-following systems can experience drawdowns lasting 6-24 months during rangebound markets. Mean-reversion systems can have multi-month drawdowns during trending markets. For a diversified active trading approach, typical drawdown durations are 1-6 months, with recovery periods of 2-8 months.
+This varies dramatically by strategy and market conditions. Trend-following systems can experience long drawdowns during rangebound markets, and mean-reversion systems can have long drawdowns during trending markets. Measure drawdown and recovery durations from your own backtest and live record rather than assuming typical ones.
 
 ### Should I change my strategy during a drawdown?
 
@@ -194,4 +187,4 @@ Generally, no. Drawdowns are a normal part of any strategy, and changing strateg
 
 ### How do professional fund managers handle drawdowns?
 
-Professional managers implement predetermined drawdown rules in their fund documentation. Common structures include: mandatory position reduction at 10% drawdown, portfolio review committee involvement at 15%, and potential strategy suspension at 20%. The key difference between professional and retail drawdown management is that professionals define and commit to these rules before the drawdown occurs, removing discretionary decision-making during stressful periods.
+Professional managers implement predetermined drawdown rules in their fund documentation. Common structures include staged triggers: mandatory position reduction at a first drawdown level, a portfolio review at a deeper level, and potential strategy suspension beyond that. The levels are set per fund and strategy. The key difference between professional and retail drawdown management is that professionals define and commit to these rules before the drawdown occurs, removing discretionary decision-making during stressful periods.

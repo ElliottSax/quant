@@ -24,8 +24,10 @@ Over 1,000 trades, the mathematical expectation is identical:
 - Expected value per trade = (0.55 x 1.5) - (0.45 x 1.0) = 0.375 (37.5 cents per dollar risked)
 
 But the outcomes diverge dramatically:
-- Trader A: Steady equity growth with maximum drawdown around 15-20%. Account grows to approximately 4.5x starting capital.
-- Trader B: Initial rapid growth, but inevitable losing streaks (5-8 consecutive losses occur with near certainty over 1,000 trades) produce drawdowns of 60-80%, often leading to account ruin.
+- Trader A: Steadier equity growth with much shallower drawdowns.
+- Trader B: Faster growth in good stretches, but losing streaks are unavoidable over many trades, and at 15% risk per trade they produce very deep drawdowns that can lead to account ruin.
+
+The exact figures depend on the sequence of trades; simulate your own parameters to see the range.
 
 The edge is the same. The sizing determines survival.
 
@@ -61,11 +63,11 @@ Our [Position Size Calculator](/tools/position-size) runs this exact calculation
 
 ### Optimal Risk Percentage
 
-Research by Van Tharp, Ralph Vince, and others suggests the following guidelines for fixed fractional sizing:
+Position-sizing writers such as Van Tharp and Ralph Vince discuss fixed fractional sizing; the ranges below are illustrative rules of thumb, not figures from a specific study:
 
-- **0.5-1%:** Conservative. Suitable for accounts that cannot tolerate significant drawdowns (managed money, retirement accounts). Maximum expected drawdown: 10-15%.
-- **1-2%:** Standard. Appropriate for most active traders with medium-term horizons. Maximum expected drawdown: 15-25%.
-- **2-3%:** Aggressive. For experienced traders with proven edges and high risk tolerance. Maximum expected drawdown: 25-40%.
+- **0.5-1%:** Conservative. Suitable for accounts that cannot tolerate significant drawdowns (managed money, retirement accounts). Expected drawdowns are smaller.
+- **1-2%:** Standard. Appropriate for most active traders with medium-term horizons. Expected drawdowns are moderate.
+- **2-3%:** Aggressive. For experienced traders with proven edges and high risk tolerance. Expected drawdowns are large.
 - **Above 3%:** Generally too aggressive for sustained trading. Produces severe drawdowns during inevitable losing streaks.
 
 ## Kelly Criterion
@@ -114,7 +116,7 @@ The Kelly Criterion suggests risking 25% of capital per trade. In theory, this m
 In practice, full Kelly sizing is dangerously aggressive for trading because:
 
 1. **Parameter uncertainty:** Win rates and reward ratios are estimated from historical data and change over time. Small errors in estimated edge produce large errors in optimal sizing.
-2. **Drawdown severity:** Full Kelly produces drawdowns of approximately 50% at some point with near certainty. Few traders can psychologically tolerate this.
+2. **Drawdown severity:** Full Kelly produces very large drawdowns: in theory the chance of eventually losing half the account at some point is substantial.  Few traders can psychologically tolerate this.
 3. **Non-independence:** Kelly assumes bets are independent, but trades may be correlated (sector moves, macro events), increasing the effective risk.
 4. **Ruin risk:** In markets (unlike the theoretical model), adverse events can produce losses larger than the planned stop-loss (gaps, flash crashes).
 
@@ -123,7 +125,7 @@ In practice, full Kelly sizing is dangerously aggressive for trading because:
 The standard practice is to use a fraction of the Kelly recommendation:
 
 - **Half Kelly (0.5f*):** Achieves approximately 75% of the full Kelly growth rate with dramatically lower drawdowns. This is the most common professional implementation.
-- **Quarter Kelly (0.25f*):** Achieves approximately 50% of full Kelly growth with very manageable drawdowns. Suitable for risk-averse accounts.
+- **Quarter Kelly (0.25f*):** Achieves a smaller share of full Kelly growth (under half) with much more manageable drawdowns. Suitable for risk-averse accounts.
 
 Using the example above, half Kelly would be 12.5% and quarter Kelly would be 6.25%, which are still more aggressive than the 1-2% fixed fractional approach but incorporate the edge magnitude into the sizing decision.
 
@@ -148,10 +150,10 @@ Optimal f suffers from the same drawdown problems as full Kelly, often more so b
 
 | Method | Growth Rate | Max Drawdown | Complexity | Best For |
 |--------|-------------|--------------|------------|----------|
-| Fixed Fractional (1%) | Moderate | 10-20% | Low | Most traders |
-| Fixed Fractional (2%) | Higher | 20-30% | Low | Experienced traders |
-| Half Kelly | Near-optimal | 25-35% | Medium | Quantitative traders with reliable edge estimates |
-| Quarter Kelly | Moderate | 12-20% | Medium | Risk-averse quantitative traders |
+| Fixed Fractional (1%) | Moderate | Smaller | Low | Most traders |
+| Fixed Fractional (2%) | Higher | Moderate | Low | Experienced traders |
+| Half Kelly | Near-optimal | Larger | Medium | Quantitative traders with reliable edge estimates |
+| Quarter Kelly | Moderate | Moderate | Medium | Risk-averse quantitative traders |
 | Optimal f | Maximum theoretical | 40-60%+ | High | Academic/research (not recommended for live trading) |
 
 ## Dynamic Position Sizing Adjustments
@@ -222,13 +224,13 @@ print(f"Fixed fractional shares: {shares}")  # 500
 - The Kelly Criterion provides the theoretically optimal sizing but is dangerously aggressive in practice. Use half or quarter Kelly to capture most of the growth benefit with far lower drawdown risk.
 - Parameter uncertainty (imprecise win rate and reward ratio estimates) is the primary reason to use conservative sizing relative to theoretical optima.
 - Dynamic adjustments based on volatility, equity curve position, and position correlation improve risk-adjusted performance.
-- The maximum acceptable drawdown for most traders is 20-25%. Size positions to keep expected maximum drawdown within this tolerance.
+- Decide your maximum acceptable drawdown up front. Size positions to keep the expected maximum drawdown within that tolerance.
 
 ## Frequently Asked Questions
 
 ### How do you estimate win rate and reward ratio for Kelly Criterion?
 
-Use at least 100 trades of historical data (ideally 200+) to estimate win rate and average reward ratio. Update these estimates periodically (quarterly or after every 50 trades) as market conditions change. Always use out-of-sample or walk-forward estimates rather than in-sample backtested results, which tend to overestimate edge and produce Kelly fractions that are too large.
+Use as many trades as you can to estimate win rate and average reward ratio, since small samples give unreliable estimates. Update these estimates periodically as market conditions change. Always use out-of-sample or walk-forward estimates rather than in-sample backtested results, which tend to overestimate edge and produce Kelly fractions that are too large.
 
 ### Is 1% risk per trade really enough?
 

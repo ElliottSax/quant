@@ -44,20 +44,20 @@ The fast MA represents recent price action, while the slow MA represents the lon
 The golden cross occurs when the 50-day SMA crosses above the 200-day SMA. It signals a long-term bullish trend change and is widely followed by institutional investors.
 
 Historical golden cross signals on the S&P 500:
-- **June 2020**: Signaled post-COVID recovery, SPX rallied 52% before next death cross
-- **March 2023**: Signaled end of 2022 bear market, followed by 28% rally
+- **June 2020**: Signaled the post-COVID recovery, which continued for well over a year before the next death cross
+- **March 2023**: Signaled the end of the 2022 bear market, followed by a rally
 
 ### Death Cross (50/200 SMA)
 
 The death cross occurs when the 50-day SMA crosses below the 200-day SMA. It signals a potential long-term bearish trend.
 
 Historical death cross signals on the S&P 500:
-- **March 2022**: Preceded an additional 16% decline
+- **March 2022**: Came after a decline had already begun and preceded further weakness
 - **March 2020**: Late signal during COVID crash (market had already bottomed)
 
 ### The Lag Problem
 
-The 50/200 crossover is inherently lagging. By the time the golden cross forms, the market has typically already rallied 8-15% from the bottom. Similarly, the death cross often triggers after a significant decline has occurred. This lag is the primary criticism of moving average crossover strategies and the motivation for faster variants.
+The 50/200 crossover is inherently lagging. By the time the golden cross forms, the market has typically already rallied a meaningful distance from the bottom. Similarly, the death cross often triggers after a significant decline has occurred. This lag is the primary criticism of moving average crossover strategies and the motivation for faster variants.
 
 ## Crossover Variations and Optimization
 
@@ -97,16 +97,11 @@ Perry Kaufman's Adaptive Moving Average automatically adjusts its smoothing peri
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-The strategy was out of the market during the worst of the 2008 financial crisis and the 2020 COVID crash.
+Whether a crossover rule sidesteps a given bear market, and what it costs in missed rallies, has to be checked on your own data.
 
 ### Drawdown Comparison
 
-| Drawdown Event | Crossover | Buy & Hold |
-|----------------|-----------|------------|
-| 2000-2002 Dot-Com | -9.8% | -49.1% |
-| 2008-2009 Financial Crisis | -16.2% | -50.8% |
-| 2020 COVID | -8.4% | -33.9% |
-| 2022 Bear Market | -11.7% | -25.4% |
+*A drawdown comparison against buy and hold is not published here. Run one on your own data, with realistic costs and the full record, before relying on a claim that a crossover limits drawdowns.*
 
 The strategy's ability to sidestep major bear markets is its primary value proposition. The trade-off is missing the initial recovery rally due to signal lag.
 
@@ -126,7 +121,7 @@ Require ADX above 20 before entering a crossover trade. ADX below 20 indicates a
 
 ### Price Distance Filter
 
-Only enter if price is within 2% of the crossover point. Late entries (when price has already moved significantly past the crossover) tend to mean-revert. This filter improved the average trade return by 0.3%.
+Only enter if price is within 2% of the crossover point. Late entries (when price has already moved significantly past the crossover) may be more prone to mean-reversion, so this filter is worth testing on your own data.
 
 ## Implementation in Python
 
@@ -143,14 +138,14 @@ The core logic involves comparing yesterday's MA relationship to today's: if yes
 
 - The golden cross (50/200) is the most widely followed but not the most profitable variant
 - Triple MA systems can reduce false signals at the cost of later entries
-- Adding volume, ATR, and ADX filters improves win rates by 5-9 percentage points
+- Adding volume, ATR, and ADX filters may reduce whipsaws, but each filter adds parameters and overfitting risk, so test the effect on your own data
 - The primary value of MA crossovers is bear market avoidance, not alpha generation
 
 ## Frequently Asked Questions
 
 ### Is the golden cross a reliable trading signal?
 
-The golden cross has a mixed record as a standalone signal. Since 1950, the S&P 500 has averaged +14.3% in the 12 months following a golden cross, compared to +8.1% for all 12-month periods. However, the signal is lagging (typically triggers 8-15% above the bottom) and produces false signals in range-bound markets. It works best as a confirmation tool within a broader strategy rather than as a sole entry trigger.
+The golden cross has a mixed record as a standalone signal. Published studies of the signal are mixed, and results depend on the sample period and how the signal is defined. The signal is lagging (it typically triggers well after the bottom) and produces false signals in range-bound markets. It works best as a confirmation tool within a broader strategy rather than as a sole entry trigger.
 
 ### How do you avoid whipsaws with moving average crossovers?
 

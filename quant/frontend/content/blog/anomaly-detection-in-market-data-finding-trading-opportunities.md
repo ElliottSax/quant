@@ -40,7 +40,7 @@ Implementing an anomaly detection strategy requires a step-by-step approach, sta
 1. Collect and preprocess market data, including cleaning and normalizing the data.
 2. Choose an anomaly detection technique, such as statistical process control or machine learning.
 3. Train the model using historical data, covering several market regimes.
-4. Test the model using out-of-sample data, with a minimum of 2 years of data recommended.
+4. Test the model using out-of-sample data, using enough data to cover different market regimes.
 5. Evaluate the performance of the model using metrics such as precision and recall.
 6. Refine the model as needed, using techniques such as parameter tuning and feature selection.
 

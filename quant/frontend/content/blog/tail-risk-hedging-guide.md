@@ -13,21 +13,21 @@ The paradox of tail risk hedging is that it requires paying insurance premiums d
 
 ## Defining Tail Risk
 
-Tail risk refers to the probability and severity of extreme market moves that exceed what normal distribution models predict. Under a Gaussian distribution, a 4-sigma daily move (approximately -6.3% for a 1.6% daily volatility market) has a 0.006% probability -- roughly once every 63 years. In practice, 4-sigma moves occur approximately once every 5-7 years in equity markets.
+Tail risk refers to the probability and severity of extreme market moves that exceed what normal distribution models predict. Under a Gaussian distribution, a 4-sigma daily move (approximately -6.3% for a 1.6% daily volatility market) has a 0.006% probability -- roughly once every 63 years. In practice, such moves occur far more often than the Gaussian model implies.
 
 This discrepancy arises because financial return distributions exhibit:
 
-**Excess kurtosis**: The S&P 500's historical daily return kurtosis is approximately 25-30 (versus 3 for a normal distribution), meaning extreme events are 8-10x more frequent than Gaussian models predict.
+**Excess kurtosis**: The S&P 500's historical daily return kurtosis is far higher than the 3 of a normal distribution (the exact value depends on the sample), meaning extreme events are much more frequent than Gaussian models predict.
 
-**Negative skewness**: Markets crash faster than they rally. The average up day for the S&P 500 is approximately +0.75%, while the average down day is approximately -0.85%. This asymmetry compounds over large moves: the 10 worst single-day declines in S&P 500 history (ranging from -7% to -23%) have no comparable positive counterparts.
+**Negative skewness**: Markets crash faster than they rally. The worst single-day declines in S&P 500 history are larger than its best single-day gains, and the largest down days have no comparable positive counterparts.
 
-**Volatility clustering**: Extreme moves tend to cluster. After a 3-sigma event, the probability of another within the next 5 trading days is approximately 15-20%, far exceeding the unconditional probability.
+**Volatility clustering**: Extreme moves tend to cluster. After a 3-sigma event, the probability of another within the next few trading days is meaningfully higher than the unconditional probability.
 
 ## Quantifying Tail Risk
 
 ### Tail Risk Metrics
 
-**Expected Shortfall at 99%**: The average loss in the worst 1% of scenarios. For a portfolio with 15% annual volatility, 99% ES is approximately 4-6% daily (2.5-4x larger than VaR).
+**Expected Shortfall at 99%**: The average loss in the worst 1% of scenarios. For a portfolio with 15% annual volatility, 99% ES is larger than the 99% VaR, and by how much depends heavily on how fat the tail is.
 
 **Tail Index (Hill Estimator)**: Estimates the power-law exponent of the return distribution tail. A tail index of 3 indicates returns follow a cubic power law, meaning 3-sigma events are substantially more frequent than Gaussian predictions. Equity markets typically have tail indices between 2.5 and 4.0.
 
@@ -35,9 +35,11 @@ This discrepancy arises because financial return distributions exhibit:
 
 ### Historical Tail Events
 
+*Approximate, from S&P 500 index history; verify against your own data source.*
+
 | Event | S&P 500 Decline | Duration | VIX Peak | Recovery Time |
 |-------|-----------------|----------|----------|---------------|
-| Black Monday (1987) | -33.5% (1 month) | Days | 150.2 | 2 years |
+| Black Monday (1987) | -33.5% (peak to trough) | Weeks | n/a (VIX was not yet published) | About 2 years |
 | LTCM/Russia (1998) | -19.3% | 6 weeks | 45.7 | 3 months |
 | Dot-Com Crash (2000-02) | -49.1% | 2.5 years | 43.7 | 4.5 years |
 | GFC (2007-09) | -56.8% | 1.5 years | 80.9 | 5.5 years |
@@ -49,15 +51,15 @@ This discrepancy arises because financial return distributions exhibit:
 
 The most direct form of tail protection. A 10% out-of-the-money (OTM) SPX put provides payoff only if the market declines more than 10%, acting as portfolio insurance.
 
-**Cost structure**: OTM puts carry a volatility premium (implied volatility exceeds realized volatility by 3-5 points on average for index puts). The annual cost of maintaining 10% OTM puts with 3-month tenors (rolled quarterly) is approximately 1.5-3.0% of portfolio value, depending on the volatility environment.
+**Cost structure**: OTM puts carry a volatility premium (implied volatility has tended to exceed realized volatility for index puts). The annual cost of maintaining 10% OTM puts with 3-month tenors (rolled quarterly) depends heavily on the volatility environment and can be a meaningful drag on returns.
 
-**Put spread**: Buying a 10% OTM put and selling a 25% OTM put reduces the cost by approximately 40-60% while providing protection for the most probable tail scenarios. The trade-off is capped protection: losses beyond 25% are unhedged. Our [options payoff diagram builder](/tools/options-payoff) lets you visualize this spread's P&L profile before committing capital to the hedge.
+**Put spread**: Buying a 10% OTM put and selling a 25% OTM put reduces the cost substantially while providing protection for the most probable tail scenarios. The trade-off is capped protection: losses beyond 25% are unhedged. Our [options payoff diagram builder](/tools/options-payoff) lets you visualize this spread's P&L profile before committing capital to the hedge.
 
 **Optimal tenor**: 3-month puts offer the best balance between cost efficiency and protection. Shorter tenors (1-month) decay faster and require more frequent rolling. Longer tenors (6-12 months) have higher absolute cost and more exposure to time decay.
 
 ### Volatility Strategies
 
-**Long VIX calls**: Provide convex exposure to volatility spikes that accompany market crashes. VIX typically rises 4-5 points for every 1% decline in the S&P 500, with the relationship becoming steeper during severe declines. VIX call options amplify this exposure.
+**Long VIX calls**: Provide convex exposure to volatility spikes that accompany market crashes. VIX tends to rise when the S&P 500 falls, with the relationship becoming steeper during severe declines. VIX call options amplify this exposure.
 
 **VIX call spread (25-40 strike)**: A cost-effective structure that profits from volatility spikes into the 25-40 range (typical crisis levels) without paying for extreme scenarios (VIX > 40) that are less likely. Annual cost: approximately 0.5-1.0% of portfolio value.
 
@@ -65,7 +67,7 @@ The most direct form of tail protection. A 10% out-of-the-money (OTM) SPX put pr
 
 ### Systematic Tail Hedging
 
-**Trend following (CTA-style)**: Momentum strategies across asset classes historically provide positive returns during sustained market declines. During the 2008 GFC, managed futures indices gained 14-20% while equities lost 50%+. Allocating 10-15% to [trend following](/blog/crypto-trend-following-systems) provides structural tail protection without explicit option costs.
+**Trend following (CTA-style)**: Momentum strategies across asset classes historically provide positive returns during sustained market declines. During the 2008 GFC, managed futures indices posted gains while equities fell sharply, though results vary by manager and period. Allocating a portion to [trend following](/blog/crypto-trend-following-systems) provides structural tail protection without explicit option costs.
 
 **Risk parity with tail overlay**: Combine a [risk parity](/blog/risk-parity-portfolio) base allocation (which reduces equity concentration risk) with a dedicated tail risk overlay (5-10% OTM puts on equity indices). This dual approach provides both structural diversification and explicit tail protection.
 
@@ -79,7 +81,7 @@ The most direct form of tail protection. A 10% out-of-the-money (OTM) SPX put pr
 
 ### The Drag Problem
 
-Persistent tail hedging creates a performance drag that compounds over time. A 2% annual cost of protection reduces a 10% gross return to 8%, compounding to a 16.5% lower terminal value over 10 years. The question is whether the protection provided during tail events compensates for this drag.
+Persistent tail hedging creates a performance drag that compounds over time. A 2% annual cost of protection reduces a 10% gross return to 8%, compounding to a terminal value roughly 17% lower over 10 years. The question is whether the protection provided during tail events compensates for this drag.
 
 ### Break-Even Analysis
 
@@ -87,7 +89,7 @@ A tail hedge that costs 2% annually must prevent losses (or capture gains) of su
 
 **Required payoff per tail event = 2% * 7 years = 14% of portfolio**
 
-A 10% OTM put spread (10-25%) on a beta-1 portfolio provides payoffs of approximately 5-15% during a 20-30% market decline. This approximately breaks even over a full market cycle, meaning the hedge is roughly fairly priced.
+A 10% OTM put spread (10-25%) on a beta-1 portfolio can pay off meaningfully during a deep market decline. Whether it breaks even over a full market cycle depends on how the options were priced when bought, so there is no general answer.
 
 The value proposition improves for:
 - Portfolios with leverage (where drawdown avoidance prevents forced deleveraging)

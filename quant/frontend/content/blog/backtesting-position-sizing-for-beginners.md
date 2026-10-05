@@ -22,10 +22,10 @@ Here's a startling truth: two traders with identical strategies can achieve wild
 
 Consider a coin flip game where heads wins $100, tails loses $100. With 50/50 odds, it's fair. However:
 - If you bet your entire bankroll every flip, you'll eventually go broke (gambler's ruin)
-- If you bet 1% each flip, you'll grow wealth indefinitely
-- If you bet 5% each flip, you'll experience severe drawdowns but maintain positive expectancy
+- If you bet a small fraction each flip, ruin takes far longer to arrive, but with no edge sizing alone cannot create growth
+- If you bet 5% each flip, you'll experience much larger swings, and the expectancy is still zero
 
-The math: **Probability of ruin = e^(-2bp/s²)** where b = bankroll, p = win probability, s = standard deviation
+The takeaway: the larger the fraction you risk per bet, the faster ruin arrives, and when there is no edge no bet size removes it over a long enough run. Sizing controls how bad the swings are; it does not create an edge.
 
 ## The Simplest Approach: Fixed Percentage Risk
 
@@ -214,7 +214,7 @@ Some traders increase position size on winning streaks. This amplifies losses wh
 Ultra-conservative (0.5% risk) means capital sits idle. You need enough trades to extract statistical advantage.
 
 **Mistake 4: Not Accounting for Slippage**
-Backtests assume perfect fills. Real slippage might be 1-5 bps. Adjust stop loss by slippage amount.
+Backtests assume perfect fills. Real fills are usually worse than the backtest, and how much worse depends on the market and order type. Measure slippage from your own fills and adjust for it.
 
 ## Quick Reference: Position Sizing Formulas
 
@@ -244,7 +244,7 @@ Measured results are not published for this strategy. The code above is a starti
 A: No, it's a guideline. Beginners should use 1-2%; professionals can use 2-3% once proven profitable. Never exceed 5%.
 
 **Q: What if my account is very small (under $5,000)?**
-A: Use 1% risk per trade to maximize trade count. With 2% on a $5,000 account, you can only make ~50 trades before ruin probability becomes significant.
+A: Use 1% risk per trade to maximize trade count. A smaller risk fraction lets a small account absorb a longer losing streak before it is badly damaged.
 
 **Q: Should I adjust position sizing for market volatility?**
 A: Not initially. Use fixed 2% until you're comfortable. Later, learn volatility-adjusted sizing.
@@ -259,4 +259,4 @@ A: Always calculate position size dynamically from your current account balance,
 
 Position sizing is the foundation of sustainable trading. The 2% risk rule is simple, proven, and effective for beginners. Implement it in your backtests, validate it with your specific strategy, and resist the temptation to deviate during winning streaks.
 
-Start conservative with 2% fixed risk, backtest thoroughly, and scale up only after 100+ trades demonstrating consistent profitability. Position sizing separates professional traders from broke gamblers.
+Start conservative with 2% fixed risk, backtest thoroughly, and scale up only after enough trades to show consistent profitability. Position sizing separates professional traders from broke gamblers.

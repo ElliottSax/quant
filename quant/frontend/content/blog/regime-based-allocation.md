@@ -15,13 +15,13 @@ Financial markets do not behave the same way at all times. Bull markets exhibit 
 
 A [market regime](/blog/market-regime-detection) is a persistent state characterized by distinct statistical properties of asset returns. The most common regime classification is:
 
-**Bull/Risk-On**: Positive expected returns, low-to-moderate volatility (12-16% annualized for equities), low correlations across risk assets, tight credit spreads, upward-sloping yield curve. Duration: typically 3-7 years.
+**Bull/Risk-On**: Positive expected returns, low-to-moderate volatility, low correlations across risk assets, tight credit spreads, upward-sloping yield curve. Bull regimes can last for years.
 
-**Bear/Risk-Off**: Negative expected returns, high volatility (25-45%), high correlations across risk assets (the "correlation convergence" phenomenon), widening credit spreads, flattening or inverting yield curve. Duration: typically 6-18 months.
+**Bear/Risk-Off**: Negative expected returns, high volatility, high correlations across risk assets (the "correlation convergence" phenomenon), widening credit spreads, flattening or inverting yield curve. Bear regimes are shorter than bull regimes but vary widely in length.
 
-**High Volatility/Transition**: Uncertain direction, elevated volatility, rapid [mean reversion](/blog/mean-reversion-strategies-guide), increased sensitivity to news flow. Often occurs at regime transitions. Duration: typically 2-6 months.
+**High Volatility/Transition**: Uncertain direction, elevated volatility, rapid [mean reversion](/blog/mean-reversion-strategies-guide), increased sensitivity to news flow. Often occurs at regime transitions.
 
-**Low Volatility/Complacency**: Very low volatility (below 12%), compressed risk premia, carry trades outperform, negative skewness builds. Often precedes sharp corrections. Duration: typically 6-18 months.
+**Low Volatility/Complacency**: Very low volatility, compressed risk premia, carry trades outperform, negative skewness builds. Often precedes sharp corrections.
 
 ### Why Regimes Matter for Allocation
 
@@ -29,10 +29,12 @@ Asset behavior differs dramatically across regimes:
 
 | Regime | Equities | Bonds | Commodities | Correlations |
 |--------|----------|-------|-------------|-------------|
-| Bull | +12-18% | +2-4% | +5-10% | Low (0.2-0.4) |
-| Bear | -15-35% | +5-10% | -10-20% | High (0.6-0.9) |
-| High Vol | -5 to +5% | +3-6% | +/- 15% | Unstable |
-| Low Vol | +8-12% | +1-3% | +3-5% | Very Low (0.0-0.2) |
+| Bull | Positive | Modest | Mixed | Lower |
+| Bear | Negative | Often positive (flight to safety) | Often negative | Higher |
+| High Vol | Uncertain | Mixed | Volatile | Unstable |
+| Low Vol | Positive | Modest | Modest | Low |
+
+The table is qualitative: magnitudes vary with the sample period and how regimes are defined, so estimate them from your own data.
 
 A portfolio optimized for bull-market correlations (diversification benefit from low equity-bond correlation) may fail during a bear market when correlations spike and diversification evaporates.
 
@@ -56,11 +58,7 @@ Where S_t is the hidden state at time t, mu_k and sigma_k are the state-specific
 
 **State inference** uses the forward-backward algorithm to compute P(S_t = k | R_1, ..., R_T) -- the probability of each state given all observations.
 
-**Typical two-state HMM results for S&P 500 (1960-2025):**
-- State 1 (Bull): mu = +0.065% daily, sigma = 0.75% daily, frequency = 78% of days
-- State 2 (Bear): mu = -0.025% daily, sigma = 1.85% daily, frequency = 22% of days
-- Transition probability bull-to-bear: 1.2% per day (average bull duration: 83 days)
-- Transition probability bear-to-bull: 3.5% per day (average bear duration: 29 days)
+**What a two-state HMM typically finds:** a calm state (positive mean, low volatility, most days) and a turbulent state (negative mean, higher volatility, fewer days), with the turbulent state less persistent. The fitted parameters depend on the sample period and fitting method, so fit the model on your own data rather than copying published-looking numbers.
 
 ### Threshold-Based Regime Classification
 
@@ -68,7 +66,7 @@ Simpler but less nuanced than HMM. Define regimes based on observable indicators
 
 **Volatility regime**: VIX above 20 = high-vol regime, VIX below 20 = low-vol regime. More refined: VIX < 15 = complacent, 15-25 = normal, 25-35 = stressed, > 35 = crisis.
 
-**Trend regime**: S&P 500 above 200-day moving average = bull, below = bear. This binary classification correctly identified every major bear market since 1950, though with lag.
+**Trend regime**: S&P 500 above 200-day moving average = bull, below = bear. This binary classification has flagged most major bear markets, though with lag and with false signals.
 
 **Yield curve regime**: 10Y-2Y spread > 0 = expansion, < 0 = recession warning. Yield curve inversion has preceded every US recession since 1960 with an average lead time of 14 months.
 
@@ -123,7 +121,7 @@ Measured results are not published for this strategy. The code above is a starti
 
 ### Regime Detection Lag
 
-HMMs and trend-following signals inherently lag regime changes. The market may decline 10-15% before the bear regime is confidently identified. This lag cost can be reduced by:
+HMMs and trend-following signals inherently lag regime changes. The market may decline substantially before the bear regime is confidently identified. This lag cost can be reduced by:
 - Using multiple signals (volatility + trend + credit) to form a composite regime indicator
 - Weighting faster signals (intraday volatility) more heavily during ambiguous periods
 - Accepting partial regime conviction (acting on 60% bear probability rather than waiting for 90%)
@@ -155,7 +153,7 @@ Two regimes (bull and bear) are sufficient for most applications. Three regimes 
 
 ### Can regime detection predict market crashes?
 
-Regime detection identifies the transition into a bear regime after it begins, not before. The typical lag is 2-4 weeks for a two-state HMM. It does not predict crashes but does limit exposure during sustained downturns. The value is in avoiding the bulk of a bear market (which typically unfolds over 6-18 months) rather than avoiding the initial decline.
+Regime detection identifies the transition into a bear regime after it begins, not before. The lag varies and can be weeks. It does not predict crashes but does limit exposure during sustained downturns. The value is in avoiding the bulk of a bear market (which can unfold over many months) rather than avoiding the initial decline.
 
 ### How does regime-based allocation compare to trend following?
 

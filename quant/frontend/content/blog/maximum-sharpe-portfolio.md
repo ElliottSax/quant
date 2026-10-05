@@ -172,7 +172,7 @@ Track the portfolio's ex-post Sharpe ratio against the ex-ante estimate. Persist
 
 ### What is a realistic Sharpe ratio for a diversified portfolio?
 
-For long-only equity portfolios, Sharpe ratios of 0.3-0.6 are typical. Multi-asset portfolios with risk-balanced allocation can achieve 0.5-0.8. Hedge fund strategies targeting absolute returns aim for 0.8-1.5. Sharpe ratios consistently above 2.0 for any liquid strategy are rare and warrant skepticism. The theoretical maximum Sharpe ratio in a market depends on the number of independent sources of return and their individual Sharpe ratios.
+Realised Sharpe ratios vary widely by asset mix and period, and they should be measured from your own data rather than assumed. Very high Sharpe ratios for any liquid strategy are rare and warrant skepticism. The theoretical maximum Sharpe ratio in a market depends on the number of independent sources of return and their individual Sharpe ratios.
 
 ### How do transaction costs affect the maximum Sharpe portfolio?
 

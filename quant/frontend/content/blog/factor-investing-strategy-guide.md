@@ -14,7 +14,7 @@ keywords: ["factor investing strategy", "equity factors", "multi-factor portfoli
 
 Factor investing is the systematic practice of targeting specific, well-documented drivers of returns across asset classes. The concept began with Fama and French's three-factor model (1993), which demonstrated that market risk alone could not explain stock returns and that size and value factors captured additional, persistent sources of alpha. The framework has since expanded to include momentum (Carhart, 1997), quality (Novy-Marx, 2013), and low volatility (Baker, Bradley, and Wurgler, 2011), creating a comprehensive toolkit for systematic portfolio construction.
 
-Factor investing now underlies over $2 trillion in assets globally across [smart beta](/blog/smart-beta-strategies-guide) ETFs, quantitative hedge funds, and institutional mandates. This guide covers each major factor, its theoretical basis, empirical performance, and how to combine factors into a robust multi-factor portfolio.
+Factor investing now underlies a large and growing pool of assets across [smart beta](/blog/smart-beta-strategies-guide) ETFs, quantitative hedge funds, and institutional mandates. This guide covers each major factor, its theoretical basis, empirical performance, and how to combine factors into a robust multi-factor portfolio.
 
 ## The Major Equity Factors
 
@@ -26,10 +26,7 @@ Factor investing now underlies over $2 trillion in assets globally across [smart
 
 **Theoretical basis**: Fama and French argued that value stocks are riskier (higher distress risk, higher leverage), and the value premium compensates for this risk. Behavioral explanations suggest that investors overreact to recent poor performance, creating undervaluation in fundamentally sound companies.
 
-**Historical performance (US equities, 1963-2025)**:
-- Annual value premium (HML): 3.8%
-- Worst decade: 2010s (-1.2% annualized) due to growth stock dominance
-- Best decade: 2000s (+7.8% annualized) after the dot-com bust
+**Historical performance**: Value has been rewarded over long samples but with long stretches of underperformance, most recently when growth stocks dominated in the 2010s. Premium sizes depend on the sample period and data source, so check the original research before relying on a figure.
 
 **Current status**: Value experienced a significant drawdown during 2017-2020 as growth stocks (FAANG) dominated returns. Since 2022, rising interest rates have supported a value recovery, with the factor returning to positive territory.
 
@@ -41,10 +38,7 @@ Factor investing now underlies over $2 trillion in assets globally across [smart
 
 **Theoretical basis**: Behavioral underreaction (investors slowly process new information), herding (positive feedback loops), and disposition effect (selling winners too early, holding losers too long) create persistent price trends.
 
-**Historical performance (US equities, 1963-2025)**:
-- Annual momentum premium (UMD): 7.2%
-- Worst event: -73.4% in March 2009 (momentum crash)
-- Best year: +41.2% in 2001
+**Historical performance**: Momentum is one of the most widely documented premia, but it is prone to sharp crashes, as in 2009. Premium sizes depend on the sample period and data source.
 
 **Key risk**: Momentum crashes. When markets reverse sharply (e.g., March 2009, vaccine announcement November 2020), momentum experiences devastating drawdowns as past losers rebound violently.
 
@@ -56,10 +50,7 @@ Factor investing now underlies over $2 trillion in assets globally across [smart
 
 **Theoretical basis**: Novy-Marx (2013) showed that gross profitability is a robust predictor of returns, independent of value. High-quality companies generate persistent economic rents that the market underprices due to focus on valuation metrics rather than business quality.
 
-**Historical performance (US equities, 1963-2025)**:
-- Annual quality premium: 4.1%
-- Low correlation with value (-0.15) and momentum (0.08)
-- Strong performance in bear markets (flight to quality)
+**Historical performance**: Quality has historically been only weakly correlated with value and momentum and has tended to hold up better in bear markets (flight to quality). Sizes vary by sample period and definition.
 
 **Advantage**: Quality is the most stable factor with the lowest maximum drawdown among the major factors. It acts as a natural hedge against other factor drawdowns.
 
@@ -71,9 +62,7 @@ Factor investing now underlies over $2 trillion in assets globally across [smart
 
 **Theoretical basis**: The low-volatility anomaly contradicts CAPM, which predicts that higher risk should earn higher returns. Empirically, low-volatility stocks outperform on a risk-adjusted basis (and sometimes on an absolute basis). Baker et al. (2011) attribute this to institutional benchmarking constraints and individual investor preference for "lottery" stocks.
 
-**Historical performance (US equities, 1963-2025)**:
-- Annual low-vol premium: 2.8%
-- Underperforms in strong bull markets (lower beta)
+**Historical performance**: Low volatility has tended to lag in strong bull markets (lower beta) and hold up better in drawdowns. Sizes vary by sample period and definition.
 
 **Characteristic**: Low volatility acts more like a risk-reduction strategy than an alpha-generation strategy. It achieves comparable returns to the market with significantly lower risk.
 
@@ -81,16 +70,7 @@ Factor investing now underlies over $2 trillion in assets globally across [smart
 
 ### Factor Correlations
 
-Low correlation between factors enables powerful diversification:
-
-| | Value | Momentum | Quality | Low Vol |
-|---|-------|----------|---------|---------|
-| Value | 1.00 | -0.38 | -0.15 | 0.22 |
-| Momentum | -0.38 | 1.00 | 0.08 | -0.14 |
-| Quality | -0.15 | 0.08 | 1.00 | 0.31 |
-| Low Vol | 0.22 | -0.14 | 0.31 | 1.00 |
-
-The strongest diversification benefit comes from combining value and momentum (correlation -0.38). When value underperforms (growth stocks dominating), momentum typically captures the growth trend.
+Low correlation between factors enables diversification. Exact correlations depend on the period and factor definitions, so estimate them from your own data. Value and momentum have often been negatively correlated, which makes them a common pairing. When value underperforms (growth stocks dominating), momentum typically captures the growth trend.
 
 ### Factor Combination Methods
 
@@ -126,13 +106,15 @@ Factor timing adds modest value but introduces model complexity and potential ov
 
 ### ETF Implementation (Simpler)
 
-| Factor | ETF | Expense Ratio | AUM |
-|--------|-----|--------------|-----|
-| Value | VLUE (iShares) | 0.15% | $8.2B |
-| Momentum | MTUM (iShares) | 0.15% | $11.4B |
-| Quality | QUAL (iShares) | 0.15% | $28.1B |
-| Low Vol | USMV (iShares) | 0.15% | $24.8B |
-| Multi-factor | LRGF (iShares) | 0.08% | $3.2B |
+| Factor | Example ETF |
+|--------|-------------|
+| Value | VLUE (iShares) |
+| Momentum | MTUM (iShares) |
+| Quality | QUAL (iShares) |
+| Low Vol | USMV (iShares) |
+| Multi-factor | LRGF (iShares) |
+
+Expense ratios and fund sizes change; check each fund's current prospectus before choosing.
 
 ### Direct Implementation (More Control)
 
@@ -146,10 +128,10 @@ Building factor portfolios directly from individual stocks provides:
 ## Key Takeaways
 
 - Four robust equity factors (value, momentum, quality, low volatility) have been documented across decades and markets
-- Value and momentum have -0.38 correlation, making them natural complements in a portfolio
-- Quality provides stability and bear market protection with the lowest drawdown among individual factors
-- Factor timing adds modest value (+1.2-1.8% CAGR) but introduces complexity and overfitting risk
-- The composite scoring approach outperforms equal-weight factor blending by selecting stocks with high combined factor scores
+- Value and momentum have often been negatively correlated, making them natural complements in a portfolio
+- Quality has tended to provide stability and bear market protection
+- Factor timing is hard to do reliably and introduces complexity and overfitting risk
+- The composite scoring approach selects stocks with high combined factor scores, rather than blending separate factor portfolios
 - ETF implementation is simple and cost-effective; direct implementation offers more control and tax efficiency
 
 ## Frequently Asked Questions
@@ -160,7 +142,7 @@ No. The value factor experienced a historically severe drawdown from 2017-2020, 
 
 ### How often should factor portfolios be rebalanced?
 
-Monthly rebalancing is the standard for most equity factors. Momentum benefits from monthly rebalancing (capturing new trends), while value and quality can be rebalanced quarterly with minimal performance loss due to their slower-moving nature. Low volatility can also be rebalanced quarterly. Transaction costs should be considered: momentum strategies with 340% annual turnover benefit from lower-frequency rebalancing to reduce costs, even at the expense of some signal decay.
+Monthly rebalancing is the standard for most equity factors. Momentum benefits from monthly rebalancing (capturing new trends), while value and quality can be rebalanced quarterly with minimal performance loss due to their slower-moving nature. Low volatility can also be rebalanced quarterly. Transaction costs should be considered: momentum strategies with very high annual turnover benefit from lower-frequency rebalancing to reduce costs, even at the expense of some signal decay.
 
 ### Can factor investing work for small accounts?
 

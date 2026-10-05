@@ -26,9 +26,9 @@ The field of quantitative trading is a highly competitive and rapidly evolving i
 The CFA and FRM certifications are both highly regarded in the industry, with the CFA being considered the gold standard for investment professionals and the FRM being recognized as a leading credential for risk management professionals.
 
 ## Key Concepts
-The CFA and FRM certifications are both designed to demonstrate expertise in specific areas of finance, with the CFA focusing on investment analysis and portfolio management, and the FRM focusing on risk management and financial modeling. The CFA program consists of three levels, each requiring a minimum of 250 hours of study and covering topics such as ethics, financial statement analysis, and portfolio management. The FRM program consists of two levels, each requiring a minimum of 150 hours of study and covering topics such as risk management, financial markets, and financial modeling.
+The CFA and FRM certifications are both designed to demonstrate expertise in specific areas of finance, with the CFA focusing on investment analysis and portfolio management, and the FRM focusing on risk management and financial modeling. The CFA program consists of three levels, each requiring a substantial amount of study (CFA Institute recommends roughly 300 hours per level) and covering topics such as ethics, financial statement analysis, and portfolio management. The FRM program consists of two levels, each requiring substantial study and covering topics such as risk management, financial markets, and financial modeling.
 
-In terms of statistical analysis and financial modeling, the CFA and FRM certifications both require a strong foundation in these areas. The CFA program includes topics such as regression analysis, time series analysis, and hypothesis testing, while the FRM program includes topics such as value-at-risk (VaR) modeling, expected shortfall (ES) modeling, and stress testing. Similarly, a study by GARP found that 95% of FRM holders report using risk management and financial modeling techniques in their work, with 90% reporting that these skills are essential to their job.
+In terms of statistical analysis and financial modeling, the CFA and FRM certifications both require a strong foundation in these areas. The CFA program includes topics such as regression analysis, time series analysis, and hypothesis testing, while the FRM program includes topics such as value-at-risk (VaR) modeling, expected shortfall (ES) modeling, and stress testing.
 
 The following table provides a comparison of the CFA and FRM certifications:
 | Certification | CFA | FRM |
@@ -56,7 +56,7 @@ To obtain one of these certifications, traders will need to meet the eligibility
 
 Here are the step-by-step instructions for obtaining the CFA and FRM certifications:
 1. Meet the eligibility requirements: Check the certification website to ensure that you meet the eligibility requirements, which typically include a minimum level of education and work experience.
-2. Register for the program: Register for the certification program and pay the required fees, which can range from $1,000 to $3,000.
+2. Register for the program: Register for the certification program and pay the required fees, which vary by program and registration date; check the current fee schedule on the CFA Institute or GARP site.
 3. Study for the exams: Study for the certification exams, which can require a minimum of 250 hours of study per level.
 4. Pass the exams: Pass the certification exams, which can be a challenging and time-consuming process.
 5. Maintain the certification: Maintain the certification by completing continuing education requirements and paying annual fees, which can range from $100 to $500.
@@ -64,7 +64,7 @@ Here are the step-by-step instructions for obtaining the CFA and FRM certificati
 ## Best Practices
 In terms of best practices, traders who are seeking to obtain one of these certifications should start by researching the different options and determining which one is best for their career goals. They should also develop a study plan and stick to it, as the certification exams can be challenging and time-consuming. Additionally, traders should consider joining a study group or seeking the help of a mentor, as this can be a great way to stay motivated and get support.
 
-Similarly, a survey by GARP found that 85% of FRM holders report that they used a study group or mentor to help them prepare for the exams, with 80% reporting that this was a key factor in their success.
+A study group or mentor can help you prepare.
 
 For example, a trader who is seeking to obtain the CFA certification might start by researching the different levels of the program and determining which one is best for their career goals. They might then develop a study plan, which could include setting aside a certain amount of time each week to study and seeking the help of a mentor. They might also consider joining a study group, as this can be a great way to stay motivated and get support.
 
@@ -76,7 +76,7 @@ There are several common mistakes that traders make when seeking to obtain one o
 4. Not meeting the eligibility requirements: Traders should ensure that they meet the eligibility requirements, which typically include a minimum level of education and work experience.
 5. Not maintaining the certification: Traders should maintain the certification by completing continuing education requirements and paying annual fees.
 
-Similarly, a survey by GARP found that 65% of FRM holders report that they made one or more of these mistakes when seeking to obtain the certification, with 55% reporting that this had a negative impact on their career.
+These mistakes can cost time and money.
 
 ## FAQ
 Here are some frequently asked questions about the CFA and FRM certifications:
@@ -91,7 +91,7 @@ The eligibility requirements for the CFA or FRM certification typically include 
 5. How do I maintain the CFA or FRM certification?
 To maintain the CFA or FRM certification, traders must complete continuing education requirements and pay annual fees, which can range from $100 to $500.
 
-Similarly, a survey by GARP found that 85% of FRM holders report that they are satisfied with the certification, with 80% reporting that it has had a positive impact on their career.
+Whether a certification pays off depends on your goals, so talk to people in the roles you want.
 
 ## Conclusion
-In conclusion, the CFA and FRM certifications are both highly regarded in the industry, and can demonstrate expertise and commitment to potential employers and clients. The CFA program is focused on investment analysis and portfolio management, while the FRM program is focused on risk management and financial modeling. Traders who are seeking to obtain one of these certifications should research the different options and determine which one is best for their career goals, develop a study plan and stick to it, and consider seeking the help of a mentor or study group. By following these best practices and avoiding common mistakes, traders can increase their chances of success and achieve their career goals. With the right certification, traders can improve their skills and knowledge, and increase their earning potential, with the average salary for a CFA charterholder being $100,000 per year, and the average salary for an FRM holder being $120,000 per year.
+In conclusion, the CFA and FRM certifications are both highly regarded in the industry, and can demonstrate expertise and commitment to potential employers and clients. The CFA program is focused on investment analysis and portfolio management, while the FRM program is focused on risk management and financial modeling. Traders who are seeking to obtain one of these certifications should research the different options and determine which one is best for their career goals, develop a study plan and stick to it, and consider seeking the help of a mentor or study group. By following these best practices and avoiding common mistakes, traders can increase their chances of success and achieve their career goals. With the right certification, traders can improve their skills and knowledge, and potentially increase their earning potential; check current compensation surveys for realistic figures.

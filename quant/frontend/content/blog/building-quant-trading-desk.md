@@ -9,6 +9,8 @@ keywords: ["building quant trading desk", "quant infrastructure", "trading desk 
 ---
 # Building a Quant Trading Desk: Infrastructure and Team Guide
 
+*Planning note: the dollar amounts, headcounts, data volumes and timelines in this guide are rough planning assumptions, not survey or measured data. Replace them with quotes from your own vendors, brokers and recruiters before budgeting.*
+
 Building a [quantitative trading](/blog/crypto-quant-trading-strategies) desk from scratch is a multi-million dollar endeavor that requires coordinating technology infrastructure, research processes, data management, execution systems, risk controls, and human capital. The difference between a successful quant desk and a failed one often comes down to infrastructure decisions made in the first year. This guide covers the key components, common architectural patterns, and lessons from firms that have built and scaled quantitative trading operations.
 
 ## Technology Stack
@@ -23,7 +25,7 @@ The foundation of every quant strategy. Handles ingestion, storage, cleaning, an
 - **Time-series database**: KDB+/q (industry standard for tick data), InfluxDB, or TimescaleDB for lower-cost alternatives
 - **Data warehouse**: Snowflake, BigQuery, or Redshift for analytics and research
 - **Data pipeline**: Apache Kafka or similar for real-time streaming; Airflow or Prefect for batch processing
-- **Storage**: 10-50 TB for historical tick data (5+ years across global markets), growing 2-5 TB annually
+- **Storage**: tens of terabytes or more for multi-year tick history across global markets, growing every year (size depends on the universe and depth of book)
 
 **Cost estimate**: $200K-$500K annually (data feeds + infrastructure + data engineering team)
 
@@ -101,40 +103,40 @@ Python dominates research and data pipelines. C++ or Rust is necessary for laten
 - Background: PhD in math, physics, statistics, CS, or economics
 - Responsibilities: Alpha research, model development, backtesting, signal improvement
 - Skills: Python, statistics, machine learning, financial markets knowledge
-- Compensation: $200K-$500K base + 10-30% of P&L (at hedge funds)
+- Compensation: varies widely by firm type and seniority, and often includes P&L participation at hedge funds; check current compensation surveys
 
 **Quantitative Developer / Engineer (2-4 per desk)**
 - Background: MS/PhD in CS or software engineering with quantitative aptitude
 - Responsibilities: Production systems, data infrastructure, execution systems
 - Skills: C++/Python/Java, distributed systems, low-latency programming, databases
-- Compensation: $200K-$400K base + bonus
+- Compensation: varies widely by firm type and seniority, and often includes P&L participation at hedge funds; check current compensation surveys
 
 **Data Engineer (1-2 per desk)**
 - Background: CS/Data Engineering with financial data experience
 - Responsibilities: Data pipeline, data quality, vendor management, alternative data integration
 - Skills: Python, SQL, Kafka, Airflow, cloud infrastructure (AWS/GCP)
-- Compensation: $150K-$300K base + bonus
+- Compensation: varies widely by firm type and seniority, and often includes P&L participation at hedge funds; check current compensation surveys
 
 **Portfolio Manager / Head of Quant (1)**
 - Background: 10+ years in quantitative trading, track record of P&L generation
 - Responsibilities: Strategy allocation, risk oversight, team management, investor relations
 - Skills: Deep market knowledge, risk management, leadership, communication
-- Compensation: $500K-$2M+ base + P&L participation
+- Compensation: varies widely by firm type and seniority, and often includes P&L participation at hedge funds; check current compensation surveys
 
 **Risk Manager (1, often shared)**
 - Background: [Quantitative risk management](/blog/quantitative-risk-management) experience
 - Responsibilities: Risk model validation, limit monitoring, stress testing, regulatory compliance
 - Skills: Risk modeling, statistics, regulatory frameworks
-- Compensation: $150K-$350K base + bonus
+- Compensation: varies widely by firm type and seniority, and often includes P&L participation at hedge funds; check current compensation surveys
 
 ### Optimal Team Size
 
-| Stage | Team Size | Strategies | AUM Range |
-|-------|----------|-----------|-----------|
-| Startup | 3-5 | 1-2 | $10-50M |
-| Growth | 8-15 | 3-5 | $50-500M |
-| Mature | 20-50 | 8-15 | $500M-5B |
-| Large | 50-200+ | 15+ | $5B+ |
+| Stage | Team Size | Strategies |
+|-------|----------|-----------|
+| Startup | A few people | One or two |
+| Growth | Roughly a dozen | A handful |
+| Mature | Dozens | Many |
+| Large | Large organisation | Many, across asset classes |
 
 The minimum viable team is 3 people: one researcher, one developer, and one PM (who also handles risk and operations). Below this threshold, the team cannot sustain research productivity, system reliability, and risk oversight simultaneously.
 
@@ -143,8 +145,8 @@ The minimum viable team is 3 people: one researcher, one developer, and one PM (
 ### Data Categories
 
 **Market Data** (essential, day 1):
-- Level 1: Last trade, best bid/offer (5-10 GB/day for US equities)
-- Level 2: Full order book depth (50-100 GB/day for US equities)
+- Level 1: Last trade, best bid/offer
+- Level 2: Full order book depth
 - Historical: 5-10 years minimum for backtesting
 - Cost: $50K-$200K/year for real-time feeds + $10K-$50K for historical
 
@@ -204,13 +206,13 @@ Multi-prime arrangements (2-3 prime brokers) reduce counterparty risk and provid
 | Prime Broker / Trading | $50K | $100K | $300K |
 | **Total Year 1** | **$1.1M** | **$2.05M** | **$4.0M** |
 
-Most startup quant desks require $1.5-3M in initial funding to reach revenue generation, with break-even typically at $50-150M AUM (depending on strategy Sharpe ratio and fee structure).
+Startup quant desks need substantial initial funding to reach revenue generation, and break-even AUM depends on strategy Sharpe ratio and fee structure.
 
 ## Key Takeaways
 
 - A production quant trading desk requires six core technology components: data platform, research environment, alpha model, portfolio construction, execution management, and risk monitoring
-- The minimum viable team is 3 people (researcher, developer, PM); scaling to 8-15 people supports 3-5 strategies and $50-500M AUM
-- Data infrastructure is the foundation: budget $100K-500K annually for market data, reference data, and alternative data, with rigorous quality pipelines to prevent backtesting errors
+- The minimum viable team is a researcher, a developer and a PM; scaling the team supports more strategies and more AUM
+- Data infrastructure is the foundation: budget meaningfully for market data, reference data, and alternative data, with rigorous quality pipelines to prevent backtesting errors
 - Event-driven microservices architecture provides the best balance of scalability and maintainability for multi-strategy desks
 - Year 1 costs range from $1.1M to $4.0M depending on team size and technology ambition, with break-even typically requiring $50-150M in AUM
 
@@ -226,12 +228,12 @@ AWS is the most common choice due to its financial services ecosystem (FinSpace,
 
 ### How do I attract quant talent to a startup?
 
-Compete on: (1) equity/P&L participation (startups can offer 15-30% of strategy P&L, versus 5-15% at large funds), (2) intellectual freedom (ability to research and deploy new strategies without bureaucratic approval), (3) technology (modern stack, Python-first, cloud-native -- researchers leave large firms partly to escape legacy technology), and (4) culture (flat hierarchy, research-driven, transparent). Initial hires are typically sourced from PhD programs and mid-career researchers at larger quant funds.
+Compete on: (1) equity/P&L participation (startups can offer a larger share of strategy P&L than large funds), (2) intellectual freedom (ability to research and deploy new strategies without bureaucratic approval), (3) technology (modern stack, Python-first, cloud-native -- researchers leave large firms partly to escape legacy technology), and (4) culture (flat hierarchy, research-driven, transparent). Initial hires are typically sourced from PhD programs and mid-career researchers at larger quant funds.
 
 ### How long until a new quant desk is profitable?
 
-Typical timeline: 6-12 months for infrastructure build and strategy development, 3-6 months of paper trading and validation, 3-6 months of live trading with initial capital. Total: 12-24 months to sustained profitability. The primary risk is running out of capital before strategies are validated and deployed. Budget for 18-24 months of operating expenses before assuming revenue generation.
+Plan for a long timeline: infrastructure build and strategy development, then paper trading and validation, then live trading with initial capital. Sustained profitability can take well over a year. The primary risk is running out of capital before strategies are validated and deployed, so budget for ample operating expenses before assuming revenue generation.
 
 ### Can a quant desk operate remotely?
 
-Post-2020, many quant operations have successfully transitioned to hybrid or fully remote models for research and development. However, certain functions benefit from co-location: system monitoring and incident response (shared war room during live trading hours), researcher collaboration (whiteboard sessions, pair programming), and compliance oversight. The emerging standard is 2-3 days per week in office for trading hours and collaboration, with flexible remote work for research and development.
+Post-2020, many quant operations have successfully transitioned to hybrid or fully remote models for research and development. However, certain functions benefit from co-location: system monitoring and incident response (shared war room during live trading hours), researcher collaboration (whiteboard sessions, pair programming), and compliance oversight. Many desks use a hybrid arrangement: in the office for trading hours and collaboration, with flexible remote work for research and development.

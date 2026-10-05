@@ -64,6 +64,8 @@ const nextConfig = {
     // zero-debit spread. The real guide lives at 05-butterfly-spread-options-strategy-low-risk.
     const removedTo = {
       'butterfly-spreads-long-vs-short-variants': '/blog/05-butterfly-spread-options-strategy-low-risk',
+      'black-litterman-model-incorporating-market-views': '/blog/black-litterman-model',
+      'cross-validation-for-trading-systems-walk-forward-analysis': '/blog/cross-validation-trading-models',
     }
     return [
       ...removed.map((slug) => ({

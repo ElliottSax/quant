@@ -21,27 +21,20 @@ last_updated: '2026-03-19'
 # Bitcoin Futures Basis Trading
 
 ## Introduction
-Bitcoin futures basis trading is a quantitative strategy that involves exploiting the price differences between the spot market and the futures market. This strategy is based on the concept of arbitrage, where a trader buys an asset at a lower price in one market and sells it at a higher price in another market, profiting from the price difference. In the context of Bitcoin futures basis trading, the spot market refers to the current market price of Bitcoin, while the futures market refers to the price of Bitcoin futures contracts. The basis is the difference between the spot price and the futures price, and it is this basis that traders seek to exploit. According to a study by the Federal Reserve Bank of New York, the average basis between the spot and futures markets for Bitcoin is around 2-3%, which translates to a potential profit of $200-$300 per Bitcoin futures contract. For example, if the spot price of Bitcoin is $10,000 and the futures price is $10,300, a trader can buy one Bitcoin in the spot market and sell one Bitcoin futures contract, earning a profit of $300.
+Bitcoin futures basis trading is a quantitative strategy that involves exploiting the price differences between the spot market and the futures market. This strategy is based on the concept of arbitrage, where a trader buys an asset at a lower price in one market and sells it at a higher price in another market, profiting from the price difference. In the context of Bitcoin futures basis trading, the spot market refers to the current market price of Bitcoin, while the futures market refers to the price of Bitcoin futures contracts. The basis is the difference between the spot price and the futures price, and it is this basis that traders seek to exploit. Futures typically trade at a premium to spot (contango) that reflects financing costs and demand for leverage, and the size of that premium varies a lot over time and by contract expiry. For example, if the spot price of Bitcoin is $10,000 and the futures price is $10,300, a trader can buy one Bitcoin in the spot market and sell one Bitcoin futures contract, earning a profit of $300.
 
 ## Key Concepts
-The key to successful Bitcoin futures basis trading is to understand the underlying concepts and mechanics of the strategy. One of the most important concepts is the basis, which is the difference between the spot price and the futures price. The basis can be calculated using the following formula: basis = futures price - spot price. For example, if the spot price of Bitcoin is $10,000 and the futures price is $10,300, the basis is $300. Another important concept is the cost of carry, which refers to the costs associated with holding a position in the spot market, such as storage and financing costs. According to a study by the Chicago Mercantile Exchange (CME), the cost of carry for Bitcoin is around 5-10% per annum, which translates to a daily cost of around $1.37-$2.74 per Bitcoin. The cost of carry is an important consideration in Bitcoin futures basis trading, as it can eat into the profits earned from the basis.
+The key to successful Bitcoin futures basis trading is to understand the underlying concepts and mechanics of the strategy. One of the most important concepts is the basis, which is the difference between the spot price and the futures price. The basis can be calculated using the following formula: basis = futures price - spot price. For example, if the spot price of Bitcoin is $10,000 and the futures price is $10,300, the basis is $300. Another important concept is the cost of carry, which refers to the costs associated with holding a position in the spot market, such as storage and financing costs. For a cash-and-carry trade the main cost is financing the spot position (plus exchange and custody fees), which depends on prevailing interest rates and the time to expiry. The cost of carry is an important consideration in Bitcoin futures basis trading, as it can eat into the profits earned from the basis.
 
 The following table summarizes the key concepts and formulas used in Bitcoin futures basis trading:
 | Concept | Formula | Example |
 | --- | --- | --- |
 | Basis | basis = futures price - spot price | basis = $10,300 - $10,000 = $300 |
-| Cost of Carry | cost of carry = (storage costs + financing costs) / spot price | cost of carry = ($1.37 + $1.37) / $10,000 = 0.0274% per day |
-| Profit | profit = basis - cost of carry | profit = $300 - $2.74 = $297.26 |
+| Cost of Carry | financing and fees over the holding period | for example, a 5% annual rate on $10,000 for 3 months is about $125 |
+| Profit | profit = basis - cost of carry (earned as the futures converge to spot at expiry) | $300 - $125 = $175, before margin costs and trading fees |
 
 ## Statistical Analysis
-A statistical analysis of the basis between the spot and futures markets for Bitcoin reveals some interesting insights. This means that the basis tends to revert to its mean value over time, which is around 2-3% per annum. The study also found that the volatility of the basis is around 10-15% per annum, which is relatively high compared to other financial assets. The following table compares the statistical properties of the basis between the spot and futures markets for Bitcoin with other financial assets:
-| Asset | Mean Reversion Coefficient | Volatility |
-| --- | --- | --- |
-| Bitcoin | 0.05 | 10-15% per annum |
-| Gold | 0.01 | 5-10% per annum |
-| S&P 500 | 0.005 | 10-20% per annum |
-| Treasury Bonds | 0.001 | 2-5% per annum |
-
+A statistical analysis of the basis between the spot and futures markets for Bitcoin reveals some interesting insights. The basis tends to widen in strong bull phases when demand for leverage is high and to compress when that demand falls, and it converges to zero at expiry. Measure its level and volatility from exchange data for the contract you trade.
 ## Implementation Guide
 To implement a Bitcoin futures basis trading strategy, traders need to follow a series of steps. Step 1 is to identify a suitable futures contract to trade, such as the CME Bitcoin futures contract. Step 2 is to determine the spot price of Bitcoin, which can be obtained from a reputable exchange such as Coinbase or Binance. Step 3 is to calculate the basis between the spot and futures markets using the formula: basis = futures price - spot price. Step 4 is to determine the cost of carry, which can be estimated using the formula: cost of carry = (storage costs + financing costs) / spot price. Step 5 is to calculate the profit, which is the difference between the basis and the cost of carry. The following step-by-step guide illustrates the implementation of a Bitcoin futures basis trading strategy:
 1. Identify a suitable futures contract to trade, such as the CME Bitcoin futures contract.
@@ -50,12 +43,8 @@ To implement a Bitcoin futures basis trading strategy, traders need to follow a 
 4. Determine the cost of carry, which can be estimated using the formula: cost of carry = (storage costs + financing costs) / spot price.
 5. Calculate the profit, which is the difference between the basis and the cost of carry.
 
-## Real-World Examples
-Several real-world examples illustrate the potential profitability of Bitcoin futures basis trading. For example, on January 1, 2020, the spot price of Bitcoin was $7,200, while the futures price was $7,500. The basis was $300, and the cost of carry was $1.37. The profit was $298.63, which is a return of around 4.1% per annum. Another example is on June 1, 2020, when the spot price of Bitcoin was $9,500, while the futures price was $10,000. The basis was $500, and the cost of carry was $2.74. The profit was $497.26, which is a return of around 5.2% per annum. The following table summarizes the real-world examples of Bitcoin futures basis trading:
-| Date | Spot Price | Futures Price | Basis | Cost of Carry | Profit |
-| --- | --- | --- | --- | --- | --- |
-| January 1, 2020 | $7,200 | $7,500 | $300 | $1.37 | $298.63 |
-| June 1, 2020 | $9,500 | $10,000 | $500 | $2.74 | $497.26 |
+## Worked Example
+A worked example shows how to read a basis. Suppose spot is $10,000 and a 3-month future trades at $10,300. The basis is $300, or 3% over three months, roughly 12% annualised before financing costs, margin requirements and fees. These are illustrative numbers, not a record of past trades, and the real return depends on the contract tenor, the financing rate and execution costs.
 
 ## Common Mistakes
 Several common mistakes can occur when implementing a Bitcoin futures basis trading strategy. The following are some of the most common mistakes:
@@ -67,7 +56,7 @@ Several common mistakes can occur when implementing a Bitcoin futures basis trad
 
 ## FAQ
 The following are some frequently asked questions about Bitcoin futures basis trading:
-1. **What is the minimum amount of capital required to trade Bitcoin futures?**: The minimum amount of capital required to trade Bitcoin futures varies depending on the exchange and the type of account. For example, the CME requires a minimum of $10,000 to trade Bitcoin futures.
+1. **What is the minimum amount of capital required to trade Bitcoin futures?**: The minimum amount of capital required to trade Bitcoin futures varies depending on the exchange and the type of account. For example, CME sets initial margin per contract and changes it with volatility, so check the exchange's current margin requirements.
 2. **What is the maximum leverage available for Bitcoin futures trading?**: The maximum leverage available for Bitcoin futures trading varies depending on the exchange and the type of account. For example, the CME offers leverage of up to 20:1 for Bitcoin futures trading.
 3. **How do I calculate the basis between the spot and futures markets for Bitcoin?**: The basis between the spot and futures markets for Bitcoin can be calculated using the formula: basis = futures price - spot price.
 4. **What is the cost of carry for Bitcoin futures trading?**: The cost of carry for Bitcoin futures trading varies depending on the exchange and the type of account. For example, the CME estimates the cost of carry for Bitcoin futures trading to be around 5-10% per annum.
