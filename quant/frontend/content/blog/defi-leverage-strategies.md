@@ -48,7 +48,7 @@ Different leverage structures create different risk-return profiles.
 **Long leverage (deposit and borrow same asset):**
 - Deposit $10,000 ETH, borrow $7,500 USDC, buy $7,500 ETH with USDC, deposit ETH, borrow more USDC
 - Result: 2.5× long ETH exposure
-- Risk: linear - 50% ETH decline = 50% × 2.5× = 125% loss (liquidation likely)
+- Risk: linear - a 50% ETH decline would mean 50% × 2.5× = 125% of your equity, i.e. the position is wiped out; in practice liquidation happens well before that point
 - Return: 2.5× ETH appreciation gains
 
 **Yield farming leverage (borrow to deploy higher yields):**

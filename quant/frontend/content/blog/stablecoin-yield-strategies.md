@@ -28,7 +28,7 @@ Curve stablecoin pools generate trading fees without impermanent loss. The USDC/
 
 Liquidity mining programs amplify yields through token distributions. Aave distributes AAVE token rewards to depositors/borrowers based on activity. Curve distributes CRV tokens. When these governance tokens have real market value, the effective yield can be well above the base lending rate; it falls with the token price. However, token inflation reduces long-term sustainability.
 
-Convex Finance optimizes Curve yields through vote-buying. Lock CRV (Curve's governance token) to vote on which pools receive governance rewards. Convex accumulates millions of CRV votes to direct max rewards to highest-yield pools. Depositing into Convex earns: base Curve fees (3-5% APY) + optimized CRV rewards (5-10% APY) = 8-15% total yield without manual voting.
+Convex Finance optimizes Curve yields through vote-buying. Lock CRV (Curve's governance token) to vote on which pools receive governance rewards. Convex accumulates millions of CRV votes to direct max rewards to highest-yield pools. Depositing into Convex earns base Curve trading fees plus boosted CRV rewards without manual voting; the combined rate moves with pool volume and the CRV price, so check the live pool pages rather than relying on a quoted range.
 
 The yield math: $10,000 deposited to Aave USDC earning 5% APY = $500 annual interest, or $41.67 monthly. On Curve USDC/USDT/DAI earning 8% = $800 annually. Combined portfolio of $100,000 split 50/50 = $4,000-$6,500 annually from pure yield. Compounding monthly generates $4,060-$6,709 including compound interest.
 
@@ -40,7 +40,7 @@ Security scoring includes audit quality (multiple audits from tier-1 firms = 0-2
 
 The risk-adjusted return calculation: Required Minimum Return = Risk-Free Rate (3%) + Risk Premium. For Aave (tier-1 security score = 2% premium): required minimum 5%, actual yield 5-6%, spread 0-1% (fair/attractive). For new protocol with single audit, $30M TVL (<6 months): required minimum 3% + 18% = 21%, but offers only 15% (unattractive risk-reward).
 
-Depeg risk applies to all stablecoins, though varies by stability mechanisms. USDC and USDT maintain <0.1% deviation from $1 through excellent reserve backing. DAI depegs occasionally (2-5% during extreme volatility) due to collateral liquidations. USDC depegs 0.5-2% during bank stress (SVB collapse in 2023, USDC temporarily dropped to $0.88).
+Depeg risk applies to all stablecoins, though varies by stability mechanisms. USDC and USDT normally trade within a fraction of a percent of $1 on the strength of their reserves. DAI has traded a few percent below peg during extreme volatility because of collateral liquidations. USDC itself fell to about $0.88 during the March 2023 SVB collapse before recovering.
 
 Smart contract risk assessment examines code quality, upgrade mechanisms, and governance. Aave requires governance vote for contracts upgrades (6 days voting period). MakerDAO requires governance approval for risk parameter changes. Smaller protocols might have admin keys enabling unilateral changes - higher risk.
 
@@ -54,7 +54,7 @@ Professional stablecoin yield strategies diversify across 5-10 protocols rather 
 
 The allocation framework: 40% to tier-1 protocols (Aave USDC, Compound USDT) earning 4-6% with minimal risk, 35% to strong tier-2 protocols (Curve stablecoin pools via Convex, dYdX lending) earning 6-8%, 15% to mid-tier opportunities (Yearn stablecoin vaults, Lido stETH/ETH earning 5-7% + staking), 10% to emerging protocols (carefully vetted new platforms with 8-12% yields).
 
-Yield aggregation services like Yearn Finance simplify diversification. Yearn offers "yvUSDC" vault automatically allocating USDC across Aave, Compound, Curve, and other protocols for optimal returns. Vault earns 5-8% yield while Yearn management optimizes allocations - useful for hands-off investors accepting 1% fee for automation.
+Yield aggregation services like Yearn Finance simplify diversification. Yearn offers "yvUSDC" vault automatically allocating USDC across Aave, Compound, Curve, and other protocols for optimal returns. The vault's yield and its fee schedule vary over time (check the live vault page) - useful for hands-off investors willing to pay for automation.
 
 Cross-protocol arbitrage opportunities emerge from yield differences. If Aave pays 4% and Curve (via Convex) pays 8%, move capital to Curve until returns equalize. Arbitrageurs reallocating capital actually improve market efficiency as funds flow to highest-yield opportunities.
 
@@ -70,7 +70,7 @@ Beyond simple lending and pool provision, sophisticated strategies combine multi
 
 Delta-neutral leverage involves borrowing stablecoins at 4% on Aave, using collateral (ETH), and depositing borrowed stablecoins to earn 6-8% elsewhere. If borrowing 4% and earning 6%, net 2% arbitrage spread with no directional risk. Example: Deposit 1 ETH ($2,500) collateral, borrow 1,500 USDC at 4% (borrow rate), deploy USDC to Curve earning 8%, net 4% yield on $1,500 = $60 annual on $2,500 collateral = 2.4% ETH-denominated return, plus ETH appreciation for long-term upside.
 
-Liquidity provision on stablecoin/volatile pairs (USDC/ETH on Uniswap V3) through concentrated liquidity generates 15-40% APY from trading fees without impermanent loss if provided in stable price ranges. Requires active management adjusting ranges weekly to maintain occupancy, but passive stablecoin strategies lack this yield potential.
+Liquidity provision on stablecoin/volatile pairs (USDC/ETH on Uniswap V3) through concentrated liquidity can earn materially more fee income than passive stablecoin lending, but it carries impermanent-loss risk whenever ETH leaves the chosen range, and the fee rate depends on volume and range width. Requires active management adjusting ranges weekly to maintain occupancy, but passive stablecoin strategies lack this yield potential.
 
 Lending loop leverage multiplies yield without external capital. Deposit $10,000 USDC, borrow 50% ($5,000) against it, redeploy to Aave earning 5%, repeat. Lending 3 "loops" of $10k→$5k borrowed→deploy creates: $10k + $5k + $2,500 + $1,250 = $18,750 exposure earning 5% = $937 annually. Risk: 10% price decline requires repayment or liquidation. Conservative max 2x leverage (only 1 loop).
 
@@ -82,7 +82,7 @@ Governance token accumulation pairs yield earning with token buyback. Aave distr
 
 Stablecoin strategies appear simple but contain hidden risks requiring active monitoring.
 
-Depeg scenarios occur 2-4 times yearly across stablecoins. USDC depegged to $0.88 during SVB crisis in March 2023. USDT temporarily depegged to $0.98 during 2020 March crash. Holding diverse stablecoins prevents concentration on one coin's depeg. If 50% USDC and USDC drops 10%, portfolio only declines 5%.
+Depeg episodes recur across stablecoins. USDC fell to about $0.88 during the SVB crisis in March 2023, and USDT has traded briefly below $1 in earlier stress periods. Holding diverse stablecoins prevents concentration on one coin's depeg. If 50% USDC and USDC drops 10%, portfolio only declines 5%.
 
 Liquidation cascades happen when collateral prices crash. During 2022, Celsius and 3AC accumulated leverage. When crypto crashed, liquidations cascaded forcing asset sales at losses. Depositors didn't suffer directly on large protocols (Aave, Compound maintained sufficient buffers) but saw blocked withdrawals during crises.
 

@@ -119,11 +119,11 @@ Comparison: $100,000 staking at 5% = $5,000 annual taxed as ordinary income (30%
 
 **Which coins are safest for staking and which to avoid?**
 
-Safest: Ethereum (battle-tested 3+ years, institutional adoption, robust slashing prevention), Solana (maturing, strong community, 8%+ yields justified). Moderate risk: Polkadot (good tech, 15%+ yields compensate for higher risk), Cosmos chains (diverse ecosystem, yields vary 10-20%). Avoid: new chains (<1 year), unaudited validators, chains with history of exploits, or any staking yielding >50% (likely unsustainable). Rule: require minimum 3-year track record and audited code before staking significant capital.
+Safest: Ethereum (battle-tested 3+ years, institutional adoption, robust slashing prevention), Solana (maturing, strong community, higher nominal yield). Moderate risk: Polkadot (good tech, a higher inflation-driven nominal yield compensating for higher risk), Cosmos chains (diverse ecosystem, yields vary widely by chain). Avoid: new chains (<1 year), unaudited validators, chains with history of exploits, or any staking yielding >50% (likely unsustainable). Rule: require minimum 3-year track record and audited code before staking significant capital.
 
 **Can you stake and still participate in DeFi opportunities?**
 
-Yes through liquid staking: stake to Lido receiving stETH token (liquid, tradeable), use stETH as collateral on Aave (borrow against it), deploy borrowed capital to [DeFi yield farming](/blog/defi-yield-farming-quant). Example: stake 32 ETH to stETH earning 3.5%, borrow 20,000 USDC against stETH at 70% LTV (earn -4% interest cost), deploy USDC to Curve earning 8%. Net: 3.5% (stETH) - 4% (borrow cost) + 8% (farm yield) = 7.5% blended. Solo staking prevents this (capital locked, unavailable for other deployment).
+Yes through liquid staking: stake to Lido receiving stETH token (liquid, tradeable), use stETH as collateral on Aave (borrow against it), deploy borrowed capital to [DeFi yield farming](/blog/defi-yield-farming-quant). Example (illustrative rates, not current quotes): stake 32 ETH to stETH earning 3.5%, borrow 20,000 USDC against stETH at 70% LTV at a 4% interest cost, deploy USDC to Curve earning 8%. Net: 3.5% (stETH) - 4% (borrow cost) + 8% (farm yield) = 7.5% blended. Solo staking prevents this (capital locked, unavailable for other deployment).
 
 **What are the tax implications of staking rewards?**
 
