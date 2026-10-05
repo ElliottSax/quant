@@ -80,14 +80,6 @@ Measured results are not published for this strategy. The code above is a starti
 
 ### Historical Drawdowns
 
-| Drawdown Period | Depth | Duration | Recovery |
-|----------------|-------|----------|----------|
-| Jun 2011 - Mar 2012 | -18.2% | 9 months | 7 months |
-| Aug 2014 - Feb 2015 | -12.4% | 6 months | 4 months |
-| Nov 2016 - Sep 2017 | -14.8% | 10 months | 8 months |
-| Sep 2018 - Jan 2019 | -11.2% | 4 months | 3 months |
-| Mar 2023 - Aug 2023 | -9.8% | 5 months | 4 months |
-
 Measured drawdown statistics for this system are not published here. Expect multi-month drawdowns and recoveries; size positions so the worst drawdown of your own backtest, after costs, is survivable.
 
 ### When Trend Following Struggles
