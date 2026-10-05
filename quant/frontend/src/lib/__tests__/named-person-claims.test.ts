@@ -139,6 +139,8 @@ test('no blog post cites an unidentifiable study or survey with a precise figure
     /\ba (?:survey|study) of quantitative traders found\b/i,
     /\bAccording to (?:a study by |data from )?the (?:Federal Reserve Bank of New York|Chicago Mercantile Exchange|Securities and Exchange Commission|Chicago Board Options Exchange)\b[^.]{0,120}\d/i,
     /\bQuantopian or Zipline\b/i,
+    // "a study/survey/report by <vague body> found that ... 71%": an attribution with no paper, author or year
+    /\b(?:a|the|one) (?:survey|study|report|poll)(?: conducted| published| released)? by (?:the )?[A-Z][A-Za-z&. ]{2,60}? (?:found|showed|revealed|reported|estimated)(?: that)?[^.]{0,120}?\d+(?:\.\d+)?\s?%/,
   ]
   const hits: string[] = []
   for (const f of FILES) {

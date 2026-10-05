@@ -100,7 +100,7 @@ The value proposition improves for:
 
 The Kelly criterion can be adapted for hedge sizing. The optimal allocation to tail protection depends on:
 - Probability of a tail event (p, typically 10-15% per year for events exceeding -20%)
-- Expected hedge payoff during tail events (B, typically 3-8x the premium)
+- Expected hedge payoff during tail events (B, which must exceed the premium paid for the hedge to be worthwhile)
 - Cost of the hedge (C, typically 1.5-3% annually)
 
 **Optimal allocation = (p * B - C) / B**
@@ -122,7 +122,7 @@ This suggests allocating roughly 10-12% of portfolio value to tail protection st
 
 ## Key Takeaways
 
-- Tail risk events occur 8-10x more frequently than normal distribution models predict, making explicit hedging essential for portfolios that cannot tolerate large drawdowns
+- Tail risk events occur far more frequently than normal distribution models predict, making explicit hedging essential for portfolios that cannot tolerate large drawdowns
 - Put options provide the most direct protection but carry an ongoing premium cost; put spreads and VIX call spreads reduce costs while covering the most probable tail scenarios
 - Trend-following allocations (10-15% of portfolio) provide structural tail protection without explicit option costs, historically delivering positive returns during sustained market declines
 - Optimal tail hedge sizing, derived from Kelly-style analysis, suggests allocating 10-12% of portfolio value to protection strategies

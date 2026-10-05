@@ -29,7 +29,7 @@ In addition to the Black-Scholes model, there are many other models and techniqu
 
 The Black-Scholes model is a mathematical framework for estimating the value of a call option or a put option. The model uses stochastic differential equations to describe the behavior of the underlying asset, and it relies heavily on calculus to derive the partial differential equation that governs the option price. The model is based on the following assumptions: the underlying asset price follows a geometric Brownian motion, the risk-free interest rate is constant, and the volatility of the underlying asset is constant. The model uses the following equation to estimate the value of a call option: C(S,t) = SN(d1) - Ke^(-rT)N(d2), where C is the call option price, S is the underlying asset price, t is time, K is the strike price, r is the risk-free interest rate, and T is the time to expiration.
 
-The Black-Scholes model has been widely used in practice, and it is a fundamental tool for options traders and risk managers. However, the model has several limitations, including the assumption of constant volatility and the inability to account for early exercise. Despite these limitations, the Black-Scholes model remains a widely used and influential model in the field of options pricing. For example, a study by the CBOE found that the Black-Scholes model is used by over 70% of options traders, and that it is the most widely used model for options pricing.
+The Black-Scholes model has been widely used in practice, and it is a fundamental tool for options traders and risk managers. However, the model has several limitations, including the assumption of constant volatility and the inability to account for early exercise. Despite these limitations, the Black-Scholes model remains a widely used and influential model in the field of options pricing.
 
 The use of the Black-Scholes model can be illustrated with a specific example. Suppose we want to estimate the value of a call option on a stock with a current price of $50, a strike price of $55, and a time to expiration of 6 months. Assuming a risk-free interest rate of 5% and a volatility of 20%, we can use the Black-Scholes model to estimate the value of the call option. Using the equation C(S,t) = SN(d1) - Ke^(-rT)N(d2), we can calculate the value of the call option as follows:
 
@@ -101,7 +101,7 @@ The Black-Scholes model and the Greeks have many real-world applications in fina
 * Portfolio optimization: The Black-Scholes model and the Greeks can be used to optimize portfolios and to minimize risk.
 * Volatility trading: The Black-Scholes model can be used to estimate the value of volatility and to inform trading decisions.
 
-For example, a study by the CBOE found that the Black-Scholes model is used by over 70% of options traders, and that it is the most widely used model for options pricing.
+The Black-Scholes model remains the standard reference model for options pricing, although practitioners adjust for its limitations.
 
 The use of the Black-Scholes model and the Greeks can be illustrated with a specific example. Suppose we are a trader who wants to buy a call option on a stock with a current price of $50, and we want to estimate the value of the call option using the Black-Scholes model. We can use the model to estimate the value of the call option, and we can use the Greeks to measure the sensitivity of the option's price to changes in the underlying asset price, volatility, and time to expiration.
 

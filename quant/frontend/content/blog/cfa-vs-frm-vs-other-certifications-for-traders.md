@@ -35,7 +35,7 @@ The following table provides a comparison of the CFA and FRM certifications:
 | --- | --- | --- |
 | Focus | Investment analysis and portfolio management | Risk management and financial modeling |
 | Levels | 3 | 2 |
-| Study hours | 250 hours per level | 150 hours per level |
+| Study time | Substantial (CFA Institute recommends roughly 300 hours per level) | Substantial |
 | Topics | Ethics, financial statement analysis, portfolio management | Risk management, financial markets, financial modeling |
 | Statistical analysis and financial modeling | Regression analysis, time series analysis, hypothesis testing | VaR modeling, ES modeling, stress testing |
 
@@ -47,7 +47,7 @@ The following table provides a comparison of the CFA, FRM, CQA, and PRM certific
 | --- | --- | --- | --- | --- |
 | Focus | Investment analysis and portfolio management | Risk management and financial modeling | Quantitative analysis and programming | Risk management |
 | Levels | 3 | 2 | 2 | 4 |
-| Study hours | 250 hours per level | 150 hours per level | 150 hours per level | 100 hours per level |
+| Study time | Substantial (about 300 hours per level per CFA Institute) | Substantial | Varies by provider | Varies by provider |
 | Topics | Ethics, financial statement analysis, portfolio management | Risk management, financial markets, financial modeling | Statistical analysis, financial modeling, programming | Risk management, financial markets, financial modeling |
 | Statistical analysis and financial modeling | Regression analysis, time series analysis, hypothesis testing | VaR modeling, ES modeling, stress testing | Regression analysis, time series analysis, hypothesis testing | VaR modeling, ES modeling, stress testing |
 
@@ -57,7 +57,7 @@ To obtain one of these certifications, traders will need to meet the eligibility
 Here are the step-by-step instructions for obtaining the CFA and FRM certifications:
 1. Meet the eligibility requirements: Check the certification website to ensure that you meet the eligibility requirements, which typically include a minimum level of education and work experience.
 2. Register for the program: Register for the certification program and pay the required fees, which vary by program and registration date; check the current fee schedule on the CFA Institute or GARP site.
-3. Study for the exams: Study for the certification exams, which can require a minimum of 250 hours of study per level.
+3. Study for the exams: Study for the certification exams, which require substantial study time per level (CFA Institute recommends roughly 300 hours per level).
 4. Pass the exams: Pass the certification exams, which can be a challenging and time-consuming process.
 5. Maintain the certification: Maintain the certification by completing continuing education requirements and paying annual fees, which can range from $100 to $500.
 
