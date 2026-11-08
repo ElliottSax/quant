@@ -83,6 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tools/options-payoff',
     '/tools/max-sharpe',
     '/tools/risk-adjusted-return',
+    '/tools/strategy-due-diligence',
     '/congress-stock-trades',
     '/congress-stock-trades/weekly',
     '/congress-stock-trades/late-filers',

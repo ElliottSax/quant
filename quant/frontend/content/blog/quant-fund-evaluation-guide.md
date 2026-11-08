@@ -20,7 +20,7 @@ Evaluating quantitative funds requires a different skillset than evaluating disc
 
 **Annualized return**: The geometric mean annual return. Compare to an appropriate benchmark (not just the S&P 500 -- a market-neutral quant fund should be compared to cash plus an alpha target, not to equity indices).
 
-**Sharpe ratio**: The primary risk-adjusted return metric. Quant fund Sharpe ratios by strategy type:
+**Sharpe ratio**: The primary risk-adjusted return metric. The ranges below are rough rules of thumb from practitioner convention, not measurements made on this site, and published track records are often backtests, so treat them as prompts for questions rather than benchmarks. To test whether a Sharpe you have been shown is believable for its track length and the number of variants tried, use the [strategy due diligence tool](/tools/strategy-due-diligence). Rules of thumb by strategy type:
 - [Statistical arbitrage](/blog/crypto-statistical-arbitrage): 1.5-3.0 (high frequency, low per-trade alpha, many trades)
 - Equity market-neutral: 0.8-1.5 (medium frequency, diversified alpha sources)
 - Managed futures/CTA: 0.5-1.0 (trend-based, episodic alpha)
@@ -88,11 +88,11 @@ Estimate how much capital is pursuing similar strategies:
 
 ### Risk Framework
 
-**Position limits**: What are the maximum position sizes (single name, sector, country)? Well-managed quant funds typically limit single-name exposure to 1-3% of NAV and sector exposure to 15-25%.
+**Position limits**: What are the maximum position sizes (single name, sector, country)? Limits vary by manager and mandate, so ask for the fund's actual single-name, sector and country limits and how often they were breached, rather than relying on a typical range.
 
-**Gross and net exposure**: Market-neutral funds should maintain net exposure near zero (typically plus or minus 10%). Gross exposure (long + short) indicates leverage. Typical ranges: 150-300% for equity market-neutral, 100-200% for multi-strategy.
+**Gross and net exposure**: Market-neutral funds should maintain net exposure near zero (typically plus or minus 10%). Gross exposure (long + short) indicates leverage. Ranges differ widely by strategy, so ask for the fund's gross and net exposure history, not a typical figure.
 
-**VaR limits**: What VaR methodology and confidence level? 99% 1-day VaR as a percentage of NAV should be in the 0.5-2.0% range for most strategies. Ask how the fund has performed during historical VaR exceedances.
+**VaR limits**: What VaR methodology and confidence level? There is no universal acceptable level, so compare the stated VaR limit with the fund's realised daily losses. Ask how the fund has performed during historical VaR exceedances.
 
 **Drawdown limits**: Does the fund have hard stop-loss limits at the strategy or portfolio level? A fund without drawdown limits exposes investors to unlimited downside if a strategy fails catastrophically.
 
