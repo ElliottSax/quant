@@ -315,3 +315,5 @@ Backtrader has the largest community with active forums, extensive documentation
 ### How do I backtest multi-asset or portfolio strategies?
 
 Backtrader supports multiple data feeds natively, allowing multi-asset strategies with cross-asset logic. VectorBT can handle multiple assets through its portfolio simulation, though cross-asset conditional logic is more limited. Zipline's Pipeline is specifically designed for portfolio-level strategies across large universes. For strategies that require simultaneous analysis of multiple assets ([pairs trading](/blog/pairs-trading-strategy-guide), cross-asset momentum), Backtrader's event-driven model provides the most flexibility.
+
+*Want to see signals like these on live data? Try the free [QuantEngines market scanner](/scanner).*

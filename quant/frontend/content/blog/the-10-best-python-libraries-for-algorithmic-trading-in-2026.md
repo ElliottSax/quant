@@ -67,3 +67,5 @@ Jesse is a Python framework designed specifically for crypto algorithmic trading
 ## Bottom Line
 
 The best Python library for algorithmic trading depends on your asset class, trading frequency, and technical experience. For fast research and optimization, **VectorBT** is the clear winner. For production-grade backtesting with live trading support, **Backtrader** and **Zipline Reloaded** remain reliable workhorses. If you'd rather test an idea before installing any of these, our [Strategy Builder](/backtesting/builder) runs a no-code backtest directly in the browser. Crypto traders should start with **CCXT** and **Jesse**, while derivatives-focused quants need **QuantLib**. Whatever your approach, the combination of **Pandas**, **NumPy**, and **TA-Lib** will form the backbone of your stack. Start with one framework, master its conventions, and expand from there—the 2026 Python ecosystem has never been more powerful for automated trading.
+
+*Want to see signals like these on live data? Try the free [QuantEngines market scanner](/scanner).*

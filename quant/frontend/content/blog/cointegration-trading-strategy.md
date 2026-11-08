@@ -430,3 +430,5 @@ The cointegration hedge ratio is analogous to but distinct from CAPM beta. CAPM 
 ### What causes cointegration to break down?
 
 The most common causes are: (1) fundamental divergence such as a merger, spin-off, or major strategic change, (2) sector rotation where one stock moves to a different peer group, (3) liquidity changes such as one stock becoming thinly traded, and (4) regulatory changes that affect one company disproportionately. Monitor news flow and corporate actions for your pairs in addition to statistical re-testing.
+
+*Want to see signals like these on live data? Try the free [QuantEngines market scanner](/scanner).*

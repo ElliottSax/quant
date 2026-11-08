@@ -320,3 +320,5 @@ Start with pandas-ta. Its native pandas integration means you can add indicators
 ### How do I handle missing data (NaN) from indicator warmup periods?
 
 Both libraries produce NaN values for the initial periods where insufficient data exists to calculate the indicator (e.g., the first 13 values of a 14-period RSI). Use `df.dropna()` to remove these rows before signal generation or backtesting. Alternatively, use `df.fillna(method='bfill')` if you need to preserve the full index, but be aware that forward-filled or back-filled indicator values do not represent real signals and should not be traded.
+
+*Want to see signals like these on live data? Try the free [QuantEngines market scanner](/scanner).*

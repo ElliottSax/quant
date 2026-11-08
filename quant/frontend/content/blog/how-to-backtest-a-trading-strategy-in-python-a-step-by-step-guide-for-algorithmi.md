@@ -87,3 +87,5 @@ Cross-validate by testing on different instruments, timeframes, or market period
 ## Bottom Line
 
 Backtesting a trading strategy in Python is one of the most practical skills you can develop as an algorithmic trader. By combining reliable historical data, a well-defined strategy, and a robust backtesting framework like Backtesting.py, Backtrader, or VectorBT, you can rigorously evaluate your ideas before committing real money. Always account for transaction costs, avoid overfitting, and validate your results across multiple market conditions. The goal of backtesting is not to predict the future with certainty — it is to build confidence that your strategy has a genuine statistical edge worth trading.
+
+*Want to see signals like these on live data? Try the free [QuantEngines market scanner](/scanner).*
