@@ -76,14 +76,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const congress = await getCongressTrades()
     const trades = congress?.trades ?? []
-    const tickers = new Set(trades.map((t) => t.ticker.toUpperCase()))
-    const members = new Set(trades.map((t) => memberSlug(t.member)).filter(Boolean))
+    // Only list tickers/members with at least 5 trades: thinner pages are noindexed
+    // (see [ticker]/page.tsx) and Google was declining to index them anyway.
+    const tickerCounts = new Map<string, number>()
+    const memberCounts = new Map<string, number>()
+    for (const t of trades) {
+      const tk = t.ticker.toUpperCase()
+      tickerCounts.set(tk, (tickerCounts.get(tk) ?? 0) + 1)
+      const ms = memberSlug(t.member)
+      if (ms) memberCounts.set(ms, (memberCounts.get(ms) ?? 0) + 1)
+    }
+    const tickers = [...tickerCounts.entries()].filter(([, c]) => c >= 5).map(([k]) => k)
+    const members = [...memberCounts.entries()].filter(([, c]) => c >= 5).map(([k]) => k)
     tickerEntries = [
-      ...Array.from(tickers).map((tk) => ({
+      ...tickers.map((tk) => ({
         url: `${baseUrl}/congress-stock-trades/${tk}`,
         lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
       })),
-      ...Array.from(members).map((m) => ({
+      ...members.map((m) => ({
         url: `${baseUrl}/congress-stock-trades/member/${m}`,
         lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.6,
       })),

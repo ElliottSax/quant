@@ -39,6 +39,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ticker: s
     title: { absolute: `${title} | QuantEngines` },
     description: `Which members of Congress recently traded ${up}? See the latest House and Senate ${up} stock trades from official STOCK Act disclosures — buys, sells, and amounts.`,
     alternates: { canonical: url },
+    // Thin pages (<5 trades) are kept out of the index; the sitemap applies the same threshold.
+    ...(!data || data.trades.length < 5 ? { robots: { index: false, follow: true } } : {}),
   }
 }
 
