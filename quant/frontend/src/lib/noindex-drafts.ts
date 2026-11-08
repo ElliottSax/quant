@@ -622,6 +622,13 @@ export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
   'automating-momentum-trading-on-forex',
   'automating-pairs-trading-with-high-success-rate',
   'alpaca-api-tutorial-stock-trading-with-python',
+  // 2026-11-08 claims audit batch 5 (Muse; quotes machine-checked): templated backtesting variants with 2+ verified
+  // unsourced or invented claims each and almost no search interest. Kept out of the index until rewritten.
+  'backtest-framework-comparison-2026',
+  'backtesting-bollinger-bands-on-forex',
+  'backtesting-macd-crossovers-safely',
+  'backtesting-mean-reversion-using-machine-learning',
+  'backtesting-pairs-trading-using-machine-learning',
 ])
 
 /**
