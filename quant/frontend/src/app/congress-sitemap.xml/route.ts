@@ -1,4 +1,4 @@
-import { getCongressTrades, tickerSlugs, memberSlugs } from '@/lib/congress-trades'
+import { getCongressTrades, tickerSlugs, memberSlugs, memberSlug, tradesForTicker } from '@/lib/congress-trades'
 
 // Congress ticker / member URLs are listed here, NOT in app/sitemap.ts.
 // sitemap.ts is prerendered at build time, so it snapshots the FMP feed as it was during
@@ -24,9 +24,21 @@ export async function GET() {
   let urls: string[] = []
   try {
     const trades = (await getCongressTrades())?.trades ?? []
+    // Only list pages with at least MIN_TRADES trades: thinner ticker pages are noindexed
+    // (see [ticker]/page.tsx) and Google was declining to index them (2026-11-08 GSC).
+    const MIN_TRADES = 5
+    const byMember = new Map<string, number>()
+    for (const t of trades) {
+      const ms = memberSlug(t.member)
+      if (ms) byMember.set(ms, (byMember.get(ms) ?? 0) + 1)
+    }
     urls = [
-      ...tickerSlugs(trades).map((t) => `${BASE}/congress-stock-trades/${encodeURIComponent(t)}`),
-      ...memberSlugs(trades).map((m) => `${BASE}/congress-stock-trades/member/${m}`),
+      ...tickerSlugs(trades)
+        .filter((t) => tradesForTicker(trades, t).length >= MIN_TRADES)
+        .map((t) => `${BASE}/congress-stock-trades/${encodeURIComponent(t)}`),
+      ...memberSlugs(trades)
+        .filter((m) => (byMember.get(m) ?? 0) >= MIN_TRADES)
+        .map((m) => `${BASE}/congress-stock-trades/member/${m}`),
     ]
   } catch {
     urls = [] // a feed problem must not break crawlers: an empty list is safe
