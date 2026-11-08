@@ -589,6 +589,15 @@ export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
   'triple-barrier-labeling-meta-labeling',
   'vectorbt-portfolio-from-signals-vs-from-orders',
   'vectorized-vs-loop-backtesting-numba',
+  // 2026-11-08 claims audit (Muse, quotes machine-checked): these posts are generator filler that
+  // asserts invented surveys and studies with precise figures (e.g. 'a survey by the Quantitative Trading
+  // Institute found 80% ...') and fake first-person expertise. Kept out of the index until rewritten.
+  'best-books-on-quantitative-trading',
+  'best-books-on-machine-learning-for-finance',
+  'best-books-on-risk-management',
+  'best-books-on-options-and-derivatives',
+  'cfa-vs-frm-vs-other-certifications-for-traders',
+  'currency-arbitrage',
 ])
 
 /**

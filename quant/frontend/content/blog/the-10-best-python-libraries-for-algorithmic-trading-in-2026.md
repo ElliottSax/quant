@@ -26,7 +26,7 @@ Backtrader remains one of the most battle-tested backtesting frameworks in the P
 
 ## CCXT
 
-If you trade cryptocurrencies, CCXT is essential. This library provides a unified API to access over 100 centralized and decentralized crypto exchanges, including Binance, Coinbase, Kraken, and Bybit. It handles everything from fetching order books to placing orders and managing positions. CCXT supports both synchronous and asynchronous execution, making it suitable for high-frequency strategies. In 2026, CCXT's Pro tier adds WebSocket streaming for real-time market data across all supported venues.
+If you trade cryptocurrencies, CCXT is essential. This library provides a unified API to many crypto exchanges, including Binance, Coinbase, Kraken, and Bybit, and the exact count changes over time. It handles everything from fetching order books to placing orders and managing positions. CCXT supports both synchronous and asynchronous execution, making it suitable for high-frequency strategies. In 2026, CCXT's Pro tier adds WebSocket streaming for real-time market data across all supported venues.
 
 - Unified REST and WebSocket API across 100+ exchanges
 - Asynchronous support for high-throughput strategies

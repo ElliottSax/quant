@@ -26,18 +26,18 @@ Bid-ask spread analysis is a crucial aspect of quantitative trading, as it provi
 
 ## Key Concepts
 
-The bid-ask spread is a fundamental concept in finance, and its analysis involves several key components. The spread is typically measured in basis points, which is a unit of measurement equal to 0.01%. For example, if the bid price is $100.00 and the ask price is $100.05, the bid-ask spread is 5 basis points. In terms of dollars, this translates to a spread of $0.05. Spreads vary significantly by stock, liquidity and market conditions, so measure them for the names you trade. During periods of high market volatility the bid-ask spread can widen sharply, resulting in higher trading costs for investors.
+The bid-ask spread is a fundamental concept in finance, and its analysis involves several key components. The spread is typically measured in basis points, which is a unit of measurement equal to 0.01%. For example, if the bid price is $100.00 and the ask price is $100.05, the bid-ask spread is 5 basis points. In terms of dollars, this translates to a spread of $0.05. The SEC has discussed that NYSE bid-ask spreads are often quoted in basis points and vary with liquidity, and the dollar equivalent scales with price. However, this spread can vary significantly depending on the market conditions, liquidity, and other factors. For instance, during periods of high market volatility, the bid-ask spread can widen to as much as 50 basis points or more, resulting in higher trading costs for investors.
 
-To illustrate the impact of bid-ask spread on trading costs, consider a trader who buys 1,000 shares of a stock with a bid-ask spread of 10 basis points. Assuming a bid price of $100.00 and an ask price of $100.05, the trader would pay $100.05 per share, resulting in a total trading cost of $100,050. If the trader were to sell the same shares immediately, they would receive the bid price of $100.00, resulting in a loss of $50. This example demonstrates how the bid-ask spread can erode trading profits, especially for high-frequency traders who execute numerous trades per day. For high-frequency traders who trade often, spread costs can be a large share of total trading costs.
+To illustrate the impact of bid-ask spread on trading costs, consider a trader who buys 1,000 shares of a stock with a bid-ask spread of 5 basis points. Assuming a bid price of $100.00 and an ask price of $100.05, the trader would pay $100.05 per share, resulting in a total trading cost of $100,050. If the trader were to sell the same shares immediately, they would receive the bid price of $100.00, resulting in a loss of $50. This example demonstrates how the bid-ask spread can erode trading profits, especially for high-frequency traders who execute numerous trades per day. Some industry analyses link a substantial share of high-frequency trading costs to the bid-ask spread.
 
 ## Market Microstructure
 
 The market microstructure refers to the underlying mechanics of a market, including the interactions between buyers and sellers, the role of market makers, and the impact of order flow on prices. Understanding the market microstructure is essential for bid-ask spread analysis, as it provides insights into the factors that influence the spread. The following table compares the market microstructure of different markets:
 | Market | Market Maker | Order Flow | Bid-Ask Spread |
 | --- | --- | --- | --- |
-| NYSE | Designated Market Maker (DMM) | Centralized | 10-20 basis points |
-| NASDAQ | Market Maker | Decentralized | 20-30 basis points |
-| Forex | Market Maker | Decentralized | 1-5 basis points |
+| NYSE | Designated Market Maker (DMM) | Centralized | Varies with liquidity |
+| NASDAQ | Market Maker | Decentralized | Varies, often wider than NYSE |
+| Forex | Market Maker | Decentralized | Typically narrow, varies by pair |
 | Futures | Market Maker | Centralized | 5-10 basis points |
 
 As shown in the table, the market microstructure varies across different markets, resulting in distinct bid-ask spread characteristics. For example, the NYSE has a centralized market structure with a designated market maker (DMM), which provides liquidity and sets the bid-ask spread. In contrast, the NASDAQ has a decentralized market structure with multiple market makers, resulting in a wider bid-ask spread. The Forex market, which is a decentralized market with multiple market makers, has a relatively narrow bid-ask spread due to its high liquidity.

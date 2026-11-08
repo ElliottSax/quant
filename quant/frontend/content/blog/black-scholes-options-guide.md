@@ -434,7 +434,7 @@ Black-Scholes serves as a common language for options markets. Traders do not be
 
 ### How accurate is Black-Scholes for pricing real options?
 
-For at-the-money options with short expiry (less than 3 months), Black-Scholes is reasonably accurate because the volatility skew impact is small and the constant-volatility assumption approximately holds over short horizons. For deep out-of-the-money options or long-dated options, Black-Scholes can be significantly off because it underestimates tail probabilities and ignores term structure effects. The error can be 20-50% for deep OTM puts.
+For short-dated at-the-money options Black-Scholes is often more accurate, though accuracy depends on market conditions and the constant-volatility assumption approximately holds over short horizons. For deep out-of-the-money options or long-dated options, Black-Scholes can be significantly off because it underestimates tail probabilities and ignores term structure effects. For deep OTM puts the pricing error can be substantial and varies widely.
 
 ### What is the difference between historical and implied volatility?
 
