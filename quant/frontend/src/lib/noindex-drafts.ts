@@ -598,6 +598,30 @@ export const NOINDEX_DRAFT_SLUGS: ReadonlySet<string> = new Set([
   'best-books-on-options-and-derivatives',
   'cfa-vs-frm-vs-other-certifications-for-traders',
   'currency-arbitrage',
+  // 2026-11-08 claims audit batches 1-4 (Muse; every quote machine-checked): the remaining indexable numbered-series
+  // posts (all 14 had findings: invented 'current' P/E, price and fee figures, wrong arithmetic) and 7 low-traffic
+  // posts with 3+ verified unsourced or invented claims each. Kept out of the index until rewritten with real data.
+  '01-covered-call-strategy-for-income-generation-2026',
+  '02-cash-secured-put-strategy-guide-beginners',
+  '02-ethereum-trading-guide-eth-strategies',
+  '03-iron-condor-options-strategy-neutral-markets',
+  '04-crypto-day-trading-strategies-indicators',
+  '06-calendar-spread-options-strategy-guide',
+  '06-nft-trading-strategies-market-analysis',
+  '06-real-estate-market-analysis-2026-reit-opportunities',
+  '07-crypto-arbitrage-trading-guide',
+  '08-utilities-sector-analysis-2026-defensive-stocks',
+  '14-mid-cap-stocks-market-analysis-opportunities-2026',
+  '16-best-wheel-options-strategy-for-income-2026',
+  '18-defensive-stocks-analysis-recession-protection-2026',
+  '20-leap-options-long-term-investing-strategy',
+  'arbitrage-opportunities',
+  'automating-macd-crossovers-on-forex',
+  'automating-mean-reversion-with-high-success-rate',
+  'automating-momentum-trading-on-crypto',
+  'automating-momentum-trading-on-forex',
+  'automating-pairs-trading-with-high-success-rate',
+  'alpaca-api-tutorial-stock-trading-with-python',
 ])
 
 /**
