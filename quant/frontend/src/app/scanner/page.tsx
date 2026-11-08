@@ -20,10 +20,38 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ScannerClient, type Dataset } from './ScannerClient'
 
-export const metadata: Metadata = {
-  title: 'Quant Scanner — Seasonality Screener | QuantEngines',
-  description:
-    'Screen monthly seasonal patterns across a fixed universe: sample sizes, effect sizes with confidence intervals, and multiple-testing-corrected verdicts — including the ones that fail.',
+const SCANNER_URL = 'https://quantengines.com/scanner'
+
+/** Count cells per verdict tier, from the dataset itself (never hardcoded). */
+function tierCounts(data: Dataset): Record<string, number> {
+  const counts: Record<string, number> = {}
+  for (const cell of data.cells) counts[cell.tier] = (counts[cell.tier] ?? 0) + 1
+  return counts
+}
+
+// The title and description state the current result, computed from the same file the
+// page renders, so they can never disagree with it. "Quant Scanner" stays first: it is
+// the query this page already ranks for (Search Console: "quant scanner", position ~6).
+export function generateMetadata(): Metadata {
+  const data = loadDataset()
+  if (!data) {
+    return {
+      title: 'Quant Scanner — Seasonality Screener | QuantEngines',
+      description:
+        'Screen monthly seasonal patterns across a fixed universe: sample sizes, effect sizes with confidence intervals, and multiple-testing-corrected verdicts — including the ones that fail.',
+      alternates: { canonical: SCANNER_URL },
+    }
+  }
+  const counts = tierCounts(data)
+  const total = data.cells.length
+  const robust = counts['Robust'] ?? 0
+  const weak = counts['Weak'] ?? 0
+  const folklore = counts['Folklore'] ?? 0
+  return {
+    title: `Quant Scanner: Stock Seasonality Screener (${robust} of ${total} Robust) | QuantEngines`,
+    description: `Screen ${total} monthly seasonal patterns across ${data.universe.length} symbols. After correcting for ${data.family_size} tests: ${robust} Robust, ${weak} Weak, ${folklore} Folklore. Data through ${data.data_vintage}.`,
+    alternates: { canonical: SCANNER_URL },
+  }
 }
 
 function loadDataset(): Dataset | null {
@@ -41,9 +69,30 @@ function loadDataset(): Dataset | null {
 
 export default function ScannerPage() {
   const data = loadDataset()
+  const counts = data ? tierCounts(data) : {}
+  const datasetSchema = data
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Dataset',
+        name: `Monthly seasonality verdicts for ${data.universe.length} US-listed symbols`,
+        description: `Sample size, effect size with confidence interval, and multiple-testing-corrected verdict for ${data.cells.length} symbol-month seasonal patterns, from adjusted end-of-day prices.`,
+        url: SCANNER_URL,
+        dateModified: data.generated_at,
+        temporalCoverage: `${data.data_start}/${data.data_vintage}`,
+        isAccessibleForFree: true,
+        keywords: ['seasonality', 'stock market', 'screener', 'multiple testing', 'false discovery rate'],
+        creator: { '@type': 'Organization', name: 'QuantEngines', url: 'https://quantengines.com' },
+      }
+    : null
 
   return (
     <div className="space-y-8">
+      {datasetSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema).replace(/</g, '\\u003c') }}
+        />
+      )}
       <div className="animate-fade-in">
         <h1 className="text-4xl md:text-5xl font-bold mb-3 gradient-text">Quant Scanner</h1>
         <p className="text-lg text-slate-400 max-w-3xl">
@@ -51,6 +100,14 @@ export default function ScannerPage() {
           sample size, its effect size with a confidence interval, and a verdict corrected
           for the number of tests run — including the patterns that fail.
         </p>
+        {data && (
+          <p className="mt-3 text-sm text-slate-300 max-w-3xl">
+            Current result: of {data.cells.length} symbol-month patterns, {counts['Robust'] ?? 0} are{' '}
+            <strong>Robust</strong>, {counts['Weak'] ?? 0} <strong>Weak</strong> and{' '}
+            {counts['Folklore'] ?? 0} <strong>Folklore</strong> after correcting for {data.family_size}{' '}
+            tests (data through {data.data_vintage}).
+          </p>
+        )}
       </div>
 
       {!data ? (
