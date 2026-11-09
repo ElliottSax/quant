@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { AlertTriangle, Scale, Database, TrendingDown } from 'lucide-react'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/disclaimer' },
   title: 'Disclaimer | QuantEngines',
   description:
     'QuantEngines publishes research and analytics tools, not investment advice. What our data is, where it comes from, and the limits of what it can tell you.',

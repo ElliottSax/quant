@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/terms' },
   title: 'Terms of Service | QuantEngines',
   description:
     'The terms covering use of QuantEngines: what the service is, what you may and may not do with it, and the limits of our liability.',

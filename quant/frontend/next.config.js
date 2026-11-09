@@ -82,6 +82,9 @@ const nextConfig = {
         destination,
         permanent: true,
       })),
+      // /resources advertised a '2024 Congressional Trading Report', four PDFs, tutorials and templates that
+      // do not exist, with a form that only ran alert('Report sent to ...'). Removed 2026-11-08.
+      { source: '/resources', destination: '/blog', permanent: true },
     ]
   },
 

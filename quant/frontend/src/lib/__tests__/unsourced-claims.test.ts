@@ -11,7 +11,7 @@ import path from 'node:path'
 const ROOT = path.resolve(import.meta.dirname, '..', '..', '..')
 const FILES = [
   ...fs.readdirSync(path.join(ROOT, 'content', 'blog')).filter((f) => f.endsWith('.md')).map((f) => path.join('content', 'blog', f)),
-  path.join('src', 'app', 'resources', 'page.tsx'),
+  // src/app/resources/page.tsx was deleted 2026-11-08 (fake lead-magnet page; /resources now redirects to /blog).
 ]
 
 const FORBIDDEN: [string, RegExp][] = [

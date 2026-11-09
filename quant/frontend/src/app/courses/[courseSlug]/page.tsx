@@ -18,6 +18,7 @@ export async function generateMetadata({
   return {
     title: `${course.title} — Free Course | QuantEngines`,
     description: course.description,
+    alternates: { canonical: `/courses/${courseSlug}` },
   }
 }
 

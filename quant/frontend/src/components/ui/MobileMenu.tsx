@@ -32,7 +32,7 @@ export function MobileMenu() {
   ]
 
   const bottomLinks = [
-    { href: '/resources', label: 'Resources' },
+    { href: '/blog', label: 'Learn' },
   ]
 
   const isActive = (href: string) => pathname === href

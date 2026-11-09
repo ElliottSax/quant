@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/privacy' },
   title: 'Privacy Policy | QuantEngines',
   description:
     'What QuantEngines collects: analytics and newsletter subscriptions. What we do not do, and how to have your data removed.',

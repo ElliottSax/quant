@@ -99,7 +99,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/pricing',
     '/charts',
     '/network',
-    '/resources',
     '/data-vendors',
     '/pandas-ta-columns',
     '/statsmodels-imports',

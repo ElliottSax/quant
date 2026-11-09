@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Link2, ShieldCheck, Ban } from 'lucide-react'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/affiliate-disclosure' },
   title: 'Affiliate Disclosure | QuantEngines',
   description:
     'Whether QuantEngines earns commissions from links on this site, what that can and cannot influence, and how paid links are marked.',

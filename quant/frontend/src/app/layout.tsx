@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   creator: 'QuantEngines',
   publisher: 'QuantEngines',
   metadataBase: new URL('https://quantengines.com'),
-  alternates: {
-    canonical: '/',
-  },
+  // No site-wide canonical here. Next merges metadata shallowly, so a canonical set in the root layout is
+  // inherited by every page that does not declare its own: 18 sitemap pages (charts, backtesting, strategies,
+  // about, ...) all declared canonical = the home page. Each page sets its own alternates.canonical.
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -394,7 +394,7 @@ export default function RootLayout({
                         </div>
                       </div>
 
-                      <NavLink href="/resources">Learn</NavLink>
+                      <NavLink href="/blog">Learn</NavLink>
                     </div>
                   </div>
 
@@ -523,7 +523,7 @@ export default function RootLayout({
                       <li><Link href="/strategy-validation" className="hover:text-[hsl(45,96%,58%)] transition-colors">Validation Methodology</Link></li>
                       <li><Link href="/research-references" className="hover:text-[hsl(45,96%,58%)] transition-colors">Academic References</Link></li>
                       <li><Link href="/corrections-policy" className="hover:text-[hsl(45,96%,58%)] transition-colors">Corrections Policy</Link></li>
-                      <li><Link href="/resources" className="hover:text-[hsl(45,96%,58%)] transition-colors">Learn More</Link></li>
+                      <li><Link href="/blog" className="hover:text-[hsl(45,96%,58%)] transition-colors">Learn More</Link></li>
                       <li><Link href="/api-docs" className="hover:text-[hsl(45,96%,58%)] transition-colors">API Documentation</Link></li>
                     </ul>
                   </div>

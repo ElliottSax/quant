@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { courses } from '@/data/courses'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/courses' },
   title: 'Free Quant Trading Courses | QuantEngines',
   description:
     'Free, self-paced courses on quantitative trading — backtesting honestly, choosing strategies with a real edge, the metrics that matter, and avoiding overfitting. No signup required.',

@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/about' },
   title: 'About | QuantEngines',
   description:
     'QuantEngines builds free quantitative trading tools: charts, screeners, backtesting, options analytics and congressional trading data drawn from public STOCK Act filings.',

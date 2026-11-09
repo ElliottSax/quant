@@ -16,8 +16,13 @@
  * index — navigation and index signals have to agree.
  */
 
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { EmailCaptureHero } from '@/components/EmailCaptureHero'
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
 
 export default function Home() {
   return (

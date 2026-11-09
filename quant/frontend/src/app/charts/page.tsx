@@ -17,6 +17,7 @@ import { Suspense } from 'react'
 import { ChartsClient } from './ChartsClient'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/charts' },
   title: 'Charts — Daily OHLC & Volume | QuantEngines',
   description:
     'Candlestick and volume charts built from adjusted end-of-day bars, with moving averages and Bollinger bands computed from the same series. End-of-day, not live.',

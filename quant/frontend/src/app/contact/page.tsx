@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Mail, AlertCircle, Code2 } from 'lucide-react'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/contact' },
   title: 'Contact | QuantEngines',
   description:
     'How to reach QuantEngines: general questions, data corrections, and API enquiries.',
