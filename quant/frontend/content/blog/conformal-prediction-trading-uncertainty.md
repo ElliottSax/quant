@@ -54,7 +54,7 @@ class ConformalPredictor:
 
         # Find quantile for confidence interval
         n = len(self.calibration_scores)
-        quantile_idx = int(np.ceil((n + 1) * (1 - self.alpha) / n))
+        quantile_idx = int(np.ceil((n + 1) * (1 - self.alpha)))
         self.quantile_value = np.sort(self.calibration_scores)[min(quantile_idx - 1, n - 1)]
 
     def predict(self, X_test):
@@ -210,7 +210,7 @@ class AdaptiveConformalPredictor:
 
         # Recalculate quantile
         n = len(self.quantile_history)
-        quantile_idx = int(np.ceil((n + 1) * (1 - self.alpha) / n))
+        quantile_idx = int(np.ceil((n + 1) * (1 - self.alpha)))
         current_quantile = np.sort(self.quantile_history)[min(quantile_idx - 1, n - 1)]
 
         return current_quantile

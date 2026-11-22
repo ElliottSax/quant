@@ -111,7 +111,7 @@ sell_signals = df['Sell_Signal'].sum()
 print(f"\nTotal Buy Signals: {buy_signals}")
 print(f"Total Sell Signals: {sell_signals}")
 
-# Calculate win rate
+# Calculate daily win rate (share of in-market days with a positive return; this is not a per-trade win rate)
 winning_trades = len(df[df['Strategy_Return'] > 0])
 total_trades = len(df[df['Strategy_Return'] != 0])
 win_rate = (winning_trades / total_trades * 100) if total_trades > 0 else 0

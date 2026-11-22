@@ -347,7 +347,7 @@ def rsi_mean_reversion(backtester: CryptoBacktester):
     # Calculate RSI
     prices = df['close'].values
     deltas = np.diff(prices)
-    seed = deltas[:1]
+    seed = deltas[:14]
     up = seed[seed >= 0].sum() / 14
     down = -seed[seed < 0].sum() / 14
     rs = up / down

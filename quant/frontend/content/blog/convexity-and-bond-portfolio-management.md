@@ -136,7 +136,7 @@ class BondPricer:
         numerator += t * (t + 1) * pv_principal
 
         convexity = numerator / bond_price
-        return convexity / ((1 + yield_to_maturity) ** 2)
+        return convexity  # the (t + 2) exponent above already includes the 1/(1+y)^2 factor
 
     def price_change_approximation(self, current_yield, new_yield):
         """Estimate price change using duration and convexity"""

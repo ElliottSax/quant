@@ -26,7 +26,7 @@ Latency in moving capital between exchanges is the primary cost limiting arbitra
 ## Building a Multi-Exchange Price Aggregator
 
 ```python
-import ccxt
+import ccxt.async_support as ccxt  # async client: its methods are awaitable
 import asyncio
 import pandas as pd
 import numpy as np

@@ -135,12 +135,12 @@ class ForexLeverageController:
         position_size_lots = risk_amount / (stop_loss_price - entry_price)
 
         # Apply leverage cap
-        notional_exposure = position_size_lots * micro_lot_value * 1000
+        notional_exposure = position_size_lots * micro_lot_value
         max_exposure = self.account_size * self.max_leverage
 
         if notional_exposure > max_exposure:
             # Reduce position for leverage constraint
-            position_size_lots = max_exposure / (micro_lot_value * 1000)
+            position_size_lots = max_exposure / (micro_lot_value)
 
         # Calculate margin requirement
         margin_required = position_size_lots * micro_lot_value * self.margin_requirement
@@ -153,9 +153,9 @@ class ForexLeverageController:
 
         return {
             'micro_lots': position_size_lots,
-            'notional_value': position_size_lots * micro_lot_value * 1000,
+            'notional_value': position_size_lots * micro_lot_value,
             'margin_required': position_size_lots * micro_lot_value * self.margin_requirement,
-            'available_leverage': max_exposure / (position_size_lots * micro_lot_value * 1000)
+            'available_leverage': max_exposure / (position_size_lots * micro_lot_value)
         }
 
     def check_margin_call(self, unrealized_loss):

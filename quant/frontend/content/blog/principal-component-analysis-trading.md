@@ -253,7 +253,7 @@ def kernel_pca_analysis(returns, kernel='rbf', gamma=0.1):
     """
     Non-linear PCA using kernel trick
     """
-    kpca = KernelPCA(n_components=10, kernel=kernel, gamma=gamma)
+    kpca = KernelPCA(n_components=10, kernel=kernel, gamma=gamma, fit_inverse_transform=True)
     transformed = kpca.fit_transform(returns)
 
     # Kernel PCA doesn't directly provide variance explained

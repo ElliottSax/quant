@@ -239,7 +239,9 @@ def diagnose_arima(result) -> dict:
     lb_test = acorr_ljungbox(residuals, lags=[10, 20], return_df=True)
 
     # Jarque-Bera test for normality
-    jb_stat, jb_pvalue, skew, kurtosis = jarque_bera(residuals)
+    jb_stat, jb_pvalue = jarque_bera(residuals)  # scipy returns (statistic, pvalue)
+    from scipy.stats import skew as _skew, kurtosis as _kurtosis
+    skew, kurtosis = _skew(residuals), _kurtosis(residuals)
 
     # ARCH effects (heteroskedasticity in residuals)
     from statsmodels.stats.diagnostic import het_arch
