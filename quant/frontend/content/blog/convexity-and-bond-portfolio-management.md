@@ -47,7 +47,7 @@ Convexity is always positive for regular bonds, meaning prices rise faster when 
 
 **Mathematical Formula**:
 ```
-Convexity = (1 / Bond_Price) × Σ[t(t+1) × CF_t / (1+y)^(t+2)] / (1+y)²
+Convexity = (1/P) Σ t(t+1) CF_t / (1+y)^(t+2)
 ```
 
 Where:

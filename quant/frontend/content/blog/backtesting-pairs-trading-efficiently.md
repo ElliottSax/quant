@@ -33,7 +33,7 @@ from scipy import stats
 class PairsBacktester:
     @staticmethod
     def test_cointegration(series1, series2):
-        """Johansen cointegration test"""
+        """Engle-Granger cointegration test"""
         score, p_value, _ = coint(series1, series2)
         return p_value  # p < 0.05 suggests cointegration
 

@@ -46,7 +46,7 @@ Example: A US investor with 30% of portfolio in European stocks faces ~3.6% vola
 Lock in future exchange rate for predetermined date:
 
 ```
-Forward_Rate = Spot_Rate × (1 + r_domestic) / (1 + r_foreign)
+Forward_Rate = Spot_Rate × (1 + r_domestic×T) / (1 + r_foreign×T)
 Effective_Hedge_Cost = Forward_Rate - Spot_Rate
 ```
 

@@ -185,7 +185,7 @@ def model_forex_execution(
     Spread is 1-2 pips for major pairs (e.g., EUR/USD)
     Slippage adds 0-2 pips depending on liquidity and volatility
     """
-    pip_value = 0.0001 if pair.endswith('JPY') else 0.0001
+    pip_value = 0.01 if pair.endswith('JPY') else 0.0001
 
     # Bid-ask spread
     bid = price - (bid_ask_spread_pips * 0.5 * pip_value)

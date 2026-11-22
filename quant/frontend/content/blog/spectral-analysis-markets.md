@@ -100,6 +100,7 @@ def identify_market_cycles(prices, sampling_freq=252):
     return cycles, frequencies, psd
 
 # Example usage
+spy_prices = ...  # load your price Series (e.g., pd.read_csv or data feed)
 cycles, freqs, psd = identify_market_cycles(spy_prices)
 print("Top 5 dominant cycles:")
 print(cycles.head())

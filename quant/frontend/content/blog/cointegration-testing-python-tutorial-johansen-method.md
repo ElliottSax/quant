@@ -23,7 +23,7 @@ last_updated: '2026-03-21'
 ## Introduction
 Cointegration testing is a statistical technique used to determine if two or more time series are cointegrated, meaning they have a long-run equilibrium relationship. The Johansen method is a popular approach for testing cointegration, and it has been widely used in various fields, including economics, finance, and algorithmic trading. In this article, we will provide a comprehensive tutorial on cointegration testing using the Johansen method in Python. We will cover the key concepts, implementation details, and common mistakes to avoid. The tutorial is designed for aspiring and practicing quantitative traders who want to develop statistical models for predicting stock prices, identifying arbitrage opportunities, and optimizing portfolio performance.
 
-The concept of cointegration was introduced by Granger (1981) and Engle-Granger (1987); the system test for it was introduced by Johansen (1988, 1991). Cointegration occurs when two or more time series are integrated of order 1, meaning they have a unit root, but a linear combination of the series is stationary. The Johansen method uses a vector autoregression (VAR) model to test for cointegration. The VAR model is a statistical model that describes the relationship between multiple time series. The Johansen method involves estimating the parameters of the VAR model and then testing the hypothesis that the cointegration rank is zero (no cointegration). If the hypothesis is rejected, it indicates that the time series are cointegrated.
+The concept of cointegration was introduced by Granger (1981) and Engle-Granger (1987); the system test for it was introduced by Johansen (1988, 1991). Cointegration occurs when two or more time series are integrated of order 1, meaning they have a unit root, but a linear combination of the series is stationary. The Johansen method uses a vector autoregression (VAR) model to test for cointegration. The VAR model is a statistical model that describes the relationship between multiple time series. The Johansen method involves estimating the parameters of the VAR model and then testing the hypothesis that the cointegration rank is zero (no cointegration; null is rank = 0, not “error-correction coefficient = 0”). If the hypothesis is rejected, it indicates that the time series are cointegrated.
 
 The Johansen method has several advantages over other cointegration tests, including the Engle-Granger test. The Johansen method can handle multiple time series, whereas the Engle-Granger test is limited to two series. Additionally, the Johansen method provides more accurate results than the Engle-Granger test, especially when the sample size is small.
 
@@ -48,7 +48,8 @@ Here is an example of how to implement the Johansen method in Python:
 ```python
 import pandas as pd
 import numpy as np
-from statsmodels.tsa.johansen import coint_johansen
+from statsmodels.tsa.vector_ar.vecm import coint_johansen
+from statsmodels.tsa.api import VAR
 
 # Load the data
 data = pd.read_csv('data.csv')

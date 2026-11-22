@@ -20,26 +20,20 @@ Tragedy in quantitative trading often stems from position sizing mistakes, not s
 
 Before implementing position sizing, understand the mathematics of how accounts get destroyed.
 
-### Gambler's Ruin Formula
+### Gambler's Ruin (diffusion approximation)
 
-The probability of ruin under a diffusion approximation is:
+The probability of eventual ruin can be approximated as:
 
 ```
-P(ruin) = e^(-2bp/s²)
+P(ruin) ≈ exp(-2 · mu · capital / sigma²)
 ```
 
 Where:
-- capital = initial bankroll
+- capital = initial bankroll (distance to ruin)
 - mu = expected drift per unit time
-- sigma = standard deviation of returns
+- sigma = standard deviation of returns per unit time
 
-**Example:** 55% win rate, equal wins/losses, betting 25% Kelly
-
-```
-P(ruin) = e^(-2 × 1 × 0.55 / 1²) = e^(-1.1) = 0.333 = 33.3% chance of ruin
-```
-
-This is unacceptable! Even Kelly should be fractional. Our [Kelly criterion calculator](/tools/kelly-criterion) computes the full and fractional Kelly fraction directly from your win rate and win/loss ratio, so you can see the ruin math before sizing a real position.
+Ruin probability falls exponentially as capital or edge (mu) increase and rises with volatility (sigma). Even with an edge, conservative fractional sizing is needed to keep ruin risk low. Our [Kelly criterion calculator](/tools/kelly-criterion) computes the full and fractional Kelly fraction directly from your win rate and win/loss ratio, so you can see the risk before sizing a real position.
 
 ### Conservative Sizing Bounds
 

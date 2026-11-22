@@ -408,10 +408,11 @@ def volatility_breakout(backtester: CryptoBacktester):
 
     # Calculate volatility
     returns = df['close'].pct_change()
-    volatility = returns.rolling(window=20).std().iloc[-1]
+    vol_series = returns.rolling(window=20).std()
+    volatility = vol_series.iloc[-1]
 
     # Buy on high volatility
-    if volatility > volatility.quantile(0.75):
+    if volatility > vol_series.quantile(0.75):
         if symbol not in backtester.positions:
             backtester.submit_market_order(symbol, 'buy', 0.01,
                                           backtester.current_timestamp)

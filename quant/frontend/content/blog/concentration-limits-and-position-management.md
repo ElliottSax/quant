@@ -71,12 +71,12 @@ This prevents any single trade from devastating the portfolio while maintaining 
 Adjust position sizes based on volatility to maintain constant risk across trades:
 
 ```
-Position_Size = (Account_Size × Risk_Per_Trade) / (Entry_Price × Stop_Loss_Distance)
+Position_Size = (Account_Size × Risk_Per_Trade) / Stop_Loss_Distance
 ```
 
 For example, if risking $1,000 on a $50 stock with a $5 stop loss:
 ```
-Position_Size = ($100,000 × 0.01) / ($50 × $5) = 40 shares
+Position_Size = ($100,000 × 0.01) / $5 = 200 shares
 ```
 
 ## Python Implementation of Concentration Controls

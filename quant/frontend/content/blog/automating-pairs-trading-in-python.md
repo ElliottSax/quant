@@ -312,7 +312,7 @@ class PairsBacktester:
         total_return = (equity[-1] - self.initial_capital) / self.initial_capital
         annual_return = (1 + total_return) ** (252 / len(returns)) - 1
         sharpe_ratio = np.mean(returns) / np.std(returns) * np.sqrt(252)
-        max_drawdown = (np.min(equity) - self.initial_capital) / self.initial_capital
+        max_drawdown = (equity / np.maximum.accumulate(equity) - 1).min()  # peak-to-trough
 
         trades_df = pd.DataFrame(self.trades)
         if len(trades_df) > 0:

@@ -81,7 +81,7 @@ exchange = ccxt.binance({
 market_data = exchange.fetch_ticker('BTC/USDT')
 
 # Execute a trade
-exchange.place_order('BTC/USDT', 'limit', 'buy', 0.1, 10000)
+exchange.create_order('BTC/USDT', 'limit', 'buy', 0.1, 10000)
 ```
 The code above authenticates with the Binance exchange using the API keys and secret keys, retrieves the current market data for the BTC/USDT pair, and executes a limit buy order for 0.1 BTC at a price of $10,000.
 

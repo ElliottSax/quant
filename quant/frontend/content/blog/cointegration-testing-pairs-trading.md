@@ -92,12 +92,14 @@ result = coint_johansen(data, det_order=0, k_ar_diff=1)
 
 print("Johansen Cointegration Test Results:\n")
 print("Trace Statistic:")
-print(result.lr1)  # Critical values 90%, 95%, 99%
-print("\nTrace Test Values:")
-print(result.lr1_trace)
+print(result.lr1)  # trace statistics
+print(result.cvt)  # critical values 90%, 95%, 99%
+print("\nTrace statistics and critical values:")
+print(result.lr1)
+print(result.cvt)
 
-# If test statistic > critical value, cointegrated
-if result.lr1_trace[0] > result.lr1[0, 1]:  # 95% level
+# If trace statistic > critical value, cointegrated
+if result.lr1[0] > result.cvt[0, 1]:  # 95% level
     print("\n✓ Cointegration detected at 95% confidence!")
 else:
     print("\n✗ No cointegration detected")

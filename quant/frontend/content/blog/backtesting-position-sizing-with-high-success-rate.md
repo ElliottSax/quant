@@ -62,7 +62,7 @@ Practically, use 25% of this = 12.5% per trade.
 ```python
 import numpy as np
 import pandas as pd
-from scipy.stats import binom_test
+from scipy.stats import binomtest
 
 def validate_high_win_rate(trades, min_win_rate=0.65, min_samples=50):
     """
@@ -83,7 +83,7 @@ def validate_high_win_rate(trades, min_win_rate=0.65, min_samples=50):
         raise ValueError(f"Win rate {observed_wr:.1%} below threshold {min_win_rate:.1%}")
 
     # Binomial test: p-value that win rate > 50% by chance
-    p_value = binom_test(wins, total_trades, 0.5, alternative='greater')
+    p_value = binomtest(wins, total_trades, 0.5, alternative='greater').pvalue
 
     return {
         'observed_win_rate': observed_wr,

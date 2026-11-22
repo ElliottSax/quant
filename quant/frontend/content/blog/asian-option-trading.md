@@ -79,7 +79,7 @@ def asian_geometric_call(S: float, K: float, T: float, r: float,
     dt = T / N
 
     # Adjusted volatility for geometric average
-    sigma_hat_sq = sigma**2 * dt * (N + 1) * (2 * N + 1) / (6 * N**2)
+    sigma_hat_sq = sigma**2 * dt * (N + 1) * (2 * N + 1) / (6 * N)
     sigma_hat = np.sqrt(sigma_hat_sq)
 
     # Adjusted drift
