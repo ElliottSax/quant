@@ -126,10 +126,10 @@ On-Balance Volume accumulates volume on up days and subtracts volume on down day
 
 ### Backtest Results (Russell 2000, 2010-2025)
 
-OBV divergence signals preceded significant price moves:
-- **Bullish divergence**: Average 6.8% gain over next 20 trading days (vs. 1.2% baseline)
-- **Bearish divergence**: Average -3.2% loss over next 20 trading days (vs. +1.2% baseline)
-- **Lead time**: OBV divergence preceded price divergence by an average of 8 trading days
+OBV divergence signals are sometimes discussed as preceding price moves (illustrative only; not measured here):
+- **Bullish divergence**: In an illustrative example, assume a higher average gain after bullish divergence than the baseline; test on your own data.
+- **Bearish divergence**: In an illustrative example, assume a lower average return after bearish divergence; test on your own data.
+- **Lead time**: OBV divergence is sometimes discussed as leading price; any lead time varies and is not measured here.
 
 ## Volume Regime Classification
 
@@ -145,7 +145,7 @@ Not all volume environments are equal. We classify volume into regimes for strat
 ## Key Takeaways
 
 - VWAP creates genuine mean-reverting behavior due to institutional [execution algorithms](/blog/execution-algorithms-guide) targeting it
-- OBV divergence leads price divergence by an average of 8 trading days
+- OBV divergence is sometimes discussed as leading price; any lead time varies and is not measured here.
 
 ## Frequently Asked Questions
 
@@ -155,7 +155,7 @@ VWAP is calculated by maintaining a running sum of (Price * Volume) divided by a
 
 ### Is VWAP useful for swing trading or only day trading?
 
-While VWAP is primarily an intraday tool (it resets daily), anchored VWAP can be used for swing trading. Anchored VWAP calculates the volume-weighted average from a specific anchor point (e.g., earnings date, swing low, or beginning of the month). In our testing, weekly anchored VWAP provided useful support/resistance for 5-20 day swing trades with a hit rate of 64% for [mean reversion](/blog/mean-reversion-trading-strategy) signals.
+While VWAP is primarily an intraday tool (it resets daily), anchored VWAP can be used for swing trading. Anchored VWAP calculates the volume-weighted average from a specific anchor point (e.g., earnings date, swing low, or beginning of the month). In an illustrative example, anchored VWAP levels sometimes align with support/resistance; win rates vary and must be measured on your own data.
 
 ### What is the difference between VWAP and TWAP?
 

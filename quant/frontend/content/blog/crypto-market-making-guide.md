@@ -23,7 +23,7 @@ Crypto markets differ fundamentally from traditional venues in several key aspec
 
 Volatility in crypto markets has generally been well above that of traditional assets such as the S&P 500, though it varies a lot by period, so measure it for your own sample. This elevated volatility increases both spread opportunities and inventory risk. Market makers must widen spreads during volatile periods or risk adverse selection and losses.
 
-Fee structures vary dramatically across exchanges. Tier-based fee schedules reward high-volume market makers with rebates, effectively paying them 0.01-0.02% per trade for providing liquidity. A maker executing $100M monthly might pay 0.04% taker fees but receive 0.01% maker rebates, creating net fee revenue on passive orders.
+Fee structures vary dramatically across exchanges. Some venues offer maker rebates; check the venue's current fee tier for the applicable rebate. Fees depend on volume tier and venue; insert your own fee schedule when modeling net fee revenue on passive orders.
 
 Latency advantages prove less dominant in crypto than traditional HFT. Most crypto exchanges use relatively simple matching engines without sophisticated order types or hidden liquidity. Co-location isn't available on most platforms. Speed matters for opportunistic strategies but pure market making can succeed with 50-200ms latency to exchanges.
 

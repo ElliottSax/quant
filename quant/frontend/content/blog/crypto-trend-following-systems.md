@@ -15,7 +15,7 @@ This comprehensive guide develops trend-following frameworks using moving averag
 
 ## Trend-Following Fundamentals
 
-Trend-following exploits momentum persistence: if BTC rallying past several months, momentum often continues. This contrasts mean-reversion betting on reversions. Evidence: cryptocurrency bull markets typically last 6-18 months with 200-500% gains. Bear markets last 12-24 months with 60-80% declines. Riding trends from start to finish captures entire move; reverting too early exits profitable positions.
+Trend-following exploits momentum persistence: if BTC rallying past several months, momentum often continues. This contrasts mean-reversion betting on reversions. Evidence from past cycles as of 2026: cryptocurrency bull and bear markets have varied widely in length and magnitude and past patterns are not a forecast. Riding trends from start to finish captures entire move; reverting too early exits profitable positions.
 
 The efficient market hypothesis suggests trends shouldn't exist (prices reflect all information). Reality: behavioral finance explains trends through investor herding, risk-on/risk-off sentiment shifts, and institutional fund flows creating multi-week directional biases.
 
@@ -85,7 +85,7 @@ Rebalancing: quarterly review comparing current portfolio allocation to targets.
 
 Breakout trading exploits price movements beyond support/resistance levels confirmed by volume spikes and ATR volatility measures, with false signal filtering through >1.5× ATR threshold preventing low-conviction trades.
 
-Momentum indicator confirmation combining RSI, MACD, and [Stochastic Oscillator](/blog/stochastic-oscillator-trading) with moving average signals improves win rates to 70-75%, with multi-indicator alignment reducing false signals and increasing trade quality.
+Momentum indicator confirmation combining RSI, MACD, and [Stochastic Oscillator](/blog/stochastic-oscillator-trading) with moving average signals may filter signals, but win rates vary and must be measured on your own data.
 
 Risk management through fixed-fractional [position sizing](/blog/position-sizing-strategies), maximum drawdown limits, and equity curve monitoring prevents catastrophic losses while maintaining discipline to capture full trending moves without premature profit-taking.
 
@@ -93,15 +93,15 @@ Risk management through fixed-fractional [position sizing](/blog/position-sizing
 
 **How long do cryptocurrency trends typically last?**
 
-Cryptocurrency trends vary: short (1-4 weeks common), intermediate (6-12 weeks), major (3-12 months). Most frequent: 4-8 week trends. BTC bull markets average 6-18 months, bear markets 12-24 months. Strategy: capture 4-8 week trends mechanically via moving average crosses, hold major trends 3-6+ months once established. Expect typical trend: 3-4 week inception, 2-4 week acceleration, 2-3 week consolidation, 1-2 week reversal. Average holding period: 6-10 weeks per trade.
+Cryptocurrency trend lengths vary widely; any average depends on how a trend is defined and the sample period, so test on your own data. In past cycles as of 2026, trend lengths and bull/bear durations have varied widely and are not a forecast. Strategy: capture trends mechanically via moving average crosses and hold major trends once established, calibrating holding periods to your own data.
 
 **What's the best moving average period for crypto?**
 
-10/30 SMA achieves 50-52% (too whipsawed). 50/200 SMA achieves 50-55% (slower, larger moves). Conclusion: 20/50 optimal for most cryptocurrency pairs. Different periods perform better on different assets (Ethereum might show 25/60 better, altcoins 10/25 better), but 20/50 universal solid performer.
+Results vary by asset and period; test parameters on your own data. Shorter-period SMAs tend to be more whipsawed while longer-period SMAs capture slower, larger moves. No single combination is universally optimal; the best choice depends on the asset and sample period, so validate 20/50 and alternatives on your own data.
 
 **Should you use moving averages or breakouts preferentially?**
 
-Complementary approaches: moving averages capture established trends (less risky, smaller moves), breakouts capture trend inception (riskier, larger potential moves). Optimal: combine both. Use breakouts to initiate positions, moving averages to confirm holding, use both for exit signals. Trend-follower using 20/50 SMA: enter breakout above resistance if 20 > 50, exit on SMA crossover. Win rate improves from 55% (SMA alone) to 60-65% (combo).
+Complementary approaches: moving averages capture established trends (less risky, smaller moves), breakouts capture trend inception (riskier, larger potential moves). Optimal: combine both. Use breakouts to initiate positions, moving averages to confirm holding, use both for exit signals. Trend-follower using 20/50 SMA: enter breakout above resistance if 20 > 50, exit on SMA crossover. Combining signals may improve win rates in some samples, but results vary and must be measured on your own data.
 
 **How do you prevent whipsaws (false signals) in range-bound markets?**
 

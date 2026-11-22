@@ -52,7 +52,7 @@ Variance Explained_j = λⱼ / Σλᵢ
 
 ### 1. Curse of Dimensionality
 
-With 500 stocks, there are 124,750 unique pairwise correlations. PCA reduces this to a manageable set of factors (typically 5-20) that explain 80-90% of variation.
+With 500 stocks, there are 124,750 unique pairwise correlations. PCA is often used to reduce hundreds of assets to a smaller set of factors; how many are needed and how much variance they explain depends on the universe and period.
 
 ### 2. Risk Factor Identification
 
@@ -333,9 +333,9 @@ def analyze_loadings(pca, asset_names, component_idx=0):
 
 ### Common PC Interpretations in Markets
 
-1. **PC1 (40-60% variance)**: Typically market factor—broad market movements
-2. **PC2 (10-20% variance)**: Often sector rotation or size factor
-3. **PC3 (5-10% variance)**: Frequently momentum or value factor
+1. **PC1**: Often captures the largest share of variance and is sometimes interpreted as a market factor, but the share explained varies widely by universe and period market movements
+2. **PC2**: Each subsequent component explains progressively less variance; interpretation depends on the data and is not a fixed percentage
+3. **PC3**: As above -- interpretation depends on the data and is not a fixed percentage
 4. **PC4-5**: Sector-specific or style factors
 
 Verify interpretations by correlating PCs with known factors:

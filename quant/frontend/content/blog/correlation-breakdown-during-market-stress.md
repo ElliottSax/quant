@@ -25,14 +25,14 @@ During calm markets, asset correlations remain predictable and manageable. Durin
 ### The Historical Pattern
 
 **Normal Market (2018-2019)**:
-- Stocks-Bonds correlation: -0.15
-- Stocks-Gold correlation: 0.05
-- Tech-Finance correlation: 0.72
+- Stocks-Bonds correlation: varies by regime and window (illustrative; estimate on your own data and cite the window)
+- Stocks-Gold correlation: varies by regime and window (illustrative; estimate on your own data)
+- Tech-Finance correlation: varies by regime and window (illustrative; estimate on your own data)
 
 **Crisis Market (March 2020)**:
-- Stocks-Bonds correlation: -0.40
-- Stocks-Gold correlation: 0.30
-- Tech-Finance correlation: 0.88
+- Stocks-Bonds correlation: varies by regime and window (illustrative; estimate on your own data)
+- Stocks-Gold correlation: varies by regime and window (illustrative; estimate on your own data)
+- Tech-Finance correlation: varies by window (illustrative level; estimate on your own data)
 
 The dramatic shift happens within days, catching portfolio managers unprepared.
 
@@ -302,7 +302,7 @@ print(f"Current weights: {portfolio.current_weights}")
 ## Frequently Asked Questions
 
 **Q1: How much can correlation increase during a crisis?**
-A: Correlations typically rise by 0.30-0.60 during severe crises. Stock-bond correlation shifts from -0.15 to +0.30. Stock-real estate correlation jumps from 0.40 to 0.80. The increase is asset-dependent but universally occurs.
+A: Correlations often rise in crises; the increase varies by pair and period — measure on your own data. Stock-real estate and other pair correlations also vary by regime and window — estimate the shift on your own data. The increase is asset-dependent but universally occurs.
 
 **Q2: Is there a correlation between VIX and correlation breakdown?**
 A: Yes, strong positive relationship. When VIX > 30, expect higher correlations. When VIX > 50, assume all risky assets correlate at 0.80+. Monitor VIX as early warning signal.

@@ -573,7 +573,7 @@ class MEVAnalyzer:
 
 ### Is DeFi yield farming still profitable in 2026?
 
-Yield farming remains profitable but the landscape has matured significantly. The astronomical APYs of 2020-2021 (1,000%+) have compressed to 5-20% for established protocols. Profitable farming now requires: (1) sophisticated risk assessment of protocol safety, (2) impermanent loss hedging for volatile pairs, (3) gas optimization across multiple chains, and (4) quick rotation into new protocols before yields compress. The edge has shifted from first-mover advantage to [quantitative risk management](/blog/quantitative-risk-management).
+Yield farming remains profitable but the landscape has matured significantly. APYs have compressed since 2020-2021; check current APYs for each protocol from on-chain data at the time of reading. Profitable farming now requires: (1) sophisticated risk assessment of protocol safety, (2) impermanent loss hedging for volatile pairs, (3) gas optimization across multiple chains, and (4) quick rotation into new protocols before yields compress. The edge has shifted from first-mover advantage to [quantitative risk management](/blog/quantitative-risk-management).
 
 ### How do I protect against impermanent loss?
 

@@ -102,9 +102,9 @@ Tactical rebalancing adjusts target weights based on market signals before rebal
 
 Common tactical signals and their implementation:
 
-**Momentum overlay**: Overweight assets with positive 12-1 month momentum, underweight those with negative momentum. Typical tilt: plus or minus 5-10% relative to strategic weights.
+**Momentum overlay**: Overweight assets with positive 12-1 month momentum, underweight those with negative momentum. Typical tilt sizes vary by implementation and depend on signal strength and risk budget; calibrate to your mandate.
 
-**Volatility targeting**: Scale equity allocation inversely with realized volatility. When VIX exceeds its 200-day average by more than 1 standard deviation, reduce equity allocation by 10-20%.
+**Volatility targeting**: Scale equity allocation inversely with realized volatility. When volatility is elevated relative to its history, some investors reduce equity exposure; the size should be calibrated to your risk target.
 
 **Valuation signals**: Increase allocation to assets with below-average valuations (CAPE, credit spreads, dividend yields). These signals are slow-moving and appropriate for quarterly or semi-annual adjustments.
 
@@ -114,8 +114,8 @@ Common tactical signals and their implementation:
 
 Backtests of tactical rebalancing strategies show:
 
-- Volatility-based adjustments reduce maximum drawdown by 15-25% with minimal return impact
-- Combined momentum + volatility tactically rebalanced portfolios achieve Sharpe ratio improvements of 0.10-0.20 versus calendar rebalancing
+- Volatility-based adjustments may reduce drawdowns in some tests, but results vary widely; test on your own data with costs
+- Combined momentum + volatility tactically rebalanced portfolios have shown modest Sharpe improvements in some backtests, but results vary; test on your own data
 - Macroeconomic signal integration is most valuable over multi-year horizons but has limited impact over quarters
 
 ## Tax-Aware Rebalancing
@@ -152,8 +152,8 @@ For investors with multiple accounts (401k, IRA, taxable brokerage), coordinate 
 
 - Rebalancing controls risk drift, captures the rebalancing premium (approximately 10-20 basis points annually after costs), and maintains portfolio diversification
 - Quarterly calendar rebalancing offers the best trade-off between tracking error and transaction costs for most portfolios
-- Threshold rebalancing (4-5% bandwidth for equities, 8-10% for bonds) trades only when drift is meaningful, reducing unnecessary transactions compared with calendar rebalancing
-- Tactical rebalancing incorporating momentum and volatility signals can add 30-80 basis points annually, but requires more sophisticated implementation and monitoring
+- Threshold rebalancing trades only when drift is meaningful, reducing unnecessary transactions compared with calendar rebalancing; choose bandwidths based on your transaction costs and volatility and test on your data
+- Tactical rebalancing incorporating momentum and volatility signals may add return in some periods but results vary and require validation on your own data; it requires more sophisticated implementation and monitoring
 - Tax-aware rebalancing in taxable accounts should use cash flows for rebalancing, harvest tax losses, and consider the after-tax net benefit of each trade
 
 ## Frequently Asked Questions

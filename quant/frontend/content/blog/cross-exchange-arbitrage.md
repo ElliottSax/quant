@@ -9,21 +9,21 @@ keywords: ["cross-exchange arbitrage", "latency arbitrage", "execution", "multi-
 ---
 # Cross-Exchange Arbitrage: Latency and Execution Optimization
 
-Cross-exchange arbitrage exploits temporary price discrepancies across venues, requiring sophisticated execution infrastructure minimizing latency and maximizing fill probability. Unlike risk-free true arbitrage where profit is guaranteed, practical cross-exchange trading involves execution risk, transfer delays, and competition from other arbitrageurs reducing theoretical profits to realistic 0.3-2% per trade after all costs.
+Cross-exchange arbitrage exploits temporary price discrepancies across venues, requiring sophisticated execution infrastructure minimizing latency and maximizing fill probability. Unlike risk-free true arbitrage where profit is guaranteed, practical cross-exchange trading involves execution risk, transfer delays, and competition from other arbitrageurs. Theoretical profits are reduced after fees, slippage and failed fills; measure net per-trade profit from your own executions.
 
 ## Execution Latency and Pricing Efficiency
 
 Latency (time delay) between exchanges creates windows of opportunity before other traders eliminate spreads. BTC trading at $42,000 on Coinbase but $42,050 on Kraken represents potential $50 profit per BTC, but only if you can execute both trades before prices adjust.
 
-The latency breakdown: (1) Network latency (100-500ms) from your server to exchange, (2) Exchange matching engine processing (50-200ms), (3) Your system processing and next order submission (100-300ms). Total: 250-1,000ms. During this delay, prices move. At 60% annualized volatility (roughly 3-4% per day), a one-second delay exposes you to adverse moves of a few hundredths of a percent on average, with much larger moves during fast markets - comparable to the whole spread you are trying to capture.
+Latency consists of network, matching-engine and system processing delays; measure each from your own infrastructure. Total latency is the sum of those components. During this delay, prices move. At 60% annualized volatility (roughly 3-4% per day), a one-second delay exposes you to adverse moves of a few hundredths of a percent on average, with much larger moves during fast markets - comparable to the whole spread you are trying to capture.
 
-Geographical optimization reduces latency through co-location (servers physically near exchange data centers). Each exchange's matching engine lives in a specific region (check the exchange's own documentation). If your server in New York has 100ms latency to Coinbase vs. someone colocated having 5ms, you lose 95ms of reaction time. Professional arbitrageurs colocate in multiple regions ($5,000-$20,000/month rental), shrinking latency to single-digit milliseconds.
+Geographical optimization reduces latency through co-location (servers physically near exchange data centers). Each exchange's matching engine lives in a specific region (check the exchange's own documentation). If your server in New York has 100ms latency to Coinbase vs. someone colocated having 5ms, you lose 95ms of reaction time. Professional arbitrageurs colocate near exchange data centers at additional monthly cost; latency then falls to single-digit milliseconds for colocated participants.
 
 Network optimization implements direct connections to exchanges via FIX protocols (financial information exchange) where available, reducing REST API latency from 300-500ms to 50-100ms. Most crypto exchanges lack FIX but some (Coinbase, Kraken Futures) offer it for institutional clients.
 
 [Order types](/blog/order-types-execution-guide) impact execution certainty. Market orders execute immediately at current price but assume worst-case spread. Limit orders (bid at 50% of spread below mark, ask at 50% above) reduce slippage but risk non-execution. Optimal strategy: place limit orders at probabilities ensuring 70-80% fill rates, avoiding worst-case spread capture.
 
-The execution probability model calculates fill rate for limit orders at various distances from mid-price. Historically, bids 0.1% below mid fill 80%+ of time, 0.5% below 40%, 1.0% below 10%. Asks 0.1% above mid fill 80%+, 0.5% above 40%, 1.0% above 10%. Position order placement 0.1-0.3% from mid for 70-80% fill probability, capturing majority of spread without excessive execution failures.
+Fill rates depend on venue and distance from mid; measure them from your own order-book data. Position order placement to balance fill probability against spread capture, capturing majority of spread without excessive execution failures.
 
 ## Cross-Exchange Arbitrage Mechanics
 
@@ -33,7 +33,7 @@ The fundamental constraint: transfer times between exchanges (10-60 minutes for 
 
 Funding distribution strategy: maintain $100,000 across 10 exchanges ($10,000 each) versus centralizing on single exchange. Benefits: eliminates withdrawal/deposit delays enabling rapid position turnover, diversifies exchange counterparty risk (reduces impact if exchange experiences downtime), enables cross-exchange arbitrage without transfers. Drawback: 10 accounts to manage, $10k minimum per exchange meets most minimums.
 
-The rebalancing algorithm: run daily to ensure balanced positions. If Binance position grows to $12,000 (from profit) and Coinbase drops to $8,000, arbitrage opportunities skew toward Binance execution. Rebalance by moving $2,000 from Binance to Coinbase. Costs: $20-50 in withdrawal/deposit fees, elimination of brief profitable opportunities during rebalancing. Monthly rebalancing costs ~$300-500 for $100k portfolio, reasonable cost for reduced concentration risk.
+The rebalancing algorithm: run daily to ensure balanced positions. If Binance position grows to $12,000 (from profit) and Coinbase drops to $8,000, arbitrage opportunities skew toward Binance execution. Rebalance by moving $2,000 from Binance to Coinbase. Costs: $20-50 in withdrawal/deposit fees, elimination of brief profitable opportunities during rebalancing. Rebalancing incurs withdrawal fees that must be measured from your own transfer costs; for a $100k portfolio, weigh that cost against reduced concentration risk.
 
 [Position sizing](/blog/position-sizing-strategies) accounts for exchange liquidity. Buy 50 BTC on Kraken when 100 BTC offered at best ask; execution at reasonable slippage. Try buying 500 BTC and you move price 5-10%, turning profitable trade unprofitable. The maximum profitable position = exchange liquidity × (spread - fees) / price impact from position. For $50M daily volume on pair and 0.5% spread, maximum profitable 200-300 BTC position.
 

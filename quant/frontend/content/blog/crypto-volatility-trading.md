@@ -21,7 +21,7 @@ Implied volatility (IV) represents market consensus forecast of future volatilit
 
 The IV-RV relationship predicts future volatility changes. When IV > RV by 20%+ (market expects more volatility than occurred historically), this means options are expensive and likely to decline in value if volatility doesn't increase. When IV < RV (options cheap relative to actual volatility), options likely appreciate.
 
-Volatility cycles in crypto follow predictable patterns: (1) Bull market expansion 40-60% vol → 80-120% vol during bubble phases, (2) Crash expansion 120%+ vol during panic, (3) Recovery contraction back to 40-60%. Understanding where you are in cycle improves positioning decisions.
+Volatility regimes vary by asset and period and any bands require sourcing and dating: (1) Bull market expansion commonly cited at 40-60% vol → 80-120% vol during bubble phases, (2) Crash expansion 120%+ vol during panic, (3) Recovery contraction back to 40-60%. Understanding where you are in cycle improves positioning decisions.
 
 The volatility cone plots historical IV against realized vol percentiles. If 30-day IV = 70% ranks 75th percentile historically (higher than 75% of past readings), IV is elevated. Positions sized for normal volatility face losses if IV reverts to median. Conversely, 20th percentile IV suggests mean reversion upward.
 
@@ -65,7 +65,7 @@ The volatility trend filter combines both: identify trend (increasing vol = uptr
 
 Regime-specific strategies adapt to market conditions: Low vol regime: sell volatility via short straddles, expect [mean reversion](/blog/mean-reversion-trading-strategy). Expanding vol: buy protection, position for continuation. Contracting vol: sell expensive premium, expect compression. Panic vol: focus on protection, avoid short vol strategies.
 
-The carry strategy in low vol: sell 1-month straddles, collect 3-5% time decay monthly, close after 50% max profit or expiration. When vol spikes unexpectedly, losses can exceed entire month's carry. Risk management essential: hedge with long vol positions.
+The carry strategy in low vol: selling straddles aims to collect time decay, but decay varies and losses can exceed premium, close after 50% max profit or expiration. When vol spikes unexpectedly, losses can exceed entire month's carry. Risk management essential: hedge with long vol positions.
 
 ## Cross-Asset and Volatility Structure Strategies
 
@@ -105,7 +105,7 @@ This compares favorably to directional trading (25-40% but higher draw downs) du
 
 **How do you prevent losses from unexpected volatility spikes?**
 
-Volatility can spike 50-100% in hours during crashes, destroying short-vol positions. Protections: (1) Hard stops - close positions if loss exceeds 5% allocated capital, (2) Hedge short vol with long vol: if short straddles, own long strangles at wider strikes limiting max loss, (3) Position sizing limits: never short more vol than 50% of portfolio risk budget, (4) Volatility alerts: automate closing if vol spikes 30%+ in hour, (5) Diversification: mix vol selling with vol buying to create natural hedge. Example: 60% short vol strategies + 40% long vol hedges achieves +10% return if vol flat, +5% if vol spikes 50%, -10% if vol crashes 50% (hedged vs -40% unhedged).
+Volatility can spike 50-100% in hours during crashes, destroying short-vol positions. Protections: (1) Hard stops - close positions if loss exceeds 5% allocated capital, (2) Hedge short vol with long vol: if short straddles, own long strangles at wider strikes limiting max loss, (3) Position sizing limits: never short more vol than 50% of portfolio risk budget, (4) Volatility alerts: automate closing if vol spikes 30%+ in hour, (5) Diversification: mix vol selling with vol buying to create natural hedge. Illustrative example: a mix of short-vol strategies hedged with long-vol positions has returns that depend on strikes, hedging, and costs; test on your own assumptions (hedged outcomes differ from unhedged).
 
 **Which crypto volatility products are most liquid for large positions?**
 

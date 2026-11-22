@@ -9,7 +9,7 @@ keywords: ["fixed income quantitative strategies", "duration trading", "yield cu
 ---
 # Fixed Income Quantitative Strategies: Duration, Curve, and Spread
 
-Fixed income markets, with over $130 trillion in global outstanding debt, offer a rich landscape for systematic [quantitative strategies](/blog/crypto-defi-quant-strategies). Unlike equities, where price discovery is primarily driven by earnings expectations and sentiment, fixed income pricing is grounded in measurable quantities: interest rates, credit quality, prepayment behavior, and the term structure of risk. This mathematical tractability makes bonds particularly suited to quantitative approaches. The three primary systematic strategies -- duration timing, yield curve positioning, and credit spread trading -- each exploit a different dimension of fixed income risk and return. You can check today's real Treasury yield curve, along with historical inversions, with our [Yield Curve](/yield-curve) tool before building out any of these systematic overlays.
+Fixed income markets offer a rich landscape for systematic [quantitative strategies](/blog/crypto-defi-quant-strategies). Unlike equities, where price discovery is primarily driven by earnings expectations and sentiment, fixed income pricing is grounded in measurable quantities: interest rates, credit quality, prepayment behavior, and the term structure of risk. This mathematical tractability makes bonds particularly suited to quantitative approaches. The three primary systematic strategies -- duration timing, yield curve positioning, and credit spread trading -- each exploit a different dimension of fixed income risk and return. You can check today's real Treasury yield curve, along with historical inversions, with our [Yield Curve](/yield-curve) tool before building out any of these systematic overlays.
 
 ## Duration Strategies
 
@@ -27,7 +27,7 @@ For a bond with modified duration of 7.0, a 50 basis point yield increase produc
 
 Duration timing adjusts portfolio duration based on quantitative signals predicting interest rate direction:
 
-**Momentum signal**: When rates have been falling (bond prices rising), maintain or extend duration. The autocorrelation of monthly yield changes is approximately 0.15-0.25, supporting momentum-based timing.
+**Momentum signal**: When rates have been falling (bond prices rising), maintain or extend duration. The autocorrelation of monthly yield changes varies by period and market; verify any momentum on your own sample before assuming it supports timing.
 
 **Mean-reversion signal**: When real yields (nominal minus inflation expectations) are more than 1 standard deviation above their 5-year average, extend duration (yields are likely to decline). When below average, shorten duration.
 
@@ -41,7 +41,7 @@ Where D_neutral is the benchmark duration, and delta terms control the tactical 
 
 ### Historical Performance
 
-Duration timing strategies based on combined signals have historically added 30-70 basis points of annual alpha relative to a constant-duration benchmark, with information ratios of 0.3-0.5. The primary value is drawdown reduction during rate-rising environments.
+Duration timing strategies based on combined signals have shown varied results across samples; any added alpha and information ratio must be measured on your own data and period, and past performance does not predict future results. The primary value in some samples has been drawdown reduction during rate-rising environments.
 
 ## Yield Curve Strategies
 
@@ -49,7 +49,7 @@ Duration timing strategies based on combined signals have historically added 30-
 
 The yield curve can be decomposed into three principal components:
 
-**Level (PC1)**: Parallel shift in all yields. Explains approximately 85-90% of yield curve variation. Duration strategies capture level risk.
+**Level (PC1)**: Parallel shift in all yields. Level often explains most of the yield curve variation, but the share depends on period and market. Duration strategies capture level risk.
 
 **Slope (PC2)**: Change in the steepness of the curve (long rates minus short rates). Explains approximately 8-12% of variation. Slope strategies are distinct from duration strategies.
 
@@ -81,7 +81,7 @@ Hold $4.29 of 2-year notes for every $1 of 10-year notes to achieve duration neu
 
 Where y_T is the yield at maturity T and dt is the holding period. In a steep curve, the roll-down return is substantial for intermediate maturities (5-7 years), creating a systematic overweight signal.
 
-**Mean-reversion in curve slope**: The 2s10s spread (10-year minus 2-year yield) has historically mean-reverted with a half-life of approximately 6-12 months. When the spread is more than 1 standard deviation from its 3-year average, fade the move (steepener if spread is abnormally flat, flattener if abnormally steep).
+**Mean-reversion in curve slope**: The 2s10s spread (10-year minus 2-year yield) has shown mean-reverting tendencies in some samples, but any half-life estimate depends on period and definition and should be measured on your own data. When the spread is far from its recent average, some traders fade the move (steepener if spread is abnormally flat, flattener if abnormally steep), but this should be tested on your own sample.
 
 ### Butterfly Trades
 
@@ -155,7 +155,7 @@ Corporate bonds are substantially less liquid than government bonds. Bid-ask spr
 ## Key Takeaways
 
 - Fixed income quantitative strategies operate along three dimensions: duration (interest rate level), curve (term structure shape), and spread (credit risk premium), each providing independent sources of return
-- Duration timing based on momentum, mean-reversion, and macro signals adds 30-70 bps annually, with the primary value in drawdown reduction during rate-rising environments
+- Duration timing based on momentum, mean-reversion, and macro signals has shown varied results across samples; any added alpha must be measured on your own data, with some samples showing value in drawdown reduction during rate-rising environments
 - Yield curve strategies exploit predictable patterns in curve slope and curvature, with carry and roll-down providing the most reliable systematic alpha
 - Credit spread strategies combining momentum, value, and carry signals capture the credit risk premium while managing default and [liquidity risk](/blog/liquidity-risk-management)
 - Combining duration, curve, and spread strategies achieves diversification benefits because the three return sources have low correlation with each other
@@ -172,7 +172,7 @@ Pure duration strategies underperform during rate rises (by construction). Howev
 
 ### Are fixed income quant strategies capacity-constrained?
 
-Less so than equity strategies because the fixed income market is larger ($130T+ globally vs. $100T+ for equities). However, specific segments (high-yield, emerging market debt) have limited liquidity. Duration and curve strategies using Treasury futures are highly scalable.
+Less so than equity strategies because the fixed income market is large relative to equities, but capacity still depends on segment and liquidity. However, specific segments (high-yield, emerging market debt) have limited liquidity. Duration and curve strategies using Treasury futures are highly scalable.
 
 ### Can I apply equity factor models to fixed income?
 

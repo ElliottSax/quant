@@ -68,7 +68,7 @@ Simpler but less nuanced than HMM. Define regimes based on observable indicators
 
 **Trend regime**: S&P 500 above 200-day moving average = bull, below = bear. This binary classification has flagged most major bear markets, though with lag and with false signals.
 
-**Yield curve regime**: 10Y-2Y spread > 0 = expansion, < 0 = recession warning. Yield curve inversion has preceded every US recession since 1960 with an average lead time of 14 months.
+**Yield curve regime**: 10Y-2Y spread > 0 = expansion, < 0 = recession warning. Yield curve inversions have often preceded US recessions, with lead times varying widely; verify against FRED/NBER data.
 
 ### Macro Regime Indicators
 
@@ -111,7 +111,7 @@ A simple implementation for a 60/40 benchmark portfolio:
 | Bear/Crisis | 25% | 45% | 5% | 25% |
 | Recovery | 70% | 20% | 10% | 0% |
 
-Transition rules: Shift allocation gradually (20-25% per month maximum) to avoid whipsaw. Use threshold-based triggers with confirmation (regime signal must persist for 5+ trading days before acting).
+Transition rules: Shift allocation gradually to avoid whipsaw; the pace should be calibrated to your turnover budget and signal confidence. Use threshold-based triggers with confirmation (require the regime signal to persist for a confirmation window calibrated to your data before acting).
 
 ## Backtesting Results
 
@@ -136,7 +136,7 @@ HMMs with too many states or too many input features will overfit to historical 
 
 ### Transaction Costs
 
-Regime transitions require substantial [portfolio rebalancing](/blog/rebalancing-strategies-quant). A shift from 60% equities to 25% equities requires selling 35% of the portfolio. At typical institutional transaction costs (0.10-0.20% per trade), each full regime shift costs 0.15-0.30%. With 2-4 regime shifts per year, annual transaction costs can reach 0.5-1.0%, partially offsetting the risk reduction benefit.
+Regime transitions require substantial [portfolio rebalancing](/blog/rebalancing-strategies-quant). A shift from 60% equities to 25% equities requires selling 35% of the portfolio. At institutional transaction costs that vary by venue and size, each full regime shift incurs costs that must be estimated from your own execution data. With several regime shifts per year, annual transaction costs can be material and should be estimated from your own turnover and cost assumptions.
 
 ## Key Takeaways
 

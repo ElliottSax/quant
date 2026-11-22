@@ -107,7 +107,7 @@ targets = calculate_risk_reward_ratio(entry, stop, target_profit_factor=2.0)
 print(f"Stop: ${targets['stop_loss']}")
 print(f"Target: ${targets['profit_target']}")
 print(f"Risk/Reward: 1:{targets['risk_reward_ratio']:.1f}")
-# Stop: $98, Target: $104, Risk/Reward: 1:3.0
+# Stop: $98, Target: $104, Risk/Reward: 1:2.0
 ```
 
 ### 2. Dynamic Position Sizing Based on Win Rate Streaks
@@ -193,7 +193,7 @@ for _ in range(5):
 
 multiplier = sizer.get_position_size_multiplier()
 print(f"After 5 wins, position size multiplier: {multiplier:.2f}x")
-# Output: 1.56x (aggressive position sizing after winning streak)
+# Output: capped at min(streak-1,3) — print(multiplier) to verify
 ```
 
 ### 3. Partial Profit Taking

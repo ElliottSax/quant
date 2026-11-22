@@ -141,7 +141,7 @@ Ready to start day trading? Open a funded account at TopBroker or PaperTrade for
 
 ### Recommended Resources:
 
-- **Technical Analysis:** TradingView Premium ($15/month) - Best charting platform
+- **Technical Analysis:** TradingView (pricing varies; verify current plans) — charting platform
 - **Market Data:** Yahoo Finance (free) - Historical data and news
 - **Education:** Our complete course collection (linked above)
 

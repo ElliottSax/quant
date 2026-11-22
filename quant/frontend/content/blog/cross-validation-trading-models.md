@@ -9,7 +9,7 @@ keywords: ["cross-validation trading", "walk-forward analysis", "purged cross-va
 ---
 # Cross-Validation for Trading Models: Avoiding Look-Ahead Bias
 
-Cross-validation is the cornerstone of honest model evaluation. In finance, standard k-fold cross-validation produces wildly overoptimistic results because it ignores the temporal ordering of data, allowing the model to "peek" at future information during training. A single mis-applied cross-validation can make a worthless model appear to generate 20% annual alpha.
+Cross-validation is the cornerstone of honest model evaluation. In finance, standard k-fold cross-validation produces wildly overoptimistic results because it ignores the temporal ordering of data, allowing the model to "peek" at future information during training. A mis-applied cross-validation can make a worthless model appear profitable; measure the inflation on your own data.
 
 This guide covers the cross-validation techniques designed specifically for financial [time series](/blog/time-series-analysis-stocks), including walk-forward analysis, purged k-fold, and combinatorial purged cross-validation. Each method addresses different forms of data leakage while providing reliable estimates of out-of-sample performance. If your labels come from a [triple-barrier or meta-labeling](/blog/triple-barrier-labeling-meta-labeling) scheme, the overlap between adjacent label windows is exactly the kind of leakage purging and embargo periods are designed to remove.
 

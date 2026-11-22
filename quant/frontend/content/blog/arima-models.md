@@ -368,7 +368,7 @@ ARIMA models assume linear dependence and Gaussian innovations. Financial return
 
 2. **Fat tails**: Even with GARCH, extreme events occur more frequently than the model predicts. Use Student-t or skewed-t distributions for the innovation term.
 
-3. **Low signal-to-noise**: Daily equity returns have a signal-to-noise ratio near zero. ARIMA forecasts explain only 1-3% of return variance (R-squared ~ 0.01-0.03).
+3. **Low signal-to-noise**: Daily equity returns have a signal-to-noise ratio near zero. ARIMA forecasts of daily equity returns typically explain only a small fraction of variance, if any.
 
 4. **Structural breaks**: Financial time series experience regime changes (crises, policy shifts) that violate the assumption of constant parameters.
 
@@ -392,7 +392,7 @@ Not directly, no. Stock prices follow an approximate random walk, meaning ARIMA(
 
 ### What sample size do I need for reliable ARIMA estimation?
 
-A minimum of 100-200 observations for simple models (p, q <= 2). For higher-order models, use at least 50 observations per parameter. For daily financial data, 2 years (500 observations) is a practical minimum. Seasonal ARIMA requires at least 3-4 complete seasonal cycles.
+Simple models generally need on the order of a hundred observations; requirements grow with model complexity. For daily financial data, 2 years (500 observations) is a practical minimum. Seasonal ARIMA requires at least 3-4 complete seasonal cycles.
 
 ### How does ARIMA compare to LSTM and other deep learning models?
 

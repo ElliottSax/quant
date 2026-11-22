@@ -17,7 +17,7 @@ Perpetual futures introduce funding rates that create consistent arbitrage oppor
 
 Perpetual futures on Binance, Bybit and other exchanges use funding rates to maintain price alignment between perpetual and spot markets. When perpetual prices exceed spot, longs pay shorts (positive funding). When spot exceeds perpetuals, shorts pay longs (negative funding).
 
-Funding rates typically occur every 8 hours and range from -0.5% to +0.5% per period.
+Funding intervals are typically 8 hours; clamp and typical ranges vary by venue — check the venue's specification at the time of trading.
 
 ## Funding Rate Arbitrage Mechanics
 

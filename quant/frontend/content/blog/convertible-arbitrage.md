@@ -54,13 +54,13 @@ Implementing convertible arbitrage strategies requires a combination of quantita
 The table above outlines the steps involved in implementing a convertible arbitrage strategy. The process involves screening the market for potential trades, estimating the value of the convertible bond and the underlying stock, calculating the profit potential, executing the trade, and monitoring its performance over time. The timeframe for each step varies, with some steps requiring daily or intraday execution, while others require ongoing monitoring.
 
 ## Real-World Examples of Convertible Arbitrage
-Convertible arbitrage is a widely used strategy in the hedge fund industry. Many hedge funds and institutional investors use the strategy to generate returns and hedge against market risk. Here are a few real-world examples of convertible arbitrage:
-* In 2019, a hedge fund bought a convertible bond issued by Tesla, Inc. and shorted the underlying stock. The bond had a conversion price of $300 and a maturity date of 2025. The hedge fund estimated that the bond was undervalued by 10% and that the stock was overvalued by 5%. The trade generated a profit of $1 million over a period of 6 months.
-* In 2020, a hedge fund bought a convertible bond issued by Amazon.com, Inc. and shorted the underlying stock. The bond had a conversion price of $2,000 and a maturity date of 2027. The hedge fund estimated that the bond was undervalued by 15% and that the stock was overvalued by 10%. The trade generated a profit of $2 million over a period of 12 months.
+Convertible arbitrage is a widely used strategy in the hedge fund industry. Many hedge funds and institutional investors use the strategy to generate returns and hedge against market risk. Here are hypothetical illustrations of convertible arbitrage (not verified historical trades):
+* Hypothetical example: a fund buys a convertible bond and shorts the underlying stock when it estimates the bond is cheap relative to the stock (illustrative assumptions only; not a verified historical trade).
+* Hypothetical example: a fund buys a convertible bond and shorts the underlying stock when it estimates the bond is cheap relative to the stock (illustrative assumptions only; not a verified historical trade).
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-The table above compares the performance of different hedge funds using various strategies. The convertible arbitrage strategy has generated an average annual return of 12%, with a standard deviation of 6%. The equity long/short strategy has generated an average annual return of 10%, with a standard deviation of 8%. The event-driven strategy has generated an average annual return of 15%, with a standard deviation of 10%.
+The table above compares the performance of different hedge funds using various strategies. The convertible arbitrage strategy's return and volatility vary widely by period and implementation; backtest the strategy on your own data net of costs before relying on any single figure. The equity long/short strategy has generated an average annual return of 10%, with a standard deviation of 8%. The event-driven strategy has generated an average annual return of 15%, with a standard deviation of 10%.
 
 ## Common Mistakes in Convertible Arbitrage
 Convertible arbitrage is a complex strategy that requires a combination of quantitative skills and market knowledge. Here are some common mistakes to avoid:

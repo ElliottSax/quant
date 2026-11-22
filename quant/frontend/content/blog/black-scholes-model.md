@@ -253,10 +253,7 @@ class VolatilityArbitrage:
 
         return pnl
 
-# Volatility arbitrage backtest (2023-2025)
-# Win Rate: 62.3%
-# Sharpe Ratio: 1.91
-# Annual Return: 18.5%
+# Illustrative backtest metrics omitted — run the code above to generate your own.
 ```
 
 ## Greeks-Based Portfolio Hedging

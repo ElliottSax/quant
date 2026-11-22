@@ -42,7 +42,7 @@ The use of the Black-Scholes model can be illustrated with a specific example. S
 | T | 0.5 years |
 | Volatility | 20% |
 
-Using these inputs, we can calculate the value of the call option as $3.45. This value can be used to inform trading decisions, such as whether to buy or sell the call option.
+Using these inputs the Black-Scholes call value is about $1.45 (illustrative; compute with the function above). This value can be used to inform trading decisions, such as whether to buy or sell the call option.
 
 ## Section 2: Greeks And Risk Management
 
@@ -140,7 +140,7 @@ def black_scholes(S, K, t, r, sigma):
 4. What are some common mistakes to avoid when using the Black-Scholes model?
 Some common mistakes to avoid when using the Black-Scholes model include assuming constant volatility, ignoring the risk-free interest rate, not accounting for early exercise, not using the correct inputs, and not considering the limitations of the model.
 5. How do I use the Greeks to manage risk?
-The Greeks can be used to measure the sensitivity of an option's price to changes in the underlying asset price, volatility, and time to expiration, and to manage risk. For example, delta can be used to hedge against changes in the underlying asset price, while gamma can be used to hedge against changes in volatility.
+The Greeks can be used to measure the sensitivity of an option's price to changes in the underlying asset price, volatility, and time to expiration, and to manage risk. For example, delta can be used to hedge against changes in the underlying asset price, while vega can be used to hedge against changes in volatility (gamma hedges the change in delta).
 
 ## Conclusion
 

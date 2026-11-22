@@ -38,7 +38,7 @@ This persistent overpricing of options creates a systematic edge for volatility 
 
 ### Observation
 
-The VIX exhibits strong mean-reverting behavior. After spikes above 25, the VIX tends to revert to its long-term average of 15-20 within 2-4 weeks. After periods below 12, it tends to revert upward.
+The VIX exhibits strong mean-reverting behavior. The VIX is often described as mean-reverting; how quickly and to what level it reverts varies widely by regime and is not shown here. After periods below 12, it tends to revert upward.
 
 ### Rules
 
@@ -161,7 +161,7 @@ A tail hedge allocation lowers the strategy's risk-adjusted return in calm years
 |---------|--------|----------|----------------|
 | VIX Futures | /VX | Direct volatility trading | Contango decay |
 | VIX Options | VIX calls/puts | Hedging, directional vol bets | Cash-settled, European-style |
-| UVXY | ETF (2x VIX) | Short-term long vol | Extreme decay (-70%/year) |
+| UVXY | ETF (2x VIX) | Short-term long vol | Significant decay (varies widely) |
 | SVXY | ETF (-0.5x VIX) | Short vol exposure | 2018 restructured (0.5x from 1x) |
 | SPX Options | SPX | Volatility via straddles/strangles | Most liquid options market |
 | Variance Swaps | OTC | Pure vol exposure | Institutional only |

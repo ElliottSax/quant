@@ -273,7 +273,7 @@ A: Yes, with proper position sizing. Scaled properly, this compounds significant
 A: Minimum 200-300 trades to achieve statistical significance. Many traders fall victim to short-term variance.
 
 **Q: What's the tax treatment of binary option profits?**
-A: In the US, binary options are treated as Section 1256 contracts—60% long-term/40% short-term capital gains regardless of holding period. This provides significant tax advantages over short-term stock trading.
+A: Tax treatment of binary options depends on the instrument, venue, and jurisdiction and changes over time; consult a qualified tax adviser.
 
 **Q: Are binary options suitable for retail traders?**
 A: Only if you have strong statistical skills and discipline. Most retail traders lose because they lack probability estimation ability and chase losses.

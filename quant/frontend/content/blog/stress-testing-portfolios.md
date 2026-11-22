@@ -141,17 +141,17 @@ Use generative models (GANs, VAEs) trained on crisis-period data to generate nov
 - Historical scenario replay applies real crisis dynamics to the current portfolio; hypothetical scenarios test vulnerabilities to unprecedented events; reverse stress testing identifies the most dangerous plausible scenarios
 - Full revaluation provides the most accurate stress test results for non-linear positions, while sensitivity-based approximations are sufficient for portfolios dominated by linear exposures
 - Coherent stress testing ensures that risk factor moves are internally consistent, using conditional distributions to derive secondary factor movements from primary shocks
-- Stress tests should be run at least monthly, with results reported to risk committees including P&L attribution, limit comparisons, and recommended adjustments
+- Stress tests are commonly run on a regular cadence (e.g. monthly for institutional portfolios) with results reported to risk committees including P&L attribution, limit comparisons, and recommended adjustments; the appropriate frequency depends on regulation and portfolio risk
 
 ## Frequently Asked Questions
 
 ### How often should stress tests be updated?
 
-Stress test scenarios should be reviewed quarterly and updated whenever portfolio composition changes materially. The stress test process itself should run at least monthly for institutional portfolios, and weekly or daily during periods of elevated market stress. Regulatory stress tests (CCAR/DFAST for banks) are annual, but internal risk management benefits from more frequent testing.
+Stress test scenarios should be reviewed periodically and updated whenever portfolio composition changes materially; testing frequency should be set by risk policy and regulatory requirements. Regulatory stress tests (CCAR/DFAST for banks) are annual, but internal risk management benefits from more frequent testing.
 
 ### How many scenarios should I run?
 
-A core set of 8-12 scenarios is standard: 5-6 historical crises (selected based on relevance to the current portfolio's risk profile), 3-4 hypothetical scenarios (targeting known portfolio concentrations), and 1-2 reverse stress tests. Additional ad hoc scenarios should be developed in response to current market conditions or specific portfolio changes.
+A core set of scenarios often used in practice might include several historical crises (selected based on relevance to the current portfolio's risk profile), a few hypothetical scenarios (targeting known portfolio concentrations), and 1-2 reverse stress tests. Additional ad hoc scenarios should be developed in response to current market conditions or specific portfolio changes.
 
 ### Can stress tests replace VaR?
 

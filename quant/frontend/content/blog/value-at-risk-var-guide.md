@@ -23,7 +23,7 @@ Where L represents the portfolio loss distribution. For a 95% confidence level, 
 
 ### Key Parameters
 
-**Confidence Level**: Institutional standards typically use 95% or 99%. Basel III regulatory capital requirements use 99% VaR with a 10-day holding period. Higher confidence levels produce larger VaR estimates but are harder to backtest due to fewer expected exceedances.
+**Confidence Level**: Institutional standards typically use 95% or 99%. Under pre-FRTB Basel 2.5/III market-risk rules capital was based on 99% 10-day VaR; the current FRTB standard uses 97.5% Expected Shortfall. Higher confidence levels produce larger VaR estimates but are harder to backtest due to fewer expected exceedances.
 
 **Time Horizon**: Common choices include 1-day (trading desks), 10-day (regulatory capital), and 1-month (portfolio management). The square-root-of-time rule scales VaR across horizons under the assumption of i.i.d. returns:
 
@@ -111,7 +111,7 @@ Kupiec's test only checks the unconditional exceedance rate. Christoffersen's te
 
 Component VaR decomposes total portfolio VaR into contributions from each position. For parametric VaR:
 
-**CVaR_i = w_i * (Sigma * w)_i / sigma_p * VaR_p**
+**CVaR_i = VaR_p * w_i * (Sigma * w)_i / sigma_p^2 = z_alpha * w_i * (Sigma * w)_i / sigma_p**
 
 Component VaR is additive: the sum of all component VaRs equals total portfolio VaR. This property makes it invaluable for risk budgeting and identifying which positions drive portfolio risk.
 
@@ -165,4 +165,4 @@ Common choices range from 250 days (1 year) to 1000 days (4 years). Shorter wind
 
 ### How does VaR apply to cryptocurrency portfolios?
 
-Crypto assets present unique VaR challenges: returns exhibit extreme kurtosis (Bitcoin's historical kurtosis exceeds 30, versus 3 for a normal distribution), 24/7 trading means the concept of "daily" VaR requires careful definition, and limited history restricts historical simulation windows. Monte Carlo VaR with Student-t or stable distribution innovations typically outperforms parametric VaR for crypto portfolios. Position limits based on VaR should use conservative confidence levels (99.5% or higher) given the severity of crypto tail events.
+Crypto assets present unique VaR challenges: returns exhibit extreme kurtosis (Bitcoin returns exhibit very high kurtosis that varies by period and estimator and is far above that of a normal distribution (versus 3 for a normal distribution)), 24/7 trading means the concept of "daily" VaR requires careful definition, and limited history restricts historical simulation windows. Monte Carlo VaR with Student-t or stable distribution innovations typically outperforms parametric VaR for crypto portfolios. Position limits based on VaR should use conservative confidence levels (99.5% or higher) given the severity of crypto tail events.

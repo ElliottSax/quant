@@ -224,7 +224,7 @@ Compare the strategy's metrics against relevant peers:
 
 ### What is a good Sharpe ratio for a trading strategy?
 
-A Sharpe ratio of 1.0-2.0 is considered good for a systematic [trading strategy](/blog/breakout-trading-strategy). A live Sharpe above 1.0 is strong for a systematic strategy. Backtested Sharpe ratios are commonly well above live results (overfitting, costs, regime change) due to execution differences, slippage, and strategy decay. Therefore, a backtest Sharpe of 1.5 might translate to 0.8-1.0 in production. Warren Buffett's long-term Sharpe ratio is approximately 0.76, and Renaissance Technologies' Medallion fund reportedly achieves 2.0+.
+A Sharpe ratio of 1.0-2.0 is considered good for a systematic [trading strategy](/blog/breakout-trading-strategy). A live Sharpe above 1.0 is strong for a systematic strategy. Backtested Sharpe ratios are commonly well above live results (overfitting, costs, regime change) due to execution differences, slippage, and strategy decay. Therefore, a backtest Sharpe of 1.5 might translate to 0.8-1.0 in production. Past reported Sharpe ratios for well-known investors vary by period, leverage and fees; estimate from your own data and cite a source with period and method.
 
 ### Can you compare Sharpe ratios across different strategies?
 
@@ -236,7 +236,7 @@ In theory, leverage does not change the Sharpe ratio: doubling leverage doubles 
 
 ### Why is my backtested Sharpe ratio much higher than live performance?
 
-This performance gap (typically 30-50%) has several causes: (1) look-ahead bias in the backtest (using information not available at the time), (2) underestimated transaction costs (slippage, market impact), (3) overfitting to the backtest period, (4) survivorship bias in the data, (5) strategy decay (market participants adapt to widely known strategies), and (6) execution timing differences (backtest assumes fill at a specific price; live trading fills may be worse). The standard recommendation is to apply a 30-50% "haircut" to backtested Sharpe ratios when estimating live performance.
+This performance gap (typically 30-50%) has several causes: (1) look-ahead bias in the backtest (using information not available at the time), (2) underestimated transaction costs (slippage, market impact), (3) overfitting to the backtest period, (4) survivorship bias in the data, (5) strategy decay (market participants adapt to widely known strategies), and (6) execution timing differences (backtest assumes fill at a specific price; live trading fills may be worse). Backtested Sharpe ratios often overstate live results; apply a conservative discount and validate on out-of-sample data.
 
 ---
 

@@ -22,16 +22,16 @@ Before implementing position sizing, understand the mathematics of how accounts 
 
 ### Gambler's Ruin Formula
 
-The probability of ruin with optimal Kelly sizing is:
+The probability of ruin under a diffusion approximation is:
 
 ```
 P(ruin) = e^(-2bp/s²)
 ```
 
 Where:
-- b = initial bankroll
-- p = win probability
-- s = standard deviation of returns
+- capital = initial bankroll
+- mu = expected drift per unit time
+- sigma = standard deviation of returns
 
 **Example:** 55% win rate, equal wins/losses, betting 25% Kelly
 

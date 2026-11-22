@@ -73,8 +73,8 @@ Key observations:
 ### Sensitivity to Estimation Error
 
 When the true covariance matrix is perturbed with noise (simulating estimation error), HRP's performance degrades gracefully while MVO's performance collapses. At noise levels where the correlation matrix is contaminated with 30% random noise:
-- MVO Sharpe ratio drops by 45%
-- HRP Sharpe ratio drops by only 12%
+- In simulations with added noise, MVO Sharpe ratios tend to degrade substantially; results depend on simulation assumptions — test on your own data.
+- In the same simulations, HRP Sharpe ratios tend to degrade less; results depend on simulation assumptions — test on your own data.
 
 This robustness is the primary practical advantage of HRP for real-world portfolio construction.
 

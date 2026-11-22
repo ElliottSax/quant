@@ -198,7 +198,7 @@ Almost always for fixed income portfolios (where currency volatility dominates b
 
 ### What is the cost of currency hedging?
 
-The direct cost is the interest rate differential (positive or negative), plus transaction costs (bid-ask spread on forwards, typically 1-5 bps for G10 currencies). When US rates are lower than foreign rates (as from 2010-2015 for AUD), hedging costs 2-4% annually. Options-based hedging costs 1-3% annually for at-the-money protection.
+The direct cost is the interest rate differential (positive or negative), plus transaction costs (bid-ask spread on forwards, typically 1-5 bps for G10 currencies). As in periods when US rates were below foreign rates, hedging costs were higher; the current interest-rate differential determines the cost. Options-based hedging costs 1-3% annually for at-the-money protection.
 
 ### How do I handle currency hedging in a multi-currency portfolio?
 

@@ -23,7 +23,7 @@ Deep In-The-Money (ITM) and Out-Of-The-Money (OTM) options liquidity and leverag
 
 ## Characteristics of Deep ITM and OTM Options
 
-Deep ITM options are highly likely to expire in-the-money, with a high probability of being exercised. As a result, they tend to exhibit high liquidity, with many market participants actively buying and selling these contracts. In contrast, deep OTM options have a low probability of being exercised and tend to exhibit lower liquidity, with fewer market participants actively trading these contracts. The average daily trading volume for deep OTM options is approximately 50,000 contracts, with an average notional value of $200 million. The following table illustrates the key characteristics of deep ITM and OTM options:
+Deep ITM options are highly likely to expire in-the-money, with a high probability of being exercised. As a result, they tend to exhibit high liquidity, with many market participants actively buying and selling these contracts. In contrast, deep OTM options have a low probability of being exercised and tend to exhibit lower liquidity, with fewer market participants actively trading these contracts. Deep OTM options tend to have lower trading volume and notional value than deep ITM options, but figures vary widely by underlying, date, and source; verify current volumes before relying on them. The following table illustrates the key characteristics of deep ITM and OTM options:
 | Option Type | Delta | Probability of Exercise | Liquidity | Average Daily Trading Volume |
 | --- | --- | --- | --- | --- |
 | Deep ITM | 0.8+ | 80%+ | High | 250,000 contracts |

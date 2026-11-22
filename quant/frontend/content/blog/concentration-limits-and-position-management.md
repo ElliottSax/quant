@@ -291,7 +291,7 @@ Adjusted_Max_Position = Base_Max_Position / (1 + correlation_to_portfolio)
 ## Frequently Asked Questions
 
 **Q1: What's the ideal Herfindahl Index for a diversified portfolio?**
-A: Below 0.10 is considered well-diversified (equivalent to 10+ equally-weighted positions). 0.10-0.15 is moderate, and above 0.25 indicates dangerous concentration. Most institutional portfolios target 0.05-0.10.
+A: Lower HHI indicates more diversification (HHI=0.10 corresponds to 10 equally-weighted positions); choose thresholds and justify them on your own data. Many practitioners aim for HHI below 0.10, but the appropriate level depends on strategy and portfolio constraints.
 
 **Q2: Should I use fractional Kelly or full Kelly for position sizing?**
 A: Always use fractional Kelly (1/4 to 1/2) in live trading. Full Kelly causes psychological difficulties with large drawdowns and isn't statistically justified with estimation errors.

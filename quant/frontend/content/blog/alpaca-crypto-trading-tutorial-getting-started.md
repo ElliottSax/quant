@@ -26,7 +26,7 @@ The Alpaca API is a commission-free trading platform that provides access to a w
 The use of algorithms and quantitative strategies has become increasingly popular in the crypto trading space, as more traders automate their trading. Alpaca's API provides an ideal platform for implementing these strategies, with its support for paper trading, backtesting, and live trading. If you want to prototype a rules-based strategy before wiring up the API, our [Strategy Builder](/backtesting/builder) lets you configure and backtest it directly, no code required. In this tutorial, we will focus on the practical aspects of using Alpaca for crypto trading, including setting up an account, connecting to the API, and implementing trading strategies. We will also provide an overview of the statistical analysis and financial modeling techniques used in quantitative trading, including regression analysis, time series forecasting, and portfolio optimization.
 
 ## Key Concepts
-To get started with Alpaca crypto trading, it is essential to understand some key concepts, including the Alpaca API, cryptocurrency trading, and quantitative strategies. The Alpaca API is a RESTful API that provides access to a wide range of financial instruments, including stocks, options, and cryptocurrencies. The API is commission-free, with no minimum deposit requirements or trading fees. According to Alpaca's documentation, the API has a latency of less than 10 milliseconds, making it suitable for high-frequency trading applications.
+To get started with Alpaca crypto trading, it is essential to understand some key concepts, including the Alpaca API, cryptocurrency trading, and quantitative strategies. The Alpaca API provides access to financial instruments (see Alpaca docs for the current supported range), including stocks, options, and cryptocurrencies. The API is commission-free, with no minimum deposit requirements or trading fees. According to Alpaca's documentation, check the current docs/status for the published latency figure, making it suitable for high-frequency trading applications.
 
 The Alpaca API supports a wide range of cryptocurrency trading pairs, including Bitcoin, Ethereum, and Litecoin. The API also provides real-time market data, including prices, volumes, and order books. The following table provides an overview of the cryptocurrency trading pairs supported by Alpaca:
 
@@ -43,7 +43,7 @@ In addition to the Alpaca API and cryptocurrency trading, it is also essential t
 ## Implementation Guide
 To implement Alpaca crypto trading, you will need to set up an account, connect to the API, and implement a trading strategy. The following step-by-step instructions provide an overview of the implementation process:
 
-1. **Set up an account**: To get started with Alpaca, you will need to set up an account on the Alpaca website. The account setup process typically takes less than 10 minutes, with no minimum deposit requirements or trading fees.
+1. **Set up an account**: To get started with Alpaca, you will need to set up an account on the Alpaca website. Account setup is short; see Alpaca onboarding for current requirements, deposit minimums, and fees.
 2. **Connect to the API**: Once you have set up an account, you will need to connect to the Alpaca API using your API keys. The API keys can be obtained from the Alpaca website, with detailed instructions provided in the API documentation.
 3. **Choose a programming language**: Alpaca supports a wide range of programming languages, including Python, Java, and C++. For this tutorial, we will use Python, with the `alpaca-trade-api` library providing a convenient interface to the Alpaca API.
 4. **Implement a trading strategy**: Once you have connected to the API and chosen a programming language, you can implement a trading strategy using quantitative techniques, including statistical analysis and financial modeling. The following table provides an overview of the trading strategies supported by Alpaca:
@@ -207,7 +207,7 @@ The following are some frequently asked questions about Alpaca crypto trading:
 
 1. **What is Alpaca crypto trading?**: Alpaca crypto trading is a platform that provides access to a wide range of financial instruments, including cryptocurrencies, using a robust API and extensive documentation.
 2. **How do I get started with Alpaca crypto trading?**: To get started with Alpaca crypto trading, you will need to set up an account, connect to the API, and implement a trading strategy using quantitative techniques, including statistical analysis and financial modeling.
-3. **What is the Alpaca API?**: The Alpaca API is a RESTful API that provides access to a wide range of financial instruments, including stocks, options, and cryptocurrencies.
+3. **What is the Alpaca API?**: The Alpaca API provides access to financial instruments (see Alpaca docs for the current supported range), including stocks, options, and cryptocurrencies.
 4. **What programming languages are supported by Alpaca?**: Alpaca supports a wide range of programming languages, including Python, Java, and C++.
 5. **What is the latency of the Alpaca API?**: The latency of the Alpaca API is less than 10 milliseconds, making it suitable for high-frequency trading applications.
 

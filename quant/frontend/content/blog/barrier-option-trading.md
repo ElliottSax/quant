@@ -31,7 +31,7 @@ A barrier option is a derivative contract where the option's value depends on wh
 3. **Up-and-In**: Inactive; activates if spot price rises above barrier
 4. **Down-and-In**: Inactive; activates if spot price falls below barrier
 
-Barrier options trade at significant premiums relative to vanilla options due to their reduced probability of exercise (knock-out) or higher activation requirements (knock-in). A trader selling a knock-out call collects a higher premium than a vanilla call but risks early termination. You can price the underlying vanilla call or put and check its Greeks with our [Options Calculator](/options) before layering a barrier on top.
+Barrier options trade at a discount to otherwise identical vanilla options because the barrier adds a condition that can eliminate the payoff; a short up-and-out call collects less premium than a short vanilla call. You can price the underlying vanilla call or put and check its Greeks with our [Options Calculator](/options) before layering a barrier on top.
 
 ## Barrier Option Pricing: The Continuous Monitoring Case
 
@@ -112,7 +112,6 @@ class BarrierOptionPricer:
         if self.S <= self.H:
             return self.vanilla_call(self.S)  # Already activated
 
-        # Uses relationship: down-in-call = vanilla-call - down-out-call
         lambda_param = (self.r + 0.5 * self.sigma**2) / self.sigma**2
 
         c1 = self.vanilla_call(self.S)
@@ -279,7 +278,7 @@ A: Knock-out calls cost significantly less (30-50% premium savings). If you're b
 A: Partially, yes. Static hedging requires a portfolio of vanilla options replicated to match the barrier option's delta across spot price movements.
 
 **Q: What's the impact of discrete monitoring vs continuous?**
-A: Discrete monitoring (daily closing prices) reduces barrier breach probability by 10-20% compared to continuous, making options worth 10-15% more.
+A: Discrete monitoring generally lowers breach probability and raises value relative to continuous monitoring; the effect depends on barrier distance, volatility, and sampling frequency — quantify it on your own model.
 
 **Q: How volatile is a barrier option's vega?**
 A: Extremely. For options near the barrier, vega can swing dramatically as volatility changes the probability of breach. This creates vega trading opportunities.

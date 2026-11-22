@@ -186,6 +186,7 @@ Result: Can't exit when you want; slippage kills returns
 A: Look at 5-year rolling correlation. Should be > 0.8 consistently.
 
 **Q: What's the typical profit from pairs trading?**
+A: Returns vary widely by pair, costs, and period; test on your own data.
 
 **Q: Should I use leverage in pairs trading?**
 A: Yes, 2x is safe. Pairs are market-neutral, so systematic risk is low.
@@ -194,7 +195,7 @@ A: Yes, 2x is safe. Pairs are market-neutral, so systematic risk is low.
 A: Yes, screen all stocks for correlation > 0.85 with cointegration test.
 
 **Q: How often do good pairs exist?**
-A: In any 3000-stock universe, ~500 pairs with good cointegration.
+A: In a broad stock universe a subset of screened pairs may appear cointegrated; the count depends on the universe, period, and test—estimate it on your own data.
 
 ## Conclusion
 

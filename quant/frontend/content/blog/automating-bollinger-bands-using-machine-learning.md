@@ -413,7 +413,7 @@ Machine learning enhances Bollinger Band strategies along three dimensions: adap
 
 ### Does ML really improve Bollinger Band performance?
 
-The improvement comes from eliminating 40-50% of losing trades while retaining most winners. The improvement is most pronounced during transition periods between market regimes, where fixed-parameter bands generate the most false signals.
+Any improvement depends on the data and must be measured out-of-sample with realistic costs; many losing trades may remain. The improvement is most pronounced during transition periods between market regimes, where fixed-parameter bands generate the most false signals.
 
 ### What is the risk of overfitting with ML-enhanced indicators?
 

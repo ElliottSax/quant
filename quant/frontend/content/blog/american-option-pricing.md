@@ -327,7 +327,7 @@ Early exercise becomes optimal when the put is sufficiently deep in the money th
 
 ### How many paths do I need for Longstaff-Schwartz?
 
-For a standard single-asset American put, 50,000-100,000 paths with 50-100 time steps produce prices accurate to within $0.01-0.02. For multi-asset options, increase to 200,000+ paths and use variance reduction techniques (antithetic variates, control variates using the European price).
+For a single-asset American put, tens of thousands of paths are commonly cited; accuracy varies with model and should be measured on your own simulation. For multi-asset options, increase to 200,000+ paths and use variance reduction techniques (antithetic variates, control variates using the European price).
 
 ### How does the early exercise premium change with interest rates?
 

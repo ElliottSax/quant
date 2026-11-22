@@ -19,7 +19,7 @@ color: '''"secondary"'''
 
 ## Quick Answer
 
-Crypto volatility (10-20% daily moves) creates profit opportunities daily. Top strategies: (1) Breakout trading on 4-hour resistance, (2) Scalping on 1-hour support bounces (50-200 pip trades), (3) Range trading when trapped between key levels (30 minute holds). Use 2-5x leverage maximum on exchanges like Binance/Bybit, set hard stop losses 2% below entry.
+Crypto is typically more volatile than stocks, with daily moves varying widely; verify current volatility before trading, as it can create profit opportunities as well as risks. Top strategies: (1) Breakout trading on 4-hour resistance, (2) Scalping on 1-hour support bounces (50-200 pip trades), (3) Range trading when trapped between key levels (30 minute holds). Use 2-5x leverage maximum on exchanges like Binance/Bybit, set hard stop losses 2% below entry.
 
 ## Introduction
 

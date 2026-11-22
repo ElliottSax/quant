@@ -99,7 +99,7 @@ Practical implementation balancing comprehensive exposure against liquidity cons
 
 **Should I use market-cap weighted indices or actively managed crypto funds?**
 
-Market-cap weighted advantages: (1) transparent rules, (2) low fees (0.2-0.5%), (3) outperforms 80% of active managers long-term, (4) avoids performance-chasing (rebalancing forces discipline). Active manager advantages: (1) tactical timing (potentially reduce losses), (2) thematic selection (pure DeFi vs. broad market), (3) expert oversight preventing catastrophic picks. Reality: few active crypto managers beat market-cap indices net of fees. Better to use indexed approach with factor-based tactical overlays (80% market-cap, 20% thematic). If choosing single approach: market-cap indices for passive, proven edge, low costs.
+Market-cap weighted advantages: (1) transparent rules, (2) low fees (0.2-0.5%), (3) is commonly cited as outperforming many active managers long-term, though results vary widely - compare any active manager to a benchmark on your own sample, (4) avoids performance-chasing (rebalancing forces discipline). Active manager advantages: (1) tactical timing (potentially reduce losses), (2) thematic selection (pure DeFi vs. broad market), (3) expert oversight preventing catastrophic picks. Reality: few active crypto managers beat market-cap indices net of fees. Better to use indexed approach with factor-based tactical overlays (80% market-cap, 20% thematic). If choosing single approach: market-cap indices for passive, proven edge, low costs.
 
 **What's the optimal rebalancing frequency for crypto indices?**
 

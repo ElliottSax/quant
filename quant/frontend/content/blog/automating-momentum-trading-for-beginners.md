@@ -21,7 +21,7 @@ Momentum trading—buying assets with rising prices and selling those with falli
 Momentum in financial markets mirrors physics: objects in motion tend to continue in that direction until external forces intervene. In trading, this translates to: stocks with strong uptrends tend to continue rising, at least in the short term.
 
 **Average Trade Duration**: 5-15 trading days
-**Sharpe Ratio**: 1.2-1.8 across different market conditions
+**Sharpe Ratio**: varies widely by universe, period and costs; measure on your own out-of-sample data.
 **Capital Requirement**: Minimum $25,000 USD
 
 Momentum strategies work because of three market inefficiencies:

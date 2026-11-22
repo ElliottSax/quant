@@ -17,7 +17,7 @@ seo_optimized: true
 
 ## Introduction
 
-Algorithmic trading -- the use of computer programs to execute trading strategies according to predefined rules -- accounts for approximately 60-75% of equity trading volume in U.S. markets. For quantitative practitioners, understanding the full stack from signal generation to order execution is essential. This article covers the foundational components: strategy taxonomy, system architecture, backtesting methodology, and the critical gap between simulation and live trading.
+Algorithmic trading -- the use of computer programs to execute trading strategies according to predefined rules -- accounts for a large share of US equity volume (share varies by venue and period). For quantitative practitioners, understanding the full stack from signal generation to order execution is essential. This article covers the foundational components: strategy taxonomy, system architecture, backtesting methodology, and the critical gap between simulation and live trading.
 
 ## Strategy Taxonomy
 

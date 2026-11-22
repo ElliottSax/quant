@@ -98,9 +98,9 @@ Multiple academic studies have examined whether congressional trading produces a
 
 ### Academic Research
 
-A 2004 study by Alan Ziobrowski at Georgia State University found that Senate stock portfolios outperformed the market by approximately 12 percentage points annually between 1993 and 1998. A follow-up study covering 2004-2010 found the advantage had narrowed to roughly 4-6 percentage points, possibly due to increased scrutiny after the original study's publication.
+A study of Senate portfolios (Ziobrowski et al., Journal of Financial and Quantitative Analysis, 2004) has been cited as finding outperformance; see the paper for sample, benchmark and magnitude. A follow-up study covering 2004-2010 found the advantage had narrowed to roughly 4-6 percentage points, possibly due to increased scrutiny after the original study's publication.
 
-Research from the Unusual Whales platform analyzing 2021-2024 data found that portfolios replicating congressional trades, with a delay to account for filing timing, still outperformed the S&P 500 by 2-4 percentage points annually on a risk-adjusted basis.
+Some commercial trackers report outperformance for copy strategies; results depend on period, delay handling and risk adjustment — test on your own data before relying on any such figure.
 
 ### Why Politicians Might Outperform
 
@@ -186,7 +186,7 @@ Several bills have been introduced to address congressional trading:
 - **Ban Congressional Trading Act**: A bipartisan bill that would prohibit members and their spouses from holding or trading individual stocks.
 - **ETHICS Act**: Would extend trading restrictions to senior congressional staff and certain executive branch officials.
 
-As of early 2026, none of these bills have advanced to a floor vote in either chamber, though public polling consistently shows 70-80% support for a congressional trading ban across party lines.
+As of [date], check Congress.gov for the current status of these bills. Public polls have often shown majority support for a trading ban; check the specific pollster and date before quoting a number.
 
 ## What This Means for Retail Investors
 

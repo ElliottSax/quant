@@ -20,7 +20,7 @@ Cryptocurrency pairs trading combines the market-neutral alpha generation of tra
 
 Cryptocurrency pairs exhibit distinct properties from equity pairs:
 
-2. **Faster mean reversion**: Crypto pairs revert in 2-6 hours vs. 5-15 days for equities
+2. **Faster mean reversion**: Crypto pairs may revert faster than equities; actual times vary and must be measured on your data
 3. **24/7 trading**: No gaps; continuous price discovery across time zones
 4. **Exchange fragmentation**: Same pair trades at different prices across exchanges (arbitrage opportunity)
 5. **Volatility spikes**: 10-20% daily moves create exceptional spread opportunities

@@ -486,4 +486,4 @@ A: Yes, essential. Assume 0.5-2 pips slippage on entries, 1-3 pips on exits. Wor
 
 ## Conclusion
 
-Python position sizing frameworks automate the critical element of trading success. The systems presented—fixed fractional, Kelly Criterion, volatility-adjusted—can be implemented in <500 lines of production-quality code. Integrate these into your trading bot, backtest thoroughly, and deploy with confidence. Proper position sizing is the difference between sustainable 15-20% annual returns and catastrophic 50%+ drawdowns. Build it right from the start.
+Python position sizing frameworks automate the critical element of trading success. The systems presentedâ€”fixed fractional, Kelly Criterion, volatility-adjustedâ€”can be implemented in <500 lines of production-quality code. Integrate these into your trading bot, backtest thoroughly, and deploy with confidence. Proper position sizing is the difference between more sustainable risk-adjusted returns and large drawdowns that depend on sizing and must be measured on your data. Build it right from the start.

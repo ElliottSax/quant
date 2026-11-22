@@ -15,9 +15,9 @@ This comprehensive guide develops frameworks for dominance analysis, correlation
 
 ## Bitcoin Dominance Mechanics and Measurement
 
-Bitcoin dominance measures BTC market cap as percentage of total crypto market cap. Historical range: 30-70%, with structural shifts reflecting changing investor preferences and market maturity.
+Bitcoin dominance measures BTC market cap as percentage of total crypto market cap. Bitcoin dominance has varied over time; check current range from a market-cap data source at the time of reading, with structural shifts reflecting changing investor preferences and market maturity.
 
-Calculation: BTC_Dominance = BTC_Market_Cap / Total_Crypto_Market_Cap × 100%. Example: BTC = $500B, total = $2T → dominance = 25%.
+Calculation: BTC_Dominance = BTC_Market_Cap / Total_Crypto_Market_Cap × 100%. Example: dominance = BTC market cap / total crypto market cap × 100%; insert current values when computing.
 
 Dominance trends reflect market cycles: (1) Bull market starts: BTC dominance tends to fall as alts appreciate faster than BTC, (2) Bull market peak: alt dominance tends to be at its maximum, (3) Bear market: BTC dominance tends to rise as BTC declines less than alts, (4) Bear market trough: BTC dominance tends to be at its maximum.
 
@@ -35,7 +35,7 @@ Low correlation periods (0.4-0.6): alts decouple from BTC. Alts might rise while
 
 Correlation breakdowns (sudden drops from 0.85 to 0.50+) often precede regime changes. When correlations suddenly collapse, the breakdown direction predicts next regime: (1) Breakdown with alts outperforming = entering bull alt season (next 4-12 weeks), (2) Breakdown with BTC outperforming = exiting alt season into consolidation.
 
-Quantifying breakdowns: calculate 30-day rolling correlation. When correlation falls more than 1 standard deviation (historical correlation volatility ~0.15), alert triggers. Such breakdowns historically preceded alt season shifts 70-80% of the time within 2-4 weeks.
+Quantifying breakdowns: calculate 30-day rolling correlation. When correlation falls more than 1 standard deviation (historical correlation volatility ~0.15), alert triggers. Whether correlation breakdowns precede alt-season shifts, and how often, must be measured from your own sample.
 
 ## Trading Strategies and Execution
 
@@ -43,7 +43,7 @@ Statistical arbitrage between BTC and alts exploits correlation changes and domi
 
 The dominance mean-reversion strategy: (1) Monitor BTC dominance, (2) when >60%, overweight alts expecting mean reversion, (3) when <40%, reduce alt exposure expecting consolidation. Position sizing: at 65% dominance, deploy 80% capital to alts/stablecoins, 20% BTC. At 30% dominance, reverse (20% alts, 80% BTC).
 
-Historical backtest (2018-2024): dominance >65% preceded 3-6 month alt rallies averaging 40-80% outperformance 75% of time. Dominance <35% preceded 4-8 week alt consolidations averaging 10-20% underperformance 70% of time. Strategy: mechanical rebalance when dominance crosses thresholds.
+Whether dominance extremes precede alt rallies or consolidations must be measured from your own historical data; do not assume a fixed hit rate or return range. Strategy: mechanical rebalance when dominance crosses thresholds, validated on your own sample.
 
 Correlation pairs trading: pair BTC long with alt short when correlation extreme (>0.90). Example: buy 1 BTC, short 30 ETH (ratio-matched by volatility), maintain position until correlation normalizes. Profit if correlation compresses (alt outperforms BTC). Risk if one-directional crash (both falling together).
 
@@ -65,7 +65,7 @@ Correlation hedge strategies use options or perpetual shorts to hedge undesired 
 
 ## Key Takeaways
 
-Bitcoin dominance (30-70% range) drives altcoin relative performance, with high dominance (>65%) signaling altcoin undervaluation and possible mean reversion opportunities.
+Bitcoin dominance drives altcoin relative performance, with high dominance signaling possible mean reversion opportunities; the specific range and thresholds vary over time and should be verified from current market-cap data.
 
 Correlation regimes between BTC and alts (0.4-0.95 range) shift predictably across market cycles, enabling pair [trading strategies](/blog/backtesting-trading-strategies) that profit from correlation compressions and expansions with 2:1 profit factor.
 

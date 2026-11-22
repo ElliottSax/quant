@@ -469,7 +469,7 @@ Pandas rolling functions handle NaN values by default -- the first (period-1) ba
 
 ### Should I use SMA or EMA for Bollinger Bands?
 
-John Bollinger's original specification uses SMA, and this is what most traders and platforms use. EMA-based bands are more responsive to recent price changes, which can be advantageous for shorter timeframes. Test both in your backtest -- the difference is typically small (less than 0.1 Sharpe). Use SMA for consistency with the broader trading community.
+John Bollinger's original specification uses SMA, and this is what most traders and platforms use. EMA-based bands are more responsive to recent price changes, which can be advantageous for shorter timeframes. Test both in your backtest -- the difference is typically small and varies by market and costs; test both on your own data. Use SMA for consistency with the broader trading community.
 
 ### How do I vectorize the position tracking (avoid the for loop)?
 

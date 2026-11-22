@@ -23,7 +23,7 @@ Major flash loan providers include Aave (0.09% fee, among the deepest liquidity;
 
 The smart contract implementation involves calling the flash loan provider's loan function with callback specification. Aave's flashLoan() accepts borrowed assets, amounts, and contract address implementing executeOperation(). The provider sends borrowed funds, calls executeOperation() for custom logic, then checks repayment. If debt plus fee not returned, transaction reverts.
 
-Gas costs represent the only capital requirement for flash loans. A typical flash loan arbitrage consumes 400,000-800,000 gas depending on complexity. At 50 gwei and $2,500 ETH, expect $50-100 per attempt. Failed attempts (arbitrage opportunity disappeared, simulation error) lose only gas costs - this is the key risk parameter.
+Gas costs represent the only capital requirement for flash loans. Gas usage varies by path and complexity; measure on a fork before estimating. Gas cost is gas × gas price × ETH price — plug current ETH and gas price at runtime to estimate (illustrative costs at example gas/ETH levels are on the order of tens of dollars per attempt). Failed attempts (arbitrage opportunity disappeared, simulation error) lose only gas costs - this is the key risk parameter.
 
 Composability enables chaining multiple flash loans and DeFi protocols. Borrow from Aave, swap on Uniswap, deposit to Compound, borrow from Compound, swap on Curve, repay Aave, and extract profit. Complex strategies involve 5-10+ protocol interactions within single transactions.
 
@@ -189,7 +189,7 @@ Yes, flash loans have enabled several [DeFi protocol](/blog/defi-protocol-analys
 
 **How much can realistically be earned from flash loan arbitrage?**
 
-Experienced flash loan arbitrageurs earn $2,000-$20,000 monthly depending on competition, market volatility, and operational sophistication. Individual profitable opportunities yield $50-$500 after gas costs and fees, with 5-30 opportunities daily depending on markets. Top operators with optimized infrastructure earn $50,000-$200,000 monthly, though competition compressed these returns from 2020-2021 peaks. Expect 30-60% of attempted transactions to revert unprofitably, making gas cost management critical.
+Earnings vary widely and depend on competition, market volatility, and operational sophistication; no fixed monthly range can be guaranteed. Individual profitable opportunities yield $50-$500 after gas costs and fees, with 5-30 opportunities daily depending on markets. Top operators with optimized infrastructure earn $50,000-$200,000 monthly, though competition compressed these returns from 2020-2021 peaks. Expect 30-60% of attempted transactions to revert unprofitably, making gas cost management critical.
 
 **What programming skills are required to build flash loan arbitrage bots?**
 

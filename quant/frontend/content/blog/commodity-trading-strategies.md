@@ -94,7 +94,7 @@ The total return from a commodity futures position:
 - **Roll Yield**: Return from rolling futures (positive in backwardation, negative in contango)
 - **Collateral Return**: Interest earned on the cash collateral posted for futures margin
 
-For a long-only commodity investor, negative roll yield from contango is the primary drag on returns. Between 2005 and 2020, the S&P GSCI commodity index returned approximately 0% in total, despite spot prices rising modestly, because roll yield consumed the spot gains.
+For a long-only commodity investor, negative roll yield from contango is the primary drag on returns. Between 2005 and 2020, the S&P GSCI total return was modest; check a current data source for the exact figure before quoting it.
 
 Carry strategies explicitly exploit this dynamic by going long only backwardated commodities, harvesting the positive roll yield while avoiding the contango drag.
 
@@ -132,7 +132,7 @@ Calculate the average monthly return for each commodity over 15-20 years:
 
 Where R_i,m,t is the return of commodity i in month m of year t.
 
-Example seasonal patterns (average monthly returns, 2000-2025):
+Example seasonal patterns (average monthly returns, computed on your own sample; update as new years complete):
 
 | Month | Crude Oil | Natural Gas | Corn | Gold |
 |-------|----------|-------------|------|------|
@@ -195,7 +195,7 @@ No. Systematic commodity strategies use futures contracts exclusively, which are
 
 ### How much capital is needed for a diversified commodity strategy?
 
-Commodity futures require margin collateral, typically 5-15% of notional value per contract. A diversified portfolio across 20-25 commodities with moderate position sizes requires approximately $2-5 million in capital. Smaller portfolios can access commodity strategies through managed futures funds, commodity ETFs, or commodity trading advisors (CTAs).
+Margin requirements vary by exchange and commodity; check the contract specifications for the venue you trade. A diversified portfolio across 20-25 commodities with moderate position sizes requires approximately $2-5 million in capital. Smaller portfolios can access commodity strategies through managed futures funds, commodity ETFs, or commodity trading advisors (CTAs).
 
 ### Are commodity strategies suitable during inflationary periods?
 

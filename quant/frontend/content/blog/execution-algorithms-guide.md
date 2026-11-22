@@ -9,7 +9,7 @@ keywords: ["execution algorithms trading", "TWAP VWAP algorithm", "implementatio
 ---
 # Execution Algorithms: TWAP, VWAP, and Implementation Shortfall
 
-Execution algorithms bridge the gap between a [trading strategy](/blog/breakout-trading-strategy)'s ideal positions and the messy reality of placing orders in a market with finite liquidity, bid-ask spreads, and information leakage. The choice of execution algorithm directly impacts realized performance: poor execution can consume 30-50% of a strategy's gross alpha for institutional-size orders.
+Execution algorithms bridge the gap between a [trading strategy](/blog/breakout-trading-strategy)'s ideal positions and the messy reality of placing orders in a market with finite liquidity, bid-ask spreads, and information leakage. The choice of execution algorithm directly impacts realized performance: poor execution can consume a material share of a strategy's gross alpha for institutional-size orders; actual cost depends on size and liquidity.
 
 This guide implements the three most important execution algorithms -- TWAP, VWAP, and Implementation Shortfall -- and explains when to use each.
 
@@ -475,7 +475,7 @@ Use TWAP when volume is roughly uniform throughout the day (overnight futures, F
 
 ### What is the typical cost saving from using execution algorithms vs market orders?
 
-For orders representing 1-5% of daily volume, execution algorithms typically save 10-30 bps compared to immediate market orders. For larger orders (5-20% of ADV), savings can be 50-200 bps. The savings come from reducing market impact by spreading the order over time and matching liquidity patterns.
+For orders representing 1-5% of daily volume, savings from execution algorithms vary by size, spread and volatility and should be measured on live quotes rather than assumed. For larger orders (5-20% of ADV), savings vary and are not guaranteed; actual savings depend on liquidity and market conditions. The savings come from reducing market impact by spreading the order over time and matching liquidity patterns.
 
 ### How do I measure execution quality?
 

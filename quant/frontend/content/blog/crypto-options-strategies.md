@@ -11,7 +11,7 @@ keywords: ["crypto options", "Deribit options", "options strategies", "volatilit
 
 Cryptocurrency options markets have evolved into sophisticated derivatives venues enabling institutional-grade strategies previously available only in traditional finance. Deribit has been the largest crypto options exchange, with the deepest liquidity in BTC and ETH options and a range of contract maturities.
 
-This comprehensive guide examines options strategies from basic calls/puts to advanced volatility arbitrage, Greeks-based hedging, and portfolio construction techniques specific to crypto's 60-120% annual volatility environment.
+This comprehensive guide examines options strategies from basic calls/puts to advanced volatility arbitrage, Greeks-based hedging, and portfolio construction techniques specific to crypto's typically high annual volatility, which varies widely by asset and period.
 
 ## Options Fundamentals and Mechanics
 
@@ -21,7 +21,7 @@ The Greeks quantify options' sensitivity to price movements: Delta (price sensit
 
 Option pricing relies on implied volatility (market's forecast of future volatility). Black-Scholes (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)) formula: Call_Price = S×N(d1) - K×e^(-rT)×N(d2), where S is spot price, K is strike, T is time to expiration, and N() is cumulative normal distribution. When implied volatility rises, all option prices increase regardless of price direction - volatility plays major role in options returns.
 
-Deribit offers perpetual options (no expiration) and dated options (expirations from 1 week to 6 months). Perpetual options simplify position management since they don't expire. Dated options allow volatility term structure strategies (front-month cheap, back-month expensive = backwardation arbitrage).
+Deribit offers dated options (expiries from 1 week to 6 months); for perpetual exposure traders use perpetual futures. Dated options allow volatility term structure strategies (front-month cheap, back-month expensive = backwardation arbitrage).
 
 The Greeks impact returns significantly. A long call losing 10% from price decline might gain from Theta decay slowing or Gamma profit from volatility surge. Sophisticated traders actively manage Greek exposure rather than relying on simple directional bets.
 
@@ -39,7 +39,7 @@ Iron condors (sell out-of-money call spread, sell out-of-money put spread) profi
 
 Theta decay strategies explicitly profit from time passing. Short straddles (sell call and put at same strike) collect premium from theta decay. If BTC stays near strike for 7 days, time decay profits $500-1,000. Risk: unlimited loss if BTC moves >2σ from strike. Generally requires active management to prevent losses from large moves.
 
-[Position sizing](/blog/position-sizing-strategies) limits exposure. Kelly criterion for options: Position_Size = (Win_Rate × Avg_Win - Loss_Rate × Avg_Loss) / Max_Loss.
+[Position sizing](/blog/position-sizing-strategies) limits exposure. Kelly criterion for options (simplified): Kelly% = (p*b - q)/b, where p is win probability, b is win/loss payoff ratio, and q = 1 - p; size positions as a fraction of Kelly to control variance.
 
 ## Volatility Arbitrage and IV Strategies
 
@@ -121,4 +121,4 @@ Volatility crush (IV collapse after event uncertainty resolves) causes option lo
 
 **What's the difference between Deribit and Binance options for strategies?**
 
-Deribit: larger volume ($3-5B weekly), tighter spreads (0.5-2% bid-ask), perpetual options (no expiration), better API and institutional infrastructure, best for professional traders. Binance options: easier KYC/lower barriers, integrated with spot/futures accounts, lower liquidity (wider spreads 2-5%), smaller contract sizes, better for retail traders new to options. Deribit superior for arbitrage, spreads, and advanced Greeks management. Binance acceptable for simple directional bets. Professional traders use both: strategy development on Deribit, retail flow capture on Binance.
+Deribit: typically the venue with deepest BTC/ETH options liquidity and relatively tight spreads (verify current volume and spreads from exchange data at the time of reading), better API and institutional infrastructure, best for professional traders. Binance options: easier KYC/lower barriers, integrated with spot/futures accounts, lower liquidity (wider spreads 2-5%), smaller contract sizes, better for retail traders new to options. Deribit superior for arbitrage, spreads, and advanced Greeks management. Binance acceptable for simple directional bets. Professional traders use both: strategy development on Deribit, retail flow capture on Binance.

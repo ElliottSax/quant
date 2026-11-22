@@ -150,7 +150,7 @@ normal_var_99 = -np.percentile(spy_returns, 1)
 print(f"EVT VaR(99%): {evt_var_99:.4f}")
 print(f"Normal VaR(99%): {normal_var_99:.4f}")
 print(f"Difference: {(evt_var_99/normal_var_99 - 1)*100:.1f}%")
-# EVT typically shows 20-50% higher tail risk
+# EVT estimates often exceed normal-VaR estimates; magnitude depends on tail and sample
 ```
 
 ### 2. Return Period Estimation

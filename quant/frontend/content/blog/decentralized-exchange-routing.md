@@ -18,9 +18,9 @@ This comprehensive guide examines DEX routing mechanics, aggregator selection, M
 
 Optimal swap paths balance multiple factors: liquidity depth, pool fee structures, price impact, and gas costs.
 
-The simple path: swap USDC → USDT directly on a single pool (Curve stablecoin pool). Known cost: 0.04% fee, minimal slippage (<0.1% for $1M+ position). Result: direct path easy to calculate.
+The simple path: swap USDC → USDT directly on a single pool (Curve stablecoin pool). Fees and slippage vary by pool, size, and market conditions; verify via quote. Result: direct path easy to calculate.
 
-The complex path: swap USDC → ETH → stETH → USDT via three pools (leveraging specialized liquidity). If USDC-ETH pool has deep liquidity ($100M+), ETH-stETH pool offers better rates than direct, and stETH-USDT has cheapest fees, multi-hop achieves 0.15% total cost versus 0.3% direct. Savings: 15 basis points on $1M = $1,500.
+The complex path: swap USDC → ETH → stETH → USDT via three pools (leveraging specialized liquidity). If USDC-ETH pool has deep liquidity ($100M+), ETH-stETH pool offers better rates than direct, and stETH-USDT has cheapest fees, multi-hop can sometimes reduce cost versus direct, but actual costs must be quoted. For illustration, a 15 basis point saving on $1M would be $1,500, but actual savings vary and must be verified.
 
 The DEX aggregator challenge: 100+ different pools across multiple protocols with varying fee tiers, liquidity depths, and slippage curves require complex calculations to find optimal routing. Brute force optimization checking all possible paths becomes computationally prohibitive.
 
@@ -46,7 +46,7 @@ Aggregator selection depends on priorities: (1) best price: 1inch, (2) MEV prote
 
 ## MEV Protection and Execution
 
-Maximal Extractable Value extraction through sandwich attacks (frontrunning and backrunning) extracts 10-50% of expected profit from large trades.
+Maximal Extractable Value extraction through sandwich attacks (frontrunning and backrunning) can extract a material share of expected profit from large trades, varying by size and venue.
 
 The sandwich attack: you submit trade on Uniswap (publicly visible in mempool). Searcher frontrunns with similar trade moving price, your trade executes at worse price, searcher backruns selling at profit. On $1M USDC→USDT trade, sandwich costs 20-50 basis points = $2,000-5,000.
 

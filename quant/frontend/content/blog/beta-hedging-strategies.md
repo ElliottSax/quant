@@ -53,7 +53,7 @@ Since beta_short = 1.0 (we are shorting the market itself):
 
 ### Hedging Instruments
 
-**Index Futures (e.g., E-mini S&P 500)**: The most capital-efficient instrument. One E-mini contract controls approximately $250,000 of S&P 500 exposure (at index level 5000, multiplier $50). For an $11.5M hedge, you need approximately 46 contracts. Benefits include deep liquidity, minimal tracking error, and embedded leverage (margin requirement approximately 5-10% of notional).
+**Index Futures (e.g., E-mini S&P 500)**: The most capital-efficient instrument. One E-mini contract controls approximately $250,000 of S&P 500 exposure (at index level 5000, multiplier $50). For an $11.5M hedge, you need approximately 46 contracts. Benefits include deep liquidity, minimal tracking error, and embedded leverage (margin for E-mini S&P 500 futures is set by the exchange and varies over time; check the current CME requirement).
 
 **ETFs (e.g., SPY, IWM)**: Suitable for smaller portfolios or when futures are impractical. SPY shares can be borrowed and sold short, with the short sale proceeds earning rebate interest. Tracking error is minimal for SPY but can be significant for less liquid ETFs.
 
@@ -107,7 +107,7 @@ Portfolio beta is not static. It changes as stock prices move (higher beta stock
 
 The optimal rehedging frequency balances precision against transaction costs:
 
-**Daily rehedging**: Maximum precision, but transaction costs (bid-ask spread, market impact, commissions) can reach 0.5-1.0% annually for active strategies. Appropriate for highly leveraged portfolios where small beta drift produces large P&L impact.
+**Daily rehedging**: Maximum precision, but transaction costs from daily rehedging can be material; estimate them from your own spread, impact, and commission assumptions. Appropriate for highly leveraged portfolios where small beta drift produces large P&L impact.
 
 **Weekly rehedging**: Acceptable for most equity long/short strategies. Transaction costs are substantially reduced.
 
@@ -150,7 +150,7 @@ For factors without direct tradable proxies, construct factor-mimicking portfoli
 
 **Short squeeze risk**: Short positions in ETFs or individual stocks face recall risk during market stress, potentially forcing hedge closure at the worst possible time. Futures do not have this risk.
 
-**Cost of carry**: Short positions in ETFs require borrowing costs. Hard-to-borrow stocks can cost 5-20% annually in borrow fees, making them impractical as hedging instruments. Futures typically have lower carry costs.
+**Cost of carry**: Short positions in ETFs require borrowing costs. Borrow fees for hard-to-borrow stocks can be substantial; check your broker’s current locate/borrow schedule before using them as hedging instruments. Futures typically have lower carry costs.
 
 ## Key Takeaways
 

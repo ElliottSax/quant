@@ -134,9 +134,7 @@ The ERC portfolio for N assets cannot be solved analytically for N > 2. Numerica
 
 **Cyclical Coordinate Descent**: Iteratively update each weight while holding others constant. Simple to implement and reliable convergence. Each iteration solves a one-dimensional root-finding problem.
 
-**Newton's Method**: Use the gradient and Hessian of the risk budget deviation objective. Quadratic convergence near the solution. Requires analytical gradients:
-
-**Gradient w.r.t. w_i: partial(F)/partial(w_i) = 2 * sum(RC_j * (delta_{ij} * MRC_j + w_j * partial(MRC_j)/partial(w_i) - RC_i * ...))**
+**Newton's Method**: Use the gradient and Hessian of the risk budget deviation objective. Quadratic convergence near the solution. In practice the objective is solved numerically; see code below.
 
 ### Covariance Matrix Considerations
 
@@ -154,7 +152,7 @@ Risk budgets change as the covariance matrix evolves, triggering rebalancing. To
 - Set a minimum risk budget deviation threshold (e.g., 2% of total risk) before rebalancing
 - Use partial rebalancing (move 50% toward target)
 - Implement cash flow-based rebalancing where possible
-- Monthly rebalancing is sufficient for most risk budgeting implementations
+- Rebalancing frequency should be tested on your own data; many implementations review monthly but adjust based on costs
 
 ## Risk Budgeting in Practice
 

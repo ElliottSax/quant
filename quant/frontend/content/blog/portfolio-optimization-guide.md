@@ -94,7 +94,7 @@ Where RC_i is the risk contribution of asset i, and RC_target = 1/N for equal ri
 
 *Results for this analysis are not published here. Test any strategy on your own data with realistic costs before relying on it; past performance does not predict future results.*
 
-Risk parity allocates heavily to bonds (35%) because bonds have low volatility, so a larger allocation is needed to equalize risk contribution. This is the key insight: risk parity treats each asset's risk budget equally rather than its dollar allocation.
+Risk parity tends to allocate more to low-volatility assets such as bonds than a capital-weighted mix, with the exact weight depending on the universe, period and covariance estimate. This is the key insight: risk parity treats each asset's risk budget equally rather than its dollar allocation.
 
 ### Risk Parity Backtest (2010-2025)
 
@@ -178,7 +178,7 @@ Portfolio optimization is the mathematical framework for determining optimal wei
 
 ### Does portfolio optimization actually work in practice?
 
-Naive mean-variance optimization often disappoints in practice due to estimation error sensitivity. However, improved methods (Black-Litterman, risk parity, robust optimization) consistently outperform both naive MVO and simple heuristics (equal weight, 60/40) on a risk-adjusted basis. The key is managing estimation error through constraints, shrinkage estimators, or methods that reduce dependence on return estimates. Our 10-year out-of-sample test showed Black-Litterman achieving Sharpe 0.82 versus 0.52 for naive MVO.
+Naive mean-variance optimization often disappoints in practice due to estimation error sensitivity. However, improved methods (Black-Litterman, risk parity, robust optimization) can appear more stable than naive MVO in some samples on a risk-adjusted basis, but results depend on data and period; test on your own data with realistic costs before relying on any figure. The key is managing estimation error through constraints, shrinkage estimators, or methods that reduce dependence on return estimates.
 
 ### How many assets should be in an optimized portfolio?
 

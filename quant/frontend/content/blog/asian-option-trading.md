@@ -60,7 +60,7 @@ $$
 $$
 
 $$
-\hat{\sigma}^2 = \sigma^2 \frac{\Delta t}{N^2} \sum_{i=1}^{N}(2(N-i)+1) = \sigma^2 \Delta t \frac{(N+1)(2N+1)}{6N^2}
+\hat{\sigma}^2 = \sigma^2 T \frac{(N+1)(2N+1)}{6N^2} = \sigma^2 \Delta t \frac{(N+1)(2N+1)}{6N}
 $$
 
 $$
@@ -167,7 +167,7 @@ def asian_arithmetic_mc(S: float, K: float, T: float, r: float,
 result = asian_arithmetic_mc(100, 100, 1, 0.05, 0.20, 0, 252)
 print(f"Arithmetic Asian Call (CV): ${result['control_variate']:.4f}")
 print(f"Variance Reduction: {result['variance_reduction']:.1f}x")
-# Typical variance reduction: 50-200x
+# Variance reduction varies with setup; measure it on your own paths.
 ```
 
 The geometric Asian serves as an excellent control variate because it is highly correlated with the arithmetic Asian (correlation > 0.99) and has a known analytical price. This reduces the standard error, often substantially; measure the reduction on your own paths.
@@ -204,7 +204,7 @@ The 39% discount reflects the reduced uncertainty about the average vs. the term
 
 ### Delta
 
-The delta of an Asian option decreases as more averaging observations are recorded. Once 80% of the averaging period has elapsed, the running average dominates and delta approaches zero:
+As the averaging period progresses, the running average dominates and delta generally declines:
 
 ```python
 def asian_delta(S: float, K: float, T: float, r: float, sigma: float,

@@ -48,7 +48,7 @@ The stock-bond correlation is arguably the most important cross-asset relationsh
 
 **Historical Pattern:** From 1960 to 2000, stocks and bonds were positively correlated (both driven by inflation expectations). Since 2000, the correlation has been predominantly negative (bonds serve as a flight-to-safety during equity selloffs).
 
-**Current Regime (2020s):** The stock-bond correlation has fluctuated, sometimes positive during inflation-driven selloffs (2022) and negative during growth scares. This instability means that blindly relying on bonds as an equity hedge can be unreliable.
+**Stock-bond regime variation:** The stock-bond correlation has varied across regimes; check a current estimate before relying on a sign. This instability means that blindly relying on bonds as an equity hedge can be unreliable.
 
 ### Stocks and the Dollar (USD)
 
@@ -61,8 +61,8 @@ The correlation is strongest during risk-off events and can weaken substantially
 ### Commodities and Currencies
 
 Strong structural correlations exist between specific commodities and currencies:
-- **AUD/USD and iron ore/copper:** Australia's commodity-export economy creates a strong positive correlation (typically 0.5-0.7)
-- **USD/CAD and crude oil:** Canada's oil exports drive CAD strength when oil rallies (inverse correlation on USD/CAD, approximately -0.5 to -0.7)
+- **AUD/USD and iron ore/copper:** Australia's commodity-export economy means AUD/USD often moves with iron ore/copper; correlation varies by window — estimate on your own data
+- **USD/CAD and crude oil:** Canada's oil exports drive CAD strength when oil rallies (USD/CAD often moves inversely to crude oil; estimate the correlation on your own sample)
 - **Gold and USD:** Generally inversely correlated (-0.3 to -0.6), with gold acting as a dollar hedge
 
 ## Rolling Correlation Analysis

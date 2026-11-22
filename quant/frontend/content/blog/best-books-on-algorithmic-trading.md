@@ -75,9 +75,9 @@ Algorithmic trading is used in a variety of real-world applications, including h
 The following table summarizes the use of algorithmic trading in real-world applications:
 | Application | Description | Return |
 | --- | --- | --- |
-| Hedge Funds | Use algorithmic trading strategies to generate returns | 10-20% |
-| Investment Banks | Use algorithmic trading strategies to provide liquidity | 5-10% |
-| Proprietary Trading Firms | Use algorithmic trading strategies to generate returns | 15-20% |
+| Hedge Funds | Use algorithmic trading strategies to generate returns | Varies widely (illustrative) |
+| Investment Banks | Use algorithmic trading strategies to provide liquidity | Varies widely (illustrative) |
+| Proprietary Trading Firms | Use algorithmic trading strategies to generate returns | Varies widely (illustrative) |
 Overall, the key to successful algorithmic trading is to have a deep understanding of its real-world applications, including hedge funds, investment banks, and proprietary trading firms.
 
 ## Common Mistakes

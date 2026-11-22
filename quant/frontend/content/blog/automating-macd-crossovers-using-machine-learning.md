@@ -163,7 +163,7 @@ model_proba = model.predict_proba(X_test_scaled)[:, 1]
 # Only take signals with >70% confidence
 high_confidence_signals = model_proba > 0.70
 
-# This reduces trades by 34% while improving win rate to 72%
+# This filter reduces trade count and may change win rate; measure both out-of-sample with costs.
 ```
 
 ### Multi-Timeframe Confirmation

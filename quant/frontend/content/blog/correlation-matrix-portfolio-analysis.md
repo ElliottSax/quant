@@ -139,9 +139,7 @@ for ticker, corrs in tail_corrs.items():
     print(f"{ticker}\t\t{corrs['normal']:.3f}\t\t{corrs['tail']:.3f}\t\t{diff:+.3f}")
 ```
 
-Results show equity-bond tail correlation typically spikes during crashes:
-- Normal: -0.2 (good diversification)
-- Tail (5% extremes): +0.4 (breakdown)
+Tail correlations often exceed normal correlations and can spike during crashes (for example, an equity-bond tail correlation that is higher than the full-sample value); estimate tail correlation on your own data and report the sample.
 
 This tail dependence is why diversified portfolios still suffer during crises.
 
@@ -192,7 +190,7 @@ print(f"Volatility: {min_var_vol:.2%}")
 print(f"Sharpe Ratio: {min_var_return / min_var_vol:.2f}")
 ```
 
-Minimum variance portfolios typically overweight bonds and underweight equities, reducing return but achieving ~40-50% volatility reduction. If you want the closed-form tangency weights instead of running this optimizer yourself, our [Max Sharpe Portfolio](/tools/max-sharpe) tool computes them directly from expected returns, vols, and correlations.
+Minimum-variance portfolios typically overweight bonds and underweight equities, reducing return but often reducing volatility; the amount depends on the asset universe and period — test on your own data. If you want the closed-form tangency weights instead of running this optimizer yourself, our [Max Sharpe Portfolio](/tools/max-sharpe) tool computes them directly from expected returns, vols, and correlations.
 
 ### Equal Risk Contribution Portfolio
 

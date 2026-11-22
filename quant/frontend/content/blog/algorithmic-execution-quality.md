@@ -9,7 +9,7 @@ keywords: ["algorithmic execution quality", "VWAP benchmark", "implementation sh
 ---
 # Measuring Algorithmic Execution Quality: Benchmarks and Metrics
 
-Execution quality is the difference between the theoretical return of a [trading strategy](/blog/breakout-trading-strategy) and its realized return. For [quantitative strategies](/blog/crypto-defi-quant-strategies) that trade frequently, execution costs can consume 30-60% of gross alpha. Measuring, analyzing, and improving execution quality is therefore one of the most impactful activities in systematic trading. This guide covers the primary execution benchmarks, decomposition of trading costs, and the analytical framework for evaluating algorithmic execution.
+Execution quality is the difference between the theoretical return of a [trading strategy](/blog/breakout-trading-strategy) and its realized return. For [quantitative strategies](/blog/crypto-defi-quant-strategies) that trade frequently, execution costs can consume a material share of gross alpha; actual costs vary and should be measured on your own trades. Measuring, analyzing, and improving execution quality is therefore one of the most impactful activities in systematic trading. This guide covers the primary execution benchmarks, decomposition of trading costs, and the analytical framework for evaluating algorithmic execution.
 
 ## Execution Benchmarks
 
@@ -87,7 +87,7 @@ Where:
 - sigma = daily volatility
 - Q = order size (shares)
 - V = average daily volume (shares)
-- k = impact coefficient (typically 0.1-0.5, estimated from historical execution data)
+- k = impact coefficient (estimated from historical execution data and varies by market; see your own TCA)
 - sign = +1 for buys, -1 for sells
 
 **Calibration**: Estimate k from the fund's own transaction cost data by regressing realized impact on sigma * sqrt(Q/V). The coefficient varies by market (US equities: k approximately 0.15-0.30; emerging markets: k approximately 0.30-0.50; small-cap: k approximately 0.25-0.45).

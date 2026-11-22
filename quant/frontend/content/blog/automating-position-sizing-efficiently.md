@@ -313,7 +313,7 @@ A: Yes, but carefully. After 3 consecutive wins, increase size by 20%. After 2 c
 A: Use simple max loss: "risk $500 per trade" or "risk 0.5% of account." Calculate position size to limit loss to this amount.
 
 **Q: Is 2% risk per trade safe?**
-A: Depends. With 50% win rate, 2% causes account drawdowns >30%. Never exceed 2% unless win rate >65%.
+A: Depends. With a 50% win rate, 2% risk per trade can produce sizable drawdowns that vary with sequence; simulate on your data. Never exceed 2% unless win rate >65%.
 
 **Q: How should I adjust sizing if I'm on a losing streak?**
 A: Reduce sizing by 50% after 3 consecutive losses, 25% after 2. Resume normal after 3 consecutive wins. This "dynamic safety" prevents ruin.
@@ -323,6 +323,6 @@ A: 2-3x for equities, 5-10x for forex/crypto. Conservative leverage = 50-year su
 
 ## Conclusion
 
-Position sizing determines portfolio longevity more than any other factor. Fixed fractional (2%), Kelly Criterion (25%), and Equal-Risk approaches all deliver 2.3+ Sharpe ratios when properly implemented. The framework presented—volatility adjustment, leverage constraints, drawdown management, signal strength scaling—represents institutional best practices.
+Position sizing determines portfolio longevity more than any other factor. Fixed fractional (2%), Kelly Criterion (25%), and Equal-Risk approaches all affect risk-adjusted returns and must be evaluated out-of-sample with costs; no Sharpe is guaranteed. The framework presented—volatility adjustment, leverage constraints, drawdown management, signal strength scaling—represents institutional best practices.
 
 Key principle: size every position to survive the worst-case drawdown. If your largest position can exceed 5% of account equity, your sizing is too aggressive. Professional traders optimize for survival first, returns second. This perspective separates sustainable traders from account casualties.

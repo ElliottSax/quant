@@ -37,7 +37,7 @@ Gamma measures how fast delta changes as the underlying moves. High gamma positi
 
 Theta measures the daily loss in option value due to time passing, all else equal. Short options positions earn theta; long options positions pay theta.
 
-**Quantitative application**: Theta strategies (selling options premium) provide a systematic edge because implied volatility consistently exceeds realized volatility by 2-4 percentage points on average, a phenomenon known as the Volatility Risk Premium.
+**Quantitative application**: Theta strategies (selling options premium) seek to capture the Volatility Risk Premium — implied volatility has tended to exceed subsequently realized volatility on major indices over long samples, but the size varies by period and measurement and can turn negative in crashes; measure it yourself on your own sample.
 
 ### Vega: Volatility Sensitivity
 
@@ -183,7 +183,7 @@ This trade earns the "roll yield" as front-month futures converge toward spot VI
 
 ### What is the volatility risk premium and how do you exploit it?
 
-The volatility risk premium (VRP) is the consistent spread between implied volatility (what the market expects) and realized volatility (what actually occurs). On the S&P 500, implied volatility exceeds realized by 2-4 percentage points on average. You exploit it by selling options (capturing high implied volatility) and delta-hedging (isolating the volatility component from directional risk). The VRP exists because investors willingly overpay for portfolio protection, creating a systematic transfer from option buyers to option sellers.
+The volatility risk premium (VRP) is the spread between implied volatility (what the market expects) and realized volatility (what actually occurs). On the S&P 500 the premium has been positive on average over some long samples, but the average varies widely and is not a reliable constant — check your own sample period. You exploit it by selling options (capturing high implied volatility) and delta-hedging (isolating the volatility component from directional risk). The VRP exists because investors often pay up for portfolio protection, though the transfer is not consistent and can reverse in crashes.
 
 ### How much capital do you need for options trading strategies?
 

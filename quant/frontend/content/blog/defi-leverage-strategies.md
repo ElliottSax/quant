@@ -70,7 +70,7 @@ The tiered leverage framework: 40% portfolio without leverage (capital safety), 
 
 Dynamic leverage adjustment responds to market conditions: Bull markets (low volatility): increase leverage to 3-4× (lower liquidation risk). Consolidation (medium volatility): maintain 1.5-2× leverage. Bear markets (high volatility): reduce to 1× or zero (eliminate liquidation risk).
 
-Compounding leverage captures exponential growth: $100,000 at 2× leverage earning 12% net yield = $112,000 year 1. Redeploy at 2× leverage again = $125,440 year 2. Year 3 = $140,493. Compare: 0× leverage: $112,000 year 1, $125,440 year 2, $140,493 year 3. Same total since leverage applied consistently, but leverage provides more flexibility to deleverage when needed.
+Compounding leverage captures exponential growth: $100,000 at 2× leverage earning 12% net yield = $112,000 year 1. Redeploy at 2× leverage again = $125,440 year 2. Year 3 = $140,493. With the same 12% unlevered yield before borrow costs, an unlevered portfolio would not show the same totals - leverage adds return only to the extent the yield exceeds the borrow rate, net of costs; it also provides flexibility to deleverage when needed.
 
 Hedging with perpetual shorts: if deploying leverage for yield (market-neutral intent), hedge price exposure via perpetual shorts. Borrow $7,500 USDC at 4%, deploy to 8% yield farm, short $7,500 USDC notional via perpetuals. If USDC depreciates, short gains offset, creating isolated yield capture.
 

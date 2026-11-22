@@ -46,7 +46,7 @@ CEX-DEX arbitrage exploits price differences between centralized exchanges and d
 
 A typical CEX-DEX arbitrage opportunity occurs when Ethereum trades at $2,500 on Coinbase but the ETH/USDC pool on Uniswap V3 reflects a price of $2,530 due to low liquidity or recent large trades. The arbitrageur buys ETH on Coinbase at $2,500 and immediately swaps it for USDC on Uniswap at $2,530, profiting $30 per ETH minus fees.
 
-Gas optimization becomes critical for CEX-DEX arbitrage profitability. A simple Uniswap swap costs 120,000-180,000 gas. At 50 gwei gas prices and $2,500 ETH, that translates to roughly $15-22.50 per trade (120,000-180,000 gas x 50 gwei x $2,500). The $30 gross profit shrinks to about $7.50-15 net profit, requiring careful opportunity selection.
+Gas optimization becomes critical for CEX-DEX arbitrage profitability. A simple Uniswap swap consumes on the order of 1e5 gas; multiply by current gas price and ETH price to estimate dollar cost at the time of execution. Subtract that cost from gross profit to assess net profit, requiring careful opportunity selection.
 
 Flash loan integration enables capital-efficient CEX-DEX arbitrage. Instead of using personal capital, traders borrow millions from Aave or dYdX within a single transaction, execute the arbitrage, repay the loan plus 0.09% fee, and keep the profit.
 

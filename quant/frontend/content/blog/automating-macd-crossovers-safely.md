@@ -494,7 +494,7 @@ Test in the broker's sandbox/paper trading environment. Create positions, then t
 
 ### What daily loss limit should I set?
 
-2% of NAV is the industry standard for single-strategy daily loss limits. For a diversified portfolio running multiple strategies, 3-5% total. The limit should be set at a level where: (1) it is rarely triggered during normal operation, (2) it prevents losses from compounding during system malfunctions, and (3) it does not cut off profitable trading during legitimate volatile days. Review and adjust quarterly.
+A common starting point is 2% of NAV for single-strategy daily loss limits; set limits from your own risk analysis. For a diversified portfolio running multiple strategies, 3-5% total. The limit should be set at a level where: (1) it is rarely triggered during normal operation, (2) it prevents losses from compounding during system malfunctions, and (3) it does not cut off profitable trading during legitimate volatile days. Review and adjust quarterly.
 
 ### How do I handle the system during overnight/weekend periods?
 

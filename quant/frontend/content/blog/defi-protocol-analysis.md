@@ -17,7 +17,7 @@ This comprehensive guide develops systematic DeFi protocol evaluation frameworks
 
 Total Value Locked (TVL) represents cryptocurrency deposited into DeFi smart contracts. High TVL indicates: user confidence in protocol safety, sufficient liquidity for trades/withdrawals, and network effects creating competitive advantages. However, high TVL alone doesn't indicate quality - Celsius had $20B TVL before collapse.
 
-TVL trending analysis identifies trajectory changes. Stable/rising TVL indicates healthy growth, user satisfaction, and competitive positioning. Falling TVL suggests: losing user confidence, superior competing protocols attracting deposits, or perceived risk increases. Protocol TVL decline >20% monthly warrants investigation.
+TVL trending analysis identifies trajectory changes. Stable/rising TVL indicates healthy growth, user satisfaction, and competitive positioning. Falling TVL suggests: losing user confidence, superior competing protocols attracting deposits, or perceived risk increases. A large monthly TVL decline may warrant investigation.
 
 The TVL composition matters significantly. Protocols weighted 70% toward single stablecoin (USDC) face different risk than diversified across 10 assets. Concentrated TVL suggests: limited functionality (stablecoin lending only), concentrated userbase (USDC hodlers), or regulatory risk (USDC depeg). Diversified TVL suggests: broader adoption, resilience to single-asset risk.
 
@@ -31,11 +31,11 @@ The TVL creation timestamp reveals organic vs. mercenary capital flow. Protocols
 
 Trading volume relative to TVL indicates protocol efficiency and user engagement. Uniswap V3 with $200M TVL and $20B daily volume shows exceptional capital efficiency - each dollar of TVL generates $100 daily trading volume. Newer AMMs with $500M TVL but $10M daily volume show poor capital efficiency.
 
-The volume-to-TVL ratio (daily volume / TVL) provides comparable efficiency metric across venues. Optimized ratio: 5-10× (high volume trading platform with concentrated capital). Healthy range: 2-5× (balanced utility). Poor range: <1× (underutilized), >20× (temporary spike, unsustainable).
+The volume-to-TVL ratio (daily volume / TVL) provides comparable efficiency metric across venues. Volume-to-TVL ratios vary widely; compare within similar venues. Healthy range: 2-5× (balanced utility). Poor range: <1× (underutilized), >20× (temporary spike, unsustainable).
 
 Volume quality assessment differentiates genuine trading from wash trading. Genuine: diverse traders, wide price ranges traded, volume consistent across times/days. Wash trading: same addresses repeatedly trading, limited price range, volume concentrated during off-hours (avoiding detection). Tools like Nansen, CryptoQuant track transaction sources identifying wash-trading signatures.
 
-Slippage measurements quantify trading friction. Execute 10 ETH buy on Uniswap: expected price impact 0.2-0.3%, actual slippage 0.3-0.5% (normal, accounts for MEV). Execute 10 ETH on unknown AMM: slippage 5-10% (poor liquidity/high spreads). Slippage >2% typically indicates protocol doesn't meet institutional standards.
+Slippage measurements quantify trading friction. Execute 10 ETH buy on Uniswap: expected price impact 0.2-0.3%, actual slippage 0.3-0.5% (normal, accounts for MEV). Execute 10 ETH on unknown AMM: slippage 5-10% (poor liquidity/high spreads). High slippage may indicate low liquidity.
 
 Fee tier analysis on AMMs like Uniswap V3 reveals user preferences. If 80% volume trades through 0.3% fee tier (main tier), protocol is healthy. If volume concentrates in 0.01% tier (stablecoins only) or 1% tier (depressed volume), suggests concentrated use case. Healthy protocols show volume distribution across multiple tiers.
 
@@ -45,7 +45,7 @@ User metrics predict protocol sustainability better than TVL alone. Growing user
 
 Monthly active users (MAU) trend shows protocol health. Rising MAU indicates growing adoption. Falling MAU despite stable TVL suggests consolidation (few large positions dominating). Protocols showing 10-20% monthly MAU growth typically outperform consolidating competitors.
 
-User retention rates identify sticky protocols. Calculate: users active in month 1 / users active in month 2 = retention. Healthy protocols maintain 60-80% monthly retention (normal: 40-50% churn). High churn suggests: dissatisfaction, better competitive alternatives, or speculative flash participation.
+User retention rates identify sticky protocols. Calculate: users active in month 1 / users active in month 2 = retention. Retention varies widely; check a dataset for current figures and compare within similar protocols. High churn suggests: dissatisfaction, better competitive alternatives, or speculative flash participation.
 
 Transaction count and gas usage measure actual activity beyond capital. Protocols with rising transaction counts while TVL flat indicate increasing activity per dollar - positive momentum. Falling transaction counts with rising TVL suggests: fewer engaged users, larger passive positions, or reduced functionality usage.
 
@@ -73,9 +73,9 @@ The risk score calculation: Σ(Category_Score × Weight) / 100. Result: 85-100 =
 
 DeFi portfolio construction allocates capital across protocols managing individual and systemic risk.
 
-The protocol allocation framework: 40% to tier-1 (Aave, Compound, Curve, Uniswap) = 4-6% yield, 35% to tier-2 protocols (strong but newer) = 6-10% yield, 20% to tier-3 (higher risk) = 10-25% yield, 5% speculative tier-3 emerging = 50-100% yield potential.
+The protocol allocation framework: 40% to tier-1 (Aave, Compound, Curve, Uniswap) and 35% to tier-2 protocols (strong but newer) — example allocation only; yields vary and are not guaranteed, 20% to tier-3 (higher risk) = 10-25% yield, 5% speculative tier-3 emerging = 50-100% yield potential.
 
-This allocation generates blended 8-12% yield with lower volatility than concentrating tier-3. Tier-1 provides stability; tier-3 provides upside potential.
+Blended yield depends on market conditions and costs; diversification may reduce volatility compared with concentrating in tier-3, but results vary. Tier-1 provides stability; tier-3 provides upside potential.
 
 Risk parity allocation uses protocol scores for sizing. Don't allocate equally (one protocol could be 5× riskier). Allocate inversely: highest-score protocols get more capital, lowest-score less. Formula: Position_Size = Risk_Score / Σ(Risk_Scores) × Total_Capital.
 

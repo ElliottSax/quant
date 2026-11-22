@@ -37,7 +37,7 @@ To illustrate the potential profits from cross-venue arbitrage, consider the fol
 | ABC Corp. | $25.00 | $24.75 | $0.25 |
 | DEF Ltd. | $100.00 | $99.50 | $0.50 |
 
-In this example, the trader can generate a total profit of $1.25 per share by buying the stocks on the NASDAQ and selling them on the NYSE. Assuming a trading volume of 10,000 shares, the total profit would be $12,500. However, it is essential to consider the transaction costs, such as brokerage commissions and exchange fees, which can range from 0.1% to 0.5% of the trade value. For instance, if the brokerage commission is 0.2% of the trade value, the total transaction cost for the trade would be $250.
+In this example, the trader can generate a total profit of $1.25 per share by buying the stocks on the NASDAQ and selling them on the NYSE. Assuming a trading volume of 10,000 shares, the total profit would be $12,500. However, it is essential to consider the transaction costs, such as brokerage commissions and exchange fees, which vary by broker and venue; use your own fee schedule. For instance, if the brokerage commission is 0.2% of the trade value, the total transaction cost for the trade would be $250.
 
 ## Section 2: Quantitative Strategies and Statistical Analysis
 
@@ -85,10 +85,10 @@ For example, a trader who fails to properly analyze market data may identify a f
 The following questions and answers provide additional information and insights on cross-venue arbitrage strategies:
 
 Q: What is the minimum capital required to implement a cross-venue arbitrage strategy?
-A: The minimum capital required to implement a cross-venue arbitrage strategy depends on the specific strategy and market conditions. However, a minimum capital of $100,000 to $500,000 is typically recommended.
+A: The minimum capital required to implement a cross-venue arbitrage strategy depends on the specific strategy and market conditions. However, minimum capital depends on venue minimums, fees and desired diversification; size it from your own cost model.
 
 Q: What is the average return on investment for a cross-venue arbitrage strategy?
-A: The average return on investment for a cross-venue arbitrage strategy can range from 10% to 20% per annum, depending on the specific strategy and market conditions.
+A: Returns depend on strategy, costs and competition; measure them from your own backtest rather than assuming a range.
 
 Q: What are the key risks associated with cross-venue arbitrage strategies?
 A: The key risks associated with cross-venue arbitrage strategies include market risk, liquidity risk, and operational risk. Traders must carefully manage these risks to ensure profitable and sustainable performance.

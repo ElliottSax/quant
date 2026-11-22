@@ -57,9 +57,9 @@ Effective_Hedge_Cost = Forward_Rate - Spot_Rate
 - Spot: 1.0900
 - 6-month US rate: 4.5%
 - 6-month EUR rate: 3.5%
-- Forward: 1.0900 × (1.045/1.035) = 1.0995
+- Forward: 1.0900 × (1.045/1.035) = 1.1005
 
-Hedge cost: (1.0995 - 1.0900) / 1.0900 = 0.87% for 6 months or ~1.74% annualized
+Hedge cost: (1.1005 - 1.0900) / 1.0900 = 0.96% for 6 months or ~1.93% annualized
 
 ### 2. Currency Futures
 

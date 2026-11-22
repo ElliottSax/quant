@@ -20,7 +20,7 @@ Pairs trading: Long underperformer + Short outperformer when spread deviates fro
 
 **Example**: Long EWU (UK) / Short EWG (Germany) when ratio deviates from historical average.
 
-Spread = Price_A - (β × Price_B)
+Spread = Price_A - (Î² Ã— Price_B)
 
 ## Cointegration Testing
 

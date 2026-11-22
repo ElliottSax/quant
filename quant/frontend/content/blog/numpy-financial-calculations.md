@@ -15,7 +15,7 @@ This guide covers the NumPy operations that matter most for quant finance, with 
 
 ## Key Takeaways
 
-- **Vectorized operations** in NumPy run 50-100x faster than Python loops, which matters for real-time risk calculations across large portfolios.
+- **Vectorized operations** in NumPy are typically much faster than pure Python loops; the speed-up depends on operation and array size.
 - **Matrix algebra** (covariance matrices, eigendecomposition) is the foundation of [modern portfolio theory](/blog/mean-variance-optimization).
 - **Monte Carlo simulation** in NumPy can generate millions of scenarios in seconds for VaR and options pricing (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)).
 - **Broadcasting rules** let you apply operations across mismatched array shapes without explicit loops.

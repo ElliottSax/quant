@@ -15,7 +15,7 @@ The central promise of [modern portfolio theory](/blog/mean-variance-optimizatio
 
 ### Correlation Convergence in Historical Crises
 
-Average pairwise correlation among S&P 500 sector ETFs during selected periods:
+Example historical window — average pairwise correlations among S&P 500 sector ETFs during selected periods (illustrative; update with current data and cite source before use):
 
 | Period | Avg Correlation | VIX Level | Market Return |
 |--------|----------------|-----------|---------------|
@@ -62,7 +62,7 @@ The only asset pairs that maintain or improve their diversification during crise
 For a Gaussian copula, lambda_L = 0 for any correlation less than 1 -- the Gaussian copula produces zero tail dependence, systematically underestimating crisis correlation.
 
 For a Student-t copula with correlation 0.5:
-- nu = 5: lambda_L = 0.18 (18% probability of joint extreme event given one extreme event)
+- nu = 5: lambda_L = 0.18 (model-implied lower-tail dependence for a t-copula with rho=0.5; empirical tail dependence must be estimated on data)
 - nu = 3: lambda_L = 0.28
 - nu = 10: lambda_L = 0.09
 
