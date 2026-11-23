@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-11-08T00:32:03+00:00",
+ "generated_at": "2026-11-23T00:31:54+00:00",
  "spec_version": "0.4",
  "provider": "fmp",
  "data_start": "1990-01-02",
- "data_vintage": "2026-11-06",
+ "data_vintage": "2026-11-20",
  "universe": [
   "AAPL",
   "CVX",

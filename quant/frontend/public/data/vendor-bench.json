@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-08T00:32:16+00:00",
+ "generated_at": "2026-11-23T00:32:07+00:00",
  "method": "Each provider is probed through the same adapter interface the production pipeline uses. Figures are what the requests actually returned, not what the vendor documents.",
  "probes": {
   "history": {
@@ -45,8 +45,8 @@
      "symbol": "SPY",
      "requested_from": "1990-01-01",
      "earliest_returned": "1993-01-29",
-     "latest_returned": "2026-11-06",
-     "rows": 8502,
+     "latest_returned": "2026-11-20",
+     "rows": 8512,
      "span_years": 33.8,
      "ok": true
     },
@@ -55,7 +55,7 @@
       "symbol": "AAPL",
       "class": "US large-cap equity",
       "ok": true,
-      "rows": 464
+      "rows": 474
      },
      {
       "symbol": "PG",
@@ -68,7 +68,7 @@
       "symbol": "SPY",
       "class": "index ETF",
       "ok": true,
-      "rows": 464
+      "rows": 474
      },
      {
       "symbol": "QQQ",
@@ -100,13 +100,13 @@
     "adjustment": {
      "symbol": "AAPL",
      "corporate_action": "4:1 split 2020-08-31",
-     "worst_daily_move_pct": -8.0,
+     "worst_daily_move_pct": -8.01,
      "adjusted": true,
      "ok": true
     },
     "freshness": {
-     "latest_bar": "2026-11-06",
-     "days_behind_today": 1
+     "latest_bar": "2026-11-20",
+     "days_behind_today": 2
     }
    },
    "notes": [],
@@ -119,8 +119,8 @@
      "symbol": "SPY",
      "requested_from": "1990-01-01",
      "earliest_returned": "1993-01-29",
-     "latest_returned": "2026-11-06",
-     "rows": 8502,
+     "latest_returned": "2026-11-20",
+     "rows": 8512,
      "span_years": 33.8,
      "ok": true
     },
@@ -129,37 +129,37 @@
       "symbol": "AAPL",
       "class": "US large-cap equity",
       "ok": true,
-      "rows": 464
+      "rows": 474
      },
      {
       "symbol": "PG",
       "class": "US large-cap equity (entitlement canary)",
       "ok": true,
-      "rows": 464
+      "rows": 474
      },
      {
       "symbol": "SPY",
       "class": "index ETF",
       "ok": true,
-      "rows": 464
+      "rows": 474
      },
      {
       "symbol": "QQQ",
       "class": "index ETF",
       "ok": true,
-      "rows": 464
+      "rows": 474
      },
      {
       "symbol": "XLE",
       "class": "sector ETF",
       "ok": true,
-      "rows": 464
+      "rows": 474
      },
      {
       "symbol": "GLD",
       "class": "commodity ETF",
       "ok": true,
-      "rows": 464
+      "rows": 474
      }
     ],
     "coverage_summary": {
@@ -175,8 +175,8 @@
      "ok": true
     },
     "freshness": {
-     "latest_bar": "2026-11-06",
-     "days_behind_today": 1
+     "latest_bar": "2026-11-20",
+     "days_behind_today": 2
     }
    },
    "notes": [],
