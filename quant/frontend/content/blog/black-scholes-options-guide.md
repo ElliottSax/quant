@@ -9,7 +9,7 @@ keywords: ["Black-Scholes model", "options pricing formula", "Black-Scholes pyth
 ---
 # Black-Scholes Model: Options Pricing for Quant Traders
 
-The Black-Scholes (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)) model is the foundational framework for options pricing and risk management. Published in 1973 by Fischer Black, Myron Scholes, and Robert Merton, it provides closed-form solutions for European option prices under specific assumptions about the underlying asset's behavior. Despite its well-known limitations, Black-Scholes remains the lingua franca of options markets: traders quote in Black-Scholes implied volatility, risk is managed using Black-Scholes Greeks, and more sophisticated models are often expressed as extensions of the Black-Scholes framework.
+The Black-Scholes (see our [options calculator](https://calculatortools.com/blog/options-profit-calculator)) model is the foundational framework for options pricing and risk management. Published in 1973 by Fischer Black and Myron Scholes, with Robert Merton's companion paper the same year, it provides closed-form solutions for European option prices under specific assumptions about the underlying asset's behavior. Despite its well-known limitations, Black-Scholes remains the lingua franca of options markets: traders quote in Black-Scholes implied volatility, risk is managed using Black-Scholes Greeks, and more sophisticated models are often expressed as extensions of the Black-Scholes framework.
 
 This guide implements the complete Black-Scholes toolkit, from pricing and Greeks through implied volatility calculation and the model's practical limitations.
 
@@ -24,6 +24,7 @@ This guide implements the complete Black-Scholes toolkit, from pricing and Greek
 
 ```python
 import numpy as np
+import pandas as pd
 from scipy.stats import norm
 from scipy.optimize import brentq
 from dataclasses import dataclass
@@ -359,6 +360,9 @@ class OptionsPortfolio:
 
     def portfolio_greeks(self) -> dict:
         """Compute aggregate portfolio Greeks."""
+        # quantity is in contracts; each equity option contract covers 100 shares,
+        # so totals are in share-equivalent / dollar terms
+        multiplier = 100
         total = {"delta": 0, "gamma": 0, "theta": 0, "vega": 0, "rho": 0, "value": 0}
 
         for pos in self.positions:
@@ -368,19 +372,20 @@ class OptionsPortfolio:
             )
             g = greeks.all_greeks(pos["type"])
 
-            total["delta"] += g["delta"] * pos["quantity"]
-            total["gamma"] += g["gamma"] * pos["quantity"]
-            total["theta"] += g["theta"] * pos["quantity"]
-            total["vega"] += g["vega"] * pos["quantity"]
-            total["rho"] += g["rho"] * pos["quantity"]
-            total["value"] += g["price"] * pos["quantity"]
+            contracts = pos["quantity"] * multiplier
+            total["delta"] += g["delta"] * contracts
+            total["gamma"] += g["gamma"] * contracts
+            total["theta"] += g["theta"] * contracts
+            total["vega"] += g["vega"] * contracts
+            total["rho"] += g["rho"] * contracts
+            total["value"] += g["price"] * contracts
 
         return total
 
     def delta_hedge_shares(self) -> float:
         """Number of shares needed to delta-hedge the portfolio."""
         greeks = self.portfolio_greeks()
-        return -greeks["delta"] * 100  # Options are on 100 shares
+        return -greeks["delta"]  # delta is already in shares (x100 per contract)
 
 # Example: construct a portfolio
 portfolio = OptionsPortfolio()

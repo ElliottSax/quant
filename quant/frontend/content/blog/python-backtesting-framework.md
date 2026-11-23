@@ -139,21 +139,25 @@ pip install zipline-reloaded  # community fork
 pip install exchange-calendars
 ```
 
-### Factor-Based Strategy with Pipeline
+### Weekly Momentum Rotation
 
 ```python
 from zipline.api import (
     order_target_percent, record, symbol,
     schedule_function, date_rules, time_rules, set_slippage, set_commission
 )
-from zipline.pipeline import Pipeline
-from zipline.pipeline.factors import AverageDollarVolume, Returns
+from zipline.finance import slippage, commission
 from zipline import run_algorithm
 import pandas as pd
 
 def initialize(context):
     context.lookback = 60
     context.num_stocks = 10
+    # Fixed universe to rank (must exist in your ingested bundle)
+    context.assets = [symbol(s) for s in [
+        'AAPL', 'MSFT', 'AMZN', 'GOOGL', 'JPM', 'JNJ', 'XOM', 'PG', 'WMT', 'V',
+        'HD', 'CVX', 'PFE', 'KO', 'PEP', 'INTC', 'CSCO', 'MRK', 'DIS', 'BA',
+    ]]
 
     schedule_function(
         rebalance,
@@ -204,15 +208,14 @@ import numpy as np
 # Download data
 price = vbt.YFData.download('SPY', start='2015-01-01', end='2025-01-01').get('Close')
 
-# Parameter sweep: test all combinations of fast/slow MA periods
-fast_windows = np.arange(5, 50, 5)    # 5, 10, 15, ..., 45
-slow_windows = np.arange(20, 200, 10)  # 20, 30, 40, ..., 190
+# Parameter sweep: every (fast, slow) pair drawn from these windows
+windows = np.arange(5, 235, 5)  # 46 windows: 5, 10, ..., 230
 
 # Calculate all MA combinations simultaneously (vectorized)
 fast_ma, slow_ma = vbt.MA.run_combs(
     price,
-    window=fast_windows,
-    r=2,  # pairwise combinations
+    window=windows,
+    r=2,  # all pairs with fast < slow (1,035 combinations)
     short_names=['fast', 'slow']
 )
 

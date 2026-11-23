@@ -67,10 +67,10 @@ class FrameworkComparison:
 
             class SimpleStrategy(bt.Strategy):
                 def __init__(self):
-                    self.sma20 = bt.indicators.MovingAverage(
+                    self.sma20 = bt.indicators.SMA(
                         self.data.close, period=20
                     )
-                    self.sma50 = bt.indicators.MovingAverage(
+                    self.sma50 = bt.indicators.SMA(
                         self.data.close, period=50
                     )
 
@@ -85,7 +85,10 @@ class FrameworkComparison:
             cerebro.broker.setcash(100000.0)
 
             # Add data
-            data = bt.feeds.PandasData(dataname=pd.DataFrame())
+            # PandasData needs a DataFrame with a datetime index and
+            # open/high/low/close/volume columns; load your own here
+            ohlcv = pd.read_csv('ohlcv.csv', index_col='Date', parse_dates=True)
+            data = bt.feeds.PandasData(dataname=ohlcv)
             cerebro.adddata(data)
 
             # Add strategy
@@ -113,7 +116,7 @@ class FrameworkComparison:
                 if context.i % 100 == 0:
                     order(symbol('AAPL'), 10)
 
-                record(AAPL=data[symbol('AAPL')].close)
+                record(AAPL=data.current(symbol('AAPL'), 'close'))
 
             run_algorithm(
                 start=pd.Timestamp('2015-01-01'),
@@ -121,7 +124,8 @@ class FrameworkComparison:
                 initialize=initialize,
                 handle_data=handle_data,
                 capital_base=10000,
-                data_frequency='daily'
+                data_frequency='daily',
+                bundle='quandl'  # an ingested bundle is required (zipline ingest -b quandl)
             )
 
         except ImportError:
@@ -360,7 +364,7 @@ import backtrader as bt
 class ProductionStrategy(bt.Strategy):
     def __init__(self):
         # Technical indicators
-        self.sma = bt.indicators.MovingAverage(self.data.close, period=50)
+        self.sma = bt.indicators.SMA(self.data.close, period=50)
         # Risk management
         self.stop_loss = None
 
@@ -386,7 +390,7 @@ def initialize(context):
 
 def handle_data(context, data):
     # Sophisticated analysis and ordering
-    current_price = data[context.stock].close
+    current_price = data.current(context.stock, 'close')
     # Execute trades...
             '''
         },

@@ -52,7 +52,7 @@ def demonstrate_difference():
     common_trend = np.cumsum(np.random.randn(n) * 0.5)
     coint_a = common_trend + np.random.randn(n) * 0.3
     coint_b = 0.8 * common_trend + np.random.randn(n) * 0.3
-    spread_2 = coint_a - 0.8 * coint_b
+    spread_2 = coint_a - 1.25 * coint_b  # 1/0.8 cancels the common trend
 
     # Test both
     corr_1 = np.corrcoef(corr_not_coint_a, corr_not_coint_b)[0, 1]
@@ -338,10 +338,12 @@ class CointegrationStrategy:
                 elif z > self.entry_z:
                     position = -1
             elif position == 1:
-                if z > -self.exit_z or z > self.stop_z:
+                # take profit as z reverts up, stop out if it keeps falling
+                if z > -self.exit_z or z < -self.stop_z:
                     position = 0
             elif position == -1:
-                if z < self.exit_z or z < -self.stop_z:
+                # take profit as z reverts down, stop out if it keeps rising
+                if z < self.exit_z or z > self.stop_z:
                     position = 0
 
             signals.iloc[i] = position
@@ -351,10 +353,13 @@ class CointegrationStrategy:
         ret_a = prices_a.pct_change()
         ret_b = prices_b.pct_change()
 
+        # Trade on the next bar: today's close sets the position for tomorrow
         common = signals.index
-        strategy_ret = signals * (
-            ret_a.loc[common] - hr.loc[common] * ret_b.loc[common]
-        ) / (1 + hr.loc[common].abs())
+        pos = signals.shift(1)
+        hr_lag = hr.loc[common].shift(1)
+        strategy_ret = pos * (
+            ret_a.loc[common] - hr_lag * ret_b.loc[common]
+        ) / (1 + hr_lag.abs())
 
         return pd.DataFrame({
             "signal": signals,

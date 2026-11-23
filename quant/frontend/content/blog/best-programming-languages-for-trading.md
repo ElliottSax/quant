@@ -56,7 +56,7 @@ def simulate_path(params):
 
     return np.mean(price_paths[:, -1])
 
-# Python usefulness: 9/10 for research, 6/10 for HFT
+# Python usefulness (our opinion): 9/10 for research, 2/10 for HFT
 
 # C++ - Best for low-latency, performance-critical systems
 # Strengths:
@@ -141,9 +141,10 @@ public:
 # - Smaller ecosystem (Julia)
 # - Not suitable for production systems
 
-# MATLAB usefulness: 8/10 for research, 3/10 for production
-# Julia usefulness: 7/10 for research, 5/10 for production
+# MATLAB usefulness (our opinion): 8/10 for research, 2/10 for production
+# Julia usefulness (our opinion): 7/10 for research, 4/10 for production
 
+# Editorial opinion scores (not measured)
 comparison = {
     'Python': {'research': 9, 'production': 6, 'hft': 2, 'learning_curve': 'Easy'},
     'C++': {'research': 3, 'production': 9, 'hft': 10, 'learning_curve': 'Hard'},
@@ -249,14 +250,14 @@ def benchmark_languages():
     comparison = {
         'Python_pure_loop': f'{python_pure:.4f} seconds',
         'Python_NumPy': f'{python_numpy:.4f} seconds',
-        'C++_raw': '~0.0001 seconds (estimate)',
-        'Java_JIT_compiled': '~0.0005 seconds (estimate)',
-        'Go': '~0.0002 seconds (estimate)'
+        # Time C++, Java or Go yourself with the same loop on the same machine;
+        # untimed figures are not comparable with these measurements
     }
 
     return comparison
 
-# Latency requirements
+# Rough rules of thumb (not standards; depends on what is timed,
+# e.g. tick-to-trade vs order round-trip)
 latency_requirements = {
     'Research/Backtesting': '< 1 second okay',
     'Swing Trading': '< 100 milliseconds',
@@ -308,7 +309,7 @@ The best programming language for trading depends on:
 3. **Balance** - Go or Java
 4. **Long-term maintenance** - Python or Java
 
-Most successful trading firms use:
+A common split in practice:
 - Python for research and strategy development
 - C++ or Java for production systems
 - Go for modern microservices
