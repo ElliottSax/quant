@@ -46,10 +46,9 @@ class LiquidationMonitor:
 
         if exchange.lower() == 'binance':
             await self._subscribe_binance_liquidations(symbol)
-        elif exchange.lower() == 'bybit':
-            await self._subscribe_bybit_liquidations(symbol)
-        elif exchange.lower() == 'ftx':
-            await self._subscribe_ftx_liquidations(symbol)
+        else:
+            # Only Binance is implemented here; add other venues' streams the same way
+            raise ValueError(f"No liquidation feed implemented for {exchange}")
 
     async def _subscribe_binance_liquidations(self, symbol: str):
         """Subscribe to Binance liquidation stream"""

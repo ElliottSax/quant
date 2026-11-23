@@ -68,7 +68,8 @@ Forex markets close Friday, reopen Monday with potential 300+ pip gaps. Backtest
 def adjust_backtest_for_overnight_gaps(prices, is_friday_close, is_monday_open):
     """
     Simulate overnight gaps in forex backtests
-    Gaps are 1-2% for major pairs (EUR/USD, GBP/USD)
+    Weekend gaps on major pairs are usually small but can be large around
+    major news; size them from your own historical data
     """
     gap_adjusted_prices = prices.copy()
 
@@ -182,8 +183,8 @@ def model_forex_execution(
 ):
     """
     Model realistic forex execution with spread and slippage
-    Spread is 1-2 pips for major pairs (e.g., EUR/USD)
-    Slippage adds 0-2 pips depending on liquidity and volatility
+    Spread and slippage vary by broker, session and volatility; use your
+    broker's historical spreads rather than a fixed pip figure
     """
     pip_value = 0.01 if pair.endswith('JPY') else 0.0001
 

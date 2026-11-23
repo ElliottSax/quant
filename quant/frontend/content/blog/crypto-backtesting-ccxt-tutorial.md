@@ -310,10 +310,17 @@ class CryptoBacktester:
         returns = np.array(self.returns_series) if self.returns_series else np.array([])
 
         total_return = (values[-1] - self.initial_capital) / self.initial_capital
-        annual_return = total_return * 365 / len(returns) if len(returns) > 0 else 0
 
-        if len(returns) > 0 and np.std(returns) > 0:
-            sharpe = np.mean(returns) / np.std(returns) * np.sqrt(365)
+        # Annualize from elapsed time, so it works for any bar size (1h, 1d, ...)
+        start = pd.Timestamp(self.equity_curve[0]['timestamp'])
+        end = pd.Timestamp(self.equity_curve[-1]['timestamp'])
+        years = (end - start) / pd.Timedelta(days=365)
+        bars_per_year = len(returns) / years if years > 0 else 0
+
+        annual_return = (1 + total_return) ** (1 / years) - 1 if years > 0 else 0
+
+        if len(returns) > 0 and np.std(returns) > 0 and bars_per_year > 0:
+            sharpe = np.mean(returns) / np.std(returns) * np.sqrt(bars_per_year)
         else:
             sharpe = 0
 
@@ -342,7 +349,8 @@ def rsi_mean_reversion(backtester: CryptoBacktester):
     if symbol not in backtester.price_data:
         return
 
-    df = backtester.price_data[symbol]
+    # Only bars up to the current step; using the full series would look ahead
+    df = backtester.price_data[symbol].loc[:backtester.current_timestamp]
 
     # Calculate RSI
     prices = df['close'].values
@@ -373,7 +381,8 @@ def moving_average_crossover(backtester: CryptoBacktester):
     if symbol not in backtester.price_data:
         return
 
-    df = backtester.price_data[symbol]
+    # Only bars up to the current step; using the full series would look ahead
+    df = backtester.price_data[symbol].loc[:backtester.current_timestamp]
 
     # Calculate MAs
     sma_20 = df['close'].rolling(window=20).mean()
@@ -404,7 +413,8 @@ def volatility_breakout(backtester: CryptoBacktester):
     if symbol not in backtester.price_data:
         return
 
-    df = backtester.price_data[symbol]
+    # Only bars up to the current step; using the full series would look ahead
+    df = backtester.price_data[symbol].loc[:backtester.current_timestamp]
 
     # Calculate volatility
     returns = df['close'].pct_change()

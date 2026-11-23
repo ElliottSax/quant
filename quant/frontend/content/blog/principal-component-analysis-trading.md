@@ -121,11 +121,11 @@ class PCPortfolio:
 
         target_pc_weights: desired exposure to each PC
         """
-        # Solve: w'L = target where L is loadings matrix
-        # Using least squares: w = (L'L)^-1 L' target
+        # Solve: w'L = target, i.e. L.T @ w = target, where L is assets x PCs.
+        # That is k equations in N unknowns; lstsq returns the minimum-norm w.
 
         L = self.loadings
-        weights = np.linalg.lstsq(L.T @ L, L.T @ target_pc_weights, rcond=None)[0]
+        weights = np.linalg.lstsq(L.T, target_pc_weights, rcond=None)[0]
 
         # Normalize to sum to 1
         weights = weights / np.sum(np.abs(weights))

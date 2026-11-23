@@ -325,7 +325,8 @@ class FeatureSelector:
     ) -> pd.Series:
         """
         Compute IC (rank correlation) between each feature and target.
-        IC > 0.02 is typically considered meaningful for daily data.
+        Small ICs can still matter for daily data; judge a feature by how
+        stable its IC is across periods, not by a fixed cutoff.
         """
         ic_values = {}
 

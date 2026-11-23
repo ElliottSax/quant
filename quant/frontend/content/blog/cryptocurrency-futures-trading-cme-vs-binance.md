@@ -1,7 +1,7 @@
 ---
 title: cryptocurrency futures trading cme vs binance
 slug: cryptocurrency-futures-trading-cme-vs-binance
-description: "The CME and Binance are the two largest players in this market, with a market share of 30% and 25%, respectively."
+description: "How CME and Binance crypto futures differ: regulation, contract types, margin, fees and who each venue suits."
 keywords:
 - cryptocurrency futures trading cme vs binance
 author: "QuantEngines"
@@ -23,20 +23,16 @@ Cryptocurrency futures trading has gained significant attention in recent years,
 
 ## Section 1: Market Overview and Trading Volumes
 
-The cryptocurrency futures market has experienced rapid growth in recent years, with the total trading volume varying over time. The CME and Binance are among the largest players in this market; share estimates vary by provider and period. The CME offers bitcoin futures, while Binance offers a wide range of cryptocurrency futures, including bitcoin, ethereum, and litecoin, with a trading volume of over $5 billion per day. The trading volumes on these platforms are significant, with the CME reporting an average daily trading volume of 10,000 contracts, each representing 5 bitcoin, while Binance reports an average daily trading volume of 50,000 contracts, each representing 1 bitcoin. The fees on these platforms also vary, with CME fees varying by contract, tier, and role; check the current exchange fee schedule, while Binance charges a fee of 0.2% per trade for makers and 0.4% per trade for takers. The following table provides a summary of the key statistics for the CME and Binance:
+The cryptocurrency futures market has experienced rapid growth in recent years, with the total trading volume varying over time. The CME and Binance are among the largest players in this market; share estimates vary by provider and period. The CME offers bitcoin and ether futures (the standard bitcoin contract covers 5 BTC; micro contracts cover a fraction of a coin), while Binance offers perpetual and dated futures on a wide range of coins. Fees are structured differently: CME charges per-contract exchange fees that vary by contract, tier and role, while Binance charges a maker/taker percentage of notional that falls with volume tier. Check each venue's current fee schedule. The table below compares how the two venues work:
 
-| Platform | Trading Volume | Fees | Market Share |
+| Platform | Regulation | Contracts | How fees are charged |
 | --- | --- | --- | --- |
-| CME | $10 billion per day | 0.5% per trade | 30% |
-| Binance | $5 billion per day | 0.2% per trade (maker), 0.4% per trade (taker) | 25% |
+| CME | CFTC-regulated US exchange | Cash-settled bitcoin and ether futures and options, standard and micro sizes | Per-contract exchange fees plus your broker's commission |
+| Binance | Offshore exchange; not available to US residents | Perpetual swaps and dated futures on many coins | Maker/taker percentage of notional, by volume tier, plus funding on perpetuals |
 
-The market capitalization of the cryptocurrency market has changed significantly over time; check a dated source for historical figures. The bitcoin dominance index, which measures the market capitalization of bitcoin relative to the overall cryptocurrency market, has varied over time; check a dated source for current and historical figures. This decrease in bitcoin dominance has led to an increase in the trading volume of other cryptocurrencies, such as ethereum and litecoin. The following table provides a summary of the key statistics for the cryptocurrency market:
+Volumes and market shares change month to month, so check a dated data source (for example the exchanges' own reports or a market-data provider) rather than relying on a fixed figure.
 
-| Year | Market Capitalization | Bitcoin Dominance Index |
-| --- | --- | --- |
-| 2017 | $100 billion | 80% |
-| 2020 | $500 billion | 60% |
-| 2022 | $2 trillion | 40% |
+The market capitalization of the cryptocurrency market has changed significantly over time; check a dated source for historical figures. The bitcoin dominance index, which measures the market capitalization of bitcoin relative to the overall cryptocurrency market, has varied over time; check a dated source for current and historical figures. Shifts in bitcoin dominance change where altcoin futures volume concentrates, which is one reason venues with broad coin listings attract different traders from CME.
 
 ## Section 2: Trading Strategies and Risk Management
 
@@ -115,7 +111,7 @@ There are several common mistakes that traders make when trading cryptocurrency 
 The following are some frequently asked questions about cryptocurrency futures trading on CME and Binance:
 
 1. **What is the difference between CME and Binance?**: CME is a traditional futures exchange that offers bitcoin futures, while Binance is a cryptocurrency exchange that offers a wide range of cryptocurrency futures.
-2. **What are the fees for trading on CME and Binance?**: Fees for trading on CME vary by contract, tier, and role; check the current exchange fee schedule, while the fees for trading on Binance are 0.2% per trade for makers and 0.4% per trade for takers.
+2. **What are the fees for trading on CME and Binance?**: Fees for trading on CME vary by contract, tier, and role; check the current exchange fee schedule, while Binance charges maker and taker fees as a percentage of notional that fall with your volume tier; check its current futures fee schedule.
 3. **What is the minimum account size for trading on CME and Binance?**: Margin requirements for trading on CME vary by broker and contract; check your FCM for current requirements, while the minimum account size for trading on Binance is $100.
 4. **What are the trading hours for CME and Binance?**: The trading hours for CME are 6:00 PM ET to 5:00 PM ET, while the trading hours for Binance are 24/7.
 5. **What is the maximum leverage for trading on CME and Binance?**: The maximum leverage for trading on CME is 20:1, while the maximum leverage for trading on Binance is 125:1.

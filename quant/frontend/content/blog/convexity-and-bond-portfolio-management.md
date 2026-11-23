@@ -88,15 +88,15 @@ class BondPricer:
     def __init__(self, face_value=100, coupon_rate=0.05, years_to_maturity=5):
         self.face_value = face_value
         self.coupon_rate = coupon_rate
-        self.ytm = years_to_maturity
+        self.years = years_to_maturity
         self.coupon_payment = face_value * coupon_rate
 
     def bond_price(self, yield_to_maturity):
         """Calculate bond price given YTM"""
         price = 0
-        for t in range(1, int(self.ytm) + 1):
+        for t in range(1, int(self.years) + 1):
             price += self.coupon_payment / (1 + yield_to_maturity) ** t
-        price += self.face_value / (1 + yield_to_maturity) ** self.ytm
+        price += self.face_value / (1 + yield_to_maturity) ** self.years
         return price
 
     def macaulay_duration(self, yield_to_maturity):
@@ -104,15 +104,15 @@ class BondPricer:
         numerator = 0
         denominator = 0
 
-        for t in range(1, int(self.ytm) + 1):
+        for t in range(1, int(self.years) + 1):
             cf = self.coupon_payment
             denominator += cf / (1 + yield_to_maturity) ** t
             numerator += t * cf / (1 + yield_to_maturity) ** t
 
         # Add principal repayment
-        pv_principal = self.face_value / (1 + yield_to_maturity) ** self.ytm
+        pv_principal = self.face_value / (1 + yield_to_maturity) ** self.years
         denominator += pv_principal
-        numerator += self.ytm * pv_principal
+        numerator += self.years * pv_principal
 
         return numerator / denominator
 
@@ -126,12 +126,12 @@ class BondPricer:
         bond_price = self.bond_price(yield_to_maturity)
         numerator = 0
 
-        for t in range(1, int(self.ytm) + 1):
+        for t in range(1, int(self.years) + 1):
             cf = self.coupon_payment
             numerator += t * (t + 1) * cf / (1 + yield_to_maturity) ** (t + 2)
 
         # Add principal repayment contribution
-        t = self.ytm
+        t = self.years
         pv_principal = self.face_value / (1 + yield_to_maturity) ** (t + 2)
         numerator += t * (t + 1) * pv_principal
 
