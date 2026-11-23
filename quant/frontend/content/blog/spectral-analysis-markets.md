@@ -69,6 +69,7 @@ Discover hidden periodicities that drive market movements:
 
 ```python
 import numpy as np
+import pandas as pd
 from scipy import signal
 import matplotlib.pyplot as plt
 

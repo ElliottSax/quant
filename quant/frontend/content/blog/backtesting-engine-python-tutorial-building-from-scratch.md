@@ -85,6 +85,7 @@ print('Accuracy:', model.score(X_test, y_test))
 In this section, we will discuss the development of a backtesting framework using Python. We will provide a step-by-step guide to implementing a backtesting framework, including data ingestion, strategy implementation, and performance evaluation. The following code snippet provides an example of how to implement a backtesting framework using Python:
 ```python
 import backtrader as bt
+import pandas as pd
 
 # Define the strategy parameters
 class MyStrategy(bt.Strategy):
@@ -100,8 +101,10 @@ class MyStrategy(bt.Strategy):
         elif self.short_ma < self.long_ma:
             self.sell()
 
-# Load the historical data
-data = bt.feeds.PandasData(dataname='stock_data.csv')
+# Load the historical data (PandasData takes a DataFrame with a datetime index,
+# not a file path; columns open/high/low/close/volume)
+df = pd.read_csv('stock_data.csv', index_col='Date', parse_dates=True)
+data = bt.feeds.PandasData(dataname=df)
 
 # Create the backtesting engine
 cerebro = bt.Cerebro()
@@ -113,23 +116,33 @@ cerebro.plot()
 ```
 We can also use other backtesting libraries such as Zipline (now maintained by the community as zipline-reloaded) to implement more complex backtesting frameworks. For example, we can use Zipline to backtest a trading strategy using historical data and evaluate its performance using metrics such as return on investment (ROI) and Sharpe ratio. The following code snippet provides an example of how to implement a backtesting framework using Zipline:
 ```python
-from zipline.algorithm import TradingEnvironment
-from zipline.data.loader import load_bars_from_yahoo
+import pandas as pd
+from zipline import run_algorithm
+from zipline.api import order_target_percent, symbol
 
-# Load the historical data
-data = load_bars_from_yahoo('AAPL', start='2010-01-01', end='2020-12-31')
+def initialize(context):
+    context.asset = symbol('AAPL')
 
-# Define the trading strategy
-def my_strategy(context, data):
-    if data['AAPL'].close > data['AAPL'].ma(20):
-        context.order_target_percent('AAPL', 1)
-    elif data['AAPL'].close < data['AAPL'].ma(20):
-        context.order_target_percent('AAPL', 0)
+# Define the trading strategy: hold AAPL while it trades above its 20-day average
+def handle_data(context, data):
+    closes = data.history(context.asset, 'price', bar_count=20, frequency='1d')
+    if data.current(context.asset, 'price') > closes.mean():
+        order_target_percent(context.asset, 1.0)
+    else:
+        order_target_percent(context.asset, 0.0)
 
-# Create the trading environment
-env = TradingEnvironment()
-env.add_strategy(my_strategy)
-env.run(data)
+# Zipline reads prices from an ingested data bundle, e.g. `zipline ingest -b quandl`
+# (needs a free Nasdaq Data Link API key; that bundle's data ends in March 2018)
+results = run_algorithm(
+    start=pd.Timestamp('2010-01-04'),
+    end=pd.Timestamp('2018-03-27'),
+    initialize=initialize,
+    handle_data=handle_data,
+    capital_base=10000,
+    data_frequency='daily',
+    bundle='quandl',
+)
+print(results['portfolio_value'].tail())
 ```
 The following table provides a comparison of different backtesting libraries:
 | Library | Description | Features |

@@ -52,7 +52,11 @@ class CoveredCallOptimizer:
                 K * np.exp(-self.r * T) * norm.cdf(d2))
 
     def calculate_assignment_probability(self, K: float, T: float, sigma: float) -> float:
-        """Calculate probability of assignment"""
+        """Risk-neutral probability the call finishes in the money at expiry.
+
+        A rough proxy for assignment: real-world odds differ, and American
+        calls can be assigned early (most often just before ex-dividend dates).
+        """
 
         d2 = (np.log(self.S / K) + (self.r - self.q - 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
 
@@ -72,8 +76,9 @@ class CoveredCallOptimizer:
         # Dividend income
         dividend = self.S * self.q * T * position_size
 
-        # Total return scenarios
-        expected_return = (call_price + dividend) * position_size
+        # Income over the holding period: premium plus dividends
+        # (dividend already includes position_size)
+        expected_return = call_price * position_size + dividend
 
         return {
             'strike': K,

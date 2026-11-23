@@ -135,19 +135,24 @@ def aggressive_kelly_position_sizing(
     """
     p = win_rate
     q = 1 - win_rate
+    # Kelly's b is the payoff ratio (average win / average loss). Pass that
+    # here; gross profit / gross loss (profit factor) is a different number.
     b = profit_factor
 
     # Full Kelly
     kelly_full = (p * b - q) / b
 
     # Aggressive fraction (25% of full Kelly) for high-confidence strategies
-    kelly_safe = min(kelly_full * kelly_fraction, max_risk_pct)
+    kelly_safe = kelly_full * kelly_fraction
 
     # Additional size boost if win rate very high
     if win_rate >= 0.75:
         kelly_safe *= 1.5  # 50% size increase for 75%+ win rate
     elif win_rate >= 0.70:
         kelly_safe *= 1.25  # 25% size increase for 70%+ win rate
+
+    # Apply the risk cap last so the boost cannot exceed it
+    kelly_safe = min(kelly_safe, max_risk_pct)
 
     risk_amount = account_size * kelly_safe
 
@@ -190,12 +195,17 @@ class CompoundGrowthPositionSizer:
         historical_win_rate,
         historical_profit_factor,
         account_size=100000,
-        growth_target=0.25  # 25% annual growth
+        growth_target=0.25,  # 25% annual growth
+        trades_per_year=None  # measure this from your own backtest
     ):
+        if trades_per_year is None:
+            raise ValueError("Pass trades_per_year measured from your backtest")
         self.win_rate = historical_win_rate
+        # Used as the payoff ratio (average win / average loss), as Kelly requires
         self.profit_factor = historical_profit_factor
         self.account_size = account_size
         self.growth_target = growth_target
+        self.trades_per_year = trades_per_year
 
         # Optimal Kelly
         p = historical_win_rate
@@ -204,38 +214,33 @@ class CompoundGrowthPositionSizer:
 
     def calculate_position_size_for_growth(self, entry_price, stop_loss_price):
         """
-        Size to match growth target
-        If strategy expected return is 15% annually with 50 trades,
-        and we want 25% growth, scale accordingly
+        Size to match growth target (simple, non-compounded approximation):
+        annual growth ~= expectancy_R * risk_fraction * trades_per_year
         """
         stop_distance = abs(entry_price - stop_loss_price)
 
-        # Expected annual return from strategy
-        # (win_rate * profit_factor - loss_rate) * avg_trade_size * num_trades_per_year
-        expected_return_per_trade = (self.win_rate * self.profit_factor - (1 - self.win_rate))
+        # Expectancy in R (multiples of the amount risked per trade)
+        expectancy_r = self.win_rate * self.profit_factor - (1 - self.win_rate)
 
-        if expected_return_per_trade <= 0:
+        if expectancy_r <= 0:
             raise ValueError("Strategy has negative expected return")
 
-        # Trades needed per year to hit growth target
-        expected_trades_per_year = 50  # Assumption
+        # Fraction of the account to risk per trade to hit the growth target
+        required_risk_fraction = self.growth_target / (expectancy_r * self.trades_per_year)
 
-        # Size needed to hit growth target
-        # growth_target = expected_return_per_trade * position_size * expected_trades
-        required_position_size = (self.growth_target /
-                                 (expected_return_per_trade * expected_trades_per_year))
+        # Cap at a quarter of full Kelly
+        risk_fraction = min(required_risk_fraction, self.optimal_kelly * 0.25)
 
-        # Cap at Kelly fraction
-        kelly_position = (self.account_size * self.optimal_kelly * 0.25) / stop_distance
-
-        # Use lower of required vs Kelly
-        final_size = min(required_position_size, kelly_position)
+        # Convert risk fractions to share counts
+        required_shares = self.account_size * required_risk_fraction / stop_distance
+        kelly_capped_shares = self.account_size * self.optimal_kelly * 0.25 / stop_distance
+        final_shares = self.account_size * risk_fraction / stop_distance
 
         return {
-            'required_size': required_position_size,
-            'kelly_capped_size': kelly_position,
-            'final_size': final_size,
-            'implied_annual_growth': expected_return_per_trade * final_size * expected_trades_per_year
+            'required_size': required_shares,
+            'kelly_capped_size': kelly_capped_shares,
+            'final_size': final_shares,
+            'implied_annual_growth': expectancy_r * risk_fraction * self.trades_per_year
         }
 ```
 
@@ -269,7 +274,7 @@ class HighWinRateBacktest:
 
             # Exit on signal reversal
             if position and signal != position['signal']:
-                pnl = self._close_position(position, price)
+                pnl = self._close_position(position, price, i)
                 self.capital += pnl
                 self.equity_curve.append(self.capital)
                 position = None
@@ -295,12 +300,13 @@ class HighWinRateBacktest:
                 }
 
         if position:
-            pnl = self._close_position(position, self.prices[-1])
+            pnl = self._close_position(position, self.prices[-1], len(self.prices) - 1)
             self.capital += pnl
+            self.equity_curve.append(self.capital)
 
         return self.equity_curve, self.trades
 
-    def _close_position(self, position, exit_price):
+    def _close_position(self, position, exit_price, exit_index):
         """Calculate PnL and record trade"""
         entry_val = position['entry'] * position['size']
 
@@ -315,7 +321,7 @@ class HighWinRateBacktest:
             'size': position['size'],
             'pnl': pnl,
             'return': pnl / self.capital,
-            'bars_held': len(self.prices) - position['index']
+            'bars_held': exit_index - position['index']
         })
 
         return pnl
@@ -334,9 +340,13 @@ class HighWinRateBacktest:
         profit_factor = np.sum(pnl_values[pnl_values > 0]) / abs(np.sum(pnl_values[pnl_values < 0]))
 
         # Growth metrics
-        total_return = (self.capital - 100000) / 100000
-        cagr = total_return ** (252 / len(self.trades)) - 1
-        sharpe = np.mean(returns) / np.std(returns) * np.sqrt(252)
+        start_capital = self.equity_curve[0]
+        total_return = (self.capital - start_capital) / start_capital
+        years = len(self.prices) / 252  # daily bars
+        cagr = (self.capital / start_capital) ** (1 / years) - 1
+        # returns are per trade, so annualize by trades per year, not by 252
+        trades_per_year = len(self.trades) / years
+        sharpe = np.mean(returns) / np.std(returns) * np.sqrt(trades_per_year)
 
         # Drawdown
         cumulative = np.cumprod(1 + returns)
