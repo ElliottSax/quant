@@ -97,7 +97,7 @@ def asian_geometric_call(S: float, K: float, T: float, r: float,
 
 # Example: S=100, K=100, T=1, r=5%, sigma=20%, q=0%, N=252 (daily)
 price = asian_geometric_call(100, 100, 1, 0.05, 0.20, 0, 252)
-print(f"Geometric Asian Call: ${price:.4f}")  # ~$5.52
+print(f"Geometric Asian Call: ${price:.4f}")  # ~$5.57
 ```
 
 ## Pricing: Arithmetic Average (Monte Carlo)

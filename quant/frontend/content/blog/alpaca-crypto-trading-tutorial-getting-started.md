@@ -58,7 +58,7 @@ The following code snippet provides an example of a simple mean reversion strate
 ```python
 import pandas as pd
 import numpy as np
-from alpaca_trade_api import REST
+from alpaca_trade_api import REST, TimeFrame
 
 # Set up API keys
 api_key = 'YOUR_API_KEY'
@@ -70,18 +70,19 @@ api = REST(api_key, api_secret)
 # Define the trading strategy
 def mean_reversion_strategy(symbol):
     # Get historical prices
-    prices = api.get_barset(symbol, '1D', limit=100)
+    # get_barset was removed from alpaca-trade-api; crypto bars come from get_crypto_bars
+    closes = api.get_crypto_bars(symbol, TimeFrame.Day, limit=100).df['close']
 
     # Calculate the mean price
-    mean_price = np.mean([price.c for price in prices[symbol]])
+    mean_price = np.mean(closes)
 
     # Check if the current price is above or below the mean price
-    if prices[symbol][-1].c > mean_price:
+    if closes.iloc[-1] > mean_price:
         # Sell the asset
-        api.submit_order(symbol, 100, 'sell', 'market', 'day')
+        api.submit_order(symbol, 100, 'sell', 'market', 'gtc')
     else:
         # Buy the asset
-        api.submit_order(symbol, 100, 'buy', 'market', 'day')
+        api.submit_order(symbol, 100, 'buy', 'market', 'gtc')
 
 # Run the trading strategy
 mean_reversion_strategy('BTC/USD')
@@ -99,7 +100,7 @@ The following code snippet provides an example of a simple risk management strat
 ```python
 import pandas as pd
 import numpy as np
-from alpaca_trade_api import REST
+from alpaca_trade_api import REST, TimeFrame
 
 # Set up API keys
 api_key = 'YOUR_API_KEY'
@@ -111,18 +112,19 @@ api = REST(api_key, api_secret)
 # Define the risk management strategy
 def risk_management_strategy(symbol):
     # Get historical prices
-    prices = api.get_barset(symbol, '1D', limit=100)
+    # get_barset was removed from alpaca-trade-api; crypto bars come from get_crypto_bars
+    closes = api.get_crypto_bars(symbol, TimeFrame.Day, limit=100).df['close']
 
     # Calculate the volatility
-    volatility = np.std([price.c for price in prices[symbol]])
+    volatility = np.std(closes)
 
     # Check if the current price is above or below the mean price
-    if prices[symbol][-1].c > np.mean([price.c for price in prices[symbol]]):
+    if closes.iloc[-1] > np.mean(closes):
         # Sell the asset
-        api.submit_order(symbol, 100, 'sell', 'market', 'day')
+        api.submit_order(symbol, 100, 'sell', 'market', 'gtc')
     else:
         # Buy the asset
-        api.submit_order(symbol, 100, 'buy', 'market', 'day')
+        api.submit_order(symbol, 100, 'buy', 'market', 'gtc')
 
     # Monitor the position
     position = api.get_position(symbol)
@@ -130,10 +132,10 @@ def risk_management_strategy(symbol):
     # Check if the position is above or below the risk threshold
     if position.market_value > 1000:
         # Reduce the position
-        api.submit_order(symbol, 50, 'sell', 'market', 'day')
+        api.submit_order(symbol, 50, 'sell', 'market', 'gtc')
     elif position.market_value < 500:
         # Increase the position
-        api.submit_order(symbol, 50, 'buy', 'market', 'day')
+        api.submit_order(symbol, 50, 'buy', 'market', 'gtc')
 
 # Run the risk management strategy
 risk_management_strategy('BTC/USD')
@@ -151,7 +153,7 @@ The following code snippet provides an example of a simple high-frequency tradin
 ```python
 import pandas as pd
 import numpy as np
-from alpaca_trade_api import REST
+from alpaca_trade_api import REST, TimeFrame
 
 # Set up API keys
 api_key = 'YOUR_API_KEY'
@@ -163,18 +165,19 @@ api = REST(api_key, api_secret)
 # Define the high-frequency trading strategy
 def high_frequency_trading_strategy(symbol):
     # Get historical prices
-    prices = api.get_barset(symbol, '1D', limit=100)
+    # get_barset was removed from alpaca-trade-api; crypto bars come from get_crypto_bars
+    closes = api.get_crypto_bars(symbol, TimeFrame.Day, limit=100).df['close']
 
     # Calculate the mean price
-    mean_price = np.mean([price.c for price in prices[symbol]])
+    mean_price = np.mean(closes)
 
     # Check if the current price is above or below the mean price
-    if prices[symbol][-1].c > mean_price:
+    if closes.iloc[-1] > mean_price:
         # Sell the asset
-        api.submit_order(symbol, 100, 'sell', 'market', 'day')
+        api.submit_order(symbol, 100, 'sell', 'market', 'gtc')
     else:
         # Buy the asset
-        api.submit_order(symbol, 100, 'buy', 'market', 'day')
+        api.submit_order(symbol, 100, 'buy', 'market', 'gtc')
 
     # Monitor the position
     position = api.get_position(symbol)
@@ -182,10 +185,10 @@ def high_frequency_trading_strategy(symbol):
     # Check if the position is above or below the risk threshold
     if position.market_value > 1000:
         # Reduce the position
-        api.submit_order(symbol, 50, 'sell', 'market', 'day')
+        api.submit_order(symbol, 50, 'sell', 'market', 'gtc')
     elif position.market_value < 500:
         # Increase the position
-        api.submit_order(symbol, 50, 'buy', 'market', 'day')
+        api.submit_order(symbol, 50, 'buy', 'market', 'gtc')
 
 # Run the high-frequency trading strategy
 high_frequency_trading_strategy('BTC/USD')

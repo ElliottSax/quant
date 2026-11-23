@@ -103,13 +103,17 @@ class ConcentrationAnalyzer:
         """Percentage of portfolio in top N positions"""
         return np.sum(np.sort(self.weights)[-top_n:])
 
-    def diversification_ratio(self, volatilities):
+    def diversification_ratio(self, cov_matrix):
         """
         Diversification Ratio = (sum of weighted volatilities) / portfolio_volatility
+        cov_matrix: covariance of asset returns, same order as self.symbols
         Higher values indicate better diversification
         """
+        cov = np.asarray(cov_matrix)
+        volatilities = np.sqrt(np.diag(cov))
         weighted_vol = np.sum(self.weights * volatilities)
-        portfolio_vol = np.sqrt(np.sum((self.weights * volatilities) ** 2))
+        # Portfolio vol must include correlations: sqrt(w' Σ w)
+        portfolio_vol = np.sqrt(self.weights @ cov @ self.weights)
         return weighted_vol / portfolio_vol if portfolio_vol > 0 else 0
 
     def risk_concentration(self, returns_df):

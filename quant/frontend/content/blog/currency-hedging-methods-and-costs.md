@@ -119,7 +119,6 @@ Correlation_Hedge_Ratio = Cov(FX_Pair, Proxy) / Var(Proxy)
 import pandas as pd
 import numpy as np
 from scipy.optimize import fsolve
-import yfinance as yf
 
 class CurrencyHedgeCalculator:
     def __init__(self, spot_rate, domestic_rate, foreign_rate, days=180):
@@ -165,11 +164,11 @@ class CurrencyHedgeCalculator:
             unhedged_pl = fx_exposure * fx_move
 
             # Hedged P&L (locked at forward)
-            hedge_pl = fx_exposure * ((forward - spot) / spot)
+            hedged_pl = fx_exposure * ((forward - spot) / spot)
 
             scenarios[f"{fx_move*100:+.0f}%"] = {
                 'unhedged': unhedged_pl,
-                'hedged': hedge_pl,
+                'hedged': hedged_pl,
                 'difference': hedged_pl - unhedged_pl
             }
 
@@ -200,7 +199,9 @@ hedge_calc = CurrencyHedgeCalculator(
 )
 
 print(f"Forward Rate: {hedge_calc.forward_rate():.4f}")
-print(f"Hedge Cost: {hedge_calc.hedge_cost_bps():.0f} bps/year")
+# Positive = forward points earned by selling EUR forward (USD rates > EUR rates);
+# negative would be a cost to the hedger
+print(f"Forward points: {hedge_calc.hedge_cost_bps():+.0f} bps/year")
 
 # Economic impact analysis
 scenarios = hedge_calc.hedge_economic_impact(

@@ -21,7 +21,7 @@ The execution flow: (1) Borrow $1M from Aave flash loan pool, (2) Execute arbitr
 
 Major flash loan providers include Aave (0.09% fee, among the deepest liquidity; check current TVL), dYdX (0% fee but limited to ETH, WBTC, USDC), Uniswap V2/V3 (0.3% swap fee used as loan fee), and Balancer (varies by pool). Each provider offers different assets, fees, and liquidity depths.
 
-The smart contract implementation involves calling the flash loan provider's loan function with callback specification. Aave's flashLoan() accepts borrowed assets, amounts, and contract address implementing executeOperation(). The provider sends borrowed funds, calls executeOperation() for custom logic, then checks repayment. If debt plus fee not returned, transaction reverts.
+The smart contract implementation involves calling the flash loan provider's loan function with callback specification. Aave's flashLoan() takes the receiver contract (which implements executeOperation()), arrays of assets, amounts and modes, an onBehalfOf address, params and a referral code; Aave V3 adds flashLoanSimple() for a single asset. The provider sends borrowed funds, calls executeOperation() for custom logic, then checks repayment. If debt plus fee not returned, transaction reverts.
 
 Gas costs represent the only capital requirement for flash loans. Gas usage varies by path and complexity; measure on a fork before estimating. Gas cost is gas × gas price × ETH price — plug current ETH and gas price at runtime to estimate (illustrative costs at example gas/ETH levels are on the order of tens of dollars per attempt). Failed attempts (arbitrage opportunity disappeared, simulation error) lose only gas costs - this is the key risk parameter.
 
@@ -31,7 +31,7 @@ Composability enables chaining multiple flash loans and DeFi protocols. Borrow f
 
 Cross-DEX arbitrage represents the most straightforward flash loan strategy: borrow asset A, swap for asset B on DEX 1 where it's underpriced, swap back to asset A on DEX 2 where it's overpriced, repay loan, and keep the spread.
 
-Price discrepancy detection monitors multiple DEXes for the same trading pair. If Uniswap shows ETH/USDC at $2,500 while Sushiswap shows $2,520, a $20 spread exists. For this opportunity: borrow 100 ETH ($250,000), swap to USDC on Uniswap receiving $250,000, swap USDC for ETH on Sushiswap receiving ~100.8 ETH, repay 100 ETH loan plus 0.09% (0.09 ETH = $225), profit = 0.71 ETH ($1,775).
+Price discrepancy detection monitors multiple DEXes for the same trading pair. If Uniswap shows ETH/USDC at $2,500 while Sushiswap shows $2,520, a $20 spread exists. For this opportunity: borrow 100 ETH, sell it for USDC on Sushiswap (the dearer venue) receiving $252,000, buy ETH back on Uniswap at $2,500 receiving ~100.8 ETH, repay the 100 ETH loan plus 0.09% (0.09 ETH = $225), profit = 0.71 ETH ($1,775) before swap fees, price impact and gas.
 
 The mathematical optimization determines maximum profitable loan size. Price impact increases with trade size: Impact = TradeSize / (Liquidity + TradeSize). For 1,000 ETH liquidity pools, a 100 ETH trade creates ~9% price impact on each side, consuming most of the 0.8% initial spread.
 
@@ -42,28 +42,38 @@ Multi-hop arbitrage routes through intermediate assets when direct pairs show no
 Smart contract implementation for cross-DEX arbitrage:
 
 ```solidity
+// Fragment (Aave V3). `pool` is the IPool address; swap helpers are yours.
 function executeArbitrage(
     address token,
     uint256 amount,
     address dex1,
     address dex2
 ) external {
-    // Borrow from Aave
-    aave.flashLoan(address(this), token, amount, data);
+    // Borrow one asset: flashLoanSimple(receiver, asset, amount, params, referralCode)
+    pool.flashLoanSimple(address(this), token, amount, abi.encode(dex1, dex2), 0);
 }
 
+// Aave V3 calls this on the receiver after sending the funds
 function executeOperation(
-    address[] assets,
-    uint256[] amounts,
-    uint256[] premiums
-) external override {
-    // Swap on DEX 1
-    swapOnDex(dex1, amounts[0]);
-    // Swap on DEX 2
-    swapOnDex(dex2, getBalance());
-    // Repay loan
-    repayAmount = amounts[0] + premiums[0];
-    require(balanceOf >= repayAmount);
+    address asset,
+    uint256 amount,
+    uint256 premium,
+    address initiator,
+    bytes calldata params
+) external returns (bool) {
+    require(msg.sender == address(pool), "caller is not the pool");
+    require(initiator == address(this), "unexpected initiator");
+    (address dex1, address dex2) = abi.decode(params, (address, address));
+
+    // Sell where the asset is dear, buy back where it is cheap
+    uint256 otherAmount = swapOnDex(dex1, asset, amount);
+    swapBackOnDex(dex2, otherAmount, asset);
+
+    // Repay: the pool pulls amount + premium, so approve it
+    uint256 repayAmount = amount + premium;
+    require(IERC20(asset).balanceOf(address(this)) >= repayAmount, "not profitable");
+    IERC20(asset).approve(address(pool), repayAmount);
+    return true;
 }
 ```
 
@@ -93,9 +103,9 @@ Yield arbitrage exploits rate differences between lending and leveraged yield fa
 
 Triangular protocol arbitrage routes assets through multiple protocols when circular opportunities emerge. Example: ETH on Aave trades at implied $2,500, Compound at $2,520 due to interest rate differences affecting borrow demands. Flash loan DAI, buy ETH on Aave, deposit to Compound, borrow DAI, repay flash loan. Profit from $20 spread minus protocol fees.
 
-Debt refinancing for leverage positions uses flash loans to increase leverage without liquidation risk. With $10,000 ETH collateral and $5,000 debt (2x leverage), to increase to 3x: flash loan $5,000, buy more ETH ($5,000), deposit as additional collateral ($15,000 total), borrow $10,000 against new collateral, repay flash loan ($5,000) and keep $5,000 for future use. Result: $15,000 collateral, $10,000 debt, 3x leverage achieved atomically.
+Debt refinancing for leverage positions uses flash loans to increase leverage without liquidation risk. With $10,000 ETH collateral and $5,000 debt (2x leverage), to increase to 3x: flash loan $5,000, buy more ETH ($5,000), deposit as additional collateral ($15,000 total), borrow another $5,000 against it (total debt $10,000), and repay the flash loan ($5,000). Result: $15,000 collateral, $10,000 debt, $5,000 equity, 3x leverage achieved atomically.
 
-Statistical arbitrage between correlated assets uses flash loans for capital efficiency. If ETH/stETH ratio deviates from 1.0 to 0.98 (2% dislocation), flash loan 100 ETH, swap to stETH receiving 102.04 stETH, wait for ratio normalization to 1.0, swap back to ~102 ETH, repay 100 ETH loan, profit 2 ETH. Risk: ratio doesn't normalize quickly or moves further against position.
+Statistical arbitrage between correlated assets cannot use a flash loan to wait for convergence: the loan must be repaid in the same transaction. If the ETH/stETH ratio dislocates to 0.98 on one venue, a flash loan only helps when another venue (or redemption path) prices stETH near 1.0 at that moment: flash loan 100 ETH, buy ~102.04 stETH where it is cheap, sell it for ~102 ETH where it is not, repay the 100 ETH loan plus fee. Betting on the ratio normalizing over hours or days needs ordinary borrowed capital, and carries the risk that the ratio moves further against the position.
 
 ## Smart Contract Implementation and Testing
 
@@ -104,32 +114,41 @@ Secure flash loan contract development requires understanding callback patterns,
 The contract structure implements flash loan provider interface with executeOperation callback:
 
 ```solidity
-contract FlashArbitrage {
-    IAaveLendingPool aave;
+// Fragment (Aave V2 LendingPool). Imports, Ownable and performArbitrage omitted.
+contract FlashArbitrage is Ownable {
+    ILendingPool aave;
 
     function initiateArbitrage(
         address asset,
         uint256 amount
     ) external onlyOwner {
+        address[] memory assets = new address[](1);
+        assets[0] = asset;
+        uint256[] memory amounts = new uint256[](1);
+        amounts[0] = amount;
+        uint256[] memory modes = new uint256[](1);
+        modes[0] = 0; // 0 = repay within this transaction (no debt opened)
+
         aave.flashLoan(
-            address(this),
+            address(this),  // receiver
             assets,
             amounts,
             modes,
-            address(this),
-            params,
-            0
+            address(this),  // onBehalfOf
+            "",             // params
+            0               // referralCode
         );
     }
 
     function executeOperation(
-        address[] assets,
-        uint256[] amounts,
-        uint256[] premiums,
+        address[] calldata assets,
+        uint256[] calldata amounts,
+        uint256[] calldata premiums,
         address initiator,
-        bytes params
-    ) external override returns (bool) {
-        require(msg.sender == address(aave));
+        bytes calldata params
+    ) external returns (bool) {
+        require(msg.sender == address(aave), "caller is not the pool");
+        require(initiator == address(this), "unexpected initiator");
 
         // Custom arbitrage logic
         performArbitrage(assets[0], amounts[0]);

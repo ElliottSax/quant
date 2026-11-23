@@ -158,10 +158,10 @@ class WinStreakAwarePositionSizer:
         Decrease during loss streaks
         """
         if self.streak_direction == 'win':
-            # After 3 wins: 1.25x, after 5 wins: 1.56x, etc
+            # After 2 wins: 1.25x, 3 wins: 1.56x, 4+ wins: 1.95x (capped)
             multiplier = self.win_streak_mult ** min(self.current_streak - 1, 3)
         elif self.streak_direction == 'loss':
-            # After 2 losses: 0.5x, after 3: 0.25x
+            # After 1 loss: 0.5x, 2+ losses: 0.25x (capped)
             multiplier = self.loss_streak_div ** min(self.current_streak, 2)
         else:
             multiplier = 1.0
@@ -193,7 +193,7 @@ for _ in range(5):
 
 multiplier = sizer.get_position_size_multiplier()
 print(f"After 5 wins, position size multiplier: {multiplier:.2f}x")
-# Output: capped at min(streak-1,3) — print(multiplier) to verify
+# Output: After 5 wins, position size multiplier: 1.95x
 ```
 
 ### 3. Partial Profit Taking

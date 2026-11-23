@@ -68,11 +68,11 @@ class FundingRateArbitrage:
             # Get Binance funding rate
             binance_ticker = await self.futures_exchange.fetch_funding_rate(self.symbol)
             rates['binance_current'] = binance_ticker['fundingRate']
-            rates['binance_next'] = binance_ticker.get('nextFundingTime', None)
+            # nextFundingTime is a timestamp (ms), not a rate
+            rates['binance_next_funding_time'] = binance_ticker.get('nextFundingTime', None)
 
-            # Get FTX funding rate
-            ftx_ticker = await self.futures_exchange.fetch_ticker(self.symbol)
-            rates['ftx_current'] = ftx_ticker.get('info', {}).get('perpetual', {}).get('funding_rate', 0)
+            # To compare venues, call fetch_funding_rate on each exchange's own
+            # client (see fetch_all_funding_rates below)
 
         except Exception as e:
             logger.warning(f"Failed to fetch funding rates: {e}")

@@ -51,13 +51,14 @@ class BinaryOptionPricer:
         self.r = risk_free_rate
         self.sigma = volatility
 
-    def black_scholes_call_probability(self):
+    def black_scholes_call_probability(self, sigma=None):
         """
         Probability that stock finishes above strike (under risk-neutral measure)
         This is the price of a binary call option
         """
-        d2 = (np.log(self.S / self.K) + (self.r - 0.5 * self.sigma**2) * self.T) / (
-            self.sigma * np.sqrt(self.T)
+        sigma = self.sigma if sigma is None else sigma
+        d2 = (np.log(self.S / self.K) + (self.r - 0.5 * sigma**2) * self.T) / (
+            sigma * np.sqrt(self.T)
         )
         prob = norm.cdf(d2)
         price = np.exp(-self.r * self.T) * prob
@@ -71,19 +72,20 @@ class BinaryOptionPricer:
             theoretical_price, _ = self.__price_with_vol(vol)
             return (theoretical_price - market_price) ** 2
 
-        result = minimize(objective, x0=self.sigma)
+        result = minimize(objective, x0=[self.sigma], bounds=[(1e-4, 5.0)])
         return result.x[0]
 
     def __price_with_vol(self, vol):
-        self.sigma = vol
-        return self.black_scholes_call_probability()
+        # Price at a trial vol without changing self.sigma
+        return self.black_scholes_call_probability(sigma=float(np.atleast_1d(vol)[0]))
 
     def expected_value_at_forecast(self, forecast_probability, payout=100):
         """
         Calculate expected value if trader has forecast probability
         """
         market_price, market_prob = self.black_scholes_call_probability()
-        ev = forecast_probability * payout - market_price
+        # market_price is per $1 of payout; discount the forecast payoff too
+        ev = (np.exp(-self.r * self.T) * forecast_probability - market_price) * payout
         return ev, market_prob, forecast_probability
 
 # Example: Binary option on earnings beat
@@ -99,7 +101,7 @@ price, risk_neutral_prob = pricer.black_scholes_call_probability()
 print(f"Binary Call Price: ${price:.2f}")
 print(f"Risk-Neutral Prob(Finish > 152): {risk_neutral_prob:.1%}")
 
-# If trader believes prob is 65% vs market's 58%
+# If trader believes prob is 65% vs the market-implied ~27%
 ev, market_prob, forecast_prob = pricer.expected_value_at_forecast(0.65, payout=100)
 print(f"Expected Value with 65% forecast: ${ev:.2f}")
 ```
