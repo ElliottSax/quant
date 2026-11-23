@@ -67,7 +67,7 @@ df['Returns'] = df['Adj Close'].pct_change()
 # Calculate basic metrics
 mean_return = df['Returns'].mean()
 volatility = df['Returns'].std()
-sharpe_ratio = mean_return / volatility * np.sqrt(252)
+sharpe_ratio = mean_return / volatility * np.sqrt(252)  # risk-free rate assumed zero
 
 print(f"Sharpe Ratio: {sharpe_ratio:.2f}")
 ```
@@ -103,14 +103,18 @@ class SimpleStrategy:
 
 ```python
 def backtest_strategy(data, strategy):
-    cumulative_returns = strategy.calculate_returns()
-    total_return = (1 + cumulative_returns).prod() - 1
-    annual_return = cumulative_returns.mean() * 252
-    annual_volatility = cumulative_returns.std() * np.sqrt(252)
+    strategy.calculate_returns()
+    # Use per-period returns, not their cumulative sum
+    strategy_returns = strategy.data['Strategy_Return'].dropna()
+    equity = (1 + strategy_returns).cumprod()
+
+    total_return = equity.iloc[-1] - 1
+    annual_return = strategy_returns.mean() * 252
+    annual_volatility = strategy_returns.std() * np.sqrt(252)
+    # Risk-free rate assumed zero here; subtract it from annual_return if you use one
     sharpe = annual_return / annual_volatility if annual_volatility > 0 else 0
-    
-    max_cumulative = cumulative_returns.expanding().max()
-    drawdown = (cumulative_returns - max_cumulative) / (1 + max_cumulative)
+
+    drawdown = (equity - equity.cummax()) / equity.cummax()
     max_drawdown = drawdown.min()
     
     return {

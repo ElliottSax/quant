@@ -87,40 +87,45 @@ class BarrierOptionPricer:
 
     def up_and_out_call(self):
         """
-        Up-and-out call: activates at spot, knocks out if price reaches H
-        Formula uses reflection principle
+        Up-and-out call (barrier H above strike K), continuous monitoring.
+        Price = vanilla call - up-and-in call (Hull's closed form, no dividends).
         """
         if self.S >= self.H:
             return 0  # Already knocked out
+        if self.H <= self.K:
+            return 0  # Any payoff above K would already have hit the barrier
 
-        # Lambda parameter for reflection principle
-        lambda_param = (self.r + 0.5 * self.sigma**2) / self.sigma**2
+        S, H, K, T, r = self.S, self.H, self.K, self.T, self.r
+        st = self.sigma * np.sqrt(T)
+        lam = (r + 0.5 * self.sigma**2) / self.sigma**2
+        disc = np.exp(-r * T)
 
-        # Vanilla call at spot
-        c1 = self.vanilla_call(self.S)
+        y = np.log(H**2 / (S * K)) / st + lam * st
+        x1 = np.log(S / H) / st + lam * st
+        y1 = np.log(H / S) / st + lam * st
 
-        # Reflected call (mirror image at barrier)
-        factor = (self.S / self.H) ** (2 * lambda_param)
-        c2 = self.vanilla_call(self.H**2 / self.S)
-
-        return c1 - factor * c2
+        up_and_in = (S * norm.cdf(x1) - K * disc * norm.cdf(x1 - st)
+                     - S * (H / S) ** (2 * lam) * (norm.cdf(-y) - norm.cdf(-y1))
+                     + K * disc * (H / S) ** (2 * lam - 2) * (norm.cdf(-y + st) - norm.cdf(-y1 + st)))
+        return self.vanilla_call(S) - up_and_in
 
     def down_and_in_call(self):
         """
-        Down-and-in call: inactive until spot falls to H, then activates
+        Down-and-in call (barrier H at or below strike K), continuous monitoring.
+        Reflection principle: (H/S)^(2*lambda - 2) * call priced at spot H^2/S.
         """
         if self.S <= self.H:
             return self.vanilla_call(self.S)  # Already activated
 
         lambda_param = (self.r + 0.5 * self.sigma**2) / self.sigma**2
+        factor = (self.H / self.S) ** (2 * lambda_param - 2)
+        return factor * self.vanilla_call(self.H**2 / self.S)
 
-        c1 = self.vanilla_call(self.S)
-
-        # Down-out component
-        factor = (self.S / self.H) ** (2 * lambda_param)
-        c2 = self.vanilla_call(self.H**2 / self.S)
-
-        return c1 * factor - c2 * factor
+    def up_and_out_call_at_spot(self, spot):
+        """Price the up-and-out call as if the spot were `spot`."""
+        shifted = BarrierOptionPricer(spot, self.H, self.K, self.T, self.r,
+                                      self.sigma, self.option_type)
+        return shifted.up_and_out_call()
 
     def delta(self, spot, h=0.01):
         """Numerical delta calculation"""

@@ -33,6 +33,8 @@ For trading applications, Bayesian networks can model relationships like: Fed Ra
 ```python
 import numpy as np
 import pandas as pd
+# Written for pgmpy 0.1.x (pip install "pgmpy<1.0"). pgmpy 1.x renamed
+# BayesianNetwork to DiscreteBayesianNetwork and changed the estimator APIs.
 from pgmpy.models import BayesianNetwork
 from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import VariableElimination
@@ -65,24 +67,32 @@ data['Interest_Rate'] = discretize(
     labels=['Low_Rate', 'Med_Rate', 'High_Rate']
 )
 
-# Define Conditional Probability Distributions (CPDs)
-cpd_vix = TabularCPD('VIX', 3,
-    [[0.33, 0.33, 0.34],   # Distribution of VIX
-     [0.33, 0.33, 0.33],
-     [0.34, 0.34, 0.33]])
+# Every node needs a CPD before inference, so start with a two-node
+# sub-network (VIX -> SPY_Return) and hand-specified, illustrative CPDs
+toy = BayesianNetwork([('VIX', 'SPY_Return')])
 
+# Root node: one column (no parents)
+cpd_vix = TabularCPD('VIX', 3,
+    [[0.33],   # P(VIX=Low_Vol)
+     [0.33],   # P(VIX=Med_Vol)
+     [0.34]],  # P(VIX=High_Vol)
+    state_names={'VIX': ['Low_Vol', 'Med_Vol', 'High_Vol']})
+
+# Columns are VIX = Low_Vol, Med_Vol, High_Vol
 cpd_spy_return = TabularCPD('SPY_Return', 3,
     [[0.60, 0.40, 0.20],   # P(Return=Down | VIX)
      [0.25, 0.35, 0.30],   # P(Return=Flat | VIX)
      [0.15, 0.25, 0.50]],  # P(Return=Up | VIX)
-    evidence=['VIX'], evidence_card=[3])
+    evidence=['VIX'], evidence_card=[3],
+    state_names={'SPY_Return': ['Down', 'Flat', 'Up'],
+                 'VIX': ['Low_Vol', 'Med_Vol', 'High_Vol']})
 
-# Add CPDs to model
-model.add_cpds(cpd_vix, cpd_spy_return, cpd_interest_rate)
-model.check_model_validity()
+# Add CPDs to the model and validate them
+toy.add_cpds(cpd_vix, cpd_spy_return)
+toy.check_model()
 
 # Inference: What's probability of SPY up given high VIX?
-inference = VariableElimination(model)
+inference = VariableElimination(toy)
 result = inference.query(variables=['SPY_Return'],
                          evidence={'VIX': 'High_Vol'})
 print(result)

@@ -178,15 +178,19 @@ def plot_volatility_smile():
     strikes = np.arange(0.80, 1.21, 0.05)  # 80% to 120% of ATM
     implied_vols = []
 
-    # Market prices with volatility smile
+    # Illustrative "market" call prices: generated from an assumed skew
+    # (higher vol at low strikes), standing in for real quotes
+    def assumed_vol(m):
+        return 0.20 - 0.25 * (m - 1.0) + 0.60 * (m - 1.0) ** 2
+
     market_prices = [
-        14.2, 12.8, 11.5, 10.3, 9.2,
-        8.3, 7.5, 6.8, 6.2, 5.7  # Implied vols vary with strike
+        BlackScholes(S=100, K=100 * m, T=30/365, r=0.04, sigma=assumed_vol(m)).call_price()
+        for m in strikes
     ]
 
-    # Calculate implied volatility for each strike
-    for mkt_price in market_prices:
-        bs = BlackScholes(S=100, K=100, T=30/365, r=0.04, sigma=0.2)
+    # Recover the implied volatility at each strike
+    for m, mkt_price in zip(strikes, market_prices):
+        bs = BlackScholes(S=100, K=100 * m, T=30/365, r=0.04, sigma=0.2)
         iv = bs.implied_volatility(mkt_price)
         implied_vols.append(iv)
 
@@ -212,33 +216,42 @@ class VolatilityArbitrage:
         self.implied_vol = implied_vol
         self.position_size = position_size  # Contracts
 
-    def generate_signal(self, vol_threshold=0.02):
+    def generate_signal(self, vol_threshold=0.02, implied_vol=None, realized_vol=None):
         """
         Trade when implied volatility deviates from realized
         """
-        vol_spread = self.implied_vol - self.realized_vol
+        iv = self.implied_vol if implied_vol is None else implied_vol
+        rv = self.realized_vol if realized_vol is None else realized_vol
+        vol_spread = iv - rv
 
         if vol_spread > vol_threshold:
-            # Implied vol too high: sell call, buy put (short volatility)
+            # Implied vol too high: sell the call and the put (short volatility)
             return 'SELL_STRADDLE'
         elif vol_spread < -vol_threshold:
-            # Implied vol too low: buy call, sell put (long volatility)
+            # Implied vol too low: buy the call and the put (long volatility)
             return 'BUY_STRADDLE'
         else:
             return 'NEUTRAL'
 
-    def backtest_volatility_arbitrage(self, price_series, vol_series):
+    def backtest_volatility_arbitrage(self, price_series, implied_vol_series, window=20):
         """
-        Backtest volatility mean reversion
+        Backtest volatility mean reversion.
+        price_series: daily closes; implied_vol_series: daily implied vol
+        (e.g. an ATM IV or VIX/100 series), aligned to the same dates.
         """
         pnl = 0
         position = None
 
-        for i in range(1, len(price_series)):
-            realized_vol = vol_series.iloc[i]
-            implied_vol = vol_series.rolling(10).mean().iloc[i]
+        # Realized vol from prices, implied vol from its own series
+        realized_series = (np.log(price_series).diff()
+                           .rolling(window).std() * np.sqrt(252))
 
-            signal = self.generate_signal()
+        for i in range(window + 1, len(price_series)):
+            realized_vol = realized_series.iloc[i]
+            implied_vol = implied_vol_series.iloc[i]
+
+            signal = self.generate_signal(implied_vol=implied_vol,
+                                          realized_vol=realized_vol)
 
             if signal == 'SELL_STRADDLE' and position is None:
                 position = -1  # Short volatility
